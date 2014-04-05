@@ -3,7 +3,7 @@ AWE Media Center
 
 Media center for OS X, Linux, and Windows based on generalized file launchers.
 
-#Features
+# Features
 
 The idea behind AWE Media Center is simple: using players, built in or otherwise, to launch media.  That sounds simple, but many media centers make the issue much more complicated than they need to.
 
@@ -14,9 +14,11 @@ The idea behind AWE Media Center is simple: using players, built in or otherwise
 
 ---------------
 
-#Developer Information
+# Developer Information
 
-##Folder Organization
+## User Data
+
+### Folder Organization
 
 The folder organization the end user sees in the application does actually exist. It is under the `folders` folder in the root of the project. Each folder has an JSON file in it called `config.json` which specifies a few details such as:
 
@@ -106,6 +108,23 @@ Important things to note about AWEMC's folder organization JSON files:
  + It is not actually necessary to have real folders for each folder in the user interface. The default implementation does have physical folders, but the same thing could be achieved by using `folder_name.json` files or the like instead of `folder/config.json`. It is good practice to make the folders.
  + The `player` tag overrules the containing folder's `player` tag. If it is not supplied, the containing folder's `player` is used.
  + The `sort` tag indicates which `metadata` tag should be used for sorting. Usually this is `name` or `Release Year` or the like. `icons` and `location` are excluded from the user interface, so they should not be values for `sort`. Some `metadata` tags, like `Producer(s)`, are not included for every item. Items that do not specify that tag are given the minimum value (empty string).
- + Although things like `Release Year` can be represented with numbers, they should still be strings for consistency among all tags.
+ + Although things like `Release Year` can be represented with numbers, they should still be strings for consistency among all  `metadata` tags.
 
-##Media Players
+### External Media Players
+
+TODO
+
+## Documentation
+
+There are 8 classes that you should understand:
+
+ + `AWEItem` – an item displayed in a `AWEFolder`. This could be an `AWEMediaFile`, `AWEMediaService`, or `AWEFolder`.
+ + `AWEFolder` – a folder that contains `AWEItem`s.
+ + `AWEMediaFile` – a file that can be launched by a specified `AWEMediaPlayer`.
+ + `AWEMediaPlayer` - represents an external or internal media player, like a video player, audio player, DVD player, etc.
+ + `AWEInternalMediaPlayer` – an `AWEMediaPlayer` that does not open a separate application (i.e. an extension of AWEMC)
+ + `AWEExternalMediaPlayer` – an `AWEMediaPlayer` that does open a separate application, e.g. VLC.
+ + `AWEMediaService` – an interface for an external media player that manages its own files (like, say, iTunes or Netflix).
+ + `AWEScraper` – scrapes metadata for `AWEMediaFile`s (where that metadata comes from depends on the scraper).
+
+More detailed documentation can be found under the `Documentation` folder in this repository.
