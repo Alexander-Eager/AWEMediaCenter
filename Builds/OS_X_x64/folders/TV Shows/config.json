@@ -1,0 +1,23 @@
+{
+	"metadata": {
+		"name": "TV Shows",
+		"location": ".",
+
+		"description": "TV Shows",
+
+		"fanart": "fanart.jpg",
+		"icons": {
+			"front": "front.png",
+			"default": "front"
+		}
+	},
+
+	"folder": true,
+
+	"layout": "ListLayout",
+	"sort": "name",
+
+	"files": [
+		{"file": "../Movies/Up.json"}
+	]
+}

@@ -1,0 +1,21 @@
+{
+    "metadata": {
+        "name": "Up",
+        "location": "../../../Example Media/Up.webarchive",
+
+        "description": "After a lifetime of dreaming of traveling the world, 78-year-old homebody Carl flies away on an unbelievable adventure with Russell, an 8-year-old Wilderness Explorer, unexpectedly in tow. Together, the unlikely pair embarks on a thrilling odyssey full of jungle beasts and rough terrain.",
+
+        "Director(s)": "Pete Doctor, Bob Peterson",
+        "Writer(s)": "Bob Peterson",
+        "Cast": "Edward Asner, Christopher Plummer, Jordan Nagai, Bob Peterson",
+        "Release Year": "2009",
+
+        "fanart": "Up.jpg",
+        "icons": {
+            "front": "Up_front.jpg",
+            "default": "front"
+        },
+    },
+
+    "folder": false
+}

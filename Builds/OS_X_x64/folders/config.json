@@ -1,0 +1,27 @@
+{
+	"metadata": {
+		"name": "root",
+		"location": ".",
+
+		"description": "AWE Media Center",
+
+		"fanart": "fanart.jpg",
+		"icons": {
+			"front": "front.png",
+			"default": "front"
+		}
+	},
+
+	"folder": true,
+
+	"player": "Default Program",
+
+	"layout": "ListLayout",
+	"sort": "name",
+
+	"files": [
+		{"file": "Movies/config.json"},
+		{"file": "TV Shows/config.json"},
+		{"file": "Wii/config.json"}
+	]
+}

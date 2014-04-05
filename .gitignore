@@ -4,6 +4,9 @@
 *.o
 *.obj
 
+# Hidden files
+.*
+
 # Compiled Dynamic libraries
 *.so
 *.dylib

@@ -45,7 +45,7 @@ An example of `config.json` for a movie folder would be:
 		"icons": {
 			"front": "front.png",
 			"default": "front"
-		},
+		}
 	},
 
 	"folder": true,
@@ -92,8 +92,8 @@ An example of a media file, `Up.json`:
 			"top": "Up_top.png",
 			"bottom": "Up_bottom.png",
 			"default": "front"
-		},
-	}
+		}
+	},
 
 	"folder": false,
 
@@ -108,13 +108,58 @@ Important things to note about AWEMC's folder organization JSON files:
  + Each file must have the `metadata` tag, along with the sub-tags `name`, `description`, `fanart`, `location`, and `icons`. `icons` must have the sub-tags `front` and `default`, but the others are optional. If there are more icons supplied, the user will be able to change which one is shown (which is stored in the `default` tag). This `metadata` universality is why folders and files are considered the same thing: all the data you need to display an item can be found whether it is a file or a folder.
  + In addition to the `metadata` tag, the `folder` tag is also necessary to indicate if this is a folder or a media file.
  + It is not actually necessary to have real folders for each folder in the user interface. The default implementation does have physical folders, but the same thing could be achieved by using `folder_name.json` files or the like instead of `folder/config.json`. It is good practice to make the folders.
- + The `player` tag overrules the containing folder's `player` tag. If it is not supplied, the containing folder's `player` is used.
+ + The `player` tag overrules all other precedents for playing that file. See "External Media Players" below for more information.
  + The `sort` tag indicates which `metadata` tag should be used for sorting. Usually this is `name` or `Release Year` or the like. `icons` and `location` are excluded from the user interface, so they should not be values for `sort`. Some `metadata` tags, like `Producer(s)`, are not included for every item. Items that do not specify that tag are given the minimum value (empty string).
  + Although things like `Release Year` can be represented with numbers, they should still be strings for consistency among all  `metadata` tags.
+ + The player variable should designate either an internal player by name (which always begins with `Default`) or by the `name` tag of an external player (see below).
 
 ### External Media Players
 
-TODO
+External media players are launched through the command line. The configuration for external media players comes from mor JSON files, stored in the `ExternalPlayers` directory in the root directory of AWEMC. Take `VLC.json` on an OS X machine, for example:
+
+```
+{
+	"name": "VLC",
+	"location": "/Applications/VLC.app/Contents/MacOS/VLC",
+	"arguments": " -vvv {1}",
+	"filetypes": ["avi", "iso", "mpg", "mpeg", "mp3"]
+}
+```
+
+A few things to note about external player JSONs:
+
+ + Unlike media files and folders, the `location` of media players should be an absolute path to the executable.
+ + Note that on OS X, the `location` is inside of the `*.app` folder (it is always `*.app/Contents/MacOS/something`).
+ + The command executed is just the location followed by a space followed by the arguments. Thus if the executable is in the PATH variable you do not need to supply an actual location.
+ + Another tag not listed here is `DVD`. It is a `bool` to determine if the player should be used to play discs in the CD/DVD/BD drive.
+
+The `{1}` in the `arguments` string is one of a few strings related to the file name:
+
+ + `{0}` – the `location` value (e.g. `/Applications/VLC.app/Contents/MacOS/VLC`)
+ + `{1}` – the absolute file path (e.g. `/files/video.avi`)
+ + `{2}` – just the path, including trailing `/` or `\` (e.g. `/files/`)
+ + `{3}` – just the file name (e.g. `video.avi`)
+ + `{4}` – the file name with no extension (e.g. `video`)
+ + `{5}` – the extension, including preceding `.` (e.g. `.avi`)
+
+The `filetypes` array indicates which types of files should be opened with this player by default. The order of precedence for which player to use is:
+
+ + `player` in the individual media file JSON
+ + `player` in the folder containing the media file
+ + The external player with that extension listed in `filetypes`
+ + `player` in the folder of the folder containing the media file (and upward through the path)
+ + Any internal player that is defined to play that file type
+ + The `Default Program` player (which uses the operating system's default program)
+
+## Included Media Players
+
+ + `Default Program` – opens the file in the default program as specified by the operating system. On Windows, it executes `file_name`, on OS X `open file_name`, and on Linux `xdg-open file_name`. Note that this is actually an external media player, but it still has the `Default` prefix since it comes with AWEMC.
+ + `Default Video Player` – the default internal video player for most video formats.
+ + `Default Audio Player` – the default internal audio player for most audio formats.
+ + `Default DVD Player` – the default internal player for discs (in the CD/DVD/BD drive).
+ + `Default Web Browser` – the default web browser. On Windows, this is Internet Explorer, on OS X Safari and on Linux Firefox (so you should install it or create your own external media player for the desired file types).
+
+Note that one quick way to change the default video player is to make your own external player also called `DefaultVideoPlayer`. So if you would rather have VLC play all of your files, just rename the above `VLC.json` to `DefaultVideoPlayer.json`. Any file that specifically asks for the default video player will thus get VLC. 
 
 ## Documentation
 
