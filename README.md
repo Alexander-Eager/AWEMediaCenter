@@ -16,6 +16,8 @@ The idea behind AWE Media Center is simple: using players, built in or otherwise
 
 # Developer Information
 
+The user interface for AWEMC is based on Qt (<http://www.qt-project.org/>).
+
 ## User Data
 
 ### Folder Organization
@@ -126,5 +128,7 @@ There are 8 classes that you should understand:
  + `AWEExternalMediaPlayer` – an `AWEMediaPlayer` that does open a separate application, e.g. VLC.
  + `AWEMediaService` – an interface for an external media player that manages its own files (like, say, iTunes or Netflix).
  + `AWEScraper` – scrapes metadata for `AWEMediaFile`s (where that metadata comes from depends on the scraper).
+
+As you can probably see, all classes built into AWEMC should be prefixed by "AWE".
 
 More detailed documentation can be found under the `Documentation` folder in this repository.
