@@ -5,7 +5,7 @@ Media center for OS X, Linux, and Windows based on generalized file launchers.
 
 # Features
 
-The idea behind AWE Media Center is simple: using players, built in or otherwise, to launch media.  That sounds simple, but many media centers make the issue much more complicated than they need to.
+The idea behind AWE Media Center (AWEMC) is simple: using players, built in or otherwise, to launch media.  That sounds simple, but many media centers make the issue much more complicated than they need to.
 
  + Supports the creation of media players based on external executables and command line arguments.
  + Sometimes, a media player might be something other than a file launcher, e.g. an online video service. In such a case, a developer can release an extension of AWE Media Center to support that service. The service is launched much like a file.
@@ -120,7 +120,7 @@ TODO
 
 There are 8 classes that you should understand:
 
- + `AWEItem` – an item displayed in a `AWEFolder`. This could be an `AWEMediaFile`, `AWEMediaService`, or `AWEFolder`.
+ + `AWEItem` – an item displayed in an `AWEFolder`. This could be an `AWEMediaFile`, `AWEMediaService`, or `AWEFolder`.
  + `AWEFolder` – a folder that contains `AWEItem`s.
  + `AWEMediaFile` – a file that can be launched by a specified `AWEMediaPlayer`.
  + `AWEMediaPlayer` - represents an external or internal media player, like a video player, audio player, DVD player, etc.
@@ -131,4 +131,4 @@ There are 8 classes that you should understand:
 
 As you can probably see, all classes built into AWEMC should be prefixed by "AWE".
 
-More detailed documentation can be found under the `Documentation` folder in this repository.
+More detailed documentation can be found under the `Documentation` folder in this repository. Documentation is generated with Doxygen, so comment your header files appropriately.
