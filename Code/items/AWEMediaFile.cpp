@@ -5,9 +5,11 @@
 #include <sstream>
 #include "libs/generic_file_reader/file_reader.h"
 
-AWEMediaFile::AWEMediaFile(const QDir& file,
-							AWEGlobalSettings* settings) :
-	AWEMediaItem(file),
+using namespace AWE;
+
+MediaFile::MediaFile(const QDir& file,
+							GlobalSettings* settings) :
+	MediaItem(file),
 	myMediaFile(file)
 {
 	myMediaFile.cdUp();
@@ -16,24 +18,24 @@ AWEMediaFile::AWEMediaFile(const QDir& file,
 	myDefaultPlayer = settings->getPlayerByName(getMember("player").asString());
 }
 
-AWEMediaFile::~AWEMediaFile() { }
+MediaFile::~MediaFile() { }
 
-ItemType AWEMediaFile::getItemType() const
+ItemType MediaFile::getItemType() const
 {
 	return FILE_TYPE;
 }
 
-const QDir& AWEMediaFile::getMediaFile() const
+const QDir& MediaFile::getMediaFile() const
 {
 	return myMediaFile;
 }
 
-AWEMediaPlayer* AWEMediaFile::getDefaultPlayer()
+MediaPlayer* MediaFile::getDefaultPlayer()
 {
 	return myDefaultPlayer;
 }
 
-int AWEMediaFile::play()
+int MediaFile::play()
 {
 	return myDefaultPlayer->play(this);
 }

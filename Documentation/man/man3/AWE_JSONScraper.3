@@ -1,0 +1,178 @@
+.TH "AWE::JSONScraper" 3 "Fri Apr 18 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AWE::JSONScraper \- 
+.PP
+A metadata scraper based on JSON files\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <AWEJSONScraper\&.h>\fP
+.PP
+Inherits \fBAWE::MetadataScraper\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBJSONScraper\fP (const std::string &name, const std::string &type)"
+.br
+.RI "\fIConstruct a new JSON-based scraper from the given name\&. \fP"
+.ti -1c
+.RI "virtual bool \fBprepare\fP (\fBGlobalSettings\fP *settings)"
+.br
+.RI "\fIPrepares the scraper by reading the scraper and type files\&. \fP"
+.ti -1c
+.RI "virtual bool \fBscrapeDataForFile\fP (\fBMediaFile\fP *file, bool askUser, bool import)"
+.br
+.RI "\fIRetrieves metadata for a media file\&. \fP"
+.ti -1c
+.RI "virtual void \fBdeactivate\fP ()"
+.br
+.RI "\fIDestroys any used-up dynamic memory\&. \fP"
+.ti -1c
+.RI "virtual bool \fBisValid\fP ()"
+.br
+.RI "\fIDetermines if this is scraper can be used\&. \fP"
+.ti -1c
+.RI "virtual const std::string & \fBgetName\fP ()"
+.br
+.RI "\fIGets the name of the scraper\&. \fP"
+.ti -1c
+.RI "virtual const std::string & \fBgetType\fP ()"
+.br
+.RI "\fIGets the media type for this scraper\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A metadata scraper based on JSON files\&. 
+
+
+.PP
+\fBTodo\fP
+.RS 4
+Change \fCmyType\fP to be the mystical know-all configuration object\&.
+.RE
+.PP
+.PP
+One way of defining a scraper is through a JSON file interpreted by an instantiation of this class\&. To read more about the format of such a JSON file, read \fBthis document\fP\&.
+.PP
+For information on media types, read \&.\&./type/README\&.md 'this document'\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "JSONScraper::JSONScraper (const std::string &name, const std::string &type)"
+
+.PP
+Construct a new JSON-based scraper from the given name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the scraper\&. 
+.br
+\fItype\fP The media type for this scraper\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void JSONScraper::deactivate ()\fC [virtual]\fP"
+
+.PP
+Destroys any used-up dynamic memory\&. This helps with memory management\&. 
+.PP
+Implements \fBAWE::MetadataScraper\fP\&.
+.SS "const string & JSONScraper::getName ()\fC [virtual]\fP"
+
+.PP
+Gets the name of the scraper\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The name of the scraper\&. 
+.RE
+.PP
+
+.PP
+Implements \fBAWE::MetadataScraper\fP\&.
+.SS "const string & JSONScraper::getType ()\fC [virtual]\fP"
+
+.PP
+Gets the media type for this scraper\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The media type name for the scraper\&. 
+.RE
+.PP
+
+.PP
+Implements \fBAWE::MetadataScraper\fP\&.
+.SS "bool JSONScraper::isValid ()\fC [virtual]\fP"
+
+.PP
+Determines if this is scraper can be used\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if this scraper can be used successfully, \fCfalse\fP otherwise\&. 
+.RE
+.PP
+
+.PP
+Implements \fBAWE::MetadataScraper\fP\&.
+.SS "bool JSONScraper::prepare (\fBGlobalSettings\fP *settings)\fC [virtual]\fP"
+
+.PP
+Prepares the scraper by reading the scraper and type files\&. This helps with memory management\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsettings\fP The \&.\&./settings/README\&.md 'global settings of AWEMC'\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the scraper was able to prepare itself, \fCfalse\fP if an error occured and scraping should be aborted\&. Generally, a \fCfalse\fP result here means that the JSON file was incorrectly written\&. 
+.RE
+.PP
+
+.PP
+Implements \fBAWE::MetadataScraper\fP\&.
+.SS "bool JSONScraper::scrapeDataForFile (\fBMediaFile\fP *file, boolaskUser, boolimport)\fC [virtual]\fP"
+
+.PP
+Retrieves metadata for a media file\&. To construct your JSON file, you should use \fCjsoncpp\fP\&.
+.PP
+\fCaskUser\fP tells your scraper if the user wants to be given a list of choices for certain things\&. You should NOT ask the user for everything if \fCaskUser\fP is true; only basic things like, 'Which icon do you want to use?'
+.PP
+\fCimport\fP specifies if the files you get should be copied into AWEMC's folders\&. Do NOT copy the media file\&.
+.PP
+\fBTodo\fP
+.RS 4
+\fCimport\fP and \fCaskUser\fP
+.RE
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile\fP The media file to get metadata for\&. 
+.br
+\fIaskUser\fP \fCtrue\fP if the user wants to be given choices, \fCfalse\fP otherwise\&. 
+.br
+\fIimport\fP \fCtrue\fP if the user wants to import metadata files, \fCfalse\fP otherwise\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the scraper was able to get the metadata, \fCfalse\fP if it was not\&. 
+.RE
+.PP
+
+.PP
+Implements \fBAWE::MetadataScraper\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AWE Media Center from the source code\&.

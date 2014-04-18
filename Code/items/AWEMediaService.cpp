@@ -1,11 +1,13 @@
 // header file
 #include "AWEMediaService.h"
 
-AWEMediaService::AWEMediaService(const QDir& file) :
-	AWEMediaItem(file)
+using namespace AWE;
+
+MediaService::MediaService(const QDir& file) :
+	MediaItem(file)
 	{ }
 
-ItemType AWEMediaService::getItemType() const
+ItemType MediaService::getItemType() const
 {
 	return SERVICE_TYPE;
 }

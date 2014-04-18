@@ -1,0 +1,259 @@
+\hypertarget{class_a_w_e_media_item}{\section{A\-W\-E\-Media\-Item Class Reference}
+\label{class_a_w_e_media_item}\index{A\-W\-E\-Media\-Item@{A\-W\-E\-Media\-Item}}
+}
+
+
+Represents a media file, folder, or service.  
+
+
+
+
+{\ttfamily \#include $<$A\-W\-E\-Media\-Item.\-h$>$}
+
+Inheritance diagram for A\-W\-E\-Media\-Item\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_a_w_e_media_item}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_a_w_e_media_item_aa3e6fb6c882e38f5c636de2b0630571e}{A\-W\-E\-Media\-Item} (const Q\-Dir \&file)
+\begin{DoxyCompactList}\small\item\em Create from the given J\-S\-O\-N file. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_media_item_ad1de3d9410895ebb23d2d1bf80403a16}{virtual \hyperlink{class_a_w_e_media_item_ad1de3d9410895ebb23d2d1bf80403a16}{$\sim$\-A\-W\-E\-Media\-Item} ()}\label{class_a_w_e_media_item_ad1de3d9410895ebb23d2d1bf80403a16}
+
+\begin{DoxyCompactList}\small\item\em Deconstructor. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_json_1_1_value}{Json\-::\-Value} \& \hyperlink{class_a_w_e_media_item_a883413a36ee3258f614741af6c79c003}{get\-Data} ()
+\begin{DoxyCompactList}\small\item\em Get the data for this item. \end{DoxyCompactList}\item 
+virtual const \hyperlink{class_json_1_1_value}{Json\-::\-Value} \& \hyperlink{class_a_w_e_media_item_aa92ea60cc6290184e8b137ccbde8e22e}{get\-Data} () const 
+\begin{DoxyCompactList}\small\item\em Get the data for this item. \end{DoxyCompactList}\item 
+virtual const \hyperlink{class_json_1_1_value}{Json\-::\-Value} \& \hyperlink{class_a_w_e_media_item_a25e3819133184dccdbcebc01f5d232b8}{get\-Member} (const std\-::string \&str) const 
+\begin{DoxyCompactList}\small\item\em Get a member of unspecified type by name. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_json_1_1_value}{Json\-::\-Value} \& \hyperlink{class_a_w_e_media_item_a8108de415a1e7893cfd0f63f88f0022f}{get\-Member} (const std\-::string \&str)
+\begin{DoxyCompactList}\small\item\em Get a member of unspecified type by name. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_media_item_a12eeff7af4a27fa208166cf573e818d0}{get\-Bool\-Member} (const std\-::string \&str) const 
+\begin{DoxyCompactList}\small\item\em Get a member of {\ttfamily bool} type by name. \end{DoxyCompactList}\item 
+virtual std\-::string \hyperlink{class_a_w_e_media_item_a2def0777a7c0568d88e967f95907722c}{get\-String\-Member} (const std\-::string \&str) const 
+\begin{DoxyCompactList}\small\item\em Get a member of {\ttfamily std\-::string} type by name. \end{DoxyCompactList}\item 
+virtual int \hyperlink{class_a_w_e_media_item_a00edc2e2c1f6070d03b26ee2a0484caa}{get\-Int\-Member} (const std\-::string \&str) const 
+\begin{DoxyCompactList}\small\item\em Get a member of {\ttfamily int} type by name. \end{DoxyCompactList}\item 
+virtual std\-::string \hyperlink{class_a_w_e_media_item_abd6896ce4df5a91c4517a8f36c92dd87}{get\-Name} () const 
+\begin{DoxyCompactList}\small\item\em Get the name of the media item. \end{DoxyCompactList}\item 
+virtual const Q\-Dir \& \hyperlink{class_a_w_e_media_item_ac36b959b2491f9eb0ab0c48e7b64f3ee}{get\-J\-S\-O\-N\-File} () const 
+\begin{DoxyCompactList}\small\item\em Get the absolute path to the J\-S\-O\-N settings file. \end{DoxyCompactList}\item 
+virtual Item\-Type \hyperlink{class_a_w_e_media_item_a8b267bd03e4a49b605455d9cd1f03938}{get\-Item\-Type} () const =0
+\begin{DoxyCompactList}\small\item\em Determine the basic type (folder, file, service) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_a_w_e_media_item_ab960046626189680b808d6103f83ddf7}{Q\-Dir \hyperlink{class_a_w_e_media_item_ab960046626189680b808d6103f83ddf7}{my\-J\-S\-O\-N\-File}}\label{class_a_w_e_media_item_ab960046626189680b808d6103f83ddf7}
+
+\begin{DoxyCompactList}\small\item\em The J\-S\-O\-N file for this item. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_media_item_a3ce686d92d593fe0144ba4b8fac7e8c7}{\hyperlink{class_json_1_1_value}{Json\-::\-Value} \hyperlink{class_a_w_e_media_item_a3ce686d92d593fe0144ba4b8fac7e8c7}{my\-Data}}\label{class_a_w_e_media_item_a3ce686d92d593fe0144ba4b8fac7e8c7}
+
+\begin{DoxyCompactList}\small\item\em The data for this item. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents a media file, folder, or service. 
+
+Holds all relevant metadata for the item. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_a_w_e_media_item_aa3e6fb6c882e38f5c636de2b0630571e}{\index{A\-W\-E\-Media\-Item@{A\-W\-E\-Media\-Item}!A\-W\-E\-Media\-Item@{A\-W\-E\-Media\-Item}}
+\index{A\-W\-E\-Media\-Item@{A\-W\-E\-Media\-Item}!AWEMediaItem@{A\-W\-E\-Media\-Item}}
+\subsubsection[{A\-W\-E\-Media\-Item}]{\setlength{\rightskip}{0pt plus 5cm}A\-W\-E\-Media\-Item\-::\-A\-W\-E\-Media\-Item (
+\begin{DoxyParamCaption}
+\item[{const Q\-Dir \&}]{file}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_media_item_aa3e6fb6c882e38f5c636de2b0630571e}
+
+
+Create from the given J\-S\-O\-N file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & The J\-S\-O\-N file path. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_a_w_e_media_item_a12eeff7af4a27fa208166cf573e818d0}{\index{A\-W\-E\-Media\-Item@{A\-W\-E\-Media\-Item}!get\-Bool\-Member@{get\-Bool\-Member}}
+\index{get\-Bool\-Member@{get\-Bool\-Member}!AWEMediaItem@{A\-W\-E\-Media\-Item}}
+\subsubsection[{get\-Bool\-Member}]{\setlength{\rightskip}{0pt plus 5cm}bool A\-W\-E\-Media\-Item\-::get\-Bool\-Member (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{str}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_media_item_a12eeff7af4a27fa208166cf573e818d0}
+
+
+Get a member of {\ttfamily bool} type by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & A formatted string representing the path to the member variable in the J\-S\-O\-N file.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value associated with the key {\ttfamily str}. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_media_item_a883413a36ee3258f614741af6c79c003}{\index{A\-W\-E\-Media\-Item@{A\-W\-E\-Media\-Item}!get\-Data@{get\-Data}}
+\index{get\-Data@{get\-Data}!AWEMediaItem@{A\-W\-E\-Media\-Item}}
+\subsubsection[{get\-Data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Json\-::\-Value} \& A\-W\-E\-Media\-Item\-::get\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_media_item_a883413a36ee3258f614741af6c79c003}
+
+
+Get the data for this item. 
+
+\begin{DoxyReturn}{Returns}
+The data for this item. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_media_item_aa92ea60cc6290184e8b137ccbde8e22e}{\index{A\-W\-E\-Media\-Item@{A\-W\-E\-Media\-Item}!get\-Data@{get\-Data}}
+\index{get\-Data@{get\-Data}!AWEMediaItem@{A\-W\-E\-Media\-Item}}
+\subsubsection[{get\-Data}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Json\-::\-Value} \& A\-W\-E\-Media\-Item\-::get\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_media_item_aa92ea60cc6290184e8b137ccbde8e22e}
+
+
+Get the data for this item. 
+
+\begin{DoxyReturn}{Returns}
+The data for this item. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_media_item_a00edc2e2c1f6070d03b26ee2a0484caa}{\index{A\-W\-E\-Media\-Item@{A\-W\-E\-Media\-Item}!get\-Int\-Member@{get\-Int\-Member}}
+\index{get\-Int\-Member@{get\-Int\-Member}!AWEMediaItem@{A\-W\-E\-Media\-Item}}
+\subsubsection[{get\-Int\-Member}]{\setlength{\rightskip}{0pt plus 5cm}int A\-W\-E\-Media\-Item\-::get\-Int\-Member (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{str}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_media_item_a00edc2e2c1f6070d03b26ee2a0484caa}
+
+
+Get a member of {\ttfamily int} type by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & A formatted string representing the path to the member variable in the J\-S\-O\-N file.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value associated with the key {\ttfamily str}. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_media_item_a8b267bd03e4a49b605455d9cd1f03938}{\index{A\-W\-E\-Media\-Item@{A\-W\-E\-Media\-Item}!get\-Item\-Type@{get\-Item\-Type}}
+\index{get\-Item\-Type@{get\-Item\-Type}!AWEMediaItem@{A\-W\-E\-Media\-Item}}
+\subsubsection[{get\-Item\-Type}]{\setlength{\rightskip}{0pt plus 5cm}virtual Item\-Type A\-W\-E\-Media\-Item\-::get\-Item\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_a_w_e_media_item_a8b267bd03e4a49b605455d9cd1f03938}
+
+
+Determine the basic type (folder, file, service) 
+
+\begin{DoxyReturn}{Returns}
+The basic type of this item. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_a_w_e_media_file_a60ede89821903429a2e5e3f7b6cf10a1}{A\-W\-E\-Media\-File}, \hyperlink{class_a_w_e_folder_afa4834cc71bdef6c540ae134fa1ea6e0}{A\-W\-E\-Folder}, and \hyperlink{class_a_w_e_media_service_a2f381f8b3d0dd1d9284e14d14704879b}{A\-W\-E\-Media\-Service}.
+
+\hypertarget{class_a_w_e_media_item_ac36b959b2491f9eb0ab0c48e7b64f3ee}{\index{A\-W\-E\-Media\-Item@{A\-W\-E\-Media\-Item}!get\-J\-S\-O\-N\-File@{get\-J\-S\-O\-N\-File}}
+\index{get\-J\-S\-O\-N\-File@{get\-J\-S\-O\-N\-File}!AWEMediaItem@{A\-W\-E\-Media\-Item}}
+\subsubsection[{get\-J\-S\-O\-N\-File}]{\setlength{\rightskip}{0pt plus 5cm}const Q\-Dir \& A\-W\-E\-Media\-Item\-::get\-J\-S\-O\-N\-File (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_media_item_ac36b959b2491f9eb0ab0c48e7b64f3ee}
+
+
+Get the absolute path to the J\-S\-O\-N settings file. 
+
+\begin{DoxyReturn}{Returns}
+The path to the J\-S\-O\-N settings file. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_media_item_a25e3819133184dccdbcebc01f5d232b8}{\index{A\-W\-E\-Media\-Item@{A\-W\-E\-Media\-Item}!get\-Member@{get\-Member}}
+\index{get\-Member@{get\-Member}!AWEMediaItem@{A\-W\-E\-Media\-Item}}
+\subsubsection[{get\-Member}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Json\-::\-Value} \& A\-W\-E\-Media\-Item\-::get\-Member (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{str}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_media_item_a25e3819133184dccdbcebc01f5d232b8}
+
+
+Get a member of unspecified type by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & A formatted string representing the path to the member variable in the J\-S\-O\-N file.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value associated with the key {\ttfamily str}. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_media_item_a8108de415a1e7893cfd0f63f88f0022f}{\index{A\-W\-E\-Media\-Item@{A\-W\-E\-Media\-Item}!get\-Member@{get\-Member}}
+\index{get\-Member@{get\-Member}!AWEMediaItem@{A\-W\-E\-Media\-Item}}
+\subsubsection[{get\-Member}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Json\-::\-Value} \& A\-W\-E\-Media\-Item\-::get\-Member (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{str}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_media_item_a8108de415a1e7893cfd0f63f88f0022f}
+
+
+Get a member of unspecified type by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & A formatted string representing the path to the member variable in the J\-S\-O\-N file.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value associated with the key {\ttfamily str}. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_media_item_abd6896ce4df5a91c4517a8f36c92dd87}{\index{A\-W\-E\-Media\-Item@{A\-W\-E\-Media\-Item}!get\-Name@{get\-Name}}
+\index{get\-Name@{get\-Name}!AWEMediaItem@{A\-W\-E\-Media\-Item}}
+\subsubsection[{get\-Name}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string A\-W\-E\-Media\-Item\-::get\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_media_item_abd6896ce4df5a91c4517a8f36c92dd87}
+
+
+Get the name of the media item. 
+
+Equivalent to {\ttfamily get\-String\-Member(\char`\"{}metadata.\-name\char`\"{})}
+
+\begin{DoxyReturn}{Returns}
+The name of this media item. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_media_item_a2def0777a7c0568d88e967f95907722c}{\index{A\-W\-E\-Media\-Item@{A\-W\-E\-Media\-Item}!get\-String\-Member@{get\-String\-Member}}
+\index{get\-String\-Member@{get\-String\-Member}!AWEMediaItem@{A\-W\-E\-Media\-Item}}
+\subsubsection[{get\-String\-Member}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string A\-W\-E\-Media\-Item\-::get\-String\-Member (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{str}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_media_item_a2def0777a7c0568d88e967f95907722c}
+
+
+Get a member of {\ttfamily std\-::string} type by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & A formatted string representing the path to the member variable in the J\-S\-O\-N file.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value associated with the key {\ttfamily str}. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Code/items/A\-W\-E\-Media\-Item.\-h\item 
+Code/items/A\-W\-E\-Media\-Item.\-cpp\end{DoxyCompactItemize}

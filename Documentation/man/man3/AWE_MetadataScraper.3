@@ -1,0 +1,160 @@
+.TH "AWE::MetadataScraper" 3 "Fri Apr 18 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AWE::MetadataScraper \- 
+.PP
+Defines the general interface for a metadata scraper\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <AWEMetadataScraper\&.h>\fP
+.PP
+Inherited by \fBAWE::JSONScraper\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~MetadataScraper\fP ()"
+.br
+.RI "\fIDeconstructor\&. \fP"
+.ti -1c
+.RI "virtual bool \fBprepare\fP (\fBGlobalSettings\fP *settings)=0"
+.br
+.RI "\fIPrepares the scraper\&. \fP"
+.ti -1c
+.RI "virtual bool \fBscrapeDataForFile\fP (\fBMediaFile\fP *file, bool askUser, bool import)=0"
+.br
+.RI "\fIRetrieves metadata for a media file\&. \fP"
+.ti -1c
+.RI "virtual void \fBdeactivate\fP ()=0"
+.br
+.RI "\fIDestroys any used-up dynamic memory\&. \fP"
+.ti -1c
+.RI "virtual bool \fBisValid\fP ()=0"
+.br
+.RI "\fIDetermines if this is scraper can be used\&. \fP"
+.ti -1c
+.RI "virtual const std::string & \fBgetName\fP ()=0"
+.br
+.RI "\fIGets the name of the scraper\&. \fP"
+.ti -1c
+.RI "virtual const std::string & \fBgetType\fP ()=0"
+.br
+.RI "\fIGets the media type for this scraper\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines the general interface for a metadata scraper\&. 
+
+Metadata scrapers must take in the path to a media file and use that path to collect icons, fanart images, and other details about the media item\&.
+.PP
+In order to scrape for metadata, AWEMC does the following:
+.IP "\(bu" 2
+Prepare the scraper by calling \fC\fBprepare()\fP\fP\&.
+.IP "\(bu" 2
+Scrape for metadata using \fC\fBscrapeDataForFile()\fP\fP\&.
+.IP "\(bu" 2
+Deactivate the scraper by calling \fC\fBdeactivate()\fP\fP\&.
+.PP
+.PP
+\fC\fBMetadataScraper\fP\fP implementations should be largely immutable, at least as seen by the functions outside of the class\&. The only place internal changes should be made is during the scraping of a file with temporary instance variables\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void AWE::MetadataScraper::deactivate ()\fC [pure virtual]\fP"
+
+.PP
+Destroys any used-up dynamic memory\&. This helps with memory management\&. If you rely on large objects to scrape for metadata, this is where you should \fCdelete\fP them\&. 
+.PP
+Implemented in \fBAWE::JSONScraper\fP\&.
+.SS "virtual const std::string& AWE::MetadataScraper::getName ()\fC [pure virtual]\fP"
+
+.PP
+Gets the name of the scraper\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The name of the scraper\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBAWE::JSONScraper\fP\&.
+.SS "virtual const std::string& AWE::MetadataScraper::getType ()\fC [pure virtual]\fP"
+
+.PP
+Gets the media type for this scraper\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The media type name for the scraper\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBAWE::JSONScraper\fP\&.
+.SS "virtual bool AWE::MetadataScraper::isValid ()\fC [pure virtual]\fP"
+
+.PP
+Determines if this is scraper can be used\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if this scraper can be used successfully, \fCfalse\fP otherwise\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBAWE::JSONScraper\fP\&.
+.SS "virtual bool AWE::MetadataScraper::prepare (\fBGlobalSettings\fP *settings)\fC [pure virtual]\fP"
+
+.PP
+Prepares the scraper\&. This helps with memory management\&. If you rely on large objects to scrape for metadata, this is where you should construct them\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsettings\fP The \&.\&./settings/README\&.md 'global settings of AWEMC', so that your scraper can be customized\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the scraper was able to prepare itself, \fCfalse\fP if an error occured and scraping should be aborted\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBAWE::JSONScraper\fP\&.
+.SS "virtual bool AWE::MetadataScraper::scrapeDataForFile (\fBMediaFile\fP *file, boolaskUser, boolimport)\fC [pure virtual]\fP"
+
+.PP
+Retrieves metadata for a media file\&. You must write the metadata to \fCfile\fP\&.
+.PP
+To construct your JSON file, you should use \fCjsoncpp\fP\&.
+.PP
+\fCaskUser\fP tells your scraper if the user wants to be given a list of choices for certain things\&. You should NOT ask the user for everything if \fCaskUser\fP is true; only basic things like, 'Which icon do you want to use?'
+.PP
+\fCimport\fP specifies if the files you get should be copied into AWEMC's folders\&. Do NOT copy the media file\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile\fP The media file to get metadata for\&. 
+.br
+\fIaskUser\fP \fCtrue\fP if the user wants to be given choices, \fCfalse\fP otherwise\&. 
+.br
+\fIimport\fP \fCtrue\fP if the user wants to import metadata files, \fCfalse\fP otherwise\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the scraper was able to get the metadata, \fCfalse\fP if it was not\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBAWE::JSONScraper\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AWE Media Center from the source code\&.

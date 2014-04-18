@@ -10,41 +10,44 @@
 // for holding data
 #include <vector>
 
-/**
- * \brief A folder that contains `AWEMediaItem`s.
- **/
-class AWEFolder : public AWEMediaItem
+namespace AWE
 {
-	public:
-		/**
-		 * \brief Construct from the folder's settings
-		 *			and from the global settings.
-		 *
-		 * \param folder The configuration file for this folder.
-		 * \param settings The global settings.
-		 **/
-		AWEFolder(const QDir& folder, AWEGlobalSettings* settings);
+	/**
+	 * \brief A folder that contains `MediaItem`s.
+	 **/
+	class Folder : public MediaItem
+	{
+		public:
+			/**
+			 * \brief Construct from the folder's settings
+			 *			and from the global settings.
+			 *
+			 * \param folder The configuration file for this folder.
+			 * \param settings The global settings.
+			 **/
+			Folder(const QDir& folder, GlobalSettings* settings);
 
-		/** \brief Deconstructor. **/
-		virtual ~AWEFolder();
+			/** \brief Deconstructor. **/
+			virtual ~Folder();
 
-		/**
-		 * \brief Determine the basic type (folder, file, service)
-		 *
-		 * \returns The basic type of this item.
-		 **/
-		virtual ItemType getItemType() const;
+			/**
+			 * \brief Determine the basic type (folder, file, service)
+			 *
+			 * \returns The basic type of this item.
+			 **/
+			virtual ItemType getItemType() const;
 
-		/**
-		 * \brief Get a list of all of the items this folder contains.
-		 *
-		 * \returns All of the items this folder contains.
-		 **/
-		virtual std::vector<AWEMediaItem*>& getItems();
+			/**
+			 * \brief Get a list of all of the items this folder contains.
+			 *
+			 * \returns All of the items this folder contains.
+			 **/
+			virtual std::vector<MediaItem*>& getItems();
 
-	private:
-		/** \brief List of contained items. **/
-		std::vector<AWEMediaItem*> myItems;
-};
+		private:
+			/** \brief List of contained items. **/
+			std::vector<MediaItem*> myItems;
+	};
+}
 
 #endif

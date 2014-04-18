@@ -1,0 +1,26 @@
+Media players play ../items/\-R\-E\-A\-D\-M\-E.md \char`\"{}media files\char`\"{}, using either a terminal command or a plugin.
+
+\section*{External J\-S\-O\-N Players}
+
+The J\-S\-O\-N file for a media player looks like this\-: \begin{DoxyVerb}{
+    "name": "player name",
+
+    "program": "program to run",
+
+    "args": "arguments to pass to the program with file references"
+}
+\end{DoxyVerb}
+
+
+The file references to {\ttfamily \char`\"{}args\char`\"{}} can be\-: \begin{DoxyVerb}{1} - the absolute path to the media file
+\end{DoxyVerb}
+
+
+\section*{Internal Plugin Players}
+
+Internal media players must implement the {\ttfamily Media\-Player} interface and fill out the accompanying J\-S\-O\-N file\-: \begin{DoxyVerb}{
+    "name": "player name",
+
+    "library": "dynamic library file"
+} \end{DoxyVerb}
+ 

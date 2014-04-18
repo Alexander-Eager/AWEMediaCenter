@@ -1,0 +1,76 @@
+.TH "AWEMediaPlayer" 3 "Thu Apr 17 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AWEMediaPlayer \- 
+.PP
+Represents an abstract media player's functions\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <AWEMediaPlayer\&.h>\fP
+.PP
+Inherited by \fBAWEJSONPlayer\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual int \fBplay\fP (\fBAWEMediaFile\fP *file)=0"
+.br
+.RI "\fIPlay the given file\&. \fP"
+.ti -1c
+.RI "virtual const std::string & \fBgetName\fP () const =0"
+.br
+.RI "\fIGet the name of the player\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents an abstract media player's functions\&. 
+
+
+.PP
+\fBTodo\fP
+.RS 4
+Make plugin interface\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual const std::string& AWEMediaPlayer::getName () const\fC [pure virtual]\fP"
+
+.PP
+Get the name of the player\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The name of the player\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBAWEJSONPlayer\fP\&.
+.SS "virtual int AWEMediaPlayer::play (\fBAWEMediaFile\fP *file)\fC [pure virtual]\fP"
+
+.PP
+Play the given file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile\fP The media file to play\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if \fCfile\fP played successfully, \fCfalse\fP otherwise\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBAWEJSONPlayer\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AWE Media Center from the source code\&.

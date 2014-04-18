@@ -5,36 +5,40 @@
 #include "libs/generic_file_reader/file_reader.h"
 #include <sstream>
 
-AWEMediaItem::AWEMediaItem(const QDir& file) :
+using namespace AWE;
+using namespace Json;
+using namespace std;
+
+MediaItem::MediaItem(const QDir& file) :
 	myJSONFile(file)
 {
 	// read in the settings file
-	Json::Reader reader;
+	Reader reader;
 	std::stringstream ss;
 	copyFile(file.absolutePath().toStdString(), ss);
 	reader.parse(ss.str(), myData, false);
 }
 
-AWEMediaItem::~AWEMediaItem()
+MediaItem::~MediaItem()
 {
 	// nothing
 }
 
-const Json::Value& AWEMediaItem::getData() const
+const Value& MediaItem::getData() const
 {
 	return myData;
 }
 
-Json::Value& AWEMediaItem::getData()
+Value& MediaItem::getData()
 {
 	return myData;
 }
 
-const Json::Value& AWEMediaItem::getMember(const std::string& str) const
+const Value& MediaItem::getMember(const std::string& str) const
 {
 	// str is of the form "object.object.object. ... .key"
 	// so parse by period and delve down until you reach the end
-	const Json::Value* toSet = &myData;
+	const Value* toSet = &myData;
 	std::stringstream propParser;
 	propParser << str;
 	std::string parseResult;
@@ -45,11 +49,11 @@ const Json::Value& AWEMediaItem::getMember(const std::string& str) const
 	return *toSet;
 }
 
-Json::Value& AWEMediaItem::getMember(const std::string& str)
+Value& MediaItem::getMember(const std::string& str)
 {
 	// str is of the form "object.object.object. ... .key"
 	// so parse by period and delve down until you reach the end
-	Json::Value* toSet = &myData;
+	Value* toSet = &myData;
 	std::stringstream propParser;
 	propParser << str;
 	std::string parseResult;
@@ -60,27 +64,27 @@ Json::Value& AWEMediaItem::getMember(const std::string& str)
 	return *toSet;
 }
 
-bool AWEMediaItem::getBoolMember(const std::string& str) const
+bool MediaItem::getBoolMember(const std::string& str) const
 {
 	return getMember(str).asBool();
 }
 
-std::string AWEMediaItem::getStringMember(const std::string& str) const
+std::string MediaItem::getStringMember(const std::string& str) const
 {
 	return getMember(str).asString();
 }
 
-int AWEMediaItem::getIntMember(const std::string& str) const
+int MediaItem::getIntMember(const std::string& str) const
 {
 	return getMember(str).asInt();
 }
 
-std::string AWEMediaItem::getName() const
+std::string MediaItem::getName() const
 {
 	return getMember("metadata.name").asString();
 }
 
-const QDir& AWEMediaItem::getJSONFile() const
+const QDir& MediaItem::getJSONFile() const
 {
 	return myJSONFile;
 }

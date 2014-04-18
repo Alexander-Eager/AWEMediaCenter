@@ -1,0 +1,84 @@
+.TH "AWE::Folder" 3 "Fri Apr 18 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AWE::Folder \- 
+.PP
+A folder that contains \fC\fBMediaItem\fP\fPs\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <AWEFolder\&.h>\fP
+.PP
+Inherits \fBAWE::MediaItem\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFolder\fP (const QDir &folder, \fBGlobalSettings\fP *settings)"
+.br
+.RI "\fIConstruct from the folder's settings and from the global settings\&. \fP"
+.ti -1c
+.RI "virtual \fB~Folder\fP ()"
+.br
+.RI "\fIDeconstructor\&. \fP"
+.ti -1c
+.RI "virtual ItemType \fBgetItemType\fP () const "
+.br
+.RI "\fIDetermine the basic type (folder, file, service) \fP"
+.ti -1c
+.RI "virtual std::vector< \fBMediaItem\fP * > & \fBgetItems\fP ()"
+.br
+.RI "\fIGet a list of all of the items this folder contains\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A folder that contains \fC\fBMediaItem\fP\fPs\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Folder::Folder (const QDir &folder, \fBGlobalSettings\fP *settings)"
+
+.PP
+Construct from the folder's settings and from the global settings\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfolder\fP The configuration file for this folder\&. 
+.br
+\fIsettings\fP The global settings\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "vector< \fBMediaItem\fP * > & Folder::getItems ()\fC [virtual]\fP"
+
+.PP
+Get a list of all of the items this folder contains\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+All of the items this folder contains\&. 
+.RE
+.PP
+
+.SS "ItemType Folder::getItemType () const\fC [virtual]\fP"
+
+.PP
+Determine the basic type (folder, file, service) 
+.PP
+\fBReturns:\fP
+.RS 4
+The basic type of this item\&. 
+.RE
+.PP
+
+.PP
+Implements \fBAWE::MediaItem\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AWE Media Center from the source code\&.

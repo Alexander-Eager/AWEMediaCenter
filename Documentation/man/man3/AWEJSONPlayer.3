@@ -1,0 +1,84 @@
+.TH "AWEJSONPlayer" 3 "Thu Apr 17 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AWEJSONPlayer \- 
+.PP
+Represents an external media player designed in a JSON file\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <AWEJSONPlayer\&.h>\fP
+.PP
+Inherits \fBAWEMediaPlayer\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAWEJSONPlayer\fP (\fBJson::Value\fP &player)"
+.br
+.RI "\fIConstruct a media player from the given JSON object\&. \fP"
+.ti -1c
+.RI "virtual int \fBplay\fP (\fBAWEMediaFile\fP *file)"
+.br
+.RI "\fIPlay the given file\&. \fP"
+.ti -1c
+.RI "virtual const std::string & \fBgetName\fP () const "
+.br
+.RI "\fIGet the name of the player\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents an external media player designed in a JSON file\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "AWEJSONPlayer::AWEJSONPlayer (\fBJson::Value\fP &player)"
+
+.PP
+Construct a media player from the given JSON object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplayer\fP The JSON object representing this player\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "const std::string & AWEJSONPlayer::getName () const\fC [virtual]\fP"
+
+.PP
+Get the name of the player\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The name of the player\&. 
+.RE
+.PP
+
+.PP
+Implements \fBAWEMediaPlayer\fP\&.
+.SS "int AWEJSONPlayer::play (\fBAWEMediaFile\fP *file)\fC [virtual]\fP"
+
+.PP
+Play the given file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile\fP The media file to play\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if \fCfile\fP played successfully, \fCfalse\fP otherwise\&. 
+.RE
+.PP
+
+.PP
+Implements \fBAWEMediaPlayer\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AWE Media Center from the source code\&.

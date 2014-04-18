@@ -1,0 +1,63 @@
+.TH "AWEJSONService" 3 "Thu Apr 17 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AWEJSONService \- 
+.PP
+An external media service (aka application) described by a JSON file\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <AWEJSONService\&.h>\fP
+.PP
+Inherits \fBAWEMediaService\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAWEJSONService\fP (const QDir &file)"
+.br
+.RI "\fIConstruct an \fBAWEMediaService\fP from its JSON file\&. \fP"
+.ti -1c
+.RI "virtual int \fBopen\fP ()"
+.br
+.RI "\fIOpen the application\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An external media service (aka application) described by a JSON file\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "AWEJSONService::AWEJSONService (const QDir &file)"
+
+.PP
+Construct an \fBAWEMediaService\fP from its JSON file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile\fP The JSON file\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "int AWEJSONService::open ()\fC [virtual]\fP"
+
+.PP
+Open the application\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The exit code of the application\&. 
+.RE
+.PP
+
+.PP
+Implements \fBAWEMediaService\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AWE Media Center from the source code\&.

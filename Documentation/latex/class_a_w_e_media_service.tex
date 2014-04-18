@@ -1,0 +1,95 @@
+\hypertarget{class_a_w_e_media_service}{\section{A\-W\-E\-Media\-Service Class Reference}
+\label{class_a_w_e_media_service}\index{A\-W\-E\-Media\-Service@{A\-W\-E\-Media\-Service}}
+}
+
+
+A media service, which is basically an application with its own media browser.  
+
+
+
+
+{\ttfamily \#include $<$A\-W\-E\-Media\-Service.\-h$>$}
+
+Inheritance diagram for A\-W\-E\-Media\-Service\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_a_w_e_media_service}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_a_w_e_media_service_a2fe98e713aae885e87683eaf7bfe3af6}{A\-W\-E\-Media\-Service} (const Q\-Dir \&file)
+\begin{DoxyCompactList}\small\item\em Construct from thie given J\-S\-O\-N file. \end{DoxyCompactList}\item 
+virtual int \hyperlink{class_a_w_e_media_service_a3020cd2f0707a78005ab2ee6279ed122}{open} ()=0
+\begin{DoxyCompactList}\small\item\em Open the media service. \end{DoxyCompactList}\item 
+virtual Item\-Type \hyperlink{class_a_w_e_media_service_a2f381f8b3d0dd1d9284e14d14704879b}{get\-Item\-Type} () const 
+\begin{DoxyCompactList}\small\item\em Get the type of this item. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A media service, which is basically an application with its own media browser. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_a_w_e_media_service_a2fe98e713aae885e87683eaf7bfe3af6}{\index{A\-W\-E\-Media\-Service@{A\-W\-E\-Media\-Service}!A\-W\-E\-Media\-Service@{A\-W\-E\-Media\-Service}}
+\index{A\-W\-E\-Media\-Service@{A\-W\-E\-Media\-Service}!AWEMediaService@{A\-W\-E\-Media\-Service}}
+\subsubsection[{A\-W\-E\-Media\-Service}]{\setlength{\rightskip}{0pt plus 5cm}A\-W\-E\-Media\-Service\-::\-A\-W\-E\-Media\-Service (
+\begin{DoxyParamCaption}
+\item[{const Q\-Dir \&}]{file}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_media_service_a2fe98e713aae885e87683eaf7bfe3af6}
+
+
+Construct from thie given J\-S\-O\-N file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & The J\-S\-O\-N file for this service. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_a_w_e_media_service_a2f381f8b3d0dd1d9284e14d14704879b}{\index{A\-W\-E\-Media\-Service@{A\-W\-E\-Media\-Service}!get\-Item\-Type@{get\-Item\-Type}}
+\index{get\-Item\-Type@{get\-Item\-Type}!AWEMediaService@{A\-W\-E\-Media\-Service}}
+\subsubsection[{get\-Item\-Type}]{\setlength{\rightskip}{0pt plus 5cm}Item\-Type A\-W\-E\-Media\-Service\-::get\-Item\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_media_service_a2f381f8b3d0dd1d9284e14d14704879b}
+
+
+Get the type of this item. 
+
+\begin{DoxyReturn}{Returns}
+S\-E\-R\-V\-I\-C\-E\-\_\-\-T\-Y\-P\-E 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_a_w_e_media_item_a8b267bd03e4a49b605455d9cd1f03938}{A\-W\-E\-Media\-Item}.
+
+\hypertarget{class_a_w_e_media_service_a3020cd2f0707a78005ab2ee6279ed122}{\index{A\-W\-E\-Media\-Service@{A\-W\-E\-Media\-Service}!open@{open}}
+\index{open@{open}!AWEMediaService@{A\-W\-E\-Media\-Service}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}virtual int A\-W\-E\-Media\-Service\-::open (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_a_w_e_media_service_a3020cd2f0707a78005ab2ee6279ed122}
+
+
+Open the media service. 
+
+\begin{DoxyReturn}{Returns}
+The exit code of the application. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_a_w_e_j_s_o_n_service_a14077410ff1b31ad0b28589ff4fb5a49}{A\-W\-E\-J\-S\-O\-N\-Service}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Code/items/A\-W\-E\-Media\-Service.\-h\item 
+Code/items/A\-W\-E\-Media\-Service.\-cpp\end{DoxyCompactItemize}

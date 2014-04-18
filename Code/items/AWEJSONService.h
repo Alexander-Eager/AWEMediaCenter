@@ -7,31 +7,34 @@
 // for holding data
 #include <string>
 
-/**
- * \brief An external media service (aka application)
- *			described by a JSON file.
- **/
-class AWEJSONService : public AWEMediaService
+namespace AWE
 {
-	public:
-		/**
-		 * \brief Construct an AWEMediaService from
-		 *			its JSON file.
-		 *
-		 * \param file The JSON file.
-		 **/
-		AWEJSONService(const QDir& file);
+	/**
+	 * \brief An external media service (aka application)
+	 *			described by a JSON file.
+	 **/
+	class JSONService : public MediaService
+	{
+		public:
+			/**
+			 * \brief Construct an MediaService from
+			 *			its JSON file.
+			 *
+			 * \param file The JSON file.
+			 **/
+			JSONService(const QDir& file);
 
-		/**
-		 * \brief Open the application.
-		 *
-		 * \returns The exit code of the application.
-		 **/
-		virtual int open();
+			/**
+			 * \brief Open the application.
+			 *
+			 * \returns The exit code of the application.
+			 **/
+			virtual int open();
 
-	private:
-		/** \brief The command to run. **/
-		std::string myCommand;
-};
+		private:
+			/** \brief The command to run. **/
+			std::string myCommand;
+	};
+}
 
 #endif

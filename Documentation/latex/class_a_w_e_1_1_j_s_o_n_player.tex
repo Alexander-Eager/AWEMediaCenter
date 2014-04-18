@@ -1,0 +1,99 @@
+\hypertarget{class_a_w_e_1_1_j_s_o_n_player}{\section{A\-W\-E\-:\-:J\-S\-O\-N\-Player Class Reference}
+\label{class_a_w_e_1_1_j_s_o_n_player}\index{A\-W\-E\-::\-J\-S\-O\-N\-Player@{A\-W\-E\-::\-J\-S\-O\-N\-Player}}
+}
+
+
+Represents an external media player designed in a J\-S\-O\-N file.  
+
+
+
+
+{\ttfamily \#include $<$A\-W\-E\-J\-S\-O\-N\-Player.\-h$>$}
+
+Inheritance diagram for A\-W\-E\-:\-:J\-S\-O\-N\-Player\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_a_w_e_1_1_j_s_o_n_player}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_a_w_e_1_1_j_s_o_n_player_a7aceda6a2e246528d952d4b50c0645e0}{J\-S\-O\-N\-Player} (\hyperlink{class_json_1_1_value}{Json\-::\-Value} \&player)
+\begin{DoxyCompactList}\small\item\em Construct a media player from the given J\-S\-O\-N object. \end{DoxyCompactList}\item 
+virtual int \hyperlink{class_a_w_e_1_1_j_s_o_n_player_a417957c7b0826ecef28b232a2cf9d49e}{play} (\hyperlink{class_a_w_e_1_1_media_file}{Media\-File} $\ast$file)
+\begin{DoxyCompactList}\small\item\em Play the given file. \end{DoxyCompactList}\item 
+virtual const std\-::string \& \hyperlink{class_a_w_e_1_1_j_s_o_n_player_a24bd164f654e3fda5587be04013bb366}{get\-Name} () const 
+\begin{DoxyCompactList}\small\item\em Get the name of the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents an external media player designed in a J\-S\-O\-N file. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_a_w_e_1_1_j_s_o_n_player_a7aceda6a2e246528d952d4b50c0645e0}{\index{A\-W\-E\-::\-J\-S\-O\-N\-Player@{A\-W\-E\-::\-J\-S\-O\-N\-Player}!J\-S\-O\-N\-Player@{J\-S\-O\-N\-Player}}
+\index{J\-S\-O\-N\-Player@{J\-S\-O\-N\-Player}!AWE::JSONPlayer@{A\-W\-E\-::\-J\-S\-O\-N\-Player}}
+\subsubsection[{J\-S\-O\-N\-Player}]{\setlength{\rightskip}{0pt plus 5cm}J\-S\-O\-N\-Player\-::\-J\-S\-O\-N\-Player (
+\begin{DoxyParamCaption}
+\item[{{\bf Json\-::\-Value} \&}]{player}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_j_s_o_n_player_a7aceda6a2e246528d952d4b50c0645e0}
+
+
+Construct a media player from the given J\-S\-O\-N object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The J\-S\-O\-N object representing this player. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_a_w_e_1_1_j_s_o_n_player_a24bd164f654e3fda5587be04013bb366}{\index{A\-W\-E\-::\-J\-S\-O\-N\-Player@{A\-W\-E\-::\-J\-S\-O\-N\-Player}!get\-Name@{get\-Name}}
+\index{get\-Name@{get\-Name}!AWE::JSONPlayer@{A\-W\-E\-::\-J\-S\-O\-N\-Player}}
+\subsubsection[{get\-Name}]{\setlength{\rightskip}{0pt plus 5cm}const string \& J\-S\-O\-N\-Player\-::get\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_j_s_o_n_player_a24bd164f654e3fda5587be04013bb366}
+
+
+Get the name of the player. 
+
+\begin{DoxyReturn}{Returns}
+The name of the player. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_a_w_e_1_1_media_player_a59d47b0590a9cba607e2189947ea0239}{A\-W\-E\-::\-Media\-Player}.
+
+\hypertarget{class_a_w_e_1_1_j_s_o_n_player_a417957c7b0826ecef28b232a2cf9d49e}{\index{A\-W\-E\-::\-J\-S\-O\-N\-Player@{A\-W\-E\-::\-J\-S\-O\-N\-Player}!play@{play}}
+\index{play@{play}!AWE::JSONPlayer@{A\-W\-E\-::\-J\-S\-O\-N\-Player}}
+\subsubsection[{play}]{\setlength{\rightskip}{0pt plus 5cm}int J\-S\-O\-N\-Player\-::play (
+\begin{DoxyParamCaption}
+\item[{{\bf Media\-File} $\ast$}]{file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_j_s_o_n_player_a417957c7b0826ecef28b232a2cf9d49e}
+
+
+Play the given file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & The media file to play.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if {\ttfamily file} played successfully, {\ttfamily false} otherwise. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_a_w_e_1_1_media_player_a8a7660cdf7306adf61a7c79831ee7171}{A\-W\-E\-::\-Media\-Player}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/player/A\-W\-E\-J\-S\-O\-N\-Player.\-h\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/player/A\-W\-E\-J\-S\-O\-N\-Player.\-cpp\end{DoxyCompactItemize}

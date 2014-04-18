@@ -26,3 +26,5 @@
 # Qt Files
 *.pro
 *Makefile
+*.pro.user
+

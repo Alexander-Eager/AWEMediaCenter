@@ -10,15 +10,19 @@
 // debug
 #include "debug_macros/debug.h"
 
-AWEJSONScraper::AWEJSONScraper(const std::string& name,
-		const std::string& type) :
+using namespace AWE;
+using namespace Json;
+using namespace std;
+
+JSONScraper::JSONScraper(const string& name,
+		const string& type) :
 	myValidity(false),
 	myName(name),
 	myType(type),
 	myCurrentFile(0)
 	{ }
 
-bool AWEJSONScraper::prepare(AWEGlobalSettings* settings)
+bool JSONScraper::prepare(GlobalSettings* settings)
 {
 	myScraper = settings->getScraperSettingsByName(myName);
 	myDefaultProperties = settings->getTypeByName(myType);
@@ -26,19 +30,19 @@ bool AWEJSONScraper::prepare(AWEGlobalSettings* settings)
 	return myValidity;
 }
 
-bool AWEJSONScraper::scrapeDataForFile(AWEMediaFile* file,
+bool JSONScraper::scrapeDataForFile(MediaFile* file,
 	bool askUser, bool import)
 {
 	// set ans to defaults
 	myCurrentFile = file;
-	std::string temp = myCurrentFile->getStringMember("metadata.location");
+	string temp = myCurrentFile->getStringMember("metadata.location");
 	myCurrentFile->getMember("metadata") = myDefaultProperties;
 	myCurrentFile->getMember("metadata.location") = temp;
 
 	// check validity
 	if (!isValid())
 	{
-		DEBUG(std::cout << "Scraper \"" << getName() << "\" not valid" << std::endl;)
+		DEBUG(cout << "Scraper \"" << getName() << "\" not valid" << endl;)
 		return false;
 	}
 
@@ -65,12 +69,12 @@ bool AWEJSONScraper::scrapeDataForFile(AWEMediaFile* file,
 	return procsSucceeded;
 }
 
-bool AWEJSONScraper::executeProcedure(Json::Value& procedure, BackrefList& backrefs,
+bool JSONScraper::executeProcedure(Value& procedure, BackrefList& backrefs,
 	bool askUser, bool import)
 {
 	// get the file to look in and what to look for
-	std::string lookInFile = procedure["look in file"].asString();
-	std::string lookFor = procedure["for"].asString();
+	string lookInFile = procedure["look in file"].asString();
+	string lookFor = procedure["for"].asString();
 	if (!replaceBackrefs(lookInFile, backrefs)
 		|| !replaceBackrefs(lookFor, backrefs))
 	{
@@ -78,7 +82,7 @@ bool AWEJSONScraper::executeProcedure(Json::Value& procedure, BackrefList& backr
 	}
 
 	// get the contents of the file
-	std::stringstream fileContents;
+	stringstream fileContents;
 	copyFile(lookInFile, fileContents);
 
 	BackrefList list;
@@ -88,7 +92,7 @@ bool AWEJSONScraper::executeProcedure(Json::Value& procedure, BackrefList& backr
 	if (procedure["repeat"].asBool())
 	{
 		// for every match
-		std::string s = fileContents.str();
+		string s = fileContents.str();
 		while (getBackrefs(s, lookFor, list))
 		{
 			// do the necessary stuff with this result
@@ -116,14 +120,14 @@ bool AWEJSONScraper::executeProcedure(Json::Value& procedure, BackrefList& backr
 	return procsSucceeded;
 }
 
-bool AWEJSONScraper::useMatchForProcedure(Json::Value& procedure,
+bool JSONScraper::useMatchForProcedure(Value& procedure,
 	BackrefList& backrefs, bool askUser, bool import)
 {
 	bool procsSucceeded = true;
 
 	// apply to the properties in this procedure
-	Json::Value::Members mems = procedure.getMemberNames();
-	Json::Value::Members::iterator it = mems.begin();
+	Value::Members mems = procedure.getMemberNames();
+	Value::Members::iterator it = mems.begin();
 	for (auto prop : mems)
 	{
 		if (prop != "look in file" && prop != "for" 
@@ -131,11 +135,11 @@ bool AWEJSONScraper::useMatchForProcedure(Json::Value& procedure,
 			&& prop != "ask user")
 		{
 			// determine what type it is
-			Json::Value valueToSet;
+			Value valueToSet;
 			if (procedure[prop].isString()) // string implies backrefs
 			{
 				// replace backrefs in the value
-				std::string temp = procedure[prop].asString();
+				string temp = procedure[prop].asString();
 				if (!replaceBackrefs(temp, backrefs))
 				{
 					return false;
@@ -148,7 +152,7 @@ bool AWEJSONScraper::useMatchForProcedure(Json::Value& procedure,
 			}
 
 			// parse the property name to delve down objects
-			Json::Value* toSet = &(myCurrentFile->getMember(
+			Value* toSet = &(myCurrentFile->getMember(
 									"metadata." + prop));
 
 			// set the object in the appropriate way
@@ -177,23 +181,23 @@ bool AWEJSONScraper::useMatchForProcedure(Json::Value& procedure,
 	return procsSucceeded;
 }
 
-void AWEJSONScraper::deactivate()
+void JSONScraper::deactivate()
 {
-	myScraper = Json::Value::null;
-	myDefaultProperties = Json::Value::null;
+	myScraper = Value::null;
+	myDefaultProperties = Value::null;
 }
 
-bool AWEJSONScraper::getBackrefs(const std::string& search, const std::string& reg,
+bool JSONScraper::getBackrefs(const string& search, const string& reg,
 	BackrefList& backrefs)
 {
 	// initialize the regex
-	std::regex r(reg);
+	regex r(reg);
 
 	// get the matches (only care about the first)
 	return regex_search(search, backrefs, r);
 }
 
-bool AWEJSONScraper::replaceBackrefs(std::string& pseudo_reg, 
+bool JSONScraper::replaceBackrefs(string& pseudo_reg, 
 	const BackrefList& backrefs)
 {
 	pseudo_reg = backrefs.format(pseudo_reg);
@@ -202,12 +206,12 @@ bool AWEJSONScraper::replaceBackrefs(std::string& pseudo_reg,
 	return true;
 }
 
-bool AWEJSONScraper::isValid()
+bool JSONScraper::isValid()
 {
 	return myValidity;
 }
 
-bool AWEJSONScraper::checkValidity()
+bool JSONScraper::checkValidity()
 {
 	// if true, we assume its good
 	if (myValidity)
@@ -236,7 +240,7 @@ bool AWEJSONScraper::checkValidity()
 	return true;
 }
 
-bool AWEJSONScraper::checkProcedureValidity(Json::Value& procedure)
+bool JSONScraper::checkProcedureValidity(Value& procedure)
 {
 	// doesn't have the necessary tags
 	if (!procedure.isMember("repeat") || !procedure["repeat"].isBool()
@@ -260,12 +264,12 @@ bool AWEJSONScraper::checkProcedureValidity(Json::Value& procedure)
 	return true;
 }
 
-const std::string& AWEJSONScraper::getName()
+const string& JSONScraper::getName()
 {
 	return myName;
 }
 
-const std::string& AWEJSONScraper::getType()
+const string& JSONScraper::getType()
 {
 	return myType;
 }

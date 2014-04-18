@@ -1,0 +1,116 @@
+.TH "AWEMediaFile" 3 "Thu Apr 17 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AWEMediaFile \- 
+.PP
+Represents a media file\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <AWEMediaFile\&.h>\fP
+.PP
+Inherits \fBAWEMediaItem\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAWEMediaFile\fP (const QDir &file, \fBAWEGlobalSettings\fP *settings)"
+.br
+.RI "\fIConstruct using the JSON file and global settings\&. \fP"
+.ti -1c
+.RI "virtual \fB~AWEMediaFile\fP ()"
+.br
+.RI "\fIDeconstructor\&. \fP"
+.ti -1c
+.RI "virtual const QDir & \fBgetMediaFile\fP () const "
+.br
+.RI "\fIGet the absolute path to the media file\&. \fP"
+.ti -1c
+.RI "virtual \fBAWEMediaPlayer\fP * \fBgetDefaultPlayer\fP ()"
+.br
+.RI "\fIGet the default media player for this item\&. \fP"
+.ti -1c
+.RI "virtual int \fBplay\fP ()"
+.br
+.RI "\fIPlay this item with the default player\&. \fP"
+.ti -1c
+.RI "virtual ItemType \fBgetItemType\fP () const "
+.br
+.RI "\fIDetermine the basic type (folder, file, service) \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Represents a media file\&. 
+
+Holds the default player and all relevant metadata\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "AWEMediaFile::AWEMediaFile (const QDir &file, \fBAWEGlobalSettings\fP *settings)"
+
+.PP
+Construct using the JSON file and global settings\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile\fP The path to the file\&. 
+.br
+\fIsettings\fP The settings of AWEMC\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBAWEMediaPlayer\fP * AWEMediaFile::getDefaultPlayer ()\fC [virtual]\fP"
+
+.PP
+Get the default media player for this item\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The default media player for this item\&. 
+.RE
+.PP
+
+.SS "ItemType AWEMediaFile::getItemType () const\fC [virtual]\fP"
+
+.PP
+Determine the basic type (folder, file, service) 
+.PP
+\fBReturns:\fP
+.RS 4
+The basic type of this item\&. 
+.RE
+.PP
+
+.PP
+Implements \fBAWEMediaItem\fP\&.
+.SS "const QDir & AWEMediaFile::getMediaFile () const\fC [virtual]\fP"
+
+.PP
+Get the absolute path to the media file\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The absolute path to of the media file\&. 
+.RE
+.PP
+
+.SS "int AWEMediaFile::play ()\fC [virtual]\fP"
+
+.PP
+Play this item with the default player\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if playback was successful, \fCfalse\fP if it was not\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AWE Media Center from the source code\&.

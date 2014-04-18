@@ -1,0 +1,323 @@
+\hypertarget{class_a_w_e_1_1_global_settings}{\section{A\-W\-E\-:\-:Global\-Settings Class Reference}
+\label{class_a_w_e_1_1_global_settings}\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}}
+}
+
+
+Holds the global settings for A\-W\-E\-M\-C.  
+
+
+
+
+{\ttfamily \#include $<$A\-W\-E\-Global\-Settings.\-h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_a_w_e_1_1_global_settings_a45df15954e36fb1bad5385f5249c408e}{typedef std\-::set$<$ std\-::string $>$ \hyperlink{class_a_w_e_1_1_global_settings_a45df15954e36fb1bad5385f5249c408e}{Name\-Set}}\label{class_a_w_e_1_1_global_settings_a45df15954e36fb1bad5385f5249c408e}
+
+\begin{DoxyCompactList}\small\item\em The set type used to hold names. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_a_w_e_1_1_global_settings_a8aa60ae622af94d79cba5321fb0a2816}{Global\-Settings} (const std\-::string \&settings\-File)
+\begin{DoxyCompactList}\small\item\em Create the global settings object. \end{DoxyCompactList}\item 
+\hyperlink{class_a_w_e_1_1_global_settings_ad3e8fa5120473c6c0151573ad81e1b04}{$\sim$\-Global\-Settings} ()
+\begin{DoxyCompactList}\small\item\em Deconstructor. \end{DoxyCompactList}\item 
+\hyperlink{class_a_w_e_1_1_metadata_scraper}{Metadata\-Scraper} $\ast$ \hyperlink{class_a_w_e_1_1_global_settings_a40bfab45d901e7c1acdd2d0a8700fd69}{get\-Scraper\-By\-Name} (const std\-::string \&name)
+\begin{DoxyCompactList}\small\item\em Get a metadata scraper by name. \end{DoxyCompactList}\item 
+\hyperlink{class_json_1_1_value}{Json\-::\-Value} \& \hyperlink{class_a_w_e_1_1_global_settings_a45d865b8b7242f17ad6e83ff014ee4c6}{get\-Scraper\-Settings\-By\-Name} (const std\-::string \&name)
+\begin{DoxyCompactList}\small\item\em Get a metadata scraper's settings by name. \end{DoxyCompactList}\item 
+const \hyperlink{class_a_w_e_1_1_global_settings_a45df15954e36fb1bad5385f5249c408e}{Name\-Set} \& \hyperlink{class_a_w_e_1_1_global_settings_ac1824eeb7c6319dda29aa061dd13184c}{get\-All\-Metadata\-Scraper\-Names} ()
+\begin{DoxyCompactList}\small\item\em Get a set of all metadata scrapers. \end{DoxyCompactList}\item 
+\hyperlink{class_a_w_e_1_1_media_player}{Media\-Player} $\ast$ \hyperlink{class_a_w_e_1_1_global_settings_ae2cc7da9b20e508de12f472ba86cf351}{get\-Player\-By\-Name} (const std\-::string \&name)
+\begin{DoxyCompactList}\small\item\em Get a media player by name. \end{DoxyCompactList}\item 
+\hyperlink{class_json_1_1_value}{Json\-::\-Value} \& \hyperlink{class_a_w_e_1_1_global_settings_a27fbf04ccbc5fb4bf42db0412ff2ab23}{get\-Player\-Settings\-By\-Name} (const std\-::string \&name)
+\begin{DoxyCompactList}\small\item\em Get a media player's settings by name. \end{DoxyCompactList}\item 
+const \hyperlink{class_a_w_e_1_1_global_settings_a45df15954e36fb1bad5385f5249c408e}{Name\-Set} \& \hyperlink{class_a_w_e_1_1_global_settings_a0fb7bb8eba01fa51841a827741a0731a}{get\-All\-Media\-Player\-Names} ()
+\begin{DoxyCompactList}\small\item\em Get a set of all media players. \end{DoxyCompactList}\item 
+\hyperlink{class_json_1_1_value}{Json\-::\-Value} \& \hyperlink{class_a_w_e_1_1_global_settings_ab7026bd5fdd6c7b566a1d5c71ef4b21e}{get\-Type\-By\-Name} (const std\-::string \&name)
+\begin{DoxyCompactList}\small\item\em Get the media type with the given name. \end{DoxyCompactList}\item 
+const \hyperlink{class_a_w_e_1_1_global_settings_a45df15954e36fb1bad5385f5249c408e}{Name\-Set} \& \hyperlink{class_a_w_e_1_1_global_settings_a4104e5ab20b0e63eccc887ef84d8581f}{get\-All\-Media\-Type\-Names} ()
+\begin{DoxyCompactList}\small\item\em Get a set of all media types. \end{DoxyCompactList}\item 
+const \hyperlink{class_a_w_e_1_1_global_settings_a45df15954e36fb1bad5385f5249c408e}{Name\-Set} \& \hyperlink{class_a_w_e_1_1_global_settings_a836c7a1e4d711e64fcc87b2908a2eb4e}{get\-All\-Media\-Service\-Names} ()
+\begin{DoxyCompactList}\small\item\em Get the names of all of the media services. \end{DoxyCompactList}\item 
+\hyperlink{class_a_w_e_1_1_media_service}{Media\-Service} $\ast$ \hyperlink{class_a_w_e_1_1_global_settings_ad0d26204fee1973539c9a6962ea9f462}{get\-Media\-Service\-By\-Name} (const std\-::string \&name)
+\begin{DoxyCompactList}\small\item\em Get a media service by name. \end{DoxyCompactList}\item 
+\hyperlink{class_a_w_e_1_1_media_item}{Media\-Item} $\ast$ \hyperlink{class_a_w_e_1_1_global_settings_ab13f95f4967f7058de61199ad48626ed}{get\-Media\-Item\-By\-J\-S\-O\-N\-File} (const Q\-Dir \&file)
+\begin{DoxyCompactList}\small\item\em Get a media item from its J\-S\-O\-N file. \end{DoxyCompactList}\item 
+void \hyperlink{class_a_w_e_1_1_global_settings_ac776a76c7c09678fa753e6561cafeda2}{add\-Folder} (const std\-::string \&path, \hyperlink{class_a_w_e_1_1_folder}{Folder} $\ast$folder)
+\begin{DoxyCompactList}\small\item\em Add the given folder. \end{DoxyCompactList}\item 
+\hyperlink{class_a_w_e_1_1_folder}{Folder} $\ast$ \hyperlink{class_a_w_e_1_1_global_settings_a958723c6d73aa7ab7574ba4c31675e5d}{get\-Root\-Folder} ()
+\begin{DoxyCompactList}\small\item\em Get the root folder. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_a_w_e_1_1_global_settings_a4df7847cd94fe68cf28382f70eedb0b2}{static \hyperlink{class_json_1_1_value}{Json\-::\-Value} {\bfseries null} = Value\-::null}\label{class_a_w_e_1_1_global_settings_a4df7847cd94fe68cf28382f70eedb0b2}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Holds the global settings for A\-W\-E\-M\-C. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000006}{Todo}]Skins... 
+
+Get a better folder adding system.\end{DoxyRefDesc}
+
+
+Functions for pretty much anything you want to know about the prefernces for A\-W\-E\-M\-C are here. Every plugin extending A\-W\-E\-M\-C has its own configuration file, which is held in here via sub-\/configuration objects.
+
+You shouldn't need to instantiate this class on your own; most objects are passed a copy of the settings object during creation or through some other means. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_a_w_e_1_1_global_settings_a8aa60ae622af94d79cba5321fb0a2816}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!Global\-Settings@{Global\-Settings}}
+\index{Global\-Settings@{Global\-Settings}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
+\subsubsection[{Global\-Settings}]{\setlength{\rightskip}{0pt plus 5cm}Global\-Settings\-::\-Global\-Settings (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{settings\-File}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_global_settings_a8aa60ae622af94d79cba5321fb0a2816}
+
+
+Create the global settings object. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em settings\-File} & The file that contains the settings for A\-W\-E\-M\-C (usually {\ttfamily settings.\-json} in the root folder) \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_a_w_e_1_1_global_settings_ad3e8fa5120473c6c0151573ad81e1b04}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!$\sim$\-Global\-Settings@{$\sim$\-Global\-Settings}}
+\index{$\sim$\-Global\-Settings@{$\sim$\-Global\-Settings}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
+\subsubsection[{$\sim$\-Global\-Settings}]{\setlength{\rightskip}{0pt plus 5cm}Global\-Settings\-::$\sim$\-Global\-Settings (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_global_settings_ad3e8fa5120473c6c0151573ad81e1b04}
+
+
+Deconstructor. 
+
+Deletes every scraper, player and item. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_a_w_e_1_1_global_settings_ac776a76c7c09678fa753e6561cafeda2}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!add\-Folder@{add\-Folder}}
+\index{add\-Folder@{add\-Folder}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
+\subsubsection[{add\-Folder}]{\setlength{\rightskip}{0pt plus 5cm}void Global\-Settings\-::add\-Folder (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{path, }
+\item[{{\bf Folder} $\ast$}]{folder}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_global_settings_ac776a76c7c09678fa753e6561cafeda2}
+
+
+Add the given folder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The path to the config file. \\
+\hline
+{\em folder} & The folder. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_a_w_e_1_1_global_settings_a0fb7bb8eba01fa51841a827741a0731a}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-All\-Media\-Player\-Names@{get\-All\-Media\-Player\-Names}}
+\index{get\-All\-Media\-Player\-Names@{get\-All\-Media\-Player\-Names}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
+\subsubsection[{get\-All\-Media\-Player\-Names}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Global\-Settings\-::\-Name\-Set} \& Global\-Settings\-::get\-All\-Media\-Player\-Names (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_global_settings_a0fb7bb8eba01fa51841a827741a0731a}
+
+
+Get a set of all media players. 
+
+\begin{DoxyReturn}{Returns}
+A set filled with every media player name. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_global_settings_a836c7a1e4d711e64fcc87b2908a2eb4e}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-All\-Media\-Service\-Names@{get\-All\-Media\-Service\-Names}}
+\index{get\-All\-Media\-Service\-Names@{get\-All\-Media\-Service\-Names}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
+\subsubsection[{get\-All\-Media\-Service\-Names}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Global\-Settings\-::\-Name\-Set} \& Global\-Settings\-::get\-All\-Media\-Service\-Names (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_global_settings_a836c7a1e4d711e64fcc87b2908a2eb4e}
+
+
+Get the names of all of the media services. 
+
+\begin{DoxyReturn}{Returns}
+A set filled with every media service name. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_global_settings_a4104e5ab20b0e63eccc887ef84d8581f}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-All\-Media\-Type\-Names@{get\-All\-Media\-Type\-Names}}
+\index{get\-All\-Media\-Type\-Names@{get\-All\-Media\-Type\-Names}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
+\subsubsection[{get\-All\-Media\-Type\-Names}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Global\-Settings\-::\-Name\-Set} \& Global\-Settings\-::get\-All\-Media\-Type\-Names (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_global_settings_a4104e5ab20b0e63eccc887ef84d8581f}
+
+
+Get a set of all media types. 
+
+\begin{DoxyReturn}{Returns}
+A set filled with every media type name. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_global_settings_ac1824eeb7c6319dda29aa061dd13184c}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-All\-Metadata\-Scraper\-Names@{get\-All\-Metadata\-Scraper\-Names}}
+\index{get\-All\-Metadata\-Scraper\-Names@{get\-All\-Metadata\-Scraper\-Names}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
+\subsubsection[{get\-All\-Metadata\-Scraper\-Names}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Global\-Settings\-::\-Name\-Set} \& Global\-Settings\-::get\-All\-Metadata\-Scraper\-Names (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_global_settings_ac1824eeb7c6319dda29aa061dd13184c}
+
+
+Get a set of all metadata scrapers. 
+
+\begin{DoxyReturn}{Returns}
+A set filled with every metadata scraper name. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_global_settings_ab13f95f4967f7058de61199ad48626ed}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-Media\-Item\-By\-J\-S\-O\-N\-File@{get\-Media\-Item\-By\-J\-S\-O\-N\-File}}
+\index{get\-Media\-Item\-By\-J\-S\-O\-N\-File@{get\-Media\-Item\-By\-J\-S\-O\-N\-File}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
+\subsubsection[{get\-Media\-Item\-By\-J\-S\-O\-N\-File}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Media\-Item} $\ast$ Global\-Settings\-::get\-Media\-Item\-By\-J\-S\-O\-N\-File (
+\begin{DoxyParamCaption}
+\item[{const Q\-Dir \&}]{file}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_global_settings_ab13f95f4967f7058de61199ad48626ed}
+
+
+Get a media item from its J\-S\-O\-N file. 
+
+{\ttfamily file} is a {\ttfamily Q\-Dir}, so relative paths and links do not duplicate. If {\ttfamily file} is not found, it is added.
+
+\begin{DoxyReturn}{Returns}
+The desired media item. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_global_settings_ad0d26204fee1973539c9a6962ea9f462}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-Media\-Service\-By\-Name@{get\-Media\-Service\-By\-Name}}
+\index{get\-Media\-Service\-By\-Name@{get\-Media\-Service\-By\-Name}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
+\subsubsection[{get\-Media\-Service\-By\-Name}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Media\-Service} $\ast$ Global\-Settings\-::get\-Media\-Service\-By\-Name (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{name}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_global_settings_ad0d26204fee1973539c9a6962ea9f462}
+
+
+Get a media service by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the media service.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The desired media service. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_global_settings_ae2cc7da9b20e508de12f472ba86cf351}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-Player\-By\-Name@{get\-Player\-By\-Name}}
+\index{get\-Player\-By\-Name@{get\-Player\-By\-Name}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
+\subsubsection[{get\-Player\-By\-Name}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Media\-Player} $\ast$ Global\-Settings\-::get\-Player\-By\-Name (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{name}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_global_settings_ae2cc7da9b20e508de12f472ba86cf351}
+
+
+Get a media player by name. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & The name of the player.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The desired media player or {\ttfamily N\-U\-L\-L} if it does not exist. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_global_settings_a27fbf04ccbc5fb4bf42db0412ff2ab23}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-Player\-Settings\-By\-Name@{get\-Player\-Settings\-By\-Name}}
+\index{get\-Player\-Settings\-By\-Name@{get\-Player\-Settings\-By\-Name}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
+\subsubsection[{get\-Player\-Settings\-By\-Name}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} \& Global\-Settings\-::get\-Player\-Settings\-By\-Name (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{name}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_global_settings_a27fbf04ccbc5fb4bf42db0412ff2ab23}
+
+
+Get a media player's settings by name. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & The name of the player.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The settings of the desired media player or {\ttfamily Json\-::\-Value\-::null} if it does not exist. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_global_settings_a958723c6d73aa7ab7574ba4c31675e5d}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-Root\-Folder@{get\-Root\-Folder}}
+\index{get\-Root\-Folder@{get\-Root\-Folder}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
+\subsubsection[{get\-Root\-Folder}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Folder} $\ast$ Global\-Settings\-::get\-Root\-Folder (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_global_settings_a958723c6d73aa7ab7574ba4c31675e5d}
+
+
+Get the root folder. 
+
+\begin{DoxyReturn}{Returns}
+The root folder. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_global_settings_a40bfab45d901e7c1acdd2d0a8700fd69}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-Scraper\-By\-Name@{get\-Scraper\-By\-Name}}
+\index{get\-Scraper\-By\-Name@{get\-Scraper\-By\-Name}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
+\subsubsection[{get\-Scraper\-By\-Name}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Metadata\-Scraper} $\ast$ Global\-Settings\-::get\-Scraper\-By\-Name (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{name}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_global_settings_a40bfab45d901e7c1acdd2d0a8700fd69}
+
+
+Get a metadata scraper by name. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & The name of the scraper.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The desired scraper as an {\ttfamily \hyperlink{class_a_w_e_1_1_metadata_scraper}{Metadata\-Scraper}} object or {\ttfamily N\-U\-L\-L} if it does not exist. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_global_settings_a45d865b8b7242f17ad6e83ff014ee4c6}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-Scraper\-Settings\-By\-Name@{get\-Scraper\-Settings\-By\-Name}}
+\index{get\-Scraper\-Settings\-By\-Name@{get\-Scraper\-Settings\-By\-Name}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
+\subsubsection[{get\-Scraper\-Settings\-By\-Name}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} \& Global\-Settings\-::get\-Scraper\-Settings\-By\-Name (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{name}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_global_settings_a45d865b8b7242f17ad6e83ff014ee4c6}
+
+
+Get a metadata scraper's settings by name. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & The name of the scraper.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The settings of the desired scraper or {\ttfamily Json\-::\-Value\-::null} if it does not exist. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_global_settings_ab7026bd5fdd6c7b566a1d5c71ef4b21e}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-Type\-By\-Name@{get\-Type\-By\-Name}}
+\index{get\-Type\-By\-Name@{get\-Type\-By\-Name}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
+\subsubsection[{get\-Type\-By\-Name}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} \& Global\-Settings\-::get\-Type\-By\-Name (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{name}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_global_settings_ab7026bd5fdd6c7b566a1d5c71ef4b21e}
+
+
+Get the media type with the given name. 
+
+\begin{DoxyReturn}{Returns}
+The default metadata settings for the given type. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/settings/A\-W\-E\-Global\-Settings.\-h\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/settings/A\-W\-E\-Global\-Settings.\-cpp\end{DoxyCompactItemize}

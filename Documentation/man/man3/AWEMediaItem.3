@@ -1,0 +1,240 @@
+.TH "AWEMediaItem" 3 "Thu Apr 17 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AWEMediaItem \- 
+.PP
+Represents a media file, folder, or service\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <AWEMediaItem\&.h>\fP
+.PP
+Inherited by \fBAWEFolder\fP, \fBAWEMediaFile\fP, and \fBAWEMediaService\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAWEMediaItem\fP (const QDir &file)"
+.br
+.RI "\fICreate from the given JSON file\&. \fP"
+.ti -1c
+.RI "virtual \fB~AWEMediaItem\fP ()"
+.br
+.RI "\fIDeconstructor\&. \fP"
+.ti -1c
+.RI "virtual \fBJson::Value\fP & \fBgetData\fP ()"
+.br
+.RI "\fIGet the data for this item\&. \fP"
+.ti -1c
+.RI "virtual const \fBJson::Value\fP & \fBgetData\fP () const "
+.br
+.RI "\fIGet the data for this item\&. \fP"
+.ti -1c
+.RI "virtual const \fBJson::Value\fP & \fBgetMember\fP (const std::string &str) const "
+.br
+.RI "\fIGet a member of unspecified type by name\&. \fP"
+.ti -1c
+.RI "virtual \fBJson::Value\fP & \fBgetMember\fP (const std::string &str)"
+.br
+.RI "\fIGet a member of unspecified type by name\&. \fP"
+.ti -1c
+.RI "virtual bool \fBgetBoolMember\fP (const std::string &str) const "
+.br
+.RI "\fIGet a member of \fCbool\fP type by name\&. \fP"
+.ti -1c
+.RI "virtual std::string \fBgetStringMember\fP (const std::string &str) const "
+.br
+.RI "\fIGet a member of \fCstd::string\fP type by name\&. \fP"
+.ti -1c
+.RI "virtual int \fBgetIntMember\fP (const std::string &str) const "
+.br
+.RI "\fIGet a member of \fCint\fP type by name\&. \fP"
+.ti -1c
+.RI "virtual std::string \fBgetName\fP () const "
+.br
+.RI "\fIGet the name of the media item\&. \fP"
+.ti -1c
+.RI "virtual const QDir & \fBgetJSONFile\fP () const "
+.br
+.RI "\fIGet the absolute path to the JSON settings file\&. \fP"
+.ti -1c
+.RI "virtual ItemType \fBgetItemType\fP () const =0"
+.br
+.RI "\fIDetermine the basic type (folder, file, service) \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "QDir \fBmyJSONFile\fP"
+.br
+.RI "\fIThe JSON file for this item\&. \fP"
+.ti -1c
+.RI "\fBJson::Value\fP \fBmyData\fP"
+.br
+.RI "\fIThe data for this item\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a media file, folder, or service\&. 
+
+Holds all relevant metadata for the item\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "AWEMediaItem::AWEMediaItem (const QDir &file)"
+
+.PP
+Create from the given JSON file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile\fP The JSON file path\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "bool AWEMediaItem::getBoolMember (const std::string &str) const\fC [virtual]\fP"
+
+.PP
+Get a member of \fCbool\fP type by name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstr\fP A formatted string representing the path to the member variable in the JSON file\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value associated with the key \fCstr\fP\&. 
+.RE
+.PP
+
+.SS "\fBJson::Value\fP & AWEMediaItem::getData ()\fC [virtual]\fP"
+
+.PP
+Get the data for this item\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The data for this item\&. 
+.RE
+.PP
+
+.SS "const \fBJson::Value\fP & AWEMediaItem::getData () const\fC [virtual]\fP"
+
+.PP
+Get the data for this item\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The data for this item\&. 
+.RE
+.PP
+
+.SS "int AWEMediaItem::getIntMember (const std::string &str) const\fC [virtual]\fP"
+
+.PP
+Get a member of \fCint\fP type by name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstr\fP A formatted string representing the path to the member variable in the JSON file\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value associated with the key \fCstr\fP\&. 
+.RE
+.PP
+
+.SS "virtual ItemType AWEMediaItem::getItemType () const\fC [pure virtual]\fP"
+
+.PP
+Determine the basic type (folder, file, service) 
+.PP
+\fBReturns:\fP
+.RS 4
+The basic type of this item\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBAWEMediaFile\fP, \fBAWEFolder\fP, and \fBAWEMediaService\fP\&.
+.SS "const QDir & AWEMediaItem::getJSONFile () const\fC [virtual]\fP"
+
+.PP
+Get the absolute path to the JSON settings file\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The path to the JSON settings file\&. 
+.RE
+.PP
+
+.SS "const \fBJson::Value\fP & AWEMediaItem::getMember (const std::string &str) const\fC [virtual]\fP"
+
+.PP
+Get a member of unspecified type by name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstr\fP A formatted string representing the path to the member variable in the JSON file\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value associated with the key \fCstr\fP\&. 
+.RE
+.PP
+
+.SS "\fBJson::Value\fP & AWEMediaItem::getMember (const std::string &str)\fC [virtual]\fP"
+
+.PP
+Get a member of unspecified type by name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstr\fP A formatted string representing the path to the member variable in the JSON file\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value associated with the key \fCstr\fP\&. 
+.RE
+.PP
+
+.SS "std::string AWEMediaItem::getName () const\fC [virtual]\fP"
+
+.PP
+Get the name of the media item\&. Equivalent to \fCgetStringMember('metadata\&.name')\fP
+.PP
+\fBReturns:\fP
+.RS 4
+The name of this media item\&. 
+.RE
+.PP
+
+.SS "std::string AWEMediaItem::getStringMember (const std::string &str) const\fC [virtual]\fP"
+
+.PP
+Get a member of \fCstd::string\fP type by name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstr\fP A formatted string representing the path to the member variable in the JSON file\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value associated with the key \fCstr\fP\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AWE Media Center from the source code\&.

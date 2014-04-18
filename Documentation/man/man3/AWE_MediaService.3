@@ -1,0 +1,82 @@
+.TH "AWE::MediaService" 3 "Fri Apr 18 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AWE::MediaService \- 
+.PP
+A media service, which is basically an application with its own media browser\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <AWEMediaService\&.h>\fP
+.PP
+Inherits \fBAWE::MediaItem\fP\&.
+.PP
+Inherited by \fBAWE::JSONService\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMediaService\fP (const QDir &file)"
+.br
+.RI "\fIConstruct from thie given JSON file\&. \fP"
+.ti -1c
+.RI "virtual int \fBopen\fP ()=0"
+.br
+.RI "\fIOpen the media service\&. \fP"
+.ti -1c
+.RI "virtual ItemType \fBgetItemType\fP () const "
+.br
+.RI "\fIGet the type of this item\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A media service, which is basically an application with its own media browser\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "MediaService::MediaService (const QDir &file)"
+
+.PP
+Construct from thie given JSON file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile\fP The JSON file for this service\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "ItemType MediaService::getItemType () const\fC [virtual]\fP"
+
+.PP
+Get the type of this item\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+SERVICE_TYPE 
+.RE
+.PP
+
+.PP
+Implements \fBAWE::MediaItem\fP\&.
+.SS "virtual int AWE::MediaService::open ()\fC [pure virtual]\fP"
+
+.PP
+Open the media service\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The exit code of the application\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBAWE::JSONService\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AWE Media Center from the source code\&.

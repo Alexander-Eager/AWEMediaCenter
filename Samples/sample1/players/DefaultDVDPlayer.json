@@ -1,7 +1,0 @@
-{
-	"name": "Default DVD Player",
-	"location": "/Applications/VLC.app/Contents/MacOS/VLC",
-	"arguments": " -vvv {1}",
-	"filetypes": [],
-	"DVD": true
-}

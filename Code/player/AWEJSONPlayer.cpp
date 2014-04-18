@@ -14,7 +14,10 @@
 // for running commands
 #include <QProcess>
 
-AWEJSONPlayer::AWEJSONPlayer(Json::Value& player)
+using namespace AWE;
+using namespace std;
+
+JSONPlayer::JSONPlayer(Json::Value& player)
 {
 	myName = player["name"].asString();
 	myProgram = player["program"].asString();
@@ -22,9 +25,9 @@ AWEJSONPlayer::AWEJSONPlayer(Json::Value& player)
 	// TODO other arguments
 }
 
-int AWEJSONPlayer::play(AWEMediaFile* file)
+int JSONPlayer::play(MediaFile* file)
 {
-	std::string args = myArguments;
+	string args = myArguments;
 	args.replace(args.find_first_of("{1}"), 3, 
 		file->getMediaFile().absolutePath().toStdString());
 	// TODO other replaces
@@ -33,7 +36,7 @@ int AWEJSONPlayer::play(AWEMediaFile* file)
 	return prog.waitForFinished();
 }
 
-const std::string& AWEJSONPlayer::getName() const
+const string& JSONPlayer::getName() const
 {
 	return myName;
 }

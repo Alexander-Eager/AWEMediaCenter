@@ -1,0 +1,97 @@
+\hypertarget{class_a_w_e_1_1_folder}{\section{A\-W\-E\-:\-:Folder Class Reference}
+\label{class_a_w_e_1_1_folder}\index{A\-W\-E\-::\-Folder@{A\-W\-E\-::\-Folder}}
+}
+
+
+A folder that contains {\ttfamily \hyperlink{class_a_w_e_1_1_media_item}{Media\-Item}}s.  
+
+
+
+
+{\ttfamily \#include $<$A\-W\-E\-Folder.\-h$>$}
+
+Inheritance diagram for A\-W\-E\-:\-:Folder\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_a_w_e_1_1_folder}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_a_w_e_1_1_folder_aca86ae7182f2288bce2b97086fe44561}{Folder} (const Q\-Dir \&folder, \hyperlink{class_a_w_e_1_1_global_settings}{Global\-Settings} $\ast$settings)
+\begin{DoxyCompactList}\small\item\em Construct from the folder's settings and from the global settings. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_folder_a7b9eaf0f340d5275809494685b0a3e1d}{virtual \hyperlink{class_a_w_e_1_1_folder_a7b9eaf0f340d5275809494685b0a3e1d}{$\sim$\-Folder} ()}\label{class_a_w_e_1_1_folder_a7b9eaf0f340d5275809494685b0a3e1d}
+
+\begin{DoxyCompactList}\small\item\em Deconstructor. \end{DoxyCompactList}\item 
+virtual Item\-Type \hyperlink{class_a_w_e_1_1_folder_a315c0a52f6e37b357d5f0e4fc5526d52}{get\-Item\-Type} () const 
+\begin{DoxyCompactList}\small\item\em Determine the basic type (folder, file, service) \end{DoxyCompactList}\item 
+virtual std\-::vector$<$ \hyperlink{class_a_w_e_1_1_media_item}{Media\-Item} $\ast$ $>$ \& \hyperlink{class_a_w_e_1_1_folder_a7a11c8d61ad23a24e300a6ba9c37cf7a}{get\-Items} ()
+\begin{DoxyCompactList}\small\item\em Get a list of all of the items this folder contains. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A folder that contains {\ttfamily \hyperlink{class_a_w_e_1_1_media_item}{Media\-Item}}s. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_a_w_e_1_1_folder_aca86ae7182f2288bce2b97086fe44561}{\index{A\-W\-E\-::\-Folder@{A\-W\-E\-::\-Folder}!Folder@{Folder}}
+\index{Folder@{Folder}!AWE::Folder@{A\-W\-E\-::\-Folder}}
+\subsubsection[{Folder}]{\setlength{\rightskip}{0pt plus 5cm}Folder\-::\-Folder (
+\begin{DoxyParamCaption}
+\item[{const Q\-Dir \&}]{folder, }
+\item[{{\bf Global\-Settings} $\ast$}]{settings}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_folder_aca86ae7182f2288bce2b97086fe44561}
+
+
+Construct from the folder's settings and from the global settings. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em folder} & The configuration file for this folder. \\
+\hline
+{\em settings} & The global settings. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_a_w_e_1_1_folder_a7a11c8d61ad23a24e300a6ba9c37cf7a}{\index{A\-W\-E\-::\-Folder@{A\-W\-E\-::\-Folder}!get\-Items@{get\-Items}}
+\index{get\-Items@{get\-Items}!AWE::Folder@{A\-W\-E\-::\-Folder}}
+\subsubsection[{get\-Items}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf Media\-Item} $\ast$ $>$ \& Folder\-::get\-Items (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_folder_a7a11c8d61ad23a24e300a6ba9c37cf7a}
+
+
+Get a list of all of the items this folder contains. 
+
+\begin{DoxyReturn}{Returns}
+All of the items this folder contains. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_folder_a315c0a52f6e37b357d5f0e4fc5526d52}{\index{A\-W\-E\-::\-Folder@{A\-W\-E\-::\-Folder}!get\-Item\-Type@{get\-Item\-Type}}
+\index{get\-Item\-Type@{get\-Item\-Type}!AWE::Folder@{A\-W\-E\-::\-Folder}}
+\subsubsection[{get\-Item\-Type}]{\setlength{\rightskip}{0pt plus 5cm}Item\-Type Folder\-::get\-Item\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_folder_a315c0a52f6e37b357d5f0e4fc5526d52}
+
+
+Determine the basic type (folder, file, service) 
+
+\begin{DoxyReturn}{Returns}
+The basic type of this item. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_a_w_e_1_1_media_item_ad7a7ef28069986fad8b2be060fef6e48}{A\-W\-E\-::\-Media\-Item}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/items/A\-W\-E\-Folder.\-h\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/items/A\-W\-E\-Folder.\-cpp\end{DoxyCompactItemize}

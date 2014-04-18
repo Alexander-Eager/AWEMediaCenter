@@ -1,0 +1,189 @@
+\hypertarget{class_a_w_e_1_1_metadata_scraper}{\section{A\-W\-E\-:\-:Metadata\-Scraper Class Reference}
+\label{class_a_w_e_1_1_metadata_scraper}\index{A\-W\-E\-::\-Metadata\-Scraper@{A\-W\-E\-::\-Metadata\-Scraper}}
+}
+
+
+Defines the general interface for a metadata scraper.  
+
+
+
+
+{\ttfamily \#include $<$A\-W\-E\-Metadata\-Scraper.\-h$>$}
+
+Inheritance diagram for A\-W\-E\-:\-:Metadata\-Scraper\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_a_w_e_1_1_metadata_scraper}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_a_w_e_1_1_metadata_scraper_a0a7ae0178e838b07bbd960be7c9e7dac}{virtual \hyperlink{class_a_w_e_1_1_metadata_scraper_a0a7ae0178e838b07bbd960be7c9e7dac}{$\sim$\-Metadata\-Scraper} ()}\label{class_a_w_e_1_1_metadata_scraper_a0a7ae0178e838b07bbd960be7c9e7dac}
+
+\begin{DoxyCompactList}\small\item\em Deconstructor. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_metadata_scraper_a92f9039770add633140b825bf41bc30a}{prepare} (\hyperlink{class_a_w_e_1_1_global_settings}{Global\-Settings} $\ast$settings)=0
+\begin{DoxyCompactList}\small\item\em Prepares the scraper. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_metadata_scraper_a509832b172ce67e5e9788134016481b3}{scrape\-Data\-For\-File} (\hyperlink{class_a_w_e_1_1_media_file}{Media\-File} $\ast$file, bool ask\-User, bool import)=0
+\begin{DoxyCompactList}\small\item\em Retrieves metadata for a media file. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_a_w_e_1_1_metadata_scraper_a9a90e9974be775dff73c004ada209cb0}{deactivate} ()=0
+\begin{DoxyCompactList}\small\item\em Destroys any used-\/up dynamic memory. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_metadata_scraper_a06f9da8e43ac52378ec15fc849e42eb8}{is\-Valid} ()=0
+\begin{DoxyCompactList}\small\item\em Determines if this is scraper can be used. \end{DoxyCompactList}\item 
+virtual const std\-::string \& \hyperlink{class_a_w_e_1_1_metadata_scraper_a375745d101342f062a1a3eb89a63ec6b}{get\-Name} ()=0
+\begin{DoxyCompactList}\small\item\em Gets the name of the scraper. \end{DoxyCompactList}\item 
+virtual const std\-::string \& \hyperlink{class_a_w_e_1_1_metadata_scraper_a02549221a803b624300ea6994be1b1a2}{get\-Type} ()=0
+\begin{DoxyCompactList}\small\item\em Gets the media type for this scraper. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Defines the general interface for a metadata scraper. 
+
+Metadata scrapers must take in the path to a media file and use that path to collect icons, fanart images, and other details about the media item.
+
+In order to scrape for metadata, A\-W\-E\-M\-C does the following\-:
+\begin{DoxyItemize}
+\item Prepare the scraper by calling {\ttfamily \hyperlink{class_a_w_e_1_1_metadata_scraper_a92f9039770add633140b825bf41bc30a}{prepare()}}.
+\item Scrape for metadata using {\ttfamily \hyperlink{class_a_w_e_1_1_metadata_scraper_a509832b172ce67e5e9788134016481b3}{scrape\-Data\-For\-File()}}.
+\item Deactivate the scraper by calling {\ttfamily \hyperlink{class_a_w_e_1_1_metadata_scraper_a9a90e9974be775dff73c004ada209cb0}{deactivate()}}.
+\end{DoxyItemize}
+
+{\ttfamily \hyperlink{class_a_w_e_1_1_metadata_scraper}{Metadata\-Scraper}} implementations should be largely immutable, at least as seen by the functions outside of the class. The only place internal changes should be made is during the scraping of a file with temporary instance variables. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_a_w_e_1_1_metadata_scraper_a9a90e9974be775dff73c004ada209cb0}{\index{A\-W\-E\-::\-Metadata\-Scraper@{A\-W\-E\-::\-Metadata\-Scraper}!deactivate@{deactivate}}
+\index{deactivate@{deactivate}!AWE::MetadataScraper@{A\-W\-E\-::\-Metadata\-Scraper}}
+\subsubsection[{deactivate}]{\setlength{\rightskip}{0pt plus 5cm}virtual void A\-W\-E\-::\-Metadata\-Scraper\-::deactivate (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_a_w_e_1_1_metadata_scraper_a9a90e9974be775dff73c004ada209cb0}
+
+
+Destroys any used-\/up dynamic memory. 
+
+This helps with memory management. If you rely on large objects to scrape for metadata, this is where you should {\ttfamily delete} them. 
+
+Implemented in \hyperlink{class_a_w_e_1_1_j_s_o_n_scraper_a0d1a05a4c7273ff1063518592d68501a}{A\-W\-E\-::\-J\-S\-O\-N\-Scraper}.
+
+\hypertarget{class_a_w_e_1_1_metadata_scraper_a375745d101342f062a1a3eb89a63ec6b}{\index{A\-W\-E\-::\-Metadata\-Scraper@{A\-W\-E\-::\-Metadata\-Scraper}!get\-Name@{get\-Name}}
+\index{get\-Name@{get\-Name}!AWE::MetadataScraper@{A\-W\-E\-::\-Metadata\-Scraper}}
+\subsubsection[{get\-Name}]{\setlength{\rightskip}{0pt plus 5cm}virtual const std\-::string\& A\-W\-E\-::\-Metadata\-Scraper\-::get\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_a_w_e_1_1_metadata_scraper_a375745d101342f062a1a3eb89a63ec6b}
+
+
+Gets the name of the scraper. 
+
+\begin{DoxyReturn}{Returns}
+The name of the scraper. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_a_w_e_1_1_j_s_o_n_scraper_a77c2ed4ece4a88876f6381b97d6c5a93}{A\-W\-E\-::\-J\-S\-O\-N\-Scraper}.
+
+\hypertarget{class_a_w_e_1_1_metadata_scraper_a02549221a803b624300ea6994be1b1a2}{\index{A\-W\-E\-::\-Metadata\-Scraper@{A\-W\-E\-::\-Metadata\-Scraper}!get\-Type@{get\-Type}}
+\index{get\-Type@{get\-Type}!AWE::MetadataScraper@{A\-W\-E\-::\-Metadata\-Scraper}}
+\subsubsection[{get\-Type}]{\setlength{\rightskip}{0pt plus 5cm}virtual const std\-::string\& A\-W\-E\-::\-Metadata\-Scraper\-::get\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_a_w_e_1_1_metadata_scraper_a02549221a803b624300ea6994be1b1a2}
+
+
+Gets the media type for this scraper. 
+
+\begin{DoxyReturn}{Returns}
+The media type name for the scraper. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_a_w_e_1_1_j_s_o_n_scraper_a5b540056aa7ddf4e343220b0a54a0279}{A\-W\-E\-::\-J\-S\-O\-N\-Scraper}.
+
+\hypertarget{class_a_w_e_1_1_metadata_scraper_a06f9da8e43ac52378ec15fc849e42eb8}{\index{A\-W\-E\-::\-Metadata\-Scraper@{A\-W\-E\-::\-Metadata\-Scraper}!is\-Valid@{is\-Valid}}
+\index{is\-Valid@{is\-Valid}!AWE::MetadataScraper@{A\-W\-E\-::\-Metadata\-Scraper}}
+\subsubsection[{is\-Valid}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool A\-W\-E\-::\-Metadata\-Scraper\-::is\-Valid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_a_w_e_1_1_metadata_scraper_a06f9da8e43ac52378ec15fc849e42eb8}
+
+
+Determines if this is scraper can be used. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if this scraper can be used successfully, {\ttfamily false} otherwise. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_a_w_e_1_1_j_s_o_n_scraper_abb4ca61ee617b473198a635c6f3ac57d}{A\-W\-E\-::\-J\-S\-O\-N\-Scraper}.
+
+\hypertarget{class_a_w_e_1_1_metadata_scraper_a92f9039770add633140b825bf41bc30a}{\index{A\-W\-E\-::\-Metadata\-Scraper@{A\-W\-E\-::\-Metadata\-Scraper}!prepare@{prepare}}
+\index{prepare@{prepare}!AWE::MetadataScraper@{A\-W\-E\-::\-Metadata\-Scraper}}
+\subsubsection[{prepare}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool A\-W\-E\-::\-Metadata\-Scraper\-::prepare (
+\begin{DoxyParamCaption}
+\item[{{\bf Global\-Settings} $\ast$}]{settings}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_a_w_e_1_1_metadata_scraper_a92f9039770add633140b825bf41bc30a}
+
+
+Prepares the scraper. 
+
+This helps with memory management. If you rely on large objects to scrape for metadata, this is where you should construct them.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em settings} & The ../settings/\-R\-E\-A\-D\-M\-E.md \char`\"{}global settings of A\-W\-E\-M\-C\char`\"{}, so that your scraper can be customized.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the scraper was able to prepare itself, {\ttfamily false} if an error occured and scraping should be aborted. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_a_w_e_1_1_j_s_o_n_scraper_a1b12fde072ef979911fcca4191c3c2a7}{A\-W\-E\-::\-J\-S\-O\-N\-Scraper}.
+
+\hypertarget{class_a_w_e_1_1_metadata_scraper_a509832b172ce67e5e9788134016481b3}{\index{A\-W\-E\-::\-Metadata\-Scraper@{A\-W\-E\-::\-Metadata\-Scraper}!scrape\-Data\-For\-File@{scrape\-Data\-For\-File}}
+\index{scrape\-Data\-For\-File@{scrape\-Data\-For\-File}!AWE::MetadataScraper@{A\-W\-E\-::\-Metadata\-Scraper}}
+\subsubsection[{scrape\-Data\-For\-File}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool A\-W\-E\-::\-Metadata\-Scraper\-::scrape\-Data\-For\-File (
+\begin{DoxyParamCaption}
+\item[{{\bf Media\-File} $\ast$}]{file, }
+\item[{bool}]{ask\-User, }
+\item[{bool}]{import}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_a_w_e_1_1_metadata_scraper_a509832b172ce67e5e9788134016481b3}
+
+
+Retrieves metadata for a media file. 
+
+You must write the metadata to {\ttfamily file}.
+
+To construct your J\-S\-O\-N file, you should use \href{http://jsoncpp.sourceforge.net}{\tt jsoncpp}.
+
+{\ttfamily ask\-User} tells your scraper if the user wants to be given a list of choices for certain things. You should N\-O\-T ask the user for everything if {\ttfamily ask\-User} is true; only basic things like, \char`\"{}\-Which icon do you want to use?\char`\"{}
+
+{\ttfamily import} specifies if the files you get should be copied into A\-W\-E\-M\-C's folders. Do N\-O\-T copy the media file.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em file} & The media file to get metadata for. \\
+\hline
+\mbox{\tt in}  & {\em ask\-User} & {\ttfamily true} if the user wants to be given choices, {\ttfamily false} otherwise. \\
+\hline
+\mbox{\tt in}  & {\em import} & {\ttfamily true} if the user wants to import metadata files, {\ttfamily false} otherwise.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the scraper was able to get the metadata, {\ttfamily false} if it was not. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_a_w_e_1_1_j_s_o_n_scraper_afbed287c0fcae8d797552c711854b4e9}{A\-W\-E\-::\-J\-S\-O\-N\-Scraper}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/scraper/A\-W\-E\-Metadata\-Scraper.\-h\end{DoxyCompactItemize}

@@ -7,20 +7,23 @@
 #include <sstream>
 #include <iostream>
 
-AWEFolder::AWEFolder(const QDir& folder,
-		AWEGlobalSettings* settings) :
-	AWEMediaItem(folder)
+using namespace AWE;
+using namespace std;
+
+Folder::Folder(const QDir& folder,
+		GlobalSettings* settings) :
+	MediaItem(folder)
 {
 	// get all of the children
 	QDir root(folder);
 	settings->addFolder(root.absolutePath().toStdString(), this);
 	root.cdUp();
-	std::string r = root.absolutePath().toStdString();
+	string r = root.absolutePath().toStdString();
 	for (unsigned int i = 0; i < myData["items"].size(); ++ i)
 	{
-		std::string str = r + "/" + myData["items"][i].asString();
+		string str = r + "/" + myData["items"][i].asString();
 		QDir dir(QDir::cleanPath(str.c_str()));
-		AWEMediaItem* toAdd = settings->getMediaItemByJSONFile(dir);
+		MediaItem* toAdd = settings->getMediaItemByJSONFile(dir);
 		if (toAdd != NULL)
 		{
 			myItems.push_back(toAdd);
@@ -28,17 +31,17 @@ AWEFolder::AWEFolder(const QDir& folder,
 	}
 }
 
-AWEFolder::~AWEFolder()
+Folder::~Folder()
 {
 	// nothing
 }
 
-ItemType AWEFolder::getItemType() const
+ItemType Folder::getItemType() const
 {
 	return FOLDER_TYPE;
 }
 
-std::vector<AWEMediaItem*>& AWEFolder::getItems()
+vector<MediaItem*>& Folder::getItems()
 {
 	return myItems;
 }

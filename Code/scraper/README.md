@@ -3,7 +3,7 @@ Metadata Scraping
 
 Explanation of the way in which AWEMC scrapes metadata for media files.
 
-# The AWEMetadataScraper interface
+# The MetadataScraper interface
 
 There are three steps to all metadata scraping:
 
@@ -14,14 +14,12 @@ There are three steps to all metadata scraping:
 
 ## How to: Create Internal Metadata Scrapers using Plugins
 
-Essentially, you need to implement the `AWEMetadataScraper` interface, which is designed to be used as a plugin. Read the [how-to for Qt plugins](http://qt-project.org/doc/qt-4.8/plugins-howto.html) to learn more. You'll need to use [jsoncpp](http://jsoncpp.sourceforge.net) to write the settings file out.
+Essentially, you need to implement the `MetadataScraper` interface, which is designed to be used as a plugin. Read the [how-to for Qt plugins](http://qt-project.org/doc/qt-4.8/plugins-howto.html) to learn more. You'll need to use [JsonCpp](http://jsoncpp.sourceforge.net) to write the settings file out.
 
 In addition to creating the plugin, you must make a JSON settings file. The only required entries in this file are:
 
-```
-"name": <name of the scraper as it should appear to the user>,
-"plugin": <the plugin library file>
-```
+	"name": <name of the scraper as it should appear to the user>,
+	"plugin": <the plugin library file>
 
 You can include other settings in this file if you like; it should automatically be configurable in the main settings pane.
 
@@ -30,12 +28,12 @@ You can include other settings in this file if you like; it should automatically
 Before reading this how-to, here is some information you should know:
 
  + The general format of a JSON document (see <http://www.json.org/> for more details).
- + The kinds of metadata that AWEMC accepts (see [Media Types](../type/README.md) for details).
+ + The kinds of metadata that AWEMC accepts (see [Media Types](../type_README.md) for details).
  + The way metadata is stored in a media file's JSON preference file (see [Media Files](../items/files/README.md) for details).
  + ECMAScript regular expressions (see [this online documentation](http://www.cplusplus.com/reference/regex/ECMAScript/) for details).
 
 Note that, although comments are not officially supported by the JSON file format, they are supported by AWEMC's JSON reader,
-[jsoncpp](http://jsoncpp.sourceforge.net). Standard `// comment` lines work.
+[JsonCpp](http://jsoncpp.sourceforge.net). Standard `// comment` lines work.
 
 ### Introduction to the idea behind JSON-based scrapers
 
@@ -59,72 +57,70 @@ the C++ Standard Library's [backref replacement function](http://www.cplusplus.c
 
 Here is a template for a scraper:
 
-```
-{
-	// The user picks the scraper based on this name
-	"name": <name of your scraper>,
+	{
+		// The user picks the scraper based on this name
+		"name": <name of your scraper>,
 
-	// This scraper is available to scrape metadata for this type of media item
-	"type": <the type of media files>,
+		// This scraper is available to scrape metadata for this type of media item
+		"type": <the type of media files>,
 
-	// This helps you get information to use, like the name of the media item
-	"filename": <regex to get backreferences from the media file path>,
+		// This helps you get information to use, like the name of the media item
+		"filename": <regex to get backreferences from the media file path>,
 
-	// List of procedures to run using the backreferences from "filename"
-	"procedures": [
-		{
-			// Should this be repeated for every match or just one?
-			"repeat": <true or false>,
+		// List of procedures to run using the backreferences from "filename"
+		"procedures": [
+			{
+				// Should this be repeated for every match or just one?
+				"repeat": <true or false>,
 
-			// Should the user be prompted to choose which match (or matches) to use?
-			"ask user": <true or false>,
+				// Should the user be prompted to choose which match (or matches) to use?
+				"ask user": <true or false>,
 
-			// The file to look in; backrefs are replaced
-			"look in file": <formatted string with backrefs>,
+				// The file to look in; backrefs are replaced
+				"look in file": <formatted string with backrefs>,
 
-			// The regex to search for in the above file; backrefs are replaced
-			"for": <formatted regex with backrefs>,
+				// The regex to search for in the above file; backrefs are replaced
+				"for": <formatted regex with backrefs>,
 
-			// Set a bunch of properties to backreferences from "for"
-			<prop>: <value with backrefs>,
-			<prop>: <value with backrefs>,
+				// Set a bunch of properties to backreferences from "for"
+				<prop>: <value with backrefs>,
+				<prop>: <value with backrefs>,
+				// More properties...
+
+				// Run a list of sub-procedures using the backreferences from "for"
+				"procedures": [...]
+			},
+			// More procedures...
+		]
+
+		// For properties that contain file paths or are arrays of file paths, sometimes 
+		// you want to import the files.
+		// This should always be defined to import every file (except the media file);
+		// The user can select settings at the launching of the scraper to decide if
+		// this should use links to the files or copy the files.
+		// you don't get to choose the new names or the location; AWEMC does that for you
+		"copy": [
+			<prop with file-path value>,
+			<prop with file-path value>,
+			// More properties...	
+		]
+
+		// These are for files that should always be imported, e.g. internet files
+		"force copy": [
+			<prop with file-path value>
 			// More properties...
+		]
+	}
 
-			// Run a list of sub-procedures using the backreferences from "for"
-			"procedures": [...]
-		},
-		// More procedures...
-	]
-
-	// For properties that contain file paths or are arrays of file paths, sometimes 
-	// you want to import the files.
-	// This should always be defined to import every file (except the media file);
-	// The user can select settings at the launching of the scraper to decide if
-	// this should use links to the files or copy the files.
-	// you don't get to choose the new names or the location; AWEMC does that for you
-	"copy": [
-		<prop with file-path value>,
-		<prop with file-path value>,
-		// More properties...	
-	]
-
-	// These are for files that should always be imported, e.g. internet files
-	"force copy": [
-		<prop with file-path value>
-		// More properties...
-	]
-}
-```
-
-Those of you who have read the [Media Types explanation](../type/README.md) know that
+Those of you who have read the [Media Types explanation](../Code/type_README.md) know that
 some metadata properties are actually objects that contain other metadata properties.
 In order to access a property held inside of an object, you must use the `.` operator,
 much like you would in C++. So to set the "default" property of the "icons" object, 
 I would use:
 
-```
-"icons.default": <value>
-```
+
+	"icons.default": <value>
+
 
 ### Example scrapers
 

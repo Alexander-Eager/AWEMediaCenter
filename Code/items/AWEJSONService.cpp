@@ -4,13 +4,15 @@
 // for running the app
 #include <QProcess>
 
-AWEJSONService::AWEJSONService(const QDir& file) :
-	AWEMediaService(file)
+using namespace AWE;
+
+JSONService::JSONService(const QDir& file) :
+	MediaService(file)
 {
 	myCommand = getStringMember("command");
 }
 
-int AWEJSONService::open()
+int JSONService::open()
 {
 	QProcess process;
 	process.start(myCommand.c_str());

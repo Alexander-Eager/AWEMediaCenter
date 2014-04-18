@@ -1,0 +1,103 @@
+.TH "md___users__alex_github__a_w_e_media_center__code_items__r_e_a_d_m_e" 3 "Fri Apr 18 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+md___users__alex_github__a_w_e_media_center__code_items__r_e_a_d_m_e \- Media Items 
+There are three kinds of media items:
+.PP
+.IP "\(bu" 2
+\fCFolder\fPs, which contain other media items\&.
+.IP "\(bu" 2
+\fCMediaFile\fPs, which represent media to be played by a media player\&.
+.IP "\(bu" 2
+\fCMediaService\fPs, which represent standalone apps for media\&.
+.PP
+.PP
+All media items have relevant metadata and a \fC'type'\fP, which is either \fC'folder'\fP, \fC'file'\fP, or \fC'service'\fP\&. The \fCmetadata\fP tag is defined in the corresponding media type\&. Note that there is an item type and a media type, which are two separate things\&.
+.PP
+.SH "Folders"
+.PP
+.PP
+\fCFolder\fPs are rather self explanatory: they contain other items\&. The JSON file structure is as follows: 
+.PP
+.nf
+{
+    "type": "folder",
+
+    "metadata": {
+        // metadata for the specific media type goes here
+    },
+
+    "items": [
+        // list of relative paths to the contained items' JSON files
+    ]
+}
+
+.fi
+.PP
+.PP
+.SH "Media Files"
+.PP
+.PP
+\fCMediaFile\fPs represent a file with a default \&.\&./player/README\&.md 'media player', as follows: 
+.PP
+.nf
+{
+    "type": "file",
+
+    "metadata": {
+        // metadata for the specific media type goes here
+    },
+
+    "player": "player name",
+}
+
+.fi
+.PP
+.PP
+.SH "Media Services"
+.PP
+.PP
+Unlike \fCFolder\fPs and \fCMediaFile\fPs, \fCMediaService\fPs are not found in the \fCroot\fP folder\&. They are found inside the \fCservices\fP folder\&. The JSON file found in \fCroot\fP is very simple as follows: 
+.PP
+.nf
+{
+    "type": "service",
+
+    "name": "service name"
+}
+
+.fi
+.PP
+.PP
+The \fC'name'\fP points to the specific service to place in that \fCFolder\fP\&.
+.PP
+Inside of the \fCservices\fP folder, there are two sub folders: \fCjson\fP and \fCplugin\fP\&.
+.PP
+.SS "External JSON Services"
+.PP
+The \fCjson\fP folder contains a set of JSON files that represent external applications to launch\&. Each of these JSON files look like this: 
+.PP
+.nf
+{
+    "name": "service name",
+
+    "command": "terminal command to run"
+}
+
+.fi
+.PP
+.PP
+.SS "Internal Plugin Services"
+.PP
+The \fCplugin\fP folder contains a set of JSON files and associated dynamic libraries\&. In order to create the plugin you should implement the \fCMediaService\fP interface\&. The accompanying JSON file looks like this: 
+.PP
+.nf
+{
+    "name": "service name",
+
+    "library": "dynamic library file"
+} 
+.fi
+.PP
+ 

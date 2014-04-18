@@ -9,6 +9,7 @@
 #include <deque>
 
 using namespace std;
+using namespace AWE;
 
 int main(int argc, char* argv[])
 {
@@ -24,13 +25,13 @@ int main(int argc, char* argv[])
 	}
 	
 	// load all of the program from settings
-	AWEGlobalSettings* settings = new AWEGlobalSettings(mainSettings);
+	GlobalSettings* settings = new GlobalSettings(mainSettings);
 
 	// UI stuff
 	// TODO replace with Qt gui
 	int result = 0;
 
-	deque<AWEFolder*> stack;
+	deque<Folder*> stack;
 	stack.push_back(settings->getRootFolder());
 	string buffer;
 	while (stack.size() != 0)
@@ -65,13 +66,13 @@ int main(int argc, char* argv[])
 					{
 						cout << "Playing file \"" 
 							<< i->getName() << "\"" << endl;
-						((AWEMediaFile*) i)->play();
+						((MediaFile*) i)->play();
 					}
 					else if (i->getItemType() == FOLDER_TYPE)
 					{
 						cout << "Opening folder \"" 
 							<< i->getName() << "\"" << endl;
-						stack.push_back((AWEFolder*) i);
+						stack.push_back((Folder*) i);
 					}
 					// TODO services
 				}

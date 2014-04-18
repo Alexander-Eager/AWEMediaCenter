@@ -1,7 +1,7 @@
 // class header
 #include "AWEGlobalSettings.h"
 
-// the types that are held inside AWEGlobalSettings
+// the types that are held inside GlobalSettings
 
 // scrapers
 #include "scraper/AWEMetadataScraper.h"
@@ -28,14 +28,18 @@
 #include <iostream>
 #include <sstream>
 
-Json::Value AWEGlobalSettings::null = Json::Value::null;
+using namespace AWE;
+using namespace Json;
+using namespace std;
 
-AWEGlobalSettings::AWEGlobalSettings(const std::string& settingsFile)
+Value GlobalSettings::null = Value::null;
+
+GlobalSettings::GlobalSettings(const string& settingsFile)
 {
 	// TODO make safe
-	std::stringstream ss;
+	stringstream ss;
 	copyFile(settingsFile, ss);
-	Json::Reader reader;
+	Reader reader;
 	reader.parse(ss.str(), mySettingsFile, false);
 
 	// get all of the objects
@@ -47,7 +51,7 @@ AWEGlobalSettings::AWEGlobalSettings(const std::string& settingsFile)
 	obtainItems();
 }
 
-AWEGlobalSettings::~AWEGlobalSettings()
+GlobalSettings::~GlobalSettings()
 {
 	for (auto i : myMediaPlayers)
 	{
@@ -63,17 +67,17 @@ AWEGlobalSettings::~AWEGlobalSettings()
 	}
 }
 
-void AWEGlobalSettings::obtainScrapers()
+void GlobalSettings::obtainScrapers()
 {
 	// get the directory
 	QDir dir(QDir::current());
 	dir.cd(mySettingsFile["scrapers"].asCString());
 
 	// important variables
-	Json::Reader reader;
-	Json::Value scraper;
-	std::string name, type, file;
-	std::stringstream contents;
+	Reader reader;
+	Value scraper;
+	string name, type, file;
+	stringstream contents;
 
 	// get all of the JSON scrapers
 	dir.cd("json");
@@ -91,7 +95,7 @@ void AWEGlobalSettings::obtainScrapers()
 			type = scraper["type"].asString();
 			myMetadataScraperNames.insert(name);
 			myMetadataScraperSettings[name] = scraper;
-			myMetadataScrapers[name] = new AWEJSONScraper(name, type);
+			myMetadataScrapers[name] = new JSONScraper(name, type);
 		}
 		contents.clear();
 	}
@@ -99,17 +103,17 @@ void AWEGlobalSettings::obtainScrapers()
 	// TODO plugins
 }
 
-void AWEGlobalSettings::obtainPlayers()
+void GlobalSettings::obtainPlayers()
 {
 	// get the directory
 	QDir dir(QDir::current());
 	dir.cd(mySettingsFile["players"].asCString());
 
 	// important variables
-	Json::Reader reader;
-	Json::Value player;
-	std::string name, file;
-	std::stringstream contents;
+	Reader reader;
+	Value player;
+	string name, file;
+	stringstream contents;
 
 	// get all of the JSON players
 	dir.cd("json");
@@ -126,7 +130,7 @@ void AWEGlobalSettings::obtainPlayers()
 			name = player["name"].asString();
 			myMediaPlayerNames.insert(name);
 			myMediaPlayerSettings[name] = player;
-			myMediaPlayers[name] = new AWEJSONPlayer(player);
+			myMediaPlayers[name] = new JSONPlayer(player);
 		}
 		contents.clear();
 	}
@@ -134,18 +138,18 @@ void AWEGlobalSettings::obtainPlayers()
 	// TODO plugins
 }
 
-void AWEGlobalSettings::obtainSkins() {}
+void GlobalSettings::obtainSkins() {}
 
-void AWEGlobalSettings::obtainTypes()
+void GlobalSettings::obtainTypes()
 {
 	QDir dir(QDir::current());
 	dir.cd(mySettingsFile["types"].asCString());
 
 	// important variables
-	Json::Reader reader;
-	Json::Value type;
-	std::string name, file;
-	std::stringstream contents;
+	Reader reader;
+	Value type;
+	string name, file;
+	stringstream contents;
 
 	// get all of the media types
 	QStringList filter;
@@ -166,17 +170,17 @@ void AWEGlobalSettings::obtainTypes()
 	}
 }
 
-void AWEGlobalSettings::obtainServices()
+void GlobalSettings::obtainServices()
 {
 	// get the directory
 	QDir dir(QDir::current());
 	dir.cd(mySettingsFile["services"].asCString());
 
 	// important variables
-	Json::Reader reader;
-	Json::Value service;
-	std::string name, file;
-	std::stringstream contents;
+	Reader reader;
+	Value service;
+	string name, file;
+	stringstream contents;
 
 	// get all of the JSON players
 	dir.cd("json");
@@ -192,7 +196,7 @@ void AWEGlobalSettings::obtainServices()
 		{
 			name = service["name"].asString();
 			myMediaServiceNames.insert(name);
-			myMediaServices[name] = new AWEJSONService(QDir(file.c_str()));
+			myMediaServices[name] = new JSONService(QDir(file.c_str()));
 		}
 		contents.clear();
 	}
@@ -200,15 +204,15 @@ void AWEGlobalSettings::obtainServices()
 	// TODO plugins
 }
 
-void AWEGlobalSettings::obtainItems() 
+void GlobalSettings::obtainItems() 
 {
 	QDir root(mySettingsFile["root"].asCString());
-	myRootFolder = (AWEFolder*) getMediaItemByJSONFile(root);
+	myRootFolder = (Folder*) getMediaItemByJSONFile(root);
 }
 
-AWEMetadataScraper* AWEGlobalSettings::getScraperByName(const std::string& str)
+MetadataScraper* GlobalSettings::getScraperByName(const string& str)
 {
-	std::map<std::string, AWEMetadataScraper*>::iterator i
+	map<string, MetadataScraper*>::iterator i
 		= myMetadataScrapers.find(str);
 	if (i != myMetadataScrapers.end())
 	{
@@ -217,9 +221,9 @@ AWEMetadataScraper* AWEGlobalSettings::getScraperByName(const std::string& str)
 	return NULL;
 }
 
-Json::Value& AWEGlobalSettings::getScraperSettingsByName(const std::string& str)
+Value& GlobalSettings::getScraperSettingsByName(const string& str)
 {
-	std::map<std::string, Json::Value>::iterator i
+	map<string, Value>::iterator i
 		= myMetadataScraperSettings.find(str);
 	if (i != myMetadataScraperSettings.end())
 	{
@@ -228,14 +232,14 @@ Json::Value& AWEGlobalSettings::getScraperSettingsByName(const std::string& str)
 	return null;
 }
 
-const AWEGlobalSettings::NameSet& AWEGlobalSettings::getAllMetadataScraperNames()
+const GlobalSettings::NameSet& GlobalSettings::getAllMetadataScraperNames()
 {
 	return myMetadataScraperNames;
 }
 
-AWEMediaPlayer* AWEGlobalSettings::getPlayerByName(const std::string& str)
+MediaPlayer* GlobalSettings::getPlayerByName(const string& str)
 {
-	std::map<std::string, AWEMediaPlayer*>::iterator i
+	map<string, MediaPlayer*>::iterator i
 		= myMediaPlayers.find(str);
 	if (i != myMediaPlayers.end())
 	{
@@ -244,9 +248,9 @@ AWEMediaPlayer* AWEGlobalSettings::getPlayerByName(const std::string& str)
 	return NULL;
 }
 
-Json::Value& AWEGlobalSettings::getPlayerSettingsByName(const std::string& str)
+Value& GlobalSettings::getPlayerSettingsByName(const string& str)
 {
-	std::map<std::string, Json::Value>::iterator i
+	map<string, Value>::iterator i
 		= myMediaPlayerSettings.find(str);
 	if (i != myMediaPlayerSettings.end())
 	{
@@ -255,14 +259,14 @@ Json::Value& AWEGlobalSettings::getPlayerSettingsByName(const std::string& str)
 	return null;
 }
 
-const AWEGlobalSettings::NameSet& AWEGlobalSettings::getAllMediaPlayerNames()
+const GlobalSettings::NameSet& GlobalSettings::getAllMediaPlayerNames()
 {
 	return myMediaPlayerNames;
 }
 
-Json::Value& AWEGlobalSettings::getTypeByName(const std::string& str)
+Value& GlobalSettings::getTypeByName(const string& str)
 {
-	std::map<std::string, Json::Value>::iterator i
+	map<string, Value>::iterator i
 		= myMediaTypes.find(str);
 	if (i != myMediaTypes.end())
 	{
@@ -271,15 +275,15 @@ Json::Value& AWEGlobalSettings::getTypeByName(const std::string& str)
 	return null;
 }
 
-const AWEGlobalSettings::NameSet& AWEGlobalSettings::getAllMediaTypeNames()
+const GlobalSettings::NameSet& GlobalSettings::getAllMediaTypeNames()
 {
 	return myMediaTypeNames;
 }
 
-AWEMediaItem* AWEGlobalSettings::getMediaItemByJSONFile(const QDir& file)
+MediaItem* GlobalSettings::getMediaItemByJSONFile(const QDir& file)
 {
-	std::string str = QDir::cleanPath(file.absolutePath()).toStdString();
-	std::map<std::string, AWEMediaItem*>::iterator i = myMediaItems.find(str);
+	string str = QDir::cleanPath(file.absolutePath()).toStdString();
+	map<string, MediaItem*>::iterator i = myMediaItems.find(str);
 	if (i != myMediaItems.end())
 	{
 		return i->second;
@@ -287,20 +291,20 @@ AWEMediaItem* AWEGlobalSettings::getMediaItemByJSONFile(const QDir& file)
 	else
 	{
 		// read to get the type
-		AWEMediaItem* item = NULL;
-		Json::Reader reader;
-		Json::Value temp;
-		std::stringstream ss;
+		MediaItem* item = NULL;
+		Reader reader;
+		Value temp;
+		stringstream ss;
 		if (copyFile(file.absolutePath().toStdString(), ss)
 			&& reader.parse(ss.str(), temp, false))
 		{
 			if (temp["type"].asString() == "file")
 			{
-				myMediaItems[str] = (item = new AWEMediaFile(file, this));
+				myMediaItems[str] = (item = new MediaFile(file, this));
 			}
 			else if (temp["type"].asString() == "folder")
 			{
-				item = new AWEFolder(file, this);
+				item = new Folder(file, this);
 			}
 			else if (temp["type"].asString() == "service")
 			{
@@ -311,14 +315,14 @@ AWEMediaItem* AWEGlobalSettings::getMediaItemByJSONFile(const QDir& file)
 	}
 }
 
-const AWEGlobalSettings::NameSet& AWEGlobalSettings::getAllMediaServiceNames()
+const GlobalSettings::NameSet& GlobalSettings::getAllMediaServiceNames()
 {
 	return myMediaServiceNames;
 }
 
-AWEMediaService* AWEGlobalSettings::getMediaServiceByName(const std::string& str)
+MediaService* GlobalSettings::getMediaServiceByName(const string& str)
 {
-	std::map<std::string, AWEMediaService*>::iterator i
+	map<string, MediaService*>::iterator i
 		= myMediaServices.find(str);
 	if (i != myMediaServices.end())
 	{
@@ -327,12 +331,12 @@ AWEMediaService* AWEGlobalSettings::getMediaServiceByName(const std::string& str
 	return NULL;
 }
 
-void AWEGlobalSettings::addFolder(const std::string& str, AWEFolder* folder)
+void GlobalSettings::addFolder(const string& str, Folder* folder)
 {
 	myMediaItems[str] = folder;
 }
 
-AWEFolder* AWEGlobalSettings::getRootFolder()
+Folder* GlobalSettings::getRootFolder()
 {
 	return myRootFolder;
 }
