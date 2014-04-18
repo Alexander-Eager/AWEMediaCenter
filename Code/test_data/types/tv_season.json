@@ -1,0 +1,26 @@
+{
+	"name": "",
+	"type": "TV Season",
+	"location": "",
+
+	"description": "",
+
+	"details": {
+		"_order": ["Season", "Genre", "Director(s)", "Writer(s)", "Cast"],
+		"Season": "",
+		"Genre": "",
+		"Director(s)": [],
+		"Writer(s)": [],
+		"Cast": []
+	},
+
+	"icons": {
+		"default": 0,
+		"files": []
+	},
+
+	"fanarts": {
+		"default": 0,
+		"files": []
+	}
+}

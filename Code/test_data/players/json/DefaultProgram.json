@@ -1,0 +1,6 @@
+{
+	"name": "Default Program",
+	"program": "open",
+	"args": " \"{1}\"",
+	"filetypes": []
+}

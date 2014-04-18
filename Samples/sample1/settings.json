@@ -1,0 +1,12 @@
+{
+	"folders": "folders/",
+	"players": "players/",
+	"types": "types/",
+	"skins": "skins/",
+
+	"skin": "default",
+
+	"path delimiter": "/",
+
+	"keymap": "keymap.json"
+}

@@ -1,0 +1,26 @@
+{
+	"name": "",
+	"type": "Movie",
+	"location": "",
+
+	"description": "",
+
+	"details": {
+		"_order": ["Year", "Genre", "Director(s)", "Writer(s)", "Cast"],
+		"Year": "",
+		"Genre": "",
+		"Director(s)": [],
+		"Writer(s)": [],
+		"Cast": []
+	},
+
+	"icons": {
+		"default": 0,
+		"files": []
+	},
+
+	"fanarts": {
+		"default": 0,
+		"files": []
+	}
+}

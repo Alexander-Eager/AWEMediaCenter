@@ -1,0 +1,14 @@
+{
+	"type": "folder",
+	
+	"metadata": {
+		"name": "Home",
+		"location": "../root"
+	},
+	
+	"items": [
+		"folder1/config.json",
+		"folder2/config.json",
+		"root.json"
+	]
+}

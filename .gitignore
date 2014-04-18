@@ -22,3 +22,7 @@
 *.exe
 *.out
 *.app
+
+# Qt Files
+*.pro
+*Makefile

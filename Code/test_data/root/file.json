@@ -1,0 +1,31 @@
+
+{
+	"metadata" : 
+	{
+		"description" : "After a lifetime of dreaming of traveling the world, 78-year-old homebody Carl flies away on an unbelievable adventure with Russell, an 8-year-old Wilderness Explorer, unexpectedly in tow. Together, the unlikely pair embarks on a thrilling odyssey full of jungle beasts and rough terrain.",
+		"details" : 
+		{
+			"Cast" : [ "Edward Asner", "Christopher Plummer", "Jordan Nagai", "Bob Peterson" ],
+			"Director(s)" : [ "Pete Docter", "Bob Peterson" ],
+			"Genre" : "",
+			"Writer(s)" : [ "Bob Peterson" ],
+			"Year" : "2009",
+			"_order" : [ "Year", "Genre", "Director(s)", "Writer(s)", "Cast" ]
+		},
+		"fanarts" : 
+		{
+			"default" : 0,
+			"files" : [ "http://image.tmdb.org/t/p/original/fI3ucpgaVKOUcQ82vhgWmWuLlg2.jpg" ]
+		},
+		"icons" : 
+		{
+			"default" : 0,
+			"files" : [ "http://image.tmdb.org/t/p/original/zh9DXJhBdHVVaWiDURTipADamcK.jpg" ]
+		},
+		"location" : "../media/Up.m4a",
+		"name" : "Up",
+		"type" : "Movie"
+	},
+	"player" : "Default Program",
+	"type" : "file"
+}

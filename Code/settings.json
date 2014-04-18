@@ -1,0 +1,7 @@
+{
+	"players": "test_data/players/",
+	"scrapers": "test_data/scrapers/",
+	"types": "test_data/types/",
+	"skins": "test_data/skins/",
+	"root": "test_data/root/root.json"
+}

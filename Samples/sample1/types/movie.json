@@ -1,0 +1,39 @@
+{
+	"name": "Movie",
+
+	"filetypes": "avi|iso|mpeg|m4v",
+
+	"metadata": {
+		"type": "Movie",
+
+		"name": "",
+		"location": "",
+		"description": "",
+
+		"details": {
+			"Director(s)": [],
+			"Writer(s)": [],
+			"Cast": [],
+			"Year": "",
+			"Genre": "Miscellaneous"
+		},
+
+		"fanarts": {
+			"Main": "",
+			"default": "Main"
+		},
+
+		"icons": {
+			"Front": "",
+			"default": "Front"
+		},
+
+		"image_flags": {
+			"DVD": false,
+			"DTS": false,
+			"BD": false,
+			"1080p": false,
+			"720p": false
+		}
+	}
+}

@@ -1,0 +1,11 @@
+{
+	"type": "folder",
+	"metadata": {
+		"name": "Folder 2",
+		"location": "../folder2"
+	},
+	"items": [
+		"../file.json",
+		"../folder1/config.json"
+	]
+}

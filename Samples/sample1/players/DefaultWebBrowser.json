@@ -1,0 +1,6 @@
+{
+	"name": "Default Web Browser",
+	"location": "/Applications/Safari.app/Contents/MacOS/Safari",
+	"arguments": " {1}",
+	"filetypes": ["html", "xml", "webarchive"]
+}
