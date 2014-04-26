@@ -5,7 +5,7 @@
 #include "AWEMediaService.h"
 
 // for holding data
-#include <string>
+#include <QString>
 
 namespace AWE
 {
@@ -33,7 +33,7 @@ namespace AWE
 
 		private:
 			/** \brief The command to run. **/
-			std::string myCommand;
+			QString myCommand;
 	};
 }
 

@@ -1,26 +1,39 @@
 {
-	"name": "",
-	"type": "Movie",
-	"location": "",
+	"type": "file",
 
-	"description": "",
+	"metadata": {
+		"name": "",
+		"type": "Movie",
+		"location": "",
 
-	"details": {
-		"_order": ["Year", "Genre", "Director(s)", "Writer(s)", "Cast"],
-		"Year": "",
-		"Genre": "",
-		"Director(s)": [],
-		"Writer(s)": [],
-		"Cast": []
+		"description": "",
+
+		"details": {
+			"_order": ["Year", "Genre", "Director(s)", "Writer(s)", "Cast"],
+			
+			"Year": "",
+			"Genre": [],
+			"Director(s)": [],
+			"Writer(s)": [],
+			"Cast": []
+		},
+
+		"icons": {
+			"default": 0,
+			"files": []
+		},
+
+		"fanarts": {
+			"default": 0,
+			"files": []
+		}
 	},
 
-	"icons": {
-		"default": 0,
-		"files": []
-	},
-
-	"fanarts": {
-		"default": 0,
-		"files": []
-	}
+	"matching files": [
+		"*.avi",
+		"*.iso",
+		"*.m4v",
+		"*.mkv",
+		"*.mpeg"
+	]
 }

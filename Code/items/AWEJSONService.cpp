@@ -15,6 +15,6 @@ JSONService::JSONService(const QDir& file) :
 int JSONService::open()
 {
 	QProcess process;
-	process.start(myCommand.c_str());
+	process.start(myCommand);
 	return process.waitForFinished();
 }

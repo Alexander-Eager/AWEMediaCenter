@@ -8,14 +8,14 @@
 using namespace AWE;
 
 MediaFile::MediaFile(const QDir& file,
-							GlobalSettings* settings) :
+						GlobalSettings* settings) :
 	MediaItem(file),
 	myMediaFile(file)
 {
 	myMediaFile.cdUp();
 	myMediaFile = myMediaFile.absolutePath() 
-		+ "/" + getMember("metadata.location").asCString();
-	myDefaultPlayer = settings->getPlayerByName(getMember("player").asString());
+		+ "/" + getStringMember("metadata.location");
+	myDefaultPlayer = settings->getPlayerByName(getStringMember("player"));
 }
 
 MediaFile::~MediaFile() { }

@@ -9,16 +9,17 @@
 
 // for reading/writing JSON files for the scraper and media file
 #include "libs/json/json.h"
-#include <regex>
+#include <QRegExp>
 
 // for holding data
-#include <string>
+#include <QString>
+
+// for media items
+#include "items/AWEMediaItem.h"
+#include "items/AWEFolder.h"
 
 namespace AWE
 {
-	/** \brief Defines a list of sub expressions **/
-	typedef std::smatch BackrefList;
-
 	/**
 	 * \brief A metadata scraper based on JSON files.
 	 *
@@ -39,7 +40,7 @@ namespace AWE
 			 * \param[in] name The name of the scraper.
 			 * \param[in] type The media type for this scraper.
 			 **/
-			JSONScraper(const std::string& name, const std::string& type);
+			JSONScraper(const QString& name, const QString& type);
 
 			/**
 			 * \brief Prepares the scraper by reading the scraper and type files.
@@ -69,19 +70,59 @@ namespace AWE
 			 * `import` specifies if the files you get should be
 			 * copied into AWEMC's folders. Do NOT copy the media file.
 			 *
-			 * \todo `import` and `askUser`
+			 * \todo boolean flags
 			 *
 			 * \param[inout] file The media file to get metadata for.
 			 * \param[in] askUser `true` if the user wants to be given choices,
 			 *				`false` otherwise.
 			 * \param[in] import `true` if the user wants to import metadata files,
 			 *				`false` otherwise.
+			 * \param[in] inheritMetadata `true` if designated metadata items should
+			 *								be inherited from the containing folder,
+			 *								`false` otherwise.
 			 *
 			 * \returns `true` if the scraper was able to get the metadata,
 			 *			`false` if it was not.
 			 **/
-			virtual bool scrapeDataForFile(MediaFile* file,
-				bool askUser, bool import);
+			virtual bool scrapeDataForFile(MediaItem* file,
+				bool askUser, bool import, bool inheritMetadata);
+
+			/**
+			 * \brief Create a media item (or multiple if applicable) from a
+			 *			given file or folder.
+			 *
+			 * To construct your JSON file, you should use 
+			 * [JsonCpp](http://jsoncpp.sourceforge.net).
+			 *
+			 * `askUser` tells your scraper if the user wants to be
+			 * given a list of choices for certain things. You should 
+			 * NOT ask the user for everything if `askUser` is true;
+			 * only basic things like, "Which icon do you want to use?"
+			 *
+			 * `import` specifies if the files you get should be
+			 * copied into AWEMC's folders. Do NOT copy the media file.
+			 *
+			 * `inheritMetadata` determines if data that could be inherited from 
+			 * the folder should be.
+			 *
+			 * \todo boolean flags
+			 *
+			 * \param[out] placeInMe The `Folder` to put the created items in.
+			 * \param[in] file The file or folder to get media items for.
+			 * \param[in] askUser `true` if the user wants to be given choices,
+			 *				`false` otherwise.
+			 * \param[in] import `true` if the user wants to import metadata files,
+			 *				`false` otherwise.
+			 * \param[in] inheritMetadata `true` if designated metadata items should
+			 *								be inherited from the containing folder,
+			 *								`false` otherwise.
+			 *
+			 * \returns A list of media items for the given file. The list is empty if
+			 *			the file does not match.
+			 **/
+			virtual QList<MediaItem*> scrapeDataForFile(Folder* placeInMe,
+				GlobalSettings* globalSettings, const QDir& file,
+				bool askUser, bool import, bool inheritMetadata) = 0;
 
 			/**
 			 * \brief Destroys any used-up dynamic memory.
@@ -103,33 +144,36 @@ namespace AWE
 			 *
 			 * \returns The name of the scraper.
 			 **/
-			virtual const std::string& getName();
+			virtual const QString& getName();
 
 			/**
 			 * \brief Gets the media type for this scraper.
 			 *
 			 * \returns The media type name for the scraper.
 			 **/
-			virtual const std::string& getType();
+			virtual const QString& getType();
 
 		private:
 			/** \brief Can this be used effectively? **/
 			bool myValidity;
 
 			/** \brief Name of the scraper. **/
-			std::string myName;
+			QString myName;
 
 			/** \brief The type of the scraper. **/
-			std::string myType;
+			QString myType;
 
 			/** \brief The data determining how to scrape. **/
 			Json::Value myScraper;
 
-			/** \brief The data determining what properties are available. **/
+			/** \brief The global settings. **/
 			Json::Value myDefaultProperties;
 
 			/** \brief The current file. **/
-			MediaFile* myCurrentFile;
+			MediaItem* myCurrentFile;
+
+			/** \brief Maps file onto file contents (for speed boost). **/
+			QHash<QString, QString> myMetadataFiles;
 
 			/**
 			 * \brief Execute a specific procedure from a `"procedures"` array.
@@ -141,11 +185,14 @@ namespace AWE
 			 *						`false` if completely automatic.
 			 * \param[in] import `true` if the user wants to import files,
 			 *						`false` if the user wants links.
+			 * \param[in] inheritMetadata `true` if designated metadata items should
+			 *								be inherited from the containing folder,
+			 *								`false` otherwise.
 			 *
 			 * \returns `true` if the procedure ran without issue, `false` otherwise.
 			 **/
-			bool executeProcedure(Json::Value& procedure, BackrefList& backrefs,
-				bool askUser, bool import);
+			bool executeProcedure(Json::Value& procedure, QRegExp& backrefs,
+				bool askUser, bool import, bool inheritMetadata);
 
 			/**
 			 * \brief Helper function that sets properties and executes sub-procedures.
@@ -157,26 +204,14 @@ namespace AWE
 			 *						`false` if completely automatic.
 			 * \param[in] import `true` if the user wants to import files,
 			 *						`false` if the user wants links.
+			 * \param[in] inheritMetadata `true` if designated metadata items should
+			 *								be inherited from the containing folder,
+			 *								`false` otherwise.
 			 *
 			 * \returns `true` if the procedure ran without issue, `false` otherwise.
 			 **/
-			bool useMatchForProcedure(Json::Value& procedure, BackrefList& backrefs,
-				bool askUser, bool import);
-
-			/**
-			 * \brief Get the backreferences resulting from searching through `search`
-			 *			for the regex `reg`.
-			 *
-			 * \param[in] search The `std::string` to look in.
-			 * \param[in] reg A `std::string` representing the 
-			 *				[ECMAScript](http://www.cplusplus.com/reference/regex/ECMAScript/)
-			 *				to use as the regex.
-			 * \param[out] backrefs The backreferences resulting from the search.
-			 *
-			 * \returns `true` if a match was found, `false` otherwise.
-			 **/
-			bool getBackrefs(const std::string& search, const std::string& reg,
-				BackrefList& backrefs);
+			bool useMatchForProcedure(Json::Value& procedure, QRegExp& backrefs,
+				bool askUser, bool import, bool inheritMetadata);
 
 			/**
 			 * \brief Replace the backreferences in `pseudo_reg` with the references from
@@ -186,12 +221,20 @@ namespace AWE
 			 * [this function's](http://www.cplusplus.com/reference/regex/match_replace/)
 			 * `fmt` parameter.
 			 *
-			 * \param[out] pseudo_reg The `std::string` with the references to replace.
+			 * \param[out] pseudo_reg The `QString` with the references to replace.
 			 * \param[in] backrefs The backreferences to use.
-			 *
-			 * \returns `true` if `pseudo_reg` was formatted correctly, `false` otherwise.
 			 **/
-			bool replaceBackrefs(std::string& pseudo_reg, const BackrefList& backrefs);
+			void replaceBackrefs(QString& pseudo_reg, const QRegExp& backrefs);
+
+			/**
+			 * \brief Get the contents of a file, either from the already opened files
+			 *			or a new file.
+			 *
+			 * \param file The file to get the contents for.
+			 *
+			 * \returns The contents of `file`.
+			 **/
+			QString& getFileContents(const QString& file);
 
 			/**
 			 * \brief Does a test run of the procedures to decide if this scraper is valid.

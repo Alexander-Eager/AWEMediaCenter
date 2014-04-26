@@ -1,26 +1,120 @@
 {
-	"name": "",
-	"type": "TV Episode",
-	"location": "",
+	"type": "folder",
 
-	"description": "",
+	"metadata": {
+		"name": "",
+		"type": "TV Series",
+		"location": "",
 
-	"details": {
-		"_order": ["Season", "Genre", "Director(s)", "Writer(s)", "Cast"],
-		"Season": "",
-		"Genre": "",
-		"Director(s)": [],
-		"Writer(s)": [],
-		"Cast": []
-	},
+		"description": "",
 
-	"icons": {
-		"default": 0,
-		"files": []
-	},
+		"details": {
+			"_order": ["Seasons", "Premier", "Genre(s)", "Director(s)", "Writer(s)", "Cast"],
 
-	"fanarts": {
-		"default": 0,
-		"files": []
-	}
-}
+			"Seasons": 1,
+			"Premier": "",
+			"Genre(s)": [],
+			"Director(s)": [],
+			"Writer(s)": [],
+			"Cast": []
+		},
+
+		"icons": {
+			"default": 0,
+			"files": []
+		},
+
+		"fanarts": {
+			"default": 0,
+			"files": []
+		}
+	}, // end metadata
+
+	"matching files": [
+		"*"
+	],
+
+	"contains": [
+		{
+			"type": "folder",
+
+			"metadata": {
+				"name": "",
+				"type": "TV Season",
+				"location": "",
+
+				"description": "",
+
+				"details": {
+					"_order": ["Season", "Year", "Genre(s)", "Director(s)", "Writer(s)", "Cast"],
+
+					"Season": 0,
+					"Year": "",
+					"Genre(s)": [],
+					"Director(s)": [],
+					"Writer(s)": [],
+					"Cast": []
+				},
+
+				"icons": {
+					"default": 0,
+					"files": []
+				},
+
+				"fanarts": {
+					"default": 0,
+					"files": []
+				}
+			}, // end metadata
+
+			"matching files": [
+				"*Season *",
+			],
+
+			"contains": [
+				{
+					"type": "file",
+
+					"metadata": {
+						"name": "",
+						"type": "TV Episode",
+						"location": "",
+
+						"description": "",
+
+						"details": {
+							"_order": ["Season", "Aired", "Genre(s)", 
+										"Director(s)", "Writer(s)", "Cast"],
+
+							"Season": 0,
+							"Aired": "",
+							"Genre(s)": [],
+							"Director(s)": [],
+							"Writer(s)": [],
+							"Cast": []
+						},
+
+						"icons": {
+							"default": 0,
+							"files": []
+						},
+
+						"fanarts": {
+							"default": 0,
+							"files": []
+						}
+					}, // end metadata
+
+					"matching files": [
+						"*[eE][0123456789][0123456789]*.avi",
+						"*[eE][0123456789][0123456789]*.iso",
+						"*[eE][0123456789][0123456789]*.m4v",
+						"*[eE][0123456789][0123456789]*.mkv",
+						"*[eE][0123456789][0123456789]*.mpeg",
+						"*[eE][0123456789][0123456789]*.ts"
+					]
+				} // end TV Episode
+			] // end TV Season -> contains
+		} // end TV Season
+	] // end TV Series -> contains
+} // end TV Series

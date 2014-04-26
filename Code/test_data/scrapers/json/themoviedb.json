@@ -9,12 +9,17 @@
 
 	// a movie file is just the name of the movie
 	// we don't care about the path to the file, so
-	// remove all characters until the first path
-	// delimiter using ".*/". The filename can be
-	// any sequence of characters that are not
-	// path delimiters. The file extension is
-	// not important to this scraper.
-	"filename": ".*/([^/]+)\\.[[:alnum:]]*",
+	// we exclude `/` from the file name matches.
+	// The file extension is not important to this
+	// scraper. It is important that this is the
+	// file, not some path.
+	"filename": "([^/]+)\\.[[:alnum:]]*$",
+
+	// only one movie per file
+	"multiple items per file": false,
+
+	// there are no inherited metadata properties
+	"inherited metadata": { },
 
 	// here are all of the procedures to run
 	"procedures": [
@@ -24,18 +29,20 @@
 			// this procedure
 			"repeat": false,
 			// we do want to make sure we get the right movie
-			// though, so ask the user
-			"ask user": true,
+			// though, so ask the user using the name and year
+			"ask user": "$2 ($3)",
 
 			// we are looking through the search results on themoviedb.org
 			"look in file": "http://www.themoviedb.org/search/movie?query=$1",
 			// $1 is the movie's website, $2 is the name, $3 is the year of release
 			"for": "<a href=\"/movie/([[:alnum:]\\-]*)\" title=\"([[:alnum:][:punct:] ]*)\">\\2</a> <span>\\(([[:digit:]]*)\\)</span>",
 
-			// set the name and year attributes accordingly
-			"name": "$2",
-			// notice how the . operator is used to set the "Year" attribute of "details"
-			"details.Year": "$3",
+			"set properties": {
+				// set the name and year attributes accordingly
+				"name": "$2",
+				// notice how the . operator is used to set the "Year" attribute of "details"
+				"details.Year": "$3"
+			},
 
 			// these procedures all act on the movie's page
 			"procedures": [
@@ -43,15 +50,17 @@
 					// this one gets the description of the movie
 					// since there is only one description, do not repeat or ask the user
 					"repeat": false,
-					"ask user": false,
+					"ask user": "",
 
 					// $1 was the movie's page, so look there
 					"look in file": "http://www.themoviedb.org/movie/$1",
 					// $1 is the description
 					"for": "<meta name=\"description\" content=\"([[:alnum:][:punct:] ]*)\" />",
 
-					// set the description accordingly
-					"description": "$1",
+					"set properties": {
+						// set the description accordingly
+						"description": "$1"
+					},
 
 					// there are no sub-procedures
 					"procedures": []
@@ -61,7 +70,7 @@
 					// currently, this only gets the main image, but eventually
 					// it might get several images and let the user choose which ones to keep
 					"repeat": false,
-					"ask user": false,
+					"ask user": "",
 
 					// $1 was the movie's page, so look there
 					"look in file": "http://www.themoviedb.org/movie/$1",
@@ -72,13 +81,15 @@
 					// http://image.tmdb.org/t/p/original/hexadecimal-name.jpg
 					"for": "<meta property=\"og:image\" content=\"http://image\\.tmdb\\.org/t/p/[[:alnum:]]*/([[:alnum:]]*\\.[[:alpha:]]*)\" />[[:space:]]*<meta property=\"og:image\" content=\"http://image\\.tmdb\\.org/t/p/[[:alnum:]]*/([[:alnum:]]*\\.[[:alpha:]]*)\" />",
 
-					// set the cover art
-					"icons.files": "http://image.tmdb.org/t/p/original/$1",
-					"icons.default": 0,
+					"set properties": {
+						// set the cover art
+						"icons.files": "http://image.tmdb.org/t/p/original/$1",
+						"icons.default": 0,
 
-					// set the fanart
-					"fanarts.files": "http://image.tmdb.org/t/p/original/$2",
-					"fanarts.default": 0,
+						// set the fanart
+						"fanarts.files": "http://image.tmdb.org/t/p/original/$2",
+						"fanarts.default": 0,
+					},
 
 					// there are no sub-procedures
 					"procedures": []
@@ -88,7 +99,7 @@
 					// we want all of them, so repeat
 					"repeat": true,
 					// the user shouldn't care
-					"ask user": false,
+					"ask user": "",
 
 					// $1 was the movie's page, so look there
 					"look in file": "http://www.themoviedb.org/movie/$1",
@@ -98,8 +109,10 @@
 					// "[[:alnum:]\\-]*"
 					"for": "<span itemprop=\"director\" itemscope itemtype=\"http://schema.org/Person\"><a href=\"/person/[[:alnum:]\\-]*\" itemprop=\"url\"><span itemprop=\"name\">([[:alnum:] ]*)</span></a></span>",
 
-					// append the director to the list of directors
-					"details.Director(s)": "$1",
+					"set properties": {
+						// append the director to the list of directors
+						"details.Director(s)": "$1",
+					},
 
 					// there are no sub-procedures
 					"procedures": []
@@ -109,7 +122,7 @@
 					// we want all of them, so repeat
 					"repeat": true,
 					// the user shouldn't care
-					"ask user": false,
+					"ask user": "",
 
 					// $1 was the movie's page, so look there
 					"look in file": "http://www.themoviedb.org/movie/$1",
@@ -119,8 +132,10 @@
 					// "[[:alnum:]\\-]*"
 					"for": "<span itemprop=\"author\" itemscope itemtype=\"http://schema.org/Person\"><a href=\"/person/[[:alnum:]\\-]*\" itemprop=\"url\"><span itemprop=\"name\">([[:alnum:] ]*)</span></a></span>",
 
-					// append the writer to the list of writers
-					"details.Writer(s)": "$1",
+					"set properties": {
+						// append the writer to the list of writers
+						"details.Writer(s)": "$1",
+					},
 
 					// there are no sub-procedures
 					"procedures": []
@@ -130,7 +145,7 @@
 					// we want all of the top four (or less), so repeat
 					"repeat": true,
 					// the user shouldn't care
-					"ask user": false,
+					"ask user": "",
 
 					// $1 was the movie's page, so look there
 					"look in file": "http://www.themoviedb.org/movie/$1",
@@ -142,8 +157,10 @@
 					// "[[:alnum:]\\-]*"
 					"for": "<span itemprop=\"actor\" itemscope itemtype=\"http://schema.org/Person\">[[:space:]]*<a href=\"/person/[[:alnum:]\\-]*\" itemprop=\"url\"><span itemprop=\"name\">([[:alnum:] ]*)</span></a>",
 
-					// append the cast member to the list of members
-					"details.Cast": "$1",
+					"set properties": {
+						// append the cast member to the list of members
+						"details.Cast": "$1",
+					},
 
 					// there are no sub-procedures
 					"procedures": []
@@ -153,12 +170,13 @@
 	],
 
 	// copy over all of the images I retrieved
-	"force copy": [
+	"force import": [
 		// icons
 		"icons.files",
 		// fanart
 		"fanarts.files"
 	],
 
-	"copy": []
+	// no optional copies
+	"import": []
 }

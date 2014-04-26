@@ -40,15 +40,15 @@ namespace AWE
 			 *
 			 * \returns The name of the player.
 			 **/
-			virtual const std::string& getName() const;
+			virtual const QString& getName() const;
 
 		private:
 			/** \brief The name of the player. **/
-			std::string myName;
+			QString myName;
 			/** \brief The program to be run. **/
-			std::string myProgram;
+			QString myProgram;
 			/** \brief The arguments to be passed. **/
-			std::string myArguments;
+			QString myArguments;
 	};
 }
 

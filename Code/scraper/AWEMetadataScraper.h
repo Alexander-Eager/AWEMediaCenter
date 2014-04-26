@@ -2,13 +2,14 @@
 #define AWE_METADATA_SCRAPER_H
 
 // for files, names, and paths
-#include <string>
+#include <QString>
 
 // for settings
 #include "settings/AWEGlobalSettings.h"
 
 // for media files
-#include "items/AWEMediaFile.h"
+#include "items/AWEMediaItem.h"
+#include <QList>
 
 namespace AWE
 {
@@ -58,7 +59,7 @@ namespace AWE
 			 * You must write the metadata to `file`.
 			 *
 			 * To construct your JSON file, you should use 
-			 * [jsoncpp](http://jsoncpp.sourceforge.net).
+			 * [JsonCpp](http://jsoncpp.sourceforge.net).
 			 *
 			 * `askUser` tells your scraper if the user wants to be
 			 * given a list of choices for certain things. You should 
@@ -68,17 +69,56 @@ namespace AWE
 			 * `import` specifies if the files you get should be
 			 * copied into AWEMC's folders. Do NOT copy the media file.
 			 *
+			 * `inheritMetadata` determines if data that could be inherited from 
+			 * the folder should be.
+			 *
 			 * \param[inout] file The media file to get metadata for.
 			 * \param[in] askUser `true` if the user wants to be given choices,
 			 *				`false` otherwise.
 			 * \param[in] import `true` if the user wants to import metadata files,
 			 *				`false` otherwise.
+			 * \param[in] inheritMetadata `true` if designated metadata items should
+			 *								be inherited from the containing folder,
+			 *								`false` otherwise.
 			 *
 			 * \returns `true` if the scraper was able to get the metadata,
 			 *			`false` if it was not.
 			 **/
-			virtual bool scrapeDataForFile(MediaFile* file,
-				bool askUser, bool import) = 0;
+			virtual bool scrapeDataForFile(MediaItem* file,
+				bool askUser, bool import, bool inheritMetadata) = 0;
+
+			/**
+			 * \brief Create a media item (or multiple if applicable) from a
+			 *			given file or folder.
+			 *
+			 * To construct your JSON file, you should use 
+			 * [JsonCpp](http://jsoncpp.sourceforge.net).
+			 *
+			 * `askUser` tells your scraper if the user wants to be
+			 * given a list of choices for certain things. You should 
+			 * NOT ask the user for everything if `askUser` is true;
+			 * only basic things like, "Which icon do you want to use?"
+			 *
+			 * `import` specifies if the files you get should be
+			 * copied into AWEMC's folders. Do NOT copy the media file.
+			 *
+			 * `inheritMetadata` determines if data that could be inherited from 
+			 * the folder should be.
+			 *
+			 * \param[in] file The file or folder to get media items for.
+			 * \param[in] askUser `true` if the user wants to be given choices,
+			 *				`false` otherwise.
+			 * \param[in] import `true` if the user wants to import metadata files,
+			 *				`false` otherwise.
+			 * \param[in] inheritMetadata `true` if designated metadata items should
+			 *								be inherited from the containing folder,
+			 *								`false` otherwise.
+			 *
+			 * \returns A list of media items for the given file. The list is empty if
+			 *			the file does not match.
+			 **/
+			virtual QList<MediaItem*> scrapeDataForFile(const QDir& file,
+				bool askUser, bool import, bool inheritMetadata) = 0;
 
 			/**
 			 * \brief Destroys any used-up dynamic memory.
@@ -101,14 +141,14 @@ namespace AWE
 			 *
 			 * \returns The name of the scraper.
 			 **/
-			virtual const std::string& getName() = 0;
+			virtual const QString& getName() = 0;
 
 			/**
 			 * \brief Gets the media type for this scraper.
 			 *
 			 * \returns The media type name for the scraper.
 			 **/
-			virtual const std::string& getType() = 0;
+			virtual const QString& getType() = 0;
 	};
 }
 

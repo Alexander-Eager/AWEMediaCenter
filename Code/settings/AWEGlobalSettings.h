@@ -2,11 +2,11 @@
 #define AWE_GLOBAL_SETTINGS_H
 
 // for internal data storage
-#include <map>
-#include <set>
+#include <QHash>
+#include <QList>
 
 // for names and accessing data
-#include <string>
+#include <QString>
 #include <QDir>
 
 // for settings file reading
@@ -18,6 +18,7 @@
 namespace AWE
 {
 	// forward declarations
+	class FolderGenerator;
 	class MetadataScraper;
 	class MediaItem;
 	class Folder;
@@ -43,7 +44,7 @@ namespace AWE
 	{
 		public:
 			/** \brief The set type used to hold names. **/
-			typedef std::set<std::string> NameSet;
+			typedef QList<QString> NameSet;
 
 			static Json::Value null;
 
@@ -54,7 +55,7 @@ namespace AWE
 			 *				the settings for AWEMC (usually
 			 *				`settings.json` in the root folder)
 			 **/
-			GlobalSettings(const std::string& settingsFile);
+			GlobalSettings(const QString& settingsFile);
 
 			/** \brief Deconstructor.
 			 * 
@@ -70,7 +71,7 @@ namespace AWE
 			 * \returns The desired scraper as an `MetadataScraper` object
 			 *			or `NULL` if it does not exist.
 			 **/
-			MetadataScraper* getScraperByName(const std::string& name);
+			MetadataScraper* getScraperByName(const QString& name);
 
 			/**
 			 * \brief Get a metadata scraper's settings by name.
@@ -80,14 +81,14 @@ namespace AWE
 			 * \returns The settings of the desired scraper
 			 *			or `Json::Value::null` if it does not exist.
 			 **/
-			Json::Value& getScraperSettingsByName(const std::string& name);
+			Json::Value& getScraperSettingsByName(const QString& name);
 
 			/** 
 			 * \brief Get a set of all metadata scrapers.
 			 *
 			 * \returns A set filled with every metadata scraper name.
 			 **/
-			const NameSet& getAllMetadataScraperNames();
+			QList<QString> getAllMetadataScraperNames();
 
 			/**
 			 * \brief Get a media player by name.
@@ -97,7 +98,7 @@ namespace AWE
 			 * \returns The desired media player
 			 *			or `NULL` if it does not exist.
 			 **/
-			MediaPlayer* getPlayerByName(const std::string& name);
+			MediaPlayer* getPlayerByName(const QString& name);
 
 			/**
 			 * \brief Get a media player's settings by name.
@@ -107,35 +108,35 @@ namespace AWE
 			 * \returns The settings of the desired media player
 			 *			or `Json::Value::null` if it does not exist.
 			 **/
-			Json::Value& getPlayerSettingsByName(const std::string& name);
+			Json::Value& getPlayerSettingsByName(const QString& name);
 
 			/** 
 			 * \brief Get a set of all media players.
 			 *
 			 * \returns A set filled with every media player name.
 			 **/
-			const NameSet& getAllMediaPlayerNames();
+			QList<QString> getAllMediaPlayerNames();
 
 			/**
 			 * \brief Get the media type with the given name.
 			 *
 			 * \returns The default metadata settings for the given type.
 			 **/
-			Json::Value& getTypeByName(const std::string& name);
+			Json::Value& getTypeByName(const QString& name);
 
 			/**
 			 * \brief Get a set of all media types.
 			 *
 			 * \returns A set filled with every media type name.
 			 **/
-			const NameSet& getAllMediaTypeNames();
+			QList<QString> getAllMediaTypeNames();
 
 			/**
 			 * \brief Get the names of all of the media services.
 			 *
 			 * \returns A set filled with every media service name.
 			 **/
-			const NameSet& getAllMediaServiceNames();
+			QList<QString> getAllMediaServiceNames();
 
 			/**
 			 * \brief Get a media service by name.
@@ -144,7 +145,7 @@ namespace AWE
 			 *
 			 * \returns The desired media service.
 			 **/
-			MediaService* getMediaServiceByName(const std::string& name);
+			MediaService* getMediaServiceByName(const QString& name);
 
 			/**
 			 * \brief Get a media item from its JSON file.
@@ -158,12 +159,11 @@ namespace AWE
 			MediaItem* getMediaItemByJSONFile(const QDir& file);
 
 			/**
-			 * \brief Add the given folder.
+			 * \brief Add the given media item.
 			 *
-			 * \param path The path to the config file.
-			 * \param folder The folder.
+			 * \param item The media item.
 			 **/
-			void addFolder(const std::string& path, Folder* folder);
+			void addItem(MediaItem* item);
 
 			/**
 			 * \brief Get the root folder.
@@ -173,35 +173,29 @@ namespace AWE
 			Folder* getRootFolder();
 
 		private:
+			/** \brief The global settings. **/
+			Json::Value mySettings;
 			/** \brief The global settings file. **/
 			Json::Value mySettingsFile;
 
-			/** \brief Names of all of the media players. **/
-			NameSet myMediaPlayerNames;
 			/** \brief Maps names of media players onto players. **/
-			std::map<std::string, MediaPlayer*> myMediaPlayers;
+			QHash<QString, MediaPlayer*> myMediaPlayers;
 			/** \brief Maps names of media players onto settings. **/
-			std::map<std::string, Json::Value> myMediaPlayerSettings;
+			QHash<QString, Json::Value> myMediaPlayerSettings;
 
-			/** \brief Names of all of the metadata scrapers. **/
-			NameSet myMetadataScraperNames;
 			/** \brief Maps names of metadata scrapers onto scrapers. **/
-			std::map<std::string, MetadataScraper*> myMetadataScrapers;
+			QHash<QString, MetadataScraper*> myMetadataScrapers;
 			/** \brief Maps names of metadata scrapers onto settings. **/
-			std::map<std::string, Json::Value> myMetadataScraperSettings;
+			QHash<QString, Json::Value> myMetadataScraperSettings;
 
-			/** \brief Names of all of the media types. **/
-			NameSet myMediaTypeNames;
-			/** \brief Maps names of media types onto metadata defaults. **/
-			std::map<std::string, Json::Value> myMediaTypes;
+			/** \brief Maps names of media types onto folder generators. **/
+			QHash<QString, FolderGenerator*> myFolderGenerators;
 
-			/** \brief Names of all of the media services. **/
-			NameSet myMediaServiceNames;
 			/** \brief Maps names of media services onto services. **/
-			std::map<std::string, MediaService*> myMediaServices;
+			QHash<QString, MediaService*> myMediaServices;
 
 			/** \brief Maps the absolute, clean path of an item onto the item. **/
-			std::map<std::string, MediaItem*> myMediaItems;
+			QHash<QDir, MediaItem*> myMediaItems;
 			/** \brief The root folder. **/
 			Folder* myRootFolder;
 

@@ -1,5 +1,7 @@
 #include "internet_reader.h"
-//#include "debug_macros/debug.h"
+
+#include <curl/curl.h>
+#include <cstddef>
 
 /**
  * \brief Used by libcurl to read pages from the internet.
@@ -11,11 +13,15 @@
  * \param[in] readFromMe The data to write to `writeToMe`.
  * \param[in] size Part of the size of `readFromMe`.
  * \param[in] nmemb The other part of the size of `readFromMe`.
- * \param[in] writeToMe An `std::ostream*` to write data to.
+ * \param[in] writeToMe An `QTestStream*` to write data to.
  **/
 size_t writeCallback(char* readFromMe, size_t size, size_t nmemb, void* writeToMe)
 {
-	((std::ostream*) writeToMe)->write(readFromMe, size * nmemb);
+	QTextStream* temp = (QTextStream*) writeToMe;
+	for (size_t i = 0; i < size * nmemb; ++ i)
+	{
+		temp->operator<< (readFromMe[i]);
+	}
 	return size * nmemb;
 }
 
@@ -31,7 +37,7 @@ size_t writeCallback(char* readFromMe, size_t size, size_t nmemb, void* writeToM
  * \param[in] pageToRead The URL of the desired web page.
  * \param[out] out The stream to write the contents of said web page to.
  **/
-void readURLIntoStream(const std::string& pageToRead, std::ostream& out)
+void readURLIntoStream(const QString& pageToRead, QTextStream& out)
 {
 	CURL* curl = curl_easy_init();
 

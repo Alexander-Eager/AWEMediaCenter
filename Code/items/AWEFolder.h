@@ -8,7 +8,7 @@
 #include "AWEMediaItem.h"
 
 // for holding data
-#include <vector>
+#include <QList>
 
 namespace AWE
 {
@@ -42,11 +42,18 @@ namespace AWE
 			 *
 			 * \returns All of the items this folder contains.
 			 **/
-			virtual std::vector<MediaItem*>& getItems();
+			virtual QList<MediaItem*> getItems();
+
+			/**
+			 * \brief Add an item.
+			 *
+			 * \param item The item to add to this `Folder`.
+			 **/
+			virtual void addItem(MediaItem* item);
 
 		private:
 			/** \brief List of contained items. **/
-			std::vector<MediaItem*> myItems;
+			QList<MediaItem*> myItems;
 	};
 }
 

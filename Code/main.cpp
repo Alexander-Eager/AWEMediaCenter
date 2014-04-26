@@ -1,12 +1,13 @@
 // for loading the user settings
-#include <string>
+#include <QString>
 #include "settings/AWEGlobalSettings.h"
 
 // for the UI
 #include "items/AWEFolder.h"
 #include "items/AWEMediaFile.h"
+#include <string>
 #include <iostream>
-#include <deque>
+#include <QStack>
 
 using namespace std;
 using namespace AWE;
@@ -14,7 +15,7 @@ using namespace AWE;
 int main(int argc, char* argv[])
 {
 	// get the main settings
-	string mainSettings;
+	QString mainSettings;
 	if (argc <= 1)
 	{
 		mainSettings = "settings.json";
@@ -31,8 +32,8 @@ int main(int argc, char* argv[])
 	// TODO replace with Qt gui
 	int result = 0;
 
-	deque<Folder*> stack;
-	stack.push_back(settings->getRootFolder());
+	QStack<Folder*> stack;
+	stack.push(settings->getRootFolder());
 	string buffer;
 	while (stack.size() != 0)
 	{
@@ -48,9 +49,9 @@ int main(int argc, char* argv[])
 		// list everything
 		else if (buffer == "ls")
 		{
-			for (auto i : stack.back()->getItems())
+			for (auto i : stack.top()->getItems())
 			{
-				cout << i->getName() << endl;
+				cout << i->getName().toStdString() << endl;
 			}
 		}
 		// open the file or folder
@@ -60,18 +61,18 @@ int main(int argc, char* argv[])
 			cout << "Item " << temp << endl;
 			for (auto i : stack.back()->getItems())
 			{
-				if (i->getName() == temp)
+				if (i->getName().toStdString() == temp)
 				{
 					if (i->getItemType() == FILE_TYPE)
 					{
 						cout << "Playing file \"" 
-							<< i->getName() << "\"" << endl;
+							<< i->getName().toStdString() << "\"" << endl;
 						((MediaFile*) i)->play();
 					}
 					else if (i->getItemType() == FOLDER_TYPE)
 					{
 						cout << "Opening folder \"" 
-							<< i->getName() << "\"" << endl;
+							<< i->getName().toStdString() << "\"" << endl;
 						stack.push_back((Folder*) i);
 					}
 					// TODO services

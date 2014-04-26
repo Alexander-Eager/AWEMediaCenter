@@ -1,7 +1,7 @@
 #ifndef AWE_MEDIA_PLAYER_H
 #define AWE_MEDIA_PLAYER_H
 
-#include <string>
+#include <QString>
 
 namespace AWE
 {
@@ -36,7 +36,7 @@ namespace AWE
 			 *
 			 * \returns The name of the player.
 			 **/
-			virtual const std::string& getName() const = 0;
+			virtual const QString& getName() const = 0;
 	};
 }
 

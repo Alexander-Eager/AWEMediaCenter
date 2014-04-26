@@ -2,7 +2,7 @@
 #define AWE_MEDIA_ITEM_H
 
 // for holding data
-#include <string>
+#include <QString>
 #include <QDir>
 
 // for holding settings data
@@ -52,7 +52,7 @@ namespace AWE
 			 *
 			 * \returns The value associated with the key `str`.
 			 **/
-			virtual const Json::Value& getMember(const std::string& str) const;
+			virtual const Json::Value& getMember(const QString& str) const;
 
 			/**
 			 * \brief Get a member of unspecified type by name.
@@ -62,7 +62,7 @@ namespace AWE
 			 *
 			 * \returns The value associated with the key `str`.
 			 **/
-			virtual Json::Value& getMember(const std::string& str);
+			virtual Json::Value& getMember(const QString& str);
 
 			/**
 			 * \brief Get a member of `bool` type by name.
@@ -72,17 +72,17 @@ namespace AWE
 			 *
 			 * \returns The value associated with the key `str`.
 			 **/
-			virtual bool getBoolMember(const std::string& str) const;
+			virtual bool getBoolMember(const QString& str) const;
 
 			/**
-			 * \brief Get a member of `std::string` type by name.
+			 * \brief Get a member of `QString` type by name.
 			 *
 			 * \param str A formatted string representing the path
 			 *				to the member variable in the JSON file.
 			 *
 			 * \returns The value associated with the key `str`.
 			 **/
-			virtual std::string getStringMember(const std::string& str) const;
+			virtual QString getStringMember(const QString& str) const;
 
 			/**
 			 * \brief Get a member of `int` type by name.
@@ -92,7 +92,7 @@ namespace AWE
 			 *
 			 * \returns The value associated with the key `str`.
 			 **/
-			virtual int getIntMember(const std::string& str) const;
+			virtual int getIntMember(const QString& str) const;
 
 			/**
 			 * \brief Get the name of the media item.
@@ -101,7 +101,7 @@ namespace AWE
 			 *
 			 * \returns The name of this media item.
 			 **/
-			virtual std::string getName() const;
+			virtual QString getName() const;
 
 			/**
 			 * \brief Get the absolute path to the JSON settings file.

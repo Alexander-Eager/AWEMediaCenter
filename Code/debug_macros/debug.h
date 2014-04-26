@@ -5,9 +5,9 @@
 
 #	if SHOULD_DEBUG
 
-#		include <iostream>
+#		include <QDebug>
 
-#		define DEBUG_OUT(STR) std::cout << STR << std::endl;
+#		define DEBUG_OUT(STR) qDebug() << STR;
 
 #		define DEBUG(STR) STR
 

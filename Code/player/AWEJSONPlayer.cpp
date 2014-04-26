@@ -7,36 +7,30 @@
 // JSON library
 #include "libs/json/json.h"
 
-// for reading in the JSON file
-#include "libs/generic_file_reader/file_reader.h"
-#include <sstream>
-
 // for running commands
 #include <QProcess>
 
 using namespace AWE;
-using namespace std;
 
 JSONPlayer::JSONPlayer(Json::Value& player)
 {
-	myName = player["name"].asString();
-	myProgram = player["program"].asString();
-	myArguments = player["args"].asString();
-	// TODO other arguments
+	myName = player["name"].asCString();
+	myProgram = player["program"].asCString();
+	myArguments = player["args"].asCString();
 }
 
 int JSONPlayer::play(MediaFile* file)
 {
-	string args = myArguments;
-	args.replace(args.find_first_of("{1}"), 3, 
-		file->getMediaFile().absolutePath().toStdString());
+	QString args = myArguments;
+	args.replace("{1}",
+		file->getMediaFile().absolutePath());
 	// TODO other replaces
 	QProcess prog;
-	prog.start(QString((myProgram + " " + args).c_str()));
+	prog.start(myProgram + " " + args);
 	return prog.waitForFinished();
 }
 
-const string& JSONPlayer::getName() const
+const QString& JSONPlayer::getName() const
 {
 	return myName;
 }

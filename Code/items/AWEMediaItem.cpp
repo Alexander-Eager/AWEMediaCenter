@@ -3,7 +3,12 @@
 
 // for file reading
 #include "libs/generic_file_reader/file_reader.h"
+#include <QTextStream>
+#include <QString>
+
+// for property parsing
 #include <sstream>
+#include <string>
 
 using namespace AWE;
 using namespace Json;
@@ -14,9 +19,10 @@ MediaItem::MediaItem(const QDir& file) :
 {
 	// read in the settings file
 	Reader reader;
-	std::stringstream ss;
-	copyFile(file.absolutePath().toStdString(), ss);
-	reader.parse(ss.str(), myData, false);
+	QString contents;
+	QTextStream stream(&contents);
+	copyFile(file.absolutePath(), stream);
+	reader.parse(contents.toStdString(), myData, false);
 }
 
 MediaItem::~MediaItem()
@@ -34,14 +40,14 @@ Value& MediaItem::getData()
 	return myData;
 }
 
-const Value& MediaItem::getMember(const std::string& str) const
+const Value& MediaItem::getMember(const QString& str) const
 {
 	// str is of the form "object.object.object. ... .key"
 	// so parse by period and delve down until you reach the end
 	const Value* toSet = &myData;
-	std::stringstream propParser;
-	propParser << str;
-	std::string parseResult;
+	stringstream propParser;
+	propParser << str.toStdString();
+	string parseResult;
 	while (getline(propParser, parseResult, '.'))
 	{
 		toSet = &(toSet->operator[] (parseResult));
@@ -49,14 +55,14 @@ const Value& MediaItem::getMember(const std::string& str) const
 	return *toSet;
 }
 
-Value& MediaItem::getMember(const std::string& str)
+Value& MediaItem::getMember(const QString& str)
 {
 	// str is of the form "object.object.object. ... .key"
 	// so parse by period and delve down until you reach the end
 	Value* toSet = &myData;
-	std::stringstream propParser;
-	propParser << str;
-	std::string parseResult;
+	stringstream propParser;
+	propParser << str.toStdString();
+	string parseResult;
 	while (getline(propParser, parseResult, '.'))
 	{
 		toSet = &(toSet->operator[] (parseResult));
@@ -64,24 +70,24 @@ Value& MediaItem::getMember(const std::string& str)
 	return *toSet;
 }
 
-bool MediaItem::getBoolMember(const std::string& str) const
+bool MediaItem::getBoolMember(const QString& str) const
 {
 	return getMember(str).asBool();
 }
 
-std::string MediaItem::getStringMember(const std::string& str) const
+QString MediaItem::getStringMember(const QString& str) const
 {
-	return getMember(str).asString();
+	return getMember(str).asCString();
 }
 
-int MediaItem::getIntMember(const std::string& str) const
+int MediaItem::getIntMember(const QString& str) const
 {
 	return getMember(str).asInt();
 }
 
-std::string MediaItem::getName() const
+QString MediaItem::getName() const
 {
-	return getMember("metadata.name").asString();
+	return getMember("metadata.name").asCString();
 }
 
 const QDir& MediaItem::getJSONFile() const

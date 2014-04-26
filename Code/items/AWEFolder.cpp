@@ -3,30 +3,30 @@
 
 // file reading
 #include "libs/generic_file_reader/file_reader.h"
-#include <string>
-#include <sstream>
-#include <iostream>
+#include <QTextStream>
+#include <QString>
 
 using namespace AWE;
-using namespace std;
 
 Folder::Folder(const QDir& folder,
 		GlobalSettings* settings) :
 	MediaItem(folder)
 {
+	// add the initial item
+	settings->addItem(this);
+
 	// get all of the children
 	QDir root(folder);
-	settings->addFolder(root.absolutePath().toStdString(), this);
 	root.cdUp();
-	string r = root.absolutePath().toStdString();
-	for (unsigned int i = 0; i < myData["items"].size(); ++ i)
+	QString r = root.absolutePath();
+	for (uint i = 0; i < myData["items"].size(); ++ i)
 	{
-		string str = r + "/" + myData["items"][i].asString();
-		QDir dir(QDir::cleanPath(str.c_str()));
+		QString str = r + "/" + myData["items"][i].asCString();
+		QDir dir(QDir::cleanPath(str));
 		MediaItem* toAdd = settings->getMediaItemByJSONFile(dir);
-		if (toAdd != NULL)
+		if (toAdd != nullptr)
 		{
-			myItems.push_back(toAdd);
+			myItems.append(toAdd);
 		}
 	}
 }
@@ -41,7 +41,12 @@ ItemType Folder::getItemType() const
 	return FOLDER_TYPE;
 }
 
-vector<MediaItem*>& Folder::getItems()
+QList<MediaItem*> Folder::getItems()
 {
 	return myItems;
+}
+
+void Folder::addItem(MediaItem* item)
+{
+	myItems.append(item);
 }

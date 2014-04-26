@@ -11,6 +11,9 @@
 #include "player/AWEMediaPlayer.h"
 #include "player/AWEJSONPlayer.h"
 
+// types
+#include "types/AWEFolderGenerator.h"
+
 // items
 #include "items/AWEMediaItem.h"
 #include "items/AWEMediaFile.h"
@@ -19,14 +22,15 @@
 #include "items/AWEJSONService.h"
 
 // for traversing paths
-#include <QDir>
 #include <QStringList>
-#include <QString>
 
 // for reading files
 #include "libs/generic_file_reader/file_reader.h"
 #include <iostream>
 #include <sstream>
+
+// for temporary data
+#include <QQueue>
 
 using namespace AWE;
 using namespace Json;
@@ -34,13 +38,14 @@ using namespace std;
 
 Value GlobalSettings::null = Value::null;
 
-GlobalSettings::GlobalSettings(const string& settingsFile)
+GlobalSettings::GlobalSettings(const QString& settingsFile)
 {
-	// TODO make safe
-	stringstream ss;
+	// read in the settings file
+	QString contents;;
+	QTextStream ss(contents);
 	copyFile(settingsFile, ss);
 	Reader reader;
-	reader.parse(ss.str(), mySettingsFile, false);
+	reader.parse(contents.toStdString(), mySettings, false);
 
 	// get all of the objects
 	obtainScrapers();
@@ -55,44 +60,50 @@ GlobalSettings::~GlobalSettings()
 {
 	for (auto i : myMediaPlayers)
 	{
-		delete i.second;
+		delete i;
 	}
 	for (auto i : myMetadataScrapers)
 	{
-		delete i.second;
+		delete i;
 	}
 	for (auto i : myMediaItems)
 	{
-		delete i.second;
+		delete i;
+	}
+	for (auto i : myFolderGenerators)
+	{
+		delete i;
 	}
 }
 
 void GlobalSettings::obtainScrapers()
 {
 	// get the directory
-	QDir dir(QDir::current());
-	dir.cd(mySettingsFile["scrapers"].asCString());
+	QDir dir(mySettingsFile);
+	dir.cdUp();
+	dir.cd(mySettings["scrapers"].asCString());
 
 	// important variables
 	Reader reader;
 	Value scraper;
-	string name, type, file;
-	stringstream contents;
+	QString name, type, file;
+	QTextStream stream;
+	QString contents;
 
 	// get all of the JSON scrapers
 	dir.cd("json");
 	QStringList filter;
 	filter << "*.json";
 	dir.setNameFilters(filter);
-	for (unsigned int i = 0; i < dir.count(); ++ i)
+	for (uint i = 0; i < dir.count(); ++ i)
 	{
-		file = dir.absoluteFilePath(dir[i]).toStdString();
-		copyFile(file, contents);
-		if (reader.parse(contents.str(), 
+		file = dir.absoluteFilePath(dir[i]);
+		copyFile(file, stream);
+		if (reader.parse(contents.toStdString(), 
 							scraper, false))
 		{
-			name = scraper["name"].asString();
-			type = scraper["type"].asString();
+			name = scraper["name"].asCString();
+			type = scraper["type"].asCString();
 			myMetadataScraperNames.insert(name);
 			myMetadataScraperSettings[name] = scraper;
 			myMetadataScrapers[name] = new JSONScraper(name, type);
@@ -106,14 +117,16 @@ void GlobalSettings::obtainScrapers()
 void GlobalSettings::obtainPlayers()
 {
 	// get the directory
-	QDir dir(QDir::current());
-	dir.cd(mySettingsFile["players"].asCString());
+	QDir dir(mySettingsFile);
+	dir.cdUp();
+	dir.cd(mySettings["players"].asCString());
 
 	// important variables
 	Reader reader;
 	Value player;
-	string name, file;
-	stringstream contents;
+	QString name, file;
+	QTextStream stream;
+	QString contents;
 
 	// get all of the JSON players
 	dir.cd("json");
@@ -122,9 +135,9 @@ void GlobalSettings::obtainPlayers()
 	dir.setNameFilters(filter);
 	for (unsigned int i = 0; i < dir.count(); ++ i)
 	{
-		file = dir.absoluteFilePath(dir[i]).toStdString();
-		copyFile(file, contents);
-		if (reader.parse(contents.str(),
+		file = dir.absoluteFilePath(dir[i]);
+		copyFile(file, stream);
+		if (reader.parse(contents.toStdString(),
 							player, false))
 		{
 			name = player["name"].asString();
@@ -138,67 +151,80 @@ void GlobalSettings::obtainPlayers()
 	// TODO plugins
 }
 
-void GlobalSettings::obtainSkins() {}
+void GlobalSettings::obtainSkins() { }
 
 void GlobalSettings::obtainTypes()
 {
-	QDir dir(QDir::current());
-	dir.cd(mySettingsFile["types"].asCString());
+	QDir dir(mySettingsFile);
+	dir.cdUp();
+	dir.cd(mySettings["types"].asCString());
 
 	// important variables
-	Reader reader;
-	Value type;
-	string name, file;
-	stringstream contents;
+	FolderGenerator* type;
+	FolderGenerator* sub;
+	QString name;
+	QDir file;
 
 	// get all of the media types
 	QStringList filter;
 	filter << "*.json";
 	dir.setNameFilters(filter);
-	for (unsigned int i = 0; i < dir.count(); ++ i)
+	for (uint i = 0; i < dir.count(); ++ i)
 	{
-		file = dir.absoluteFilePath(dir[i]).toStdString();
-		copyFile(file, contents);
-		if (reader.parse(contents.str(),
-							type, false))
+		// get the file
+		file = QDir(dir.absoluteFilePath(dir[i]));
+
+		// get the root type
+		type = new FolderGenerator(file);
+
+		// get all sub types
+		deque<FolderGenerator*> types;
+		types.push_back(type);
+		while (types.size() > 0)
 		{
-			name = type["type"].asString();
+			// get the front of the queue
+			sub = types.front();
+			types.pop_front();
+
+			// add it to the relevant internal data
+			name = type->getType();
 			myMediaTypeNames.insert(name);
-			myMediaTypes[name] = type;
+			myFolderGenerators[name] = type;
+
+			// add all sub generators to the queue
+			for (FolderGenerator* j : sub->getSubGenerators())
+			{
+				types.push_back(j);
+			}
 		}
-		contents.clear();
 	}
 }
 
 void GlobalSettings::obtainServices()
 {
 	// get the directory
-	QDir dir(QDir::current());
-	dir.cd(mySettingsFile["services"].asCString());
+	QDir dir(mySettingsFile);
+	dir.cdUp();
+	dir.cd(mySettings["services"].asCString());
 
 	// important variables
-	Reader reader;
-	Value service;
-	string name, file;
-	stringstream contents;
+	MediaService* service;
+	QString name;
+	QDir file;
 
-	// get all of the JSON players
+	// get all of the JSON services
 	dir.cd("json");
 	QStringList filter;
 	filter << "*.json";
 	dir.setNameFilters(filter);
 	for (unsigned int i = 0; i < dir.count(); ++ i)
 	{
-		file = dir.absoluteFilePath(dir[i]).toStdString();
-		copyFile(file, contents);
-		if (reader.parse(contents.str(),
-							service, false))
-		{
-			name = service["name"].asString();
-			myMediaServiceNames.insert(name);
-			myMediaServices[name] = new JSONService(QDir(file.c_str()));
-		}
-		contents.clear();
+		file = QDir(dir.absoluteFilePath(dir[i]));
+
+		service = new MediaService(file)
+		name = service->getName();
+		myMediaServiceNames.insert(name);
+		myMediaServices[name] = service;
 	}
 
 	// TODO plugins
@@ -206,97 +232,93 @@ void GlobalSettings::obtainServices()
 
 void GlobalSettings::obtainItems() 
 {
-	QDir root(mySettingsFile["root"].asCString());
+	QDir dir(mySettingsFile);
+	dir.cdUp();
 	myRootFolder = (Folder*) getMediaItemByJSONFile(root);
 }
 
-MetadataScraper* GlobalSettings::getScraperByName(const string& str)
+MetadataScraper* GlobalSettings::getScraperByName(const QString& str)
 {
-	map<string, MetadataScraper*>::iterator i
-		= myMetadataScrapers.find(str);
+	auto i = myMetadataScrapers.find(str);
 	if (i != myMetadataScrapers.end())
 	{
-		return i->second;
+		return *i;
 	}
-	return NULL;
+	return nullptr;
 }
 
-Value& GlobalSettings::getScraperSettingsByName(const string& str)
+Value& GlobalSettings::getScraperSettingsByName(const QString& str)
 {
-	map<string, Value>::iterator i
-		= myMetadataScraperSettings.find(str);
+	auto i = myMetadataScraperSettings.find(str);
 	if (i != myMetadataScraperSettings.end())
 	{
-		return i->second;
+		return *i;
 	}
 	return null;
 }
 
-const GlobalSettings::NameSet& GlobalSettings::getAllMetadataScraperNames()
+QList<QString> GlobalSettings::getAllMetadataScraperNames()
 {
 	return myMetadataScraperNames;
 }
 
-MediaPlayer* GlobalSettings::getPlayerByName(const string& str)
+MediaPlayer* GlobalSettings::getPlayerByName(const QString& str)
 {
-	map<string, MediaPlayer*>::iterator i
-		= myMediaPlayers.find(str);
+	auto i = myMediaPlayers.find(str);
 	if (i != myMediaPlayers.end())
 	{
-		return i->second;
+		return *i;
 	}
-	return NULL;
+	return nullptr;
 }
 
-Value& GlobalSettings::getPlayerSettingsByName(const string& str)
+Value& GlobalSettings::getPlayerSettingsByName(const QString& str)
 {
-	map<string, Value>::iterator i
-		= myMediaPlayerSettings.find(str);
+	auto i = myMediaPlayerSettings.find(str);
 	if (i != myMediaPlayerSettings.end())
 	{
-		return i->second;
+		return *i;
 	}
 	return null;
 }
 
-const GlobalSettings::NameSet& GlobalSettings::getAllMediaPlayerNames()
+QList<QString> GlobalSettings::getAllMediaPlayerNames()
 {
 	return myMediaPlayerNames;
 }
 
-Value& GlobalSettings::getTypeByName(const string& str)
+Value& GlobalSettings::getTypeByName(const QString& str)
 {
-	map<string, Value>::iterator i
-		= myMediaTypes.find(str);
-	if (i != myMediaTypes.end())
+	auto i = myFolderGenerators.find(str);
+	if (i != myFolderGenerators.end())
 	{
-		return i->second;
+		return i->getDefaultMetadata();
 	}
 	return null;
 }
 
-const GlobalSettings::NameSet& GlobalSettings::getAllMediaTypeNames()
+QList<QString> GlobalSettings::getAllMediaTypeNames()
 {
 	return myMediaTypeNames;
 }
 
 MediaItem* GlobalSettings::getMediaItemByJSONFile(const QDir& file)
 {
-	string str = QDir::cleanPath(file.absolutePath()).toStdString();
-	map<string, MediaItem*>::iterator i = myMediaItems.find(str);
+	auto i = myMediaItems.find(file);
 	if (i != myMediaItems.end())
 	{
-		return i->second;
+		return *i;
 	}
 	else
 	{
 		// read to get the type
-		MediaItem* item = NULL;
+		MediaItem* item = nullptr;
 		Reader reader;
 		Value temp;
-		stringstream ss;
-		if (copyFile(file.absolutePath().toStdString(), ss)
-			&& reader.parse(ss.str(), temp, false))
+		QString contents;
+		QTextStream stream(contents);
+		if (copyFile(file.absolutePath(), stream)
+			&& reader.parse(contents.toStdString(), temp, false))
 		{
 			if (temp["type"].asString() == "file")
 			{
@@ -315,25 +337,24 @@ MediaItem* GlobalSettings::getMediaItemByJSONFile(const QDir& file)
 	}
 }
 
-const GlobalSettings::NameSet& GlobalSettings::getAllMediaServiceNames()
+QList<QString> GlobalSettings::getAllMediaServiceNames()
 {
 	return myMediaServiceNames;
 }
 
-MediaService* GlobalSettings::getMediaServiceByName(const string& str)
+MediaService* GlobalSettings::getMediaServiceByName(const QString& str)
 {
-	map<string, MediaService*>::iterator i
-		= myMediaServices.find(str);
+	auto i = myMediaServices.find(str);
 	if (i != myMediaServices.end())
 	{
-		return i->second;
+		return *i;
 	}
-	return NULL;
+	return nullptr;
 }
 
-void GlobalSettings::addFolder(const string& str, Folder* folder)
+void GlobalSettings::addItem(MediaItem* item)
 {
-	myMediaItems[str] = folder;
+	myMediaItems[item->getJSONFile()] = item;
 }
 
 Folder* GlobalSettings::getRootFolder()

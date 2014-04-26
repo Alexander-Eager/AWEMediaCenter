@@ -1,25 +1,22 @@
 #include "file_reader.h"
 
-#include <sstream>
+// for reading web pages
+#include "libs/internet_reader/internet_reader.h"
 
-bool copyFile(const std::string& file, std::ostream& out)
+#include <QFile>
+
+bool copyFile(const QString& file, QTextStream& out)
 {
 	// try to open locally first
-	std::ifstream reader(file);
-
-	// if it doesn't open, assume its a webpage and read that
-	if (reader.fail())
+	QFile readMe(file);
+	if (readMe.open(QFile::ReadOnly))
 	{
-		// now try web page
-		readURLIntoStream(file, out);
-		return true;
+		// it is a local file
+		QTextStream reader(&readMe);
+		out << reader.readAll().status();
+		return !out.status();
 	}
 
-	// the file exists locally, so return all of its contents
-	char buffer[1001];
-	while (reader.getline(buffer, 1001))
-	{
-		out << buffer << '\n';
-	}
-	return true;
+	// it was not a local file, so try the network
+	readURLIntoStream(file, out);
 }

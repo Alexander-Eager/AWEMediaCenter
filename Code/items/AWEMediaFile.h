@@ -2,7 +2,6 @@
 #define AWE_MEDIA_FILE_H
 
 // for holding data
-#include <string>
 #include <QDir>
 
 // for holding settings data
