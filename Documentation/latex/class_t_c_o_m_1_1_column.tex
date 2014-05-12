@@ -1,0 +1,81 @@
+\hypertarget{class_t_c_o_m_1_1_column}{\section{T\-C\-O\-M\-:\-:Column Class Reference}
+\label{class_t_c_o_m_1_1_column}\index{T\-C\-O\-M\-::\-Column@{T\-C\-O\-M\-::\-Column}}
+}
+
+
+Describes a column of colored text that may be placed next to other such columns.  
+
+
+
+
+{\ttfamily \#include $<$column.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_t_c_o_m_1_1_column_af677d70a5fe2fa42ad6e698ba41b8a9d}{{\bfseries Column} (const \hyperlink{class_t_c_o_m_1_1_command}{Command} \&default\-Format=Command\-::\-Nothing(), uint min\-Width=0)}\label{class_t_c_o_m_1_1_column_af677d70a5fe2fa42ad6e698ba41b8a9d}
+
+\item 
+\hypertarget{class_t_c_o_m_1_1_column_a3dafb0a8daff97a3bc2b55365df8f3e9}{void {\bfseries add\-Entry} (const std\-::string \&entry)}\label{class_t_c_o_m_1_1_column_a3dafb0a8daff97a3bc2b55365df8f3e9}
+
+\item 
+\hypertarget{class_t_c_o_m_1_1_column_ab696a4e471863c4fb86c6f83eb14d6d0}{void {\bfseries add\-Entry} (const std\-::string \&entry, \hyperlink{class_t_c_o_m_1_1_command}{Command} form)}\label{class_t_c_o_m_1_1_column_ab696a4e471863c4fb86c6f83eb14d6d0}
+
+\item 
+\hypertarget{class_t_c_o_m_1_1_column_ad25618029d8112da10574b7f58a3d6a0}{bool {\bfseries insert\-Entry} (uint index, const std\-::string \&entry)}\label{class_t_c_o_m_1_1_column_ad25618029d8112da10574b7f58a3d6a0}
+
+\item 
+\hypertarget{class_t_c_o_m_1_1_column_abc25323ef15da76c333dfcf919596c65}{bool {\bfseries insert\-Entry} (uint index, const std\-::string \&entry, \hyperlink{class_t_c_o_m_1_1_command}{Command} form)}\label{class_t_c_o_m_1_1_column_abc25323ef15da76c333dfcf919596c65}
+
+\item 
+\hypertarget{class_t_c_o_m_1_1_column_aff808d9e70b5d54245f70a631bb772c5}{bool {\bfseries remove\-Entry} (uint index)}\label{class_t_c_o_m_1_1_column_aff808d9e70b5d54245f70a631bb772c5}
+
+\item 
+\hypertarget{class_t_c_o_m_1_1_column_aeb6198497bf285df3cb3d24c1137cf38}{const std\-::string \& {\bfseries get\-Entry} (uint index) const }\label{class_t_c_o_m_1_1_column_aeb6198497bf285df3cb3d24c1137cf38}
+
+\item 
+\hypertarget{class_t_c_o_m_1_1_column_af1ee7884c8e1b4f4c565f9eeff0e8a98}{void {\bfseries set\-Entry} (uint index, const std\-::string \&value)}\label{class_t_c_o_m_1_1_column_af1ee7884c8e1b4f4c565f9eeff0e8a98}
+
+\item 
+\hypertarget{class_t_c_o_m_1_1_column_a6e5036af803a5952d98103790ac824e4}{void {\bfseries set\-Entry\-Format} (uint index, \hyperlink{class_t_c_o_m_1_1_command}{Command} form)}\label{class_t_c_o_m_1_1_column_a6e5036af803a5952d98103790ac824e4}
+
+\item 
+\hypertarget{class_t_c_o_m_1_1_column_a15c301ccb383f04a4f9c7240b4028ee3}{void {\bfseries print\-Entry} (std\-::ostream \&os, uint index) const }\label{class_t_c_o_m_1_1_column_a15c301ccb383f04a4f9c7240b4028ee3}
+
+\item 
+\hypertarget{class_t_c_o_m_1_1_column_a58f5c88985f810903a5fc8a6eeffc6da}{uint {\bfseries num\-Entries} () const }\label{class_t_c_o_m_1_1_column_a58f5c88985f810903a5fc8a6eeffc6da}
+
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_t_c_o_m_1_1_column_ad0e80fb1284facb91b901c05dda05d54}{std\-::vector$<$ std\-::string $>$ \hyperlink{class_t_c_o_m_1_1_column_ad0e80fb1284facb91b901c05dda05d54}{my\-Entries}}\label{class_t_c_o_m_1_1_column_ad0e80fb1284facb91b901c05dda05d54}
+
+\begin{DoxyCompactList}\small\item\em List of entries in the column. \end{DoxyCompactList}\item 
+\hypertarget{class_t_c_o_m_1_1_column_ade33cc0898405fb6d0e6588aac14c44b}{std\-::vector$<$ \hyperlink{class_t_c_o_m_1_1_command}{Command} $>$ {\bfseries my\-Entry\-Formats}}\label{class_t_c_o_m_1_1_column_ade33cc0898405fb6d0e6588aac14c44b}
+
+\item 
+\hypertarget{class_t_c_o_m_1_1_column_a43670fe906df19fd733c8be6eb48dfdb}{\hyperlink{class_t_c_o_m_1_1_command}{Command} \hyperlink{class_t_c_o_m_1_1_column_a43670fe906df19fd733c8be6eb48dfdb}{my\-Format}}\label{class_t_c_o_m_1_1_column_a43670fe906df19fd733c8be6eb48dfdb}
+
+\begin{DoxyCompactList}\small\item\em The format for the middle of the column. \end{DoxyCompactList}\item 
+\hypertarget{class_t_c_o_m_1_1_column_af48f518de3de200c5d8e5e6cc3525bdd}{uint \hyperlink{class_t_c_o_m_1_1_column_af48f518de3de200c5d8e5e6cc3525bdd}{my\-Min\-Width}}\label{class_t_c_o_m_1_1_column_af48f518de3de200c5d8e5e6cc3525bdd}
+
+\begin{DoxyCompactList}\small\item\em The minimum width allowed for the column. \end{DoxyCompactList}\item 
+\hypertarget{class_t_c_o_m_1_1_column_ac523335f2293ddc45b64ff0eedffe556}{uint \hyperlink{class_t_c_o_m_1_1_column_ac523335f2293ddc45b64ff0eedffe556}{my\-Width}}\label{class_t_c_o_m_1_1_column_ac523335f2293ddc45b64ff0eedffe556}
+
+\begin{DoxyCompactList}\small\item\em The actual width of the column. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_t_c_o_m_1_1_column_a991cf22b199e97fab7df69b924cd742d}{static std\-::string \hyperlink{class_t_c_o_m_1_1_column_a991cf22b199e97fab7df69b924cd742d}{my\-Empty\-String}}\label{class_t_c_o_m_1_1_column_a991cf22b199e97fab7df69b924cd742d}
+
+\begin{DoxyCompactList}\small\item\em Literally an empty string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Describes a column of colored text that may be placed next to other such columns. 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/libs/cli\-\_\-output/column.\-h\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/libs/cli\-\_\-output/column.\-cpp\end{DoxyCompactItemize}

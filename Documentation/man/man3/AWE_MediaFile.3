@@ -1,4 +1,4 @@
-.TH "AWE::MediaFile" 3 "Fri Apr 18 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.TH "AWE::MediaFile" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -17,15 +17,15 @@ Inherits \fBAWE::MediaItem\fP\&.
 
 .in +1c
 .ti -1c
-.RI "\fBMediaFile\fP (const QDir &file, \fBGlobalSettings\fP *settings)"
+.RI "\fBMediaFile\fP (QDir file)"
 .br
-.RI "\fIConstruct using the JSON file and global settings\&. \fP"
+.RI "\fIConstruct using the JSON file\&. \fP"
 .ti -1c
 .RI "virtual \fB~MediaFile\fP ()"
 .br
 .RI "\fIDeconstructor\&. \fP"
 .ti -1c
-.RI "virtual const QDir & \fBgetMediaFile\fP () const "
+.RI "virtual QDir \fBgetMediaFile\fP () const "
 .br
 .RI "\fIGet the absolute path to the media file\&. \fP"
 .ti -1c
@@ -37,9 +37,21 @@ Inherits \fBAWE::MediaItem\fP\&.
 .br
 .RI "\fIPlay this item with the default player\&. \fP"
 .ti -1c
-.RI "virtual ItemType \fBgetItemType\fP () const "
+.RI "virtual \fBItemType\fP \fBgetItemType\fP () const "
 .br
 .RI "\fIDetermine the basic type (folder, file, service) \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "QDir \fBmyMediaFile\fP"
+.br
+.RI "\fIThe path to the media file\&. \fP"
+.ti -1c
+.RI "\fBMediaPlayer\fP * \fBmyDefaultPlayer\fP"
+.br
+.RI "\fIThe default media player\&. \fP"
 .in -1c
 .SS "Additional Inherited Members"
 .SH "Detailed Description"
@@ -49,16 +61,14 @@ Represents a media file\&.
 Holds the default player and all relevant metadata\&. 
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "MediaFile::MediaFile (const QDir &file, \fBGlobalSettings\fP *settings)"
+.SS "MediaFile::MediaFile (QDirfile)"
 
 .PP
-Construct using the JSON file and global settings\&. 
+Construct using the JSON file\&. 
 .PP
 \fBParameters:\fP
 .RS 4
 \fIfile\fP The path to the file\&. 
-.br
-\fIsettings\fP The settings of AWEMC\&. 
 .RE
 .PP
 
@@ -75,7 +85,7 @@ The default media player for this item\&.
 .RE
 .PP
 
-.SS "ItemType MediaFile::getItemType () const\fC [virtual]\fP"
+.SS "\fBItemType\fP MediaFile::getItemType () const\fC [virtual]\fP"
 
 .PP
 Determine the basic type (folder, file, service) 
@@ -88,7 +98,7 @@ The basic type of this item\&.
 
 .PP
 Implements \fBAWE::MediaItem\fP\&.
-.SS "const QDir & MediaFile::getMediaFile () const\fC [virtual]\fP"
+.SS "QDir MediaFile::getMediaFile () const\fC [virtual]\fP"
 
 .PP
 Get the absolute path to the media file\&. 

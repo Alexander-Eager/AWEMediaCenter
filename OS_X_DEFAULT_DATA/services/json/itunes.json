@@ -1,0 +1,24 @@
+{
+	"command": "/Applications/iTunes.app/Contents/MacOS/iTunes",
+
+	"metadata": {
+		"name": "iTunes",
+		"type": "Multimedia Service",
+		"location": "/Applications/iTunes.app/Contents/MacOS/iTunes",
+		"description": "Play music, movies, and TV shows purchased on the iTunes store.",
+
+		"icons": {
+			"default": 0,
+			"files": ["itunes.json.metadata.icons.files.0.png"]
+		},
+
+		"fanarts": {
+			"default": 0,
+			"files": ["itunes.json.metadata.fanarts.files.0.jpg"]
+		},
+
+		"details": {
+			"_order": []
+		}
+	}
+}

@@ -1,4 +1,4 @@
-.TH "Json::ValueIteratorBase" 3 "Fri Apr 18 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.TH "Json::ValueIteratorBase" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -74,6 +74,16 @@ Inherited by \fBJson::ValueConstIterator\fP, and \fBJson::ValueIterator\fP\&.
 .br
 .ti -1c
 .RI "void \fBcopy\fP (const \fBSelfType\fP &other)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "Value::ObjectValues::iterator \fBcurrent_\fP"
+.br
+.ti -1c
+.RI "bool \fBisNull_\fP"
 .br
 .in -1c
 .SH "Detailed Description"

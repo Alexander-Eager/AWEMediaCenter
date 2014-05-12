@@ -1,0 +1,88 @@
+.TH "TCOM::Column" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TCOM::Column \- 
+.PP
+Describes a column of colored text that may be placed next to other such columns\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <column\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBColumn\fP (const \fBCommand\fP &defaultFormat=Command::Nothing(), uint minWidth=0)"
+.br
+.ti -1c
+.RI "void \fBaddEntry\fP (const std::string &entry)"
+.br
+.ti -1c
+.RI "void \fBaddEntry\fP (const std::string &entry, \fBCommand\fP form)"
+.br
+.ti -1c
+.RI "bool \fBinsertEntry\fP (uint index, const std::string &entry)"
+.br
+.ti -1c
+.RI "bool \fBinsertEntry\fP (uint index, const std::string &entry, \fBCommand\fP form)"
+.br
+.ti -1c
+.RI "bool \fBremoveEntry\fP (uint index)"
+.br
+.ti -1c
+.RI "const std::string & \fBgetEntry\fP (uint index) const "
+.br
+.ti -1c
+.RI "void \fBsetEntry\fP (uint index, const std::string &value)"
+.br
+.ti -1c
+.RI "void \fBsetEntryFormat\fP (uint index, \fBCommand\fP form)"
+.br
+.ti -1c
+.RI "void \fBprintEntry\fP (std::ostream &os, uint index) const "
+.br
+.ti -1c
+.RI "uint \fBnumEntries\fP () const "
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::vector< std::string > \fBmyEntries\fP"
+.br
+.RI "\fIList of entries in the column\&. \fP"
+.ti -1c
+.RI "std::vector< \fBCommand\fP > \fBmyEntryFormats\fP"
+.br
+.ti -1c
+.RI "\fBCommand\fP \fBmyFormat\fP"
+.br
+.RI "\fIThe format for the middle of the column\&. \fP"
+.ti -1c
+.RI "uint \fBmyMinWidth\fP"
+.br
+.RI "\fIThe minimum width allowed for the column\&. \fP"
+.ti -1c
+.RI "uint \fBmyWidth\fP"
+.br
+.RI "\fIThe actual width of the column\&. \fP"
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static std::string \fBmyEmptyString\fP"
+.br
+.RI "\fILiterally an empty string\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Describes a column of colored text that may be placed next to other such columns\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AWE Media Center from the source code\&.

@@ -1,4 +1,4 @@
-.TH "AWE::MediaService" 3 "Fri Apr 18 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.TH "AWE::MediaService" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -19,7 +19,7 @@ Inherited by \fBAWE::JSONService\fP\&.
 
 .in +1c
 .ti -1c
-.RI "\fBMediaService\fP (const QDir &file)"
+.RI "\fBMediaService\fP (QDir file)"
 .br
 .RI "\fIConstruct from thie given JSON file\&. \fP"
 .ti -1c
@@ -27,7 +27,7 @@ Inherited by \fBAWE::JSONService\fP\&.
 .br
 .RI "\fIOpen the media service\&. \fP"
 .ti -1c
-.RI "virtual ItemType \fBgetItemType\fP () const "
+.RI "virtual \fBItemType\fP \fBgetItemType\fP () const "
 .br
 .RI "\fIGet the type of this item\&. \fP"
 .in -1c
@@ -37,7 +37,7 @@ Inherited by \fBAWE::JSONService\fP\&.
 A media service, which is basically an application with its own media browser\&. 
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "MediaService::MediaService (const QDir &file)"
+.SS "MediaService::MediaService (QDirfile)"
 
 .PP
 Construct from thie given JSON file\&. 
@@ -50,7 +50,7 @@ Construct from thie given JSON file\&.
 
 .SH "Member Function Documentation"
 .PP 
-.SS "ItemType MediaService::getItemType () const\fC [virtual]\fP"
+.SS "\fBItemType\fP MediaService::getItemType () const\fC [virtual]\fP"
 
 .PP
 Get the type of this item\&. 

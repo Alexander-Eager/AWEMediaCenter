@@ -115,7 +115,37 @@ std\-::istream \& \hyperlink{namespace_json_a4d245ef719cc0853e8e78eb5f99c16e5}{o
 
 \item 
 std\-::ostream \& \hyperlink{namespace_json_a87bc83d7e90fc666d28aa16727deda2f}{operator$<$$<$} (std\-::ostream \&, const \hyperlink{class_json_1_1_value}{Value} \&root)
-\begin{DoxyCompactList}\small\item\em Output using the \hyperlink{class_json_1_1_styled_stream_writer}{Styled\-Stream\-Writer}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Output using the \hyperlink{class_json_1_1_styled_stream_writer}{Styled\-Stream\-Writer}. \end{DoxyCompactList}\item 
+\hypertarget{namespace_json_adf0456e397a18cd7218a7b51dfc13c73}{static std\-::string \hyperlink{namespace_json_adf0456e397a18cd7218a7b51dfc13c73}{code\-Point\-To\-U\-T\-F8} (unsigned int cp)}\label{namespace_json_adf0456e397a18cd7218a7b51dfc13c73}
+
+\begin{DoxyCompactList}\small\item\em Converts a unicode code-\/point to U\-T\-F-\/8. \end{DoxyCompactList}\item 
+\hypertarget{namespace_json_a0381e631737f51331065a388f4f59197}{static bool \hyperlink{namespace_json_a0381e631737f51331065a388f4f59197}{is\-Control\-Character} (char ch)}\label{namespace_json_a0381e631737f51331065a388f4f59197}
+
+\begin{DoxyCompactList}\small\item\em Returns true if ch is a control character (in range \mbox{[}0,32\mbox{[}). \end{DoxyCompactList}\item 
+static void \hyperlink{namespace_json_ac1ffd21a9e55122014353c773ccc496e}{uint\-To\-String} (Largest\-U\-Int value, char $\ast$\&current)
+\item 
+\hypertarget{namespace_json_a7378f09d8f10ef3ccbb2aeefe7ff41d3}{static bool {\bfseries in} (Reader\-::\-Char c, Reader\-::\-Char c1, Reader\-::\-Char c2, Reader\-::\-Char c3, Reader\-::\-Char c4)}\label{namespace_json_a7378f09d8f10ef3ccbb2aeefe7ff41d3}
+
+\item 
+\hypertarget{namespace_json_af3dfd6ed13183fdcfaab3ca57b42d3e7}{static bool {\bfseries in} (Reader\-::\-Char c, Reader\-::\-Char c1, Reader\-::\-Char c2, Reader\-::\-Char c3, Reader\-::\-Char c4, Reader\-::\-Char c5)}\label{namespace_json_af3dfd6ed13183fdcfaab3ca57b42d3e7}
+
+\item 
+\hypertarget{namespace_json_a4d6ab0f651348832e5cc49b577a854d2}{static bool {\bfseries contains\-New\-Line} (Reader\-::\-Location begin, Reader\-::\-Location end)}\label{namespace_json_a4d6ab0f651348832e5cc49b577a854d2}
+
+\item 
+static char $\ast$ \hyperlink{namespace_json_a9e2c18331f84669e6194dcfc124afcd2}{duplicate\-String\-Value} (const char $\ast$value, unsigned int length=\hyperlink{namespace_json_a54414e1e582b6a3769a61e049103fd11}{unknown})
+\item 
+static void \hyperlink{namespace_json_acf8dd162c01e37846e129556c50e4037}{release\-String\-Value} (char $\ast$value)
+\item 
+\hypertarget{namespace_json_aa11b210ff98a4f4dd4e2df19260f8c3a}{static bool {\bfseries contains\-Control\-Character} (const char $\ast$str)}\label{namespace_json_aa11b210ff98a4f4dd4e2df19260f8c3a}
+
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{namespace_json_a54414e1e582b6a3769a61e049103fd11}{static const unsigned int \hyperlink{namespace_json_a54414e1e582b6a3769a61e049103fd11}{unknown} = (unsigned)-\/1}\label{namespace_json_a54414e1e582b6a3769a61e049103fd11}
+
+\begin{DoxyCompactList}\small\item\em Unknown size marker. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -175,6 +205,24 @@ Type of the value held by a \hyperlink{class_json_1_1_value}{Value} object.
 
 
 \subsection{Function Documentation}
+\hypertarget{namespace_json_a9e2c18331f84669e6194dcfc124afcd2}{\index{Json@{Json}!duplicate\-String\-Value@{duplicate\-String\-Value}}
+\index{duplicate\-String\-Value@{duplicate\-String\-Value}!Json@{Json}}
+\subsubsection[{duplicate\-String\-Value}]{\setlength{\rightskip}{0pt plus 5cm}static char$\ast$ Json\-::duplicate\-String\-Value (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{value, }
+\item[{unsigned int}]{length = {\ttfamily unknown}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{namespace_json_a9e2c18331f84669e6194dcfc124afcd2}
+Duplicates the specified string value. 
+\begin{DoxyParams}{Parameters}
+{\em value} & Pointer to the string to duplicate. Must be zero-\/terminated if length is \char`\"{}unknown\char`\"{}. \\
+\hline
+{\em length} & Length of the value. if equals to unknown, then it will be computed using strlen(value). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer on the duplicate instance of string. 
+\end{DoxyReturn}
 \hypertarget{namespace_json_a87bc83d7e90fc666d28aa16727deda2f}{\index{Json@{Json}!operator$<$$<$@{operator$<$$<$}}
 \index{operator$<$$<$@{operator$<$$<$}!Json@{Json}}
 \subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}std\-::ostream \& Json\-::operator$<$$<$ (
@@ -226,3 +274,25 @@ cout << root;
 \begin{DoxySeeAlso}{See Also}
 \hyperlink{namespace_json_a87bc83d7e90fc666d28aa16727deda2f}{Json\-::operator$<$$<$()} 
 \end{DoxySeeAlso}
+\hypertarget{namespace_json_acf8dd162c01e37846e129556c50e4037}{\index{Json@{Json}!release\-String\-Value@{release\-String\-Value}}
+\index{release\-String\-Value@{release\-String\-Value}!Json@{Json}}
+\subsubsection[{release\-String\-Value}]{\setlength{\rightskip}{0pt plus 5cm}static void Json\-::release\-String\-Value (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{namespace_json_acf8dd162c01e37846e129556c50e4037}
+Free the string duplicated by \hyperlink{namespace_json_a9e2c18331f84669e6194dcfc124afcd2}{duplicate\-String\-Value()}. \hypertarget{namespace_json_ac1ffd21a9e55122014353c773ccc496e}{\index{Json@{Json}!uint\-To\-String@{uint\-To\-String}}
+\index{uint\-To\-String@{uint\-To\-String}!Json@{Json}}
+\subsubsection[{uint\-To\-String}]{\setlength{\rightskip}{0pt plus 5cm}static void Json\-::uint\-To\-String (
+\begin{DoxyParamCaption}
+\item[{Largest\-U\-Int}]{value, }
+\item[{char $\ast$\&}]{current}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{namespace_json_ac1ffd21a9e55122014353c773ccc496e}
+Converts an unsigned integer to string. 
+\begin{DoxyParams}{Parameters}
+{\em value} & Unsigned interger to convert to string \\
+\hline
+{\em current} & Input/\-Output string buffer. Must have at least uint\-To\-String\-Buffer\-Size chars free. \\
+\hline
+\end{DoxyParams}

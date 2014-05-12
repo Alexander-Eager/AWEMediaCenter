@@ -1,0 +1,101 @@
+\hypertarget{class_u_i_1_1_window_contents}{\section{U\-I\-:\-:Window\-Contents Class Reference}
+\label{class_u_i_1_1_window_contents}\index{U\-I\-::\-Window\-Contents@{U\-I\-::\-Window\-Contents}}
+}
+
+
+An interface that describes what could be the contents of the main window.  
+
+
+
+
+{\ttfamily \#include $<$Window\-Contents.\-h$>$}
+
+Inheritance diagram for U\-I\-:\-:Window\-Contents\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_u_i_1_1_window_contents}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual Q\-String \hyperlink{class_u_i_1_1_window_contents_a0aa534c857688f60cf7fe844d4504516}{get\-Type} ()=0
+\begin{DoxyCompactList}\small\item\em Describes the type of contents. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_u_i_1_1_window_contents_a2f1dd5b66e7941d01bb1a2635d661df0}{set\-Parent} (\hyperlink{class_u_i_1_1_main_window}{Main\-Window} $\ast$window)=0
+\begin{DoxyCompactList}\small\item\em Set the parent of this contents pane (i.\-e., the main window). \end{DoxyCompactList}\item 
+virtual Q\-Widget $\ast$ \hyperlink{class_u_i_1_1_window_contents_a7fddee7afb08f1e6ea709e1b574db618}{get\-Widget} ()=0
+\begin{DoxyCompactList}\small\item\em Gets the main widget for this screen. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_window_contents_a76327085ad35fab2d79120fe03c7ab89}{virtual void \hyperlink{class_u_i_1_1_window_contents_a76327085ad35fab2d79120fe03c7ab89}{open} ()=0}\label{class_u_i_1_1_window_contents_a76327085ad35fab2d79120fe03c7ab89}
+
+\begin{DoxyCompactList}\small\item\em Called after the widget is added to the window for additional setup. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An interface that describes what could be the contents of the main window. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_u_i_1_1_window_contents_a0aa534c857688f60cf7fe844d4504516}{\index{U\-I\-::\-Window\-Contents@{U\-I\-::\-Window\-Contents}!get\-Type@{get\-Type}}
+\index{get\-Type@{get\-Type}!UI::WindowContents@{U\-I\-::\-Window\-Contents}}
+\subsubsection[{get\-Type}]{\setlength{\rightskip}{0pt plus 5cm}virtual Q\-String U\-I\-::\-Window\-Contents\-::get\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_u_i_1_1_window_contents_a0aa534c857688f60cf7fe844d4504516}
+
+
+Describes the type of contents. 
+
+For a {\ttfamily File\-Browser}, for example, this would return {\ttfamily \char`\"{}\-File Browser\char`\"{}}.
+
+\begin{DoxyReturn}{Returns}
+A string describing the contents. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_u_i_1_1_folder_browser_a9c38475f8a07cf1e05bbbc81f0c24ec0}{U\-I\-::\-Folder\-Browser}.
+
+\hypertarget{class_u_i_1_1_window_contents_a7fddee7afb08f1e6ea709e1b574db618}{\index{U\-I\-::\-Window\-Contents@{U\-I\-::\-Window\-Contents}!get\-Widget@{get\-Widget}}
+\index{get\-Widget@{get\-Widget}!UI::WindowContents@{U\-I\-::\-Window\-Contents}}
+\subsubsection[{get\-Widget}]{\setlength{\rightskip}{0pt plus 5cm}virtual Q\-Widget$\ast$ U\-I\-::\-Window\-Contents\-::get\-Widget (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_u_i_1_1_window_contents_a7fddee7afb08f1e6ea709e1b574db618}
+
+
+Gets the main widget for this screen. 
+
+All of the \hyperlink{namespace_u_i}{U\-I} elements for this window pane should be contained inside this widget (usually, this widget has a designated layout).
+
+\begin{DoxyReturn}{Returns}
+The main widget for this contents pane. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_u_i_1_1_folder_browser_aad7914c03ed7bca3e4b26a62e9a438cf}{U\-I\-::\-Folder\-Browser}.
+
+\hypertarget{class_u_i_1_1_window_contents_a2f1dd5b66e7941d01bb1a2635d661df0}{\index{U\-I\-::\-Window\-Contents@{U\-I\-::\-Window\-Contents}!set\-Parent@{set\-Parent}}
+\index{set\-Parent@{set\-Parent}!UI::WindowContents@{U\-I\-::\-Window\-Contents}}
+\subsubsection[{set\-Parent}]{\setlength{\rightskip}{0pt plus 5cm}virtual void U\-I\-::\-Window\-Contents\-::set\-Parent (
+\begin{DoxyParamCaption}
+\item[{{\bf Main\-Window} $\ast$}]{window}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_u_i_1_1_window_contents_a2f1dd5b66e7941d01bb1a2635d661df0}
+
+
+Set the parent of this contents pane (i.\-e., the main window). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The {\ttfamily \hyperlink{class_u_i_1_1_main_window}{Main\-Window}} of A\-W\-E\-M\-C. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_u_i_1_1_folder_browser_ab72ccd010e607bc690ebbe34af4fa489}{U\-I\-::\-Folder\-Browser}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/ui/contents/Window\-Contents.\-h\end{DoxyCompactItemize}

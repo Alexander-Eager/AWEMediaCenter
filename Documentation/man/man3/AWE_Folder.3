@@ -1,4 +1,4 @@
-.TH "AWE::Folder" 3 "Fri Apr 18 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.TH "AWE::Folder" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -17,21 +17,33 @@ Inherits \fBAWE::MediaItem\fP\&.
 
 .in +1c
 .ti -1c
-.RI "\fBFolder\fP (const QDir &folder, \fBGlobalSettings\fP *settings)"
+.RI "\fBFolder\fP (QDir folder)"
 .br
-.RI "\fIConstruct from the folder's settings and from the global settings\&. \fP"
+.RI "\fIConstruct from the folder's settings\&. \fP"
 .ti -1c
 .RI "virtual \fB~Folder\fP ()"
 .br
 .RI "\fIDeconstructor\&. \fP"
 .ti -1c
-.RI "virtual ItemType \fBgetItemType\fP () const "
+.RI "virtual \fBItemType\fP \fBgetItemType\fP () const "
 .br
 .RI "\fIDetermine the basic type (folder, file, service) \fP"
 .ti -1c
-.RI "virtual std::vector< \fBMediaItem\fP * > & \fBgetItems\fP ()"
+.RI "virtual QList< \fBMediaItem\fP * > \fBgetItems\fP ()"
 .br
 .RI "\fIGet a list of all of the items this folder contains\&. \fP"
+.ti -1c
+.RI "virtual void \fBaddItem\fP (\fBMediaItem\fP *item)"
+.br
+.RI "\fIAdd an item\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "QList< \fBMediaItem\fP * > \fBmyItems\fP"
+.br
+.RI "\fIList of contained items\&. \fP"
 .in -1c
 .SS "Additional Inherited Members"
 .SH "Detailed Description"
@@ -39,22 +51,31 @@ Inherits \fBAWE::MediaItem\fP\&.
 A folder that contains \fC\fBMediaItem\fP\fPs\&. 
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "Folder::Folder (const QDir &folder, \fBGlobalSettings\fP *settings)"
+.SS "Folder::Folder (QDirfolder)"
 
 .PP
-Construct from the folder's settings and from the global settings\&. 
+Construct from the folder's settings\&. 
 .PP
 \fBParameters:\fP
 .RS 4
 \fIfolder\fP The configuration file for this folder\&. 
-.br
-\fIsettings\fP The global settings\&. 
 .RE
 .PP
 
 .SH "Member Function Documentation"
 .PP 
-.SS "vector< \fBMediaItem\fP * > & Folder::getItems ()\fC [virtual]\fP"
+.SS "void Folder::addItem (\fBMediaItem\fP *item)\fC [virtual]\fP"
+
+.PP
+Add an item\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The item to add to this \fC\fBFolder\fP\fP\&. 
+.RE
+.PP
+
+.SS "QList< \fBMediaItem\fP * > Folder::getItems ()\fC [virtual]\fP"
 
 .PP
 Get a list of all of the items this folder contains\&. 
@@ -65,7 +86,7 @@ All of the items this folder contains\&.
 .RE
 .PP
 
-.SS "ItemType Folder::getItemType () const\fC [virtual]\fP"
+.SS "\fBItemType\fP Folder::getItemType () const\fC [virtual]\fP"
 
 .PP
 Determine the basic type (folder, file, service) 

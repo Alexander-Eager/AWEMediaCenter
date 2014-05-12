@@ -1,9 +1,9 @@
-.TH "md___users__alex_github__a_w_e_media_center__code_player__r_e_a_d_m_e" 3 "Fri Apr 18 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.TH "md___users__alex_github__a_w_e_media_center__code_player__r_e_a_d_m_e" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 md___users__alex_github__a_w_e_media_center__code_player__r_e_a_d_m_e \- Media Players 
-Media players play \&.\&./items/README\&.md 'media files', using either a terminal command or a plugin\&.
+Media players play \fCmedia files\fP, using either a terminal command or a plugin\&.
 .PP
 .SH "External JSON Players"
 .PP
@@ -12,11 +12,15 @@ The JSON file for a media player looks like this:
 .PP
 .nf
 {
-    "name": "player name",
+    "name": <player name>,
 
-    "program": "program to run",
+    "program": <program to run>,
 
-    "args": "arguments to pass to the program with file references"
+    "args": <arguments to pass to the program with file references>,
+
+    "filetypes": [
+        <list of file extensions, excluding the ".">
+    ]
 }
 
 .fi
@@ -37,10 +41,13 @@ Internal media players must implement the \fCMediaPlayer\fP interface and fill o
 .PP
 .nf
 {
-    "name": "player name",
+    "name": <player name>,
 
-    "library": "dynamic library file"
-} 
+    "library": <dynamic library file>,
+
+    <any other entries you want for configuration>
+}
+
 .fi
 .PP
  

@@ -13,25 +13,34 @@ Represents a media file.
 Inheritance diagram for A\-W\-E\-:\-:Media\-File\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{class_a_w_e_1_1_media_file}
+\includegraphics[height=3.000000cm]{class_a_w_e_1_1_media_file}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_a_w_e_1_1_media_file_a5f2846d619a877248cd5321f6aedbbe7}{Media\-File} (const Q\-Dir \&file, \hyperlink{class_a_w_e_1_1_global_settings}{Global\-Settings} $\ast$settings)
-\begin{DoxyCompactList}\small\item\em Construct using the J\-S\-O\-N file and global settings. \end{DoxyCompactList}\item 
+\hyperlink{class_a_w_e_1_1_media_file_af107afc7258da6cbadce1330bb9697a5}{Media\-File} (Q\-Dir file)
+\begin{DoxyCompactList}\small\item\em Construct using the J\-S\-O\-N file. \end{DoxyCompactList}\item 
 \hypertarget{class_a_w_e_1_1_media_file_a0ce25306ecf5a24c21dc3540d6293566}{virtual \hyperlink{class_a_w_e_1_1_media_file_a0ce25306ecf5a24c21dc3540d6293566}{$\sim$\-Media\-File} ()}\label{class_a_w_e_1_1_media_file_a0ce25306ecf5a24c21dc3540d6293566}
 
 \begin{DoxyCompactList}\small\item\em Deconstructor. \end{DoxyCompactList}\item 
-virtual const Q\-Dir \& \hyperlink{class_a_w_e_1_1_media_file_a396e8707196bed507be77d5871f3b98d}{get\-Media\-File} () const 
+virtual Q\-Dir \hyperlink{class_a_w_e_1_1_media_file_a998b1415a248cf1915c7ff2b48af8586}{get\-Media\-File} () const 
 \begin{DoxyCompactList}\small\item\em Get the absolute path to the media file. \end{DoxyCompactList}\item 
 virtual \hyperlink{class_a_w_e_1_1_media_player}{Media\-Player} $\ast$ \hyperlink{class_a_w_e_1_1_media_file_a721cb652605a6cbc17a42899d9909079}{get\-Default\-Player} ()
 \begin{DoxyCompactList}\small\item\em Get the default media player for this item. \end{DoxyCompactList}\item 
 virtual int \hyperlink{class_a_w_e_1_1_media_file_a04870b77386642ea6568918f8d2693a2}{play} ()
 \begin{DoxyCompactList}\small\item\em Play this item with the default player. \end{DoxyCompactList}\item 
-virtual Item\-Type \hyperlink{class_a_w_e_1_1_media_file_a135ea553d8a72ec3c87b75281768ca69}{get\-Item\-Type} () const 
+virtual \hyperlink{namespace_a_w_e_ad175a5b8a86bf7848825c9bd94c41470}{Item\-Type} \hyperlink{class_a_w_e_1_1_media_file_a135ea553d8a72ec3c87b75281768ca69}{get\-Item\-Type} () const 
 \begin{DoxyCompactList}\small\item\em Determine the basic type (folder, file, service) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_a_w_e_1_1_media_file_a546092fa2daee659f784573aa9fcdf99}{Q\-Dir \hyperlink{class_a_w_e_1_1_media_file_a546092fa2daee659f784573aa9fcdf99}{my\-Media\-File}}\label{class_a_w_e_1_1_media_file_a546092fa2daee659f784573aa9fcdf99}
+
+\begin{DoxyCompactList}\small\item\em The path to the media file. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_media_file_a86d064b6ab12e4eaade8e9cb32e0b595}{\hyperlink{class_a_w_e_1_1_media_player}{Media\-Player} $\ast$ \hyperlink{class_a_w_e_1_1_media_file_a86d064b6ab12e4eaade8e9cb32e0b595}{my\-Default\-Player}}\label{class_a_w_e_1_1_media_file_a86d064b6ab12e4eaade8e9cb32e0b595}
+
+\begin{DoxyCompactList}\small\item\em The default media player. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
 
@@ -41,23 +50,20 @@ Represents a media file.
 Holds the default player and all relevant metadata. 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{class_a_w_e_1_1_media_file_a5f2846d619a877248cd5321f6aedbbe7}{\index{A\-W\-E\-::\-Media\-File@{A\-W\-E\-::\-Media\-File}!Media\-File@{Media\-File}}
+\hypertarget{class_a_w_e_1_1_media_file_af107afc7258da6cbadce1330bb9697a5}{\index{A\-W\-E\-::\-Media\-File@{A\-W\-E\-::\-Media\-File}!Media\-File@{Media\-File}}
 \index{Media\-File@{Media\-File}!AWE::MediaFile@{A\-W\-E\-::\-Media\-File}}
 \subsubsection[{Media\-File}]{\setlength{\rightskip}{0pt plus 5cm}Media\-File\-::\-Media\-File (
 \begin{DoxyParamCaption}
-\item[{const Q\-Dir \&}]{file, }
-\item[{{\bf Global\-Settings} $\ast$}]{settings}
+\item[{Q\-Dir}]{file}
 \end{DoxyParamCaption}
-)}}\label{class_a_w_e_1_1_media_file_a5f2846d619a877248cd5321f6aedbbe7}
+)}}\label{class_a_w_e_1_1_media_file_af107afc7258da6cbadce1330bb9697a5}
 
 
-Construct using the J\-S\-O\-N file and global settings. 
+Construct using the J\-S\-O\-N file. 
 
 
 \begin{DoxyParams}{Parameters}
 {\em file} & The path to the file. \\
-\hline
-{\em settings} & The settings of A\-W\-E\-M\-C. \\
 \hline
 \end{DoxyParams}
 
@@ -79,7 +85,7 @@ The default media player for this item.
 \end{DoxyReturn}
 \hypertarget{class_a_w_e_1_1_media_file_a135ea553d8a72ec3c87b75281768ca69}{\index{A\-W\-E\-::\-Media\-File@{A\-W\-E\-::\-Media\-File}!get\-Item\-Type@{get\-Item\-Type}}
 \index{get\-Item\-Type@{get\-Item\-Type}!AWE::MediaFile@{A\-W\-E\-::\-Media\-File}}
-\subsubsection[{get\-Item\-Type}]{\setlength{\rightskip}{0pt plus 5cm}Item\-Type Media\-File\-::get\-Item\-Type (
+\subsubsection[{get\-Item\-Type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Item\-Type} Media\-File\-::get\-Item\-Type (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
@@ -95,13 +101,13 @@ The basic type of this item.
 
 Implements \hyperlink{class_a_w_e_1_1_media_item_ad7a7ef28069986fad8b2be060fef6e48}{A\-W\-E\-::\-Media\-Item}.
 
-\hypertarget{class_a_w_e_1_1_media_file_a396e8707196bed507be77d5871f3b98d}{\index{A\-W\-E\-::\-Media\-File@{A\-W\-E\-::\-Media\-File}!get\-Media\-File@{get\-Media\-File}}
+\hypertarget{class_a_w_e_1_1_media_file_a998b1415a248cf1915c7ff2b48af8586}{\index{A\-W\-E\-::\-Media\-File@{A\-W\-E\-::\-Media\-File}!get\-Media\-File@{get\-Media\-File}}
 \index{get\-Media\-File@{get\-Media\-File}!AWE::MediaFile@{A\-W\-E\-::\-Media\-File}}
-\subsubsection[{get\-Media\-File}]{\setlength{\rightskip}{0pt plus 5cm}const Q\-Dir \& Media\-File\-::get\-Media\-File (
+\subsubsection[{get\-Media\-File}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Dir Media\-File\-::get\-Media\-File (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_file_a396e8707196bed507be77d5871f3b98d}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_file_a998b1415a248cf1915c7ff2b48af8586}
 
 
 Get the absolute path to the media file. 

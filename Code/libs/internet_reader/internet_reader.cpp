@@ -2,6 +2,7 @@
 
 #include <curl/curl.h>
 #include <cstddef>
+#include <QUrl>
 
 /**
  * \brief Used by libcurl to read pages from the internet.
@@ -13,7 +14,7 @@
  * \param[in] readFromMe The data to write to `writeToMe`.
  * \param[in] size Part of the size of `readFromMe`.
  * \param[in] nmemb The other part of the size of `readFromMe`.
- * \param[in] writeToMe An `QTestStream*` to write data to.
+ * \param[in] writeToMe A `QTextStream*` to write data to.
  **/
 size_t writeCallback(char* readFromMe, size_t size, size_t nmemb, void* writeToMe)
 {
@@ -26,26 +27,63 @@ size_t writeCallback(char* readFromMe, size_t size, size_t nmemb, void* writeToM
 }
 
 /**
- * \brief Write the data from a web page onto an output stream.
+ * \brief Used by libcurl to read pages from the internet.
  *
- * Reads the webpage described by the `pageToRead` parameter
- * and writes all of the data it gets to `out`.
+ * Writes the information from `readFromMe` onto `writeToMe`.
  *
- * You can use this function to, for example, download an image
- * file from the internet.
+ * NOTE: You really, really, really should never call this function directly.
  *
- * \param[in] pageToRead The URL of the desired web page.
- * \param[out] out The stream to write the contents of said web page to.
+ * \param[in] readFromMe The data to write to `writeToMe`.
+ * \param[in] size Part of the size of `readFromMe`.
+ * \param[in] nmemb The other part of the size of `readFromMe`.
+ * \param[in] writeToMe A `QIODevice*` to write data to.
  **/
-void readURLIntoStream(const QString& pageToRead, QTextStream& out)
+size_t writeCallbackIODevice(char* readFromMe, size_t size, size_t nmemb, void* writeToMe)
 {
+	QIODevice* temp = (QIODevice*) writeToMe;
+	return temp->write(readFromMe, size * nmemb);
+}
+
+bool readURLIntoStream(QString pageToRead, QTextStream& out)
+{
+	// check for url validity
+	QUrl url(pageToRead);
+	if (!url.isValid() && !url.isRelative())
+	{
+		return false;
+	}
+
+	// now read
 	CURL* curl = curl_easy_init();
 
-	curl_easy_setopt(curl, CURLOPT_URL, pageToRead.c_str());
+	curl_easy_setopt(curl, CURLOPT_URL, pageToRead.toStdString().data());
 	curl_easy_setopt(curl, CURLOPT_WRITEDATA, &out);
 	curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, &writeCallback);
 	curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
 
-	curl_easy_perform(curl);
+	bool ans = !curl_easy_perform(curl);
 	curl_easy_cleanup(curl);
+	return ans;
+}
+
+bool readURLIntoIODevice(QString pageToRead, QIODevice& out)
+{
+	// check for url validity
+	QUrl url(pageToRead);
+	if (!url.isValid() && !url.isRelative())
+	{
+		return false;
+	}
+
+	// now read
+	CURL* curl = curl_easy_init();
+
+	curl_easy_setopt(curl, CURLOPT_URL, pageToRead.toStdString().data());
+	curl_easy_setopt(curl, CURLOPT_WRITEDATA, &out);
+	curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, &writeCallbackIODevice);
+	curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
+
+	bool ans = !curl_easy_perform(curl);
+	curl_easy_cleanup(curl);
+	return ans;
 }

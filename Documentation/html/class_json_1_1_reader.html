@@ -74,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -93,6 +93,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_json_1_1_reader-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Json::Reader Class Reference</div>  </div>
@@ -104,6 +107,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p><code>#include &lt;<a class="el" href="json_8h_source.html">json.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_json_1_1_reader_1_1_error_info.html">ErrorInfo</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_json_1_1_reader_1_1_token.html">Token</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:a3eec9118f3e9a672ba8348c3a79d0f45"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3eec9118f3e9a672ba8348c3a79d0f45"></a>
@@ -138,6 +148,159 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a95ab50aa789132e9dee0fc1475c85acf"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_json_1_1_reader.html#a95ab50aa789132e9dee0fc1475c85acf">getFormattedErrorMessages</a> () const </td></tr>
 <tr class="memdesc:a95ab50aa789132e9dee0fc1475c85acf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a user friendly string that list errors in the parsed document.  <a href="#a95ab50aa789132e9dee0fc1475c85acf">More...</a><br/></td></tr>
 <tr class="separator:a95ab50aa789132e9dee0fc1475c85acf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:aa35e6ab574dc399a0a645ad98ed66bc9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>TokenType</b> { <br/>
+&#160;&#160;<b>tokenEndOfStream</b> = 0, 
+<b>tokenObjectBegin</b>, 
+<b>tokenObjectEnd</b>, 
+<b>tokenArrayBegin</b>, 
+<br/>
+&#160;&#160;<b>tokenArrayEnd</b>, 
+<b>tokenString</b>, 
+<b>tokenNumber</b>, 
+<b>tokenTrue</b>, 
+<br/>
+&#160;&#160;<b>tokenFalse</b>, 
+<b>tokenNull</b>, 
+<b>tokenArraySeparator</b>, 
+<b>tokenMemberSeparator</b>, 
+<br/>
+&#160;&#160;<b>tokenComment</b>, 
+<b>tokenError</b>
+<br/>
+ }</td></tr>
+<tr class="separator:aa35e6ab574dc399a0a645ad98ed66bc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae51e8f5bab3f067261c842a3ef858e5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aae51e8f5bab3f067261c842a3ef858e5"></a>
+typedef std::deque&lt; <a class="el" href="class_json_1_1_reader_1_1_error_info.html">ErrorInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Errors</b></td></tr>
+<tr class="separator:aae51e8f5bab3f067261c842a3ef858e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad98d0ea4f3576ea83947c1b2b7b2f261"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad98d0ea4f3576ea83947c1b2b7b2f261"></a>
+typedef std::stack&lt; <a class="el" href="class_json_1_1_value.html">Value</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Nodes</b></td></tr>
+<tr class="separator:ad98d0ea4f3576ea83947c1b2b7b2f261"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a442d779d60825634625040eed83eadc5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a442d779d60825634625040eed83eadc5"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>expectToken</b> (TokenType type, <a class="el" href="class_json_1_1_reader_1_1_token.html">Token</a> &amp;token, const char *message)</td></tr>
+<tr class="separator:a442d779d60825634625040eed83eadc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cb0631963cc0fd4ff6ed0f570976864"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7cb0631963cc0fd4ff6ed0f570976864"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>readToken</b> (<a class="el" href="class_json_1_1_reader_1_1_token.html">Token</a> &amp;token)</td></tr>
+<tr class="separator:a7cb0631963cc0fd4ff6ed0f570976864"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40d0f69d15aeb2d52ff78d794f5ab8b2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a40d0f69d15aeb2d52ff78d794f5ab8b2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>skipSpaces</b> ()</td></tr>
+<tr class="separator:a40d0f69d15aeb2d52ff78d794f5ab8b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e5a7bc6b7b53f2ca8cb9da42f8ffb21"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3e5a7bc6b7b53f2ca8cb9da42f8ffb21"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>match</b> (Location pattern, int patternLength)</td></tr>
+<tr class="separator:a3e5a7bc6b7b53f2ca8cb9da42f8ffb21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2690e860a1b3332c5401fb0850ba065"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad2690e860a1b3332c5401fb0850ba065"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>readComment</b> ()</td></tr>
+<tr class="separator:ad2690e860a1b3332c5401fb0850ba065"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0ffe796abdc3c5851589ee500e28c79"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae0ffe796abdc3c5851589ee500e28c79"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>readCStyleComment</b> ()</td></tr>
+<tr class="separator:ae0ffe796abdc3c5851589ee500e28c79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6716ef6290b0f469efaf8d379c357967"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6716ef6290b0f469efaf8d379c357967"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>readCppStyleComment</b> ()</td></tr>
+<tr class="separator:a6716ef6290b0f469efaf8d379c357967"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6328a0b1994e05118886f9fc9c608643"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6328a0b1994e05118886f9fc9c608643"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>readString</b> ()</td></tr>
+<tr class="separator:a6328a0b1994e05118886f9fc9c608643"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb31bfda6bb27d6453057a47655e8363"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afb31bfda6bb27d6453057a47655e8363"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>readNumber</b> ()</td></tr>
+<tr class="separator:afb31bfda6bb27d6453057a47655e8363"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47e56844b803d41ec993a83fadf4495c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a47e56844b803d41ec993a83fadf4495c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>readValue</b> ()</td></tr>
+<tr class="separator:a47e56844b803d41ec993a83fadf4495c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0068eb3d8e86e91f0e4806f60da66b9c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0068eb3d8e86e91f0e4806f60da66b9c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>readObject</b> (<a class="el" href="class_json_1_1_reader_1_1_token.html">Token</a> &amp;token)</td></tr>
+<tr class="separator:a0068eb3d8e86e91f0e4806f60da66b9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd9a30c0af205c9f327613f486fae6b8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afd9a30c0af205c9f327613f486fae6b8"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>readArray</b> (<a class="el" href="class_json_1_1_reader_1_1_token.html">Token</a> &amp;token)</td></tr>
+<tr class="separator:afd9a30c0af205c9f327613f486fae6b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a442d1f23edf0f4350f5eeab3ee3f7d46"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a442d1f23edf0f4350f5eeab3ee3f7d46"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>decodeNumber</b> (<a class="el" href="class_json_1_1_reader_1_1_token.html">Token</a> &amp;token)</td></tr>
+<tr class="separator:a442d1f23edf0f4350f5eeab3ee3f7d46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf736937912f5c9b8d221e57f209e3e0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaf736937912f5c9b8d221e57f209e3e0"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>decodeString</b> (<a class="el" href="class_json_1_1_reader_1_1_token.html">Token</a> &amp;token)</td></tr>
+<tr class="separator:aaf736937912f5c9b8d221e57f209e3e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a801253570f16e91519652078fb12b8e6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a801253570f16e91519652078fb12b8e6"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>decodeString</b> (<a class="el" href="class_json_1_1_reader_1_1_token.html">Token</a> &amp;token, std::string &amp;decoded)</td></tr>
+<tr class="separator:a801253570f16e91519652078fb12b8e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2420bbb7fd6d5d3e7e2fea894dd8f70f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2420bbb7fd6d5d3e7e2fea894dd8f70f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>decodeDouble</b> (<a class="el" href="class_json_1_1_reader_1_1_token.html">Token</a> &amp;token)</td></tr>
+<tr class="separator:a2420bbb7fd6d5d3e7e2fea894dd8f70f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fe24db3e9953aef3d637a56447e795c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8fe24db3e9953aef3d637a56447e795c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>decodeUnicodeCodePoint</b> (<a class="el" href="class_json_1_1_reader_1_1_token.html">Token</a> &amp;token, Location &amp;current, Location end, unsigned int &amp;unicode)</td></tr>
+<tr class="separator:a8fe24db3e9953aef3d637a56447e795c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a469cb6f55971d7c41fca2752a3aa5bf7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a469cb6f55971d7c41fca2752a3aa5bf7"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>decodeUnicodeEscapeSequence</b> (<a class="el" href="class_json_1_1_reader_1_1_token.html">Token</a> &amp;token, Location &amp;current, Location end, unsigned int &amp;unicode)</td></tr>
+<tr class="separator:a469cb6f55971d7c41fca2752a3aa5bf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04a3a13dbc609dfdf9e3c6723e37ff21"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a04a3a13dbc609dfdf9e3c6723e37ff21"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>addError</b> (const std::string &amp;message, <a class="el" href="class_json_1_1_reader_1_1_token.html">Token</a> &amp;token, Location extra=0)</td></tr>
+<tr class="separator:a04a3a13dbc609dfdf9e3c6723e37ff21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d4ed03a43082c5ace81ba5b81425eaf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8d4ed03a43082c5ace81ba5b81425eaf"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>recoverFromError</b> (TokenType skipUntilToken)</td></tr>
+<tr class="separator:a8d4ed03a43082c5ace81ba5b81425eaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af47fb7564db6ac21faebaba8cebb41ce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af47fb7564db6ac21faebaba8cebb41ce"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>addErrorAndRecover</b> (const std::string &amp;message, <a class="el" href="class_json_1_1_reader_1_1_token.html">Token</a> &amp;token, TokenType skipUntilToken)</td></tr>
+<tr class="separator:af47fb7564db6ac21faebaba8cebb41ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad922ea5a8ab333084edbb84827861fa3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad922ea5a8ab333084edbb84827861fa3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>skipUntilSpace</b> ()</td></tr>
+<tr class="separator:ad922ea5a8ab333084edbb84827861fa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85597f763fb0148a17359b6dfc6f7326"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a85597f763fb0148a17359b6dfc6f7326"></a>
+<a class="el" href="class_json_1_1_value.html">Value</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>currentValue</b> ()</td></tr>
+<tr class="separator:a85597f763fb0148a17359b6dfc6f7326"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab61eb61333cc9ec3afe785663a53ce90"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab61eb61333cc9ec3afe785663a53ce90"></a>
+Char&#160;</td><td class="memItemRight" valign="bottom"><b>getNextChar</b> ()</td></tr>
+<tr class="separator:ab61eb61333cc9ec3afe785663a53ce90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20b3023dc422726e2e4ebe41b8ba0515"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a20b3023dc422726e2e4ebe41b8ba0515"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>getLocationLineAndColumn</b> (Location location, int &amp;line, int &amp;column) const </td></tr>
+<tr class="separator:a20b3023dc422726e2e4ebe41b8ba0515"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5b4b5a76d3224871519b0656393b35b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac5b4b5a76d3224871519b0656393b35b"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getLocationLineAndColumn</b> (Location location) const </td></tr>
+<tr class="separator:ac5b4b5a76d3224871519b0656393b35b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaea3bd62d12ffb6117a61476c0685049"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaea3bd62d12ffb6117a61476c0685049"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>addComment</b> (Location begin, Location end, <a class="el" href="namespace_json.html#a4fc417c23905b2ae9e2c47d197a45351">CommentPlacement</a> placement)</td></tr>
+<tr class="separator:aaea3bd62d12ffb6117a61476c0685049"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22e677ef400d8223f27e631b4cd4b821"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a22e677ef400d8223f27e631b4cd4b821"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>skipCommentTokens</b> (<a class="el" href="class_json_1_1_reader_1_1_token.html">Token</a> &amp;token)</td></tr>
+<tr class="separator:a22e677ef400d8223f27e631b4cd4b821"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ada3d2c47699dad662e6d156c8c78a6ac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ada3d2c47699dad662e6d156c8c78a6ac"></a>
+Nodes&#160;</td><td class="memItemRight" valign="bottom"><b>nodes_</b></td></tr>
+<tr class="separator:ada3d2c47699dad662e6d156c8c78a6ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bbce45dc4df753bed60c129f4b5147c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1bbce45dc4df753bed60c129f4b5147c"></a>
+Errors&#160;</td><td class="memItemRight" valign="bottom"><b>errors_</b></td></tr>
+<tr class="separator:a1bbce45dc4df753bed60c129f4b5147c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afde4a4311ae30597da5b6060a8d60542"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afde4a4311ae30597da5b6060a8d60542"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>document_</b></td></tr>
+<tr class="separator:afde4a4311ae30597da5b6060a8d60542"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a327166839022ea91f0a8290960a8af76"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a327166839022ea91f0a8290960a8af76"></a>
+Location&#160;</td><td class="memItemRight" valign="bottom"><b>begin_</b></td></tr>
+<tr class="separator:a327166839022ea91f0a8290960a8af76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a714793579cbf4ee7c5a7223d2c8d77c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a714793579cbf4ee7c5a7223d2c8d77c1"></a>
+Location&#160;</td><td class="memItemRight" valign="bottom"><b>end_</b></td></tr>
+<tr class="separator:a714793579cbf4ee7c5a7223d2c8d77c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f2feb5201a26da7aa133d2f7434479b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2f2feb5201a26da7aa133d2f7434479b"></a>
+Location&#160;</td><td class="memItemRight" valign="bottom"><b>current_</b></td></tr>
+<tr class="separator:a2f2feb5201a26da7aa133d2f7434479b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a497a114f7b760f1b794b8fff9876615a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a497a114f7b760f1b794b8fff9876615a"></a>
+Location&#160;</td><td class="memItemRight" valign="bottom"><b>lastValueEnd_</b></td></tr>
+<tr class="separator:a497a114f7b760f1b794b8fff9876615a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87cc75ae5adc6a6755f0ba1c7255ff6c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a87cc75ae5adc6a6755f0ba1c7255ff6c"></a>
+<a class="el" href="class_json_1_1_value.html">Value</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>lastValue_</b></td></tr>
+<tr class="separator:a87cc75ae5adc6a6755f0ba1c7255ff6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a240d10ca88620e06a5bd25cc633e9a8a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a240d10ca88620e06a5bd25cc633e9a8a"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>commentsBefore_</b></td></tr>
+<tr class="separator:a240d10ca88620e06a5bd25cc633e9a8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9984ff8f519b5541346157b7aebf97b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa9984ff8f519b5541346157b7aebf97b"></a>
+<a class="el" href="class_json_1_1_features.html">Features</a>&#160;</td><td class="memItemRight" valign="bottom"><b>features_</b></td></tr>
+<tr class="separator:aa9984ff8f519b5541346157b7aebf97b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e9ce743f6004f0596692f0a9ee4626c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8e9ce743f6004f0596692f0a9ee4626c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>collectComments_</b></td></tr>
+<tr class="separator:a8e9ce743f6004f0596692f0a9ee4626c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Unserialize a <a href="http://www.json.org">JSON</a> document into a <a class="el" href="class_json_1_1_value.html" title="Represents a JSON value. ">Value</a>. </p>
@@ -314,7 +477,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 18 2014 16:58:43 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 10 2014 22:24:00 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

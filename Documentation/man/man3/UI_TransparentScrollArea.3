@@ -1,0 +1,49 @@
+.TH "UI::TransparentScrollArea" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+UI::TransparentScrollArea \- 
+.PP
+Essentially \fCQScrollArea\fP, but with a transparent background\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <TransparentScrollArea\&.h>\fP
+.PP
+Inherits QScrollArea\&.
+.PP
+Inherited by \fBUI::ItemCollectionWidget\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTransparentScrollArea\fP (QWidget *parent)"
+.br
+.RI "\fIMake with the given parent\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Essentially \fCQScrollArea\fP, but with a transparent background\&. 
+
+Unfortuneately, Qt's built-in scroll area classes all have a frame and a solid background, which does not work well with AWEMC's \fBUI\fP\&. So this class takes all of that extra stuff away and leaves behind only the scroll bars and the widget inside\&.
+.PP
+If you want meaningful documentation on how to use this class, see \fC`QScrollArea`\fP\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TransparentScrollArea::TransparentScrollArea (QWidget *parent)"
+
+.PP
+Make with the given parent\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparent\fP The parent widget\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AWE Media Center from the source code\&.

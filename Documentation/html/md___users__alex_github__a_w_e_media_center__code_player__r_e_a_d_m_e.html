@@ -66,7 +66,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -81,28 +81,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Media Players </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Media players play ../items/README.md "media files", using either a terminal command or a plugin.</p>
+<div class="textblock"><p>Media players play <a href="../items/README.md&gt;">media files</a>, using either a terminal command or a plugin.</p>
 <h1>External JSON Players</h1>
 <p>The JSON file for a media player looks like this: </p>
 <pre class="fragment">{
-    "name": "player name",
+    "name": &lt;player name&gt;,
 
-    "program": "program to run",
+    "program": &lt;program to run&gt;,
 
-    "args": "arguments to pass to the program with file references"
+    "args": &lt;arguments to pass to the program with file references&gt;,
+
+    "filetypes": [
+        &lt;list of file extensions, excluding the "."&gt;
+    ]
 }
 </pre><p>The file references to <code>"args"</code> can be: </p>
 <pre class="fragment">{1} - the absolute path to the media file
 </pre><h1>Internal Plugin Players</h1>
 <p>Internal media players must implement the <code>MediaPlayer</code> interface and fill out the accompanying JSON file: </p>
 <pre class="fragment">{
-    "name": "player name",
+    "name": &lt;player name&gt;,
 
-    "library": "dynamic library file"
-} </pre> </div></div><!-- contents -->
+    "library": &lt;dynamic library file&gt;,
+
+    &lt;any other entries you want for configuration&gt;
+}
+</pre> </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 18 2014 16:58:43 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 10 2014 22:24:00 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

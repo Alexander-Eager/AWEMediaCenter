@@ -1,0 +1,39 @@
+{
+	"type": "file",
+
+	"metadata": {
+		"name": "",
+		"type": "Movie",
+		"location": "",
+
+		"description": "",
+
+		"details": {
+			"_order": ["Year", "Genre(s)", "Director(s)", "Writer(s)", "Cast"],
+			
+			"Year": "Unspecified",
+			"Genre": [],
+			"Director(s)": [],
+			"Writer(s)": [],
+			"Cast": []
+		},
+
+		"icons": {
+			"default": 0,
+			"files": []
+		},
+
+		"fanarts": {
+			"default": 0,
+			"files": []
+		}
+	},
+
+	"matching files": [
+		"*.avi",
+		"*.iso",
+		"*.m4v",
+		"*.mkv",
+		"*.mpeg"
+	]
+}

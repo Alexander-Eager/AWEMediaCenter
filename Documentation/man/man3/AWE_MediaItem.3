@@ -1,4 +1,4 @@
-.TH "AWE::MediaItem" 3 "Fri Apr 18 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.TH "AWE::MediaItem" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -12,18 +12,255 @@ Represents a media file, folder, or service\&.
 .PP
 \fC#include <AWEMediaItem\&.h>\fP
 .PP
+Inherits QObject\&.
+.PP
 Inherited by \fBAWE::Folder\fP, \fBAWE::MediaFile\fP, and \fBAWE::MediaService\fP\&.
+.SS "Public Slots"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBmarkAsEdited\fP ()"
+.br
+.RI "\fIMark this item as edited, so that it is written to file upon deletion\&. \fP"
+.ti -1c
+.RI "virtual void \fBrefresh\fP ()"
+.br
+.RI "\fIRefresh this item's information to match the backend changes\&. \fP"
+.ti -1c
+.RI "virtual void \fBsetName\fP (QString name)"
+.br
+.RI "\fISet the name of the media item\&. \fP"
+.ti -1c
+.RI "virtual void \fBsetType\fP (QString type)"
+.br
+.RI "\fISet the media type of the item\&. \fP"
+.ti -1c
+.RI "virtual void \fBsetDescription\fP (QString description)"
+.br
+.RI "\fISet the description of the item\&. \fP"
+.ti -1c
+.RI "virtual void \fBsetLocation\fP (QString location)"
+.br
+.RI "\fISet the location of the item\&. \fP"
+.ti -1c
+.RI "virtual bool \fBsetDefaultIconIndex\fP (int i)"
+.br
+.RI "\fIChange the default icon image to the \fCi\fPth icon\&. \fP"
+.ti -1c
+.RI "virtual bool \fBaddIcon\fP (QString file)"
+.br
+.RI "\fIAdd an icon for this item, but do not import the image\&. \fP"
+.ti -1c
+.RI "virtual bool \fBimportIcon\fP (QString file)"
+.br
+.RI "\fIAdd and import the given icon\&. \fP"
+.ti -1c
+.RI "virtual bool \fBaddIcon\fP (QPixmap icon)"
+.br
+.RI "\fIAdd an icon for this item\&. \fP"
+.ti -1c
+.RI "virtual bool \fBimportIcon\fP (QPixmap icon)"
+.br
+.RI "\fIAdd and import the given icon\&. \fP"
+.ti -1c
+.RI "virtual bool \fBremoveIcon\fP (int i)"
+.br
+.RI "\fIRemove the \fCi\fPth icon\&. \fP"
+.ti -1c
+.RI "virtual bool \fBsetDefaultFanartIndex\fP (int i)"
+.br
+.RI "\fIChange the default fanart image to the \fCi\fPth fanart\&. \fP"
+.ti -1c
+.RI "virtual bool \fBaddFanart\fP (QString file)"
+.br
+.RI "\fIAdd an fanart for this item, but do not import the image\&. \fP"
+.ti -1c
+.RI "virtual bool \fBimportFanart\fP (QString file)"
+.br
+.RI "\fIAdd and import the given fanart\&. \fP"
+.ti -1c
+.RI "virtual bool \fBaddFanart\fP (QPixmap fanart)"
+.br
+.RI "\fIAdd an fanart for this item\&. \fP"
+.ti -1c
+.RI "virtual bool \fBimportFanart\fP (QPixmap fanart)"
+.br
+.RI "\fIAdd and import the given fanart\&. \fP"
+.ti -1c
+.RI "virtual bool \fBremoveFanart\fP (int i)"
+.br
+.RI "\fIRemove the \fCi\fPth fanart\&. \fP"
+.ti -1c
+.RI "virtual bool \fBaddDetail\fP (QString name, QString value)"
+.br
+.RI "\fIAdd a new detail with name \fCname\fP and value \fCvalue\fP\&. \fP"
+.ti -1c
+.RI "virtual bool \fBaddDetail\fP (QString name, const \fBJson::Value\fP &value)"
+.br
+.RI "\fIAdd a new detail with the name \fCname\fP and value \fCvalue\fP\&. \fP"
+.ti -1c
+.RI "virtual bool \fBremoveDetail\fP (int i)"
+.br
+.RI "\fIRemove the \fCi\fPth detail\&. \fP"
+.ti -1c
+.RI "virtual bool \fBremoveDetail\fP (QString name)"
+.br
+.RI "\fIRemove the detail with the given name\&. \fP"
+.in -1c
+.SS "Signals"
+
+.in +1c
+.ti -1c
+.RI "void \fBnameChanged\fP (QString name)"
+.br
+.RI "\fISent when the name is changed\&. \fP"
+.ti -1c
+.RI "void \fBtypeChanged\fP (QString type)"
+.br
+.RI "\fISent when the media type is changed\&. \fP"
+.ti -1c
+.RI "void \fBdescriptionChanged\fP (QString description)"
+.br
+.RI "\fISent when the description is changed\&. \fP"
+.ti -1c
+.RI "void \fBlocationChanged\fP (QString location)"
+.br
+.RI "\fISent when the location is changed\&. \fP"
+.ti -1c
+.RI "void \fBiconAdded\fP (QPixmap icon)"
+.br
+.RI "\fISent when an icon is added\&. \fP"
+.ti -1c
+.RI "void \fBiconRemoved\fP (int index)"
+.br
+.RI "\fISent when an icon is removed\&. \fP"
+.ti -1c
+.RI "void \fBdefaultIconChanged\fP (int index)"
+.br
+.RI "\fISent when the default icon is changed\&. \fP"
+.ti -1c
+.RI "void \fBfanartAdded\fP (QPixmap fanart)"
+.br
+.RI "\fISent when a fanart image is added\&. \fP"
+.ti -1c
+.RI "void \fBfanartRemoved\fP (int index)"
+.br
+.RI "\fISent when a fanart image is removed\&. \fP"
+.ti -1c
+.RI "void \fBdefaultFanartChanged\fP (int index)"
+.br
+.RI "\fISent when the default fanart is changed\&. \fP"
+.ti -1c
+.RI "void \fBdetailAdded\fP (QString name)"
+.br
+.RI "\fISent when a detail is added\&. \fP"
+.ti -1c
+.RI "void \fBdetailChanged\fP (int index)"
+.br
+.RI "\fISent when the value of a detail is changed\&. \fP"
+.ti -1c
+.RI "void \fBdetailRemoved\fP (int index)"
+.br
+.RI "\fISent when a detail is removed\&. \fP"
+.ti -1c
+.RI "void \fBrefreshed\fP ()"
+.br
+.RI "\fISent when the item is refreshed\&. \fP"
+.in -1c
 .SS "Public Member Functions"
 
 .in +1c
 .ti -1c
-.RI "\fBMediaItem\fP (const QDir &file)"
+.RI "\fBMediaItem\fP (QDir file)"
 .br
 .RI "\fICreate from the given JSON file\&. \fP"
 .ti -1c
 .RI "virtual \fB~MediaItem\fP ()"
 .br
-.RI "\fIDeconstructor\&. \fP"
+.RI "\fIDestroy this object and write to file if necessary\&. \fP"
+.ti -1c
+.RI "virtual QString \fBgetName\fP () const "
+.br
+.RI "\fIGet the name of the media item\&. \fP"
+.ti -1c
+.RI "virtual QString \fBgetType\fP () const "
+.br
+.RI "\fIGet the media type of the item, e\&.g\&. Movie\&. \fP"
+.ti -1c
+.RI "virtual QString \fBgetDescription\fP () const "
+.br
+.RI "\fIGet the description of the item\&. \fP"
+.ti -1c
+.RI "virtual QString \fBgetLocation\fP () const "
+.br
+.RI "\fIGet the location for this item\&. \fP"
+.ti -1c
+.RI "virtual int \fBnumIcons\fP () const "
+.br
+.RI "\fIGet the number of icons\&. \fP"
+.ti -1c
+.RI "virtual QPixmap \fBgetIcon\fP (int i) const "
+.br
+.RI "\fIGet the \fCi\fPth icon\&. \fP"
+.ti -1c
+.RI "virtual QPixmap \fBgetDefaultIcon\fP () const "
+.br
+.RI "\fIGet the default icon for this item, as an image\&. \fP"
+.ti -1c
+.RI "virtual int \fBgetDefaultIconIndex\fP () const "
+.br
+.RI "\fIGet the default icon image's index\&. \fP"
+.ti -1c
+.RI "virtual int \fBnumFanarts\fP () const "
+.br
+.RI "\fIGet the number of icons\&. \fP"
+.ti -1c
+.RI "virtual QPixmap \fBgetFanart\fP (int i) const "
+.br
+.RI "\fIGet the \fCi\fPth fanart\&. \fP"
+.ti -1c
+.RI "virtual QPixmap \fBgetDefaultFanart\fP () const "
+.br
+.RI "\fIGet the default fanart for this item, as an image\&. \fP"
+.ti -1c
+.RI "virtual int \fBgetDefaultFanartIndex\fP () const "
+.br
+.RI "\fIGet the default fanart image's index\&. \fP"
+.ti -1c
+.RI "virtual int \fBnumDetails\fP () const "
+.br
+.RI "\fIGet the number of icons\&. \fP"
+.ti -1c
+.RI "virtual QString \fBgetDetailName\fP (int i) const "
+.br
+.RI "\fIGet the name of the \fCi\fPth detail\&. \fP"
+.ti -1c
+.RI "virtual const \fBJson::Value\fP & \fBgetDetailValue\fP (int i) const "
+.br
+.RI "\fIGet the value of the \fCi\fPth detail\&. \fP"
+.ti -1c
+.RI "virtual QString \fBgetDetailValueAsString\fP (int i) const "
+.br
+.RI "\fIGet the value of the \fCi\fPth detail as a formatted string\&. \fP"
+.ti -1c
+.RI "virtual bool \fBhasDetail\fP (QString detail) const "
+.br
+.RI "\fIDetermine if this item has the given detail\&. \fP"
+.ti -1c
+.RI "virtual const \fBJson::Value\fP & \fBgetDetailValue\fP (QString name) const "
+.br
+.RI "\fIGet the value for the detail with the given name\&. \fP"
+.ti -1c
+.RI "virtual QString \fBgetDetailValueAsString\fP (QString name) const "
+.br
+.ti -1c
+.RI "virtual QDir \fBgetConfigFile\fP () const "
+.br
+.RI "\fIGet the path to the configuration file\&. \fP"
+.ti -1c
+.RI "virtual \fBItemType\fP \fBgetItemType\fP () const =0"
+.br
+.RI "\fIDetermine the basic type (folder, file, service) \fP"
 .ti -1c
 .RI "virtual \fBJson::Value\fP & \fBgetData\fP ()"
 .br
@@ -33,49 +270,89 @@ Inherited by \fBAWE::Folder\fP, \fBAWE::MediaFile\fP, and \fBAWE::MediaService\f
 .br
 .RI "\fIGet the data for this item\&. \fP"
 .ti -1c
-.RI "virtual const \fBJson::Value\fP & \fBgetMember\fP (const std::string &str) const "
+.RI "virtual const \fBJson::Value\fP & \fBgetMember\fP (QString str) const "
 .br
 .RI "\fIGet a member of unspecified type by name\&. \fP"
 .ti -1c
-.RI "virtual \fBJson::Value\fP & \fBgetMember\fP (const std::string &str)"
+.RI "virtual \fBJson::Value\fP & \fBgetMember\fP (QString str)"
 .br
 .RI "\fIGet a member of unspecified type by name\&. \fP"
 .ti -1c
-.RI "virtual bool \fBgetBoolMember\fP (const std::string &str) const "
+.RI "virtual bool \fBgetBoolMember\fP (QString str) const "
 .br
 .RI "\fIGet a member of \fCbool\fP type by name\&. \fP"
 .ti -1c
-.RI "virtual std::string \fBgetStringMember\fP (const std::string &str) const "
+.RI "virtual QString \fBgetStringMember\fP (QString str) const "
 .br
-.RI "\fIGet a member of \fCstd::string\fP type by name\&. \fP"
+.RI "\fIGet a member of \fCQString\fP type by name\&. \fP"
 .ti -1c
-.RI "virtual int \fBgetIntMember\fP (const std::string &str) const "
+.RI "virtual int \fBgetIntMember\fP (QString str) const "
 .br
 .RI "\fIGet a member of \fCint\fP type by name\&. \fP"
 .ti -1c
-.RI "virtual std::string \fBgetName\fP () const "
+.RI "virtual bool \fBhasBeenEdited\fP () const "
 .br
-.RI "\fIGet the name of the media item\&. \fP"
-.ti -1c
-.RI "virtual const QDir & \fBgetJSONFile\fP () const "
-.br
-.RI "\fIGet the absolute path to the JSON settings file\&. \fP"
-.ti -1c
-.RI "virtual ItemType \fBgetItemType\fP () const =0"
-.br
-.RI "\fIDetermine the basic type (folder, file, service) \fP"
+.RI "\fIDetermine if this item has been edited\&. \fP"
 .in -1c
-.SS "Protected Attributes"
+.SS "Private Member Functions"
 
 .in +1c
 .ti -1c
-.RI "QDir \fBmyJSONFile\fP"
+.RI "QString \fBstringFor\fP (const \fBJson::Value\fP &val) const "
+.br
+.RI "\fIHelper function that makes details into strings\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "QDir \fBmyConfigFile\fP"
 .br
 .RI "\fIThe JSON file for this item\&. \fP"
 .ti -1c
 .RI "\fBJson::Value\fP \fBmyData\fP"
 .br
 .RI "\fIThe data for this item\&. \fP"
+.ti -1c
+.RI "bool \fBmyHasBeenEdited\fP"
+.br
+.RI "\fIDetermines if this should be written to file or not\&. \fP"
+.ti -1c
+.RI "QString \fBmyName\fP"
+.br
+.RI "\fIThe name of this item\&. \fP"
+.ti -1c
+.RI "QString \fBmyType\fP"
+.br
+.RI "\fIThe media type of this item\&. \fP"
+.ti -1c
+.RI "QString \fBmyDescription\fP"
+.br
+.RI "\fIThe description of this item\&. \fP"
+.ti -1c
+.RI "QString \fBmyLocation\fP"
+.br
+.RI "\fIThe location of this item\&. \fP"
+.ti -1c
+.RI "QList< QPixmap > \fBmyIconImages\fP"
+.br
+.RI "\fIThe icon images for this item\&. \fP"
+.ti -1c
+.RI "int \fBmyDefaultIconIndex\fP"
+.br
+.RI "\fIThe default icon index\&. \fP"
+.ti -1c
+.RI "QList< QPixmap > \fBmyFanartImages\fP"
+.br
+.RI "\fIThe fanart images for this item\&. \fP"
+.ti -1c
+.RI "int \fBmyDefaultFanartIndex\fP"
+.br
+.RI "\fIThe default fanart index\&. \fP"
+.ti -1c
+.RI "QList< QString > \fBmyDetailNames\fP"
+.br
+.RI "\fIThe detail names for this item\&. \fP"
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -84,7 +361,7 @@ Represents a media file, folder, or service\&.
 Holds all relevant metadata for the item\&. 
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "MediaItem::MediaItem (const QDir &file)"
+.SS "MediaItem::MediaItem (QDirfile)"
 
 .PP
 Create from the given JSON file\&. 
@@ -97,10 +374,220 @@ Create from the given JSON file\&.
 
 .SH "Member Function Documentation"
 .PP 
-.SS "bool MediaItem::getBoolMember (const std::string &str) const\fC [virtual]\fP"
+.SS "bool MediaItem::addDetail (QStringname, QStringvalue)\fC [virtual]\fP, \fC [slot]\fP"
 
 .PP
-Get a member of \fCbool\fP type by name\&. 
+Add a new detail with name \fCname\fP and value \fCvalue\fP\&. If \fCname\fP is already a detail, then the corresponding value is set to \fCvalue\fP\&.
+.PP
+When a detail is 'set', what actually happens depends on the type of the detail:
+.IP "\(bu" 2
+Array: appends the new value to the array
+.IP "\(bu" 2
+Object: does nothing, because objects are not supported\&.
+.IP "\(bu" 2
+Everything else: replaces the old value
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the detail\&. 
+.br
+\fIvalue\fP The value of the detail\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if this item was changed, \fCfalse\fP otherwise\&. 
+.RE
+.PP
+
+.SS "bool MediaItem::addDetail (QStringname, const \fBJson::Value\fP &value)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Add a new detail with the name \fCname\fP and value \fCvalue\fP\&. This function will accept \fCint\fP, \fCbool\fP, \fCstd::string\fP, \fCchar*\fP, and a whole host of other things\&.
+.PP
+If \fCname\fP is already a detail, then the corresponding value is set to \fCvalue\fP\&.
+.PP
+When a detail is 'set', what actually happens depends on the type of the detail:
+.IP "\(bu" 2
+Array: appends the new value to the array
+.IP "\(bu" 2
+Object: does nothing, because objects are not supported\&.
+.IP "\(bu" 2
+Everything else: replaces the old value
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the detail\&. 
+.br
+\fIvalue\fP The value of the detail\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if this item was changed, \fCfalse\fP otherwise\&. 
+.RE
+.PP
+
+.SS "bool MediaItem::addFanart (QStringfile)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Add an fanart for this item, but do not import the image\&. \fCfile\fP could be stored locally or it could be online\&. If stored locally, you should pass the absolute path to the image file\&. If it is from the internet, it is also imported\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile\fP The new fanart file\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if \fCfile\fP is valid, and thus the fanart was added, \fCfalse\fP if not\&. 
+.RE
+.PP
+
+.SS "bool MediaItem::addFanart (QPixmapfanart)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Add an fanart for this item\&. Since this takes a \fCQPixmap\fP, the item is imported\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfanart\fP The new fanart\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if \fCfanart\fP is valid and was added, \fCfalse\fP if not\&. 
+.RE
+.PP
+
+.SS "bool MediaItem::addIcon (QStringfile)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Add an icon for this item, but do not import the image\&. \fCfile\fP could be stored locally or it could be online\&. If stored locally, you should pass the absolute path to the image file\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile\fP The new icon file\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if \fCfile\fP is valid, and thus the icon was added, \fCfalse\fP if not\&. 
+.RE
+.PP
+
+.SS "bool MediaItem::addIcon (QPixmapicon)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Add an icon for this item\&. Since this takes a \fCQPixmap\fP, the item is imported\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIicon\fP The new icon\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if \fCicon\fP is valid and was added, \fCfalse\fP if not\&. 
+.RE
+.PP
+
+.SS "void AWE::MediaItem::defaultFanartChanged (intindex)\fC [signal]\fP"
+
+.PP
+Sent when the default fanart is changed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP The new default fanart index\&. 
+.RE
+.PP
+
+.SS "void AWE::MediaItem::defaultIconChanged (intindex)\fC [signal]\fP"
+
+.PP
+Sent when the default icon is changed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP The new default icon index\&. 
+.RE
+.PP
+
+.SS "void AWE::MediaItem::descriptionChanged (QStringdescription)\fC [signal]\fP"
+
+.PP
+Sent when the description is changed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdescription\fP The new description\&. 
+.RE
+.PP
+
+.SS "void AWE::MediaItem::detailAdded (QStringname)\fC [signal]\fP"
+
+.PP
+Sent when a detail is added\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the detail\&. 
+.br
+\fIvalue\fP The value for the detail\&. 
+.RE
+.PP
+
+.SS "void AWE::MediaItem::detailChanged (intindex)\fC [signal]\fP"
+
+.PP
+Sent when the value of a detail is changed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP The index of the detail\&. 
+.RE
+.PP
+
+.SS "void AWE::MediaItem::detailRemoved (intindex)\fC [signal]\fP"
+
+.PP
+Sent when a detail is removed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP The index of the removed detail\&. 
+.RE
+.PP
+
+.SS "void AWE::MediaItem::fanartAdded (QPixmapfanart)\fC [signal]\fP"
+
+.PP
+Sent when a fanart image is added\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfanart\fP The added fanart image\&. 
+.RE
+.PP
+
+.SS "void AWE::MediaItem::fanartRemoved (intindex)\fC [signal]\fP"
+
+.PP
+Sent when a fanart image is removed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP The index of the removed fanart\&. 
+.RE
+.PP
+
+.SS "bool MediaItem::getBoolMember (QStringstr) const\fC [virtual]\fP"
+
+.PP
+Get a member of \fCbool\fP type by name\&. In general, you should not use this function\&. it is meant to be used to edit the JSON file, or when dealing with data that is not covered by the metadata functions\&.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -113,10 +600,21 @@ The value associated with the key \fCstr\fP\&.
 .RE
 .PP
 
+.SS "QDir MediaItem::getConfigFile () const\fC [virtual]\fP"
+
+.PP
+Get the path to the configuration file\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The path to the config file\&. 
+.RE
+.PP
+
 .SS "\fBValue\fP & MediaItem::getData ()\fC [virtual]\fP"
 
 .PP
-Get the data for this item\&. 
+Get the data for this item\&. In general, you should not use this function\&. it is meant to be used to edit the JSON file, or when dealing with data that is not covered by the metadata functions\&.
 .PP
 \fBReturns:\fP
 .RS 4
@@ -127,7 +625,7 @@ The data for this item\&.
 .SS "const \fBValue\fP & MediaItem::getData () const\fC [virtual]\fP"
 
 .PP
-Get the data for this item\&. 
+Get the data for this item\&. In general, you should not use this function\&. it is meant to be used to edit the JSON file, or when dealing with data that is not covered by the metadata functions\&.
 .PP
 \fBReturns:\fP
 .RS 4
@@ -135,10 +633,167 @@ The data for this item\&.
 .RE
 .PP
 
-.SS "int MediaItem::getIntMember (const std::string &str) const\fC [virtual]\fP"
+.SS "QPixmap MediaItem::getDefaultFanart () const\fC [virtual]\fP"
 
 .PP
-Get a member of \fCint\fP type by name\&. 
+Get the default fanart for this item, as an image\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The default fanart image\&. 
+.RE
+.PP
+
+.SS "int MediaItem::getDefaultFanartIndex () const\fC [virtual]\fP"
+
+.PP
+Get the default fanart image's index\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The default fanart image's index\&. 
+.RE
+.PP
+
+.SS "QPixmap MediaItem::getDefaultIcon () const\fC [virtual]\fP"
+
+.PP
+Get the default icon for this item, as an image\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The default icon image\&. 
+.RE
+.PP
+
+.SS "int MediaItem::getDefaultIconIndex () const\fC [virtual]\fP"
+
+.PP
+Get the default icon image's index\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The default icon image's index\&. 
+.RE
+.PP
+
+.SS "QString MediaItem::getDescription () const\fC [virtual]\fP"
+
+.PP
+Get the description of the item\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The description of this item\&. 
+.RE
+.PP
+
+.SS "QString MediaItem::getDetailName (inti) const\fC [virtual]\fP"
+
+.PP
+Get the name of the \fCi\fPth detail\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP The position of the detail name to get\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The name of the \fCi\fPth detail\&. 
+.RE
+.PP
+
+.SS "const \fBValue\fP & MediaItem::getDetailValue (inti) const\fC [virtual]\fP"
+
+.PP
+Get the value of the \fCi\fPth detail\&. If there is no such detail, this function returns a null \fC\fBJson::Value\fP\fP\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP The position of the detail value to get\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value of the \fCi\fPth detail\&. 
+.RE
+.PP
+
+.SS "const \fBJson::Value\fP & MediaItem::getDetailValue (QStringname) const\fC [virtual]\fP"
+
+.PP
+Get the value for the detail with the given name\&. If there is no such detail, this function returns a null \fC\fBJson::Value\fP\fP\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the detail\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The corresponding value\&. 
+.RE
+.PP
+
+.SS "QString MediaItem::getDetailValueAsString (inti) const\fC [virtual]\fP"
+
+.PP
+Get the value of the \fCi\fPth detail as a formatted string\&. If there is no such detail, this function returns a null \fCQString\fP\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP The position of the detail value to get\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value of the \fCi\fPth detail as a formatted string\&. 
+.RE
+.PP
+
+.SS "QString MediaItem::getDetailValueAsString (QStringname) const\fC [virtual]\fP"
+Get the value for the detail with the given name as a string\&.
+.PP
+If there is no such detail, this function returns a null \fCQString\fP\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the detail\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The corresponding value, in a formatted string\&. 
+.RE
+.PP
+
+.SS "QPixmap MediaItem::getFanart (inti) const\fC [virtual]\fP"
+
+.PP
+Get the \fCi\fPth fanart\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The \fCi\fPth fanart\&. 
+.RE
+.PP
+
+.SS "QPixmap MediaItem::getIcon (inti) const\fC [virtual]\fP"
+
+.PP
+Get the \fCi\fPth icon\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The \fCi\fPth icon\&. 
+.RE
+.PP
+
+.SS "int MediaItem::getIntMember (QStringstr) const\fC [virtual]\fP"
+
+.PP
+Get a member of \fCint\fP type by name\&. In general, you should not use this function\&. it is meant to be used to edit the JSON file, or when dealing with data that is not covered by the metadata functions\&.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -151,7 +806,7 @@ The value associated with the key \fCstr\fP\&.
 .RE
 .PP
 
-.SS "virtual ItemType AWE::MediaItem::getItemType () const\fC [pure virtual]\fP"
+.SS "virtual \fBItemType\fP AWE::MediaItem::getItemType () const\fC [pure virtual]\fP"
 
 .PP
 Determine the basic type (folder, file, service) 
@@ -164,21 +819,27 @@ The basic type of this item\&.
 
 .PP
 Implemented in \fBAWE::MediaFile\fP, \fBAWE::Folder\fP, and \fBAWE::MediaService\fP\&.
-.SS "const QDir & MediaItem::getJSONFile () const\fC [virtual]\fP"
+.SS "QString MediaItem::getLocation () const\fC [virtual]\fP"
 
 .PP
-Get the absolute path to the JSON settings file\&. 
+Get the location for this item\&. For \fC\fBMediaFile\fP\fPs, this is the path to the actual file\&.
+.PP
+For system \fC\fBFolder\fP\fPs this is the path to the folder on disk\&.
+.PP
+For \fC\fBFolder\fP\fPs with a media type, this is the location of the folder that contains the sub-type files (see \&.\&./type/README\&.md 'the type README')\&.
+.PP
+For \fC\fBMediaService\fP\fPs, this is either the path to the program (for JSON services) or the path to the plugin\&.
 .PP
 \fBReturns:\fP
 .RS 4
-The path to the JSON settings file\&. 
+The location for this item\&. 
 .RE
 .PP
 
-.SS "const \fBValue\fP & MediaItem::getMember (const std::string &str) const\fC [virtual]\fP"
+.SS "const \fBValue\fP & MediaItem::getMember (QStringstr) const\fC [virtual]\fP"
 
 .PP
-Get a member of unspecified type by name\&. 
+Get a member of unspecified type by name\&. In general, you should not use this function\&. it is meant to be used to edit the JSON file, or when dealing with data that is not covered by the metadata functions\&.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -191,10 +852,10 @@ The value associated with the key \fCstr\fP\&.
 .RE
 .PP
 
-.SS "\fBValue\fP & MediaItem::getMember (const std::string &str)\fC [virtual]\fP"
+.SS "\fBValue\fP & MediaItem::getMember (QStringstr)\fC [virtual]\fP"
 
 .PP
-Get a member of unspecified type by name\&. 
+Get a member of unspecified type by name\&. In general, you should not use this function\&. it is meant to be used to edit the JSON file, or when dealing with data that is not covered by the metadata functions\&.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -207,10 +868,10 @@ The value associated with the key \fCstr\fP\&.
 .RE
 .PP
 
-.SS "std::string MediaItem::getName () const\fC [virtual]\fP"
+.SS "QString MediaItem::getName () const\fC [virtual]\fP"
 
 .PP
-Get the name of the media item\&. Equivalent to \fCgetStringMember('metadata\&.name')\fP
+Get the name of the media item\&. 
 .PP
 \fBReturns:\fP
 .RS 4
@@ -218,10 +879,10 @@ The name of this media item\&.
 .RE
 .PP
 
-.SS "std::string MediaItem::getStringMember (const std::string &str) const\fC [virtual]\fP"
+.SS "QString MediaItem::getStringMember (QStringstr) const\fC [virtual]\fP"
 
 .PP
-Get a member of \fCstd::string\fP type by name\&. 
+Get a member of \fCQString\fP type by name\&. In general, you should not use this function\&. it is meant to be used to edit the JSON file, or when dealing with data that is not covered by the metadata functions\&.
 .PP
 \fBParameters:\fP
 .RS 4
@@ -231,6 +892,366 @@ Get a member of \fCstd::string\fP type by name\&.
 \fBReturns:\fP
 .RS 4
 The value associated with the key \fCstr\fP\&. 
+.RE
+.PP
+
+.SS "QString MediaItem::getType () const\fC [virtual]\fP"
+
+.PP
+Get the media type of the item, e\&.g\&. Movie\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The media type of this item\&. 
+.RE
+.PP
+
+.SS "bool MediaItem::hasBeenEdited () const\fC [virtual]\fP"
+
+.PP
+Determine if this item has been edited\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if this item has been edited, \fCfalse\fP otherwise\&. 
+.RE
+.PP
+
+.SS "bool MediaItem::hasDetail (QStringdetail) const\fC [virtual]\fP"
+
+.PP
+Determine if this item has the given detail\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdetail\fP The name of the detail to look for\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if this item has that detail, \fCfalse\fP otherwise\&. 
+.RE
+.PP
+
+.SS "void AWE::MediaItem::iconAdded (QPixmapicon)\fC [signal]\fP"
+
+.PP
+Sent when an icon is added\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIicon\fP The added icon\&. 
+.RE
+.PP
+
+.SS "void AWE::MediaItem::iconRemoved (intindex)\fC [signal]\fP"
+
+.PP
+Sent when an icon is removed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP The index of the removed icon\&. 
+.RE
+.PP
+
+.SS "bool MediaItem::importFanart (QStringfile)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Add and import the given fanart\&. \fCfile\fP could be stored locally or it could be online\&. If stored locally, you should pass the absolute path to the image file\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile\fP The new fanart file\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if \fCfile\fP is valid, and thus the fanart was added, \fCfalse\fP if not\&. 
+.RE
+.PP
+
+.SS "bool MediaItem::importFanart (QPixmapfanart)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Add and import the given fanart\&. Exactly the same as \fCaddIcon(fanart)\fP\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfanart\fP The new fanart\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if \fCfanart\fP is valid and was added, \fCfalse\fP if not\&. 
+.RE
+.PP
+
+.SS "bool MediaItem::importIcon (QStringfile)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Add and import the given icon\&. \fCfile\fP could be stored locally or it could be online\&. If stored locally, you should pass the absolute path to the image file\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile\fP The new icon file\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if \fCfile\fP is valid, and thus the icon was added, \fCfalse\fP if not\&. 
+.RE
+.PP
+
+.SS "bool MediaItem::importIcon (QPixmapicon)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Add and import the given icon\&. Exactly the same as \fCaddIcon(icon)\fP\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIicon\fP The new icon\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if \fCicon\fP is valid and was added, \fCfalse\fP if not\&. 
+.RE
+.PP
+
+.SS "void AWE::MediaItem::locationChanged (QStringlocation)\fC [signal]\fP"
+
+.PP
+Sent when the location is changed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlocation\fP The new location\&. 
+.RE
+.PP
+
+.SS "void AWE::MediaItem::nameChanged (QStringname)\fC [signal]\fP"
+
+.PP
+Sent when the name is changed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The new name\&. 
+.RE
+.PP
+
+.SS "int MediaItem::numDetails () const\fC [virtual]\fP"
+
+.PP
+Get the number of icons\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The number of icons\&. 
+.RE
+.PP
+
+.SS "int MediaItem::numFanarts () const\fC [virtual]\fP"
+
+.PP
+Get the number of icons\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The number of icons\&. 
+.RE
+.PP
+
+.SS "int MediaItem::numIcons () const\fC [virtual]\fP"
+
+.PP
+Get the number of icons\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The number of icons\&. 
+.RE
+.PP
+
+.SS "void MediaItem::refresh ()\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Refresh this item's information to match the backend changes\&. This should only be called when you have altered the backend information via \fC\fBgetMember()\fP\fP\&.
+.PP
+NOTE: This does NOT mark the item as edited\&. 
+.SS "bool MediaItem::removeDetail (inti)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Remove the \fCi\fPth detail\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP The index of the detail to remove\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if this item was changed, \fCfalse\fP if not\&. 
+.RE
+.PP
+
+.SS "bool MediaItem::removeDetail (QStringname)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Remove the detail with the given name\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the detail to remove\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if this item was changed, \fCfalse\fP if not\&. 
+.RE
+.PP
+
+.SS "bool MediaItem::removeFanart (inti)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Remove the \fCi\fPth fanart\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP The index of the fanart to remove\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if \fCi\fP is a valid index, and thus a fanart was removed, \fCfalse\fP otherwise\&. 
+.RE
+.PP
+
+.SS "bool MediaItem::removeIcon (inti)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Remove the \fCi\fPth icon\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP The index of the icon to remove\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if \fCi\fP is a valid index, and thus an icon was removed, \fCfalse\fP otherwise\&. 
+.RE
+.PP
+
+.SS "bool MediaItem::setDefaultFanartIndex (inti)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Change the default fanart image to the \fCi\fPth fanart\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP The index of the new default fanart\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if \fCi\fP was a valid index, \fCfalse\fP otherwise\&. 
+.RE
+.PP
+
+.SS "bool MediaItem::setDefaultIconIndex (inti)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Change the default icon image to the \fCi\fPth icon\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIi\fP The index of the new default icon\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if \fCi\fP was a valid index, \fCfalse\fP otherwise\&. 
+.RE
+.PP
+
+.SS "void MediaItem::setDescription (QStringdescription)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Set the description of the item\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdescription\fP The new description\&. 
+.RE
+.PP
+
+.SS "void MediaItem::setLocation (QStringlocation)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Set the location of the item\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlocation\fP The new location\&. 
+.RE
+.PP
+
+.SS "void MediaItem::setName (QStringname)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Set the name of the media item\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The new name for the item\&. 
+.RE
+.PP
+
+.SS "void MediaItem::setType (QStringtype)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Set the media type of the item\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The new media type\&. 
+.RE
+.PP
+
+.SS "QString MediaItem::stringFor (const \fBJson::Value\fP &val) const\fC [private]\fP"
+
+.PP
+Helper function that makes details into strings\&. This is the way it is converted:
+.IP "\(bu" 2
+null becomes \fC''\fP
+.IP "\(bu" 2
+strings stay what they are
+.IP "\(bu" 2
+\fCint\fPs become the string representation
+.IP "\(bu" 2
+\fCbool\fPs become \fC'Yes'\fP or \fC'No'\fP
+.IP "\(bu" 2
+arrays become a comma separated list of the strings for their members
+.IP "\(bu" 2
+objects become \fC''\fP (they are not supported)
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP The value to make a string for\&. 
+.RE
+.PP
+
+.SS "void AWE::MediaItem::typeChanged (QStringtype)\fC [signal]\fP"
+
+.PP
+Sent when the media type is changed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The new media type\&. 
 .RE
 .PP
 

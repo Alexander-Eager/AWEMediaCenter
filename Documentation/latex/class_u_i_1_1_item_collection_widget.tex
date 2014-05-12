@@ -1,0 +1,484 @@
+\hypertarget{class_u_i_1_1_item_collection_widget}{\section{U\-I\-:\-:Item\-Collection\-Widget Class Reference}
+\label{class_u_i_1_1_item_collection_widget}\index{U\-I\-::\-Item\-Collection\-Widget@{U\-I\-::\-Item\-Collection\-Widget}}
+}
+
+
+An abstract, scrollable collection of item widgets.  
+
+
+
+
+{\ttfamily \#include $<$Item\-Collection\-Widget.\-h$>$}
+
+Inheritance diagram for U\-I\-:\-:Item\-Collection\-Widget\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_u_i_1_1_item_collection_widget}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_u_i_1_1_item_collection_widget_af876eea5efb285479e70e69085b10049}{add\-Item} (\hyperlink{class_u_i_1_1_item_widget}{Item\-Widget} $\ast$item)=0
+\begin{DoxyCompactList}\small\item\em Add an item to this collection. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_u_i_1_1_item_collection_widget_ad68458017b2d4c59db8a5cafa83135de}{remove\-Item} (\hyperlink{class_u_i_1_1_item_widget}{Item\-Widget} $\ast$item)=0
+\begin{DoxyCompactList}\small\item\em Remove an item from this collection. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_u_i_1_1_item_collection_widget_a5c4987c6b6e92d3ed64c4691abdd20ad}{clear} ()=0
+\begin{DoxyCompactList}\small\item\em Remove all items in a safe way. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_u_i_1_1_item_collection_widget_a1c3889ec32d17845274660ea633f3f89}{item\-Highlighted} (\hyperlink{class_u_i_1_1_item_widget}{Item\-Widget} $\ast$item)
+\begin{DoxyCompactList}\small\item\em Sent when an item has been highlighted. \end{DoxyCompactList}\item 
+void \hyperlink{class_u_i_1_1_item_collection_widget_a1d3ffff967d92bda151b2f16f346eee4}{item\-Unhighlighted} (\hyperlink{class_u_i_1_1_item_widget}{Item\-Widget} $\ast$item)
+\begin{DoxyCompactList}\small\item\em Sent when an item has been unhighlighted. \end{DoxyCompactList}\item 
+void \hyperlink{class_u_i_1_1_item_collection_widget_a8b5a8ba3499fa9dd0f2be7472388a1bb}{item\-Highlighting\-Changed} (bool new\-State, \hyperlink{class_u_i_1_1_item_widget}{Item\-Widget} $\ast$item)
+\begin{DoxyCompactList}\small\item\em Sent when an item's highlighting state has changed. \end{DoxyCompactList}\item 
+void \hyperlink{class_u_i_1_1_item_collection_widget_a37817edad8ef60fef7c03212b80e5dec}{item\-Selected} (\hyperlink{class_u_i_1_1_item_widget}{Item\-Widget} $\ast$item)
+\begin{DoxyCompactList}\small\item\em Sent when an item has been selected. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_u_i_1_1_item_collection_widget_a5b276818bbf26e3d5ee5871802c6105d}{Item\-Collection\-Widget} (Q\-Widget $\ast$parent, bool direction, bool multiselection)
+\begin{DoxyCompactList}\small\item\em Make for the given parent in the given direction. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_item_collection_widget_a9999255365a2c9f8560edd28ab6207bb}{virtual \hyperlink{class_u_i_1_1_item_collection_widget_a9999255365a2c9f8560edd28ab6207bb}{$\sim$\-Item\-Collection\-Widget} ()}\label{class_u_i_1_1_item_collection_widget_a9999255365a2c9f8560edd28ab6207bb}
+
+\begin{DoxyCompactList}\small\item\em Destroy this object. \end{DoxyCompactList}\item 
+virtual Q\-String \hyperlink{class_u_i_1_1_item_collection_widget_a476764a3844b34d2598ea246b4cca347}{get\-Layout\-Type} () const =0
+\begin{DoxyCompactList}\small\item\em Get the way these collections are stored. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_u_i_1_1_item_collection_widget_ab7a43c61219c5d8f1c048ab07abcb21b}{expands\-Left\-To\-Right} () const 
+\begin{DoxyCompactList}\small\item\em Get the direction of expansion, left-\/right or up-\/down. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_u_i_1_1_item_collection_widget_a9e41bef277856cc79d4440f26d75fe8a}{set\-Item\-Alignment} (int alignment)
+\begin{DoxyCompactList}\small\item\em Change how the items are presented. \end{DoxyCompactList}\item 
+virtual int \hyperlink{class_u_i_1_1_item_collection_widget_a5637348b32526797c53426b4d978452e}{get\-Item\-Alignment} () const 
+\begin{DoxyCompactList}\small\item\em Get the item alignment. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_u_i_1_1_item_collection_widget_a8db4ee532e89a0d9ffbee4f144667c50}{accepts\-Multiselection} () const 
+\begin{DoxyCompactList}\small\item\em Does this widget accept multiselection? \end{DoxyCompactList}\item 
+virtual int \hyperlink{class_u_i_1_1_item_collection_widget_adbb7eb876d6fed6a34583723fa9c58e3}{count} () const 
+\begin{DoxyCompactList}\small\item\em Get the number of items in this collection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_u_i_1_1_item_collection_widget_a8337446f599a744ce16901a346f5a3e2}{static const int \hyperlink{class_u_i_1_1_item_collection_widget_a8337446f599a744ce16901a346f5a3e2}{Start\-Align} = 1}\label{class_u_i_1_1_item_collection_widget_a8337446f599a744ce16901a346f5a3e2}
+
+\begin{DoxyCompactList}\small\item\em Align items to the start of the collection. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_item_collection_widget_a6833d42fa0d449b14a342dfa6abe5a04}{static const int \hyperlink{class_u_i_1_1_item_collection_widget_a6833d42fa0d449b14a342dfa6abe5a04}{End\-Align} = 2}\label{class_u_i_1_1_item_collection_widget_a6833d42fa0d449b14a342dfa6abe5a04}
+
+\begin{DoxyCompactList}\small\item\em Align items to the end of the collection. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_item_collection_widget_ab4a67d4d1320ee151a56ea94af0c482a}{static const int \hyperlink{class_u_i_1_1_item_collection_widget_ab4a67d4d1320ee151a56ea94af0c482a}{Middle\-Align} = 3}\label{class_u_i_1_1_item_collection_widget_ab4a67d4d1320ee151a56ea94af0c482a}
+
+\begin{DoxyCompactList}\small\item\em Align items to the middle of the collection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_u_i_1_1_item_collection_widget_a7bae5ecd7edcfbf4378ca02fe9f14e74}{resize\-Event} (Q\-Resize\-Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em Responds to resize events. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_u_i_1_1_item_collection_widget_acfaee6f188e44f7821e234978a8f310c}{register\-Item} (\hyperlink{class_u_i_1_1_item_widget}{Item\-Widget} $\ast$item)
+\begin{DoxyCompactList}\small\item\em Registers the item for signal monitoring. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_u_i_1_1_item_collection_widget_a210862ae68d069458b3d17a6c5e1dd5c}{set\-Container\-Layout} (Q\-Layout $\ast$layout)
+\begin{DoxyCompactList}\small\item\em Set the layout that will hold all of the items. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_u_i_1_1_item_collection_widget_ab8f99df3fa03a890cf6ea1b2a187bd89}{respond\-To\-Item\-Highlighted} (\hyperlink{class_u_i_1_1_item_widget}{Item\-Widget} $\ast$item)
+\begin{DoxyCompactList}\small\item\em Responds to item highlighting events. \end{DoxyCompactList}\item 
+void \hyperlink{class_u_i_1_1_item_collection_widget_a6493e011d663fbc043e93896c3778eb5}{respond\-To\-Item\-Unhighlighted} (\hyperlink{class_u_i_1_1_item_widget}{Item\-Widget} $\ast$item)
+\begin{DoxyCompactList}\small\item\em Responds to item unhighlighting events. \end{DoxyCompactList}\item 
+void \hyperlink{class_u_i_1_1_item_collection_widget_ae4f965eabc320ccfa1e98be54a0ee72c}{respond\-To\-Item\-Highlighting\-Changed} (bool new\-State, \hyperlink{class_u_i_1_1_item_widget}{Item\-Widget} $\ast$item)
+\begin{DoxyCompactList}\small\item\em Responds to item highlighting events. \end{DoxyCompactList}\item 
+void \hyperlink{class_u_i_1_1_item_collection_widget_a397e81303b7f0b47b008861314420eda}{respond\-To\-Item\-Selected} (\hyperlink{class_u_i_1_1_item_widget}{Item\-Widget} $\ast$item)
+\begin{DoxyCompactList}\small\item\em Responds to item selection events. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_u_i_1_1_item_collection_widget_ae96d3bb53caf4ac84bc3b9c9cfd7fd29}{bool \hyperlink{class_u_i_1_1_item_collection_widget_ae96d3bb53caf4ac84bc3b9c9cfd7fd29}{my\-Direction}}\label{class_u_i_1_1_item_collection_widget_ae96d3bb53caf4ac84bc3b9c9cfd7fd29}
+
+\begin{DoxyCompactList}\small\item\em Does this expand left-\/to-\/right? \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_item_collection_widget_a58ab4f398e2c0c4f983c433a1252479c}{bool \hyperlink{class_u_i_1_1_item_collection_widget_a58ab4f398e2c0c4f983c433a1252479c}{my\-Multiselection}}\label{class_u_i_1_1_item_collection_widget_a58ab4f398e2c0c4f983c433a1252479c}
+
+\begin{DoxyCompactList}\small\item\em Does this allow multiselection? \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_item_collection_widget_aeb2eaf5224476018800bbd112589f186}{Q\-Widget $\ast$ \hyperlink{class_u_i_1_1_item_collection_widget_aeb2eaf5224476018800bbd112589f186}{my\-Container\-Widget}}\label{class_u_i_1_1_item_collection_widget_aeb2eaf5224476018800bbd112589f186}
+
+\begin{DoxyCompactList}\small\item\em The widget held inside of the scroll area. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_item_collection_widget_a157da67bf78c7c524b94c175d4291940}{int \hyperlink{class_u_i_1_1_item_collection_widget_a157da67bf78c7c524b94c175d4291940}{my\-Item\-Alignment}}\label{class_u_i_1_1_item_collection_widget_a157da67bf78c7c524b94c175d4291940}
+
+\begin{DoxyCompactList}\small\item\em The item alignment. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_item_collection_widget_a76d147ae8d71b0f9ab65672150a06a99}{Q\-Box\-Layout $\ast$ \hyperlink{class_u_i_1_1_item_collection_widget_a76d147ae8d71b0f9ab65672150a06a99}{my\-Spacing\-Layout}}\label{class_u_i_1_1_item_collection_widget_a76d147ae8d71b0f9ab65672150a06a99}
+
+\begin{DoxyCompactList}\small\item\em A box layout to adjust spacing. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_item_collection_widget_a67c91689fc3785ae2cda15b9d807c011}{Q\-Layout $\ast$ \hyperlink{class_u_i_1_1_item_collection_widget_a67c91689fc3785ae2cda15b9d807c011}{my\-Item\-Layout}}\label{class_u_i_1_1_item_collection_widget_a67c91689fc3785ae2cda15b9d807c011}
+
+\begin{DoxyCompactList}\small\item\em The layout holding all of the items. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An abstract, scrollable collection of item widgets. 
+
+Provides convenience functions for displaying a collection of {\ttfamily \hyperlink{class_u_i_1_1_item_widget}{Item\-Widget}}s and receiving information on their state.
+
+When using this class (or a sub-\/class), you should never need to call any of {\ttfamily Q\-Scroll\-Area}'s functions. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_u_i_1_1_item_collection_widget_a5b276818bbf26e3d5ee5871802c6105d}{\index{U\-I\-::\-Item\-Collection\-Widget@{U\-I\-::\-Item\-Collection\-Widget}!Item\-Collection\-Widget@{Item\-Collection\-Widget}}
+\index{Item\-Collection\-Widget@{Item\-Collection\-Widget}!UI::ItemCollectionWidget@{U\-I\-::\-Item\-Collection\-Widget}}
+\subsubsection[{Item\-Collection\-Widget}]{\setlength{\rightskip}{0pt plus 5cm}Item\-Collection\-Widget\-::\-Item\-Collection\-Widget (
+\begin{DoxyParamCaption}
+\item[{Q\-Widget $\ast$}]{parent, }
+\item[{bool}]{direction, }
+\item[{bool}]{multiselection}
+\end{DoxyParamCaption}
+)}}\label{class_u_i_1_1_item_collection_widget_a5b276818bbf26e3d5ee5871802c6105d}
+
+
+Make for the given parent in the given direction. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em parent} & The parent widget. \\
+\hline
+\mbox{\tt in}  & {\em direction} & The direction of expansion; {\ttfamily true} if left-\/right, {\ttfamily false} if up-\/down. \\
+\hline
+\mbox{\tt in}  & {\em multiselection} & {\ttfamily true} if multiple items should be selectable at once, {\ttfamily false} if only one should be at a time. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_u_i_1_1_item_collection_widget_a8db4ee532e89a0d9ffbee4f144667c50}{\index{U\-I\-::\-Item\-Collection\-Widget@{U\-I\-::\-Item\-Collection\-Widget}!accepts\-Multiselection@{accepts\-Multiselection}}
+\index{accepts\-Multiselection@{accepts\-Multiselection}!UI::ItemCollectionWidget@{U\-I\-::\-Item\-Collection\-Widget}}
+\subsubsection[{accepts\-Multiselection}]{\setlength{\rightskip}{0pt plus 5cm}bool Item\-Collection\-Widget\-::accepts\-Multiselection (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_u_i_1_1_item_collection_widget_a8db4ee532e89a0d9ffbee4f144667c50}
+
+
+Does this widget accept multiselection? 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if this widget accepts multiselection, {\ttfamily false} otherwise. 
+\end{DoxyReturn}
+\hypertarget{class_u_i_1_1_item_collection_widget_af876eea5efb285479e70e69085b10049}{\index{U\-I\-::\-Item\-Collection\-Widget@{U\-I\-::\-Item\-Collection\-Widget}!add\-Item@{add\-Item}}
+\index{add\-Item@{add\-Item}!UI::ItemCollectionWidget@{U\-I\-::\-Item\-Collection\-Widget}}
+\subsubsection[{add\-Item}]{\setlength{\rightskip}{0pt plus 5cm}virtual void U\-I\-::\-Item\-Collection\-Widget\-::add\-Item (
+\begin{DoxyParamCaption}
+\item[{{\bf Item\-Widget} $\ast$}]{item}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [slot]}}}\label{class_u_i_1_1_item_collection_widget_af876eea5efb285479e70e69085b10049}
+
+
+Add an item to this collection. 
+
+The exact location of this addition is specific to the layout type.
+
+When writing this method in a sub-\/class, you must first call {\ttfamily register\-Item(item)} so that the item can be registered for signals.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em item} & The item to add. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_item_collection_widget_a5c4987c6b6e92d3ed64c4691abdd20ad}{\index{U\-I\-::\-Item\-Collection\-Widget@{U\-I\-::\-Item\-Collection\-Widget}!clear@{clear}}
+\index{clear@{clear}!UI::ItemCollectionWidget@{U\-I\-::\-Item\-Collection\-Widget}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}virtual void U\-I\-::\-Item\-Collection\-Widget\-::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [slot]}}}\label{class_u_i_1_1_item_collection_widget_a5c4987c6b6e92d3ed64c4691abdd20ad}
+
+
+Remove all items in a safe way. 
+
+Unlike {\ttfamily Q\-List\-Widget}'s clear function, this one uses {\ttfamily delete\-Later()} to avoid segmentation faults if this function is called as a result of an item activation. \hypertarget{class_u_i_1_1_item_collection_widget_adbb7eb876d6fed6a34583723fa9c58e3}{\index{U\-I\-::\-Item\-Collection\-Widget@{U\-I\-::\-Item\-Collection\-Widget}!count@{count}}
+\index{count@{count}!UI::ItemCollectionWidget@{U\-I\-::\-Item\-Collection\-Widget}}
+\subsubsection[{count}]{\setlength{\rightskip}{0pt plus 5cm}int Item\-Collection\-Widget\-::count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_u_i_1_1_item_collection_widget_adbb7eb876d6fed6a34583723fa9c58e3}
+
+
+Get the number of items in this collection. 
+
+\begin{DoxyReturn}{Returns}
+The number of items in this colleciton. 
+\end{DoxyReturn}
+
+
+Reimplemented in \hyperlink{class_u_i_1_1_item_grid_widget_af041bee8f281597d214ef12e4d8494a4}{U\-I\-::\-Item\-Grid\-Widget}.
+
+\hypertarget{class_u_i_1_1_item_collection_widget_ab7a43c61219c5d8f1c048ab07abcb21b}{\index{U\-I\-::\-Item\-Collection\-Widget@{U\-I\-::\-Item\-Collection\-Widget}!expands\-Left\-To\-Right@{expands\-Left\-To\-Right}}
+\index{expands\-Left\-To\-Right@{expands\-Left\-To\-Right}!UI::ItemCollectionWidget@{U\-I\-::\-Item\-Collection\-Widget}}
+\subsubsection[{expands\-Left\-To\-Right}]{\setlength{\rightskip}{0pt plus 5cm}bool Item\-Collection\-Widget\-::expands\-Left\-To\-Right (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_u_i_1_1_item_collection_widget_ab7a43c61219c5d8f1c048ab07abcb21b}
+
+
+Get the direction of expansion, left-\/right or up-\/down. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if this collection expands from left to right, {\ttfamily false} if it expands from top to bottom. 
+\end{DoxyReturn}
+\hypertarget{class_u_i_1_1_item_collection_widget_a5637348b32526797c53426b4d978452e}{\index{U\-I\-::\-Item\-Collection\-Widget@{U\-I\-::\-Item\-Collection\-Widget}!get\-Item\-Alignment@{get\-Item\-Alignment}}
+\index{get\-Item\-Alignment@{get\-Item\-Alignment}!UI::ItemCollectionWidget@{U\-I\-::\-Item\-Collection\-Widget}}
+\subsubsection[{get\-Item\-Alignment}]{\setlength{\rightskip}{0pt plus 5cm}int Item\-Collection\-Widget\-::get\-Item\-Alignment (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_u_i_1_1_item_collection_widget_a5637348b32526797c53426b4d978452e}
+
+
+Get the item alignment. 
+
+By default, this value is {\ttfamily Start\-Align}.
+
+\begin{DoxyReturn}{Returns}
+The item alignment. 
+\end{DoxyReturn}
+\hypertarget{class_u_i_1_1_item_collection_widget_a476764a3844b34d2598ea246b4cca347}{\index{U\-I\-::\-Item\-Collection\-Widget@{U\-I\-::\-Item\-Collection\-Widget}!get\-Layout\-Type@{get\-Layout\-Type}}
+\index{get\-Layout\-Type@{get\-Layout\-Type}!UI::ItemCollectionWidget@{U\-I\-::\-Item\-Collection\-Widget}}
+\subsubsection[{get\-Layout\-Type}]{\setlength{\rightskip}{0pt plus 5cm}virtual Q\-String U\-I\-::\-Item\-Collection\-Widget\-::get\-Layout\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_u_i_1_1_item_collection_widget_a476764a3844b34d2598ea246b4cca347}
+
+
+Get the way these collections are stored. 
+
+\begin{DoxyReturn}{Returns}
+The type of layout used as a string. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_u_i_1_1_item_grid_widget_aa9d31787c89f122f0916c86bfa188d12}{U\-I\-::\-Item\-Grid\-Widget}, and \hyperlink{class_u_i_1_1_item_list_widget_a8779995ae54f1b692017d2b78cf29472}{U\-I\-::\-Item\-List\-Widget}.
+
+\hypertarget{class_u_i_1_1_item_collection_widget_a1c3889ec32d17845274660ea633f3f89}{\index{U\-I\-::\-Item\-Collection\-Widget@{U\-I\-::\-Item\-Collection\-Widget}!item\-Highlighted@{item\-Highlighted}}
+\index{item\-Highlighted@{item\-Highlighted}!UI::ItemCollectionWidget@{U\-I\-::\-Item\-Collection\-Widget}}
+\subsubsection[{item\-Highlighted}]{\setlength{\rightskip}{0pt plus 5cm}void U\-I\-::\-Item\-Collection\-Widget\-::item\-Highlighted (
+\begin{DoxyParamCaption}
+\item[{{\bf Item\-Widget} $\ast$}]{item}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{class_u_i_1_1_item_collection_widget_a1c3889ec32d17845274660ea633f3f89}
+
+
+Sent when an item has been highlighted. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em item} & The highlighted item. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_item_collection_widget_a8b5a8ba3499fa9dd0f2be7472388a1bb}{\index{U\-I\-::\-Item\-Collection\-Widget@{U\-I\-::\-Item\-Collection\-Widget}!item\-Highlighting\-Changed@{item\-Highlighting\-Changed}}
+\index{item\-Highlighting\-Changed@{item\-Highlighting\-Changed}!UI::ItemCollectionWidget@{U\-I\-::\-Item\-Collection\-Widget}}
+\subsubsection[{item\-Highlighting\-Changed}]{\setlength{\rightskip}{0pt plus 5cm}void U\-I\-::\-Item\-Collection\-Widget\-::item\-Highlighting\-Changed (
+\begin{DoxyParamCaption}
+\item[{bool}]{new\-State, }
+\item[{{\bf Item\-Widget} $\ast$}]{item}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{class_u_i_1_1_item_collection_widget_a8b5a8ba3499fa9dd0f2be7472388a1bb}
+
+
+Sent when an item's highlighting state has changed. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em new\-State} & {\ttfamily true} if the item is now highlighted, {\ttfamily false} if unhighlighted. \\
+\hline
+\mbox{\tt in}  & {\em item} & The altered item. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_item_collection_widget_a37817edad8ef60fef7c03212b80e5dec}{\index{U\-I\-::\-Item\-Collection\-Widget@{U\-I\-::\-Item\-Collection\-Widget}!item\-Selected@{item\-Selected}}
+\index{item\-Selected@{item\-Selected}!UI::ItemCollectionWidget@{U\-I\-::\-Item\-Collection\-Widget}}
+\subsubsection[{item\-Selected}]{\setlength{\rightskip}{0pt plus 5cm}void U\-I\-::\-Item\-Collection\-Widget\-::item\-Selected (
+\begin{DoxyParamCaption}
+\item[{{\bf Item\-Widget} $\ast$}]{item}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{class_u_i_1_1_item_collection_widget_a37817edad8ef60fef7c03212b80e5dec}
+
+
+Sent when an item has been selected. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em item} & The selected item. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_item_collection_widget_a1d3ffff967d92bda151b2f16f346eee4}{\index{U\-I\-::\-Item\-Collection\-Widget@{U\-I\-::\-Item\-Collection\-Widget}!item\-Unhighlighted@{item\-Unhighlighted}}
+\index{item\-Unhighlighted@{item\-Unhighlighted}!UI::ItemCollectionWidget@{U\-I\-::\-Item\-Collection\-Widget}}
+\subsubsection[{item\-Unhighlighted}]{\setlength{\rightskip}{0pt plus 5cm}void U\-I\-::\-Item\-Collection\-Widget\-::item\-Unhighlighted (
+\begin{DoxyParamCaption}
+\item[{{\bf Item\-Widget} $\ast$}]{item}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{class_u_i_1_1_item_collection_widget_a1d3ffff967d92bda151b2f16f346eee4}
+
+
+Sent when an item has been unhighlighted. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em item} & The unhighlighted item. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_item_collection_widget_acfaee6f188e44f7821e234978a8f310c}{\index{U\-I\-::\-Item\-Collection\-Widget@{U\-I\-::\-Item\-Collection\-Widget}!register\-Item@{register\-Item}}
+\index{register\-Item@{register\-Item}!UI::ItemCollectionWidget@{U\-I\-::\-Item\-Collection\-Widget}}
+\subsubsection[{register\-Item}]{\setlength{\rightskip}{0pt plus 5cm}void Item\-Collection\-Widget\-::register\-Item (
+\begin{DoxyParamCaption}
+\item[{{\bf Item\-Widget} $\ast$}]{item}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_u_i_1_1_item_collection_widget_acfaee6f188e44f7821e234978a8f310c}
+
+
+Registers the item for signal monitoring. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em item} & The item to register. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_item_collection_widget_ad68458017b2d4c59db8a5cafa83135de}{\index{U\-I\-::\-Item\-Collection\-Widget@{U\-I\-::\-Item\-Collection\-Widget}!remove\-Item@{remove\-Item}}
+\index{remove\-Item@{remove\-Item}!UI::ItemCollectionWidget@{U\-I\-::\-Item\-Collection\-Widget}}
+\subsubsection[{remove\-Item}]{\setlength{\rightskip}{0pt plus 5cm}virtual void U\-I\-::\-Item\-Collection\-Widget\-::remove\-Item (
+\begin{DoxyParamCaption}
+\item[{{\bf Item\-Widget} $\ast$}]{item}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}, {\ttfamily [slot]}}}\label{class_u_i_1_1_item_collection_widget_ad68458017b2d4c59db8a5cafa83135de}
+
+
+Remove an item from this collection. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em item} & The item to remove (and delete). \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_item_collection_widget_a7bae5ecd7edcfbf4378ca02fe9f14e74}{\index{U\-I\-::\-Item\-Collection\-Widget@{U\-I\-::\-Item\-Collection\-Widget}!resize\-Event@{resize\-Event}}
+\index{resize\-Event@{resize\-Event}!UI::ItemCollectionWidget@{U\-I\-::\-Item\-Collection\-Widget}}
+\subsubsection[{resize\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void Item\-Collection\-Widget\-::resize\-Event (
+\begin{DoxyParamCaption}
+\item[{Q\-Resize\-Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_u_i_1_1_item_collection_widget_a7bae5ecd7edcfbf4378ca02fe9f14e74}
+
+
+Responds to resize events. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & The (unused) resize event. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_u_i_1_1_item_list_widget_a23d52e3b1d200ed888065bb93a460358}{U\-I\-::\-Item\-List\-Widget}, and \hyperlink{class_u_i_1_1_item_grid_widget_ac67d14ce2ecd0d77f2f02245045250eb}{U\-I\-::\-Item\-Grid\-Widget}.
+
+\hypertarget{class_u_i_1_1_item_collection_widget_ab8f99df3fa03a890cf6ea1b2a187bd89}{\index{U\-I\-::\-Item\-Collection\-Widget@{U\-I\-::\-Item\-Collection\-Widget}!respond\-To\-Item\-Highlighted@{respond\-To\-Item\-Highlighted}}
+\index{respond\-To\-Item\-Highlighted@{respond\-To\-Item\-Highlighted}!UI::ItemCollectionWidget@{U\-I\-::\-Item\-Collection\-Widget}}
+\subsubsection[{respond\-To\-Item\-Highlighted}]{\setlength{\rightskip}{0pt plus 5cm}void Item\-Collection\-Widget\-::respond\-To\-Item\-Highlighted (
+\begin{DoxyParamCaption}
+\item[{{\bf Item\-Widget} $\ast$}]{item}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}}\label{class_u_i_1_1_item_collection_widget_ab8f99df3fa03a890cf6ea1b2a187bd89}
+
+
+Responds to item highlighting events. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em item} & The item that was highlighted. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_item_collection_widget_ae4f965eabc320ccfa1e98be54a0ee72c}{\index{U\-I\-::\-Item\-Collection\-Widget@{U\-I\-::\-Item\-Collection\-Widget}!respond\-To\-Item\-Highlighting\-Changed@{respond\-To\-Item\-Highlighting\-Changed}}
+\index{respond\-To\-Item\-Highlighting\-Changed@{respond\-To\-Item\-Highlighting\-Changed}!UI::ItemCollectionWidget@{U\-I\-::\-Item\-Collection\-Widget}}
+\subsubsection[{respond\-To\-Item\-Highlighting\-Changed}]{\setlength{\rightskip}{0pt plus 5cm}void Item\-Collection\-Widget\-::respond\-To\-Item\-Highlighting\-Changed (
+\begin{DoxyParamCaption}
+\item[{bool}]{new\-State, }
+\item[{{\bf Item\-Widget} $\ast$}]{item}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}}\label{class_u_i_1_1_item_collection_widget_ae4f965eabc320ccfa1e98be54a0ee72c}
+
+
+Responds to item highlighting events. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em new\-State} & {\ttfamily true} if {\ttfamily item} is now highlighted, {\ttfamily false} if unhighlighted. \\
+\hline
+\mbox{\tt in}  & {\em item} & The item that was changed. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_item_collection_widget_a397e81303b7f0b47b008861314420eda}{\index{U\-I\-::\-Item\-Collection\-Widget@{U\-I\-::\-Item\-Collection\-Widget}!respond\-To\-Item\-Selected@{respond\-To\-Item\-Selected}}
+\index{respond\-To\-Item\-Selected@{respond\-To\-Item\-Selected}!UI::ItemCollectionWidget@{U\-I\-::\-Item\-Collection\-Widget}}
+\subsubsection[{respond\-To\-Item\-Selected}]{\setlength{\rightskip}{0pt plus 5cm}void Item\-Collection\-Widget\-::respond\-To\-Item\-Selected (
+\begin{DoxyParamCaption}
+\item[{{\bf Item\-Widget} $\ast$}]{item}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}}\label{class_u_i_1_1_item_collection_widget_a397e81303b7f0b47b008861314420eda}
+
+
+Responds to item selection events. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em item} & The item that was selected. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_item_collection_widget_a6493e011d663fbc043e93896c3778eb5}{\index{U\-I\-::\-Item\-Collection\-Widget@{U\-I\-::\-Item\-Collection\-Widget}!respond\-To\-Item\-Unhighlighted@{respond\-To\-Item\-Unhighlighted}}
+\index{respond\-To\-Item\-Unhighlighted@{respond\-To\-Item\-Unhighlighted}!UI::ItemCollectionWidget@{U\-I\-::\-Item\-Collection\-Widget}}
+\subsubsection[{respond\-To\-Item\-Unhighlighted}]{\setlength{\rightskip}{0pt plus 5cm}void Item\-Collection\-Widget\-::respond\-To\-Item\-Unhighlighted (
+\begin{DoxyParamCaption}
+\item[{{\bf Item\-Widget} $\ast$}]{item}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}}\label{class_u_i_1_1_item_collection_widget_a6493e011d663fbc043e93896c3778eb5}
+
+
+Responds to item unhighlighting events. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em item} & The item that was unhighlighted. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_item_collection_widget_a210862ae68d069458b3d17a6c5e1dd5c}{\index{U\-I\-::\-Item\-Collection\-Widget@{U\-I\-::\-Item\-Collection\-Widget}!set\-Container\-Layout@{set\-Container\-Layout}}
+\index{set\-Container\-Layout@{set\-Container\-Layout}!UI::ItemCollectionWidget@{U\-I\-::\-Item\-Collection\-Widget}}
+\subsubsection[{set\-Container\-Layout}]{\setlength{\rightskip}{0pt plus 5cm}void Item\-Collection\-Widget\-::set\-Container\-Layout (
+\begin{DoxyParamCaption}
+\item[{Q\-Layout $\ast$}]{layout}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_u_i_1_1_item_collection_widget_a210862ae68d069458b3d17a6c5e1dd5c}
+
+
+Set the layout that will hold all of the items. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em layout} & The layout that should hold everything. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_item_collection_widget_a9e41bef277856cc79d4440f26d75fe8a}{\index{U\-I\-::\-Item\-Collection\-Widget@{U\-I\-::\-Item\-Collection\-Widget}!set\-Item\-Alignment@{set\-Item\-Alignment}}
+\index{set\-Item\-Alignment@{set\-Item\-Alignment}!UI::ItemCollectionWidget@{U\-I\-::\-Item\-Collection\-Widget}}
+\subsubsection[{set\-Item\-Alignment}]{\setlength{\rightskip}{0pt plus 5cm}void Item\-Collection\-Widget\-::set\-Item\-Alignment (
+\begin{DoxyParamCaption}
+\item[{int}]{alignment}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_u_i_1_1_item_collection_widget_a9e41bef277856cc79d4440f26d75fe8a}
+
+
+Change how the items are presented. 
+
+If {\ttfamily Start\-Align}, the items will be aligned to the left (if {\ttfamily \hyperlink{class_u_i_1_1_item_collection_widget_ab7a43c61219c5d8f1c048ab07abcb21b}{expands\-Left\-To\-Right()}}) or top. If {\ttfamily Middle\-Align}, the items will be aligned horizontally in the middle or vertically. If {\ttfamily End\-Align}, the items will be aligned to the right or the bottom.
+
+
+\begin{DoxyParams}{Parameters}
+{\em alignment} & The alignment to use. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/ui/widgets/collection/Item\-Collection\-Widget.\-h\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/moc\-\_\-\-Item\-Collection\-Widget.\-cpp\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/ui/widgets/collection/Item\-Collection\-Widget.\-cpp\end{DoxyCompactItemize}

@@ -1,0 +1,286 @@
+.TH "UI::TextItemWidget" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+UI::TextItemWidget \- 
+.PP
+Displays text in a specific font\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <TextItemWidget\&.h>\fP
+.PP
+Inherits \fBUI::ItemWidget\fP\&.
+.SS "Public Slots"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBsetText\fP (QString text)"
+.br
+.RI "\fIChange the text displayed\&. \fP"
+.ti -1c
+.RI "virtual void \fBsetFont\fP (QFont font)"
+.br
+.RI "\fIChange the font to use\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTextItemWidget\fP (QWidget *parent, QString text, QFont font, bool highlightable=false)"
+.br
+.RI "\fIMake with the given text and font\&. \fP"
+.ti -1c
+.RI "virtual bool \fBfixSizeToFitIn\fP (QSize size)"
+.br
+.RI "\fIFix this item's size to fit in the given size\&. \fP"
+.ti -1c
+.RI "virtual QSize \fBgetSizeToFitIn\fP () const "
+.br
+.RI "\fIGet the size this item has to fit in\&. \fP"
+.ti -1c
+.RI "virtual int \fBheightForWidth\fP (int w) const "
+.br
+.RI "\fIReturns the recommended height for the given width\&. \fP"
+.ti -1c
+.RI "virtual QString \fBgetItemType\fP () const "
+.br
+.RI "\fIGet the item type, 'Text Item'\&. \fP"
+.ti -1c
+.RI "virtual QString \fBgetText\fP () const "
+.br
+.RI "\fIGet the text displayed by this widget\&. \fP"
+.ti -1c
+.RI "virtual QFont \fBgetFont\fP () const "
+.br
+.RI "\fIGet the font used by this widget\&. \fP"
+.ti -1c
+.RI "virtual void \fBsetAlignment\fP (int alignment)"
+.br
+.RI "\fISet the alignment for the text\&. \fP"
+.ti -1c
+.RI "virtual int \fBgetAlignment\fP () const "
+.br
+.RI "\fIGet the text alignment\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBresizeEvent\fP (QResizeEvent *event)"
+.br
+.RI "\fIResponds to size events\&. \fP"
+.ti -1c
+.RI "virtual void \fBpaintEvent\fP (QPaintEvent *event)"
+.br
+.RI "\fIPaint this widget\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "QString \fBmyText\fP"
+.br
+.RI "\fIThe text to display\&. \fP"
+.ti -1c
+.RI "QFont \fBmyFont\fP"
+.br
+.RI "\fIThe font to use\&. \fP"
+.ti -1c
+.RI "int \fBmyAlignment\fP"
+.br
+.RI "\fIThe alignment of text\&. \fP"
+.ti -1c
+.RI "QSize \fBmyFitInSize\fP"
+.br
+.RI "\fIThe containing size\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Displays text in a specific font\&. 
+
+Unlike \fC\fBTextPane\fP\fP, no background is drawn, so it is safe to use in lists and in \fC\fBPane\fP\fPs\&.
+.PP
+In addition, this class signals mouse click events 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TextItemWidget::TextItemWidget (QWidget *parent, QStringtext, QFontfont, boolhighlightable = \fCfalse\fP)"
+
+.PP
+Make with the given text and font\&. If you do not know what font to use, consider \fCQFont('Helvetica', 15)\fP, which is Helvetica with point size 15\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparent\fP The parent widget\&. 
+.br
+\fItext\fP The text to display\&. 
+.br
+\fIfont\fP The font to use with that text\&. 
+.br
+\fIhighlightable\fP \fCtrue\fP if this item can be highlighted, \fCfalse\fP otherwise\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "bool TextItemWidget::fixSizeToFitIn (QSizesize)\fC [virtual]\fP"
+
+.PP
+Fix this item's size to fit in the given size\&. If \fCsize == QSize(-1, -1)\fP, the item should not fix its size\&.
+.PP
+This is mostly used by \fC\fBItemCollectionWidget\fP\fPs to make sure that the item does not get swallowed up by the spacers used to align the items\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsize\fP The size to fit inside\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if this item can fit in \fCsize\fP, \fCfalse\fP if it cannot\&. 
+.RE
+.PP
+
+.PP
+Implements \fBUI::ItemWidget\fP\&.
+.SS "int TextItemWidget::getAlignment () const\fC [virtual]\fP"
+
+.PP
+Get the text alignment\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The text alignment\&. 
+.RE
+.PP
+
+.SS "QFont TextItemWidget::getFont () const\fC [virtual]\fP"
+
+.PP
+Get the font used by this widget\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The font used to display text\&. 
+.RE
+.PP
+
+.SS "QString TextItemWidget::getItemType () const\fC [virtual]\fP"
+
+.PP
+Get the item type, 'Text Item'\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+'Text Item'\&. 
+.RE
+.PP
+
+.PP
+Implements \fBUI::ItemWidget\fP\&.
+.SS "QSize TextItemWidget::getSizeToFitIn () const\fC [virtual]\fP"
+
+.PP
+Get the size this item has to fit in\&. This is the size set by \fC\fBfixSizeToFitIn()\fP\fP\&.
+.PP
+\fBReturns:\fP
+.RS 4
+The size this item has to fit in\&. 
+.RE
+.PP
+
+.PP
+Implements \fBUI::ItemWidget\fP\&.
+.SS "QString TextItemWidget::getText () const\fC [virtual]\fP"
+
+.PP
+Get the text displayed by this widget\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The displayed text\&. 
+.RE
+.PP
+
+.SS "int TextItemWidget::heightForWidth (intw) const\fC [virtual]\fP"
+
+.PP
+Returns the recommended height for the given width\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIw\fP The width to use\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The recommended height for a widget with width \fCw\fP\&. 
+.RE
+.PP
+
+.SS "void TextItemWidget::paintEvent (QPaintEvent *event)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Paint this widget\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The (ignored) paint event\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBUI::ItemWidget\fP\&.
+.SS "void TextItemWidget::resizeEvent (QResizeEvent *event)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Responds to size events\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The (ignored) size event\&. 
+.RE
+.PP
+
+.SS "void TextItemWidget::setAlignment (intalignment)\fC [virtual]\fP"
+
+.PP
+Set the alignment for the text\&. For more information on the available values, see \fC`Qt::Alignment`\fP\&.
+.PP
+By default, the alignment is \fCQt::AlignLeft | Qt::AlignVCenter\fP\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalignment\fP The desired alignment\&. 
+.RE
+.PP
+
+.SS "void TextItemWidget::setFont (QFontfont)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Change the font to use\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfont\fP The new font to use\&. 
+.RE
+.PP
+
+.SS "void TextItemWidget::setText (QStringtext)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Change the text displayed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP The new text to display\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AWE Media Center from the source code\&.

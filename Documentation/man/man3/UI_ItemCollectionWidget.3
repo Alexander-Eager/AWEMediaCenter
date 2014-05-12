@@ -1,0 +1,424 @@
+.TH "UI::ItemCollectionWidget" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+UI::ItemCollectionWidget \- 
+.PP
+An abstract, scrollable collection of item widgets\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ItemCollectionWidget\&.h>\fP
+.PP
+Inherits \fBUI::TransparentScrollArea\fP\&.
+.PP
+Inherited by \fBUI::ItemGridWidget\fP, and \fBUI::ItemListWidget\fP\&.
+.SS "Public Slots"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBaddItem\fP (\fBItemWidget\fP *item)=0"
+.br
+.RI "\fIAdd an item to this collection\&. \fP"
+.ti -1c
+.RI "virtual void \fBremoveItem\fP (\fBItemWidget\fP *item)=0"
+.br
+.RI "\fIRemove an item from this collection\&. \fP"
+.ti -1c
+.RI "virtual void \fBclear\fP ()=0"
+.br
+.RI "\fIRemove all items in a safe way\&. \fP"
+.in -1c
+.SS "Signals"
+
+.in +1c
+.ti -1c
+.RI "void \fBitemHighlighted\fP (\fBItemWidget\fP *item)"
+.br
+.RI "\fISent when an item has been highlighted\&. \fP"
+.ti -1c
+.RI "void \fBitemUnhighlighted\fP (\fBItemWidget\fP *item)"
+.br
+.RI "\fISent when an item has been unhighlighted\&. \fP"
+.ti -1c
+.RI "void \fBitemHighlightingChanged\fP (bool newState, \fBItemWidget\fP *item)"
+.br
+.RI "\fISent when an item's highlighting state has changed\&. \fP"
+.ti -1c
+.RI "void \fBitemSelected\fP (\fBItemWidget\fP *item)"
+.br
+.RI "\fISent when an item has been selected\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBItemCollectionWidget\fP (QWidget *parent, bool direction, bool multiselection)"
+.br
+.RI "\fIMake for the given parent in the given direction\&. \fP"
+.ti -1c
+.RI "virtual \fB~ItemCollectionWidget\fP ()"
+.br
+.RI "\fIDestroy this object\&. \fP"
+.ti -1c
+.RI "virtual QString \fBgetLayoutType\fP () const =0"
+.br
+.RI "\fIGet the way these collections are stored\&. \fP"
+.ti -1c
+.RI "virtual bool \fBexpandsLeftToRight\fP () const "
+.br
+.RI "\fIGet the direction of expansion, left-right or up-down\&. \fP"
+.ti -1c
+.RI "virtual void \fBsetItemAlignment\fP (int alignment)"
+.br
+.RI "\fIChange how the items are presented\&. \fP"
+.ti -1c
+.RI "virtual int \fBgetItemAlignment\fP () const "
+.br
+.RI "\fIGet the item alignment\&. \fP"
+.ti -1c
+.RI "virtual bool \fBacceptsMultiselection\fP () const "
+.br
+.RI "\fIDoes this widget accept multiselection? \fP"
+.ti -1c
+.RI "virtual int \fBcount\fP () const "
+.br
+.RI "\fIGet the number of items in this collection\&. \fP"
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static const int \fBStartAlign\fP = 1"
+.br
+.RI "\fIAlign items to the start of the collection\&. \fP"
+.ti -1c
+.RI "static const int \fBEndAlign\fP = 2"
+.br
+.RI "\fIAlign items to the end of the collection\&. \fP"
+.ti -1c
+.RI "static const int \fBMiddleAlign\fP = 3"
+.br
+.RI "\fIAlign items to the middle of the collection\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBresizeEvent\fP (QResizeEvent *event)"
+.br
+.RI "\fIResponds to resize events\&. \fP"
+.ti -1c
+.RI "virtual void \fBregisterItem\fP (\fBItemWidget\fP *item)"
+.br
+.RI "\fIRegisters the item for signal monitoring\&. \fP"
+.ti -1c
+.RI "virtual void \fBsetContainerLayout\fP (QLayout *layout)"
+.br
+.RI "\fISet the layout that will hold all of the items\&. \fP"
+.in -1c
+.SS "Private Slots"
+
+.in +1c
+.ti -1c
+.RI "void \fBrespondToItemHighlighted\fP (\fBItemWidget\fP *item)"
+.br
+.RI "\fIResponds to item highlighting events\&. \fP"
+.ti -1c
+.RI "void \fBrespondToItemUnhighlighted\fP (\fBItemWidget\fP *item)"
+.br
+.RI "\fIResponds to item unhighlighting events\&. \fP"
+.ti -1c
+.RI "void \fBrespondToItemHighlightingChanged\fP (bool newState, \fBItemWidget\fP *item)"
+.br
+.RI "\fIResponds to item highlighting events\&. \fP"
+.ti -1c
+.RI "void \fBrespondToItemSelected\fP (\fBItemWidget\fP *item)"
+.br
+.RI "\fIResponds to item selection events\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBmyDirection\fP"
+.br
+.RI "\fIDoes this expand left-to-right? \fP"
+.ti -1c
+.RI "bool \fBmyMultiselection\fP"
+.br
+.RI "\fIDoes this allow multiselection? \fP"
+.ti -1c
+.RI "QWidget * \fBmyContainerWidget\fP"
+.br
+.RI "\fIThe widget held inside of the scroll area\&. \fP"
+.ti -1c
+.RI "int \fBmyItemAlignment\fP"
+.br
+.RI "\fIThe item alignment\&. \fP"
+.ti -1c
+.RI "QBoxLayout * \fBmySpacingLayout\fP"
+.br
+.RI "\fIA box layout to adjust spacing\&. \fP"
+.ti -1c
+.RI "QLayout * \fBmyItemLayout\fP"
+.br
+.RI "\fIThe layout holding all of the items\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+An abstract, scrollable collection of item widgets\&. 
+
+Provides convenience functions for displaying a collection of \fC\fBItemWidget\fP\fPs and receiving information on their state\&.
+.PP
+When using this class (or a sub-class), you should never need to call any of \fCQScrollArea\fP's functions\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ItemCollectionWidget::ItemCollectionWidget (QWidget *parent, booldirection, boolmultiselection)"
+
+.PP
+Make for the given parent in the given direction\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparent\fP The parent widget\&. 
+.br
+\fIdirection\fP The direction of expansion; \fCtrue\fP if left-right, \fCfalse\fP if up-down\&. 
+.br
+\fImultiselection\fP \fCtrue\fP if multiple items should be selectable at once, \fCfalse\fP if only one should be at a time\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "bool ItemCollectionWidget::acceptsMultiselection () const\fC [virtual]\fP"
+
+.PP
+Does this widget accept multiselection? 
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if this widget accepts multiselection, \fCfalse\fP otherwise\&. 
+.RE
+.PP
+
+.SS "virtual void UI::ItemCollectionWidget::addItem (\fBItemWidget\fP *item)\fC [pure virtual]\fP, \fC [slot]\fP"
+
+.PP
+Add an item to this collection\&. The exact location of this addition is specific to the layout type\&.
+.PP
+When writing this method in a sub-class, you must first call \fCregisterItem(item)\fP so that the item can be registered for signals\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The item to add\&. 
+.RE
+.PP
+
+.SS "virtual void UI::ItemCollectionWidget::clear ()\fC [pure virtual]\fP, \fC [slot]\fP"
+
+.PP
+Remove all items in a safe way\&. Unlike \fCQListWidget\fP's clear function, this one uses \fCdeleteLater()\fP to avoid segmentation faults if this function is called as a result of an item activation\&. 
+.SS "int ItemCollectionWidget::count () const\fC [virtual]\fP"
+
+.PP
+Get the number of items in this collection\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The number of items in this colleciton\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBUI::ItemGridWidget\fP\&.
+.SS "bool ItemCollectionWidget::expandsLeftToRight () const\fC [virtual]\fP"
+
+.PP
+Get the direction of expansion, left-right or up-down\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if this collection expands from left to right, \fCfalse\fP if it expands from top to bottom\&. 
+.RE
+.PP
+
+.SS "int ItemCollectionWidget::getItemAlignment () const\fC [virtual]\fP"
+
+.PP
+Get the item alignment\&. By default, this value is \fCStartAlign\fP\&.
+.PP
+\fBReturns:\fP
+.RS 4
+The item alignment\&. 
+.RE
+.PP
+
+.SS "virtual QString UI::ItemCollectionWidget::getLayoutType () const\fC [pure virtual]\fP"
+
+.PP
+Get the way these collections are stored\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The type of layout used as a string\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBUI::ItemGridWidget\fP, and \fBUI::ItemListWidget\fP\&.
+.SS "void UI::ItemCollectionWidget::itemHighlighted (\fBItemWidget\fP *item)\fC [signal]\fP"
+
+.PP
+Sent when an item has been highlighted\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The highlighted item\&. 
+.RE
+.PP
+
+.SS "void UI::ItemCollectionWidget::itemHighlightingChanged (boolnewState, \fBItemWidget\fP *item)\fC [signal]\fP"
+
+.PP
+Sent when an item's highlighting state has changed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInewState\fP \fCtrue\fP if the item is now highlighted, \fCfalse\fP if unhighlighted\&. 
+.br
+\fIitem\fP The altered item\&. 
+.RE
+.PP
+
+.SS "void UI::ItemCollectionWidget::itemSelected (\fBItemWidget\fP *item)\fC [signal]\fP"
+
+.PP
+Sent when an item has been selected\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The selected item\&. 
+.RE
+.PP
+
+.SS "void UI::ItemCollectionWidget::itemUnhighlighted (\fBItemWidget\fP *item)\fC [signal]\fP"
+
+.PP
+Sent when an item has been unhighlighted\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The unhighlighted item\&. 
+.RE
+.PP
+
+.SS "void ItemCollectionWidget::registerItem (\fBItemWidget\fP *item)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Registers the item for signal monitoring\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The item to register\&. 
+.RE
+.PP
+
+.SS "virtual void UI::ItemCollectionWidget::removeItem (\fBItemWidget\fP *item)\fC [pure virtual]\fP, \fC [slot]\fP"
+
+.PP
+Remove an item from this collection\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The item to remove (and delete)\&. 
+.RE
+.PP
+
+.SS "void ItemCollectionWidget::resizeEvent (QResizeEvent *event)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Responds to resize events\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The (unused) resize event\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBUI::ItemListWidget\fP, and \fBUI::ItemGridWidget\fP\&.
+.SS "void ItemCollectionWidget::respondToItemHighlighted (\fBItemWidget\fP *item)\fC [private]\fP, \fC [slot]\fP"
+
+.PP
+Responds to item highlighting events\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The item that was highlighted\&. 
+.RE
+.PP
+
+.SS "void ItemCollectionWidget::respondToItemHighlightingChanged (boolnewState, \fBItemWidget\fP *item)\fC [private]\fP, \fC [slot]\fP"
+
+.PP
+Responds to item highlighting events\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInewState\fP \fCtrue\fP if \fCitem\fP is now highlighted, \fCfalse\fP if unhighlighted\&. 
+.br
+\fIitem\fP The item that was changed\&. 
+.RE
+.PP
+
+.SS "void ItemCollectionWidget::respondToItemSelected (\fBItemWidget\fP *item)\fC [private]\fP, \fC [slot]\fP"
+
+.PP
+Responds to item selection events\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The item that was selected\&. 
+.RE
+.PP
+
+.SS "void ItemCollectionWidget::respondToItemUnhighlighted (\fBItemWidget\fP *item)\fC [private]\fP, \fC [slot]\fP"
+
+.PP
+Responds to item unhighlighting events\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The item that was unhighlighted\&. 
+.RE
+.PP
+
+.SS "void ItemCollectionWidget::setContainerLayout (QLayout *layout)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Set the layout that will hold all of the items\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlayout\fP The layout that should hold everything\&. 
+.RE
+.PP
+
+.SS "void ItemCollectionWidget::setItemAlignment (intalignment)\fC [virtual]\fP"
+
+.PP
+Change how the items are presented\&. If \fCStartAlign\fP, the items will be aligned to the left (if \fC\fBexpandsLeftToRight()\fP\fP) or top\&. If \fCMiddleAlign\fP, the items will be aligned horizontally in the middle or vertically\&. If \fCEndAlign\fP, the items will be aligned to the right or the bottom\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalignment\fP The alignment to use\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AWE Media Center from the source code\&.

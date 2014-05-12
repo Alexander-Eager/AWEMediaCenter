@@ -1,0 +1,214 @@
+.TH "UI::ItemListWidget" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+UI::ItemListWidget \- 
+.PP
+An item collection based off of lists\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ItemListWidget\&.h>\fP
+.PP
+Inherits \fBUI::ItemCollectionWidget\fP\&.
+.SS "Public Slots"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBaddItem\fP (\fBItemWidget\fP *item)"
+.br
+.RI "\fIAdd an item to this list\&. \fP"
+.ti -1c
+.RI "virtual void \fBinsertItem\fP (int index, \fBItemWidget\fP *item)"
+.br
+.RI "\fIInsert an item into this list\&. \fP"
+.ti -1c
+.RI "virtual void \fBremoveItem\fP (\fBItemWidget\fP *item)"
+.br
+.RI "\fIRemove an item from this list\&. \fP"
+.ti -1c
+.RI "virtual void \fBremoveItem\fP (int index)"
+.br
+.RI "\fIRemove the item at \fCindex\fP this list\&. \fP"
+.ti -1c
+.RI "virtual void \fBclear\fP ()"
+.br
+.RI "\fIRemove all items in a safe way\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBItemListWidget\fP (QWidget *parent, bool direction=false, bool multiselection=false)"
+.br
+.RI "\fIMake for the given parent in the given direction\&. \fP"
+.ti -1c
+.RI "virtual \fB~ItemListWidget\fP ()"
+.br
+.RI "\fIDestroy this object\&. \fP"
+.ti -1c
+.RI "virtual QString \fBgetLayoutType\fP () const "
+.br
+.RI "\fIGet the way these collections are stored, 'Item List'\&. \fP"
+.ti -1c
+.RI "virtual \fBItemWidget\fP * \fBat\fP (int index)"
+.br
+.RI "\fIGet the item at the given index\&. \fP"
+.ti -1c
+.RI "virtual const \fBItemWidget\fP * \fBat\fP (int index) const "
+.br
+.RI "\fIGet the item at the given index\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBresizeEvent\fP (QResizeEvent *event)"
+.br
+.RI "\fIChanges the mandatory size for the items\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "QBoxLayout * \fBmyLayout\fP"
+.br
+.RI "\fILayout that holds all of the items\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An item collection based off of lists\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ItemListWidget::ItemListWidget (QWidget *parent, booldirection = \fCfalse\fP, boolmultiselection = \fCfalse\fP)"
+
+.PP
+Make for the given parent in the given direction\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparent\fP The parent widget\&. 
+.br
+\fIdirection\fP The direction of expansion; \fCtrue\fP if left-right, \fCfalse\fP if up-down\&. 
+.br
+\fImultiselection\fP \fCtrue\fP if multiple items should be selectable at once, \fCfalse\fP if only one should be at a time\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void ItemListWidget::addItem (\fBItemWidget\fP *item)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Add an item to this list\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The item to add\&. 
+.RE
+.PP
+
+.SS "\fBItemWidget\fP * ItemListWidget::at (intindex)\fC [virtual]\fP"
+
+.PP
+Get the item at the given index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP The index of the item to get\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The item at the given index\&. 
+.RE
+.PP
+
+.SS "const \fBItemWidget\fP * ItemListWidget::at (intindex) const\fC [virtual]\fP"
+
+.PP
+Get the item at the given index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP The index of the item to get\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The item at the given index\&. 
+.RE
+.PP
+
+.SS "void ItemListWidget::clear ()\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Remove all items in a safe way\&. Unlike \fCQListWidget\fP's clear function, this one uses \fCdeleteLater()\fP to avoid segmentation faults if this function is called as a result of an item activation\&. 
+.SS "QString ItemListWidget::getLayoutType () const\fC [virtual]\fP"
+
+.PP
+Get the way these collections are stored, 'Item List'\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+'Item List'\&. 
+.RE
+.PP
+
+.PP
+Implements \fBUI::ItemCollectionWidget\fP\&.
+.SS "void ItemListWidget::insertItem (intindex, \fBItemWidget\fP *item)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Insert an item into this list\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP The index to place the item at\&. 
+.br
+\fIitem\fP The item to add\&. 
+.RE
+.PP
+
+.SS "void ItemListWidget::removeItem (\fBItemWidget\fP *item)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Remove an item from this list\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The item to remove (and delete)\&. 
+.RE
+.PP
+
+.SS "void ItemListWidget::removeItem (intindex)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Remove the item at \fCindex\fP this list\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP The index of the item to remove (and delete)\&. 
+.RE
+.PP
+
+.SS "void ItemListWidget::resizeEvent (QResizeEvent *event)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Changes the mandatory size for the items\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The (ignored) size event\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBUI::ItemCollectionWidget\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AWE Media Center from the source code\&.

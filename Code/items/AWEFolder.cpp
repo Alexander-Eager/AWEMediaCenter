@@ -1,29 +1,25 @@
 // header file
 #include "AWEFolder.h"
 
-// file reading
-#include "libs/generic_file_reader/file_reader.h"
-#include <QTextStream>
-#include <QString>
+// for settings
+#include "AWEMC.h"
 
 using namespace AWE;
 
-Folder::Folder(const QDir& folder,
-		GlobalSettings* settings) :
+Folder::Folder(QDir folder) :
 	MediaItem(folder)
 {
 	// add the initial item
-	settings->addItem(this);
+	AWEMC::settings()->addItem(this);
 
 	// get all of the children
 	QDir root(folder);
 	root.cdUp();
-	QString r = root.absolutePath();
-	for (uint i = 0; i < myData["items"].size(); ++ i)
+	for (uint i = 0; i < getData()["items"].size(); ++ i)
 	{
-		QString str = r + "/" + myData["items"][i].asCString();
+		QString str = root.absoluteFilePath(getData()["items"][i].asCString());
 		QDir dir(QDir::cleanPath(str));
-		MediaItem* toAdd = settings->getMediaItemByJSONFile(dir);
+		MediaItem* toAdd = AWEMC::settings()->getMediaItemByJSONFile(dir);
 		if (toAdd != nullptr)
 		{
 			myItems.append(toAdd);

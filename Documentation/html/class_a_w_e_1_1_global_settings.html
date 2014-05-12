@@ -74,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -90,97 +90,185 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_a_w_e_1_1_global_settings-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">AWE::GlobalSettings Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Holds the global settings for AWEMC.  
+<p>Holds the global settings for <a class="el" href="class_a_w_e_1_1_a_w_e_m_c.html" title="This holds a few static instances of important classes, like AWE::GlobalSettings and UI::Delegate...">AWEMC</a>.  
  <a href="class_a_w_e_1_1_global_settings.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_a_w_e_global_settings_8h_source.html">AWEGlobalSettings.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr class="memitem:a45df15954e36fb1bad5385f5249c408e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a45df15954e36fb1bad5385f5249c408e"></a>
-typedef std::set&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a45df15954e36fb1bad5385f5249c408e">NameSet</a></td></tr>
-<tr class="memdesc:a45df15954e36fb1bad5385f5249c408e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The set type used to hold names. <br/></td></tr>
-<tr class="separator:a45df15954e36fb1bad5385f5249c408e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8aa60ae622af94d79cba5321fb0a2816"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a8aa60ae622af94d79cba5321fb0a2816">GlobalSettings</a> (const std::string &amp;settingsFile)</td></tr>
-<tr class="memdesc:a8aa60ae622af94d79cba5321fb0a2816"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create the global settings object.  <a href="#a8aa60ae622af94d79cba5321fb0a2816">More...</a><br/></td></tr>
-<tr class="separator:a8aa60ae622af94d79cba5321fb0a2816"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae01ec075682268ed958414502fcb90a5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#ae01ec075682268ed958414502fcb90a5">GlobalSettings</a> (QDir settingsFile)</td></tr>
+<tr class="memdesc:ae01ec075682268ed958414502fcb90a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create the global settings object.  <a href="#ae01ec075682268ed958414502fcb90a5">More...</a><br/></td></tr>
+<tr class="separator:ae01ec075682268ed958414502fcb90a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3e8fa5120473c6c0151573ad81e1b04"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#ad3e8fa5120473c6c0151573ad81e1b04">~GlobalSettings</a> ()</td></tr>
 <tr class="memdesc:ad3e8fa5120473c6c0151573ad81e1b04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deconstructor.  <a href="#ad3e8fa5120473c6c0151573ad81e1b04">More...</a><br/></td></tr>
 <tr class="separator:ad3e8fa5120473c6c0151573ad81e1b04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40bfab45d901e7c1acdd2d0a8700fd69"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_a_w_e_1_1_metadata_scraper.html">MetadataScraper</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a40bfab45d901e7c1acdd2d0a8700fd69">getScraperByName</a> (const std::string &amp;name)</td></tr>
-<tr class="memdesc:a40bfab45d901e7c1acdd2d0a8700fd69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a metadata scraper by name.  <a href="#a40bfab45d901e7c1acdd2d0a8700fd69">More...</a><br/></td></tr>
-<tr class="separator:a40bfab45d901e7c1acdd2d0a8700fd69"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45d865b8b7242f17ad6e83ff014ee4c6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_json_1_1_value.html">Json::Value</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a45d865b8b7242f17ad6e83ff014ee4c6">getScraperSettingsByName</a> (const std::string &amp;name)</td></tr>
-<tr class="memdesc:a45d865b8b7242f17ad6e83ff014ee4c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a metadata scraper's settings by name.  <a href="#a45d865b8b7242f17ad6e83ff014ee4c6">More...</a><br/></td></tr>
-<tr class="separator:a45d865b8b7242f17ad6e83ff014ee4c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1824eeb7c6319dda29aa061dd13184c"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_a_w_e_1_1_global_settings.html#a45df15954e36fb1bad5385f5249c408e">NameSet</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#ac1824eeb7c6319dda29aa061dd13184c">getAllMetadataScraperNames</a> ()</td></tr>
-<tr class="memdesc:ac1824eeb7c6319dda29aa061dd13184c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a set of all metadata scrapers.  <a href="#ac1824eeb7c6319dda29aa061dd13184c">More...</a><br/></td></tr>
-<tr class="separator:ac1824eeb7c6319dda29aa061dd13184c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2cc7da9b20e508de12f472ba86cf351"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_a_w_e_1_1_media_player.html">MediaPlayer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#ae2cc7da9b20e508de12f472ba86cf351">getPlayerByName</a> (const std::string &amp;name)</td></tr>
-<tr class="memdesc:ae2cc7da9b20e508de12f472ba86cf351"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a media player by name.  <a href="#ae2cc7da9b20e508de12f472ba86cf351">More...</a><br/></td></tr>
-<tr class="separator:ae2cc7da9b20e508de12f472ba86cf351"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27fbf04ccbc5fb4bf42db0412ff2ab23"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_json_1_1_value.html">Json::Value</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a27fbf04ccbc5fb4bf42db0412ff2ab23">getPlayerSettingsByName</a> (const std::string &amp;name)</td></tr>
-<tr class="memdesc:a27fbf04ccbc5fb4bf42db0412ff2ab23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a media player's settings by name.  <a href="#a27fbf04ccbc5fb4bf42db0412ff2ab23">More...</a><br/></td></tr>
-<tr class="separator:a27fbf04ccbc5fb4bf42db0412ff2ab23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0fb7bb8eba01fa51841a827741a0731a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_a_w_e_1_1_global_settings.html#a45df15954e36fb1bad5385f5249c408e">NameSet</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a0fb7bb8eba01fa51841a827741a0731a">getAllMediaPlayerNames</a> ()</td></tr>
-<tr class="memdesc:a0fb7bb8eba01fa51841a827741a0731a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a set of all media players.  <a href="#a0fb7bb8eba01fa51841a827741a0731a">More...</a><br/></td></tr>
-<tr class="separator:a0fb7bb8eba01fa51841a827741a0731a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7026bd5fdd6c7b566a1d5c71ef4b21e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_json_1_1_value.html">Json::Value</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#ab7026bd5fdd6c7b566a1d5c71ef4b21e">getTypeByName</a> (const std::string &amp;name)</td></tr>
-<tr class="memdesc:ab7026bd5fdd6c7b566a1d5c71ef4b21e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the media type with the given name.  <a href="#ab7026bd5fdd6c7b566a1d5c71ef4b21e">More...</a><br/></td></tr>
-<tr class="separator:ab7026bd5fdd6c7b566a1d5c71ef4b21e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4104e5ab20b0e63eccc887ef84d8581f"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_a_w_e_1_1_global_settings.html#a45df15954e36fb1bad5385f5249c408e">NameSet</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a4104e5ab20b0e63eccc887ef84d8581f">getAllMediaTypeNames</a> ()</td></tr>
-<tr class="memdesc:a4104e5ab20b0e63eccc887ef84d8581f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a set of all media types.  <a href="#a4104e5ab20b0e63eccc887ef84d8581f">More...</a><br/></td></tr>
-<tr class="separator:a4104e5ab20b0e63eccc887ef84d8581f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a836c7a1e4d711e64fcc87b2908a2eb4e"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_a_w_e_1_1_global_settings.html#a45df15954e36fb1bad5385f5249c408e">NameSet</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a836c7a1e4d711e64fcc87b2908a2eb4e">getAllMediaServiceNames</a> ()</td></tr>
-<tr class="memdesc:a836c7a1e4d711e64fcc87b2908a2eb4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the names of all of the media services.  <a href="#a836c7a1e4d711e64fcc87b2908a2eb4e">More...</a><br/></td></tr>
-<tr class="separator:a836c7a1e4d711e64fcc87b2908a2eb4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0d26204fee1973539c9a6962ea9f462"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_a_w_e_1_1_media_service.html">MediaService</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#ad0d26204fee1973539c9a6962ea9f462">getMediaServiceByName</a> (const std::string &amp;name)</td></tr>
-<tr class="memdesc:ad0d26204fee1973539c9a6962ea9f462"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a media service by name.  <a href="#ad0d26204fee1973539c9a6962ea9f462">More...</a><br/></td></tr>
-<tr class="separator:ad0d26204fee1973539c9a6962ea9f462"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab13f95f4967f7058de61199ad48626ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_a_w_e_1_1_media_item.html">MediaItem</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#ab13f95f4967f7058de61199ad48626ed">getMediaItemByJSONFile</a> (const QDir &amp;file)</td></tr>
-<tr class="memdesc:ab13f95f4967f7058de61199ad48626ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a media item from its JSON file.  <a href="#ab13f95f4967f7058de61199ad48626ed">More...</a><br/></td></tr>
-<tr class="separator:ab13f95f4967f7058de61199ad48626ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac776a76c7c09678fa753e6561cafeda2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#ac776a76c7c09678fa753e6561cafeda2">addFolder</a> (const std::string &amp;path, <a class="el" href="class_a_w_e_1_1_folder.html">Folder</a> *folder)</td></tr>
-<tr class="memdesc:ac776a76c7c09678fa753e6561cafeda2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add the given folder.  <a href="#ac776a76c7c09678fa753e6561cafeda2">More...</a><br/></td></tr>
-<tr class="separator:ac776a76c7c09678fa753e6561cafeda2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63104e9ff0df7cfd5e82fc82a322f92c"><td class="memItemLeft" align="right" valign="top">QFont&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a63104e9ff0df7cfd5e82fc82a322f92c">getFontByName</a> (QString name)</td></tr>
+<tr class="memdesc:a63104e9ff0df7cfd5e82fc82a322f92c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a font by name.  <a href="#a63104e9ff0df7cfd5e82fc82a322f92c">More...</a><br/></td></tr>
+<tr class="separator:a63104e9ff0df7cfd5e82fc82a322f92c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26cafca46ab8e2e8633c93f0411fc5c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_a_w_e_1_1_metadata_scraper.html">MetadataScraper</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a26cafca46ab8e2e8633c93f0411fc5c8">getScraperByName</a> (QString name)</td></tr>
+<tr class="memdesc:a26cafca46ab8e2e8633c93f0411fc5c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a metadata scraper by name.  <a href="#a26cafca46ab8e2e8633c93f0411fc5c8">More...</a><br/></td></tr>
+<tr class="separator:a26cafca46ab8e2e8633c93f0411fc5c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70e68985d23795c9e6222dfc433df203"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_json_1_1_value.html">Json::Value</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a70e68985d23795c9e6222dfc433df203">getScraperSettingsByName</a> (QString name)</td></tr>
+<tr class="memdesc:a70e68985d23795c9e6222dfc433df203"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a metadata scraper's settings by name.  <a href="#a70e68985d23795c9e6222dfc433df203">More...</a><br/></td></tr>
+<tr class="separator:a70e68985d23795c9e6222dfc433df203"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae044264a5db5e73314dbe8b261f23644"><td class="memItemLeft" align="right" valign="top">QList&lt; QString &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#ae044264a5db5e73314dbe8b261f23644">getAllMetadataScraperNames</a> ()</td></tr>
+<tr class="memdesc:ae044264a5db5e73314dbe8b261f23644"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a set of all metadata scrapers.  <a href="#ae044264a5db5e73314dbe8b261f23644">More...</a><br/></td></tr>
+<tr class="separator:ae044264a5db5e73314dbe8b261f23644"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4cda6b91613e5f327eee299f34cccea"><td class="memItemLeft" align="right" valign="top">QList&lt; <a class="el" href="class_a_w_e_1_1_metadata_scraper.html">MetadataScraper</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#aa4cda6b91613e5f327eee299f34cccea">getAllScrapersForItem</a> (<a class="el" href="class_a_w_e_1_1_media_item.html">MediaItem</a> *item)</td></tr>
+<tr class="memdesc:aa4cda6b91613e5f327eee299f34cccea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a set of all metadata scrapers that can scrape for the given item.  <a href="#aa4cda6b91613e5f327eee299f34cccea">More...</a><br/></td></tr>
+<tr class="separator:aa4cda6b91613e5f327eee299f34cccea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c721bc8ac90e3fc47745e8130de4ebb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_a_w_e_1_1_media_player.html">MediaPlayer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a4c721bc8ac90e3fc47745e8130de4ebb">getPlayerByName</a> (QString name)</td></tr>
+<tr class="memdesc:a4c721bc8ac90e3fc47745e8130de4ebb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a media player by name.  <a href="#a4c721bc8ac90e3fc47745e8130de4ebb">More...</a><br/></td></tr>
+<tr class="separator:a4c721bc8ac90e3fc47745e8130de4ebb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ef3ccfe51fba30be109584375f1eb6f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_json_1_1_value.html">Json::Value</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a0ef3ccfe51fba30be109584375f1eb6f">getPlayerSettingsByName</a> (QString name)</td></tr>
+<tr class="memdesc:a0ef3ccfe51fba30be109584375f1eb6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a media player's settings by name.  <a href="#a0ef3ccfe51fba30be109584375f1eb6f">More...</a><br/></td></tr>
+<tr class="separator:a0ef3ccfe51fba30be109584375f1eb6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70b279b736dc2b9ad4b8b5e13b3433c7"><td class="memItemLeft" align="right" valign="top">QList&lt; QString &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a70b279b736dc2b9ad4b8b5e13b3433c7">getAllMediaPlayerNames</a> ()</td></tr>
+<tr class="memdesc:a70b279b736dc2b9ad4b8b5e13b3433c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a set of all media players.  <a href="#a70b279b736dc2b9ad4b8b5e13b3433c7">More...</a><br/></td></tr>
+<tr class="separator:a70b279b736dc2b9ad4b8b5e13b3433c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a166fc2ae091823800ad586e8d6cf5b0a"><td class="memItemLeft" align="right" valign="top">QList&lt; <a class="el" href="class_a_w_e_1_1_media_player.html">MediaPlayer</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a166fc2ae091823800ad586e8d6cf5b0a">getAllPlayersForFile</a> (<a class="el" href="class_a_w_e_1_1_media_file.html">MediaFile</a> *file)</td></tr>
+<tr class="memdesc:a166fc2ae091823800ad586e8d6cf5b0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a set of all media players that can play the given file.  <a href="#a166fc2ae091823800ad586e8d6cf5b0a">More...</a><br/></td></tr>
+<tr class="separator:a166fc2ae091823800ad586e8d6cf5b0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e78425d75670a61252c2af0a80df382"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_json_1_1_value.html">Json::Value</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a6e78425d75670a61252c2af0a80df382">getTypeByName</a> (QString name)</td></tr>
+<tr class="memdesc:a6e78425d75670a61252c2af0a80df382"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the media type with the given name.  <a href="#a6e78425d75670a61252c2af0a80df382">More...</a><br/></td></tr>
+<tr class="separator:a6e78425d75670a61252c2af0a80df382"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13359a6e477bfdf66441b2c0f912fc34"><td class="memItemLeft" align="right" valign="top">QList&lt; QString &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a13359a6e477bfdf66441b2c0f912fc34">getAllMediaTypeNames</a> ()</td></tr>
+<tr class="memdesc:a13359a6e477bfdf66441b2c0f912fc34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a set of all media types.  <a href="#a13359a6e477bfdf66441b2c0f912fc34">More...</a><br/></td></tr>
+<tr class="separator:a13359a6e477bfdf66441b2c0f912fc34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3289d4faf710d479678f77e8fc9fb643"><td class="memItemLeft" align="right" valign="top">QList&lt; QString &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a3289d4faf710d479678f77e8fc9fb643">getAllMediaServiceNames</a> ()</td></tr>
+<tr class="memdesc:a3289d4faf710d479678f77e8fc9fb643"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the names of all of the media services.  <a href="#a3289d4faf710d479678f77e8fc9fb643">More...</a><br/></td></tr>
+<tr class="separator:a3289d4faf710d479678f77e8fc9fb643"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf96c9561a157168601a648f7ef72162"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_a_w_e_1_1_media_service.html">MediaService</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#abf96c9561a157168601a648f7ef72162">getMediaServiceByName</a> (QString name)</td></tr>
+<tr class="memdesc:abf96c9561a157168601a648f7ef72162"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a media service by name.  <a href="#abf96c9561a157168601a648f7ef72162">More...</a><br/></td></tr>
+<tr class="separator:abf96c9561a157168601a648f7ef72162"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49108d0abd52d090d735c73812aebfd5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_a_w_e_1_1_media_item.html">MediaItem</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a49108d0abd52d090d735c73812aebfd5">getMediaItemByJSONFile</a> (QDir file)</td></tr>
+<tr class="memdesc:a49108d0abd52d090d735c73812aebfd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a media item from its JSON file.  <a href="#a49108d0abd52d090d735c73812aebfd5">More...</a><br/></td></tr>
+<tr class="separator:a49108d0abd52d090d735c73812aebfd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a204b0dac2dbf0a3200289dbb05c34648"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a204b0dac2dbf0a3200289dbb05c34648">addItem</a> (<a class="el" href="class_a_w_e_1_1_media_item.html">MediaItem</a> *item)</td></tr>
+<tr class="memdesc:a204b0dac2dbf0a3200289dbb05c34648"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add the given media item.  <a href="#a204b0dac2dbf0a3200289dbb05c34648">More...</a><br/></td></tr>
+<tr class="separator:a204b0dac2dbf0a3200289dbb05c34648"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a958723c6d73aa7ab7574ba4c31675e5d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_a_w_e_1_1_folder.html">Folder</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a958723c6d73aa7ab7574ba4c31675e5d">getRootFolder</a> ()</td></tr>
 <tr class="memdesc:a958723c6d73aa7ab7574ba4c31675e5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the root folder.  <a href="#a958723c6d73aa7ab7574ba4c31675e5d">More...</a><br/></td></tr>
 <tr class="separator:a958723c6d73aa7ab7574ba4c31675e5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefc464d8791fe948abb27ea542cfed90"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_a_w_e_1_1_folder_generator.html">FolderGenerator</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#aefc464d8791fe948abb27ea542cfed90">getFolderGeneratorForType</a> (QString type)</td></tr>
+<tr class="memdesc:aefc464d8791fe948abb27ea542cfed90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the folder generator for the given type.  <a href="#aefc464d8791fe948abb27ea542cfed90">More...</a><br/></td></tr>
+<tr class="separator:aefc464d8791fe948abb27ea542cfed90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a4df7847cd94fe68cf28382f70eedb0b2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4df7847cd94fe68cf28382f70eedb0b2"></a>
 static <a class="el" href="class_json_1_1_value.html">Json::Value</a>&#160;</td><td class="memItemRight" valign="bottom"><b>null</b> = Value::null</td></tr>
 <tr class="separator:a4df7847cd94fe68cf28382f70eedb0b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a05806b6ae429934ff964d36c8d1d88cb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a05806b6ae429934ff964d36c8d1d88cb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a05806b6ae429934ff964d36c8d1d88cb">obtainFonts</a> ()</td></tr>
+<tr class="memdesc:a05806b6ae429934ff964d36c8d1d88cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain the fonts. <br/></td></tr>
+<tr class="separator:a05806b6ae429934ff964d36c8d1d88cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f1893c1c2fa7d268dc69576624d9adc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3f1893c1c2fa7d268dc69576624d9adc"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a3f1893c1c2fa7d268dc69576624d9adc">obtainScrapers</a> ()</td></tr>
+<tr class="memdesc:a3f1893c1c2fa7d268dc69576624d9adc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain the scrapers. <br/></td></tr>
+<tr class="separator:a3f1893c1c2fa7d268dc69576624d9adc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09bcd2ed0578f070b3f64df247822988"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a09bcd2ed0578f070b3f64df247822988"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a09bcd2ed0578f070b3f64df247822988">obtainPlayers</a> ()</td></tr>
+<tr class="memdesc:a09bcd2ed0578f070b3f64df247822988"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain the players. <br/></td></tr>
+<tr class="separator:a09bcd2ed0578f070b3f64df247822988"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac178957248c6eab221aac7394d4a6bd7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac178957248c6eab221aac7394d4a6bd7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#ac178957248c6eab221aac7394d4a6bd7">obtainSkins</a> ()</td></tr>
+<tr class="memdesc:ac178957248c6eab221aac7394d4a6bd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain the skins. <br/></td></tr>
+<tr class="separator:ac178957248c6eab221aac7394d4a6bd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86a46991b13427aeccd50810330e68b5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a86a46991b13427aeccd50810330e68b5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a86a46991b13427aeccd50810330e68b5">obtainTypes</a> ()</td></tr>
+<tr class="memdesc:a86a46991b13427aeccd50810330e68b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain the types. <br/></td></tr>
+<tr class="separator:a86a46991b13427aeccd50810330e68b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af078407a63c2282c4d2fe200890d3e25"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af078407a63c2282c4d2fe200890d3e25"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#af078407a63c2282c4d2fe200890d3e25">obtainServices</a> ()</td></tr>
+<tr class="memdesc:af078407a63c2282c4d2fe200890d3e25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain the services. <br/></td></tr>
+<tr class="separator:af078407a63c2282c4d2fe200890d3e25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a395780d2de7e2f32d2640f0bef2abe0e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a395780d2de7e2f32d2640f0bef2abe0e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a395780d2de7e2f32d2640f0bef2abe0e">obtainItems</a> ()</td></tr>
+<tr class="memdesc:a395780d2de7e2f32d2640f0bef2abe0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain the items. <br/></td></tr>
+<tr class="separator:a395780d2de7e2f32d2640f0bef2abe0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ac20041368a3097f04979bef0cb716ea4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac20041368a3097f04979bef0cb716ea4"></a>
+<a class="el" href="class_json_1_1_value.html">Json::Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#ac20041368a3097f04979bef0cb716ea4">mySettings</a></td></tr>
+<tr class="memdesc:ac20041368a3097f04979bef0cb716ea4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The global settings. <br/></td></tr>
+<tr class="separator:ac20041368a3097f04979bef0cb716ea4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4997ad85d8ec55b6333dde7030393c8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad4997ad85d8ec55b6333dde7030393c8"></a>
+QDir&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#ad4997ad85d8ec55b6333dde7030393c8">mySettingsFile</a></td></tr>
+<tr class="memdesc:ad4997ad85d8ec55b6333dde7030393c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The global settings file. <br/></td></tr>
+<tr class="separator:ad4997ad85d8ec55b6333dde7030393c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe252ea913daaabd7e6b9155ef1285b3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afe252ea913daaabd7e6b9155ef1285b3"></a>
+QHash&lt; QString, QFont &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#afe252ea913daaabd7e6b9155ef1285b3">myFonts</a></td></tr>
+<tr class="memdesc:afe252ea913daaabd7e6b9155ef1285b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps name for a font onto the font. <br/></td></tr>
+<tr class="separator:afe252ea913daaabd7e6b9155ef1285b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39ee4527e136e797c7b6abf7b37837bc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a39ee4527e136e797c7b6abf7b37837bc"></a>
+QHash&lt; QString, <a class="el" href="class_a_w_e_1_1_folder_generator.html">FolderGenerator</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a39ee4527e136e797c7b6abf7b37837bc">myMediaTypes</a></td></tr>
+<tr class="memdesc:a39ee4527e136e797c7b6abf7b37837bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps type name onto folder generator. <br/></td></tr>
+<tr class="separator:a39ee4527e136e797c7b6abf7b37837bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba028e2a5f31d358de527368107a1e82"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aba028e2a5f31d358de527368107a1e82"></a>
+QHash&lt; QString, <a class="el" href="class_a_w_e_1_1_media_player.html">MediaPlayer</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#aba028e2a5f31d358de527368107a1e82">myMediaPlayers</a></td></tr>
+<tr class="memdesc:aba028e2a5f31d358de527368107a1e82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps names of media players onto players. <br/></td></tr>
+<tr class="separator:aba028e2a5f31d358de527368107a1e82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab489a11d7f94b7aed94440f08da2fdec"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab489a11d7f94b7aed94440f08da2fdec"></a>
+QHash&lt; QString, <a class="el" href="class_json_1_1_value.html">Json::Value</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#ab489a11d7f94b7aed94440f08da2fdec">myMediaPlayerSettings</a></td></tr>
+<tr class="memdesc:ab489a11d7f94b7aed94440f08da2fdec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps names of media players onto settings. <br/></td></tr>
+<tr class="separator:ab489a11d7f94b7aed94440f08da2fdec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a023c78a367d36843543b4343fea55014"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a023c78a367d36843543b4343fea55014"></a>
+QHash&lt; QString, <a class="el" href="class_a_w_e_1_1_metadata_scraper.html">MetadataScraper</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a023c78a367d36843543b4343fea55014">myMetadataScrapers</a></td></tr>
+<tr class="memdesc:a023c78a367d36843543b4343fea55014"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps names of metadata scrapers onto scrapers. <br/></td></tr>
+<tr class="separator:a023c78a367d36843543b4343fea55014"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7c418d74dff8c4bf6008c7dab80ebaf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa7c418d74dff8c4bf6008c7dab80ebaf"></a>
+QHash&lt; QString, <a class="el" href="class_json_1_1_value.html">Json::Value</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#aa7c418d74dff8c4bf6008c7dab80ebaf">myMetadataScraperSettings</a></td></tr>
+<tr class="memdesc:aa7c418d74dff8c4bf6008c7dab80ebaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps names of metadata scrapers onto settings. <br/></td></tr>
+<tr class="separator:aa7c418d74dff8c4bf6008c7dab80ebaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5733aead5bc3ff476f5abfb65906f361"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5733aead5bc3ff476f5abfb65906f361"></a>
+QHash&lt; QString, <a class="el" href="class_a_w_e_1_1_folder_generator.html">FolderGenerator</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a5733aead5bc3ff476f5abfb65906f361">myFolderGenerators</a></td></tr>
+<tr class="memdesc:a5733aead5bc3ff476f5abfb65906f361"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps names of media types onto folder generators. <br/></td></tr>
+<tr class="separator:a5733aead5bc3ff476f5abfb65906f361"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fdf25f072ae5c96cc75afcb8dfc01b7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9fdf25f072ae5c96cc75afcb8dfc01b7"></a>
+QHash&lt; QString, <a class="el" href="class_a_w_e_1_1_media_service.html">MediaService</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a9fdf25f072ae5c96cc75afcb8dfc01b7">myMediaServices</a></td></tr>
+<tr class="memdesc:a9fdf25f072ae5c96cc75afcb8dfc01b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps names of media services onto services. <br/></td></tr>
+<tr class="separator:a9fdf25f072ae5c96cc75afcb8dfc01b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac58bb8a42cc079c33c018718e401f262"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac58bb8a42cc079c33c018718e401f262"></a>
+QHash&lt; QString, <a class="el" href="class_a_w_e_1_1_media_item.html">MediaItem</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#ac58bb8a42cc079c33c018718e401f262">myMediaItems</a></td></tr>
+<tr class="memdesc:ac58bb8a42cc079c33c018718e401f262"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps the absolute, clean path of an item onto the item. <br/></td></tr>
+<tr class="separator:ac58bb8a42cc079c33c018718e401f262"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ca5d08ff7a32714da973ec0973edb34"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4ca5d08ff7a32714da973ec0973edb34"></a>
+<a class="el" href="class_a_w_e_1_1_folder.html">Folder</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_global_settings.html#a4ca5d08ff7a32714da973ec0973edb34">myRootFolder</a></td></tr>
+<tr class="memdesc:a4ca5d08ff7a32714da973ec0973edb34"><td class="mdescLeft">&#160;</td><td class="mdescRight">The root folder. <br/></td></tr>
+<tr class="separator:a4ca5d08ff7a32714da973ec0973edb34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Holds the global settings for AWEMC. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd><p class="startdd">Skins... </p>
-<p class="enddd">Get a better folder adding system.</p>
+<div class="textblock"><p>Holds the global settings for <a class="el" href="class_a_w_e_1_1_a_w_e_m_c.html" title="This holds a few static instances of important classes, like AWE::GlobalSettings and UI::Delegate...">AWEMC</a>. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">Todo:</a></b></dt><dd><p class="startdd">Skins </p>
+<p class="enddd"><a class="el" href="namespace_u_i.html" title="Contains the user interface classes of AWEMC. ">UI</a> delegate (with user prompting)</p>
 </dd></dl>
-<p>Functions for pretty much anything you want to know about the prefernces for AWEMC are here. Every plugin extending AWEMC has its own configuration file, which is held in here via sub-configuration objects.</p>
+<p>Functions for pretty much anything you want to know about the prefernces for <a class="el" href="class_a_w_e_1_1_a_w_e_m_c.html" title="This holds a few static instances of important classes, like AWE::GlobalSettings and UI::Delegate...">AWEMC</a> are here. Every plugin extending <a class="el" href="class_a_w_e_1_1_a_w_e_m_c.html" title="This holds a few static instances of important classes, like AWE::GlobalSettings and UI::Delegate...">AWEMC</a> has its own configuration file, which is held in here via sub-configuration objects.</p>
 <p>You shouldn't need to instantiate this class on your own; most objects are passed a copy of the settings object during creation or through some other means. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a8aa60ae622af94d79cba5321fb0a2816"></a>
+<a class="anchor" id="ae01ec075682268ed958414502fcb90a5"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">GlobalSettings::GlobalSettings </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramtype">QDir&#160;</td>
           <td class="paramname"><em>settingsFile</em></td><td>)</td>
           <td></td>
         </tr>
@@ -190,7 +278,7 @@ static <a class="el" href="class_json_1_1_value.html">Json::Value</a>&#160;</td>
 <p>Create the global settings object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">settingsFile</td><td>The file that contains the settings for AWEMC (usually <code>settings.json</code> in the root folder) </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">settingsFile</td><td>The file that contains the settings for <a class="el" href="class_a_w_e_1_1_a_w_e_m_c.html" title="This holds a few static instances of important classes, like AWE::GlobalSettings and UI::Delegate...">AWEMC</a> (usually <code>settings.json</code> in the root folder) </td></tr>
   </table>
   </dd>
 </dl>
@@ -216,47 +304,36 @@ static <a class="el" href="class_json_1_1_value.html">Json::Value</a>&#160;</td>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="ac776a76c7c09678fa753e6561cafeda2"></a>
+<a class="anchor" id="a204b0dac2dbf0a3200289dbb05c34648"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void GlobalSettings::addFolder </td>
+          <td class="memname">void GlobalSettings::addItem </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>path</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="class_a_w_e_1_1_media_item.html">MediaItem</a> *&#160;</td>
+          <td class="paramname"><em>item</em></td><td>)</td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_a_w_e_1_1_folder.html">Folder</a> *&#160;</td>
-          <td class="paramname"><em>folder</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Add the given folder. </p>
+<p>Add the given media item. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">path</td><td>The path to the config file. </td></tr>
-    <tr><td class="paramname">folder</td><td>The folder. </td></tr>
+    <tr><td class="paramname">item</td><td>The media item. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a class="anchor" id="a0fb7bb8eba01fa51841a827741a0731a"></a>
+<a class="anchor" id="a70b279b736dc2b9ad4b8b5e13b3433c7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="class_a_w_e_1_1_global_settings.html#a45df15954e36fb1bad5385f5249c408e">GlobalSettings::NameSet</a> &amp; GlobalSettings::getAllMediaPlayerNames </td>
+          <td class="memname">QList&lt; QString &gt; GlobalSettings::getAllMediaPlayerNames </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -269,12 +346,12 @@ static <a class="el" href="class_json_1_1_value.html">Json::Value</a>&#160;</td>
 
 </div>
 </div>
-<a class="anchor" id="a836c7a1e4d711e64fcc87b2908a2eb4e"></a>
+<a class="anchor" id="a3289d4faf710d479678f77e8fc9fb643"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="class_a_w_e_1_1_global_settings.html#a45df15954e36fb1bad5385f5249c408e">GlobalSettings::NameSet</a> &amp; GlobalSettings::getAllMediaServiceNames </td>
+          <td class="memname">QList&lt; QString &gt; GlobalSettings::getAllMediaServiceNames </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -287,12 +364,12 @@ static <a class="el" href="class_json_1_1_value.html">Json::Value</a>&#160;</td>
 
 </div>
 </div>
-<a class="anchor" id="a4104e5ab20b0e63eccc887ef84d8581f"></a>
+<a class="anchor" id="a13359a6e477bfdf66441b2c0f912fc34"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="class_a_w_e_1_1_global_settings.html#a45df15954e36fb1bad5385f5249c408e">GlobalSettings::NameSet</a> &amp; GlobalSettings::getAllMediaTypeNames </td>
+          <td class="memname">QList&lt; QString &gt; GlobalSettings::getAllMediaTypeNames </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -305,12 +382,12 @@ static <a class="el" href="class_json_1_1_value.html">Json::Value</a>&#160;</td>
 
 </div>
 </div>
-<a class="anchor" id="ac1824eeb7c6319dda29aa061dd13184c"></a>
+<a class="anchor" id="ae044264a5db5e73314dbe8b261f23644"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="class_a_w_e_1_1_global_settings.html#a45df15954e36fb1bad5385f5249c408e">GlobalSettings::NameSet</a> &amp; GlobalSettings::getAllMetadataScraperNames </td>
+          <td class="memname">QList&lt; QString &gt; GlobalSettings::getAllMetadataScraperNames </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -323,14 +400,114 @@ static <a class="el" href="class_json_1_1_value.html">Json::Value</a>&#160;</td>
 
 </div>
 </div>
-<a class="anchor" id="ab13f95f4967f7058de61199ad48626ed"></a>
+<a class="anchor" id="a166fc2ae091823800ad586e8d6cf5b0a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QList&lt; <a class="el" href="class_a_w_e_1_1_media_player.html">MediaPlayer</a> * &gt; GlobalSettings::getAllPlayersForFile </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_a_w_e_1_1_media_file.html">MediaFile</a> *&#160;</td>
+          <td class="paramname"><em>file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get a set of all media players that can play the given file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">file</td><td>The file for which to get possible players.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A list of all possible media players that can play <code>file</code>. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aa4cda6b91613e5f327eee299f34cccea"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QList&lt; <a class="el" href="class_a_w_e_1_1_metadata_scraper.html">MetadataScraper</a> * &gt; GlobalSettings::getAllScrapersForItem </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_a_w_e_1_1_media_item.html">MediaItem</a> *&#160;</td>
+          <td class="paramname"><em>item</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get a set of all metadata scrapers that can scrape for the given item. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item</td><td>The media item to get possible scrapers for.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A list of all possible metadata scrapers that can get metadata for <code>item</code>. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aefc464d8791fe948abb27ea542cfed90"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_a_w_e_1_1_folder_generator.html">FolderGenerator</a> * GlobalSettings::getFolderGeneratorForType </td>
+          <td>(</td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the folder generator for the given type. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">type</td><td>The type of folder generator.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The folder generator for <code>type</code>. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a63104e9ff0df7cfd5e82fc82a322f92c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QFont GlobalSettings::getFontByName </td>
+          <td>(</td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get a font by name. </p>
+<p>By default, <a class="el" href="class_a_w_e_1_1_a_w_e_m_c.html" title="This holds a few static instances of important classes, like AWE::GlobalSettings and UI::Delegate...">AWEMC</a> has these fonts:</p>
+<ul>
+<li>"biggest": used in title bars</li>
+<li>"big": used in subtitle bars</li>
+<li>"normal": used in your everyday text</li>
+<li>"button": used in buttons </li>
+</ul>
+
+</div>
+</div>
+<a class="anchor" id="a49108d0abd52d090d735c73812aebfd5"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="class_a_w_e_1_1_media_item.html">MediaItem</a> * GlobalSettings::getMediaItemByJSONFile </td>
           <td>(</td>
-          <td class="paramtype">const QDir &amp;&#160;</td>
+          <td class="paramtype">QDir&#160;</td>
           <td class="paramname"><em>file</em></td><td>)</td>
           <td></td>
         </tr>
@@ -343,14 +520,14 @@ static <a class="el" href="class_json_1_1_value.html">Json::Value</a>&#160;</td>
 
 </div>
 </div>
-<a class="anchor" id="ad0d26204fee1973539c9a6962ea9f462"></a>
+<a class="anchor" id="abf96c9561a157168601a648f7ef72162"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="class_a_w_e_1_1_media_service.html">MediaService</a> * GlobalSettings::getMediaServiceByName </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramtype">QString&#160;</td>
           <td class="paramname"><em>name</em></td><td>)</td>
           <td></td>
         </tr>
@@ -368,14 +545,14 @@ static <a class="el" href="class_json_1_1_value.html">Json::Value</a>&#160;</td>
 
 </div>
 </div>
-<a class="anchor" id="ae2cc7da9b20e508de12f472ba86cf351"></a>
+<a class="anchor" id="a4c721bc8ac90e3fc47745e8130de4ebb"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="class_a_w_e_1_1_media_player.html">MediaPlayer</a> * GlobalSettings::getPlayerByName </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramtype">QString&#160;</td>
           <td class="paramname"><em>name</em></td><td>)</td>
           <td></td>
         </tr>
@@ -393,14 +570,14 @@ static <a class="el" href="class_json_1_1_value.html">Json::Value</a>&#160;</td>
 
 </div>
 </div>
-<a class="anchor" id="a27fbf04ccbc5fb4bf42db0412ff2ab23"></a>
+<a class="anchor" id="a0ef3ccfe51fba30be109584375f1eb6f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="class_json_1_1_value.html">Value</a> &amp; GlobalSettings::getPlayerSettingsByName </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramtype">QString&#160;</td>
           <td class="paramname"><em>name</em></td><td>)</td>
           <td></td>
         </tr>
@@ -436,14 +613,14 @@ static <a class="el" href="class_json_1_1_value.html">Json::Value</a>&#160;</td>
 
 </div>
 </div>
-<a class="anchor" id="a40bfab45d901e7c1acdd2d0a8700fd69"></a>
+<a class="anchor" id="a26cafca46ab8e2e8633c93f0411fc5c8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="class_a_w_e_1_1_metadata_scraper.html">MetadataScraper</a> * GlobalSettings::getScraperByName </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramtype">QString&#160;</td>
           <td class="paramname"><em>name</em></td><td>)</td>
           <td></td>
         </tr>
@@ -461,14 +638,14 @@ static <a class="el" href="class_json_1_1_value.html">Json::Value</a>&#160;</td>
 
 </div>
 </div>
-<a class="anchor" id="a45d865b8b7242f17ad6e83ff014ee4c6"></a>
+<a class="anchor" id="a70e68985d23795c9e6222dfc433df203"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="class_json_1_1_value.html">Value</a> &amp; GlobalSettings::getScraperSettingsByName </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramtype">QString&#160;</td>
           <td class="paramname"><em>name</em></td><td>)</td>
           <td></td>
         </tr>
@@ -486,14 +663,14 @@ static <a class="el" href="class_json_1_1_value.html">Json::Value</a>&#160;</td>
 
 </div>
 </div>
-<a class="anchor" id="ab7026bd5fdd6c7b566a1d5c71ef4b21e"></a>
+<a class="anchor" id="a6e78425d75670a61252c2af0a80df382"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="class_json_1_1_value.html">Value</a> &amp; GlobalSettings::getTypeByName </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramtype">QString&#160;</td>
           <td class="paramname"><em>name</em></td><td>)</td>
           <td></td>
         </tr>
@@ -512,7 +689,7 @@ static <a class="el" href="class_json_1_1_value.html">Json::Value</a>&#160;</td>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 18 2014 16:58:43 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 10 2014 22:24:00 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

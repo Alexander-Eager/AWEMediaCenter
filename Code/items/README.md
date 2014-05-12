@@ -27,7 +27,7 @@ All media items have relevant metadata and a `"type"`, which is either `"folder"
 
 # Media Files
 
-`MediaFile`s represent a file with a default [media player](../player/README.md), as follows:
+`MediaFile`s represent a file with a default [media player][], as follows:
 
 	{
 		"type": "file",
@@ -72,3 +72,5 @@ The `plugin` folder contains a set of JSON files and associated dynamic librarie
 
 		"library": "dynamic library file"
 	}
+
+[media player]: <../player/README.md>

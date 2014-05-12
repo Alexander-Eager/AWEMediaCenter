@@ -1,0 +1,210 @@
+// The Movie Database scraper
+// website: www.themoviedb.org
+{
+	// name of this scraper that the user sees
+	"name": "The Movie Database",
+	
+	// this scraper is only to be used on movie files
+	"type": "Movie",
+
+	// a movie file is just the name of the movie
+	// we don't care about the path to the file, so
+	// we exclude `/` from the file name matches.
+	// The file extension is not important to this
+	// scraper. It is important that this is the
+	// file, not some path.
+	"filename": "([^/]+)\\.\\w*$",
+
+	// only one movie per file
+	"multiple items per file": false,
+
+	// there are no inherited metadata properties
+	"inherited metadata": { },
+
+	// here are all of the procedures to run
+	"procedures": [
+		{
+			// this first procedure gets the movie to use
+			// since we only want one movie, do not repeat
+			// this procedure
+			"repeat": false,
+			// we do want to make sure we get the right movie
+			// though, so ask the user using the name and year
+			"ask user": "$2 ($3)",
+
+			// we are looking through the search results on themoviedb.org
+			"look in file": "http://www.themoviedb.org/search/movie?query=$1",
+			// $1 is the movie's website, $2 is the name, $3 is the year of release
+			"for": "<a href=\"/movie/([^\"]*)\" title=\"([^\"]*)\">\\2</a> <span>\\((\\d*)\\)</span>",
+
+			"set properties": {
+				// set the name and year attributes accordingly
+				"name": "$2",
+				// notice how the . operator is used to set the "Year" attribute of "details"
+				"details.Year": "$3"
+			},
+
+			// these procedures all act on the movie's page
+			"procedures": [
+				{
+					// this one gets the description of the movie
+					// since there is only one description, do not repeat or ask the user
+					"repeat": false,
+					"ask user": "",
+
+					// $1 was the movie's page, so look there
+					"look in file": "http://www.themoviedb.org/movie/$1",
+					// $1 is the description
+					"for": "<meta name=\"description\" content=\"([^\"]*)\" />",
+
+					"set properties": {
+						// set the description accordingly
+						"description": "$1"
+					},
+
+					// there are no sub-procedures
+					"procedures": []
+				},
+				{
+					// this one gets multiple icon images
+					"repeat": true,
+					"ask user": "http://image.tmdb.org/t/p/original/$1",
+
+					// $1 was the movie's page, so look there
+					"look in file": "http://www.themoviedb.org/movie/$1/images?kind=poster&language=&translate=false",
+					// these links go directly to the full-sized image
+					"for": "<a href=\"http://image.tmdb.org/t/p/original/(\\w+\\.jpg)\" target=\"_blank\"><img class=\"shadow\" src=\"http://image.tmdb.org/t/p/w\\d+/\\1\"",
+
+					"set properties": {
+						// set the cover art
+						"icons.files": "http://image.tmdb.org/t/p/original/$1",
+						"icons.default": 0
+					},
+
+					// there are no sub-procedures
+					"procedures": []
+				},
+				{
+					// this one gets multiple fanart images
+					"repeat": true,
+					"ask user": "$1",
+
+					// $1 was the movie's page, so look under the backdrops sub-page
+					"look in file": "http://www.themoviedb.org/movie/$1/images?kind=backdrop&language=&translate=false",
+					// these links go directly to the full-sized image
+					"for": "<a id=\"\\w+\" class=\"lightbox\" href=\"(http://image.tmdb.org/t/p/original/\\w+\\.jpg)\"",
+
+					"set properties": {
+						// set the fanart
+						"fanarts.files": "$1",
+						"fanarts.default": 0
+					},
+
+					// there are no sub-procedures
+					"procedures": []
+				},
+				{
+					// this gets the director(s) of the film
+					// we want all of them, so repeat
+					"repeat": true,
+					// the user shouldn't care
+					"ask user": "",
+
+					// $1 was the movie's page, so look there
+					"look in file": "http://www.themoviedb.org/movie/$1",
+					// $1 is the person's name
+					// there is a webpage linking to that person's info as well,
+					// but I don't care about that so I skip over it with
+					// "[[:alnum:]\\-]*"
+					"for": "<span itemprop=\"director\" itemscope itemtype=\"http://schema.org/Person\"><a href=\"/person/[\\w\\-]*\" itemprop=\"url\"><span itemprop=\"name\">([^<]*)</span></a></span>",
+
+					"set properties": {
+						// append the director to the list of directors
+						"details.Director(s)": "$1"
+					},
+
+					// there are no sub-procedures
+					"procedures": []
+				},
+				{
+					// this gets the writer(s) of the film
+					// we want all of them, so repeat
+					"repeat": true,
+					// the user shouldn't care
+					"ask user": "",
+
+					// $1 was the movie's page, so look there
+					"look in file": "http://www.themoviedb.org/movie/$1",
+					// $1 is the person's name
+					// there is a webpage linking to that person's info as well,
+					// but I don't care about that so I skip over it with
+					// "[[:alnum:]\\-]*"
+					"for": "<span itemprop=\"author\" itemscope itemtype=\"http://schema.org/Person\"><a href=\"/person/[\\w\\-]*\" itemprop=\"url\"><span itemprop=\"name\">([^<]*)</span></a></span>",
+
+					"set properties": {
+						// append the writer to the list of writers
+						"details.Writer(s)": "$1"
+					},
+
+					// there are no sub-procedures
+					"procedures": []
+				},
+				{
+					// this gets the main cast members of the film
+					// we want all of the top four (or less), so repeat
+					"repeat": true,
+					// the user shouldn't care
+					"ask user": "",
+
+					// $1 was the movie's page, so look there
+					"look in file": "http://www.themoviedb.org/movie/$1",
+					// $1 is the person's name
+					// there is a group of newlines/spaces inbetween tags
+					// so I skip over that group with "[[:space:]]*"
+					// there is a webpage linking to that person's info as well,
+					// but I don't care about that so I skip over it with
+					// "[[:alnum:]\\-]*"
+					"for": "<span itemprop=\"actor\" itemscope itemtype=\"http://schema.org/Person\">\\s*<a href=\"/person/[\\w\\-]*\" itemprop=\"url\"><span itemprop=\"name\">([^<]*)</span></a>",
+
+					"set properties": {
+						// append the cast member to the list of members
+						"details.Cast": "$1"
+					},
+
+					// there are no sub-procedures
+					"procedures": []
+				},
+				{
+					// this gets the various genres for the film
+					// we want all of them
+					"repeat": true,
+					// the user shouldn't care
+					"ask user": "",
+
+					// $1 was the movie's page
+					"look in file": "http://www.themoviedb.org/movie/$1",
+					// $1 is the genre name
+					"for": "<a href=\"/genre/[\\w\\-]+\" alt=\"([^\"]+)\">",
+
+					"set properties": {
+						// append the genre to the list
+						"details.Genre(s)": "$1"
+					},
+
+					"procedures": []
+				}
+			]
+		}
+	],
+
+	// copy over all of the images I retrieved
+	"force copy": [
+		// icons
+		"icons.files",
+		// fanart
+		"fanarts.files"
+	],
+
+	// no optional copies
+	"copy": []
+}

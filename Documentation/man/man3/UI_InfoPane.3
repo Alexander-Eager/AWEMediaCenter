@@ -1,0 +1,306 @@
+.TH "UI::InfoPane" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+UI::InfoPane \- 
+.PP
+Displays the details and description of a media item\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <InfoPane\&.h>\fP
+.PP
+Inherits \fBUI::Pane\fP\&.
+.SS "Public Slots"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBsetItem\fP (\fBAWE::MediaItem\fP *item)"
+.br
+.RI "\fISet the infos displayed to those of the given item\&. \fP"
+.in -1c
+.SS "Signals"
+
+.in +1c
+.ti -1c
+.RI "void \fBwantsToOpenFile\fP (\fBAWE::MediaFile\fP *file, \fBAWE::MediaPlayer\fP *player)"
+.br
+.RI "\fISent when the user asks to play the media file\&. \fP"
+.ti -1c
+.RI "void \fBwantsToOpenService\fP (\fBAWE::MediaService\fP *service)"
+.br
+.RI "\fISent when the user asks to open a media service\&. \fP"
+.ti -1c
+.RI "void \fBwantsToOpenFolder\fP (\fBAWE::Folder\fP *folder)"
+.br
+.RI "\fISent when the user asks to open a folder\&. \fP"
+.ti -1c
+.RI "void \fBwantsToScrapeForMetadata\fP (\fBAWE::MediaItem\fP *item, \fBAWE::MetadataScraper\fP *scraper, bool askUser, bool import, bool inheritMetadata)"
+.br
+.RI "\fISent when the user asks to scrape for new metadata\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBInfoPane\fP (QWidget *parent, \fBAWE::GlobalSettings\fP *settings)"
+.br
+.RI "\fIMake with the given parent\&. \fP"
+.ti -1c
+.RI "\fB~InfoPane\fP ()"
+.br
+.RI "\fIDestroys this object\&. \fP"
+.in -1c
+.SS "Private Slots"
+
+.in +1c
+.ti -1c
+.RI "void \fBrespondToPlayButton\fP ()"
+.br
+.RI "\fIRespond to the user clicking the play button\&. \fP"
+.ti -1c
+.RI "void \fBrespondToOpenButton\fP ()"
+.br
+.RI "\fIRespond to the user clicking the service open button\&. \fP"
+.ti -1c
+.RI "void \fBrespondToFolderOpen\fP ()"
+.br
+.RI "\fIRespond to the user clicking the folder open button\&. \fP"
+.ti -1c
+.RI "void \fBrespondToScrapeButton\fP ()"
+.br
+.RI "\fIRespond to the user clicking the scrape button\&. \fP"
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBmakeDetailUIElements\fP ()"
+.br
+.RI "\fIHelper function that creates the details\&. \fP"
+.ti -1c
+.RI "void \fBmakeDropdownMenus\fP ()"
+.br
+.RI "\fIHelper funciton that fills the drop down menus\&. \fP"
+.ti -1c
+.RI "QString \fBstringFor\fP (\fBJson::Value\fP &val)"
+.br
+.RI "\fIHelper function that converts a \fBJson::Value\fP into a \fCQString\fP for the \fBUI\fP\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBAWE::GlobalSettings\fP * \fBmyGlobalSettings\fP"
+.br
+.RI "\fIThe global settings of AWEMC\&. \fP"
+.ti -1c
+.RI "\fBAWE::MediaItem\fP * \fBmyMediaItem\fP"
+.br
+.RI "\fIThe currently represented item\&. \fP"
+.ti -1c
+.RI "QVBoxLayout * \fBmyMainLayout\fP"
+.br
+.RI "\fIThe main layout of this widget\&. \fP"
+.ti -1c
+.RI "\fBTextItemWidget\fP * \fBmyName\fP"
+.br
+.RI "\fIName of the item\&. \fP"
+.ti -1c
+.RI "\fBTextItemWidget\fP * \fBmyMediaType\fP"
+.br
+.RI "\fIMedia type of this item\&. \fP"
+.ti -1c
+.RI "QFrame * \fBmyFirstSeparator\fP"
+.br
+.RI "\fISeparates the name and type from the details\&. \fP"
+.ti -1c
+.RI "QScrollArea * \fBmyDetailScrollArea\fP"
+.br
+.RI "\fIScrollable area holding all of the details\&. \fP"
+.ti -1c
+.RI "QWidget * \fBmyDetailWidget\fP"
+.br
+.RI "\fIWidget holding all of the details\&. \fP"
+.ti -1c
+.RI "QGridLayout * \fBmyDetailLayout\fP"
+.br
+.RI "\fIDetail layout\&. \fP"
+.ti -1c
+.RI "QList< \fBTextItemWidget\fP * > \fBmyDetails\fP"
+.br
+.RI "\fIList of the details\&. \fP"
+.ti -1c
+.RI "QList< \fBTextItemWidget\fP * > \fBmyDetailValues\fP"
+.br
+.RI "\fIList of the detail values\&. \fP"
+.ti -1c
+.RI "QFrame * \fBmySecondSeparator\fP"
+.br
+.RI "\fISeparates the details from the description\&. \fP"
+.ti -1c
+.RI "QScrollArea * \fBmyDescriptionScrollArea\fP"
+.br
+.RI "\fIScroll area for the description\&. \fP"
+.ti -1c
+.RI "\fBTextItemWidget\fP * \fBmyDescription\fP"
+.br
+.RI "\fIDescription of the item\&. \fP"
+.ti -1c
+.RI "QHBoxLayout * \fBmyScraperLayout\fP"
+.br
+.RI "\fIMetadata scraper button layout\&. \fP"
+.ti -1c
+.RI "QPushButton * \fBmyScrapeButton\fP"
+.br
+.RI "\fIButton to start scraping\&. \fP"
+.ti -1c
+.RI "QComboBox * \fBmyScraperSelections\fP"
+.br
+.RI "\fIDrop down for selecting the scraper to use\&. \fP"
+.ti -1c
+.RI "QHBoxLayout * \fBmyScraperOptionsLayout\fP"
+.br
+.RI "\fILayout for scraping options\&. \fP"
+.ti -1c
+.RI "QCheckBox * \fBmyAskUserBox\fP"
+.br
+.RI "\fICheck box for user prompting\&. \fP"
+.ti -1c
+.RI "QCheckBox * \fBmyImportBox\fP"
+.br
+.RI "\fICheck box for file importing\&. \fP"
+.ti -1c
+.RI "QCheckBox * \fBmyInheritMetadataBox\fP"
+.br
+.RI "\fICheck box for metadata inheritance\&. \fP"
+.ti -1c
+.RI "QStackedLayout * \fBmyButtonArea\fP"
+.br
+.RI "\fISwitchable layout for different kinds of items\&. \fP"
+.ti -1c
+.RI "QWidget * \fBmyMediaFileButtons\fP"
+.br
+.RI "\fIWidget for media files\&. \fP"
+.ti -1c
+.RI "QHBoxLayout * \fBmyMediaFileLayout\fP"
+.br
+.RI "\fILayout for the media file buttons\&. \fP"
+.ti -1c
+.RI "QPushButton * \fBmyPlayButton\fP"
+.br
+.RI "\fIButton for playing a media file\&. \fP"
+.ti -1c
+.RI "QComboBox * \fBmyPlayerSelections\fP"
+.br
+.RI "\fIDrop down for choosing the desired media player\&. \fP"
+.ti -1c
+.RI "QPushButton * \fBmyServiceButton\fP"
+.br
+.RI "\fIButton for opening a media service\&. \fP"
+.ti -1c
+.RI "QPushButton * \fBmyFolderButton\fP"
+.br
+.RI "\fIButton for opening a folder\&. \fP"
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Displays the details and description of a media item\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "InfoPane::InfoPane (QWidget *parent, \fBAWE::GlobalSettings\fP *settings)"
+
+.PP
+Make with the given parent\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparent\fP The parent widget\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void InfoPane::setItem (\fBAWE::MediaItem\fP *item)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Set the infos displayed to those of the given item\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The item to display infos for\&. 
+.RE
+.PP
+
+.SS "QString InfoPane::stringFor (\fBJson::Value\fP &val)\fC [private]\fP"
+
+.PP
+Helper function that converts a \fBJson::Value\fP into a \fCQString\fP for the \fBUI\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIval\fP The value to convert to a QString\&. 
+.RE
+.PP
+
+.SS "void UI::InfoPane::wantsToOpenFile (\fBAWE::MediaFile\fP *file, \fBAWE::MediaPlayer\fP *player)\fC [signal]\fP"
+
+.PP
+Sent when the user asks to play the media file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile\fP The media file to play\&. 
+.br
+\fIplayer\fP The player to play it with\&. 
+.RE
+.PP
+
+.SS "void UI::InfoPane::wantsToOpenFolder (\fBAWE::Folder\fP *folder)\fC [signal]\fP"
+
+.PP
+Sent when the user asks to open a folder\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfolder\fP The folder to open\&. 
+.RE
+.PP
+
+.SS "void UI::InfoPane::wantsToOpenService (\fBAWE::MediaService\fP *service)\fC [signal]\fP"
+
+.PP
+Sent when the user asks to open a media service\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIservice\fP The service to open\&. 
+.RE
+.PP
+
+.SS "void UI::InfoPane::wantsToScrapeForMetadata (\fBAWE::MediaItem\fP *item, \fBAWE::MetadataScraper\fP *scraper, boolaskUser, boolimport, boolinheritMetadata)\fC [signal]\fP"
+
+.PP
+Sent when the user asks to scrape for new metadata\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The item to scrape for metadata for\&. 
+.br
+\fIscraper\fP The scraper to use\&. 
+.br
+\fIaskUser\fP \fCtrue\fP if the user should be prompted at appropriate times, \fCfalse\fP if no prompting should occur\&. 
+.br
+\fIimport\fP \fCtrue\fP if metadata files should be imported, \fCfalse\fP if only absolutely necessary\&. 
+.br
+\fIinheritMetadata\fP \fCtrue\fP if the item should inherit metadata from the containing folder, \fCfalse\fP otherwise\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AWE Media Center from the source code\&.

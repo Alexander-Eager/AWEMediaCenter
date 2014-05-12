@@ -3,88 +3,153 @@
 }
 
 
-Holds the global settings for A\-W\-E\-M\-C.  
+Holds the global settings for \hyperlink{class_a_w_e_1_1_a_w_e_m_c}{A\-W\-E\-M\-C}.  
 
 
 
 
 {\ttfamily \#include $<$A\-W\-E\-Global\-Settings.\-h$>$}
 
-\subsection*{Public Types}
-\begin{DoxyCompactItemize}
-\item 
-\hypertarget{class_a_w_e_1_1_global_settings_a45df15954e36fb1bad5385f5249c408e}{typedef std\-::set$<$ std\-::string $>$ \hyperlink{class_a_w_e_1_1_global_settings_a45df15954e36fb1bad5385f5249c408e}{Name\-Set}}\label{class_a_w_e_1_1_global_settings_a45df15954e36fb1bad5385f5249c408e}
-
-\begin{DoxyCompactList}\small\item\em The set type used to hold names. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_a_w_e_1_1_global_settings_a8aa60ae622af94d79cba5321fb0a2816}{Global\-Settings} (const std\-::string \&settings\-File)
+\hyperlink{class_a_w_e_1_1_global_settings_ae01ec075682268ed958414502fcb90a5}{Global\-Settings} (Q\-Dir settings\-File)
 \begin{DoxyCompactList}\small\item\em Create the global settings object. \end{DoxyCompactList}\item 
 \hyperlink{class_a_w_e_1_1_global_settings_ad3e8fa5120473c6c0151573ad81e1b04}{$\sim$\-Global\-Settings} ()
 \begin{DoxyCompactList}\small\item\em Deconstructor. \end{DoxyCompactList}\item 
-\hyperlink{class_a_w_e_1_1_metadata_scraper}{Metadata\-Scraper} $\ast$ \hyperlink{class_a_w_e_1_1_global_settings_a40bfab45d901e7c1acdd2d0a8700fd69}{get\-Scraper\-By\-Name} (const std\-::string \&name)
+Q\-Font \hyperlink{class_a_w_e_1_1_global_settings_a63104e9ff0df7cfd5e82fc82a322f92c}{get\-Font\-By\-Name} (Q\-String name)
+\begin{DoxyCompactList}\small\item\em Get a font by name. \end{DoxyCompactList}\item 
+\hyperlink{class_a_w_e_1_1_metadata_scraper}{Metadata\-Scraper} $\ast$ \hyperlink{class_a_w_e_1_1_global_settings_a26cafca46ab8e2e8633c93f0411fc5c8}{get\-Scraper\-By\-Name} (Q\-String name)
 \begin{DoxyCompactList}\small\item\em Get a metadata scraper by name. \end{DoxyCompactList}\item 
-\hyperlink{class_json_1_1_value}{Json\-::\-Value} \& \hyperlink{class_a_w_e_1_1_global_settings_a45d865b8b7242f17ad6e83ff014ee4c6}{get\-Scraper\-Settings\-By\-Name} (const std\-::string \&name)
+\hyperlink{class_json_1_1_value}{Json\-::\-Value} \& \hyperlink{class_a_w_e_1_1_global_settings_a70e68985d23795c9e6222dfc433df203}{get\-Scraper\-Settings\-By\-Name} (Q\-String name)
 \begin{DoxyCompactList}\small\item\em Get a metadata scraper's settings by name. \end{DoxyCompactList}\item 
-const \hyperlink{class_a_w_e_1_1_global_settings_a45df15954e36fb1bad5385f5249c408e}{Name\-Set} \& \hyperlink{class_a_w_e_1_1_global_settings_ac1824eeb7c6319dda29aa061dd13184c}{get\-All\-Metadata\-Scraper\-Names} ()
+Q\-List$<$ Q\-String $>$ \hyperlink{class_a_w_e_1_1_global_settings_ae044264a5db5e73314dbe8b261f23644}{get\-All\-Metadata\-Scraper\-Names} ()
 \begin{DoxyCompactList}\small\item\em Get a set of all metadata scrapers. \end{DoxyCompactList}\item 
-\hyperlink{class_a_w_e_1_1_media_player}{Media\-Player} $\ast$ \hyperlink{class_a_w_e_1_1_global_settings_ae2cc7da9b20e508de12f472ba86cf351}{get\-Player\-By\-Name} (const std\-::string \&name)
+Q\-List$<$ \hyperlink{class_a_w_e_1_1_metadata_scraper}{Metadata\-Scraper} $\ast$ $>$ \hyperlink{class_a_w_e_1_1_global_settings_aa4cda6b91613e5f327eee299f34cccea}{get\-All\-Scrapers\-For\-Item} (\hyperlink{class_a_w_e_1_1_media_item}{Media\-Item} $\ast$item)
+\begin{DoxyCompactList}\small\item\em Get a set of all metadata scrapers that can scrape for the given item. \end{DoxyCompactList}\item 
+\hyperlink{class_a_w_e_1_1_media_player}{Media\-Player} $\ast$ \hyperlink{class_a_w_e_1_1_global_settings_a4c721bc8ac90e3fc47745e8130de4ebb}{get\-Player\-By\-Name} (Q\-String name)
 \begin{DoxyCompactList}\small\item\em Get a media player by name. \end{DoxyCompactList}\item 
-\hyperlink{class_json_1_1_value}{Json\-::\-Value} \& \hyperlink{class_a_w_e_1_1_global_settings_a27fbf04ccbc5fb4bf42db0412ff2ab23}{get\-Player\-Settings\-By\-Name} (const std\-::string \&name)
+\hyperlink{class_json_1_1_value}{Json\-::\-Value} \& \hyperlink{class_a_w_e_1_1_global_settings_a0ef3ccfe51fba30be109584375f1eb6f}{get\-Player\-Settings\-By\-Name} (Q\-String name)
 \begin{DoxyCompactList}\small\item\em Get a media player's settings by name. \end{DoxyCompactList}\item 
-const \hyperlink{class_a_w_e_1_1_global_settings_a45df15954e36fb1bad5385f5249c408e}{Name\-Set} \& \hyperlink{class_a_w_e_1_1_global_settings_a0fb7bb8eba01fa51841a827741a0731a}{get\-All\-Media\-Player\-Names} ()
+Q\-List$<$ Q\-String $>$ \hyperlink{class_a_w_e_1_1_global_settings_a70b279b736dc2b9ad4b8b5e13b3433c7}{get\-All\-Media\-Player\-Names} ()
 \begin{DoxyCompactList}\small\item\em Get a set of all media players. \end{DoxyCompactList}\item 
-\hyperlink{class_json_1_1_value}{Json\-::\-Value} \& \hyperlink{class_a_w_e_1_1_global_settings_ab7026bd5fdd6c7b566a1d5c71ef4b21e}{get\-Type\-By\-Name} (const std\-::string \&name)
+Q\-List$<$ \hyperlink{class_a_w_e_1_1_media_player}{Media\-Player} $\ast$ $>$ \hyperlink{class_a_w_e_1_1_global_settings_a166fc2ae091823800ad586e8d6cf5b0a}{get\-All\-Players\-For\-File} (\hyperlink{class_a_w_e_1_1_media_file}{Media\-File} $\ast$file)
+\begin{DoxyCompactList}\small\item\em Get a set of all media players that can play the given file. \end{DoxyCompactList}\item 
+\hyperlink{class_json_1_1_value}{Json\-::\-Value} \& \hyperlink{class_a_w_e_1_1_global_settings_a6e78425d75670a61252c2af0a80df382}{get\-Type\-By\-Name} (Q\-String name)
 \begin{DoxyCompactList}\small\item\em Get the media type with the given name. \end{DoxyCompactList}\item 
-const \hyperlink{class_a_w_e_1_1_global_settings_a45df15954e36fb1bad5385f5249c408e}{Name\-Set} \& \hyperlink{class_a_w_e_1_1_global_settings_a4104e5ab20b0e63eccc887ef84d8581f}{get\-All\-Media\-Type\-Names} ()
+Q\-List$<$ Q\-String $>$ \hyperlink{class_a_w_e_1_1_global_settings_a13359a6e477bfdf66441b2c0f912fc34}{get\-All\-Media\-Type\-Names} ()
 \begin{DoxyCompactList}\small\item\em Get a set of all media types. \end{DoxyCompactList}\item 
-const \hyperlink{class_a_w_e_1_1_global_settings_a45df15954e36fb1bad5385f5249c408e}{Name\-Set} \& \hyperlink{class_a_w_e_1_1_global_settings_a836c7a1e4d711e64fcc87b2908a2eb4e}{get\-All\-Media\-Service\-Names} ()
+Q\-List$<$ Q\-String $>$ \hyperlink{class_a_w_e_1_1_global_settings_a3289d4faf710d479678f77e8fc9fb643}{get\-All\-Media\-Service\-Names} ()
 \begin{DoxyCompactList}\small\item\em Get the names of all of the media services. \end{DoxyCompactList}\item 
-\hyperlink{class_a_w_e_1_1_media_service}{Media\-Service} $\ast$ \hyperlink{class_a_w_e_1_1_global_settings_ad0d26204fee1973539c9a6962ea9f462}{get\-Media\-Service\-By\-Name} (const std\-::string \&name)
+\hyperlink{class_a_w_e_1_1_media_service}{Media\-Service} $\ast$ \hyperlink{class_a_w_e_1_1_global_settings_abf96c9561a157168601a648f7ef72162}{get\-Media\-Service\-By\-Name} (Q\-String name)
 \begin{DoxyCompactList}\small\item\em Get a media service by name. \end{DoxyCompactList}\item 
-\hyperlink{class_a_w_e_1_1_media_item}{Media\-Item} $\ast$ \hyperlink{class_a_w_e_1_1_global_settings_ab13f95f4967f7058de61199ad48626ed}{get\-Media\-Item\-By\-J\-S\-O\-N\-File} (const Q\-Dir \&file)
+\hyperlink{class_a_w_e_1_1_media_item}{Media\-Item} $\ast$ \hyperlink{class_a_w_e_1_1_global_settings_a49108d0abd52d090d735c73812aebfd5}{get\-Media\-Item\-By\-J\-S\-O\-N\-File} (Q\-Dir file)
 \begin{DoxyCompactList}\small\item\em Get a media item from its J\-S\-O\-N file. \end{DoxyCompactList}\item 
-void \hyperlink{class_a_w_e_1_1_global_settings_ac776a76c7c09678fa753e6561cafeda2}{add\-Folder} (const std\-::string \&path, \hyperlink{class_a_w_e_1_1_folder}{Folder} $\ast$folder)
-\begin{DoxyCompactList}\small\item\em Add the given folder. \end{DoxyCompactList}\item 
+void \hyperlink{class_a_w_e_1_1_global_settings_a204b0dac2dbf0a3200289dbb05c34648}{add\-Item} (\hyperlink{class_a_w_e_1_1_media_item}{Media\-Item} $\ast$item)
+\begin{DoxyCompactList}\small\item\em Add the given media item. \end{DoxyCompactList}\item 
 \hyperlink{class_a_w_e_1_1_folder}{Folder} $\ast$ \hyperlink{class_a_w_e_1_1_global_settings_a958723c6d73aa7ab7574ba4c31675e5d}{get\-Root\-Folder} ()
-\begin{DoxyCompactList}\small\item\em Get the root folder. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Get the root folder. \end{DoxyCompactList}\item 
+\hyperlink{class_a_w_e_1_1_folder_generator}{Folder\-Generator} $\ast$ \hyperlink{class_a_w_e_1_1_global_settings_aefc464d8791fe948abb27ea542cfed90}{get\-Folder\-Generator\-For\-Type} (Q\-String type)
+\begin{DoxyCompactList}\small\item\em Get the folder generator for the given type. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \hypertarget{class_a_w_e_1_1_global_settings_a4df7847cd94fe68cf28382f70eedb0b2}{static \hyperlink{class_json_1_1_value}{Json\-::\-Value} {\bfseries null} = Value\-::null}\label{class_a_w_e_1_1_global_settings_a4df7847cd94fe68cf28382f70eedb0b2}
 
 \end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_a_w_e_1_1_global_settings_a05806b6ae429934ff964d36c8d1d88cb}{void \hyperlink{class_a_w_e_1_1_global_settings_a05806b6ae429934ff964d36c8d1d88cb}{obtain\-Fonts} ()}\label{class_a_w_e_1_1_global_settings_a05806b6ae429934ff964d36c8d1d88cb}
+
+\begin{DoxyCompactList}\small\item\em Obtain the fonts. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_global_settings_a3f1893c1c2fa7d268dc69576624d9adc}{void \hyperlink{class_a_w_e_1_1_global_settings_a3f1893c1c2fa7d268dc69576624d9adc}{obtain\-Scrapers} ()}\label{class_a_w_e_1_1_global_settings_a3f1893c1c2fa7d268dc69576624d9adc}
+
+\begin{DoxyCompactList}\small\item\em Obtain the scrapers. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_global_settings_a09bcd2ed0578f070b3f64df247822988}{void \hyperlink{class_a_w_e_1_1_global_settings_a09bcd2ed0578f070b3f64df247822988}{obtain\-Players} ()}\label{class_a_w_e_1_1_global_settings_a09bcd2ed0578f070b3f64df247822988}
+
+\begin{DoxyCompactList}\small\item\em Obtain the players. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_global_settings_ac178957248c6eab221aac7394d4a6bd7}{void \hyperlink{class_a_w_e_1_1_global_settings_ac178957248c6eab221aac7394d4a6bd7}{obtain\-Skins} ()}\label{class_a_w_e_1_1_global_settings_ac178957248c6eab221aac7394d4a6bd7}
+
+\begin{DoxyCompactList}\small\item\em Obtain the skins. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_global_settings_a86a46991b13427aeccd50810330e68b5}{void \hyperlink{class_a_w_e_1_1_global_settings_a86a46991b13427aeccd50810330e68b5}{obtain\-Types} ()}\label{class_a_w_e_1_1_global_settings_a86a46991b13427aeccd50810330e68b5}
+
+\begin{DoxyCompactList}\small\item\em Obtain the types. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_global_settings_af078407a63c2282c4d2fe200890d3e25}{void \hyperlink{class_a_w_e_1_1_global_settings_af078407a63c2282c4d2fe200890d3e25}{obtain\-Services} ()}\label{class_a_w_e_1_1_global_settings_af078407a63c2282c4d2fe200890d3e25}
+
+\begin{DoxyCompactList}\small\item\em Obtain the services. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_global_settings_a395780d2de7e2f32d2640f0bef2abe0e}{void \hyperlink{class_a_w_e_1_1_global_settings_a395780d2de7e2f32d2640f0bef2abe0e}{obtain\-Items} ()}\label{class_a_w_e_1_1_global_settings_a395780d2de7e2f32d2640f0bef2abe0e}
+
+\begin{DoxyCompactList}\small\item\em Obtain the items. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_a_w_e_1_1_global_settings_ac20041368a3097f04979bef0cb716ea4}{\hyperlink{class_json_1_1_value}{Json\-::\-Value} \hyperlink{class_a_w_e_1_1_global_settings_ac20041368a3097f04979bef0cb716ea4}{my\-Settings}}\label{class_a_w_e_1_1_global_settings_ac20041368a3097f04979bef0cb716ea4}
+
+\begin{DoxyCompactList}\small\item\em The global settings. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_global_settings_ad4997ad85d8ec55b6333dde7030393c8}{Q\-Dir \hyperlink{class_a_w_e_1_1_global_settings_ad4997ad85d8ec55b6333dde7030393c8}{my\-Settings\-File}}\label{class_a_w_e_1_1_global_settings_ad4997ad85d8ec55b6333dde7030393c8}
+
+\begin{DoxyCompactList}\small\item\em The global settings file. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_global_settings_afe252ea913daaabd7e6b9155ef1285b3}{Q\-Hash$<$ Q\-String, Q\-Font $>$ \hyperlink{class_a_w_e_1_1_global_settings_afe252ea913daaabd7e6b9155ef1285b3}{my\-Fonts}}\label{class_a_w_e_1_1_global_settings_afe252ea913daaabd7e6b9155ef1285b3}
+
+\begin{DoxyCompactList}\small\item\em Maps name for a font onto the font. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_global_settings_a39ee4527e136e797c7b6abf7b37837bc}{Q\-Hash$<$ Q\-String, \hyperlink{class_a_w_e_1_1_folder_generator}{Folder\-Generator} $\ast$ $>$ \hyperlink{class_a_w_e_1_1_global_settings_a39ee4527e136e797c7b6abf7b37837bc}{my\-Media\-Types}}\label{class_a_w_e_1_1_global_settings_a39ee4527e136e797c7b6abf7b37837bc}
+
+\begin{DoxyCompactList}\small\item\em Maps type name onto folder generator. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_global_settings_aba028e2a5f31d358de527368107a1e82}{Q\-Hash$<$ Q\-String, \hyperlink{class_a_w_e_1_1_media_player}{Media\-Player} $\ast$ $>$ \hyperlink{class_a_w_e_1_1_global_settings_aba028e2a5f31d358de527368107a1e82}{my\-Media\-Players}}\label{class_a_w_e_1_1_global_settings_aba028e2a5f31d358de527368107a1e82}
+
+\begin{DoxyCompactList}\small\item\em Maps names of media players onto players. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_global_settings_ab489a11d7f94b7aed94440f08da2fdec}{Q\-Hash$<$ Q\-String, \hyperlink{class_json_1_1_value}{Json\-::\-Value} $>$ \hyperlink{class_a_w_e_1_1_global_settings_ab489a11d7f94b7aed94440f08da2fdec}{my\-Media\-Player\-Settings}}\label{class_a_w_e_1_1_global_settings_ab489a11d7f94b7aed94440f08da2fdec}
+
+\begin{DoxyCompactList}\small\item\em Maps names of media players onto settings. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_global_settings_a023c78a367d36843543b4343fea55014}{Q\-Hash$<$ Q\-String, \hyperlink{class_a_w_e_1_1_metadata_scraper}{Metadata\-Scraper} $\ast$ $>$ \hyperlink{class_a_w_e_1_1_global_settings_a023c78a367d36843543b4343fea55014}{my\-Metadata\-Scrapers}}\label{class_a_w_e_1_1_global_settings_a023c78a367d36843543b4343fea55014}
+
+\begin{DoxyCompactList}\small\item\em Maps names of metadata scrapers onto scrapers. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_global_settings_aa7c418d74dff8c4bf6008c7dab80ebaf}{Q\-Hash$<$ Q\-String, \hyperlink{class_json_1_1_value}{Json\-::\-Value} $>$ \hyperlink{class_a_w_e_1_1_global_settings_aa7c418d74dff8c4bf6008c7dab80ebaf}{my\-Metadata\-Scraper\-Settings}}\label{class_a_w_e_1_1_global_settings_aa7c418d74dff8c4bf6008c7dab80ebaf}
+
+\begin{DoxyCompactList}\small\item\em Maps names of metadata scrapers onto settings. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_global_settings_a5733aead5bc3ff476f5abfb65906f361}{Q\-Hash$<$ Q\-String, \hyperlink{class_a_w_e_1_1_folder_generator}{Folder\-Generator} $\ast$ $>$ \hyperlink{class_a_w_e_1_1_global_settings_a5733aead5bc3ff476f5abfb65906f361}{my\-Folder\-Generators}}\label{class_a_w_e_1_1_global_settings_a5733aead5bc3ff476f5abfb65906f361}
+
+\begin{DoxyCompactList}\small\item\em Maps names of media types onto folder generators. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_global_settings_a9fdf25f072ae5c96cc75afcb8dfc01b7}{Q\-Hash$<$ Q\-String, \hyperlink{class_a_w_e_1_1_media_service}{Media\-Service} $\ast$ $>$ \hyperlink{class_a_w_e_1_1_global_settings_a9fdf25f072ae5c96cc75afcb8dfc01b7}{my\-Media\-Services}}\label{class_a_w_e_1_1_global_settings_a9fdf25f072ae5c96cc75afcb8dfc01b7}
+
+\begin{DoxyCompactList}\small\item\em Maps names of media services onto services. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_global_settings_ac58bb8a42cc079c33c018718e401f262}{Q\-Hash$<$ Q\-String, \hyperlink{class_a_w_e_1_1_media_item}{Media\-Item} $\ast$ $>$ \hyperlink{class_a_w_e_1_1_global_settings_ac58bb8a42cc079c33c018718e401f262}{my\-Media\-Items}}\label{class_a_w_e_1_1_global_settings_ac58bb8a42cc079c33c018718e401f262}
+
+\begin{DoxyCompactList}\small\item\em Maps the absolute, clean path of an item onto the item. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_global_settings_a4ca5d08ff7a32714da973ec0973edb34}{\hyperlink{class_a_w_e_1_1_folder}{Folder} $\ast$ \hyperlink{class_a_w_e_1_1_global_settings_a4ca5d08ff7a32714da973ec0973edb34}{my\-Root\-Folder}}\label{class_a_w_e_1_1_global_settings_a4ca5d08ff7a32714da973ec0973edb34}
+
+\begin{DoxyCompactList}\small\item\em The root folder. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Holds the global settings for A\-W\-E\-M\-C. 
+Holds the global settings for \hyperlink{class_a_w_e_1_1_a_w_e_m_c}{A\-W\-E\-M\-C}. 
 
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000006}{Todo}]Skins... 
+\item[\hyperlink{todo__todo000008}{Todo}]Skins 
 
-Get a better folder adding system.\end{DoxyRefDesc}
+\hyperlink{namespace_u_i}{U\-I} delegate (with user prompting)\end{DoxyRefDesc}
 
 
-Functions for pretty much anything you want to know about the prefernces for A\-W\-E\-M\-C are here. Every plugin extending A\-W\-E\-M\-C has its own configuration file, which is held in here via sub-\/configuration objects.
+Functions for pretty much anything you want to know about the prefernces for \hyperlink{class_a_w_e_1_1_a_w_e_m_c}{A\-W\-E\-M\-C} are here. Every plugin extending \hyperlink{class_a_w_e_1_1_a_w_e_m_c}{A\-W\-E\-M\-C} has its own configuration file, which is held in here via sub-\/configuration objects.
 
 You shouldn't need to instantiate this class on your own; most objects are passed a copy of the settings object during creation or through some other means. 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{class_a_w_e_1_1_global_settings_a8aa60ae622af94d79cba5321fb0a2816}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!Global\-Settings@{Global\-Settings}}
+\hypertarget{class_a_w_e_1_1_global_settings_ae01ec075682268ed958414502fcb90a5}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!Global\-Settings@{Global\-Settings}}
 \index{Global\-Settings@{Global\-Settings}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
 \subsubsection[{Global\-Settings}]{\setlength{\rightskip}{0pt plus 5cm}Global\-Settings\-::\-Global\-Settings (
 \begin{DoxyParamCaption}
-\item[{const std\-::string \&}]{settings\-File}
+\item[{Q\-Dir}]{settings\-File}
 \end{DoxyParamCaption}
-)}}\label{class_a_w_e_1_1_global_settings_a8aa60ae622af94d79cba5321fb0a2816}
+)}}\label{class_a_w_e_1_1_global_settings_ae01ec075682268ed958414502fcb90a5}
 
 
 Create the global settings object. 
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em settings\-File} & The file that contains the settings for A\-W\-E\-M\-C (usually {\ttfamily settings.\-json} in the root folder) \\
+\mbox{\tt in}  & {\em settings\-File} & The file that contains the settings for \hyperlink{class_a_w_e_1_1_a_w_e_m_c}{A\-W\-E\-M\-C} (usually {\ttfamily settings.\-json} in the root folder) \\
 \hline
 \end{DoxyParams}
 \hypertarget{class_a_w_e_1_1_global_settings_ad3e8fa5120473c6c0151573ad81e1b04}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!$\sim$\-Global\-Settings@{$\sim$\-Global\-Settings}}
@@ -101,32 +166,29 @@ Deconstructor.
 Deletes every scraper, player and item. 
 
 \subsection{Member Function Documentation}
-\hypertarget{class_a_w_e_1_1_global_settings_ac776a76c7c09678fa753e6561cafeda2}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!add\-Folder@{add\-Folder}}
-\index{add\-Folder@{add\-Folder}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
-\subsubsection[{add\-Folder}]{\setlength{\rightskip}{0pt plus 5cm}void Global\-Settings\-::add\-Folder (
+\hypertarget{class_a_w_e_1_1_global_settings_a204b0dac2dbf0a3200289dbb05c34648}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!add\-Item@{add\-Item}}
+\index{add\-Item@{add\-Item}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
+\subsubsection[{add\-Item}]{\setlength{\rightskip}{0pt plus 5cm}void Global\-Settings\-::add\-Item (
 \begin{DoxyParamCaption}
-\item[{const std\-::string \&}]{path, }
-\item[{{\bf Folder} $\ast$}]{folder}
+\item[{{\bf Media\-Item} $\ast$}]{item}
 \end{DoxyParamCaption}
-)}}\label{class_a_w_e_1_1_global_settings_ac776a76c7c09678fa753e6561cafeda2}
+)}}\label{class_a_w_e_1_1_global_settings_a204b0dac2dbf0a3200289dbb05c34648}
 
 
-Add the given folder. 
+Add the given media item. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em path} & The path to the config file. \\
-\hline
-{\em folder} & The folder. \\
+{\em item} & The media item. \\
 \hline
 \end{DoxyParams}
-\hypertarget{class_a_w_e_1_1_global_settings_a0fb7bb8eba01fa51841a827741a0731a}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-All\-Media\-Player\-Names@{get\-All\-Media\-Player\-Names}}
+\hypertarget{class_a_w_e_1_1_global_settings_a70b279b736dc2b9ad4b8b5e13b3433c7}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-All\-Media\-Player\-Names@{get\-All\-Media\-Player\-Names}}
 \index{get\-All\-Media\-Player\-Names@{get\-All\-Media\-Player\-Names}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
-\subsubsection[{get\-All\-Media\-Player\-Names}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Global\-Settings\-::\-Name\-Set} \& Global\-Settings\-::get\-All\-Media\-Player\-Names (
+\subsubsection[{get\-All\-Media\-Player\-Names}]{\setlength{\rightskip}{0pt plus 5cm}Q\-List$<$ Q\-String $>$ Global\-Settings\-::get\-All\-Media\-Player\-Names (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{class_a_w_e_1_1_global_settings_a0fb7bb8eba01fa51841a827741a0731a}
+)}}\label{class_a_w_e_1_1_global_settings_a70b279b736dc2b9ad4b8b5e13b3433c7}
 
 
 Get a set of all media players. 
@@ -134,13 +196,13 @@ Get a set of all media players.
 \begin{DoxyReturn}{Returns}
 A set filled with every media player name. 
 \end{DoxyReturn}
-\hypertarget{class_a_w_e_1_1_global_settings_a836c7a1e4d711e64fcc87b2908a2eb4e}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-All\-Media\-Service\-Names@{get\-All\-Media\-Service\-Names}}
+\hypertarget{class_a_w_e_1_1_global_settings_a3289d4faf710d479678f77e8fc9fb643}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-All\-Media\-Service\-Names@{get\-All\-Media\-Service\-Names}}
 \index{get\-All\-Media\-Service\-Names@{get\-All\-Media\-Service\-Names}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
-\subsubsection[{get\-All\-Media\-Service\-Names}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Global\-Settings\-::\-Name\-Set} \& Global\-Settings\-::get\-All\-Media\-Service\-Names (
+\subsubsection[{get\-All\-Media\-Service\-Names}]{\setlength{\rightskip}{0pt plus 5cm}Q\-List$<$ Q\-String $>$ Global\-Settings\-::get\-All\-Media\-Service\-Names (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{class_a_w_e_1_1_global_settings_a836c7a1e4d711e64fcc87b2908a2eb4e}
+)}}\label{class_a_w_e_1_1_global_settings_a3289d4faf710d479678f77e8fc9fb643}
 
 
 Get the names of all of the media services. 
@@ -148,13 +210,13 @@ Get the names of all of the media services.
 \begin{DoxyReturn}{Returns}
 A set filled with every media service name. 
 \end{DoxyReturn}
-\hypertarget{class_a_w_e_1_1_global_settings_a4104e5ab20b0e63eccc887ef84d8581f}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-All\-Media\-Type\-Names@{get\-All\-Media\-Type\-Names}}
+\hypertarget{class_a_w_e_1_1_global_settings_a13359a6e477bfdf66441b2c0f912fc34}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-All\-Media\-Type\-Names@{get\-All\-Media\-Type\-Names}}
 \index{get\-All\-Media\-Type\-Names@{get\-All\-Media\-Type\-Names}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
-\subsubsection[{get\-All\-Media\-Type\-Names}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Global\-Settings\-::\-Name\-Set} \& Global\-Settings\-::get\-All\-Media\-Type\-Names (
+\subsubsection[{get\-All\-Media\-Type\-Names}]{\setlength{\rightskip}{0pt plus 5cm}Q\-List$<$ Q\-String $>$ Global\-Settings\-::get\-All\-Media\-Type\-Names (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{class_a_w_e_1_1_global_settings_a4104e5ab20b0e63eccc887ef84d8581f}
+)}}\label{class_a_w_e_1_1_global_settings_a13359a6e477bfdf66441b2c0f912fc34}
 
 
 Get a set of all media types. 
@@ -162,13 +224,13 @@ Get a set of all media types.
 \begin{DoxyReturn}{Returns}
 A set filled with every media type name. 
 \end{DoxyReturn}
-\hypertarget{class_a_w_e_1_1_global_settings_ac1824eeb7c6319dda29aa061dd13184c}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-All\-Metadata\-Scraper\-Names@{get\-All\-Metadata\-Scraper\-Names}}
+\hypertarget{class_a_w_e_1_1_global_settings_ae044264a5db5e73314dbe8b261f23644}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-All\-Metadata\-Scraper\-Names@{get\-All\-Metadata\-Scraper\-Names}}
 \index{get\-All\-Metadata\-Scraper\-Names@{get\-All\-Metadata\-Scraper\-Names}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
-\subsubsection[{get\-All\-Metadata\-Scraper\-Names}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Global\-Settings\-::\-Name\-Set} \& Global\-Settings\-::get\-All\-Metadata\-Scraper\-Names (
+\subsubsection[{get\-All\-Metadata\-Scraper\-Names}]{\setlength{\rightskip}{0pt plus 5cm}Q\-List$<$ Q\-String $>$ Global\-Settings\-::get\-All\-Metadata\-Scraper\-Names (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{class_a_w_e_1_1_global_settings_ac1824eeb7c6319dda29aa061dd13184c}
+)}}\label{class_a_w_e_1_1_global_settings_ae044264a5db5e73314dbe8b261f23644}
 
 
 Get a set of all metadata scrapers. 
@@ -176,13 +238,87 @@ Get a set of all metadata scrapers.
 \begin{DoxyReturn}{Returns}
 A set filled with every metadata scraper name. 
 \end{DoxyReturn}
-\hypertarget{class_a_w_e_1_1_global_settings_ab13f95f4967f7058de61199ad48626ed}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-Media\-Item\-By\-J\-S\-O\-N\-File@{get\-Media\-Item\-By\-J\-S\-O\-N\-File}}
+\hypertarget{class_a_w_e_1_1_global_settings_a166fc2ae091823800ad586e8d6cf5b0a}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-All\-Players\-For\-File@{get\-All\-Players\-For\-File}}
+\index{get\-All\-Players\-For\-File@{get\-All\-Players\-For\-File}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
+\subsubsection[{get\-All\-Players\-For\-File}]{\setlength{\rightskip}{0pt plus 5cm}Q\-List$<$ {\bf Media\-Player} $\ast$ $>$ Global\-Settings\-::get\-All\-Players\-For\-File (
+\begin{DoxyParamCaption}
+\item[{{\bf Media\-File} $\ast$}]{file}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_global_settings_a166fc2ae091823800ad586e8d6cf5b0a}
+
+
+Get a set of all media players that can play the given file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file} & The file for which to get possible players.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of all possible media players that can play {\ttfamily file}. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_global_settings_aa4cda6b91613e5f327eee299f34cccea}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-All\-Scrapers\-For\-Item@{get\-All\-Scrapers\-For\-Item}}
+\index{get\-All\-Scrapers\-For\-Item@{get\-All\-Scrapers\-For\-Item}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
+\subsubsection[{get\-All\-Scrapers\-For\-Item}]{\setlength{\rightskip}{0pt plus 5cm}Q\-List$<$ {\bf Metadata\-Scraper} $\ast$ $>$ Global\-Settings\-::get\-All\-Scrapers\-For\-Item (
+\begin{DoxyParamCaption}
+\item[{{\bf Media\-Item} $\ast$}]{item}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_global_settings_aa4cda6b91613e5f327eee299f34cccea}
+
+
+Get a set of all metadata scrapers that can scrape for the given item. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em item} & The media item to get possible scrapers for.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of all possible metadata scrapers that can get metadata for {\ttfamily item}. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_global_settings_aefc464d8791fe948abb27ea542cfed90}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-Folder\-Generator\-For\-Type@{get\-Folder\-Generator\-For\-Type}}
+\index{get\-Folder\-Generator\-For\-Type@{get\-Folder\-Generator\-For\-Type}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
+\subsubsection[{get\-Folder\-Generator\-For\-Type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Folder\-Generator} $\ast$ Global\-Settings\-::get\-Folder\-Generator\-For\-Type (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{type}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_global_settings_aefc464d8791fe948abb27ea542cfed90}
+
+
+Get the folder generator for the given type. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em type} & The type of folder generator.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The folder generator for {\ttfamily type}. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_global_settings_a63104e9ff0df7cfd5e82fc82a322f92c}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-Font\-By\-Name@{get\-Font\-By\-Name}}
+\index{get\-Font\-By\-Name@{get\-Font\-By\-Name}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
+\subsubsection[{get\-Font\-By\-Name}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Font Global\-Settings\-::get\-Font\-By\-Name (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{name}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_global_settings_a63104e9ff0df7cfd5e82fc82a322f92c}
+
+
+Get a font by name. 
+
+By default, \hyperlink{class_a_w_e_1_1_a_w_e_m_c}{A\-W\-E\-M\-C} has these fonts\-:
+\begin{DoxyItemize}
+\item \char`\"{}biggest\char`\"{}\-: used in title bars
+\item \char`\"{}big\char`\"{}\-: used in subtitle bars
+\item \char`\"{}normal\char`\"{}\-: used in your everyday text
+\item \char`\"{}button\char`\"{}\-: used in buttons 
+\end{DoxyItemize}\hypertarget{class_a_w_e_1_1_global_settings_a49108d0abd52d090d735c73812aebfd5}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-Media\-Item\-By\-J\-S\-O\-N\-File@{get\-Media\-Item\-By\-J\-S\-O\-N\-File}}
 \index{get\-Media\-Item\-By\-J\-S\-O\-N\-File@{get\-Media\-Item\-By\-J\-S\-O\-N\-File}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
 \subsubsection[{get\-Media\-Item\-By\-J\-S\-O\-N\-File}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Media\-Item} $\ast$ Global\-Settings\-::get\-Media\-Item\-By\-J\-S\-O\-N\-File (
 \begin{DoxyParamCaption}
-\item[{const Q\-Dir \&}]{file}
+\item[{Q\-Dir}]{file}
 \end{DoxyParamCaption}
-)}}\label{class_a_w_e_1_1_global_settings_ab13f95f4967f7058de61199ad48626ed}
+)}}\label{class_a_w_e_1_1_global_settings_a49108d0abd52d090d735c73812aebfd5}
 
 
 Get a media item from its J\-S\-O\-N file. 
@@ -192,13 +328,13 @@ Get a media item from its J\-S\-O\-N file.
 \begin{DoxyReturn}{Returns}
 The desired media item. 
 \end{DoxyReturn}
-\hypertarget{class_a_w_e_1_1_global_settings_ad0d26204fee1973539c9a6962ea9f462}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-Media\-Service\-By\-Name@{get\-Media\-Service\-By\-Name}}
+\hypertarget{class_a_w_e_1_1_global_settings_abf96c9561a157168601a648f7ef72162}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-Media\-Service\-By\-Name@{get\-Media\-Service\-By\-Name}}
 \index{get\-Media\-Service\-By\-Name@{get\-Media\-Service\-By\-Name}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
 \subsubsection[{get\-Media\-Service\-By\-Name}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Media\-Service} $\ast$ Global\-Settings\-::get\-Media\-Service\-By\-Name (
 \begin{DoxyParamCaption}
-\item[{const std\-::string \&}]{name}
+\item[{Q\-String}]{name}
 \end{DoxyParamCaption}
-)}}\label{class_a_w_e_1_1_global_settings_ad0d26204fee1973539c9a6962ea9f462}
+)}}\label{class_a_w_e_1_1_global_settings_abf96c9561a157168601a648f7ef72162}
 
 
 Get a media service by name. 
@@ -211,13 +347,13 @@ Get a media service by name.
 \begin{DoxyReturn}{Returns}
 The desired media service. 
 \end{DoxyReturn}
-\hypertarget{class_a_w_e_1_1_global_settings_ae2cc7da9b20e508de12f472ba86cf351}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-Player\-By\-Name@{get\-Player\-By\-Name}}
+\hypertarget{class_a_w_e_1_1_global_settings_a4c721bc8ac90e3fc47745e8130de4ebb}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-Player\-By\-Name@{get\-Player\-By\-Name}}
 \index{get\-Player\-By\-Name@{get\-Player\-By\-Name}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
 \subsubsection[{get\-Player\-By\-Name}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Media\-Player} $\ast$ Global\-Settings\-::get\-Player\-By\-Name (
 \begin{DoxyParamCaption}
-\item[{const std\-::string \&}]{name}
+\item[{Q\-String}]{name}
 \end{DoxyParamCaption}
-)}}\label{class_a_w_e_1_1_global_settings_ae2cc7da9b20e508de12f472ba86cf351}
+)}}\label{class_a_w_e_1_1_global_settings_a4c721bc8ac90e3fc47745e8130de4ebb}
 
 
 Get a media player by name. 
@@ -230,13 +366,13 @@ Get a media player by name.
 \begin{DoxyReturn}{Returns}
 The desired media player or {\ttfamily N\-U\-L\-L} if it does not exist. 
 \end{DoxyReturn}
-\hypertarget{class_a_w_e_1_1_global_settings_a27fbf04ccbc5fb4bf42db0412ff2ab23}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-Player\-Settings\-By\-Name@{get\-Player\-Settings\-By\-Name}}
+\hypertarget{class_a_w_e_1_1_global_settings_a0ef3ccfe51fba30be109584375f1eb6f}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-Player\-Settings\-By\-Name@{get\-Player\-Settings\-By\-Name}}
 \index{get\-Player\-Settings\-By\-Name@{get\-Player\-Settings\-By\-Name}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
 \subsubsection[{get\-Player\-Settings\-By\-Name}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} \& Global\-Settings\-::get\-Player\-Settings\-By\-Name (
 \begin{DoxyParamCaption}
-\item[{const std\-::string \&}]{name}
+\item[{Q\-String}]{name}
 \end{DoxyParamCaption}
-)}}\label{class_a_w_e_1_1_global_settings_a27fbf04ccbc5fb4bf42db0412ff2ab23}
+)}}\label{class_a_w_e_1_1_global_settings_a0ef3ccfe51fba30be109584375f1eb6f}
 
 
 Get a media player's settings by name. 
@@ -263,13 +399,13 @@ Get the root folder.
 \begin{DoxyReturn}{Returns}
 The root folder. 
 \end{DoxyReturn}
-\hypertarget{class_a_w_e_1_1_global_settings_a40bfab45d901e7c1acdd2d0a8700fd69}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-Scraper\-By\-Name@{get\-Scraper\-By\-Name}}
+\hypertarget{class_a_w_e_1_1_global_settings_a26cafca46ab8e2e8633c93f0411fc5c8}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-Scraper\-By\-Name@{get\-Scraper\-By\-Name}}
 \index{get\-Scraper\-By\-Name@{get\-Scraper\-By\-Name}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
 \subsubsection[{get\-Scraper\-By\-Name}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Metadata\-Scraper} $\ast$ Global\-Settings\-::get\-Scraper\-By\-Name (
 \begin{DoxyParamCaption}
-\item[{const std\-::string \&}]{name}
+\item[{Q\-String}]{name}
 \end{DoxyParamCaption}
-)}}\label{class_a_w_e_1_1_global_settings_a40bfab45d901e7c1acdd2d0a8700fd69}
+)}}\label{class_a_w_e_1_1_global_settings_a26cafca46ab8e2e8633c93f0411fc5c8}
 
 
 Get a metadata scraper by name. 
@@ -282,13 +418,13 @@ Get a metadata scraper by name.
 \begin{DoxyReturn}{Returns}
 The desired scraper as an {\ttfamily \hyperlink{class_a_w_e_1_1_metadata_scraper}{Metadata\-Scraper}} object or {\ttfamily N\-U\-L\-L} if it does not exist. 
 \end{DoxyReturn}
-\hypertarget{class_a_w_e_1_1_global_settings_a45d865b8b7242f17ad6e83ff014ee4c6}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-Scraper\-Settings\-By\-Name@{get\-Scraper\-Settings\-By\-Name}}
+\hypertarget{class_a_w_e_1_1_global_settings_a70e68985d23795c9e6222dfc433df203}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-Scraper\-Settings\-By\-Name@{get\-Scraper\-Settings\-By\-Name}}
 \index{get\-Scraper\-Settings\-By\-Name@{get\-Scraper\-Settings\-By\-Name}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
 \subsubsection[{get\-Scraper\-Settings\-By\-Name}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} \& Global\-Settings\-::get\-Scraper\-Settings\-By\-Name (
 \begin{DoxyParamCaption}
-\item[{const std\-::string \&}]{name}
+\item[{Q\-String}]{name}
 \end{DoxyParamCaption}
-)}}\label{class_a_w_e_1_1_global_settings_a45d865b8b7242f17ad6e83ff014ee4c6}
+)}}\label{class_a_w_e_1_1_global_settings_a70e68985d23795c9e6222dfc433df203}
 
 
 Get a metadata scraper's settings by name. 
@@ -301,13 +437,13 @@ Get a metadata scraper's settings by name.
 \begin{DoxyReturn}{Returns}
 The settings of the desired scraper or {\ttfamily Json\-::\-Value\-::null} if it does not exist. 
 \end{DoxyReturn}
-\hypertarget{class_a_w_e_1_1_global_settings_ab7026bd5fdd6c7b566a1d5c71ef4b21e}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-Type\-By\-Name@{get\-Type\-By\-Name}}
+\hypertarget{class_a_w_e_1_1_global_settings_a6e78425d75670a61252c2af0a80df382}{\index{A\-W\-E\-::\-Global\-Settings@{A\-W\-E\-::\-Global\-Settings}!get\-Type\-By\-Name@{get\-Type\-By\-Name}}
 \index{get\-Type\-By\-Name@{get\-Type\-By\-Name}!AWE::GlobalSettings@{A\-W\-E\-::\-Global\-Settings}}
 \subsubsection[{get\-Type\-By\-Name}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} \& Global\-Settings\-::get\-Type\-By\-Name (
 \begin{DoxyParamCaption}
-\item[{const std\-::string \&}]{name}
+\item[{Q\-String}]{name}
 \end{DoxyParamCaption}
-)}}\label{class_a_w_e_1_1_global_settings_ab7026bd5fdd6c7b566a1d5c71ef4b21e}
+)}}\label{class_a_w_e_1_1_global_settings_a6e78425d75670a61252c2af0a80df382}
 
 
 Get the media type with the given name. 

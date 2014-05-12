@@ -4,9 +4,10 @@ Media Types
 The information for a media type is kept in a JSON file:
 
 	{
-		"type": "folder or file",
+		"type": <"folder" or "file">,
+
 		"metadata": {
-			"type": "type name",
+			"type": <type name>,
 			"name": "",
 			"location": "",
 
@@ -23,10 +24,10 @@ The information for a media type is kept in a JSON file:
 			},
 
 			"details": {
-				"_order": ["first detail", "second", ...],
+				"_order": [<first detail>, <second detail>, ...],
 
-				"first detail": <default value>,
-				"second": <default value>,
+				<first detail>: <default value>,
+				<second detail>: <default value>,
 				// more default details attributes
 			}
 		},
@@ -79,6 +80,6 @@ In addition to the `All Items` folder described above, there are also folders fo
 	└── Genre Value 2
 	    └── Files with that value
 
-If the detail is a string, integer, or boolean, it is displayed directly as one of the values. If the detail is an array, each element in that array is a value. So if a movie has two directors, `Bob` and `Bill`, that movie appears under both `Bob` and `Bill`. `Bob` and `Bill` are separate folders under the `Director(s)` folder.
+If the detail is a string, integer, or boolean, it is displayed directly as one of the values. If the detail is an array, each element in that array is a value. So if a movie has two directors, `Bob` and `Bill`, that movie appears under both `Bob` and `Bill`. `Bob` and `Bill` are separate folders under the `Director` folder. Also note that the actual property name is `Director(s)`, but the folder name is `Director`. If a section of text is contained in `()`, `{}`, or `[]` in a detail's name, that text along with the `()`, `{}`, or `[]`, is removed. In addition, other special characters that are not allowed in file names are removed individually. When defining a new type, you should name your detail properties carefully to avoid awkward folder names.
 
 All generated folder structures have an `All Items` folder that lists all of the items.

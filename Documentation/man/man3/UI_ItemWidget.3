@@ -1,0 +1,415 @@
+.TH "UI::ItemWidget" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+UI::ItemWidget \- 
+.PP
+Defines an abstract item widget for lists\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ItemWidget\&.h>\fP
+.PP
+Inherits QWidget\&.
+.PP
+Inherited by \fBUI::ImageItemWidget\fP, \fBUI::MediaItemWidget\fP, and \fBUI::TextItemWidget\fP\&.
+.SS "Public Slots"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBhighlight\fP ()"
+.br
+.RI "\fIHighlight this item\&. \fP"
+.ti -1c
+.RI "virtual void \fBunhighlight\fP ()"
+.br
+.RI "\fIUnhighlight this item\&. \fP"
+.ti -1c
+.RI "virtual void \fBsetHighlighting\fP (bool newState)"
+.br
+.RI "\fIChange the highlight state\&. \fP"
+.in -1c
+.SS "Signals"
+
+.in +1c
+.ti -1c
+.RI "void \fBhighlighted\fP ()"
+.br
+.RI "\fISent when this item is highlighted\&. \fP"
+.ti -1c
+.RI "void \fBhighlighted\fP (\fBItemWidget\fP *item)"
+.br
+.RI "\fISent when this item is highlighted\&. \fP"
+.ti -1c
+.RI "void \fBunhighlighted\fP ()"
+.br
+.RI "\fISent when this item is unhighlighted\&. \fP"
+.ti -1c
+.RI "void \fBunhighlighted\fP (\fBItemWidget\fP *item)"
+.br
+.RI "\fISent when this item is unhighlighted\&. \fP"
+.ti -1c
+.RI "void \fBhighlightingChanged\fP (bool newState)"
+.br
+.RI "\fISent when this item's highlighting state changes\&. \fP"
+.ti -1c
+.RI "void \fBhighlightingChanged\fP (bool newState, \fBItemWidget\fP *item)"
+.br
+.RI "\fISent when this item's highlighting state changes\&. \fP"
+.ti -1c
+.RI "void \fBselected\fP ()"
+.br
+.RI "\fISent when this item is selected\&. \fP"
+.ti -1c
+.RI "void \fBselected\fP (\fBItemWidget\fP *item)"
+.br
+.RI "\fISent when this item is selected\&. \fP"
+.ti -1c
+.RI "void \fBclicked\fP ()"
+.br
+.RI "\fISent when this item is clicked\&. \fP"
+.ti -1c
+.RI "void \fBdoubleClicked\fP ()"
+.br
+.RI "\fISent when this item is double-clicked\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBItemWidget\fP (QWidget *parent, bool highlightable)"
+.br
+.RI "\fIMake with the given parent widget\&. \fP"
+.ti -1c
+.RI "virtual \fB~ItemWidget\fP ()"
+.br
+.RI "\fIDestroys this object\&. \fP"
+.ti -1c
+.RI "virtual QString \fBgetItemType\fP () const =0"
+.br
+.RI "\fIGet the item type (as a string)\&. \fP"
+.ti -1c
+.RI "virtual bool \fBisHighlighted\fP () const "
+.br
+.RI "\fIDetermine if this item is highlighted\&. \fP"
+.ti -1c
+.RI "virtual bool \fBisHighlightable\fP () const "
+.br
+.RI "\fIDetermine if this item can be highlighted and selected\&. \fP"
+.ti -1c
+.RI "virtual void \fBsetHighlightable\fP (bool newState)"
+.br
+.RI "\fIMake this item highlightable or not\&. \fP"
+.ti -1c
+.RI "virtual bool \fBfixSizeToFitIn\fP (QSize size)=0"
+.br
+.RI "\fIFix this item's size to fit in the given size\&. \fP"
+.ti -1c
+.RI "virtual QSize \fBgetSizeToFitIn\fP () const =0"
+.br
+.RI "\fIGet the size this item has to fit in\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBmousePressEvent\fP (QMouseEvent *event)"
+.br
+.RI "\fIHandle mouse click events\&. \fP"
+.ti -1c
+.RI "virtual void \fBmouseDoubleClickEvent\fP (QMouseEvent *event)"
+.br
+.RI "\fIHandle mouse double-click events\&. \fP"
+.ti -1c
+.RI "virtual void \fBpaintBackground\fP (QPaintEvent *event)"
+.br
+.RI "\fIPaint the background for this item\&. \fP"
+.ti -1c
+.RI "virtual void \fBpaintOutline\fP (QPaintEvent *event)"
+.br
+.RI "\fIPaint the outline for this item\&. \fP"
+.ti -1c
+.RI "virtual void \fBpaintEvent\fP (QPaintEvent *event)"
+.br
+.RI "\fIPaints the background and outline\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBmyHighlighting\fP"
+.br
+.RI "\fIThe highlighting state\&. \fP"
+.ti -1c
+.RI "bool \fBmyCanBeHighlighted\fP"
+.br
+.RI "\fICan this be highlighted? \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines an abstract item widget for lists\&. 
+
+It behaves in a way similar to \fCQListWidgetItem\fP, but unfortunately \fCQListWidget\fP has an opaque background and does not work well with AWEMC\&. I took this opportunity to make a set of similar widgets that do not have this problem\&.
+.PP
+Subclasses need to define:
+.IP "\(bu" 2
+\fC\fBgetItemType()\fP\fP: the type of \fC\fBItemWidget\fP\fP (for casting purposes)\&.
+.IP "\(bu" 2
+\fC\fBpaintEvent()\fP\fP: to paint the widget\&.
+.IP "\(bu" 2
+The minimum size of the widget (so that it shows up)\&. 
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ItemWidget::ItemWidget (QWidget *parent, boolhighlightable)"
+
+.PP
+Make with the given parent widget\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparent\fP The parent widget\&. 
+.br
+\fIhighlightable\fP \fCtrue\fP if this widget can be highlighted and selected, \fCfalse\fP if not\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void UI::ItemWidget::clicked ()\fC [signal]\fP"
+
+.PP
+Sent when this item is clicked\&. Note that clicking this item also changes its highlighting state\&. 
+.SS "void UI::ItemWidget::doubleClicked ()\fC [signal]\fP"
+
+.PP
+Sent when this item is double-clicked\&. Note that double-clicking causes two click events\&. The result is that both \fC\fBhighlighted()\fP\fP and \fC\fBunhighlighted()\fP\fP are sent\&. 
+.SS "virtual bool UI::ItemWidget::fixSizeToFitIn (QSizesize)\fC [pure virtual]\fP"
+
+.PP
+Fix this item's size to fit in the given size\&. If \fCsize == QSize(-1, -1)\fP, the item should not fix its size\&.
+.PP
+This is mostly used by \fC\fBItemCollectionWidget\fP\fPs to make sure that the item does not get swallowed up by the spacers used to align the items\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsize\fP The size to fit inside\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if this item can fit in \fCsize\fP, \fCfalse\fP if it cannot\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBUI::ImageItemWidget\fP, \fBUI::TextItemWidget\fP, and \fBUI::MediaItemWidget\fP\&.
+.SS "virtual QString UI::ItemWidget::getItemType () const\fC [pure virtual]\fP"
+
+.PP
+Get the item type (as a string)\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The item type (as a string)\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBUI::ImageItemWidget\fP, \fBUI::TextItemWidget\fP, and \fBUI::MediaItemWidget\fP\&.
+.SS "virtual QSize UI::ItemWidget::getSizeToFitIn () const\fC [pure virtual]\fP"
+
+.PP
+Get the size this item has to fit in\&. This is the size set by \fC\fBfixSizeToFitIn()\fP\fP\&.
+.PP
+\fBReturns:\fP
+.RS 4
+The size this item has to fit in\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBUI::ImageItemWidget\fP, \fBUI::TextItemWidget\fP, and \fBUI::MediaItemWidget\fP\&.
+.SS "void ItemWidget::highlight ()\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Highlight this item\&. There are two steps to item selection: highlighting and selection\&. It is like click vs\&. double-click\&.
+.PP
+Highlighting the item also causes a change in the appearance of the item\&. 
+.SS "void UI::ItemWidget::highlighted (\fBItemWidget\fP *item)\fC [signal]\fP"
+
+.PP
+Sent when this item is highlighted\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP This item\&. 
+.RE
+.PP
+
+.SS "void UI::ItemWidget::highlightingChanged (boolnewState)\fC [signal]\fP"
+
+.PP
+Sent when this item's highlighting state changes\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInewState\fP The new highlighting state\&. 
+.RE
+.PP
+
+.SS "void UI::ItemWidget::highlightingChanged (boolnewState, \fBItemWidget\fP *item)\fC [signal]\fP"
+
+.PP
+Sent when this item's highlighting state changes\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInewState\fP The new highlighting state\&. 
+.br
+\fIitem\fP This item\&. 
+.RE
+.PP
+
+.SS "bool ItemWidget::isHighlightable () const\fC [virtual]\fP"
+
+.PP
+Determine if this item can be highlighted and selected\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if this item is highlightabel, \fCfalse\fP otherwise\&. 
+.RE
+.PP
+
+.SS "bool ItemWidget::isHighlighted () const\fC [virtual]\fP"
+
+.PP
+Determine if this item is highlighted\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if this item is highlighted, \fCfalse\fP otherwise\&. 
+.RE
+.PP
+
+.SS "void ItemWidget::mouseDoubleClickEvent (QMouseEvent *event)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Handle mouse double-click events\&. Left-double-clicking on an item selects it\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The mouse event\&. 
+.RE
+.PP
+
+.SS "void ItemWidget::mousePressEvent (QMouseEvent *event)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Handle mouse click events\&. Left-clicking on an item highlights it\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The mouse event\&. 
+.RE
+.PP
+
+.SS "void ItemWidget::paintBackground (QPaintEvent *event)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Paint the background for this item\&. Generally, the background is only painted if the item is highlighted, but it depends on the subclass\&.
+.PP
+The background is a blue gradient\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The (unused) paint event\&. 
+.RE
+.PP
+
+.SS "void ItemWidget::paintEvent (QPaintEvent *event)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Paints the background and outline\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The paint event\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBUI::TextItemWidget\fP, and \fBUI::ImageItemWidget\fP\&.
+.SS "void ItemWidget::paintOutline (QPaintEvent *event)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Paint the outline for this item\&. Generally, the outline is only painted if the item is highlighted, but it depends on the subclass\&.
+.PP
+The outline is a solid black color\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The (unused) paint event\&. 
+.RE
+.PP
+
+.SS "void UI::ItemWidget::selected (\fBItemWidget\fP *item)\fC [signal]\fP"
+
+.PP
+Sent when this item is selected\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP This item\&. 
+.RE
+.PP
+
+.SS "void ItemWidget::setHighlightable (boolnewState)\fC [virtual]\fP"
+
+.PP
+Make this item highlightable or not\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInewState\fP \fCtrue\fP if this item should be highlightable, \fCfalse\fP if not\&. 
+.RE
+.PP
+
+.SS "void ItemWidget::setHighlighting (boolnewState)\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Change the highlight state\&. There are two steps to item selection: highlighting and selection\&. It is like click vs\&. double-click\&.
+.PP
+Highlighting/unhighlighting the item also causes a change in the appearance of the item\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fInewState\fP The new highlighting state\&. Sends the appropriate signal depending on the value\&. 
+.RE
+.PP
+
+.SS "void ItemWidget::unhighlight ()\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Unhighlight this item\&. There are two steps to item selection: highlighting and selection\&. It is like click vs\&. double-click\&.
+.PP
+Unhighlighting the item also causes a change in the appearance of the item\&. 
+.SS "void UI::ItemWidget::unhighlighted (\fBItemWidget\fP *item)\fC [signal]\fP"
+
+.PP
+Sent when this item is unhighlighted\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP This item\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AWE Media Center from the source code\&.

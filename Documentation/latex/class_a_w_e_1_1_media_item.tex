@@ -13,46 +13,199 @@ Represents a media file, folder, or service.
 Inheritance diagram for A\-W\-E\-:\-:Media\-Item\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=3.000000cm]{class_a_w_e_1_1_media_item}
+\includegraphics[height=4.000000cm]{class_a_w_e_1_1_media_item}
 \end{center}
 \end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_a_w_e_1_1_media_item_a38cca15c5ea7dc342d5c702b424c9dde}{virtual void \hyperlink{class_a_w_e_1_1_media_item_a38cca15c5ea7dc342d5c702b424c9dde}{mark\-As\-Edited} ()}\label{class_a_w_e_1_1_media_item_a38cca15c5ea7dc342d5c702b424c9dde}
+
+\begin{DoxyCompactList}\small\item\em Mark this item as edited, so that it is written to file upon deletion. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_a_w_e_1_1_media_item_aa7c54847d45a04a252babbe51cf6cbfc}{refresh} ()
+\begin{DoxyCompactList}\small\item\em Refresh this item's information to match the backend changes. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_a_w_e_1_1_media_item_af5701c4e1e3c0caa808f63e1d9d959b2}{set\-Name} (Q\-String name)
+\begin{DoxyCompactList}\small\item\em Set the name of the media item. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_a_w_e_1_1_media_item_a6cdfff49d8b7af56a76b0260d306ed77}{set\-Type} (Q\-String type)
+\begin{DoxyCompactList}\small\item\em Set the media type of the item. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_a_w_e_1_1_media_item_ac6a5379f7151eafe4f77797d5c2244c2}{set\-Description} (Q\-String description)
+\begin{DoxyCompactList}\small\item\em Set the description of the item. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_a_w_e_1_1_media_item_a56876d9763c7779a5741a35b93945388}{set\-Location} (Q\-String location)
+\begin{DoxyCompactList}\small\item\em Set the location of the item. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_media_item_ae26ac3837aef37df827a2ac83e06e4c4}{set\-Default\-Icon\-Index} (int i)
+\begin{DoxyCompactList}\small\item\em Change the default icon image to the {\ttfamily i}th icon. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_media_item_ab196362e2fa0c4cc94c69d345900d577}{add\-Icon} (Q\-String file)
+\begin{DoxyCompactList}\small\item\em Add an icon for this item, but do not import the image. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_media_item_a1acbeb01a9bf79ec868fec2bff179770}{import\-Icon} (Q\-String file)
+\begin{DoxyCompactList}\small\item\em Add and import the given icon. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_media_item_ad1ffe588203af7f900aee6c98cf5c5f1}{add\-Icon} (Q\-Pixmap icon)
+\begin{DoxyCompactList}\small\item\em Add an icon for this item. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_media_item_aeee2b3337a77d2ba3fcdd5d5cb9e30d1}{import\-Icon} (Q\-Pixmap icon)
+\begin{DoxyCompactList}\small\item\em Add and import the given icon. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_media_item_af8f9b8420f2075068fa353a8e4eacdeb}{remove\-Icon} (int i)
+\begin{DoxyCompactList}\small\item\em Remove the {\ttfamily i}th icon. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_media_item_a2fe7342f31baaba17b6449dc3323c1d9}{set\-Default\-Fanart\-Index} (int i)
+\begin{DoxyCompactList}\small\item\em Change the default fanart image to the {\ttfamily i}th fanart. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_media_item_a1a67e62362a38fcfafc0bb4178a9205a}{add\-Fanart} (Q\-String file)
+\begin{DoxyCompactList}\small\item\em Add an fanart for this item, but do not import the image. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_media_item_a9156ae857b0ea582bce8166bccdee5f3}{import\-Fanart} (Q\-String file)
+\begin{DoxyCompactList}\small\item\em Add and import the given fanart. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_media_item_af99834d4c4f625a5b8c6a7891f077c3b}{add\-Fanart} (Q\-Pixmap fanart)
+\begin{DoxyCompactList}\small\item\em Add an fanart for this item. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_media_item_aa66bd862c10c5b003522855e1a5dad8c}{import\-Fanart} (Q\-Pixmap fanart)
+\begin{DoxyCompactList}\small\item\em Add and import the given fanart. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_media_item_a3be42e522441f9b59d27383715381fb5}{remove\-Fanart} (int i)
+\begin{DoxyCompactList}\small\item\em Remove the {\ttfamily i}th fanart. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_media_item_a64efa5df14b0d0342873fd497f2e764c}{add\-Detail} (Q\-String name, Q\-String value)
+\begin{DoxyCompactList}\small\item\em Add a new detail with name {\ttfamily name} and value {\ttfamily value}. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_media_item_adbb367e4360cd5aedf23320db3efa499}{add\-Detail} (Q\-String name, const \hyperlink{class_json_1_1_value}{Json\-::\-Value} \&value)
+\begin{DoxyCompactList}\small\item\em Add a new detail with the name {\ttfamily name} and value {\ttfamily value}. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_media_item_a6ae48b19d0454af93f1496ad1c77e7b7}{remove\-Detail} (int i)
+\begin{DoxyCompactList}\small\item\em Remove the {\ttfamily i}th detail. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_media_item_af42c6fe5c5ac4621d882885c74586216}{remove\-Detail} (Q\-String name)
+\begin{DoxyCompactList}\small\item\em Remove the detail with the given name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_a_w_e_1_1_media_item_abb9c8990c7bd1b8e8b9a1556f62642fd}{name\-Changed} (Q\-String name)
+\begin{DoxyCompactList}\small\item\em Sent when the name is changed. \end{DoxyCompactList}\item 
+void \hyperlink{class_a_w_e_1_1_media_item_a13fdd406dbfcf3605f1db86f0a7278a7}{type\-Changed} (Q\-String type)
+\begin{DoxyCompactList}\small\item\em Sent when the media type is changed. \end{DoxyCompactList}\item 
+void \hyperlink{class_a_w_e_1_1_media_item_a14df1b217aa2758283f66e5d9da1a456}{description\-Changed} (Q\-String description)
+\begin{DoxyCompactList}\small\item\em Sent when the description is changed. \end{DoxyCompactList}\item 
+void \hyperlink{class_a_w_e_1_1_media_item_a4ea27584e2fcf2ff4781aa5a87f8e26a}{location\-Changed} (Q\-String location)
+\begin{DoxyCompactList}\small\item\em Sent when the location is changed. \end{DoxyCompactList}\item 
+void \hyperlink{class_a_w_e_1_1_media_item_af345d35f4f380c0cf7eb02eeb883848f}{icon\-Added} (Q\-Pixmap icon)
+\begin{DoxyCompactList}\small\item\em Sent when an icon is added. \end{DoxyCompactList}\item 
+void \hyperlink{class_a_w_e_1_1_media_item_a76f8f85b2d93c145220fcfe2ef93fab9}{icon\-Removed} (int index)
+\begin{DoxyCompactList}\small\item\em Sent when an icon is removed. \end{DoxyCompactList}\item 
+void \hyperlink{class_a_w_e_1_1_media_item_a099f9a63a70d0a0f1433c737aee0768a}{default\-Icon\-Changed} (int index)
+\begin{DoxyCompactList}\small\item\em Sent when the default icon is changed. \end{DoxyCompactList}\item 
+void \hyperlink{class_a_w_e_1_1_media_item_abf09192d589c63cbbd3ca2643821807e}{fanart\-Added} (Q\-Pixmap fanart)
+\begin{DoxyCompactList}\small\item\em Sent when a fanart image is added. \end{DoxyCompactList}\item 
+void \hyperlink{class_a_w_e_1_1_media_item_a938bd4fc579b9dc8de8161ab508d2131}{fanart\-Removed} (int index)
+\begin{DoxyCompactList}\small\item\em Sent when a fanart image is removed. \end{DoxyCompactList}\item 
+void \hyperlink{class_a_w_e_1_1_media_item_a6a0037f48f16cff9bf20a3fa0384a95b}{default\-Fanart\-Changed} (int index)
+\begin{DoxyCompactList}\small\item\em Sent when the default fanart is changed. \end{DoxyCompactList}\item 
+void \hyperlink{class_a_w_e_1_1_media_item_a29ec8ca53dce71e8e060aad83318689e}{detail\-Added} (Q\-String name)
+\begin{DoxyCompactList}\small\item\em Sent when a detail is added. \end{DoxyCompactList}\item 
+void \hyperlink{class_a_w_e_1_1_media_item_ae2989c79a410a00d55e08cd74c5cda90}{detail\-Changed} (int index)
+\begin{DoxyCompactList}\small\item\em Sent when the value of a detail is changed. \end{DoxyCompactList}\item 
+void \hyperlink{class_a_w_e_1_1_media_item_a7e54f7fbc167e6803b7e385b5bc9c71c}{detail\-Removed} (int index)
+\begin{DoxyCompactList}\small\item\em Sent when a detail is removed. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_media_item_a546d9a0c58938b0a8e027945901604a1}{void \hyperlink{class_a_w_e_1_1_media_item_a546d9a0c58938b0a8e027945901604a1}{refreshed} ()}\label{class_a_w_e_1_1_media_item_a546d9a0c58938b0a8e027945901604a1}
+
+\begin{DoxyCompactList}\small\item\em Sent when the item is refreshed. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_a_w_e_1_1_media_item_a8cb8aeb690c2833d5bc175d40a1f7fe6}{Media\-Item} (const Q\-Dir \&file)
+\hyperlink{class_a_w_e_1_1_media_item_a45c538cd1cfb0fca5aca1dfd8b88c1da}{Media\-Item} (Q\-Dir file)
 \begin{DoxyCompactList}\small\item\em Create from the given J\-S\-O\-N file. \end{DoxyCompactList}\item 
 \hypertarget{class_a_w_e_1_1_media_item_a6999ea20d13e6fcd55b2d4104ca15b78}{virtual \hyperlink{class_a_w_e_1_1_media_item_a6999ea20d13e6fcd55b2d4104ca15b78}{$\sim$\-Media\-Item} ()}\label{class_a_w_e_1_1_media_item_a6999ea20d13e6fcd55b2d4104ca15b78}
 
-\begin{DoxyCompactList}\small\item\em Deconstructor. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Destroy this object and write to file if necessary. \end{DoxyCompactList}\item 
+virtual Q\-String \hyperlink{class_a_w_e_1_1_media_item_a8d01cc215610b3d7ab336d332fb472dd}{get\-Name} () const 
+\begin{DoxyCompactList}\small\item\em Get the name of the media item. \end{DoxyCompactList}\item 
+virtual Q\-String \hyperlink{class_a_w_e_1_1_media_item_a9a6399e22b02b753766109f7825878af}{get\-Type} () const 
+\begin{DoxyCompactList}\small\item\em Get the media type of the item, e.\-g. Movie. \end{DoxyCompactList}\item 
+virtual Q\-String \hyperlink{class_a_w_e_1_1_media_item_a80e3f5034aa628143b225c5a6fc8bec7}{get\-Description} () const 
+\begin{DoxyCompactList}\small\item\em Get the description of the item. \end{DoxyCompactList}\item 
+virtual Q\-String \hyperlink{class_a_w_e_1_1_media_item_adab45ebbb95cd03eeaffd9ac6ef54756}{get\-Location} () const 
+\begin{DoxyCompactList}\small\item\em Get the location for this item. \end{DoxyCompactList}\item 
+virtual int \hyperlink{class_a_w_e_1_1_media_item_a01258a17cdfa091b4a01521db3765fad}{num\-Icons} () const 
+\begin{DoxyCompactList}\small\item\em Get the number of icons. \end{DoxyCompactList}\item 
+virtual Q\-Pixmap \hyperlink{class_a_w_e_1_1_media_item_a3c02f1c2317244e104517bd68e486fa2}{get\-Icon} (int i) const 
+\begin{DoxyCompactList}\small\item\em Get the {\ttfamily i}th icon. \end{DoxyCompactList}\item 
+virtual Q\-Pixmap \hyperlink{class_a_w_e_1_1_media_item_a30a34c3024f2c0f8f89296ae1bc032f3}{get\-Default\-Icon} () const 
+\begin{DoxyCompactList}\small\item\em Get the default icon for this item, as an image. \end{DoxyCompactList}\item 
+virtual int \hyperlink{class_a_w_e_1_1_media_item_acc425dbbde763177c9d79d83d48f87cc}{get\-Default\-Icon\-Index} () const 
+\begin{DoxyCompactList}\small\item\em Get the default icon image's index. \end{DoxyCompactList}\item 
+virtual int \hyperlink{class_a_w_e_1_1_media_item_af7523517745f5dfcf30a37dd1044991e}{num\-Fanarts} () const 
+\begin{DoxyCompactList}\small\item\em Get the number of icons. \end{DoxyCompactList}\item 
+virtual Q\-Pixmap \hyperlink{class_a_w_e_1_1_media_item_a3b171a9b398dc097a94cf8f5d1c94b58}{get\-Fanart} (int i) const 
+\begin{DoxyCompactList}\small\item\em Get the {\ttfamily i}th fanart. \end{DoxyCompactList}\item 
+virtual Q\-Pixmap \hyperlink{class_a_w_e_1_1_media_item_abe9fcab2d0853b360b3af4b3b366a945}{get\-Default\-Fanart} () const 
+\begin{DoxyCompactList}\small\item\em Get the default fanart for this item, as an image. \end{DoxyCompactList}\item 
+virtual int \hyperlink{class_a_w_e_1_1_media_item_af12519450111a095a0de62c13a577414}{get\-Default\-Fanart\-Index} () const 
+\begin{DoxyCompactList}\small\item\em Get the default fanart image's index. \end{DoxyCompactList}\item 
+virtual int \hyperlink{class_a_w_e_1_1_media_item_a4c7fb30c5eb3963b1c2c66b626dc3487}{num\-Details} () const 
+\begin{DoxyCompactList}\small\item\em Get the number of icons. \end{DoxyCompactList}\item 
+virtual Q\-String \hyperlink{class_a_w_e_1_1_media_item_a467117453601b932573918b970cff0ef}{get\-Detail\-Name} (int i) const 
+\begin{DoxyCompactList}\small\item\em Get the name of the {\ttfamily i}th detail. \end{DoxyCompactList}\item 
+virtual const \hyperlink{class_json_1_1_value}{Json\-::\-Value} \& \hyperlink{class_a_w_e_1_1_media_item_adf67ef0cedbe01f026dae1ed5afb42f8}{get\-Detail\-Value} (int i) const 
+\begin{DoxyCompactList}\small\item\em Get the value of the {\ttfamily i}th detail. \end{DoxyCompactList}\item 
+virtual Q\-String \hyperlink{class_a_w_e_1_1_media_item_a1a913bb927429b63993cf9be26b4a6a9}{get\-Detail\-Value\-As\-String} (int i) const 
+\begin{DoxyCompactList}\small\item\em Get the value of the {\ttfamily i}th detail as a formatted string. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_media_item_abc781158a6bde5c596a79004326b8a6d}{has\-Detail} (Q\-String detail) const 
+\begin{DoxyCompactList}\small\item\em Determine if this item has the given detail. \end{DoxyCompactList}\item 
+virtual const \hyperlink{class_json_1_1_value}{Json\-::\-Value} \& \hyperlink{class_a_w_e_1_1_media_item_a394ca8d5847fc28127d5f8f1cbdff019}{get\-Detail\-Value} (Q\-String name) const 
+\begin{DoxyCompactList}\small\item\em Get the value for the detail with the given name. \end{DoxyCompactList}\item 
+virtual Q\-String \hyperlink{class_a_w_e_1_1_media_item_a8faf4e51f5e8da6b7a2188166702a9ab}{get\-Detail\-Value\-As\-String} (Q\-String name) const 
+\item 
+virtual Q\-Dir \hyperlink{class_a_w_e_1_1_media_item_a2844063c68e08ddbe58489cc6ef9ea41}{get\-Config\-File} () const 
+\begin{DoxyCompactList}\small\item\em Get the path to the configuration file. \end{DoxyCompactList}\item 
+virtual \hyperlink{namespace_a_w_e_ad175a5b8a86bf7848825c9bd94c41470}{Item\-Type} \hyperlink{class_a_w_e_1_1_media_item_ad7a7ef28069986fad8b2be060fef6e48}{get\-Item\-Type} () const =0
+\begin{DoxyCompactList}\small\item\em Determine the basic type (folder, file, service) \end{DoxyCompactList}\item 
 virtual \hyperlink{class_json_1_1_value}{Json\-::\-Value} \& \hyperlink{class_a_w_e_1_1_media_item_ac3258f4f7f4557205b3906ff15c46612}{get\-Data} ()
 \begin{DoxyCompactList}\small\item\em Get the data for this item. \end{DoxyCompactList}\item 
 virtual const \hyperlink{class_json_1_1_value}{Json\-::\-Value} \& \hyperlink{class_a_w_e_1_1_media_item_abd79979e34b76f89d6cadabcb7886bd1}{get\-Data} () const 
 \begin{DoxyCompactList}\small\item\em Get the data for this item. \end{DoxyCompactList}\item 
-virtual const \hyperlink{class_json_1_1_value}{Json\-::\-Value} \& \hyperlink{class_a_w_e_1_1_media_item_a82bd831701d2a4c727ff505fbf9fbbb0}{get\-Member} (const std\-::string \&str) const 
+virtual const \hyperlink{class_json_1_1_value}{Json\-::\-Value} \& \hyperlink{class_a_w_e_1_1_media_item_a0ac7055ff6dfbe179133f3a9f0aad44b}{get\-Member} (Q\-String str) const 
 \begin{DoxyCompactList}\small\item\em Get a member of unspecified type by name. \end{DoxyCompactList}\item 
-virtual \hyperlink{class_json_1_1_value}{Json\-::\-Value} \& \hyperlink{class_a_w_e_1_1_media_item_a64bf0d84b75bd21dd27ef498c85bf695}{get\-Member} (const std\-::string \&str)
+virtual \hyperlink{class_json_1_1_value}{Json\-::\-Value} \& \hyperlink{class_a_w_e_1_1_media_item_a4be34b9996a67f52c9096ac123b91557}{get\-Member} (Q\-String str)
 \begin{DoxyCompactList}\small\item\em Get a member of unspecified type by name. \end{DoxyCompactList}\item 
-virtual bool \hyperlink{class_a_w_e_1_1_media_item_ad0beee6cac6524de24f5a1449502cdd5}{get\-Bool\-Member} (const std\-::string \&str) const 
+virtual bool \hyperlink{class_a_w_e_1_1_media_item_ad418457181a157a2a4ca730326d4e135}{get\-Bool\-Member} (Q\-String str) const 
 \begin{DoxyCompactList}\small\item\em Get a member of {\ttfamily bool} type by name. \end{DoxyCompactList}\item 
-virtual std\-::string \hyperlink{class_a_w_e_1_1_media_item_a86775a7b5252062953963840b3074568}{get\-String\-Member} (const std\-::string \&str) const 
-\begin{DoxyCompactList}\small\item\em Get a member of {\ttfamily std\-::string} type by name. \end{DoxyCompactList}\item 
-virtual int \hyperlink{class_a_w_e_1_1_media_item_a18ac2a793896f54695f4796f8457b073}{get\-Int\-Member} (const std\-::string \&str) const 
+virtual Q\-String \hyperlink{class_a_w_e_1_1_media_item_a9e027085cac3af62a41d6c0a9d74d40b}{get\-String\-Member} (Q\-String str) const 
+\begin{DoxyCompactList}\small\item\em Get a member of {\ttfamily Q\-String} type by name. \end{DoxyCompactList}\item 
+virtual int \hyperlink{class_a_w_e_1_1_media_item_ac9dddb31a9dd9783e9c516e2717efde2}{get\-Int\-Member} (Q\-String str) const 
 \begin{DoxyCompactList}\small\item\em Get a member of {\ttfamily int} type by name. \end{DoxyCompactList}\item 
-virtual std\-::string \hyperlink{class_a_w_e_1_1_media_item_a20a3275880777c9c5338957ee5d2d1e1}{get\-Name} () const 
-\begin{DoxyCompactList}\small\item\em Get the name of the media item. \end{DoxyCompactList}\item 
-virtual const Q\-Dir \& \hyperlink{class_a_w_e_1_1_media_item_a6a26f1692daa54667f4efd3f89c2769d}{get\-J\-S\-O\-N\-File} () const 
-\begin{DoxyCompactList}\small\item\em Get the absolute path to the J\-S\-O\-N settings file. \end{DoxyCompactList}\item 
-virtual Item\-Type \hyperlink{class_a_w_e_1_1_media_item_ad7a7ef28069986fad8b2be060fef6e48}{get\-Item\-Type} () const =0
-\begin{DoxyCompactList}\small\item\em Determine the basic type (folder, file, service) \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Protected Attributes}
+virtual bool \hyperlink{class_a_w_e_1_1_media_item_aa804e6127c3a94a744a6757bf3ac98c7}{has\-Been\-Edited} () const 
+\begin{DoxyCompactList}\small\item\em Determine if this item has been edited. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_a_w_e_1_1_media_item_a7f9dd23352cad06e432264b85e58778d}{Q\-Dir \hyperlink{class_a_w_e_1_1_media_item_a7f9dd23352cad06e432264b85e58778d}{my\-J\-S\-O\-N\-File}}\label{class_a_w_e_1_1_media_item_a7f9dd23352cad06e432264b85e58778d}
+Q\-String \hyperlink{class_a_w_e_1_1_media_item_a4592497d8dee990cf53da12b898bbf98}{string\-For} (const \hyperlink{class_json_1_1_value}{Json\-::\-Value} \&val) const 
+\begin{DoxyCompactList}\small\item\em Helper function that makes details into strings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_a_w_e_1_1_media_item_ae623554f657a71c6d764198c13d41ad8}{Q\-Dir \hyperlink{class_a_w_e_1_1_media_item_ae623554f657a71c6d764198c13d41ad8}{my\-Config\-File}}\label{class_a_w_e_1_1_media_item_ae623554f657a71c6d764198c13d41ad8}
 
 \begin{DoxyCompactList}\small\item\em The J\-S\-O\-N file for this item. \end{DoxyCompactList}\item 
 \hypertarget{class_a_w_e_1_1_media_item_a7af1109bed3163e1c5a33aac5d369ad8}{\hyperlink{class_json_1_1_value}{Json\-::\-Value} \hyperlink{class_a_w_e_1_1_media_item_a7af1109bed3163e1c5a33aac5d369ad8}{my\-Data}}\label{class_a_w_e_1_1_media_item_a7af1109bed3163e1c5a33aac5d369ad8}
 
-\begin{DoxyCompactList}\small\item\em The data for this item. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The data for this item. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_media_item_a63aa5daa1c6d635352e278cbbd380598}{bool \hyperlink{class_a_w_e_1_1_media_item_a63aa5daa1c6d635352e278cbbd380598}{my\-Has\-Been\-Edited}}\label{class_a_w_e_1_1_media_item_a63aa5daa1c6d635352e278cbbd380598}
+
+\begin{DoxyCompactList}\small\item\em Determines if this should be written to file or not. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_media_item_a6d1a2ee67d57758da2d2a715c7f7bf44}{Q\-String \hyperlink{class_a_w_e_1_1_media_item_a6d1a2ee67d57758da2d2a715c7f7bf44}{my\-Name}}\label{class_a_w_e_1_1_media_item_a6d1a2ee67d57758da2d2a715c7f7bf44}
+
+\begin{DoxyCompactList}\small\item\em The name of this item. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_media_item_a28658122437e711f187c313a414c6f0c}{Q\-String \hyperlink{class_a_w_e_1_1_media_item_a28658122437e711f187c313a414c6f0c}{my\-Type}}\label{class_a_w_e_1_1_media_item_a28658122437e711f187c313a414c6f0c}
+
+\begin{DoxyCompactList}\small\item\em The media type of this item. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_media_item_af1a8ed1e20248528ed1c447daf034084}{Q\-String \hyperlink{class_a_w_e_1_1_media_item_af1a8ed1e20248528ed1c447daf034084}{my\-Description}}\label{class_a_w_e_1_1_media_item_af1a8ed1e20248528ed1c447daf034084}
+
+\begin{DoxyCompactList}\small\item\em The description of this item. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_media_item_aab373d9df4099810136f5c2d9780d635}{Q\-String \hyperlink{class_a_w_e_1_1_media_item_aab373d9df4099810136f5c2d9780d635}{my\-Location}}\label{class_a_w_e_1_1_media_item_aab373d9df4099810136f5c2d9780d635}
+
+\begin{DoxyCompactList}\small\item\em The location of this item. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_media_item_afa43f5fac602b7f56f64bd707c679ac6}{Q\-List$<$ Q\-Pixmap $>$ \hyperlink{class_a_w_e_1_1_media_item_afa43f5fac602b7f56f64bd707c679ac6}{my\-Icon\-Images}}\label{class_a_w_e_1_1_media_item_afa43f5fac602b7f56f64bd707c679ac6}
+
+\begin{DoxyCompactList}\small\item\em The icon images for this item. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_media_item_a8601cb9e3a8154a32d415278e1534bd7}{int \hyperlink{class_a_w_e_1_1_media_item_a8601cb9e3a8154a32d415278e1534bd7}{my\-Default\-Icon\-Index}}\label{class_a_w_e_1_1_media_item_a8601cb9e3a8154a32d415278e1534bd7}
+
+\begin{DoxyCompactList}\small\item\em The default icon index. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_media_item_ab0963052b21ea89b16135540e27025e3}{Q\-List$<$ Q\-Pixmap $>$ \hyperlink{class_a_w_e_1_1_media_item_ab0963052b21ea89b16135540e27025e3}{my\-Fanart\-Images}}\label{class_a_w_e_1_1_media_item_ab0963052b21ea89b16135540e27025e3}
+
+\begin{DoxyCompactList}\small\item\em The fanart images for this item. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_media_item_abe525d27c157933dac403ef4fd6bb5cb}{int \hyperlink{class_a_w_e_1_1_media_item_abe525d27c157933dac403ef4fd6bb5cb}{my\-Default\-Fanart\-Index}}\label{class_a_w_e_1_1_media_item_abe525d27c157933dac403ef4fd6bb5cb}
+
+\begin{DoxyCompactList}\small\item\em The default fanart index. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_media_item_a8e37e238ed617b95e5f724a20f0c1c80}{Q\-List$<$ Q\-String $>$ \hyperlink{class_a_w_e_1_1_media_item_a8e37e238ed617b95e5f724a20f0c1c80}{my\-Detail\-Names}}\label{class_a_w_e_1_1_media_item_a8e37e238ed617b95e5f724a20f0c1c80}
+
+\begin{DoxyCompactList}\small\item\em The detail names for this item. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -61,13 +214,13 @@ Represents a media file, folder, or service.
 Holds all relevant metadata for the item. 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{class_a_w_e_1_1_media_item_a8cb8aeb690c2833d5bc175d40a1f7fe6}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!Media\-Item@{Media\-Item}}
+\hypertarget{class_a_w_e_1_1_media_item_a45c538cd1cfb0fca5aca1dfd8b88c1da}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!Media\-Item@{Media\-Item}}
 \index{Media\-Item@{Media\-Item}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
 \subsubsection[{Media\-Item}]{\setlength{\rightskip}{0pt plus 5cm}Media\-Item\-::\-Media\-Item (
 \begin{DoxyParamCaption}
-\item[{const Q\-Dir \&}]{file}
+\item[{Q\-Dir}]{file}
 \end{DoxyParamCaption}
-)}}\label{class_a_w_e_1_1_media_item_a8cb8aeb690c2833d5bc175d40a1f7fe6}
+)}}\label{class_a_w_e_1_1_media_item_a45c538cd1cfb0fca5aca1dfd8b88c1da}
 
 
 Create from the given J\-S\-O\-N file. 
@@ -80,16 +233,296 @@ Create from the given J\-S\-O\-N file.
 
 
 \subsection{Member Function Documentation}
-\hypertarget{class_a_w_e_1_1_media_item_ad0beee6cac6524de24f5a1449502cdd5}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Bool\-Member@{get\-Bool\-Member}}
+\hypertarget{class_a_w_e_1_1_media_item_a64efa5df14b0d0342873fd497f2e764c}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!add\-Detail@{add\-Detail}}
+\index{add\-Detail@{add\-Detail}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{add\-Detail}]{\setlength{\rightskip}{0pt plus 5cm}bool Media\-Item\-::add\-Detail (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{name, }
+\item[{Q\-String}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_a_w_e_1_1_media_item_a64efa5df14b0d0342873fd497f2e764c}
+
+
+Add a new detail with name {\ttfamily name} and value {\ttfamily value}. 
+
+If {\ttfamily name} is already a detail, then the corresponding value is set to {\ttfamily value}.
+
+When a detail is \char`\"{}set\char`\"{}, what actually happens depends on the type of the detail\-:
+\begin{DoxyItemize}
+\item Array\-: appends the new value to the array
+\item Object\-: does nothing, because objects are not supported.
+\item Everything else\-: replaces the old value
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the detail. \\
+\hline
+{\em value} & The value of the detail.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if this item was changed, {\ttfamily false} otherwise. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_adbb367e4360cd5aedf23320db3efa499}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!add\-Detail@{add\-Detail}}
+\index{add\-Detail@{add\-Detail}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{add\-Detail}]{\setlength{\rightskip}{0pt plus 5cm}bool Media\-Item\-::add\-Detail (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{name, }
+\item[{const {\bf Json\-::\-Value} \&}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_a_w_e_1_1_media_item_adbb367e4360cd5aedf23320db3efa499}
+
+
+Add a new detail with the name {\ttfamily name} and value {\ttfamily value}. 
+
+This function will accept {\ttfamily int}, {\ttfamily bool}, {\ttfamily std\-::string}, {\ttfamily char$\ast$}, and a whole host of other things.
+
+If {\ttfamily name} is already a detail, then the corresponding value is set to {\ttfamily value}.
+
+When a detail is \char`\"{}set\char`\"{}, what actually happens depends on the type of the detail\-:
+\begin{DoxyItemize}
+\item Array\-: appends the new value to the array
+\item Object\-: does nothing, because objects are not supported.
+\item Everything else\-: replaces the old value
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the detail. \\
+\hline
+{\em value} & The value of the detail.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if this item was changed, {\ttfamily false} otherwise. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_a1a67e62362a38fcfafc0bb4178a9205a}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!add\-Fanart@{add\-Fanart}}
+\index{add\-Fanart@{add\-Fanart}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{add\-Fanart}]{\setlength{\rightskip}{0pt plus 5cm}bool Media\-Item\-::add\-Fanart (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_a_w_e_1_1_media_item_a1a67e62362a38fcfafc0bb4178a9205a}
+
+
+Add an fanart for this item, but do not import the image. 
+
+{\ttfamily file} could be stored locally or it could be online. If stored locally, you should pass the absolute path to the image file. If it is from the internet, it is also imported.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & The new fanart file.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if {\ttfamily file} is valid, and thus the fanart was added, {\ttfamily false} if not. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_af99834d4c4f625a5b8c6a7891f077c3b}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!add\-Fanart@{add\-Fanart}}
+\index{add\-Fanart@{add\-Fanart}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{add\-Fanart}]{\setlength{\rightskip}{0pt plus 5cm}bool Media\-Item\-::add\-Fanart (
+\begin{DoxyParamCaption}
+\item[{Q\-Pixmap}]{fanart}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_a_w_e_1_1_media_item_af99834d4c4f625a5b8c6a7891f077c3b}
+
+
+Add an fanart for this item. 
+
+Since this takes a {\ttfamily Q\-Pixmap}, the item is imported.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fanart} & The new fanart.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if {\ttfamily fanart} is valid and was added, {\ttfamily false} if not. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_ab196362e2fa0c4cc94c69d345900d577}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!add\-Icon@{add\-Icon}}
+\index{add\-Icon@{add\-Icon}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{add\-Icon}]{\setlength{\rightskip}{0pt plus 5cm}bool Media\-Item\-::add\-Icon (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_a_w_e_1_1_media_item_ab196362e2fa0c4cc94c69d345900d577}
+
+
+Add an icon for this item, but do not import the image. 
+
+{\ttfamily file} could be stored locally or it could be online. If stored locally, you should pass the absolute path to the image file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & The new icon file.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if {\ttfamily file} is valid, and thus the icon was added, {\ttfamily false} if not. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_ad1ffe588203af7f900aee6c98cf5c5f1}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!add\-Icon@{add\-Icon}}
+\index{add\-Icon@{add\-Icon}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{add\-Icon}]{\setlength{\rightskip}{0pt plus 5cm}bool Media\-Item\-::add\-Icon (
+\begin{DoxyParamCaption}
+\item[{Q\-Pixmap}]{icon}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_a_w_e_1_1_media_item_ad1ffe588203af7f900aee6c98cf5c5f1}
+
+
+Add an icon for this item. 
+
+Since this takes a {\ttfamily Q\-Pixmap}, the item is imported.
+
+
+\begin{DoxyParams}{Parameters}
+{\em icon} & The new icon.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if {\ttfamily icon} is valid and was added, {\ttfamily false} if not. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_a6a0037f48f16cff9bf20a3fa0384a95b}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!default\-Fanart\-Changed@{default\-Fanart\-Changed}}
+\index{default\-Fanart\-Changed@{default\-Fanart\-Changed}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{default\-Fanart\-Changed}]{\setlength{\rightskip}{0pt plus 5cm}void A\-W\-E\-::\-Media\-Item\-::default\-Fanart\-Changed (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{class_a_w_e_1_1_media_item_a6a0037f48f16cff9bf20a3fa0384a95b}
+
+
+Sent when the default fanart is changed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The new default fanart index. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_a_w_e_1_1_media_item_a099f9a63a70d0a0f1433c737aee0768a}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!default\-Icon\-Changed@{default\-Icon\-Changed}}
+\index{default\-Icon\-Changed@{default\-Icon\-Changed}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{default\-Icon\-Changed}]{\setlength{\rightskip}{0pt plus 5cm}void A\-W\-E\-::\-Media\-Item\-::default\-Icon\-Changed (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{class_a_w_e_1_1_media_item_a099f9a63a70d0a0f1433c737aee0768a}
+
+
+Sent when the default icon is changed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The new default icon index. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_a_w_e_1_1_media_item_a14df1b217aa2758283f66e5d9da1a456}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!description\-Changed@{description\-Changed}}
+\index{description\-Changed@{description\-Changed}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{description\-Changed}]{\setlength{\rightskip}{0pt plus 5cm}void A\-W\-E\-::\-Media\-Item\-::description\-Changed (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{description}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{class_a_w_e_1_1_media_item_a14df1b217aa2758283f66e5d9da1a456}
+
+
+Sent when the description is changed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em description} & The new description. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_a_w_e_1_1_media_item_a29ec8ca53dce71e8e060aad83318689e}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!detail\-Added@{detail\-Added}}
+\index{detail\-Added@{detail\-Added}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{detail\-Added}]{\setlength{\rightskip}{0pt plus 5cm}void A\-W\-E\-::\-Media\-Item\-::detail\-Added (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{class_a_w_e_1_1_media_item_a29ec8ca53dce71e8e060aad83318689e}
+
+
+Sent when a detail is added. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the detail. \\
+\hline
+{\em value} & The value for the detail. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_a_w_e_1_1_media_item_ae2989c79a410a00d55e08cd74c5cda90}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!detail\-Changed@{detail\-Changed}}
+\index{detail\-Changed@{detail\-Changed}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{detail\-Changed}]{\setlength{\rightskip}{0pt plus 5cm}void A\-W\-E\-::\-Media\-Item\-::detail\-Changed (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{class_a_w_e_1_1_media_item_ae2989c79a410a00d55e08cd74c5cda90}
+
+
+Sent when the value of a detail is changed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index of the detail. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_a_w_e_1_1_media_item_a7e54f7fbc167e6803b7e385b5bc9c71c}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!detail\-Removed@{detail\-Removed}}
+\index{detail\-Removed@{detail\-Removed}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{detail\-Removed}]{\setlength{\rightskip}{0pt plus 5cm}void A\-W\-E\-::\-Media\-Item\-::detail\-Removed (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{class_a_w_e_1_1_media_item_a7e54f7fbc167e6803b7e385b5bc9c71c}
+
+
+Sent when a detail is removed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index of the removed detail. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_a_w_e_1_1_media_item_abf09192d589c63cbbd3ca2643821807e}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!fanart\-Added@{fanart\-Added}}
+\index{fanart\-Added@{fanart\-Added}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{fanart\-Added}]{\setlength{\rightskip}{0pt plus 5cm}void A\-W\-E\-::\-Media\-Item\-::fanart\-Added (
+\begin{DoxyParamCaption}
+\item[{Q\-Pixmap}]{fanart}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{class_a_w_e_1_1_media_item_abf09192d589c63cbbd3ca2643821807e}
+
+
+Sent when a fanart image is added. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fanart} & The added fanart image. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_a_w_e_1_1_media_item_a938bd4fc579b9dc8de8161ab508d2131}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!fanart\-Removed@{fanart\-Removed}}
+\index{fanart\-Removed@{fanart\-Removed}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{fanart\-Removed}]{\setlength{\rightskip}{0pt plus 5cm}void A\-W\-E\-::\-Media\-Item\-::fanart\-Removed (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{class_a_w_e_1_1_media_item_a938bd4fc579b9dc8de8161ab508d2131}
+
+
+Sent when a fanart image is removed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index of the removed fanart. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_a_w_e_1_1_media_item_ad418457181a157a2a4ca730326d4e135}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Bool\-Member@{get\-Bool\-Member}}
 \index{get\-Bool\-Member@{get\-Bool\-Member}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
 \subsubsection[{get\-Bool\-Member}]{\setlength{\rightskip}{0pt plus 5cm}bool Media\-Item\-::get\-Bool\-Member (
 \begin{DoxyParamCaption}
-\item[{const std\-::string \&}]{str}
+\item[{Q\-String}]{str}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_ad0beee6cac6524de24f5a1449502cdd5}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_ad418457181a157a2a4ca730326d4e135}
 
 
 Get a member of {\ttfamily bool} type by name. 
+
+In general, you should not use this function. it is meant to be used to edit the J\-S\-O\-N file, or when dealing with data that is not covered by the metadata functions.
 
 
 \begin{DoxyParams}{Parameters}
@@ -98,6 +531,20 @@ Get a member of {\ttfamily bool} type by name.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 The value associated with the key {\ttfamily str}. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_a2844063c68e08ddbe58489cc6ef9ea41}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Config\-File@{get\-Config\-File}}
+\index{get\-Config\-File@{get\-Config\-File}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{get\-Config\-File}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Dir Media\-Item\-::get\-Config\-File (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_a2844063c68e08ddbe58489cc6ef9ea41}
+
+
+Get the path to the configuration file. 
+
+\begin{DoxyReturn}{Returns}
+The path to the config file. 
 \end{DoxyReturn}
 \hypertarget{class_a_w_e_1_1_media_item_ac3258f4f7f4557205b3906ff15c46612}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Data@{get\-Data}}
 \index{get\-Data@{get\-Data}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
@@ -109,6 +556,8 @@ The value associated with the key {\ttfamily str}.
 
 
 Get the data for this item. 
+
+In general, you should not use this function. it is meant to be used to edit the J\-S\-O\-N file, or when dealing with data that is not covered by the metadata functions.
 
 \begin{DoxyReturn}{Returns}
 The data for this item. 
@@ -124,19 +573,222 @@ The data for this item.
 
 Get the data for this item. 
 
+In general, you should not use this function. it is meant to be used to edit the J\-S\-O\-N file, or when dealing with data that is not covered by the metadata functions.
+
 \begin{DoxyReturn}{Returns}
 The data for this item. 
 \end{DoxyReturn}
-\hypertarget{class_a_w_e_1_1_media_item_a18ac2a793896f54695f4796f8457b073}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Int\-Member@{get\-Int\-Member}}
+\hypertarget{class_a_w_e_1_1_media_item_abe9fcab2d0853b360b3af4b3b366a945}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Default\-Fanart@{get\-Default\-Fanart}}
+\index{get\-Default\-Fanart@{get\-Default\-Fanart}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{get\-Default\-Fanart}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Pixmap Media\-Item\-::get\-Default\-Fanart (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_abe9fcab2d0853b360b3af4b3b366a945}
+
+
+Get the default fanart for this item, as an image. 
+
+\begin{DoxyReturn}{Returns}
+The default fanart image. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_af12519450111a095a0de62c13a577414}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Default\-Fanart\-Index@{get\-Default\-Fanart\-Index}}
+\index{get\-Default\-Fanart\-Index@{get\-Default\-Fanart\-Index}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{get\-Default\-Fanart\-Index}]{\setlength{\rightskip}{0pt plus 5cm}int Media\-Item\-::get\-Default\-Fanart\-Index (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_af12519450111a095a0de62c13a577414}
+
+
+Get the default fanart image's index. 
+
+\begin{DoxyReturn}{Returns}
+The default fanart image's index. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_a30a34c3024f2c0f8f89296ae1bc032f3}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Default\-Icon@{get\-Default\-Icon}}
+\index{get\-Default\-Icon@{get\-Default\-Icon}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{get\-Default\-Icon}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Pixmap Media\-Item\-::get\-Default\-Icon (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_a30a34c3024f2c0f8f89296ae1bc032f3}
+
+
+Get the default icon for this item, as an image. 
+
+\begin{DoxyReturn}{Returns}
+The default icon image. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_acc425dbbde763177c9d79d83d48f87cc}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Default\-Icon\-Index@{get\-Default\-Icon\-Index}}
+\index{get\-Default\-Icon\-Index@{get\-Default\-Icon\-Index}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{get\-Default\-Icon\-Index}]{\setlength{\rightskip}{0pt plus 5cm}int Media\-Item\-::get\-Default\-Icon\-Index (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_acc425dbbde763177c9d79d83d48f87cc}
+
+
+Get the default icon image's index. 
+
+\begin{DoxyReturn}{Returns}
+The default icon image's index. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_a80e3f5034aa628143b225c5a6fc8bec7}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Description@{get\-Description}}
+\index{get\-Description@{get\-Description}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{get\-Description}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String Media\-Item\-::get\-Description (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_a80e3f5034aa628143b225c5a6fc8bec7}
+
+
+Get the description of the item. 
+
+\begin{DoxyReturn}{Returns}
+The description of this item. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_a467117453601b932573918b970cff0ef}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Detail\-Name@{get\-Detail\-Name}}
+\index{get\-Detail\-Name@{get\-Detail\-Name}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{get\-Detail\-Name}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String Media\-Item\-::get\-Detail\-Name (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_a467117453601b932573918b970cff0ef}
+
+
+Get the name of the {\ttfamily i}th detail. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & The position of the detail name to get.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The name of the {\ttfamily i}th detail. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_adf67ef0cedbe01f026dae1ed5afb42f8}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Detail\-Value@{get\-Detail\-Value}}
+\index{get\-Detail\-Value@{get\-Detail\-Value}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{get\-Detail\-Value}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Value} \& Media\-Item\-::get\-Detail\-Value (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_adf67ef0cedbe01f026dae1ed5afb42f8}
+
+
+Get the value of the {\ttfamily i}th detail. 
+
+If there is no such detail, this function returns a null {\ttfamily \hyperlink{class_json_1_1_value}{Json\-::\-Value}}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & The position of the detail value to get.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value of the {\ttfamily i}th detail. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_a394ca8d5847fc28127d5f8f1cbdff019}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Detail\-Value@{get\-Detail\-Value}}
+\index{get\-Detail\-Value@{get\-Detail\-Value}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{get\-Detail\-Value}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Json\-::\-Value} \& Media\-Item\-::get\-Detail\-Value (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{name}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_a394ca8d5847fc28127d5f8f1cbdff019}
+
+
+Get the value for the detail with the given name. 
+
+If there is no such detail, this function returns a null {\ttfamily \hyperlink{class_json_1_1_value}{Json\-::\-Value}}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the detail.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The corresponding value. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_a1a913bb927429b63993cf9be26b4a6a9}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Detail\-Value\-As\-String@{get\-Detail\-Value\-As\-String}}
+\index{get\-Detail\-Value\-As\-String@{get\-Detail\-Value\-As\-String}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{get\-Detail\-Value\-As\-String}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String Media\-Item\-::get\-Detail\-Value\-As\-String (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_a1a913bb927429b63993cf9be26b4a6a9}
+
+
+Get the value of the {\ttfamily i}th detail as a formatted string. 
+
+If there is no such detail, this function returns a null {\ttfamily Q\-String}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & The position of the detail value to get.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value of the {\ttfamily i}th detail as a formatted string. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_a8faf4e51f5e8da6b7a2188166702a9ab}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Detail\-Value\-As\-String@{get\-Detail\-Value\-As\-String}}
+\index{get\-Detail\-Value\-As\-String@{get\-Detail\-Value\-As\-String}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{get\-Detail\-Value\-As\-String}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String Media\-Item\-::get\-Detail\-Value\-As\-String (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{name}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_a8faf4e51f5e8da6b7a2188166702a9ab}
+Get the value for the detail with the given name as a string.
+
+If there is no such detail, this function returns a null {\ttfamily Q\-String}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the detail.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The corresponding value, in a formatted string. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_a3b171a9b398dc097a94cf8f5d1c94b58}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Fanart@{get\-Fanart}}
+\index{get\-Fanart@{get\-Fanart}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{get\-Fanart}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Pixmap Media\-Item\-::get\-Fanart (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_a3b171a9b398dc097a94cf8f5d1c94b58}
+
+
+Get the {\ttfamily i}th fanart. 
+
+\begin{DoxyReturn}{Returns}
+The {\ttfamily i}th fanart. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_a3c02f1c2317244e104517bd68e486fa2}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Icon@{get\-Icon}}
+\index{get\-Icon@{get\-Icon}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{get\-Icon}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Pixmap Media\-Item\-::get\-Icon (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_a3c02f1c2317244e104517bd68e486fa2}
+
+
+Get the {\ttfamily i}th icon. 
+
+\begin{DoxyReturn}{Returns}
+The {\ttfamily i}th icon. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_ac9dddb31a9dd9783e9c516e2717efde2}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Int\-Member@{get\-Int\-Member}}
 \index{get\-Int\-Member@{get\-Int\-Member}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
 \subsubsection[{get\-Int\-Member}]{\setlength{\rightskip}{0pt plus 5cm}int Media\-Item\-::get\-Int\-Member (
 \begin{DoxyParamCaption}
-\item[{const std\-::string \&}]{str}
+\item[{Q\-String}]{str}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_a18ac2a793896f54695f4796f8457b073}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_ac9dddb31a9dd9783e9c516e2717efde2}
 
 
 Get a member of {\ttfamily int} type by name. 
+
+In general, you should not use this function. it is meant to be used to edit the J\-S\-O\-N file, or when dealing with data that is not covered by the metadata functions.
 
 
 \begin{DoxyParams}{Parameters}
@@ -148,7 +800,7 @@ The value associated with the key {\ttfamily str}.
 \end{DoxyReturn}
 \hypertarget{class_a_w_e_1_1_media_item_ad7a7ef28069986fad8b2be060fef6e48}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Item\-Type@{get\-Item\-Type}}
 \index{get\-Item\-Type@{get\-Item\-Type}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
-\subsubsection[{get\-Item\-Type}]{\setlength{\rightskip}{0pt plus 5cm}virtual Item\-Type A\-W\-E\-::\-Media\-Item\-::get\-Item\-Type (
+\subsubsection[{get\-Item\-Type}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Item\-Type} A\-W\-E\-::\-Media\-Item\-::get\-Item\-Type (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
@@ -164,30 +816,40 @@ The basic type of this item.
 
 Implemented in \hyperlink{class_a_w_e_1_1_media_file_a135ea553d8a72ec3c87b75281768ca69}{A\-W\-E\-::\-Media\-File}, \hyperlink{class_a_w_e_1_1_folder_a315c0a52f6e37b357d5f0e4fc5526d52}{A\-W\-E\-::\-Folder}, and \hyperlink{class_a_w_e_1_1_media_service_a680d2f9fd50b27cb7156c3a5777dee12}{A\-W\-E\-::\-Media\-Service}.
 
-\hypertarget{class_a_w_e_1_1_media_item_a6a26f1692daa54667f4efd3f89c2769d}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-J\-S\-O\-N\-File@{get\-J\-S\-O\-N\-File}}
-\index{get\-J\-S\-O\-N\-File@{get\-J\-S\-O\-N\-File}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
-\subsubsection[{get\-J\-S\-O\-N\-File}]{\setlength{\rightskip}{0pt plus 5cm}const Q\-Dir \& Media\-Item\-::get\-J\-S\-O\-N\-File (
+\hypertarget{class_a_w_e_1_1_media_item_adab45ebbb95cd03eeaffd9ac6ef54756}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Location@{get\-Location}}
+\index{get\-Location@{get\-Location}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{get\-Location}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String Media\-Item\-::get\-Location (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_a6a26f1692daa54667f4efd3f89c2769d}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_adab45ebbb95cd03eeaffd9ac6ef54756}
 
 
-Get the absolute path to the J\-S\-O\-N settings file. 
+Get the location for this item. 
+
+For {\ttfamily \hyperlink{class_a_w_e_1_1_media_file}{Media\-File}}s, this is the path to the actual file.
+
+For system {\ttfamily \hyperlink{class_a_w_e_1_1_folder}{Folder}}s this is the path to the folder on disk.
+
+For {\ttfamily \hyperlink{class_a_w_e_1_1_folder}{Folder}}s with a media type, this is the location of the folder that contains the sub-\/type files (see ../type/\-R\-E\-A\-D\-M\-E.md \char`\"{}the type R\-E\-A\-D\-M\-E\char`\"{}).
+
+For {\ttfamily \hyperlink{class_a_w_e_1_1_media_service}{Media\-Service}}s, this is either the path to the program (for J\-S\-O\-N services) or the path to the plugin.
 
 \begin{DoxyReturn}{Returns}
-The path to the J\-S\-O\-N settings file. 
+The location for this item. 
 \end{DoxyReturn}
-\hypertarget{class_a_w_e_1_1_media_item_a82bd831701d2a4c727ff505fbf9fbbb0}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Member@{get\-Member}}
+\hypertarget{class_a_w_e_1_1_media_item_a0ac7055ff6dfbe179133f3a9f0aad44b}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Member@{get\-Member}}
 \index{get\-Member@{get\-Member}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
 \subsubsection[{get\-Member}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Value} \& Media\-Item\-::get\-Member (
 \begin{DoxyParamCaption}
-\item[{const std\-::string \&}]{str}
+\item[{Q\-String}]{str}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_a82bd831701d2a4c727ff505fbf9fbbb0}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_a0ac7055ff6dfbe179133f3a9f0aad44b}
 
 
 Get a member of unspecified type by name. 
+
+In general, you should not use this function. it is meant to be used to edit the J\-S\-O\-N file, or when dealing with data that is not covered by the metadata functions.
 
 
 \begin{DoxyParams}{Parameters}
@@ -197,16 +859,18 @@ Get a member of unspecified type by name.
 \begin{DoxyReturn}{Returns}
 The value associated with the key {\ttfamily str}. 
 \end{DoxyReturn}
-\hypertarget{class_a_w_e_1_1_media_item_a64bf0d84b75bd21dd27ef498c85bf695}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Member@{get\-Member}}
+\hypertarget{class_a_w_e_1_1_media_item_a4be34b9996a67f52c9096ac123b91557}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Member@{get\-Member}}
 \index{get\-Member@{get\-Member}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
 \subsubsection[{get\-Member}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} \& Media\-Item\-::get\-Member (
 \begin{DoxyParamCaption}
-\item[{const std\-::string \&}]{str}
+\item[{Q\-String}]{str}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_a64bf0d84b75bd21dd27ef498c85bf695}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_a4be34b9996a67f52c9096ac123b91557}
 
 
 Get a member of unspecified type by name. 
+
+In general, you should not use this function. it is meant to be used to edit the J\-S\-O\-N file, or when dealing with data that is not covered by the metadata functions.
 
 
 \begin{DoxyParams}{Parameters}
@@ -216,32 +880,32 @@ Get a member of unspecified type by name.
 \begin{DoxyReturn}{Returns}
 The value associated with the key {\ttfamily str}. 
 \end{DoxyReturn}
-\hypertarget{class_a_w_e_1_1_media_item_a20a3275880777c9c5338957ee5d2d1e1}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Name@{get\-Name}}
+\hypertarget{class_a_w_e_1_1_media_item_a8d01cc215610b3d7ab336d332fb472dd}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Name@{get\-Name}}
 \index{get\-Name@{get\-Name}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
-\subsubsection[{get\-Name}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Media\-Item\-::get\-Name (
+\subsubsection[{get\-Name}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String Media\-Item\-::get\-Name (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_a20a3275880777c9c5338957ee5d2d1e1}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_a8d01cc215610b3d7ab336d332fb472dd}
 
 
 Get the name of the media item. 
 
-Equivalent to {\ttfamily get\-String\-Member(\char`\"{}metadata.\-name\char`\"{})}
-
 \begin{DoxyReturn}{Returns}
 The name of this media item. 
 \end{DoxyReturn}
-\hypertarget{class_a_w_e_1_1_media_item_a86775a7b5252062953963840b3074568}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-String\-Member@{get\-String\-Member}}
+\hypertarget{class_a_w_e_1_1_media_item_a9e027085cac3af62a41d6c0a9d74d40b}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-String\-Member@{get\-String\-Member}}
 \index{get\-String\-Member@{get\-String\-Member}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
-\subsubsection[{get\-String\-Member}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Media\-Item\-::get\-String\-Member (
+\subsubsection[{get\-String\-Member}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String Media\-Item\-::get\-String\-Member (
 \begin{DoxyParamCaption}
-\item[{const std\-::string \&}]{str}
+\item[{Q\-String}]{str}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_a86775a7b5252062953963840b3074568}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_a9e027085cac3af62a41d6c0a9d74d40b}
 
 
-Get a member of {\ttfamily std\-::string} type by name. 
+Get a member of {\ttfamily Q\-String} type by name. 
+
+In general, you should not use this function. it is meant to be used to edit the J\-S\-O\-N file, or when dealing with data that is not covered by the metadata functions.
 
 
 \begin{DoxyParams}{Parameters}
@@ -251,9 +915,480 @@ Get a member of {\ttfamily std\-::string} type by name.
 \begin{DoxyReturn}{Returns}
 The value associated with the key {\ttfamily str}. 
 \end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_a9a6399e22b02b753766109f7825878af}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!get\-Type@{get\-Type}}
+\index{get\-Type@{get\-Type}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{get\-Type}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String Media\-Item\-::get\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_a9a6399e22b02b753766109f7825878af}
+
+
+Get the media type of the item, e.\-g. Movie. 
+
+\begin{DoxyReturn}{Returns}
+The media type of this item. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_aa804e6127c3a94a744a6757bf3ac98c7}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!has\-Been\-Edited@{has\-Been\-Edited}}
+\index{has\-Been\-Edited@{has\-Been\-Edited}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{has\-Been\-Edited}]{\setlength{\rightskip}{0pt plus 5cm}bool Media\-Item\-::has\-Been\-Edited (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_aa804e6127c3a94a744a6757bf3ac98c7}
+
+
+Determine if this item has been edited. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if this item has been edited, {\ttfamily false} otherwise. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_abc781158a6bde5c596a79004326b8a6d}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!has\-Detail@{has\-Detail}}
+\index{has\-Detail@{has\-Detail}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{has\-Detail}]{\setlength{\rightskip}{0pt plus 5cm}bool Media\-Item\-::has\-Detail (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{detail}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_abc781158a6bde5c596a79004326b8a6d}
+
+
+Determine if this item has the given detail. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em detail} & The name of the detail to look for.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if this item has that detail, {\ttfamily false} otherwise. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_af345d35f4f380c0cf7eb02eeb883848f}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!icon\-Added@{icon\-Added}}
+\index{icon\-Added@{icon\-Added}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{icon\-Added}]{\setlength{\rightskip}{0pt plus 5cm}void A\-W\-E\-::\-Media\-Item\-::icon\-Added (
+\begin{DoxyParamCaption}
+\item[{Q\-Pixmap}]{icon}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{class_a_w_e_1_1_media_item_af345d35f4f380c0cf7eb02eeb883848f}
+
+
+Sent when an icon is added. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em icon} & The added icon. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_a_w_e_1_1_media_item_a76f8f85b2d93c145220fcfe2ef93fab9}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!icon\-Removed@{icon\-Removed}}
+\index{icon\-Removed@{icon\-Removed}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{icon\-Removed}]{\setlength{\rightskip}{0pt plus 5cm}void A\-W\-E\-::\-Media\-Item\-::icon\-Removed (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{class_a_w_e_1_1_media_item_a76f8f85b2d93c145220fcfe2ef93fab9}
+
+
+Sent when an icon is removed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index of the removed icon. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_a_w_e_1_1_media_item_a9156ae857b0ea582bce8166bccdee5f3}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!import\-Fanart@{import\-Fanart}}
+\index{import\-Fanart@{import\-Fanart}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{import\-Fanart}]{\setlength{\rightskip}{0pt plus 5cm}bool Media\-Item\-::import\-Fanart (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_a_w_e_1_1_media_item_a9156ae857b0ea582bce8166bccdee5f3}
+
+
+Add and import the given fanart. 
+
+{\ttfamily file} could be stored locally or it could be online. If stored locally, you should pass the absolute path to the image file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & The new fanart file.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if {\ttfamily file} is valid, and thus the fanart was added, {\ttfamily false} if not. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_aa66bd862c10c5b003522855e1a5dad8c}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!import\-Fanart@{import\-Fanart}}
+\index{import\-Fanart@{import\-Fanart}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{import\-Fanart}]{\setlength{\rightskip}{0pt plus 5cm}bool Media\-Item\-::import\-Fanart (
+\begin{DoxyParamCaption}
+\item[{Q\-Pixmap}]{fanart}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_a_w_e_1_1_media_item_aa66bd862c10c5b003522855e1a5dad8c}
+
+
+Add and import the given fanart. 
+
+Exactly the same as {\ttfamily add\-Icon(fanart)}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fanart} & The new fanart.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if {\ttfamily fanart} is valid and was added, {\ttfamily false} if not. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_a1acbeb01a9bf79ec868fec2bff179770}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!import\-Icon@{import\-Icon}}
+\index{import\-Icon@{import\-Icon}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{import\-Icon}]{\setlength{\rightskip}{0pt plus 5cm}bool Media\-Item\-::import\-Icon (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_a_w_e_1_1_media_item_a1acbeb01a9bf79ec868fec2bff179770}
+
+
+Add and import the given icon. 
+
+{\ttfamily file} could be stored locally or it could be online. If stored locally, you should pass the absolute path to the image file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & The new icon file.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if {\ttfamily file} is valid, and thus the icon was added, {\ttfamily false} if not. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_aeee2b3337a77d2ba3fcdd5d5cb9e30d1}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!import\-Icon@{import\-Icon}}
+\index{import\-Icon@{import\-Icon}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{import\-Icon}]{\setlength{\rightskip}{0pt plus 5cm}bool Media\-Item\-::import\-Icon (
+\begin{DoxyParamCaption}
+\item[{Q\-Pixmap}]{icon}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_a_w_e_1_1_media_item_aeee2b3337a77d2ba3fcdd5d5cb9e30d1}
+
+
+Add and import the given icon. 
+
+Exactly the same as {\ttfamily add\-Icon(icon)}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em icon} & The new icon.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if {\ttfamily icon} is valid and was added, {\ttfamily false} if not. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_a4ea27584e2fcf2ff4781aa5a87f8e26a}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!location\-Changed@{location\-Changed}}
+\index{location\-Changed@{location\-Changed}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{location\-Changed}]{\setlength{\rightskip}{0pt plus 5cm}void A\-W\-E\-::\-Media\-Item\-::location\-Changed (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{location}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{class_a_w_e_1_1_media_item_a4ea27584e2fcf2ff4781aa5a87f8e26a}
+
+
+Sent when the location is changed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & The new location. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_a_w_e_1_1_media_item_abb9c8990c7bd1b8e8b9a1556f62642fd}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!name\-Changed@{name\-Changed}}
+\index{name\-Changed@{name\-Changed}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{name\-Changed}]{\setlength{\rightskip}{0pt plus 5cm}void A\-W\-E\-::\-Media\-Item\-::name\-Changed (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{class_a_w_e_1_1_media_item_abb9c8990c7bd1b8e8b9a1556f62642fd}
+
+
+Sent when the name is changed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The new name. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_a_w_e_1_1_media_item_a4c7fb30c5eb3963b1c2c66b626dc3487}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!num\-Details@{num\-Details}}
+\index{num\-Details@{num\-Details}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{num\-Details}]{\setlength{\rightskip}{0pt plus 5cm}int Media\-Item\-::num\-Details (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_a4c7fb30c5eb3963b1c2c66b626dc3487}
+
+
+Get the number of icons. 
+
+\begin{DoxyReturn}{Returns}
+The number of icons. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_af7523517745f5dfcf30a37dd1044991e}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!num\-Fanarts@{num\-Fanarts}}
+\index{num\-Fanarts@{num\-Fanarts}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{num\-Fanarts}]{\setlength{\rightskip}{0pt plus 5cm}int Media\-Item\-::num\-Fanarts (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_af7523517745f5dfcf30a37dd1044991e}
+
+
+Get the number of icons. 
+
+\begin{DoxyReturn}{Returns}
+The number of icons. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_a01258a17cdfa091b4a01521db3765fad}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!num\-Icons@{num\-Icons}}
+\index{num\-Icons@{num\-Icons}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{num\-Icons}]{\setlength{\rightskip}{0pt plus 5cm}int Media\-Item\-::num\-Icons (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_media_item_a01258a17cdfa091b4a01521db3765fad}
+
+
+Get the number of icons. 
+
+\begin{DoxyReturn}{Returns}
+The number of icons. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_aa7c54847d45a04a252babbe51cf6cbfc}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!refresh@{refresh}}
+\index{refresh@{refresh}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{refresh}]{\setlength{\rightskip}{0pt plus 5cm}void Media\-Item\-::refresh (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_a_w_e_1_1_media_item_aa7c54847d45a04a252babbe51cf6cbfc}
+
+
+Refresh this item's information to match the backend changes. 
+
+This should only be called when you have altered the backend information via {\ttfamily \hyperlink{class_a_w_e_1_1_media_item_a0ac7055ff6dfbe179133f3a9f0aad44b}{get\-Member()}}.
+
+N\-O\-T\-E\-: This does N\-O\-T mark the item as edited. \hypertarget{class_a_w_e_1_1_media_item_a6ae48b19d0454af93f1496ad1c77e7b7}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!remove\-Detail@{remove\-Detail}}
+\index{remove\-Detail@{remove\-Detail}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{remove\-Detail}]{\setlength{\rightskip}{0pt plus 5cm}bool Media\-Item\-::remove\-Detail (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_a_w_e_1_1_media_item_a6ae48b19d0454af93f1496ad1c77e7b7}
+
+
+Remove the {\ttfamily i}th detail. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & The index of the detail to remove.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if this item was changed, {\ttfamily false} if not. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_af42c6fe5c5ac4621d882885c74586216}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!remove\-Detail@{remove\-Detail}}
+\index{remove\-Detail@{remove\-Detail}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{remove\-Detail}]{\setlength{\rightskip}{0pt plus 5cm}bool Media\-Item\-::remove\-Detail (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_a_w_e_1_1_media_item_af42c6fe5c5ac4621d882885c74586216}
+
+
+Remove the detail with the given name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the detail to remove.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if this item was changed, {\ttfamily false} if not. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_a3be42e522441f9b59d27383715381fb5}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!remove\-Fanart@{remove\-Fanart}}
+\index{remove\-Fanart@{remove\-Fanart}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{remove\-Fanart}]{\setlength{\rightskip}{0pt plus 5cm}bool Media\-Item\-::remove\-Fanart (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_a_w_e_1_1_media_item_a3be42e522441f9b59d27383715381fb5}
+
+
+Remove the {\ttfamily i}th fanart. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & The index of the fanart to remove.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if {\ttfamily i} is a valid index, and thus a fanart was removed, {\ttfamily false} otherwise. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_af8f9b8420f2075068fa353a8e4eacdeb}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!remove\-Icon@{remove\-Icon}}
+\index{remove\-Icon@{remove\-Icon}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{remove\-Icon}]{\setlength{\rightskip}{0pt plus 5cm}bool Media\-Item\-::remove\-Icon (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_a_w_e_1_1_media_item_af8f9b8420f2075068fa353a8e4eacdeb}
+
+
+Remove the {\ttfamily i}th icon. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & The index of the icon to remove.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if {\ttfamily i} is a valid index, and thus an icon was removed, {\ttfamily false} otherwise. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_a2fe7342f31baaba17b6449dc3323c1d9}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!set\-Default\-Fanart\-Index@{set\-Default\-Fanart\-Index}}
+\index{set\-Default\-Fanart\-Index@{set\-Default\-Fanart\-Index}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{set\-Default\-Fanart\-Index}]{\setlength{\rightskip}{0pt plus 5cm}bool Media\-Item\-::set\-Default\-Fanart\-Index (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_a_w_e_1_1_media_item_a2fe7342f31baaba17b6449dc3323c1d9}
+
+
+Change the default fanart image to the {\ttfamily i}th fanart. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & The index of the new default fanart.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if {\ttfamily i} was a valid index, {\ttfamily false} otherwise. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_ae26ac3837aef37df827a2ac83e06e4c4}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!set\-Default\-Icon\-Index@{set\-Default\-Icon\-Index}}
+\index{set\-Default\-Icon\-Index@{set\-Default\-Icon\-Index}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{set\-Default\-Icon\-Index}]{\setlength{\rightskip}{0pt plus 5cm}bool Media\-Item\-::set\-Default\-Icon\-Index (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_a_w_e_1_1_media_item_ae26ac3837aef37df827a2ac83e06e4c4}
+
+
+Change the default icon image to the {\ttfamily i}th icon. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & The index of the new default icon.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if {\ttfamily i} was a valid index, {\ttfamily false} otherwise. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_media_item_ac6a5379f7151eafe4f77797d5c2244c2}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!set\-Description@{set\-Description}}
+\index{set\-Description@{set\-Description}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{set\-Description}]{\setlength{\rightskip}{0pt plus 5cm}void Media\-Item\-::set\-Description (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{description}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_a_w_e_1_1_media_item_ac6a5379f7151eafe4f77797d5c2244c2}
+
+
+Set the description of the item. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em description} & The new description. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_a_w_e_1_1_media_item_a56876d9763c7779a5741a35b93945388}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!set\-Location@{set\-Location}}
+\index{set\-Location@{set\-Location}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{set\-Location}]{\setlength{\rightskip}{0pt plus 5cm}void Media\-Item\-::set\-Location (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{location}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_a_w_e_1_1_media_item_a56876d9763c7779a5741a35b93945388}
+
+
+Set the location of the item. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & The new location. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_a_w_e_1_1_media_item_af5701c4e1e3c0caa808f63e1d9d959b2}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!set\-Name@{set\-Name}}
+\index{set\-Name@{set\-Name}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{set\-Name}]{\setlength{\rightskip}{0pt plus 5cm}void Media\-Item\-::set\-Name (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_a_w_e_1_1_media_item_af5701c4e1e3c0caa808f63e1d9d959b2}
+
+
+Set the name of the media item. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The new name for the item. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_a_w_e_1_1_media_item_a6cdfff49d8b7af56a76b0260d306ed77}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!set\-Type@{set\-Type}}
+\index{set\-Type@{set\-Type}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{set\-Type}]{\setlength{\rightskip}{0pt plus 5cm}void Media\-Item\-::set\-Type (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_a_w_e_1_1_media_item_a6cdfff49d8b7af56a76b0260d306ed77}
+
+
+Set the media type of the item. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The new media type. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_a_w_e_1_1_media_item_a4592497d8dee990cf53da12b898bbf98}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!string\-For@{string\-For}}
+\index{string\-For@{string\-For}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{string\-For}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String Media\-Item\-::string\-For (
+\begin{DoxyParamCaption}
+\item[{const {\bf Json\-::\-Value} \&}]{val}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [private]}}}\label{class_a_w_e_1_1_media_item_a4592497d8dee990cf53da12b898bbf98}
+
+
+Helper function that makes details into strings. 
+
+This is the way it is converted\-:
+\begin{DoxyItemize}
+\item null becomes {\ttfamily \char`\"{}\char`\"{}}
+\item strings stay what they are
+\item {\ttfamily int}s become the string representation
+\item {\ttfamily bool}s become {\ttfamily \char`\"{}\-Yes\char`\"{}} or {\ttfamily \char`\"{}\-No\char`\"{}}
+\item arrays become a comma separated list of the strings for their members
+\item objects become {\ttfamily \char`\"{}\char`\"{}} (they are not supported)
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em val} & The value to make a string for. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_a_w_e_1_1_media_item_a13fdd406dbfcf3605f1db86f0a7278a7}{\index{A\-W\-E\-::\-Media\-Item@{A\-W\-E\-::\-Media\-Item}!type\-Changed@{type\-Changed}}
+\index{type\-Changed@{type\-Changed}!AWE::MediaItem@{A\-W\-E\-::\-Media\-Item}}
+\subsubsection[{type\-Changed}]{\setlength{\rightskip}{0pt plus 5cm}void A\-W\-E\-::\-Media\-Item\-::type\-Changed (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{class_a_w_e_1_1_media_item_a13fdd406dbfcf3605f1db86f0a7278a7}
+
+
+Sent when the media type is changed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The new media type. \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
 /\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/items/A\-W\-E\-Media\-Item.\-h\item 
-/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/items/A\-W\-E\-Media\-Item.\-cpp\end{DoxyCompactItemize}
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/items/A\-W\-E\-Media\-Item.\-cpp\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/moc\-\_\-\-A\-W\-E\-Media\-Item.\-cpp\end{DoxyCompactItemize}

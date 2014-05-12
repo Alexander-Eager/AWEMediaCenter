@@ -1,0 +1,217 @@
+\hypertarget{class_u_i_1_1_folder_pane}{\section{U\-I\-:\-:Folder\-Pane Class Reference}
+\label{class_u_i_1_1_folder_pane}\index{U\-I\-::\-Folder\-Pane@{U\-I\-::\-Folder\-Pane}}
+}
+
+
+Allows the user to browse through the items of a folder.  
+
+
+
+
+{\ttfamily \#include $<$Folder\-Pane.\-h$>$}
+
+Inheritance diagram for U\-I\-:\-:Folder\-Pane\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_u_i_1_1_folder_pane}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_u_i_1_1_folder_pane_a11aba288e19d15bb91c25566140a7535}{set\-Folder} (\hyperlink{class_a_w_e_1_1_folder}{A\-W\-E\-::\-Folder} $\ast$folder)
+\begin{DoxyCompactList}\small\item\em Change the folder to the given folder. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_folder_pane_a2923b1d8fa68cd3004c1c8da1c22c2f4}{virtual void \hyperlink{class_u_i_1_1_folder_pane_a2923b1d8fa68cd3004c1c8da1c22c2f4}{refresh} ()}\label{class_u_i_1_1_folder_pane_a2923b1d8fa68cd3004c1c8da1c22c2f4}
+
+\begin{DoxyCompactList}\small\item\em Refresh the item lists. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_u_i_1_1_folder_pane_ad0b607bf3e89df4db37edd0ac34dbc32}{item\-Highlighted} (\hyperlink{class_a_w_e_1_1_media_item}{A\-W\-E\-::\-Media\-Item} $\ast$item)
+\begin{DoxyCompactList}\small\item\em Sent when an item is highlighted, but not selected. \end{DoxyCompactList}\item 
+void \hyperlink{class_u_i_1_1_folder_pane_a160d2f7f317e79acd31247753bf7ad0e}{item\-Selected} (\hyperlink{class_a_w_e_1_1_media_item}{A\-W\-E\-::\-Media\-Item} $\ast$item)
+\begin{DoxyCompactList}\small\item\em Sent when the user has opened an item. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_folder_pane_a8efd4359eeef781596ed7c0cdedfd527}{void \hyperlink{class_u_i_1_1_folder_pane_a8efd4359eeef781596ed7c0cdedfd527}{go\-Up\-One} ()}\label{class_u_i_1_1_folder_pane_a8efd4359eeef781596ed7c0cdedfd527}
+
+\begin{DoxyCompactList}\small\item\em Sent when the user wants to go back one folder. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_u_i_1_1_folder_pane_a3c9f4bdf70225df68d860520625853e7}{Folder\-Pane} (Q\-Widget $\ast$parent)
+\begin{DoxyCompactList}\small\item\em Construct with the given parent widget. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_folder_pane_a3693183c8ba2a015cb9086dd456b7c0d}{virtual \hyperlink{class_u_i_1_1_folder_pane_a3693183c8ba2a015cb9086dd456b7c0d}{$\sim$\-Folder\-Pane} ()}\label{class_u_i_1_1_folder_pane_a3693183c8ba2a015cb9086dd456b7c0d}
+
+\begin{DoxyCompactList}\small\item\em Destroys this object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_u_i_1_1_folder_pane_a2dfe63445341434a9ec2748006eb4ad0}{respond\-To\-Item\-Highlight} (\hyperlink{class_u_i_1_1_item_widget}{Item\-Widget} $\ast$curr)
+\begin{DoxyCompactList}\small\item\em Internal slot for emitting item highlighting. \end{DoxyCompactList}\item 
+void \hyperlink{class_u_i_1_1_folder_pane_a7bb8a724380fd4b0580b25d47986356d}{respond\-To\-Item\-Selected} (\hyperlink{class_u_i_1_1_item_widget}{Item\-Widget} $\ast$item)
+\begin{DoxyCompactList}\small\item\em Internal slot for emitting item selection. \end{DoxyCompactList}\item 
+void \hyperlink{class_u_i_1_1_folder_pane_a15f45b2f61eb8b70e35c55f8eba4ce50}{respond\-To\-View\-Mode\-Choice} (int mode)
+\begin{DoxyCompactList}\small\item\em Internal slot for changing the view mode. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_folder_pane_a6b4e5b8f3af5ee00c9492a95f1b64a78}{void \hyperlink{class_u_i_1_1_folder_pane_a6b4e5b8f3af5ee00c9492a95f1b64a78}{respond\-To\-Back\-Button} ()}\label{class_u_i_1_1_folder_pane_a6b4e5b8f3af5ee00c9492a95f1b64a78}
+
+\begin{DoxyCompactList}\small\item\em Internal slot for emitting back button events. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_u_i_1_1_folder_pane_a463ba66c283f13d5d0e50def80715245}{\hyperlink{class_a_w_e_1_1_folder}{A\-W\-E\-::\-Folder} $\ast$ \hyperlink{class_u_i_1_1_folder_pane_a463ba66c283f13d5d0e50def80715245}{my\-Folder}}\label{class_u_i_1_1_folder_pane_a463ba66c283f13d5d0e50def80715245}
+
+\begin{DoxyCompactList}\small\item\em The folder whose contents are displayed. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_folder_pane_afe88da12cfbec111b9584c24ae42b970}{Q\-V\-Box\-Layout $\ast$ \hyperlink{class_u_i_1_1_folder_pane_afe88da12cfbec111b9584c24ae42b970}{my\-Main\-Layout}}\label{class_u_i_1_1_folder_pane_afe88da12cfbec111b9584c24ae42b970}
+
+\begin{DoxyCompactList}\small\item\em The main layout for this widget. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_folder_pane_ae96b0fce02e4a9b2c9eee60ec1138107}{Q\-Push\-Button $\ast$ \hyperlink{class_u_i_1_1_folder_pane_ae96b0fce02e4a9b2c9eee60ec1138107}{my\-Back\-Button}}\label{class_u_i_1_1_folder_pane_ae96b0fce02e4a9b2c9eee60ec1138107}
+
+\begin{DoxyCompactList}\small\item\em The back button. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_folder_pane_a45b4ef8854845973a2ec7fa74703b419}{Q\-Combo\-Box $\ast$ \hyperlink{class_u_i_1_1_folder_pane_a45b4ef8854845973a2ec7fa74703b419}{my\-View\-Selection\-Menu}}\label{class_u_i_1_1_folder_pane_a45b4ef8854845973a2ec7fa74703b419}
+
+\begin{DoxyCompactList}\small\item\em View selection menu. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_folder_pane_ae8030de2b414071532da8e664cc162f8}{Q\-Stacked\-Layout $\ast$ \hyperlink{class_u_i_1_1_folder_pane_ae8030de2b414071532da8e664cc162f8}{my\-Media\-Item\-Layout}}\label{class_u_i_1_1_folder_pane_ae8030de2b414071532da8e664cc162f8}
+
+\begin{DoxyCompactList}\small\item\em The layout to switch between item view modes. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_folder_pane_a04b1e341431f6fc15c5376dd742ef554}{\hyperlink{class_u_i_1_1_item_list_widget}{Item\-List\-Widget} $\ast$ \hyperlink{class_u_i_1_1_folder_pane_a04b1e341431f6fc15c5376dd742ef554}{my\-Media\-Item\-List}}\label{class_u_i_1_1_folder_pane_a04b1e341431f6fc15c5376dd742ef554}
+
+\begin{DoxyCompactList}\small\item\em The list of contained media items. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_folder_pane_a35113c49ae546f179ac3609c9ef76321}{\hyperlink{class_u_i_1_1_item_grid_widget}{Item\-Grid\-Widget} $\ast$ \hyperlink{class_u_i_1_1_folder_pane_a35113c49ae546f179ac3609c9ef76321}{my\-Media\-Item\-Grid}}\label{class_u_i_1_1_folder_pane_a35113c49ae546f179ac3609c9ef76321}
+
+\begin{DoxyCompactList}\small\item\em The grid of contained media items. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Allows the user to browse through the items of a folder. 
+
+This is a collection of \hyperlink{namespace_u_i}{U\-I} items holding a list of {\ttfamily \hyperlink{class_a_w_e_1_1_media_item}{A\-W\-E\-::\-Media\-Item}}s and a back button.
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000010}{Todo}]Other layout options, possibly with icons. \end{DoxyRefDesc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_u_i_1_1_folder_pane_a3c9f4bdf70225df68d860520625853e7}{\index{U\-I\-::\-Folder\-Pane@{U\-I\-::\-Folder\-Pane}!Folder\-Pane@{Folder\-Pane}}
+\index{Folder\-Pane@{Folder\-Pane}!UI::FolderPane@{U\-I\-::\-Folder\-Pane}}
+\subsubsection[{Folder\-Pane}]{\setlength{\rightskip}{0pt plus 5cm}Folder\-Pane\-::\-Folder\-Pane (
+\begin{DoxyParamCaption}
+\item[{Q\-Widget $\ast$}]{parent}
+\end{DoxyParamCaption}
+)}}\label{class_u_i_1_1_folder_pane_a3c9f4bdf70225df68d860520625853e7}
+
+
+Construct with the given parent widget. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em parent} & The parent widget. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_u_i_1_1_folder_pane_ad0b607bf3e89df4db37edd0ac34dbc32}{\index{U\-I\-::\-Folder\-Pane@{U\-I\-::\-Folder\-Pane}!item\-Highlighted@{item\-Highlighted}}
+\index{item\-Highlighted@{item\-Highlighted}!UI::FolderPane@{U\-I\-::\-Folder\-Pane}}
+\subsubsection[{item\-Highlighted}]{\setlength{\rightskip}{0pt plus 5cm}void U\-I\-::\-Folder\-Pane\-::item\-Highlighted (
+\begin{DoxyParamCaption}
+\item[{{\bf A\-W\-E\-::\-Media\-Item} $\ast$}]{item}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{class_u_i_1_1_folder_pane_ad0b607bf3e89df4db37edd0ac34dbc32}
+
+
+Sent when an item is highlighted, but not selected. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em item} & The item that was highlighted. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_folder_pane_a160d2f7f317e79acd31247753bf7ad0e}{\index{U\-I\-::\-Folder\-Pane@{U\-I\-::\-Folder\-Pane}!item\-Selected@{item\-Selected}}
+\index{item\-Selected@{item\-Selected}!UI::FolderPane@{U\-I\-::\-Folder\-Pane}}
+\subsubsection[{item\-Selected}]{\setlength{\rightskip}{0pt plus 5cm}void U\-I\-::\-Folder\-Pane\-::item\-Selected (
+\begin{DoxyParamCaption}
+\item[{{\bf A\-W\-E\-::\-Media\-Item} $\ast$}]{item}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{class_u_i_1_1_folder_pane_a160d2f7f317e79acd31247753bf7ad0e}
+
+
+Sent when the user has opened an item. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em item} & The item that was chosen. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_folder_pane_a2dfe63445341434a9ec2748006eb4ad0}{\index{U\-I\-::\-Folder\-Pane@{U\-I\-::\-Folder\-Pane}!respond\-To\-Item\-Highlight@{respond\-To\-Item\-Highlight}}
+\index{respond\-To\-Item\-Highlight@{respond\-To\-Item\-Highlight}!UI::FolderPane@{U\-I\-::\-Folder\-Pane}}
+\subsubsection[{respond\-To\-Item\-Highlight}]{\setlength{\rightskip}{0pt plus 5cm}void Folder\-Pane\-::respond\-To\-Item\-Highlight (
+\begin{DoxyParamCaption}
+\item[{{\bf Item\-Widget} $\ast$}]{curr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}}\label{class_u_i_1_1_folder_pane_a2dfe63445341434a9ec2748006eb4ad0}
+
+
+Internal slot for emitting item highlighting. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em curr} & The highlighted item. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_folder_pane_a7bb8a724380fd4b0580b25d47986356d}{\index{U\-I\-::\-Folder\-Pane@{U\-I\-::\-Folder\-Pane}!respond\-To\-Item\-Selected@{respond\-To\-Item\-Selected}}
+\index{respond\-To\-Item\-Selected@{respond\-To\-Item\-Selected}!UI::FolderPane@{U\-I\-::\-Folder\-Pane}}
+\subsubsection[{respond\-To\-Item\-Selected}]{\setlength{\rightskip}{0pt plus 5cm}void Folder\-Pane\-::respond\-To\-Item\-Selected (
+\begin{DoxyParamCaption}
+\item[{{\bf Item\-Widget} $\ast$}]{item}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}}\label{class_u_i_1_1_folder_pane_a7bb8a724380fd4b0580b25d47986356d}
+
+
+Internal slot for emitting item selection. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em item} & The chosen item. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_folder_pane_a15f45b2f61eb8b70e35c55f8eba4ce50}{\index{U\-I\-::\-Folder\-Pane@{U\-I\-::\-Folder\-Pane}!respond\-To\-View\-Mode\-Choice@{respond\-To\-View\-Mode\-Choice}}
+\index{respond\-To\-View\-Mode\-Choice@{respond\-To\-View\-Mode\-Choice}!UI::FolderPane@{U\-I\-::\-Folder\-Pane}}
+\subsubsection[{respond\-To\-View\-Mode\-Choice}]{\setlength{\rightskip}{0pt plus 5cm}void Folder\-Pane\-::respond\-To\-View\-Mode\-Choice (
+\begin{DoxyParamCaption}
+\item[{int}]{mode}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}}\label{class_u_i_1_1_folder_pane_a15f45b2f61eb8b70e35c55f8eba4ce50}
+
+
+Internal slot for changing the view mode. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em mode} & The new view mode. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_folder_pane_a11aba288e19d15bb91c25566140a7535}{\index{U\-I\-::\-Folder\-Pane@{U\-I\-::\-Folder\-Pane}!set\-Folder@{set\-Folder}}
+\index{set\-Folder@{set\-Folder}!UI::FolderPane@{U\-I\-::\-Folder\-Pane}}
+\subsubsection[{set\-Folder}]{\setlength{\rightskip}{0pt plus 5cm}void Folder\-Pane\-::set\-Folder (
+\begin{DoxyParamCaption}
+\item[{{\bf A\-W\-E\-::\-Folder} $\ast$}]{folder}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_u_i_1_1_folder_pane_a11aba288e19d15bb91c25566140a7535}
+
+
+Change the folder to the given folder. 
+
+Changes the list of items that the user can select.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em folder} & The folder to change to. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/ui/pane/Folder\-Pane.\-h\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/moc\-\_\-\-Folder\-Pane.\-cpp\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/ui/pane/Folder\-Pane.\-cpp\end{DoxyCompactItemize}

@@ -1,0 +1,173 @@
+.TH "TCOM::Command" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TCOM::Command \- 
+.PP
+Defines a general interface for an ANSI escape sequence\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <command\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "const std::string & \fBgetCommandString\fP () const "
+.br
+.RI "\fIGet the string to output to the terminal\&. \fP"
+.ti -1c
+.RI "\fBCommand\fP \fBoperator+\fP (const \fBCommand\fP &other) const "
+.br
+.RI "\fIApplies the effects of both commands\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBCommand\fP \fBNothing\fP ()"
+.br
+.ti -1c
+.RI "static \fBCommand\fP \fBMoveCursorTo\fP (uint row, uint col)"
+.br
+.ti -1c
+.RI "static \fBCommand\fP \fBMoveCursorLeft\fP (uint num=1)"
+.br
+.ti -1c
+.RI "static \fBCommand\fP \fBMoveCursorRight\fP (uint num=1)"
+.br
+.ti -1c
+.RI "static \fBCommand\fP \fBMoveCursorUp\fP (uint num=1)"
+.br
+.ti -1c
+.RI "static \fBCommand\fP \fBMoveCursorDown\fP (uint num=1)"
+.br
+.ti -1c
+.RI "static \fBCommand\fP \fBEraseDisplay\fP ()"
+.br
+.ti -1c
+.RI "static \fBCommand\fP \fBClearDisplay\fP ()"
+.br
+.ti -1c
+.RI "static \fBCommand\fP \fBResetGraphics\fP ()"
+.br
+.ti -1c
+.RI "static \fBCommand\fP \fBMakeTextBold\fP ()"
+.br
+.ti -1c
+.RI "static \fBCommand\fP \fBUnderlineText\fP ()"
+.br
+.ti -1c
+.RI "static \fBCommand\fP \fBMakeTextBlink\fP ()"
+.br
+.ti -1c
+.RI "static \fBCommand\fP \fBTurnOnReverseVideo\fP ()"
+.br
+.ti -1c
+.RI "static \fBCommand\fP \fBTurnOnConcealed\fP ()"
+.br
+.ti -1c
+.RI "static \fBCommand\fP \fBChangeColor\fP (const \fBColor\fP &foreground, const \fBColor\fP &background)"
+.br
+.ti -1c
+.RI "static \fBCommand\fP \fBChangeForegroundColor\fP (const \fBColor\fP &c)"
+.br
+.ti -1c
+.RI "static \fBCommand\fP \fBChangeBackgroundColor\fP (const \fBColor\fP &c)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCommand\fP (const std::string &comm)"
+.br
+.RI "\fIConstruct the command from the given string\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBmyCommand\fP"
+.br
+.RI "\fIThe string output to the terminal\&. \fP"
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &os, const \fBCommand\fP &comm)"
+.br
+.RI "\fIApply the command to the given terminal output\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines a general interface for an ANSI escape sequence\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Command::Command (const std::string &comm)\fC [protected]\fP"
+
+.PP
+Construct the command from the given string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcomm\fP The string to output to the terminal\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "const string & Command::getCommandString () const"
+
+.PP
+Get the string to output to the terminal\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The string to output to the terminal\&. 
+.RE
+.PP
+
+.SS "\fBCommand\fP Command::operator+ (const \fBCommand\fP &other) const"
+
+.PP
+Applies the effects of both commands\&. If these commands conflict at all, the second is the one that matters\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIother\fP The command to add to this one\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The resulting sum\&. 
+.RE
+.PP
+
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "std::ostream& operator<< (std::ostream &os, const \fBCommand\fP &comm)\fC [friend]\fP"
+
+.PP
+Apply the command to the given terminal output\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIos\fP The stream to apply the command to\&. 
+.br
+\fIcomm\fP The command to apply\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The parameter \fCos\fP\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AWE Media Center from the source code\&.

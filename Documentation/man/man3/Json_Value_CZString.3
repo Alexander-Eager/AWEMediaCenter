@@ -1,0 +1,67 @@
+.TH "Json::Value::CZString" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Json::Value::CZString \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBDuplicationPolicy\fP { \fBnoDuplication\fP = 0, \fBduplicate\fP, \fBduplicateOnCopy\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCZString\fP (ArrayIndex index)"
+.br
+.ti -1c
+.RI "\fBCZString\fP (const char *cstr, DuplicationPolicy allocate)"
+.br
+.ti -1c
+.RI "\fBCZString\fP (const \fBCZString\fP &other)"
+.br
+.ti -1c
+.RI "\fBCZString\fP & \fBoperator=\fP (const \fBCZString\fP &other)"
+.br
+.ti -1c
+.RI "bool \fBoperator<\fP (const \fBCZString\fP &other) const "
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBCZString\fP &other) const "
+.br
+.ti -1c
+.RI "ArrayIndex \fBindex\fP () const "
+.br
+.ti -1c
+.RI "const char * \fBc_str\fP () const "
+.br
+.ti -1c
+.RI "bool \fBisStaticString\fP () const "
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBswap\fP (\fBCZString\fP &other)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "const char * \fBcstr_\fP"
+.br
+.ti -1c
+.RI "ArrayIndex \fBindex_\fP"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AWE Media Center from the source code\&.

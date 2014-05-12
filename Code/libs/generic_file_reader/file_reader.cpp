@@ -2,21 +2,57 @@
 
 // for reading web pages
 #include "libs/internet_reader/internet_reader.h"
-
 #include <QFile>
+#include <QUrl>
 
-bool copyFile(const QString& file, QTextStream& out)
+// debug
+#include "debug_macros/debug.h"
+
+bool copyFile(QString file, QTextStream& out)
 {
-	// try to open locally first
+	QUrl url(file);
+	if (url.isValid() && !url.isRelative())
+	{
+		// network file, so read from there
+		return readURLIntoStream(file, out);
+	}
+
+	// not a network file, so try local
+	QFile readMe(file);
+	if (readMe.open(QFile::ReadOnly))
+	{
+		// it exists
+		QTextStream reader(&readMe);
+		while (!reader.atEnd() && !out.status())
+		{
+			out << reader.readLine() << "\n";
+		}
+		return !out.status();
+	}
+
+	return false;
+}
+
+bool copyFile(QString file, QIODevice& out)
+{
+	QUrl url(file);
+	if (url.isValid() && !url.isRelative())
+	{
+		// network file, so read from there
+		return readURLIntoIODevice(file, out);
+	}
+
+	// not a network file, so try local
 	QFile readMe(file);
 	if (readMe.open(QFile::ReadOnly))
 	{
 		// it is a local file
-		QTextStream reader(&readMe);
-		out << reader.readAll().status();
-		return !out.status();
+		while (!readMe.atEnd())
+		{
+			out.write(readMe.readLine());
+		}
+		return !readMe.error();
 	}
 
-	// it was not a local file, so try the network
-	readURLIntoStream(file, out);
+	return false;
 }

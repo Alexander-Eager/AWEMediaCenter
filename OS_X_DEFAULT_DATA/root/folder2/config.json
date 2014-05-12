@@ -1,0 +1,26 @@
+
+{
+	"items" : [ "../file.json", "../folder1/config.json" ],
+	"metadata" : 
+	{
+		"description" : "Test Folder",
+		"details" : 
+		{
+			"_order" : []
+		},
+		"fanarts" : 
+		{
+			"default" : 0,
+			"files" : []
+		},
+		"icons" : 
+		{
+			"default" : 0,
+			"files" : []
+		},
+		"location" : "../folder2",
+		"name" : "Folder 2",
+		"type" : "System Folder"
+	},
+	"type" : "folder"
+}

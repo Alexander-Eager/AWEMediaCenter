@@ -1,0 +1,65 @@
+.TH "TCOM::ColumnGroup" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TCOM::ColumnGroup \- 
+.PP
+Describes a group of columns to be printed\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <column_group\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBColumnGroup\fP (const std::string &sep=' ', const \fBCommand\fP &sepFormat=Command::Nothing())"
+.br
+.ti -1c
+.RI "void \fBaddColumn\fP (const \fBColumn\fP &col)"
+.br
+.ti -1c
+.RI "bool \fBremoveColumn\fP (uint index)"
+.br
+.ti -1c
+.RI "bool \fBinsertColumn\fP (uint index, const \fBColumn\fP &col)"
+.br
+.ti -1c
+.RI "\fBColumn\fP & \fBoperator[]\fP (uint index)"
+.br
+.ti -1c
+.RI "const \fBColumn\fP & \fBoperator[]\fP (uint index) const "
+.br
+.ti -1c
+.RI "uint \fBnumColumns\fP () const "
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::vector< \fBColumn\fP > \fBmyColumns\fP"
+.br
+.ti -1c
+.RI "\fBCommand\fP \fBmySepFormat\fP"
+.br
+.ti -1c
+.RI "std::string \fBmySep\fP"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &os, const \fBColumnGroup\fP &cols)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Describes a group of columns to be printed\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AWE Media Center from the source code\&.

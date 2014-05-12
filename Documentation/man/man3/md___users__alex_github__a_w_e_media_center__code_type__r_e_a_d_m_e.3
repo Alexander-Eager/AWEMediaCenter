@@ -1,4 +1,4 @@
-.TH "md___users__alex_github__a_w_e_media_center__code_type__r_e_a_d_m_e" 3 "Fri Apr 18 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.TH "md___users__alex_github__a_w_e_media_center__code_type__r_e_a_d_m_e" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -7,10 +7,13 @@ The information for a media type is kept in a JSON file:
 .PP
 .nf
 {
+    "type": <"folder" or "file">,
+
     "metadata": {
-        "type": "type name",
+        "type": <type name>,
         "name": "",
         "location": "",
+
         "description": "",
 
         "icons": {
@@ -21,66 +24,67 @@ The information for a media type is kept in a JSON file:
         "fanarts": {
             "default": 0,
             "files": []
-        }
+        },
 
         "details": {
-            "_order": ["first detail", "second", ...],
+            "_order": [<first detail>, <second detail>, ...],
 
-            "first detail": <default value>,
-            "second": <default value>,
+            <first detail>: <default value>,
+            <second detail>: <default value>,
             // more default details attributes
         }
+    },
 
-        // other default metadata attributes
-    }
+    "matching files": [
+        <file expression you could use in terminal>,
+        // more file expressions that also match
+    ]
 
-    "organize by": [
-        { "prop": "property 1", "show": true or false },
-        { "prop": "property 2", "show": true or false },
-        // more properties
+    "contains": [
+        // nested media types
     ]
 }
 
 .fi
 .PP
 .PP
-The \fC'organize by'\fP tag indicates how the files should be organized by the folder generator\&. To better explain this, take TV episodes\&. The episodes should be organized by series and then season\&. So the \fC'organize by'\fP property would be: 
+.SH "Metadata Default Values"
 .PP
-.nf
-[
-    { "prop": "Series", "show": false },
-    { "prop": "Season", "show": true  },
-]
-
-.fi
 .PP
+Sometimes, a property cannot be given a value\&. In these instances, the value should be specified as the default value\&. Specified by \fC''\fP or \fC[]\fP\&.
+.PP
+A metadata scraper can decide to inherit a property from the parent folder, which is another kind of default property, but that is not explicity defined in type or file JSON configurations\&.
+.PP
+.SH "Folder Structure Generation"
+.PP
+.PP
+.SS "Explanation of File Organization"
+.PP
+The \fC'contains'\fP tag indicates how the files should be organized by the folder generator\&. To better explain this, take TV episodes\&. The episodes should be organized by series and then season\&. So the \fC'contains'\fP property of the \fC'TV Series'\fP type would contain the \fC'TV Season'\fP type, which would contain the \fC'TV Episode'\fP type\&.
 .PP
 Then, when the folder is generated, the folder structure would look like this: 
 .PP
 .nf
 All Items
 ├── <name of series>
-│   ├── Season <#>
+│   ├── <season #>
 │   │   └── <Episodes>
-│   └── Season <#>
+│   └── <season #>
 │       └── <Episodes>
 └── <name of series>
-    ├── Season <#>
+    ├── <season #>
     │   └── <Episodes>
-    └── Season <#>
+    └── <season #>
         └── <Episodes>
 
 .fi
 .PP
 .PP
-So \fC'prop'\fP names the details property to use while \fC'show'\fP decides if the property name, followed by a space, should be prefixed to the value\&. In the above example, the series names should not be prefixed by 'Series ', while the season numbers should be prefixed by 'Season '\&.
+You can instantiate the sub-type only if you so desire\&. You can instantiate the \fC'TV Episode'\fP type by itself\&. Because of this, you should list the properties from the hierarchy, like \fC'Season'\fP and \fC'Series'\fP, in the \fC'metadata\&.details'\fP tag\&.
 .PP
-\fC'prop'\fP can be a string, number, or boolean, but it cannot be an array or an object\&.
+.SS "Root directories for the type"
 .PP
-.SH "Folder Structure Generation"
-.PP
-.PP
-In addition to the \fCAll Items\fP folder described above, there are also folders for every member of \fC'metadata\&.details'\fP not indicated in \fC'organize by'\fP\&. If, for example, there were a \fC'metadata\&.details\&.Genre'\fP tag that was not indicated in \fC'organize by'\fP, the following folder structure would be generated: 
+In addition to the \fCAll Items\fP folder described above, there are also folders for every member of \fC'metadata\&.details'\fP\&. If, for example, there were a \fC'metadata\&.details\&.Genre'\fP, the following folder structure would be generated: 
 .PP
 .nf
 Genre
@@ -92,6 +96,6 @@ Genre
 .fi
 .PP
 .PP
-If the detail is a string, integer, or boolean, it is displayed directly as one of the values\&. If the detail is an array, each element in that array is a value\&. So if a movie has two directors, Bob and Bill, that movie appears under both Bob and Bill\&. Bob and Bill are separate folders under the Director(s) folder\&.
+If the detail is a string, integer, or boolean, it is displayed directly as one of the values\&. If the detail is an array, each element in that array is a value\&. So if a movie has two directors, \fCBob\fP and \fCBill\fP, that movie appears under both \fCBob\fP and \fCBill\fP\&. \fCBob\fP and \fCBill\fP are separate folders under the \fCDirector\fP folder\&. Also note that the actual property name is \fCDirector(s)\fP, but the folder name is \fCDirector\fP\&. If a section of text is contained in \fC()\fP, \fC{}\fP, or \fC[]\fP in a detail's name, that text along with the \fC()\fP, \fC{}\fP, or \fC[]\fP, is removed\&. In addition, other special characters that are not allowed in file names are removed individually\&. When defining a new type, you should name your detail properties carefully to avoid awkward folder names\&.
 .PP
-All generated folder structures have an All Items folder that lists all of the items\&. 
+All generated folder structures have an \fCAll Items\fP folder that lists all of the items\&. 

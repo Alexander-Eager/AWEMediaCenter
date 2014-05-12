@@ -13,9 +13,6 @@
 // for playback
 #include "player/AWEMediaPlayer.h"
 
-// settings
-#include "settings/AWEGlobalSettings.h"
-
 namespace AWE
 {
 	/**
@@ -27,14 +24,11 @@ namespace AWE
 	{
 		public:
 			/**
-			 * \brief Construct using the JSON file
-			 *			and global settings.
+			 * \brief Construct using the JSON file.
 			 *
 			 * \param file The path to the file.
-			 * \param settings The settings of AWEMC.
 			 **/
-			MediaFile(const QDir& file,
-							GlobalSettings* settings);
+			MediaFile(QDir file);
 
 			/** \brief Deconstructor. **/
 			virtual ~MediaFile();
@@ -44,7 +38,7 @@ namespace AWE
 			 *
 			 * \returns The absolute path to of the media file.
 			 **/
-			virtual const QDir& getMediaFile() const;
+			virtual QDir getMediaFile() const;
 
 			/**
 			 * \brief Get the default media player for this item.

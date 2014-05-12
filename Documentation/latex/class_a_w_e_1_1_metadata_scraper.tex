@@ -24,15 +24,17 @@ Inheritance diagram for A\-W\-E\-:\-:Metadata\-Scraper\-:\begin{figure}[H]
 \begin{DoxyCompactList}\small\item\em Deconstructor. \end{DoxyCompactList}\item 
 virtual bool \hyperlink{class_a_w_e_1_1_metadata_scraper_a92f9039770add633140b825bf41bc30a}{prepare} (\hyperlink{class_a_w_e_1_1_global_settings}{Global\-Settings} $\ast$settings)=0
 \begin{DoxyCompactList}\small\item\em Prepares the scraper. \end{DoxyCompactList}\item 
-virtual bool \hyperlink{class_a_w_e_1_1_metadata_scraper_a509832b172ce67e5e9788134016481b3}{scrape\-Data\-For\-File} (\hyperlink{class_a_w_e_1_1_media_file}{Media\-File} $\ast$file, bool ask\-User, bool import)=0
+virtual bool \hyperlink{class_a_w_e_1_1_metadata_scraper_a14f10736d12ada980b4c64a906ebe9a6}{scrape\-Data\-For\-File} (\hyperlink{class_a_w_e_1_1_media_item}{Media\-Item} $\ast$file, bool ask\-User, bool import, bool inherit\-Metadata)=0
 \begin{DoxyCompactList}\small\item\em Retrieves metadata for a media file. \end{DoxyCompactList}\item 
+virtual Q\-List$<$ \hyperlink{class_a_w_e_1_1_media_item}{Media\-Item} $\ast$ $>$ \hyperlink{class_a_w_e_1_1_metadata_scraper_af3708cc05181299d7c5b37afc1568b3d}{scrape\-Data\-For\-File} (\hyperlink{class_a_w_e_1_1_folder}{Folder} $\ast$place\-In\-Me, \hyperlink{class_a_w_e_1_1_global_settings}{Global\-Settings} $\ast$global\-Settings, Q\-Dir file, bool ask\-User, bool import, bool inherit\-Metadata)=0
+\begin{DoxyCompactList}\small\item\em Create a media item (or multiple if applicable) from a given file or folder. \end{DoxyCompactList}\item 
 virtual void \hyperlink{class_a_w_e_1_1_metadata_scraper_a9a90e9974be775dff73c004ada209cb0}{deactivate} ()=0
 \begin{DoxyCompactList}\small\item\em Destroys any used-\/up dynamic memory. \end{DoxyCompactList}\item 
 virtual bool \hyperlink{class_a_w_e_1_1_metadata_scraper_a06f9da8e43ac52378ec15fc849e42eb8}{is\-Valid} ()=0
 \begin{DoxyCompactList}\small\item\em Determines if this is scraper can be used. \end{DoxyCompactList}\item 
-virtual const std\-::string \& \hyperlink{class_a_w_e_1_1_metadata_scraper_a375745d101342f062a1a3eb89a63ec6b}{get\-Name} ()=0
+virtual Q\-String \hyperlink{class_a_w_e_1_1_metadata_scraper_ace0871b6861e04ec3ff39cba70606d29}{get\-Name} ()=0
 \begin{DoxyCompactList}\small\item\em Gets the name of the scraper. \end{DoxyCompactList}\item 
-virtual const std\-::string \& \hyperlink{class_a_w_e_1_1_metadata_scraper_a02549221a803b624300ea6994be1b1a2}{get\-Type} ()=0
+virtual Q\-String \hyperlink{class_a_w_e_1_1_metadata_scraper_a71f1b614a3196d5d8b68e3d216896e3d}{get\-Type} ()=0
 \begin{DoxyCompactList}\small\item\em Gets the media type for this scraper. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -41,10 +43,10 @@ Defines the general interface for a metadata scraper.
 
 Metadata scrapers must take in the path to a media file and use that path to collect icons, fanart images, and other details about the media item.
 
-In order to scrape for metadata, A\-W\-E\-M\-C does the following\-:
+In order to scrape for metadata, \hyperlink{class_a_w_e_1_1_a_w_e_m_c}{A\-W\-E\-M\-C} does the following\-:
 \begin{DoxyItemize}
 \item Prepare the scraper by calling {\ttfamily \hyperlink{class_a_w_e_1_1_metadata_scraper_a92f9039770add633140b825bf41bc30a}{prepare()}}.
-\item Scrape for metadata using {\ttfamily \hyperlink{class_a_w_e_1_1_metadata_scraper_a509832b172ce67e5e9788134016481b3}{scrape\-Data\-For\-File()}}.
+\item Scrape for metadata using {\ttfamily \hyperlink{class_a_w_e_1_1_metadata_scraper_a14f10736d12ada980b4c64a906ebe9a6}{scrape\-Data\-For\-File()}}.
 \item Deactivate the scraper by calling {\ttfamily \hyperlink{class_a_w_e_1_1_metadata_scraper_a9a90e9974be775dff73c004ada209cb0}{deactivate()}}.
 \end{DoxyItemize}
 
@@ -66,13 +68,13 @@ This helps with memory management. If you rely on large objects to scrape for me
 
 Implemented in \hyperlink{class_a_w_e_1_1_j_s_o_n_scraper_a0d1a05a4c7273ff1063518592d68501a}{A\-W\-E\-::\-J\-S\-O\-N\-Scraper}.
 
-\hypertarget{class_a_w_e_1_1_metadata_scraper_a375745d101342f062a1a3eb89a63ec6b}{\index{A\-W\-E\-::\-Metadata\-Scraper@{A\-W\-E\-::\-Metadata\-Scraper}!get\-Name@{get\-Name}}
+\hypertarget{class_a_w_e_1_1_metadata_scraper_ace0871b6861e04ec3ff39cba70606d29}{\index{A\-W\-E\-::\-Metadata\-Scraper@{A\-W\-E\-::\-Metadata\-Scraper}!get\-Name@{get\-Name}}
 \index{get\-Name@{get\-Name}!AWE::MetadataScraper@{A\-W\-E\-::\-Metadata\-Scraper}}
-\subsubsection[{get\-Name}]{\setlength{\rightskip}{0pt plus 5cm}virtual const std\-::string\& A\-W\-E\-::\-Metadata\-Scraper\-::get\-Name (
+\subsubsection[{get\-Name}]{\setlength{\rightskip}{0pt plus 5cm}virtual Q\-String A\-W\-E\-::\-Metadata\-Scraper\-::get\-Name (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_a_w_e_1_1_metadata_scraper_a375745d101342f062a1a3eb89a63ec6b}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_a_w_e_1_1_metadata_scraper_ace0871b6861e04ec3ff39cba70606d29}
 
 
 Gets the name of the scraper. 
@@ -82,15 +84,15 @@ The name of the scraper.
 \end{DoxyReturn}
 
 
-Implemented in \hyperlink{class_a_w_e_1_1_j_s_o_n_scraper_a77c2ed4ece4a88876f6381b97d6c5a93}{A\-W\-E\-::\-J\-S\-O\-N\-Scraper}.
+Implemented in \hyperlink{class_a_w_e_1_1_j_s_o_n_scraper_a9a2613e43da4d36040f704d0481fff50}{A\-W\-E\-::\-J\-S\-O\-N\-Scraper}.
 
-\hypertarget{class_a_w_e_1_1_metadata_scraper_a02549221a803b624300ea6994be1b1a2}{\index{A\-W\-E\-::\-Metadata\-Scraper@{A\-W\-E\-::\-Metadata\-Scraper}!get\-Type@{get\-Type}}
+\hypertarget{class_a_w_e_1_1_metadata_scraper_a71f1b614a3196d5d8b68e3d216896e3d}{\index{A\-W\-E\-::\-Metadata\-Scraper@{A\-W\-E\-::\-Metadata\-Scraper}!get\-Type@{get\-Type}}
 \index{get\-Type@{get\-Type}!AWE::MetadataScraper@{A\-W\-E\-::\-Metadata\-Scraper}}
-\subsubsection[{get\-Type}]{\setlength{\rightskip}{0pt plus 5cm}virtual const std\-::string\& A\-W\-E\-::\-Metadata\-Scraper\-::get\-Type (
+\subsubsection[{get\-Type}]{\setlength{\rightskip}{0pt plus 5cm}virtual Q\-String A\-W\-E\-::\-Metadata\-Scraper\-::get\-Type (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_a_w_e_1_1_metadata_scraper_a02549221a803b624300ea6994be1b1a2}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_a_w_e_1_1_metadata_scraper_a71f1b614a3196d5d8b68e3d216896e3d}
 
 
 Gets the media type for this scraper. 
@@ -100,7 +102,7 @@ The media type name for the scraper.
 \end{DoxyReturn}
 
 
-Implemented in \hyperlink{class_a_w_e_1_1_j_s_o_n_scraper_a5b540056aa7ddf4e343220b0a54a0279}{A\-W\-E\-::\-J\-S\-O\-N\-Scraper}.
+Implemented in \hyperlink{class_a_w_e_1_1_j_s_o_n_scraper_a95ff503c69c697cacc121182c4aa5ea4}{A\-W\-E\-::\-J\-S\-O\-N\-Scraper}.
 
 \hypertarget{class_a_w_e_1_1_metadata_scraper_a06f9da8e43ac52378ec15fc849e42eb8}{\index{A\-W\-E\-::\-Metadata\-Scraper@{A\-W\-E\-::\-Metadata\-Scraper}!is\-Valid@{is\-Valid}}
 \index{is\-Valid@{is\-Valid}!AWE::MetadataScraper@{A\-W\-E\-::\-Metadata\-Scraper}}
@@ -145,26 +147,29 @@ This helps with memory management. If you rely on large objects to scrape for me
 
 Implemented in \hyperlink{class_a_w_e_1_1_j_s_o_n_scraper_a1b12fde072ef979911fcca4191c3c2a7}{A\-W\-E\-::\-J\-S\-O\-N\-Scraper}.
 
-\hypertarget{class_a_w_e_1_1_metadata_scraper_a509832b172ce67e5e9788134016481b3}{\index{A\-W\-E\-::\-Metadata\-Scraper@{A\-W\-E\-::\-Metadata\-Scraper}!scrape\-Data\-For\-File@{scrape\-Data\-For\-File}}
+\hypertarget{class_a_w_e_1_1_metadata_scraper_a14f10736d12ada980b4c64a906ebe9a6}{\index{A\-W\-E\-::\-Metadata\-Scraper@{A\-W\-E\-::\-Metadata\-Scraper}!scrape\-Data\-For\-File@{scrape\-Data\-For\-File}}
 \index{scrape\-Data\-For\-File@{scrape\-Data\-For\-File}!AWE::MetadataScraper@{A\-W\-E\-::\-Metadata\-Scraper}}
 \subsubsection[{scrape\-Data\-For\-File}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool A\-W\-E\-::\-Metadata\-Scraper\-::scrape\-Data\-For\-File (
 \begin{DoxyParamCaption}
-\item[{{\bf Media\-File} $\ast$}]{file, }
+\item[{{\bf Media\-Item} $\ast$}]{file, }
 \item[{bool}]{ask\-User, }
-\item[{bool}]{import}
+\item[{bool}]{import, }
+\item[{bool}]{inherit\-Metadata}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_a_w_e_1_1_metadata_scraper_a509832b172ce67e5e9788134016481b3}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_a_w_e_1_1_metadata_scraper_a14f10736d12ada980b4c64a906ebe9a6}
 
 
 Retrieves metadata for a media file. 
 
 You must write the metadata to {\ttfamily file}.
 
-To construct your J\-S\-O\-N file, you should use \href{http://jsoncpp.sourceforge.net}{\tt jsoncpp}.
+To construct your J\-S\-O\-N file, you should use \href{http://jsoncpp.sourceforge.net}{\tt Json\-Cpp}.
 
 {\ttfamily ask\-User} tells your scraper if the user wants to be given a list of choices for certain things. You should N\-O\-T ask the user for everything if {\ttfamily ask\-User} is true; only basic things like, \char`\"{}\-Which icon do you want to use?\char`\"{}
 
-{\ttfamily import} specifies if the files you get should be copied into A\-W\-E\-M\-C's folders. Do N\-O\-T copy the media file.
+{\ttfamily import} specifies if the files you get should be copied into \hyperlink{class_a_w_e_1_1_a_w_e_m_c}{A\-W\-E\-M\-C}'s folders. Do N\-O\-T copy the media file.
+
+{\ttfamily inherit\-Metadata} determines if data that could be inherited from the folder should be.
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -172,7 +177,9 @@ To construct your J\-S\-O\-N file, you should use \href{http://jsoncpp.sourcefor
 \hline
 \mbox{\tt in}  & {\em ask\-User} & {\ttfamily true} if the user wants to be given choices, {\ttfamily false} otherwise. \\
 \hline
-\mbox{\tt in}  & {\em import} & {\ttfamily true} if the user wants to import metadata files, {\ttfamily false} otherwise.\\
+\mbox{\tt in}  & {\em import} & {\ttfamily true} if the user wants to import metadata files, {\ttfamily false} otherwise. \\
+\hline
+\mbox{\tt in}  & {\em inherit\-Metadata} & {\ttfamily true} if designated metadata items should be inherited from the containing folder, {\ttfamily false} otherwise.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -180,7 +187,59 @@ To construct your J\-S\-O\-N file, you should use \href{http://jsoncpp.sourcefor
 \end{DoxyReturn}
 
 
-Implemented in \hyperlink{class_a_w_e_1_1_j_s_o_n_scraper_afbed287c0fcae8d797552c711854b4e9}{A\-W\-E\-::\-J\-S\-O\-N\-Scraper}.
+Implemented in \hyperlink{class_a_w_e_1_1_j_s_o_n_scraper_a883ec1b6814b4f192a28f32c8f47dd39}{A\-W\-E\-::\-J\-S\-O\-N\-Scraper}.
+
+\hypertarget{class_a_w_e_1_1_metadata_scraper_af3708cc05181299d7c5b37afc1568b3d}{\index{A\-W\-E\-::\-Metadata\-Scraper@{A\-W\-E\-::\-Metadata\-Scraper}!scrape\-Data\-For\-File@{scrape\-Data\-For\-File}}
+\index{scrape\-Data\-For\-File@{scrape\-Data\-For\-File}!AWE::MetadataScraper@{A\-W\-E\-::\-Metadata\-Scraper}}
+\subsubsection[{scrape\-Data\-For\-File}]{\setlength{\rightskip}{0pt plus 5cm}virtual Q\-List$<${\bf Media\-Item}$\ast$$>$ A\-W\-E\-::\-Metadata\-Scraper\-::scrape\-Data\-For\-File (
+\begin{DoxyParamCaption}
+\item[{{\bf Folder} $\ast$}]{place\-In\-Me, }
+\item[{{\bf Global\-Settings} $\ast$}]{global\-Settings, }
+\item[{Q\-Dir}]{file, }
+\item[{bool}]{ask\-User, }
+\item[{bool}]{import, }
+\item[{bool}]{inherit\-Metadata}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_a_w_e_1_1_metadata_scraper_af3708cc05181299d7c5b37afc1568b3d}
+
+
+Create a media item (or multiple if applicable) from a given file or folder. 
+
+Also adds to the map of files.
+
+To construct your J\-S\-O\-N file, you should use \href{http://jsoncpp.sourceforge.net}{\tt Json\-Cpp}.
+
+{\ttfamily ask\-User} tells your scraper if the user wants to be given a list of choices for certain things. You should N\-O\-T ask the user for everything if {\ttfamily ask\-User} is true; only basic things like, \char`\"{}\-Which icon do you want to use?\char`\"{}
+
+{\ttfamily import} specifies if the files you get should be copied into \hyperlink{class_a_w_e_1_1_a_w_e_m_c}{A\-W\-E\-M\-C}'s folders. Do N\-O\-T copy the media file.
+
+{\ttfamily inherit\-Metadata} determines if data that could be inherited from the folder should be.
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000007}{Todo}]boolean flags\end{DoxyRefDesc}
+
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em place\-In\-Me} & The {\ttfamily \hyperlink{class_a_w_e_1_1_folder}{Folder}} to put the created items in. \\
+\hline
+\mbox{\tt in}  & {\em global\-Settings} & The global settings of \hyperlink{class_a_w_e_1_1_a_w_e_m_c}{A\-W\-E\-M\-C}. \\
+\hline
+\mbox{\tt in}  & {\em file} & The file or folder to get media items for. \\
+\hline
+\mbox{\tt in}  & {\em ask\-User} & {\ttfamily true} if the user wants to be given choices, {\ttfamily false} otherwise. \\
+\hline
+\mbox{\tt in}  & {\em import} & {\ttfamily true} if the user wants to import metadata files, {\ttfamily false} otherwise. \\
+\hline
+\mbox{\tt in}  & {\em inherit\-Metadata} & {\ttfamily true} if designated metadata items should be inherited from the containing folder, {\ttfamily false} otherwise.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of media items for the given file. The list is empty if the file does not match. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_a_w_e_1_1_j_s_o_n_scraper_a1ccab4a9c36f8420222a75de1282eb2f}{A\-W\-E\-::\-J\-S\-O\-N\-Scraper}.
 
 
 

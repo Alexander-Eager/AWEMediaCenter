@@ -1,4 +1,4 @@
-.TH "AWE::MediaPlayer" 3 "Fri Apr 18 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.TH "AWE::MediaPlayer" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -25,9 +25,13 @@ Inherited by \fBAWE::JSONPlayer\fP\&.
 .br
 .RI "\fIPlay the given file\&. \fP"
 .ti -1c
-.RI "virtual const std::string & \fBgetName\fP () const =0"
+.RI "virtual QString \fBgetName\fP () const =0"
 .br
 .RI "\fIGet the name of the player\&. \fP"
+.ti -1c
+.RI "virtual bool \fBcanPlay\fP (\fBMediaFile\fP *file)=0"
+.br
+.RI "\fIDetermine if the given media file can be played by this player\&. \fP"
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -43,7 +47,25 @@ Make plugin interface\&.
 
 .SH "Member Function Documentation"
 .PP 
-.SS "virtual const std::string& AWE::MediaPlayer::getName () const\fC [pure virtual]\fP"
+.SS "virtual bool AWE::MediaPlayer::canPlay (\fBMediaFile\fP *file)\fC [pure virtual]\fP"
+
+.PP
+Determine if the given media file can be played by this player\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile\fP The file to determine playability for\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if this player can play \fCfile\fP, \fCfalse\fP otherwise\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBAWE::JSONPlayer\fP\&.
+.SS "virtual QString AWE::MediaPlayer::getName () const\fC [pure virtual]\fP"
 
 .PP
 Get the name of the player\&. 

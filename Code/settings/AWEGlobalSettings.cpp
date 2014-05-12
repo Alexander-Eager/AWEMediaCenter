@@ -1,8 +1,13 @@
 // class header
 #include "AWEGlobalSettings.h"
 
-// the types that are held inside GlobalSettings
+// for debugging
+#include "debug_macros/debug.h"
 
+// for the singleton
+#include "AWEMC.h"
+
+/* the types that are held inside GlobalSettings */
 // scrapers
 #include "scraper/AWEMetadataScraper.h"
 #include "scraper/AWEJSONScraper.h"
@@ -12,7 +17,7 @@
 #include "player/AWEJSONPlayer.h"
 
 // types
-#include "types/AWEFolderGenerator.h"
+#include "type/AWEFolderGenerator.h"
 
 // items
 #include "items/AWEMediaItem.h"
@@ -26,8 +31,10 @@
 
 // for reading files
 #include "libs/generic_file_reader/file_reader.h"
+
+// for writing files
+#include <fstream>
 #include <iostream>
-#include <sstream>
 
 // for temporary data
 #include <QQueue>
@@ -38,16 +45,23 @@ using namespace std;
 
 Value GlobalSettings::null = Value::null;
 
-GlobalSettings::GlobalSettings(const QString& settingsFile)
+GlobalSettings::GlobalSettings(QDir settingsFile)
+	:	mySettingsFile(settingsFile.absolutePath())
 {
+	// set the AWEMC::settings() value
+	if (!AWEMC::settings())
+	{
+		AWEMC::mySettings = this;
+	}
 	// read in the settings file
-	QString contents;;
-	QTextStream ss(contents);
-	copyFile(settingsFile, ss);
+	QString contents;
+	QTextStream ss(&contents);
+	copyFile(settingsFile.absolutePath(), ss);
 	Reader reader;
 	reader.parse(contents.toStdString(), mySettings, false);
 
 	// get all of the objects
+	obtainFonts();
 	obtainScrapers();
 	obtainPlayers();
 	obtainSkins();
@@ -58,6 +72,7 @@ GlobalSettings::GlobalSettings(const QString& settingsFile)
 
 GlobalSettings::~GlobalSettings()
 {
+	// delete everything
 	for (auto i : myMediaPlayers)
 	{
 		delete i;
@@ -76,19 +91,32 @@ GlobalSettings::~GlobalSettings()
 	}
 }
 
+void GlobalSettings::obtainFonts()
+{
+	Value::Members mems = mySettings["fonts"].getMemberNames();
+	for (auto font : mems)
+	{
+		QFont f(mySettings["fonts"][font]["name"].asCString(),
+				mySettings["fonts"][font]["size"].asInt(),
+				mySettings["fonts"][font]["weight"].asInt(),
+				mySettings["fonts"][font]["italic"].asBool());
+		myFonts[font.data()] = f;
+	}
+}
+
 void GlobalSettings::obtainScrapers()
 {
 	// get the directory
-	QDir dir(mySettingsFile);
+	QDir dir(mySettingsFile.absolutePath());
 	dir.cdUp();
-	dir.cd(mySettings["scrapers"].asCString());
+	dir.cd(mySettings["folders"]["scrapers"].asCString());
 
 	// important variables
 	Reader reader;
 	Value scraper;
 	QString name, type, file;
-	QTextStream stream;
 	QString contents;
+	QTextStream stream(&contents);
 
 	// get all of the JSON scrapers
 	dir.cd("json");
@@ -104,7 +132,6 @@ void GlobalSettings::obtainScrapers()
 		{
 			name = scraper["name"].asCString();
 			type = scraper["type"].asCString();
-			myMetadataScraperNames.insert(name);
 			myMetadataScraperSettings[name] = scraper;
 			myMetadataScrapers[name] = new JSONScraper(name, type);
 		}
@@ -117,31 +144,30 @@ void GlobalSettings::obtainScrapers()
 void GlobalSettings::obtainPlayers()
 {
 	// get the directory
-	QDir dir(mySettingsFile);
+	QDir dir(mySettingsFile.absolutePath());
 	dir.cdUp();
-	dir.cd(mySettings["players"].asCString());
+	dir.cd(mySettings["folders"]["players"].asCString());
 
 	// important variables
 	Reader reader;
 	Value player;
 	QString name, file;
-	QTextStream stream;
 	QString contents;
+	QTextStream stream(&contents);
 
 	// get all of the JSON players
 	dir.cd("json");
 	QStringList filter;
 	filter << "*.json";
 	dir.setNameFilters(filter);
-	for (unsigned int i = 0; i < dir.count(); ++ i)
+	for (uint i = 0; i < dir.count(); ++ i)
 	{
 		file = dir.absoluteFilePath(dir[i]);
 		copyFile(file, stream);
 		if (reader.parse(contents.toStdString(),
 							player, false))
 		{
-			name = player["name"].asString();
-			myMediaPlayerNames.insert(name);
+			name = player["name"].asCString();
 			myMediaPlayerSettings[name] = player;
 			myMediaPlayers[name] = new JSONPlayer(player);
 		}
@@ -155,13 +181,12 @@ void GlobalSettings::obtainSkins() { }
 
 void GlobalSettings::obtainTypes()
 {
-	QDir dir(mySettingsFile);
+	QDir dir(mySettingsFile.absolutePath());
 	dir.cdUp();
-	dir.cd(mySettings["types"].asCString());
+	dir.cd(mySettings["folders"]["types"].asCString());
 
 	// important variables
 	FolderGenerator* type;
-	FolderGenerator* sub;
 	QString name;
 	QDir file;
 
@@ -178,23 +203,21 @@ void GlobalSettings::obtainTypes()
 		type = new FolderGenerator(file);
 
 		// get all sub types
-		deque<FolderGenerator*> types;
-		types.push_back(type);
-		while (types.size() > 0)
+		QQueue<FolderGenerator*> types;
+		types.enqueue(type);
+		while (types.count() > 0)
 		{
 			// get the front of the queue
-			sub = types.front();
-			types.pop_front();
+			type = types.dequeue();
 
 			// add it to the relevant internal data
 			name = type->getType();
-			myMediaTypeNames.insert(name);
 			myFolderGenerators[name] = type;
 
 			// add all sub generators to the queue
-			for (FolderGenerator* j : sub->getSubGenerators())
+			for (FolderGenerator* j : type->getSubGenerators())
 			{
-				types.push_back(j);
+				types.enqueue(j);
 			}
 		}
 	}
@@ -203,9 +226,9 @@ void GlobalSettings::obtainTypes()
 void GlobalSettings::obtainServices()
 {
 	// get the directory
-	QDir dir(mySettingsFile);
+	QDir dir(mySettingsFile.absolutePath());
 	dir.cdUp();
-	dir.cd(mySettings["services"].asCString());
+	dir.cd(mySettings["folders"]["services"].asCString());
 
 	// important variables
 	MediaService* service;
@@ -217,13 +240,11 @@ void GlobalSettings::obtainServices()
 	QStringList filter;
 	filter << "*.json";
 	dir.setNameFilters(filter);
-	for (unsigned int i = 0; i < dir.count(); ++ i)
+	for (uint i = 0; i < dir.count(); ++ i)
 	{
 		file = QDir(dir.absoluteFilePath(dir[i]));
-
-		service = new MediaService(file)
+		service = new JSONService(file);
 		name = service->getName();
-		myMediaServiceNames.insert(name);
 		myMediaServices[name] = service;
 	}
 
@@ -232,79 +253,123 @@ void GlobalSettings::obtainServices()
 
 void GlobalSettings::obtainItems() 
 {
-	QDir dir(mySettingsFile);
+	QDir dir(mySettingsFile.absolutePath());
 	dir.cdUp();
-	myRootFolder = (Folder*) getMediaItemByJSONFile(root);
+	dir = QDir(dir.absolutePath() + "/" + mySettings["folders"]["root"].asCString());
+	myRootFolder = (Folder*) getMediaItemByJSONFile(dir);
 }
 
-MetadataScraper* GlobalSettings::getScraperByName(const QString& str)
+QFont GlobalSettings::getFontByName(QString str)
+{
+	auto i = myFonts.find(str);
+	if (i != myFonts.end())
+	{
+		return *i;
+	}
+	DEBUG_WARN("WARNING: Font \"" << str.toStdString() << "\" does not exist")
+	return myFonts["normal"];
+}
+
+MetadataScraper* GlobalSettings::getScraperByName(QString str)
 {
 	auto i = myMetadataScrapers.find(str);
 	if (i != myMetadataScrapers.end())
 	{
 		return *i;
 	}
+	DEBUG_WARN("WARNING: Scraper \"" << str.toStdString() << "\" does not exist")
 	return nullptr;
 }
 
-Value& GlobalSettings::getScraperSettingsByName(const QString& str)
+Value& GlobalSettings::getScraperSettingsByName(QString str)
 {
 	auto i = myMetadataScraperSettings.find(str);
 	if (i != myMetadataScraperSettings.end())
 	{
 		return *i;
 	}
+	DEBUG_WARN("WARNING: Scraper \"" << str.toStdString() << "\" does not exist")
 	return null;
 }
 
 QList<QString> GlobalSettings::getAllMetadataScraperNames()
 {
-	return myMetadataScraperNames;
+	return myMetadataScrapers.keys();
 }
 
-MediaPlayer* GlobalSettings::getPlayerByName(const QString& str)
+QList<MetadataScraper*> GlobalSettings::getAllScrapersForItem(MediaItem* item)
+{
+	QList<MetadataScraper*> ans;
+	for (auto scraper : myMetadataScrapers)
+	{
+		if (scraper->getType() == item->getType()
+			|| item->getType() == "Generic Media")
+		{
+			ans << scraper;
+		}
+	}
+	return ans;
+}
+
+MediaPlayer* GlobalSettings::getPlayerByName(QString str)
 {
 	auto i = myMediaPlayers.find(str);
 	if (i != myMediaPlayers.end())
 	{
 		return *i;
 	}
+	DEBUG_WARN("WARNING: Player \"" << str.toStdString() << "\" does not exist")
 	return nullptr;
 }
 
-Value& GlobalSettings::getPlayerSettingsByName(const QString& str)
+Value& GlobalSettings::getPlayerSettingsByName(QString str)
 {
 	auto i = myMediaPlayerSettings.find(str);
 	if (i != myMediaPlayerSettings.end())
 	{
 		return *i;
 	}
+	DEBUG_WARN("WARNING: Player \"" << str.toStdString() << "\" does not exist")
 	return null;
 }
 
 QList<QString> GlobalSettings::getAllMediaPlayerNames()
 {
-	return myMediaPlayerNames;
+	return myMediaPlayers.keys();
 }
 
-Value& GlobalSettings::getTypeByName(const QString& str)
+QList<MediaPlayer*> GlobalSettings::getAllPlayersForFile(MediaFile* file)
+{
+	QList<MediaPlayer*> ans;
+	for (auto player : myMediaPlayers)
+	{
+		if (player->canPlay(file))
+		{
+			ans << player;
+		}
+	}
+	return ans;
+}
+
+Value& GlobalSettings::getTypeByName(QString str)
 {
 	auto i = myFolderGenerators.find(str);
 	if (i != myFolderGenerators.end())
 	{
-		return i->getDefaultMetadata();
+		return (*i)->getDefaultMetadata();
 	}
+	DEBUG_WARN("WARNING: Type \"" << str.toStdString() << "\" does not exist")
 	return null;
 }
 
 QList<QString> GlobalSettings::getAllMediaTypeNames()
 {
-	return myMediaTypeNames;
+	return myMediaTypes.keys();
 }
 
-MediaItem* GlobalSettings::getMediaItemByJSONFile(const QDir& file)
+MediaItem* GlobalSettings::getMediaItemByJSONFile(QDir file)
 {
-	auto i = myMediaItems.find(file);
+	auto i = myMediaItems.find(file.absolutePath());
 	if (i != myMediaItems.end())
 	{
 		return *i;
@@ -316,21 +381,21 @@ MediaItem* GlobalSettings::getMediaItemByJSONFile(const QDir& file)
 		Reader reader;
 		Value temp;
 		QString contents;
-		QTextStream stream(contents);
+		QTextStream stream(&contents);
 		if (copyFile(file.absolutePath(), stream)
 			&& reader.parse(contents.toStdString(), temp, false))
 		{
 			if (temp["type"].asString() == "file")
 			{
-				myMediaItems[str] = (item = new MediaFile(file, this));
+				myMediaItems[file.absolutePath()] = (item = new MediaFile(file));
 			}
 			else if (temp["type"].asString() == "folder")
 			{
-				item = new Folder(file, this);
+				item = new Folder(file);
 			}
 			else if (temp["type"].asString() == "service")
 			{
-				item = getMediaServiceByName(temp["name"].asString());
+				item = getMediaServiceByName(temp["name"].asCString());
 			}
 		}
 		return item;
@@ -339,25 +404,37 @@ MediaItem* GlobalSettings::getMediaItemByJSONFile(const QDir& file)
 
 QList<QString> GlobalSettings::getAllMediaServiceNames()
 {
-	return myMediaServiceNames;
+	return myMediaServices.keys();
 }
 
-MediaService* GlobalSettings::getMediaServiceByName(const QString& str)
+MediaService* GlobalSettings::getMediaServiceByName(QString str)
 {
 	auto i = myMediaServices.find(str);
 	if (i != myMediaServices.end())
 	{
 		return *i;
 	}
+	DEBUG_WARN("WARNING: Service \"" << str.toStdString() << "\" does not exist")
 	return nullptr;
 }
 
 void GlobalSettings::addItem(MediaItem* item)
 {
-	myMediaItems[item->getJSONFile()] = item;
+	myMediaItems[item->getConfigFile().absolutePath()] = item;
 }
 
 Folder* GlobalSettings::getRootFolder()
 {
 	return myRootFolder;
+}
+
+FolderGenerator* GlobalSettings::getFolderGeneratorForType(QString type)
+{
+	auto i = myFolderGenerators.find(type);
+	if (i != myFolderGenerators.end())
+	{
+		return *i;
+	}
+	DEBUG_WARN("WARNING: Type \"" << type.toStdString() << "\" does not exist")
+	return nullptr;
 }

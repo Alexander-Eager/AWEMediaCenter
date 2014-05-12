@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['strictroot_5f',['strictRoot_',['../class_json_1_1_features.html#a1162c37a1458adc32582b585b552f9c3',1,'Json::Features']]]
+  ['cyan',['CYAN',['../class_t_c_o_m_1_1_color.html#adeaa1974140f586f6c1cc9b4e90bf210',1,'TCOM::Color']]]
 ];

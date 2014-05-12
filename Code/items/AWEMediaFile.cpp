@@ -1,21 +1,18 @@
 // header file
 #include "items/AWEMediaFile.h"
 
-// for reading files
-#include <sstream>
-#include "libs/generic_file_reader/file_reader.h"
+// for global settings
+#include "settings/AWEMC.h"
 
 using namespace AWE;
 
-MediaFile::MediaFile(const QDir& file,
-						GlobalSettings* settings) :
+MediaFile::MediaFile(QDir file) :
 	MediaItem(file),
 	myMediaFile(file)
 {
 	myMediaFile.cdUp();
-	myMediaFile = myMediaFile.absolutePath() 
-		+ "/" + getStringMember("metadata.location");
-	myDefaultPlayer = settings->getPlayerByName(getStringMember("player"));
+	myMediaFile = myMediaFile.absoluteFilePath(getStringMember("metadata.location"));
+	myDefaultPlayer = AWEMC::settings()->getPlayerByName(getStringMember("player"));
 }
 
 MediaFile::~MediaFile() { }
@@ -25,7 +22,7 @@ ItemType MediaFile::getItemType() const
 	return FILE_TYPE;
 }
 
-const QDir& MediaFile::getMediaFile() const
+QDir MediaFile::getMediaFile() const
 {
 	return myMediaFile;
 }

@@ -1,0 +1,400 @@
+\hypertarget{class_a_w_e_1_1_config_file}{\section{A\-W\-E\-:\-:Config\-File Class Reference}
+\label{class_a_w_e_1_1_config_file}\index{A\-W\-E\-::\-Config\-File@{A\-W\-E\-::\-Config\-File}}
+}
+
+
+Holds the information for a configuration file in an abstract way.  
+
+
+
+
+{\ttfamily \#include $<$Config\-File.\-h$>$}
+
+Inheritance diagram for A\-W\-E\-:\-:Config\-File\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_a_w_e_1_1_config_file}
+\end{center}
+\end{figure}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_a_w_e_1_1_config_file_adac2c26c4b9381a6c0f73d8df4494cdd}{void \hyperlink{class_a_w_e_1_1_config_file_adac2c26c4b9381a6c0f73d8df4494cdd}{data\-Changed} ()}\label{class_a_w_e_1_1_config_file_adac2c26c4b9381a6c0f73d8df4494cdd}
+
+\begin{DoxyCompactList}\small\item\em Sent when any data member is changed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_a_w_e_1_1_config_file_aae513c1b94bc74ad30894a11b1d6b547}{Config\-File} (Q\-String file)
+\begin{DoxyCompactList}\small\item\em Open the given config file. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_config_file_aa6a9cb6df5f768702ba640d71918d778}{virtual \hyperlink{class_a_w_e_1_1_config_file_aa6a9cb6df5f768702ba640d71918d778}{$\sim$\-Config\-File} ()}\label{class_a_w_e_1_1_config_file_aa6a9cb6df5f768702ba640d71918d778}
+
+\begin{DoxyCompactList}\small\item\em Depathoys this object. \end{DoxyCompactList}\item 
+virtual Q\-String \hyperlink{class_a_w_e_1_1_config_file_aa93081a7067a27c880c0484f788081d1}{get\-Config\-File\-Name} () const 
+\begin{DoxyCompactList}\small\item\em Get this file's name, without the path. \end{DoxyCompactList}\item 
+virtual Q\-Dir \hyperlink{class_a_w_e_1_1_config_file_aab273e3e7a9d26985938ee02e921905a}{get\-Path\-To\-Config\-File} () const 
+\begin{DoxyCompactList}\small\item\em Get the path to this config file, excluding the file name. \end{DoxyCompactList}\item 
+bool \hyperlink{class_a_w_e_1_1_config_file_a4c588cb21802c958b2022b1083b1cfaa}{has\-Been\-Edited} () const 
+\begin{DoxyCompactList}\small\item\em Determine if this config file has been altered since it was read. \end{DoxyCompactList}\item 
+virtual Q\-Variant\-Map \hyperlink{class_a_w_e_1_1_config_file_a2cf12f94ae2dfc362ca39aadf49acddb}{get\-Data} () const 
+\begin{DoxyCompactList}\small\item\em Get the data held in this config file. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_a_w_e_1_1_config_file_a1c3e8e021ca4a065937dcd2218fb5b73}{set\-Data} (Q\-Variant\-Map data)
+\begin{DoxyCompactList}\small\item\em Set the data held in this config file. \end{DoxyCompactList}\item 
+virtual Q\-Variant \hyperlink{class_a_w_e_1_1_config_file_a8eebe0b7af8ca61e695dc2c9169caadd}{get\-Member} (Q\-String path) const 
+\begin{DoxyCompactList}\small\item\em Get a data member. \end{DoxyCompactList}\item 
+virtual Q\-Variant \hyperlink{class_a_w_e_1_1_config_file_a4febc4a3faa00363d56ab81c7dbdd39e}{get\-Member} (Q\-Variant\-List path) const 
+\begin{DoxyCompactList}\small\item\em Get a data member. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_config_file_a3b0af46143f4808bff222454fbd4f1cc}{set\-Member} (Q\-String path, Q\-Variant value)
+\begin{DoxyCompactList}\small\item\em Set a data member to a new value. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_config_file_a612b4157dca090a24aee8b87d866c46f}{set\-Member} (Q\-Variant\-List path, Q\-Variant value)
+\begin{DoxyCompactList}\small\item\em Set a data member to a new value. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_config_file_ab4b6767daec60be3c6c04a1b5cf9dd20}{append\-Value\-To\-Member} (Q\-String path, Q\-Variant value)
+\begin{DoxyCompactList}\small\item\em Append a value to a list member. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_config_file_acae72a03af5a49e6ddf5a3144763100e}{append\-Value\-To\-Member} (Q\-Variant\-List path, Q\-Variant value)
+\begin{DoxyCompactList}\small\item\em Append a value to a list member. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_config_file_af0f8c309d93cb9ed0073774d454e4fc1}{append\-Value\-To\-Member} (Q\-String path, Q\-String key, Q\-Variant value)
+\begin{DoxyCompactList}\small\item\em Append a key-\/value pair to a map member. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_config_file_a94a8ddbacc4575e4778b005d8788b936}{append\-Value\-To\-Member} (Q\-Variant\-List path, Q\-String key, Q\-Variant value)
+\begin{DoxyCompactList}\small\item\em Append a key-\/value pair to a map member. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_a_w_e_1_1_config_file_ac3035f104b3831f4c99950a4ded5476e}{Q\-String {\bfseries config\-File\-Name}}\label{class_a_w_e_1_1_config_file_ac3035f104b3831f4c99950a4ded5476e}
+
+\item 
+\hypertarget{class_a_w_e_1_1_config_file_ae2b73ffd21c445fd30a9e849ec16d48c}{Q\-Dir {\bfseries path\-To\-Config\-File}}\label{class_a_w_e_1_1_config_file_ae2b73ffd21c445fd30a9e849ec16d48c}
+
+\item 
+\hypertarget{class_a_w_e_1_1_config_file_ada9aed8c52ae60d117829b2408a6cf5e}{Q\-Variant\-Map {\bfseries data}}\label{class_a_w_e_1_1_config_file_ada9aed8c52ae60d117829b2408a6cf5e}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Holds the information for a configuration file in an abstract way. 
+
+The configuration files used by \hyperlink{class_a_w_e_1_1_a_w_e_m_c}{A\-W\-E\-M\-C} are all J\-S\-O\-N files. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_a_w_e_1_1_config_file_aae513c1b94bc74ad30894a11b1d6b547}{\index{A\-W\-E\-::\-Config\-File@{A\-W\-E\-::\-Config\-File}!Config\-File@{Config\-File}}
+\index{Config\-File@{Config\-File}!AWE::ConfigFile@{A\-W\-E\-::\-Config\-File}}
+\subsubsection[{Config\-File}]{\setlength{\rightskip}{0pt plus 5cm}A\-W\-E\-::\-Config\-File\-::\-Config\-File (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{file}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_config_file_aae513c1b94bc74ad30894a11b1d6b547}
+
+
+Open the given config file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & The file to open. If the file does not exist, the config data will be initialized to an empty map. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_a_w_e_1_1_config_file_ab4b6767daec60be3c6c04a1b5cf9dd20}{\index{A\-W\-E\-::\-Config\-File@{A\-W\-E\-::\-Config\-File}!append\-Value\-To\-Member@{append\-Value\-To\-Member}}
+\index{append\-Value\-To\-Member@{append\-Value\-To\-Member}!AWE::ConfigFile@{A\-W\-E\-::\-Config\-File}}
+\subsubsection[{append\-Value\-To\-Member}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool A\-W\-E\-::\-Config\-File\-::append\-Value\-To\-Member (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{path, }
+\item[{Q\-Variant}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_config_file_ab4b6767daec60be3c6c04a1b5cf9dd20}
+
+
+Append a value to a list member. 
+
+The member must be a list type. If it is not, the function will not do anything.
+
+\begin{DoxySeeAlso}{See Also}
+get\-Member(\-Q\-String)
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em path} & The path to the data member. \\
+\hline
+\mbox{\tt in}  & {\em value} & The value to append to the data member.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the data member exists and is a list, {\ttfamily false} if an error occurred. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_config_file_acae72a03af5a49e6ddf5a3144763100e}{\index{A\-W\-E\-::\-Config\-File@{A\-W\-E\-::\-Config\-File}!append\-Value\-To\-Member@{append\-Value\-To\-Member}}
+\index{append\-Value\-To\-Member@{append\-Value\-To\-Member}!AWE::ConfigFile@{A\-W\-E\-::\-Config\-File}}
+\subsubsection[{append\-Value\-To\-Member}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool A\-W\-E\-::\-Config\-File\-::append\-Value\-To\-Member (
+\begin{DoxyParamCaption}
+\item[{Q\-Variant\-List}]{path, }
+\item[{Q\-Variant}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_config_file_acae72a03af5a49e6ddf5a3144763100e}
+
+
+Append a value to a list member. 
+
+The member must be a list type. If it is not, the function will not do anything.
+
+\begin{DoxySeeAlso}{See Also}
+get\-Member(\-Q\-Variant\-List)
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em path} & The path to the data member. \\
+\hline
+\mbox{\tt in}  & {\em value} & The value to append to the data member.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the data member exists and is a list, {\ttfamily false} if an error occurred. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_config_file_af0f8c309d93cb9ed0073774d454e4fc1}{\index{A\-W\-E\-::\-Config\-File@{A\-W\-E\-::\-Config\-File}!append\-Value\-To\-Member@{append\-Value\-To\-Member}}
+\index{append\-Value\-To\-Member@{append\-Value\-To\-Member}!AWE::ConfigFile@{A\-W\-E\-::\-Config\-File}}
+\subsubsection[{append\-Value\-To\-Member}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool A\-W\-E\-::\-Config\-File\-::append\-Value\-To\-Member (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{path, }
+\item[{Q\-String}]{key, }
+\item[{Q\-Variant}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_config_file_af0f8c309d93cb9ed0073774d454e4fc1}
+
+
+Append a key-\/value pair to a map member. 
+
+The member must be a map type. If it is not, the function will not do anything.
+
+\begin{DoxySeeAlso}{See Also}
+get\-Member(\-Q\-String)
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em path} & The path to the data member. \\
+\hline
+\mbox{\tt in}  & {\em key} & The key to append to the data member. \\
+\hline
+\mbox{\tt in}  & {\em value} & The value to assign to {\ttfamily key}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the data member exists and is a map, {\ttfamily false} if an error occurred. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_config_file_a94a8ddbacc4575e4778b005d8788b936}{\index{A\-W\-E\-::\-Config\-File@{A\-W\-E\-::\-Config\-File}!append\-Value\-To\-Member@{append\-Value\-To\-Member}}
+\index{append\-Value\-To\-Member@{append\-Value\-To\-Member}!AWE::ConfigFile@{A\-W\-E\-::\-Config\-File}}
+\subsubsection[{append\-Value\-To\-Member}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool A\-W\-E\-::\-Config\-File\-::append\-Value\-To\-Member (
+\begin{DoxyParamCaption}
+\item[{Q\-Variant\-List}]{path, }
+\item[{Q\-String}]{key, }
+\item[{Q\-Variant}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_config_file_a94a8ddbacc4575e4778b005d8788b936}
+
+
+Append a key-\/value pair to a map member. 
+
+The member must be a map type. If it is not, the function will not do anything.
+
+\begin{DoxySeeAlso}{See Also}
+get\-Member(\-Q\-Variant\-List)
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em path} & The path to the data member. \\
+\hline
+\mbox{\tt in}  & {\em key} & The key to append to the data member. \\
+\hline
+\mbox{\tt in}  & {\em value} & The value to assign to {\ttfamily key}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the data member exists and is a map, {\ttfamily false} if an error occurred. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_config_file_aa93081a7067a27c880c0484f788081d1}{\index{A\-W\-E\-::\-Config\-File@{A\-W\-E\-::\-Config\-File}!get\-Config\-File\-Name@{get\-Config\-File\-Name}}
+\index{get\-Config\-File\-Name@{get\-Config\-File\-Name}!AWE::ConfigFile@{A\-W\-E\-::\-Config\-File}}
+\subsubsection[{get\-Config\-File\-Name}]{\setlength{\rightskip}{0pt plus 5cm}virtual Q\-String A\-W\-E\-::\-Config\-File\-::get\-Config\-File\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_config_file_aa93081a7067a27c880c0484f788081d1}
+
+
+Get this file's name, without the path. 
+
+\begin{DoxyReturn}{Returns}
+The config file name. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_config_file_a2cf12f94ae2dfc362ca39aadf49acddb}{\index{A\-W\-E\-::\-Config\-File@{A\-W\-E\-::\-Config\-File}!get\-Data@{get\-Data}}
+\index{get\-Data@{get\-Data}!AWE::ConfigFile@{A\-W\-E\-::\-Config\-File}}
+\subsubsection[{get\-Data}]{\setlength{\rightskip}{0pt plus 5cm}virtual Q\-Variant\-Map A\-W\-E\-::\-Config\-File\-::get\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_config_file_a2cf12f94ae2dfc362ca39aadf49acddb}
+
+
+Get the data held in this config file. 
+
+\begin{DoxyReturn}{Returns}
+The data held in this config file. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_config_file_a8eebe0b7af8ca61e695dc2c9169caadd}{\index{A\-W\-E\-::\-Config\-File@{A\-W\-E\-::\-Config\-File}!get\-Member@{get\-Member}}
+\index{get\-Member@{get\-Member}!AWE::ConfigFile@{A\-W\-E\-::\-Config\-File}}
+\subsubsection[{get\-Member}]{\setlength{\rightskip}{0pt plus 5cm}virtual Q\-Variant A\-W\-E\-::\-Config\-File\-::get\-Member (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{path}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_config_file_a8eebe0b7af8ca61e695dc2c9169caadd}
+
+
+Get a data member. 
+
+{\ttfamily path} is formatted so that delving down a member uses a \char`\"{}.\char`\"{}. So if I have\-: \begin{DoxyVerb}{
+    "a": {
+        "b": [
+            "Hello World"
+        ]           
+    }
+}
+\end{DoxyVerb}
+
+
+The pathing to use to get to {\ttfamily \char`\"{}\-Hello World\char`\"{}} is {\ttfamily \char`\"{}a.\-b.\-0\char`\"{}}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em path} & The path to the data member to retrieve.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The desired data member, or a null {\ttfamily Q\-Variant} if the member does not exist. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_config_file_a4febc4a3faa00363d56ab81c7dbdd39e}{\index{A\-W\-E\-::\-Config\-File@{A\-W\-E\-::\-Config\-File}!get\-Member@{get\-Member}}
+\index{get\-Member@{get\-Member}!AWE::ConfigFile@{A\-W\-E\-::\-Config\-File}}
+\subsubsection[{get\-Member}]{\setlength{\rightskip}{0pt plus 5cm}virtual Q\-Variant A\-W\-E\-::\-Config\-File\-::get\-Member (
+\begin{DoxyParamCaption}
+\item[{Q\-Variant\-List}]{path}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_config_file_a4febc4a3faa00363d56ab81c7dbdd39e}
+
+
+Get a data member. 
+
+{\ttfamily path} is a list of values to follow to reach the desired data member. So if I have\-: \begin{DoxyVerb}{
+    "a": {
+        "b": [
+            "Hello World"
+        ]           
+    }
+}
+\end{DoxyVerb}
+
+
+The list to use to get to {\ttfamily \char`\"{}\-Hello World\char`\"{}} is {\ttfamily \{ \char`\"{}a\char`\"{}, \char`\"{}b\char`\"{}, 0 \}}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em path} & The path to the data member to retrieve.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The desired data member, or a null {\ttfamily Q\-Variant} if the member does not exist. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_config_file_aab273e3e7a9d26985938ee02e921905a}{\index{A\-W\-E\-::\-Config\-File@{A\-W\-E\-::\-Config\-File}!get\-Path\-To\-Config\-File@{get\-Path\-To\-Config\-File}}
+\index{get\-Path\-To\-Config\-File@{get\-Path\-To\-Config\-File}!AWE::ConfigFile@{A\-W\-E\-::\-Config\-File}}
+\subsubsection[{get\-Path\-To\-Config\-File}]{\setlength{\rightskip}{0pt plus 5cm}virtual Q\-Dir A\-W\-E\-::\-Config\-File\-::get\-Path\-To\-Config\-File (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_config_file_aab273e3e7a9d26985938ee02e921905a}
+
+
+Get the path to this config file, excluding the file name. 
+
+\begin{DoxyReturn}{Returns}
+The path to the config file. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_config_file_a4c588cb21802c958b2022b1083b1cfaa}{\index{A\-W\-E\-::\-Config\-File@{A\-W\-E\-::\-Config\-File}!has\-Been\-Edited@{has\-Been\-Edited}}
+\index{has\-Been\-Edited@{has\-Been\-Edited}!AWE::ConfigFile@{A\-W\-E\-::\-Config\-File}}
+\subsubsection[{has\-Been\-Edited}]{\setlength{\rightskip}{0pt plus 5cm}bool A\-W\-E\-::\-Config\-File\-::has\-Been\-Edited (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_a_w_e_1_1_config_file_a4c588cb21802c958b2022b1083b1cfaa}
+
+
+Determine if this config file has been altered since it was read. 
+
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if this config file has been altered since it was read, {\ttfamily false} otherwise. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_config_file_a1c3e8e021ca4a065937dcd2218fb5b73}{\index{A\-W\-E\-::\-Config\-File@{A\-W\-E\-::\-Config\-File}!set\-Data@{set\-Data}}
+\index{set\-Data@{set\-Data}!AWE::ConfigFile@{A\-W\-E\-::\-Config\-File}}
+\subsubsection[{set\-Data}]{\setlength{\rightskip}{0pt plus 5cm}virtual void A\-W\-E\-::\-Config\-File\-::set\-Data (
+\begin{DoxyParamCaption}
+\item[{Q\-Variant\-Map}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_config_file_a1c3e8e021ca4a065937dcd2218fb5b73}
+
+
+Set the data held in this config file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em data} & The new data to hold. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_a_w_e_1_1_config_file_a3b0af46143f4808bff222454fbd4f1cc}{\index{A\-W\-E\-::\-Config\-File@{A\-W\-E\-::\-Config\-File}!set\-Member@{set\-Member}}
+\index{set\-Member@{set\-Member}!AWE::ConfigFile@{A\-W\-E\-::\-Config\-File}}
+\subsubsection[{set\-Member}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool A\-W\-E\-::\-Config\-File\-::set\-Member (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{path, }
+\item[{Q\-Variant}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_config_file_a3b0af46143f4808bff222454fbd4f1cc}
+
+
+Set a data member to a new value. 
+
+\begin{DoxySeeAlso}{See Also}
+get\-Member(\-Q\-String)
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em path} & The path to the data member. \\
+\hline
+\mbox{\tt in}  & {\em value} & The new value for the data member.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the data member exists, {\ttfamily false} if an error occurred. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_config_file_a612b4157dca090a24aee8b87d866c46f}{\index{A\-W\-E\-::\-Config\-File@{A\-W\-E\-::\-Config\-File}!set\-Member@{set\-Member}}
+\index{set\-Member@{set\-Member}!AWE::ConfigFile@{A\-W\-E\-::\-Config\-File}}
+\subsubsection[{set\-Member}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool A\-W\-E\-::\-Config\-File\-::set\-Member (
+\begin{DoxyParamCaption}
+\item[{Q\-Variant\-List}]{path, }
+\item[{Q\-Variant}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_a_w_e_1_1_config_file_a612b4157dca090a24aee8b87d866c46f}
+
+
+Set a data member to a new value. 
+
+\begin{DoxySeeAlso}{See Also}
+get\-Member(\-Q\-Variant\-List)
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em path} & The path to the data member. \\
+\hline
+\mbox{\tt in}  & {\em value} & The new value for the data member.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the data member exists, {\ttfamily false} if an error occurred. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/settings/Config\-File.\-h\end{DoxyCompactItemize}

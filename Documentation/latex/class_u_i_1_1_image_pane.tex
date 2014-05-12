@@ -1,0 +1,215 @@
+\hypertarget{class_u_i_1_1_image_pane}{\section{U\-I\-:\-:Image\-Pane Class Reference}
+\label{class_u_i_1_1_image_pane}\index{U\-I\-::\-Image\-Pane@{U\-I\-::\-Image\-Pane}}
+}
+
+
+Defines a class that holds icons and fanart images.  
+
+
+
+
+{\ttfamily \#include $<$Image\-Pane.\-h$>$}
+
+Inheritance diagram for U\-I\-:\-:Image\-Pane\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_u_i_1_1_image_pane}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_u_i_1_1_image_pane_a1f1351fdd0de78875bdd6d8a4a2aa2a3}{set\-Item} (\hyperlink{class_a_w_e_1_1_media_item}{A\-W\-E\-::\-Media\-Item} $\ast$item)
+\begin{DoxyCompactList}\small\item\em Set the item to display images for. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_u_i_1_1_image_pane_ad51420f7fd9e23cc29fdf370fcb5ec81}{fanart\-Changed} (Q\-Pixmap image)
+\begin{DoxyCompactList}\small\item\em Sent when the fanart image is changed. \end{DoxyCompactList}\item 
+void \hyperlink{class_u_i_1_1_image_pane_a7103b1d346c39b8e32cb02ee6c329ef5}{icon\-Changed} (Q\-Pixmap image)
+\begin{DoxyCompactList}\small\item\em Sent when the icon image is changed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_u_i_1_1_image_pane_a6db6b50ddb928b11e5b3fa55d1207ddb}{Image\-Pane} (Q\-Widget $\ast$parent)
+\begin{DoxyCompactList}\small\item\em Make with the given parent. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_image_pane_afc7fbed886b297d99dc58a7c117f5184}{\hyperlink{class_u_i_1_1_image_pane_afc7fbed886b297d99dc58a7c117f5184}{$\sim$\-Image\-Pane} ()}\label{class_u_i_1_1_image_pane_afc7fbed886b297d99dc58a7c117f5184}
+
+\begin{DoxyCompactList}\small\item\em Destroys this object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_u_i_1_1_image_pane_ac479efb7416b73f07138c009ddf5111d}{respond\-To\-Icon\-Change} (\hyperlink{class_u_i_1_1_item_widget}{Item\-Widget} $\ast$icon)
+\begin{DoxyCompactList}\small\item\em Internal slot for handling icon image changes. \end{DoxyCompactList}\item 
+void \hyperlink{class_u_i_1_1_image_pane_ac571e70bddc2b65f77d8e24a72268e0c}{respond\-To\-Fanart\-Change} (\hyperlink{class_u_i_1_1_item_widget}{Item\-Widget} $\ast$fanart)
+\begin{DoxyCompactList}\small\item\em Internal slot for handling fanart image changes. \end{DoxyCompactList}\item 
+void \hyperlink{class_u_i_1_1_image_pane_a3193fe6b3e2928c959ce4554e750b56f}{respond\-To\-Temp\-Icon\-Change} (\hyperlink{class_u_i_1_1_item_widget}{Item\-Widget} $\ast$icon)
+\begin{DoxyCompactList}\small\item\em Internal slot for handling temp icon image changes. \end{DoxyCompactList}\item 
+void \hyperlink{class_u_i_1_1_image_pane_ae3a982f253a5a296d003217c87b52db7}{respond\-To\-Temp\-Fanart\-Change} (\hyperlink{class_u_i_1_1_item_widget}{Item\-Widget} $\ast$fanart)
+\begin{DoxyCompactList}\small\item\em Internal slot for handling temp fanart image changes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_u_i_1_1_image_pane_a33fc6b4320346518e8fc04eba46944ba}{\hyperlink{class_a_w_e_1_1_media_item}{A\-W\-E\-::\-Media\-Item} $\ast$ \hyperlink{class_u_i_1_1_image_pane_a33fc6b4320346518e8fc04eba46944ba}{my\-Media\-Item}}\label{class_u_i_1_1_image_pane_a33fc6b4320346518e8fc04eba46944ba}
+
+\begin{DoxyCompactList}\small\item\em The item to display images for. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_image_pane_a17b7311739216de4089379e05cf9c59d}{Q\-V\-Box\-Layout $\ast$ \hyperlink{class_u_i_1_1_image_pane_a17b7311739216de4089379e05cf9c59d}{my\-Main\-Layout}}\label{class_u_i_1_1_image_pane_a17b7311739216de4089379e05cf9c59d}
+
+\begin{DoxyCompactList}\small\item\em The main layout of this widget. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_image_pane_abd90b87bb254cb8377f681d731974b49}{\hyperlink{class_u_i_1_1_image_item_widget}{Image\-Item\-Widget} $\ast$ \hyperlink{class_u_i_1_1_image_pane_abd90b87bb254cb8377f681d731974b49}{my\-Current\-Icon}}\label{class_u_i_1_1_image_pane_abd90b87bb254cb8377f681d731974b49}
+
+\begin{DoxyCompactList}\small\item\em The icon image displayed. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_image_pane_a1fd63418f1005a58a9f6b5fdb33802f2}{\hyperlink{class_u_i_1_1_item_list_widget}{Item\-List\-Widget} $\ast$ \hyperlink{class_u_i_1_1_image_pane_a1fd63418f1005a58a9f6b5fdb33802f2}{my\-Icon\-List}}\label{class_u_i_1_1_image_pane_a1fd63418f1005a58a9f6b5fdb33802f2}
+
+\begin{DoxyCompactList}\small\item\em The list of icon images the user can choose from. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_image_pane_a4a015fcb74110f915435c6da3c6d7f40}{\hyperlink{class_u_i_1_1_image_item_widget}{Image\-Item\-Widget} $\ast$ \hyperlink{class_u_i_1_1_image_pane_a4a015fcb74110f915435c6da3c6d7f40}{my\-Current\-Fanart}}\label{class_u_i_1_1_image_pane_a4a015fcb74110f915435c6da3c6d7f40}
+
+\begin{DoxyCompactList}\small\item\em The fanart image displayed. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_image_pane_a0f09c6af89b70c8d9711ceff4c91d5ea}{\hyperlink{class_u_i_1_1_item_list_widget}{Item\-List\-Widget} $\ast$ \hyperlink{class_u_i_1_1_image_pane_a0f09c6af89b70c8d9711ceff4c91d5ea}{my\-Fanart\-List}}\label{class_u_i_1_1_image_pane_a0f09c6af89b70c8d9711ceff4c91d5ea}
+
+\begin{DoxyCompactList}\small\item\em The list of fanart images the user can choose from. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Defines a class that holds icons and fanart images. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_u_i_1_1_image_pane_a6db6b50ddb928b11e5b3fa55d1207ddb}{\index{U\-I\-::\-Image\-Pane@{U\-I\-::\-Image\-Pane}!Image\-Pane@{Image\-Pane}}
+\index{Image\-Pane@{Image\-Pane}!UI::ImagePane@{U\-I\-::\-Image\-Pane}}
+\subsubsection[{Image\-Pane}]{\setlength{\rightskip}{0pt plus 5cm}Image\-Pane\-::\-Image\-Pane (
+\begin{DoxyParamCaption}
+\item[{Q\-Widget $\ast$}]{parent}
+\end{DoxyParamCaption}
+)}}\label{class_u_i_1_1_image_pane_a6db6b50ddb928b11e5b3fa55d1207ddb}
+
+
+Make with the given parent. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & The parent widget. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_u_i_1_1_image_pane_ad51420f7fd9e23cc29fdf370fcb5ec81}{\index{U\-I\-::\-Image\-Pane@{U\-I\-::\-Image\-Pane}!fanart\-Changed@{fanart\-Changed}}
+\index{fanart\-Changed@{fanart\-Changed}!UI::ImagePane@{U\-I\-::\-Image\-Pane}}
+\subsubsection[{fanart\-Changed}]{\setlength{\rightskip}{0pt plus 5cm}void U\-I\-::\-Image\-Pane\-::fanart\-Changed (
+\begin{DoxyParamCaption}
+\item[{Q\-Pixmap}]{image}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{class_u_i_1_1_image_pane_ad51420f7fd9e23cc29fdf370fcb5ec81}
+
+
+Sent when the fanart image is changed. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em image} & The new fanart image. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_image_pane_a7103b1d346c39b8e32cb02ee6c329ef5}{\index{U\-I\-::\-Image\-Pane@{U\-I\-::\-Image\-Pane}!icon\-Changed@{icon\-Changed}}
+\index{icon\-Changed@{icon\-Changed}!UI::ImagePane@{U\-I\-::\-Image\-Pane}}
+\subsubsection[{icon\-Changed}]{\setlength{\rightskip}{0pt plus 5cm}void U\-I\-::\-Image\-Pane\-::icon\-Changed (
+\begin{DoxyParamCaption}
+\item[{Q\-Pixmap}]{image}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}}\label{class_u_i_1_1_image_pane_a7103b1d346c39b8e32cb02ee6c329ef5}
+
+
+Sent when the icon image is changed. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em image} & The new icon image. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_image_pane_ac571e70bddc2b65f77d8e24a72268e0c}{\index{U\-I\-::\-Image\-Pane@{U\-I\-::\-Image\-Pane}!respond\-To\-Fanart\-Change@{respond\-To\-Fanart\-Change}}
+\index{respond\-To\-Fanart\-Change@{respond\-To\-Fanart\-Change}!UI::ImagePane@{U\-I\-::\-Image\-Pane}}
+\subsubsection[{respond\-To\-Fanart\-Change}]{\setlength{\rightskip}{0pt plus 5cm}void Image\-Pane\-::respond\-To\-Fanart\-Change (
+\begin{DoxyParamCaption}
+\item[{{\bf Item\-Widget} $\ast$}]{fanart}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}}\label{class_u_i_1_1_image_pane_ac571e70bddc2b65f77d8e24a72268e0c}
+
+
+Internal slot for handling fanart image changes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fanart} & The image item selected. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_image_pane_ac479efb7416b73f07138c009ddf5111d}{\index{U\-I\-::\-Image\-Pane@{U\-I\-::\-Image\-Pane}!respond\-To\-Icon\-Change@{respond\-To\-Icon\-Change}}
+\index{respond\-To\-Icon\-Change@{respond\-To\-Icon\-Change}!UI::ImagePane@{U\-I\-::\-Image\-Pane}}
+\subsubsection[{respond\-To\-Icon\-Change}]{\setlength{\rightskip}{0pt plus 5cm}void Image\-Pane\-::respond\-To\-Icon\-Change (
+\begin{DoxyParamCaption}
+\item[{{\bf Item\-Widget} $\ast$}]{icon}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}}\label{class_u_i_1_1_image_pane_ac479efb7416b73f07138c009ddf5111d}
+
+
+Internal slot for handling icon image changes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em icon} & The image item selected. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_image_pane_ae3a982f253a5a296d003217c87b52db7}{\index{U\-I\-::\-Image\-Pane@{U\-I\-::\-Image\-Pane}!respond\-To\-Temp\-Fanart\-Change@{respond\-To\-Temp\-Fanart\-Change}}
+\index{respond\-To\-Temp\-Fanart\-Change@{respond\-To\-Temp\-Fanart\-Change}!UI::ImagePane@{U\-I\-::\-Image\-Pane}}
+\subsubsection[{respond\-To\-Temp\-Fanart\-Change}]{\setlength{\rightskip}{0pt plus 5cm}void Image\-Pane\-::respond\-To\-Temp\-Fanart\-Change (
+\begin{DoxyParamCaption}
+\item[{{\bf Item\-Widget} $\ast$}]{fanart}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}}\label{class_u_i_1_1_image_pane_ae3a982f253a5a296d003217c87b52db7}
+
+
+Internal slot for handling temp fanart image changes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fanart} & The image item highlighted. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_image_pane_a3193fe6b3e2928c959ce4554e750b56f}{\index{U\-I\-::\-Image\-Pane@{U\-I\-::\-Image\-Pane}!respond\-To\-Temp\-Icon\-Change@{respond\-To\-Temp\-Icon\-Change}}
+\index{respond\-To\-Temp\-Icon\-Change@{respond\-To\-Temp\-Icon\-Change}!UI::ImagePane@{U\-I\-::\-Image\-Pane}}
+\subsubsection[{respond\-To\-Temp\-Icon\-Change}]{\setlength{\rightskip}{0pt plus 5cm}void Image\-Pane\-::respond\-To\-Temp\-Icon\-Change (
+\begin{DoxyParamCaption}
+\item[{{\bf Item\-Widget} $\ast$}]{icon}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}}\label{class_u_i_1_1_image_pane_a3193fe6b3e2928c959ce4554e750b56f}
+
+
+Internal slot for handling temp icon image changes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em icon} & The image item highlighted. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_image_pane_a1f1351fdd0de78875bdd6d8a4a2aa2a3}{\index{U\-I\-::\-Image\-Pane@{U\-I\-::\-Image\-Pane}!set\-Item@{set\-Item}}
+\index{set\-Item@{set\-Item}!UI::ImagePane@{U\-I\-::\-Image\-Pane}}
+\subsubsection[{set\-Item}]{\setlength{\rightskip}{0pt plus 5cm}void Image\-Pane\-::set\-Item (
+\begin{DoxyParamCaption}
+\item[{{\bf A\-W\-E\-::\-Media\-Item} $\ast$}]{item}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_u_i_1_1_image_pane_a1f1351fdd0de78875bdd6d8a4a2aa2a3}
+
+
+Set the item to display images for. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em item} & The item to display images for. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/ui/pane/Image\-Pane.\-h\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/moc\-\_\-\-Image\-Pane.\-cpp\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/ui/pane/Image\-Pane.\-cpp\end{DoxyCompactItemize}

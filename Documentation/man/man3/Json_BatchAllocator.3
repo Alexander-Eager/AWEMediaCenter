@@ -1,4 +1,4 @@
-.TH "Json::BatchAllocator< AllocatedType, objectPerAllocation >" 3 "Fri Apr 18 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.TH "Json::BatchAllocator< AllocatedType, objectPerAllocation >" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,6 +6,13 @@ Json::BatchAllocator< AllocatedType, objectPerAllocation > \-
 .SH SYNOPSIS
 .br
 .PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBBatchInfo\fP"
+.br
+.in -1c
 .SS "Public Types"
 
 .in +1c
@@ -24,6 +31,40 @@ Json::BatchAllocator< AllocatedType, objectPerAllocation > \-
 .br
 .ti -1c
 .RI "void \fBrelease\fP (AllocatedType *object)"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBatchAllocator\fP (const \fBBatchAllocator\fP &)"
+.br
+.ti -1c
+.RI "void \fBoperator=\fP (const \fBBatchAllocator\fP &)"
+.br
+.in -1c
+.SS "Static Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBBatchInfo\fP * \fBallocateBatch\fP (unsigned int objectsPerPage)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBBatchInfo\fP * \fBbatches_\fP"
+.br
+.ti -1c
+.RI "\fBBatchInfo\fP * \fBcurrentBatch_\fP"
+.br
+.ti -1c
+.RI "AllocatedType * \fBfreeHead_\fP"
+.br
+.RI "\fIHead of a single linked list within the allocated space of freeed object\&. \fP"
+.ti -1c
+.RI "unsigned int \fBobjectsPerPage_\fP"
 .br
 .in -1c
 .SH "Member Function Documentation"

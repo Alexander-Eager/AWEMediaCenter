@@ -66,7 +66,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -82,21 +82,33 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><dl class="reflist">
-<dt><a class="anchor" id="_todo000006"></a>Class <a class="el" href="class_a_w_e_1_1_global_settings.html">AWE::GlobalSettings</a>  </dt>
-<dd><p class="startdd">Skins... </p>
-<p class="enddd">Get a better folder adding system. </p>
+<dt><a class="anchor" id="_todo000008"></a>Class <a class="el" href="class_a_w_e_1_1_global_settings.html">AWE::GlobalSettings</a>  </dt>
+<dd><p class="startdd">Skins </p>
+<p class="enddd"><a class="el" href="namespace_u_i.html" title="Contains the user interface classes of AWEMC. ">UI</a> delegate (with user prompting) </p>
 </dd>
 <dt><a class="anchor" id="_todo000002"></a>Class <a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html">AWE::JSONScraper</a>  </dt>
 <dd>Change <code>myType</code> to be the mystical know-all configuration object. </dd>
-<dt><a class="anchor" id="_todo000003"></a>Member <a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#afbed287c0fcae8d797552c711854b4e9">AWE::JSONScraper::scrapeDataForFile</a>  (MediaFile *file, bool askUser, bool import)</dt>
-<dd><code>import</code> and <code>askUser</code> </dd>
+<dt><a class="anchor" id="_todo000006"></a>Member <a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#ac73167b683a6dec42cd84211e337dc46">AWE::JSONScraper::checkProcedureValidity</a>  (<a class="el" href="class_json_1_1_value.html" title="Represents a JSON value. ">Json::Value</a> &amp;procedure, int capCount)</dt>
+<dd>This entire function (which at the moment just returns <code>true</code>) </dd>
+<dt><a class="anchor" id="_todo000005"></a>Member <a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#ac83bcfb3d69108024c23ff49e8b8c274">AWE::JSONScraper::checkValidity</a>  ()</dt>
+<dd>This entire function (which at the moment just returns <code>true</code>) </dd>
+<dt><a class="anchor" id="_todo000003"></a>Member <a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#a883ec1b6814b4f192a28f32c8f47dd39">AWE::JSONScraper::scrapeDataForFile</a>  (MediaItem *file, bool askUser, bool import, bool inheritMetadata)</dt>
+<dd>boolean flags </dd>
+<dt><a class="anchor" id="_todo000004"></a>Member <a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#a1ccab4a9c36f8420222a75de1282eb2f">AWE::JSONScraper::scrapeDataForFile</a>  (Folder *placeInMe, GlobalSettings *globalSettings, QDir file, bool askUser, bool import, bool inheritMetadata)</dt>
+<dd>boolean flags </dd>
 <dt><a class="anchor" id="_todo000001"></a>Class <a class="el" href="class_a_w_e_1_1_media_player.html">AWE::MediaPlayer</a>  </dt>
-<dd>Make plugin interface. </dd>
+<dd>Make plugin interface.  </dd>
+<dt><a class="anchor" id="_todo000007"></a>Member <a class="el" href="class_a_w_e_1_1_metadata_scraper.html#af3708cc05181299d7c5b37afc1568b3d">AWE::MetadataScraper::scrapeDataForFile</a>  (Folder *placeInMe, GlobalSettings *globalSettings, QDir file, bool askUser, bool import, bool inheritMetadata)=0</dt>
+<dd>boolean flags </dd>
+<dt><a class="anchor" id="_todo000009"></a>Namespace <a class="el" href="namespace_u_i.html">UI</a>  </dt>
+<dd>Create the <a class="el" href="namespace_u_i.html" title="Contains the user interface classes of AWEMC. ">UI</a> delegate class.  </dd>
+<dt><a class="anchor" id="_todo000010"></a>Class <a class="el" href="class_u_i_1_1_folder_pane.html">UI::FolderPane</a>  </dt>
+<dd>Other layout options, possibly with icons. </dd>
 </dl>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 18 2014 16:58:43 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 10 2014 22:24:00 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -18,6 +18,75 @@ Writes a \hyperlink{class_json_1_1_value}{Value} in \href{http://www.json.org}{\
 \item 
 void \hyperlink{class_json_1_1_styled_stream_writer_a07807741c6c43ecd35885a87234d0805}{write} (std\-::ostream \&out, const \hyperlink{class_json_1_1_value}{Value} \&root)
 \begin{DoxyCompactList}\small\item\em Serialize a \hyperlink{class_json_1_1_value}{Value} in \href{http://www.json.org}{\tt J\-S\-O\-N} format. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_json_1_1_styled_stream_writer_ad0e42dda934aaee87fa9434c30186a9b}{typedef std\-::vector$<$ std\-::string $>$ {\bfseries Child\-Values}}\label{class_json_1_1_styled_stream_writer_ad0e42dda934aaee87fa9434c30186a9b}
+
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_json_1_1_styled_stream_writer_a4359250e09273fa0144021684be001ae}{void {\bfseries write\-Value} (const \hyperlink{class_json_1_1_value}{Value} \&value)}\label{class_json_1_1_styled_stream_writer_a4359250e09273fa0144021684be001ae}
+
+\item 
+\hypertarget{class_json_1_1_styled_stream_writer_a606f2ddd58093c9b019d452c1b6f09fe}{void {\bfseries write\-Array\-Value} (const \hyperlink{class_json_1_1_value}{Value} \&value)}\label{class_json_1_1_styled_stream_writer_a606f2ddd58093c9b019d452c1b6f09fe}
+
+\item 
+\hypertarget{class_json_1_1_styled_stream_writer_a88f4d342cf25c73aabf77c1b8ba01e44}{bool {\bfseries is\-Multine\-Array} (const \hyperlink{class_json_1_1_value}{Value} \&value)}\label{class_json_1_1_styled_stream_writer_a88f4d342cf25c73aabf77c1b8ba01e44}
+
+\item 
+\hypertarget{class_json_1_1_styled_stream_writer_ae626a0ab8a529e0e524924f1ab3b1a0d}{void {\bfseries push\-Value} (const std\-::string \&value)}\label{class_json_1_1_styled_stream_writer_ae626a0ab8a529e0e524924f1ab3b1a0d}
+
+\item 
+\hypertarget{class_json_1_1_styled_stream_writer_a5a52fa5b406f1580a61dde3b5638e76d}{void {\bfseries write\-Indent} ()}\label{class_json_1_1_styled_stream_writer_a5a52fa5b406f1580a61dde3b5638e76d}
+
+\item 
+\hypertarget{class_json_1_1_styled_stream_writer_a602fd51aa92cac1f18351806f1d9c8cc}{void {\bfseries write\-With\-Indent} (const std\-::string \&value)}\label{class_json_1_1_styled_stream_writer_a602fd51aa92cac1f18351806f1d9c8cc}
+
+\item 
+\hypertarget{class_json_1_1_styled_stream_writer_ab49409578422aa73b060e3492dd6c72a}{void {\bfseries indent} ()}\label{class_json_1_1_styled_stream_writer_ab49409578422aa73b060e3492dd6c72a}
+
+\item 
+\hypertarget{class_json_1_1_styled_stream_writer_a74d8fb9beecd29759d7b79f430386358}{void {\bfseries unindent} ()}\label{class_json_1_1_styled_stream_writer_a74d8fb9beecd29759d7b79f430386358}
+
+\item 
+\hypertarget{class_json_1_1_styled_stream_writer_a79c3c2b320475035c47b2db484a3e434}{void {\bfseries write\-Comment\-Before\-Value} (const \hyperlink{class_json_1_1_value}{Value} \&root)}\label{class_json_1_1_styled_stream_writer_a79c3c2b320475035c47b2db484a3e434}
+
+\item 
+\hypertarget{class_json_1_1_styled_stream_writer_ad2ca860e317ca91d6b2932535b4ce9c7}{void {\bfseries write\-Comment\-After\-Value\-On\-Same\-Line} (const \hyperlink{class_json_1_1_value}{Value} \&root)}\label{class_json_1_1_styled_stream_writer_ad2ca860e317ca91d6b2932535b4ce9c7}
+
+\item 
+\hypertarget{class_json_1_1_styled_stream_writer_ad2892f57171919fa4f8a5ae5574755cf}{bool {\bfseries has\-Comment\-For\-Value} (const \hyperlink{class_json_1_1_value}{Value} \&value)}\label{class_json_1_1_styled_stream_writer_ad2892f57171919fa4f8a5ae5574755cf}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_json_1_1_styled_stream_writer_a5a5498796a3e12abca5ac0ca0be09535}{static std\-::string {\bfseries normalize\-E\-O\-L} (const std\-::string \&text)}\label{class_json_1_1_styled_stream_writer_a5a5498796a3e12abca5ac0ca0be09535}
+
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_json_1_1_styled_stream_writer_aafd62e00a401df73fcacb2e410114b3d}{Child\-Values {\bfseries child\-Values\-\_\-}}\label{class_json_1_1_styled_stream_writer_aafd62e00a401df73fcacb2e410114b3d}
+
+\item 
+\hypertarget{class_json_1_1_styled_stream_writer_aa6a4be02f654d9105af8fa560b676967}{std\-::ostream $\ast$ {\bfseries document\-\_\-}}\label{class_json_1_1_styled_stream_writer_aa6a4be02f654d9105af8fa560b676967}
+
+\item 
+\hypertarget{class_json_1_1_styled_stream_writer_af9ebd4487e7f69bd1074e6ce29c7cf02}{std\-::string {\bfseries indent\-String\-\_\-}}\label{class_json_1_1_styled_stream_writer_af9ebd4487e7f69bd1074e6ce29c7cf02}
+
+\item 
+\hypertarget{class_json_1_1_styled_stream_writer_a67fdaa6758885f082b6a7ede52b0ab91}{int {\bfseries right\-Margin\-\_\-}}\label{class_json_1_1_styled_stream_writer_a67fdaa6758885f082b6a7ede52b0ab91}
+
+\item 
+\hypertarget{class_json_1_1_styled_stream_writer_a58dc0eaf85c58b83d19d6bba8eead27d}{std\-::string {\bfseries indentation\-\_\-}}\label{class_json_1_1_styled_stream_writer_a58dc0eaf85c58b83d19d6bba8eead27d}
+
+\item 
+\hypertarget{class_json_1_1_styled_stream_writer_a4e4bb7fc223b2652b72b523b1ce414fa}{bool {\bfseries add\-Child\-Values\-\_\-}}\label{class_json_1_1_styled_stream_writer_a4e4bb7fc223b2652b72b523b1ce414fa}
+
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}

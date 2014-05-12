@@ -1,0 +1,296 @@
+\hypertarget{class_u_i_1_1_media_item_widget}{\section{U\-I\-:\-:Media\-Item\-Widget Class Reference}
+\label{class_u_i_1_1_media_item_widget}\index{U\-I\-::\-Media\-Item\-Widget@{U\-I\-::\-Media\-Item\-Widget}}
+}
+
+
+A list widget class that holds a media item.  
+
+
+
+
+{\ttfamily \#include $<$Media\-Item\-Widget.\-h$>$}
+
+Inheritance diagram for U\-I\-:\-:Media\-Item\-Widget\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_u_i_1_1_media_item_widget}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_u_i_1_1_media_item_widget_aa1dc4a9a9dc77d8bd367fca6d8d6a35a}{Display\-Mode} \{ {\bfseries Name\-Only}, 
+{\bfseries Icon\-Only}, 
+{\bfseries Name\-And\-Icon\-Left\-To\-Right}, 
+{\bfseries Name\-And\-Icon\-Top\-To\-Bottom}
+ \}
+\begin{DoxyCompactList}\small\item\em Values describing the display modes for this widget. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_u_i_1_1_media_item_widget_a8d7aecdd4973a962746724dc095a52a8}{set\-Media\-Item} (\hyperlink{class_a_w_e_1_1_media_item}{A\-W\-E\-::\-Media\-Item} $\ast$item)
+\begin{DoxyCompactList}\small\item\em Change the media item. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_u_i_1_1_media_item_widget_ad2071559c74b721a2a78bad60cfaa2c3}{Media\-Item\-Widget} (Q\-Widget $\ast$parent, \hyperlink{class_a_w_e_1_1_media_item}{A\-W\-E\-::\-Media\-Item} $\ast$item, bool highlightable=false)
+\begin{DoxyCompactList}\small\item\em Construct for the given media item. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_u_i_1_1_media_item_widget_a36b5b52167a1b16fe50dc0a47966c574}{fix\-Size\-To\-Fit\-In} (Q\-Size size)
+\begin{DoxyCompactList}\small\item\em Fix this item's size to fit in the given size. \end{DoxyCompactList}\item 
+virtual Q\-Size \hyperlink{class_u_i_1_1_media_item_widget_a2f4856366fb1b837095d99c2b830326a}{get\-Size\-To\-Fit\-In} () const 
+\begin{DoxyCompactList}\small\item\em Get the size this item has to fit in. \end{DoxyCompactList}\item 
+virtual Q\-String \hyperlink{class_u_i_1_1_media_item_widget_a05d19d5507a00684f76578915b24f509}{get\-Item\-Type} () const 
+\begin{DoxyCompactList}\small\item\em Get the item type, \char`\"{}\-Media Item\char`\"{}. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_u_i_1_1_media_item_widget_a61b9c8ab9a86507ffaf2cca9284a8744}{set\-Display\-Mode} (\hyperlink{class_u_i_1_1_media_item_widget_aa1dc4a9a9dc77d8bd367fca6d8d6a35a}{Display\-Mode} mode)
+\begin{DoxyCompactList}\small\item\em Set the display mode for this widget. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_u_i_1_1_media_item_widget_aa1dc4a9a9dc77d8bd367fca6d8d6a35a}{Display\-Mode} \hyperlink{class_u_i_1_1_media_item_widget_a132200400a3ff4e361e6634d9926bb10}{get\-Display\-Mode} () const 
+\begin{DoxyCompactList}\small\item\em Get the display mode for this widget. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_a_w_e_1_1_media_item}{A\-W\-E\-::\-Media\-Item} $\ast$ \hyperlink{class_u_i_1_1_media_item_widget_a2c46035bc9e8733507be9926167e9288}{get\-Media\-Item} () const 
+\begin{DoxyCompactList}\small\item\em Gets the media item represented by this widget. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_u_i_1_1_media_item_widget_ad3ebd1ac00101b64c1bd191805bffcc9}{void \hyperlink{class_u_i_1_1_media_item_widget_ad3ebd1ac00101b64c1bd191805bffcc9}{respond\-To\-Click} ()}\label{class_u_i_1_1_media_item_widget_ad3ebd1ac00101b64c1bd191805bffcc9}
+
+\begin{DoxyCompactList}\small\item\em Propogate click events for the sub-\/widgets to this widget. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_media_item_widget_a5da3c15bef064b501368da315bb501b6}{void \hyperlink{class_u_i_1_1_media_item_widget_a5da3c15bef064b501368da315bb501b6}{respond\-To\-Double\-Click} ()}\label{class_u_i_1_1_media_item_widget_a5da3c15bef064b501368da315bb501b6}
+
+\begin{DoxyCompactList}\small\item\em Propogate double-\/click events for the sub-\/widgets to this widget. \end{DoxyCompactList}\item 
+void \hyperlink{class_u_i_1_1_media_item_widget_ada5b4fb905bbf7f1f2665afe58629f7f}{respond\-To\-Icon\-Change} (int index)
+\begin{DoxyCompactList}\small\item\em Change the displayed icon when the default icon is changed. \end{DoxyCompactList}\item 
+void \hyperlink{class_u_i_1_1_media_item_widget_a6c6ab3acf5b48d45c2f17a9899afabfe}{respond\-To\-Name\-Change} (Q\-String name)
+\begin{DoxyCompactList}\small\item\em Change the displayed text when the name is changed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_u_i_1_1_media_item_widget_a1f19a20fc857e17c072f447de5e8059f}{void \hyperlink{class_u_i_1_1_media_item_widget_a1f19a20fc857e17c072f447de5e8059f}{enact\-Display\-Mode} ()}\label{class_u_i_1_1_media_item_widget_a1f19a20fc857e17c072f447de5e8059f}
+
+\begin{DoxyCompactList}\small\item\em Helper function to switch display modes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_u_i_1_1_media_item_widget_a29ea27b044dbd6ab90d5397c4062fd76}{\hyperlink{class_a_w_e_1_1_media_item}{A\-W\-E\-::\-Media\-Item} $\ast$ \hyperlink{class_u_i_1_1_media_item_widget_a29ea27b044dbd6ab90d5397c4062fd76}{my\-Media\-Item}}\label{class_u_i_1_1_media_item_widget_a29ea27b044dbd6ab90d5397c4062fd76}
+
+\begin{DoxyCompactList}\small\item\em The media item. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_media_item_widget_aa9a5b0e00096817e0dfe385a89547913}{\hyperlink{class_u_i_1_1_media_item_widget_aa1dc4a9a9dc77d8bd367fca6d8d6a35a}{Display\-Mode} \hyperlink{class_u_i_1_1_media_item_widget_aa9a5b0e00096817e0dfe385a89547913}{my\-Display\-Mode}}\label{class_u_i_1_1_media_item_widget_aa9a5b0e00096817e0dfe385a89547913}
+
+\begin{DoxyCompactList}\small\item\em The display mode. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_media_item_widget_a82c2afe97eb313ece4cda51b026422ab}{Q\-Box\-Layout $\ast$ \hyperlink{class_u_i_1_1_media_item_widget_a82c2afe97eb313ece4cda51b026422ab}{my\-Layout}}\label{class_u_i_1_1_media_item_widget_a82c2afe97eb313ece4cda51b026422ab}
+
+\begin{DoxyCompactList}\small\item\em The layout for the name and icon. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_media_item_widget_a4c200274d07f40a99b0357e3de64eebb}{\hyperlink{class_u_i_1_1_text_item_widget}{Text\-Item\-Widget} $\ast$ \hyperlink{class_u_i_1_1_media_item_widget_a4c200274d07f40a99b0357e3de64eebb}{my\-Name}}\label{class_u_i_1_1_media_item_widget_a4c200274d07f40a99b0357e3de64eebb}
+
+\begin{DoxyCompactList}\small\item\em The name of the item. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_media_item_widget_a46cd25f519fb45456ca69c17a90affd2}{\hyperlink{class_u_i_1_1_image_item_widget}{Image\-Item\-Widget} $\ast$ \hyperlink{class_u_i_1_1_media_item_widget_a46cd25f519fb45456ca69c17a90affd2}{my\-Icon}}\label{class_u_i_1_1_media_item_widget_a46cd25f519fb45456ca69c17a90affd2}
+
+\begin{DoxyCompactList}\small\item\em The icon of the item. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_media_item_widget_a988713da25cc222f0cd397ed86810925}{Q\-Size \hyperlink{class_u_i_1_1_media_item_widget_a988713da25cc222f0cd397ed86810925}{my\-Fit\-In\-Size}}\label{class_u_i_1_1_media_item_widget_a988713da25cc222f0cd397ed86810925}
+
+\begin{DoxyCompactList}\small\item\em The size to fit in. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A list widget class that holds a media item. 
+
+This can be displayed as the name of the item, its default icon, or both. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_u_i_1_1_media_item_widget_ad2071559c74b721a2a78bad60cfaa2c3}{\index{U\-I\-::\-Media\-Item\-Widget@{U\-I\-::\-Media\-Item\-Widget}!Media\-Item\-Widget@{Media\-Item\-Widget}}
+\index{Media\-Item\-Widget@{Media\-Item\-Widget}!UI::MediaItemWidget@{U\-I\-::\-Media\-Item\-Widget}}
+\subsubsection[{Media\-Item\-Widget}]{\setlength{\rightskip}{0pt plus 5cm}Media\-Item\-Widget\-::\-Media\-Item\-Widget (
+\begin{DoxyParamCaption}
+\item[{Q\-Widget $\ast$}]{parent, }
+\item[{{\bf A\-W\-E\-::\-Media\-Item} $\ast$}]{item, }
+\item[{bool}]{highlightable = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}}\label{class_u_i_1_1_media_item_widget_ad2071559c74b721a2a78bad60cfaa2c3}
+
+
+Construct for the given media item. 
+
+By default, this is displayed as the name of the file.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em parent} & The parent widget. \\
+\hline
+\mbox{\tt in}  & {\em item} & The media item this widget represents. \\
+\hline
+ & {\em highlightable} & {\ttfamily true} if this widget can be highlighted and selected, {\ttfamily false} if not. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_u_i_1_1_media_item_widget_a36b5b52167a1b16fe50dc0a47966c574}{\index{U\-I\-::\-Media\-Item\-Widget@{U\-I\-::\-Media\-Item\-Widget}!fix\-Size\-To\-Fit\-In@{fix\-Size\-To\-Fit\-In}}
+\index{fix\-Size\-To\-Fit\-In@{fix\-Size\-To\-Fit\-In}!UI::MediaItemWidget@{U\-I\-::\-Media\-Item\-Widget}}
+\subsubsection[{fix\-Size\-To\-Fit\-In}]{\setlength{\rightskip}{0pt plus 5cm}bool Media\-Item\-Widget\-::fix\-Size\-To\-Fit\-In (
+\begin{DoxyParamCaption}
+\item[{Q\-Size}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_u_i_1_1_media_item_widget_a36b5b52167a1b16fe50dc0a47966c574}
+
+
+Fix this item's size to fit in the given size. 
+
+If {\ttfamily size == Q\-Size(-\/1, -\/1)}, the item should not fix its size.
+
+This is mostly used by {\ttfamily \hyperlink{class_u_i_1_1_item_collection_widget}{Item\-Collection\-Widget}}s to make sure that the item does not get swallowed up by the spacers used to align the items.
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & The size to fit inside.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if this item can fit in {\ttfamily size}, {\ttfamily false} if it cannot. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_u_i_1_1_item_widget_ad90435198f488bac4217cf1caca622d9}{U\-I\-::\-Item\-Widget}.
+
+\hypertarget{class_u_i_1_1_media_item_widget_a132200400a3ff4e361e6634d9926bb10}{\index{U\-I\-::\-Media\-Item\-Widget@{U\-I\-::\-Media\-Item\-Widget}!get\-Display\-Mode@{get\-Display\-Mode}}
+\index{get\-Display\-Mode@{get\-Display\-Mode}!UI::MediaItemWidget@{U\-I\-::\-Media\-Item\-Widget}}
+\subsubsection[{get\-Display\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Media\-Item\-Widget\-::\-Display\-Mode} Media\-Item\-Widget\-::get\-Display\-Mode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_u_i_1_1_media_item_widget_a132200400a3ff4e361e6634d9926bb10}
+
+
+Get the display mode for this widget. 
+
+\begin{DoxyReturn}{Returns}
+The display mode for this widget. 
+\end{DoxyReturn}
+\hypertarget{class_u_i_1_1_media_item_widget_a05d19d5507a00684f76578915b24f509}{\index{U\-I\-::\-Media\-Item\-Widget@{U\-I\-::\-Media\-Item\-Widget}!get\-Item\-Type@{get\-Item\-Type}}
+\index{get\-Item\-Type@{get\-Item\-Type}!UI::MediaItemWidget@{U\-I\-::\-Media\-Item\-Widget}}
+\subsubsection[{get\-Item\-Type}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String Media\-Item\-Widget\-::get\-Item\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_u_i_1_1_media_item_widget_a05d19d5507a00684f76578915b24f509}
+
+
+Get the item type, \char`\"{}\-Media Item\char`\"{}. 
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}\-Media Item\char`\"{}. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_u_i_1_1_item_widget_a83f42fd7ce38235e3fee565e32c4abbd}{U\-I\-::\-Item\-Widget}.
+
+\hypertarget{class_u_i_1_1_media_item_widget_a2c46035bc9e8733507be9926167e9288}{\index{U\-I\-::\-Media\-Item\-Widget@{U\-I\-::\-Media\-Item\-Widget}!get\-Media\-Item@{get\-Media\-Item}}
+\index{get\-Media\-Item@{get\-Media\-Item}!UI::MediaItemWidget@{U\-I\-::\-Media\-Item\-Widget}}
+\subsubsection[{get\-Media\-Item}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Media\-Item} $\ast$ Media\-Item\-Widget\-::get\-Media\-Item (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_u_i_1_1_media_item_widget_a2c46035bc9e8733507be9926167e9288}
+
+
+Gets the media item represented by this widget. 
+
+\begin{DoxyReturn}{Returns}
+The media item represented by this widget. 
+\end{DoxyReturn}
+\hypertarget{class_u_i_1_1_media_item_widget_a2f4856366fb1b837095d99c2b830326a}{\index{U\-I\-::\-Media\-Item\-Widget@{U\-I\-::\-Media\-Item\-Widget}!get\-Size\-To\-Fit\-In@{get\-Size\-To\-Fit\-In}}
+\index{get\-Size\-To\-Fit\-In@{get\-Size\-To\-Fit\-In}!UI::MediaItemWidget@{U\-I\-::\-Media\-Item\-Widget}}
+\subsubsection[{get\-Size\-To\-Fit\-In}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Size Media\-Item\-Widget\-::get\-Size\-To\-Fit\-In (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_u_i_1_1_media_item_widget_a2f4856366fb1b837095d99c2b830326a}
+
+
+Get the size this item has to fit in. 
+
+This is the size set by {\ttfamily \hyperlink{class_u_i_1_1_media_item_widget_a36b5b52167a1b16fe50dc0a47966c574}{fix\-Size\-To\-Fit\-In()}}.
+
+\begin{DoxyReturn}{Returns}
+The size this item has to fit in. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_u_i_1_1_item_widget_a7f1653d1f9cb81cb2266c4a580a12d2b}{U\-I\-::\-Item\-Widget}.
+
+\hypertarget{class_u_i_1_1_media_item_widget_ada5b4fb905bbf7f1f2665afe58629f7f}{\index{U\-I\-::\-Media\-Item\-Widget@{U\-I\-::\-Media\-Item\-Widget}!respond\-To\-Icon\-Change@{respond\-To\-Icon\-Change}}
+\index{respond\-To\-Icon\-Change@{respond\-To\-Icon\-Change}!UI::MediaItemWidget@{U\-I\-::\-Media\-Item\-Widget}}
+\subsubsection[{respond\-To\-Icon\-Change}]{\setlength{\rightskip}{0pt plus 5cm}void Media\-Item\-Widget\-::respond\-To\-Icon\-Change (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}}\label{class_u_i_1_1_media_item_widget_ada5b4fb905bbf7f1f2665afe58629f7f}
+
+
+Change the displayed icon when the default icon is changed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index of the new default icon. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_media_item_widget_a6c6ab3acf5b48d45c2f17a9899afabfe}{\index{U\-I\-::\-Media\-Item\-Widget@{U\-I\-::\-Media\-Item\-Widget}!respond\-To\-Name\-Change@{respond\-To\-Name\-Change}}
+\index{respond\-To\-Name\-Change@{respond\-To\-Name\-Change}!UI::MediaItemWidget@{U\-I\-::\-Media\-Item\-Widget}}
+\subsubsection[{respond\-To\-Name\-Change}]{\setlength{\rightskip}{0pt plus 5cm}void Media\-Item\-Widget\-::respond\-To\-Name\-Change (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}}\label{class_u_i_1_1_media_item_widget_a6c6ab3acf5b48d45c2f17a9899afabfe}
+
+
+Change the displayed text when the name is changed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The new name to display. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_media_item_widget_a61b9c8ab9a86507ffaf2cca9284a8744}{\index{U\-I\-::\-Media\-Item\-Widget@{U\-I\-::\-Media\-Item\-Widget}!set\-Display\-Mode@{set\-Display\-Mode}}
+\index{set\-Display\-Mode@{set\-Display\-Mode}!UI::MediaItemWidget@{U\-I\-::\-Media\-Item\-Widget}}
+\subsubsection[{set\-Display\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}void Media\-Item\-Widget\-::set\-Display\-Mode (
+\begin{DoxyParamCaption}
+\item[{{\bf Display\-Mode}}]{mode}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_u_i_1_1_media_item_widget_a61b9c8ab9a86507ffaf2cca9284a8744}
+
+
+Set the display mode for this widget. 
+
+This can be any of the values from {\ttfamily \hyperlink{class_u_i_1_1_media_item_widget_aa1dc4a9a9dc77d8bd367fca6d8d6a35a}{Media\-Item\-Widget\-::\-Display\-Mode}}\-:
+\begin{DoxyItemize}
+\item {\ttfamily Name\-Only}\-: display the name as text.
+\item {\ttfamily Icon\-Only}\-: display the default icon image.
+\item {\ttfamily Name\-And\-Icon\-Left\-To\-Right}\-: display both the name and the default icon image, icon on left.
+\item {\ttfamily Name\-And\-Icon\-Top\-To\-Bottom}\-: display both the name and the default icon image, icon on top.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em mode} & The display mode to use. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_media_item_widget_a8d7aecdd4973a962746724dc095a52a8}{\index{U\-I\-::\-Media\-Item\-Widget@{U\-I\-::\-Media\-Item\-Widget}!set\-Media\-Item@{set\-Media\-Item}}
+\index{set\-Media\-Item@{set\-Media\-Item}!UI::MediaItemWidget@{U\-I\-::\-Media\-Item\-Widget}}
+\subsubsection[{set\-Media\-Item}]{\setlength{\rightskip}{0pt plus 5cm}void Media\-Item\-Widget\-::set\-Media\-Item (
+\begin{DoxyParamCaption}
+\item[{{\bf A\-W\-E\-::\-Media\-Item} $\ast$}]{item}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_u_i_1_1_media_item_widget_a8d7aecdd4973a962746724dc095a52a8}
+
+
+Change the media item. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em item} & The new media item. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/ui/widgets/Media\-Item\-Widget.\-h\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/ui/widgets/Media\-Item\-Widget.\-cpp\end{DoxyCompactItemize}

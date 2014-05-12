@@ -1,0 +1,381 @@
+.TH "AWE::ConfigFile" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AWE::ConfigFile \- 
+.PP
+Holds the information for a configuration file in an abstract way\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ConfigFile\&.h>\fP
+.PP
+Inherits QObject\&.
+.SS "Signals"
+
+.in +1c
+.ti -1c
+.RI "void \fBdataChanged\fP ()"
+.br
+.RI "\fISent when any data member is changed\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBConfigFile\fP (QString file)"
+.br
+.RI "\fIOpen the given config file\&. \fP"
+.ti -1c
+.RI "virtual \fB~ConfigFile\fP ()"
+.br
+.RI "\fIDepathoys this object\&. \fP"
+.ti -1c
+.RI "virtual QString \fBgetConfigFileName\fP () const "
+.br
+.RI "\fIGet this file's name, without the path\&. \fP"
+.ti -1c
+.RI "virtual QDir \fBgetPathToConfigFile\fP () const "
+.br
+.RI "\fIGet the path to this config file, excluding the file name\&. \fP"
+.ti -1c
+.RI "bool \fBhasBeenEdited\fP () const "
+.br
+.RI "\fIDetermine if this config file has been altered since it was read\&. \fP"
+.ti -1c
+.RI "virtual QVariantMap \fBgetData\fP () const "
+.br
+.RI "\fIGet the data held in this config file\&. \fP"
+.ti -1c
+.RI "virtual void \fBsetData\fP (QVariantMap data)"
+.br
+.RI "\fISet the data held in this config file\&. \fP"
+.ti -1c
+.RI "virtual QVariant \fBgetMember\fP (QString path) const "
+.br
+.RI "\fIGet a data member\&. \fP"
+.ti -1c
+.RI "virtual QVariant \fBgetMember\fP (QVariantList path) const "
+.br
+.RI "\fIGet a data member\&. \fP"
+.ti -1c
+.RI "virtual bool \fBsetMember\fP (QString path, QVariant value)"
+.br
+.RI "\fISet a data member to a new value\&. \fP"
+.ti -1c
+.RI "virtual bool \fBsetMember\fP (QVariantList path, QVariant value)"
+.br
+.RI "\fISet a data member to a new value\&. \fP"
+.ti -1c
+.RI "virtual bool \fBappendValueToMember\fP (QString path, QVariant value)"
+.br
+.RI "\fIAppend a value to a list member\&. \fP"
+.ti -1c
+.RI "virtual bool \fBappendValueToMember\fP (QVariantList path, QVariant value)"
+.br
+.RI "\fIAppend a value to a list member\&. \fP"
+.ti -1c
+.RI "virtual bool \fBappendValueToMember\fP (QString path, QString key, QVariant value)"
+.br
+.RI "\fIAppend a key-value pair to a map member\&. \fP"
+.ti -1c
+.RI "virtual bool \fBappendValueToMember\fP (QVariantList path, QString key, QVariant value)"
+.br
+.RI "\fIAppend a key-value pair to a map member\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "QString \fBconfigFileName\fP"
+.br
+.ti -1c
+.RI "QDir \fBpathToConfigFile\fP"
+.br
+.ti -1c
+.RI "QVariantMap \fBdata\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Holds the information for a configuration file in an abstract way\&. 
+
+The configuration files used by \fBAWEMC\fP are all JSON files\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "AWE::ConfigFile::ConfigFile (QStringfile)"
+
+.PP
+Open the given config file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile\fP The file to open\&. If the file does not exist, the config data will be initialized to an empty map\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual bool AWE::ConfigFile::appendValueToMember (QStringpath, QVariantvalue)\fC [virtual]\fP"
+
+.PP
+Append a value to a list member\&. The member must be a list type\&. If it is not, the function will not do anything\&.
+.PP
+\fBSee Also:\fP
+.RS 4
+getMember(QString)
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path to the data member\&. 
+.br
+\fIvalue\fP The value to append to the data member\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the data member exists and is a list, \fCfalse\fP if an error occurred\&. 
+.RE
+.PP
+
+.SS "virtual bool AWE::ConfigFile::appendValueToMember (QVariantListpath, QVariantvalue)\fC [virtual]\fP"
+
+.PP
+Append a value to a list member\&. The member must be a list type\&. If it is not, the function will not do anything\&.
+.PP
+\fBSee Also:\fP
+.RS 4
+getMember(QVariantList)
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path to the data member\&. 
+.br
+\fIvalue\fP The value to append to the data member\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the data member exists and is a list, \fCfalse\fP if an error occurred\&. 
+.RE
+.PP
+
+.SS "virtual bool AWE::ConfigFile::appendValueToMember (QStringpath, QStringkey, QVariantvalue)\fC [virtual]\fP"
+
+.PP
+Append a key-value pair to a map member\&. The member must be a map type\&. If it is not, the function will not do anything\&.
+.PP
+\fBSee Also:\fP
+.RS 4
+getMember(QString)
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path to the data member\&. 
+.br
+\fIkey\fP The key to append to the data member\&. 
+.br
+\fIvalue\fP The value to assign to \fCkey\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the data member exists and is a map, \fCfalse\fP if an error occurred\&. 
+.RE
+.PP
+
+.SS "virtual bool AWE::ConfigFile::appendValueToMember (QVariantListpath, QStringkey, QVariantvalue)\fC [virtual]\fP"
+
+.PP
+Append a key-value pair to a map member\&. The member must be a map type\&. If it is not, the function will not do anything\&.
+.PP
+\fBSee Also:\fP
+.RS 4
+getMember(QVariantList)
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path to the data member\&. 
+.br
+\fIkey\fP The key to append to the data member\&. 
+.br
+\fIvalue\fP The value to assign to \fCkey\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the data member exists and is a map, \fCfalse\fP if an error occurred\&. 
+.RE
+.PP
+
+.SS "virtual QString AWE::ConfigFile::getConfigFileName () const\fC [virtual]\fP"
+
+.PP
+Get this file's name, without the path\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The config file name\&. 
+.RE
+.PP
+
+.SS "virtual QVariantMap AWE::ConfigFile::getData () const\fC [virtual]\fP"
+
+.PP
+Get the data held in this config file\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The data held in this config file\&. 
+.RE
+.PP
+
+.SS "virtual QVariant AWE::ConfigFile::getMember (QStringpath) const\fC [virtual]\fP"
+
+.PP
+Get a data member\&. \fCpath\fP is formatted so that delving down a member uses a '\&.'\&. So if I have: 
+.PP
+.nf
+{
+    "a": {
+        "b": [
+            "Hello World"
+        ]           
+    }
+}
+
+.fi
+.PP
+.PP
+The pathing to use to get to \fC'Hello World'\fP is \fC'a\&.b\&.0'\fP\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path to the data member to retrieve\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The desired data member, or a null \fCQVariant\fP if the member does not exist\&. 
+.RE
+.PP
+
+.SS "virtual QVariant AWE::ConfigFile::getMember (QVariantListpath) const\fC [virtual]\fP"
+
+.PP
+Get a data member\&. \fCpath\fP is a list of values to follow to reach the desired data member\&. So if I have: 
+.PP
+.nf
+{
+    "a": {
+        "b": [
+            "Hello World"
+        ]           
+    }
+}
+
+.fi
+.PP
+.PP
+The list to use to get to \fC'Hello World'\fP is \fC{ 'a', 'b', 0 }\fP\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path to the data member to retrieve\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The desired data member, or a null \fCQVariant\fP if the member does not exist\&. 
+.RE
+.PP
+
+.SS "virtual QDir AWE::ConfigFile::getPathToConfigFile () const\fC [virtual]\fP"
+
+.PP
+Get the path to this config file, excluding the file name\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The path to the config file\&. 
+.RE
+.PP
+
+.SS "bool AWE::ConfigFile::hasBeenEdited () const"
+
+.PP
+Determine if this config file has been altered since it was read\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if this config file has been altered since it was read, \fCfalse\fP otherwise\&. 
+.RE
+.PP
+
+.SS "virtual void AWE::ConfigFile::setData (QVariantMapdata)\fC [virtual]\fP"
+
+.PP
+Set the data held in this config file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP The new data to hold\&. 
+.RE
+.PP
+
+.SS "virtual bool AWE::ConfigFile::setMember (QStringpath, QVariantvalue)\fC [virtual]\fP"
+
+.PP
+Set a data member to a new value\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+getMember(QString)
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path to the data member\&. 
+.br
+\fIvalue\fP The new value for the data member\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the data member exists, \fCfalse\fP if an error occurred\&. 
+.RE
+.PP
+
+.SS "virtual bool AWE::ConfigFile::setMember (QVariantListpath, QVariantvalue)\fC [virtual]\fP"
+
+.PP
+Set a data member to a new value\&. 
+.PP
+\fBSee Also:\fP
+.RS 4
+getMember(QVariantList)
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP The path to the data member\&. 
+.br
+\fIvalue\fP The new value for the data member\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the data member exists, \fCfalse\fP if an error occurred\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AWE Media Center from the source code\&.

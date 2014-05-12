@@ -3,7 +3,7 @@
 
 using namespace AWE;
 
-MediaService::MediaService(const QDir& file) :
+MediaService::MediaService(QDir file) :
 	MediaItem(file)
 	{ }
 

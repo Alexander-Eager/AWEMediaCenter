@@ -1,4 +1,4 @@
-.TH "Json::PathArgument" 3 "Fri Apr 18 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.TH "Json::PathArgument" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -22,6 +22,26 @@ Experimental and untested: represents an element of the 'path' to access a node\
 .br
 .ti -1c
 .RI "\fBPathArgument\fP (const std::string &key)"
+.br
+.in -1c
+.SS "Private Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBKind\fP { \fBkindNone\fP = 0, \fBkindIndex\fP, \fBkindKey\fP }"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBkey_\fP"
+.br
+.ti -1c
+.RI "ArrayIndex \fBindex_\fP"
+.br
+.ti -1c
+.RI "Kind \fBkind_\fP"
 .br
 .in -1c
 .SS "Friends"

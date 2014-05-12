@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['batchallocator',['BatchAllocator',['../class_json_1_1_batch_allocator.html',1,'Json']]]
+  ['awemc',['AWEMC',['../class_a_w_e_1_1_a_w_e_m_c.html',1,'AWE']]]
 ];

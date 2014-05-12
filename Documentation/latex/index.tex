@@ -1,4 +1,4 @@
-A\-W\-E\-M\-C is programmed using C++ and relies on \href{http://www.qt-project.org/}{\tt Qt}, \href{http://curl.haxx.se/}{\tt c\-U\-R\-L}, and (eventually) \href{http://libsdl.org/}{\tt S\-D\-L}. \href{http://jsoncpp.sourceforge.net}{\tt Json\-Cpp} is included in the source code.
+A\-W\-E\-M\-C is programmed using C++ and relies on \href{http://www.qt-project.org/>}{\tt Qt}, \href{http://curl.haxx.se/>}{\tt c\-U\-R\-L}, and (eventually) \href{http://www.sfml-dev.org/>}{\tt S\-F\-M\-L}. \href{http://jsoncpp.sourceforge.net/>}{\tt Json\-Cpp} is included in the source code.
 
 There are 7 central concepts you should understand\-:
 
@@ -10,7 +10,18 @@ There are 7 central concepts you should understand\-:
 \item Metadata scrapers get relevant information and images for a media item.
 \item Media types describe the default metadata values for a collection of items, like Movies or T\-V Shows.
 \item Folder generators make a folder structure with organization based on things like Genre for a specific media type. They also use metadata scrapers to collect information about media items to be placed in the folder structure.
-\item Skins describe the way the U\-I looks and give default images to files.
+\item Skins describe the way the \hyperlink{namespace_u_i}{U\-I} looks and give default images to files.
 \end{DoxyItemize}
 
-Also, all classes built into A\-W\-E\-M\-C should be prefixed by \char`\"{}\-A\-W\-E\char`\"{}. 
+\subsection*{Namespaces}
+
+There are a few namespaces you should know about\-:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily std} -\/ Well, this one should be obvious.
+\item {\ttfamily \hyperlink{namespace_json}{Json}} -\/ This is the namespace for \href{http://jsoncpp.sourceforge.net/>}{\tt Json\-Cpp}.
+\item {\ttfamily \hyperlink{namespace_a_w_e}{A\-W\-E}} -\/ All backend classes fall under this namespace.
+\item {\ttfamily \hyperlink{namespace_u_i}{U\-I}} -\/ All user interface classes (i.\-e. windows and widgets) fall under this.
+\item {\ttfamily T\-C\-O\-M} -\/ My own little colored command line library included with the code for debugging (it will be removed later). 
+\end{DoxyItemize}

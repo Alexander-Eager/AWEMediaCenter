@@ -36,7 +36,18 @@ namespace AWE
 			 *
 			 * \returns The name of the player.
 			 **/
-			virtual const QString& getName() const = 0;
+			virtual QString getName() const = 0;
+
+			/**
+			 * \brief Determine if the given media file
+			 *			can be played by this player.
+			 *
+			 * \param file The file to determine playability for.
+			 *
+			 * \returns `true` if this player can play `file`,
+			 *			`false` otherwise.
+			 **/
+			virtual bool canPlay(MediaFile* file) = 0;
 	};
 }
 

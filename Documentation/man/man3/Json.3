@@ -1,4 +1,4 @@
-.TH "Json" 3 "Fri Apr 18 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.TH "Json" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -142,6 +142,43 @@ JSON (JavaScript Object Notation)\&.
 .RI "std::ostream & \fBoperator<<\fP (std::ostream &, const \fBValue\fP &root)"
 .br
 .RI "\fIOutput using the \fBStyledStreamWriter\fP\&. \fP"
+.ti -1c
+.RI "static std::string \fBcodePointToUTF8\fP (unsigned int cp)"
+.br
+.RI "\fIConverts a unicode code-point to UTF-8\&. \fP"
+.ti -1c
+.RI "static bool \fBisControlCharacter\fP (char ch)"
+.br
+.RI "\fIReturns true if ch is a control character (in range [0,32[)\&. \fP"
+.ti -1c
+.RI "static void \fBuintToString\fP (LargestUInt value, char *&current)"
+.br
+.ti -1c
+.RI "static bool \fBin\fP (Reader::Char c, Reader::Char c1, Reader::Char c2, Reader::Char c3, Reader::Char c4)"
+.br
+.ti -1c
+.RI "static bool \fBin\fP (Reader::Char c, Reader::Char c1, Reader::Char c2, Reader::Char c3, Reader::Char c4, Reader::Char c5)"
+.br
+.ti -1c
+.RI "static bool \fBcontainsNewLine\fP (Reader::Location begin, Reader::Location end)"
+.br
+.ti -1c
+.RI "static char * \fBduplicateStringValue\fP (const char *value, unsigned int length=\fBunknown\fP)"
+.br
+.ti -1c
+.RI "static void \fBreleaseStringValue\fP (char *value)"
+.br
+.ti -1c
+.RI "static bool \fBcontainsControlCharacter\fP (const char *str)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "static const unsigned int \fBunknown\fP = (unsigned)-1"
+.br
+.RI "\fIUnknown size marker\&. \fP"
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -203,6 +240,22 @@ array value (ordered list)
 object value (collection of name/value pairs)\&. 
 .SH "Function Documentation"
 .PP 
+.SS "static char* Json::duplicateStringValue (const char *value, unsigned intlength = \fCunknown\fP)\fC [inline]\fP, \fC [static]\fP"
+Duplicates the specified string value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Pointer to the string to duplicate\&. Must be zero-terminated if length is 'unknown'\&. 
+.br
+\fIlength\fP Length of the value\&. if equals to unknown, then it will be computed using strlen(value)\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer on the duplicate instance of string\&. 
+.RE
+.PP
+
 .SS "std::ostream & Json::operator<< (std::ostream &sout, const Value &root)"
 
 .PP
@@ -251,6 +304,19 @@ cout << root;
 \fBSee Also:\fP
 .RS 4
 \fBJson::operator<<()\fP 
+.RE
+.PP
+
+.SS "static void Json::releaseStringValue (char *value)\fC [inline]\fP, \fC [static]\fP"
+Free the string duplicated by \fBduplicateStringValue()\fP\&. 
+.SS "static void Json::uintToString (LargestUIntvalue, char *&current)\fC [inline]\fP, \fC [static]\fP"
+Converts an unsigned integer to string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP Unsigned interger to convert to string 
+.br
+\fIcurrent\fP Input/Output string buffer\&. Must have at least uintToStringBufferSize chars free\&. 
 .RE
 .PP
 

@@ -7,6 +7,10 @@
 // global settings
 #include "settings/AWEGlobalSettings.h"
 
+// data
+#include <QString>
+#include <QStringList>
+
 namespace AWE
 {
 	/**
@@ -40,7 +44,21 @@ namespace AWE
 			 *
 			 * \returns The name of the player.
 			 **/
-			virtual const QString& getName() const;
+			virtual QString getName() const;
+
+			/**
+			 * \brief Determine if the given media file
+			 *			can be played by this player.
+			 *
+			 * For JSON based players, this is determined
+			 * using the file extension and the `"filetypes"` tag.
+			 *
+			 * \param file The file to determine playability for.
+			 *
+			 * \returns `true` if this player can play `file`,
+			 *			`false` otherwise.
+			 **/
+			virtual bool canPlay(MediaFile* file);
 
 		private:
 			/** \brief The name of the player. **/
@@ -49,6 +67,8 @@ namespace AWE
 			QString myProgram;
 			/** \brief The arguments to be passed. **/
 			QString myArguments;
+			/** \brief The possible file types that can be played. **/
+			QStringList myFileTypes;
 	};
 }
 

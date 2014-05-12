@@ -71,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -82,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_23fdee2f6995db16c755697cdf620cf4.html">Code</a></li><li class="navelem"><a class="el" href="dir_3a78ee3b8019933dd8ca42528f0b1265.html">items</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_4fd200482d2a48c4e9dfdc8aa20aa592.html">Code</a></li><li class="navelem"><a class="el" href="dir_a41cfcd00f17271e79752da1021e09a9.html">items</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -94,61 +94,58 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define AWE_MEDIA_FILE_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// for holding data</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;QDir&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">// for holding settings data</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;libs/json/json.h&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">// the superclass</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;items/AWEMediaItem.h&quot;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">// for playback</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;player/AWEMediaPlayer.h&quot;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">// settings</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;settings/AWEGlobalSettings.h&quot;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span>AWE</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_a_w_e_1_1_media_file.html">   27</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_a_w_e_1_1_media_file.html">MediaFile</a> : <span class="keyword">public</span> <a class="code" href="class_a_w_e_1_1_media_item.html">MediaItem</a></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <a class="code" href="class_a_w_e_1_1_media_file.html#a5f2846d619a877248cd5321f6aedbbe7">MediaFile</a>(<span class="keyword">const</span> QDir&amp; file,</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                            <a class="code" href="class_a_w_e_1_1_global_settings.html">GlobalSettings</a>* settings);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="class_a_w_e_1_1_media_file.html#a0ce25306ecf5a24c21dc3540d6293566">~MediaFile</a>();</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;QDir&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">// for holding settings data</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;libs/json/json.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">// the superclass</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;items/AWEMediaItem.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">// for playback</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;player/AWEMediaPlayer.h&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">namespace </span>AWE</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_a_w_e_1_1_media_file.html">   23</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_a_w_e_1_1_media_file.html">MediaFile</a> : <span class="keyword">public</span> <a class="code" href="class_a_w_e_1_1_media_item.html">MediaItem</a></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <a class="code" href="class_a_w_e_1_1_media_file.html#af107afc7258da6cbadce1330bb9697a5">MediaFile</a>(QDir file);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="class_a_w_e_1_1_media_file.html#a0ce25306ecf5a24c21dc3540d6293566">~MediaFile</a>();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keyword">virtual</span> QDir <a class="code" href="class_a_w_e_1_1_media_file.html#a998b1415a248cf1915c7ff2b48af8586">getMediaFile</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keyword">virtual</span> <span class="keyword">const</span> QDir&amp; <a class="code" href="class_a_w_e_1_1_media_file.html#a396e8707196bed507be77d5871f3b98d">getMediaFile</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="class_a_w_e_1_1_media_player.html">MediaPlayer</a>* <a class="code" href="class_a_w_e_1_1_media_file.html#a721cb652605a6cbc17a42899d9909079">getDefaultPlayer</a>();</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="class_a_w_e_1_1_media_player.html">MediaPlayer</a>* <a class="code" href="class_a_w_e_1_1_media_file.html#a721cb652605a6cbc17a42899d9909079">getDefaultPlayer</a>();</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="class_a_w_e_1_1_media_file.html#a04870b77386642ea6568918f8d2693a2">play</a>();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="class_a_w_e_1_1_media_file.html#a04870b77386642ea6568918f8d2693a2">play</a>();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="namespace_a_w_e.html#ad175a5b8a86bf7848825c9bd94c41470">ItemType</a> <a class="code" href="class_a_w_e_1_1_media_file.html#a135ea553d8a72ec3c87b75281768ca69">getItemType</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keyword">virtual</span> ItemType <a class="code" href="class_a_w_e_1_1_media_file.html#a135ea553d8a72ec3c87b75281768ca69">getItemType</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            QDir myMediaFile;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <a class="code" href="class_a_w_e_1_1_media_player.html">MediaPlayer</a>* myDefaultPlayer;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    };</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="class_a_w_e_1_1_media_file_html_a721cb652605a6cbc17a42899d9909079"><div class="ttname"><a href="class_a_w_e_1_1_media_file.html#a721cb652605a6cbc17a42899d9909079">AWE::MediaFile::getDefaultPlayer</a></div><div class="ttdeci">virtual MediaPlayer * getDefaultPlayer()</div><div class="ttdoc">Get the default media player for this item. </div><div class="ttdef"><b>Definition:</b> AWEMediaFile.cpp:33</div></div>
-<div class="ttc" id="class_a_w_e_1_1_media_file_html"><div class="ttname"><a href="class_a_w_e_1_1_media_file.html">AWE::MediaFile</a></div><div class="ttdoc">Represents a media file. </div><div class="ttdef"><b>Definition:</b> AWEMediaFile.h:27</div></div>
-<div class="ttc" id="class_a_w_e_1_1_media_file_html_a396e8707196bed507be77d5871f3b98d"><div class="ttname"><a href="class_a_w_e_1_1_media_file.html#a396e8707196bed507be77d5871f3b98d">AWE::MediaFile::getMediaFile</a></div><div class="ttdeci">virtual const QDir &amp; getMediaFile() const </div><div class="ttdoc">Get the absolute path to the media file. </div><div class="ttdef"><b>Definition:</b> AWEMediaFile.cpp:28</div></div>
-<div class="ttc" id="class_a_w_e_1_1_global_settings_html"><div class="ttname"><a href="class_a_w_e_1_1_global_settings.html">AWE::GlobalSettings</a></div><div class="ttdoc">Holds the global settings for AWEMC. </div><div class="ttdef"><b>Definition:</b> AWEGlobalSettings.h:42</div></div>
-<div class="ttc" id="class_a_w_e_1_1_media_file_html_a5f2846d619a877248cd5321f6aedbbe7"><div class="ttname"><a href="class_a_w_e_1_1_media_file.html#a5f2846d619a877248cd5321f6aedbbe7">AWE::MediaFile::MediaFile</a></div><div class="ttdeci">MediaFile(const QDir &amp;file, GlobalSettings *settings)</div><div class="ttdoc">Construct using the JSON file and global settings. </div><div class="ttdef"><b>Definition:</b> AWEMediaFile.cpp:10</div></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_a_w_e_1_1_media_file.html#a546092fa2daee659f784573aa9fcdf99">   67</a></span>&#160;            QDir <a class="code" href="class_a_w_e_1_1_media_file.html#a546092fa2daee659f784573aa9fcdf99">myMediaFile</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="class_a_w_e_1_1_media_file.html#a86d064b6ab12e4eaade8e9cb32e0b595">   70</a></span>&#160;            <a class="code" href="class_a_w_e_1_1_media_player.html">MediaPlayer</a>* <a class="code" href="class_a_w_e_1_1_media_file.html#a86d064b6ab12e4eaade8e9cb32e0b595">myDefaultPlayer</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    };</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="class_a_w_e_1_1_media_file_html_a721cb652605a6cbc17a42899d9909079"><div class="ttname"><a href="class_a_w_e_1_1_media_file.html#a721cb652605a6cbc17a42899d9909079">AWE::MediaFile::getDefaultPlayer</a></div><div class="ttdeci">virtual MediaPlayer * getDefaultPlayer()</div><div class="ttdoc">Get the default media player for this item. </div><div class="ttdef"><b>Definition:</b> AWEMediaFile.cpp:30</div></div>
+<div class="ttc" id="class_a_w_e_1_1_media_file_html"><div class="ttname"><a href="class_a_w_e_1_1_media_file.html">AWE::MediaFile</a></div><div class="ttdoc">Represents a media file. </div><div class="ttdef"><b>Definition:</b> AWEMediaFile.h:23</div></div>
+<div class="ttc" id="class_a_w_e_1_1_media_file_html_af107afc7258da6cbadce1330bb9697a5"><div class="ttname"><a href="class_a_w_e_1_1_media_file.html#af107afc7258da6cbadce1330bb9697a5">AWE::MediaFile::MediaFile</a></div><div class="ttdeci">MediaFile(QDir file)</div><div class="ttdoc">Construct using the JSON file. </div><div class="ttdef"><b>Definition:</b> AWEMediaFile.cpp:9</div></div>
+<div class="ttc" id="namespace_a_w_e_html_ad175a5b8a86bf7848825c9bd94c41470"><div class="ttname"><a href="namespace_a_w_e.html#ad175a5b8a86bf7848825c9bd94c41470">AWE::ItemType</a></div><div class="ttdeci">ItemType</div><div class="ttdoc">The type of item. </div><div class="ttdef"><b>Definition:</b> AWEMediaItem.h:19</div></div>
+<div class="ttc" id="class_a_w_e_1_1_media_file_html_a546092fa2daee659f784573aa9fcdf99"><div class="ttname"><a href="class_a_w_e_1_1_media_file.html#a546092fa2daee659f784573aa9fcdf99">AWE::MediaFile::myMediaFile</a></div><div class="ttdeci">QDir myMediaFile</div><div class="ttdoc">The path to the media file. </div><div class="ttdef"><b>Definition:</b> AWEMediaFile.h:67</div></div>
+<div class="ttc" id="class_a_w_e_1_1_media_file_html_a998b1415a248cf1915c7ff2b48af8586"><div class="ttname"><a href="class_a_w_e_1_1_media_file.html#a998b1415a248cf1915c7ff2b48af8586">AWE::MediaFile::getMediaFile</a></div><div class="ttdeci">virtual QDir getMediaFile() const </div><div class="ttdoc">Get the absolute path to the media file. </div><div class="ttdef"><b>Definition:</b> AWEMediaFile.cpp:25</div></div>
+<div class="ttc" id="class_a_w_e_1_1_media_file_html_a86d064b6ab12e4eaade8e9cb32e0b595"><div class="ttname"><a href="class_a_w_e_1_1_media_file.html#a86d064b6ab12e4eaade8e9cb32e0b595">AWE::MediaFile::myDefaultPlayer</a></div><div class="ttdeci">MediaPlayer * myDefaultPlayer</div><div class="ttdoc">The default media player. </div><div class="ttdef"><b>Definition:</b> AWEMediaFile.h:70</div></div>
 <div class="ttc" id="class_a_w_e_1_1_media_player_html"><div class="ttname"><a href="class_a_w_e_1_1_media_player.html">AWE::MediaPlayer</a></div><div class="ttdoc">Represents an abstract media player&#39;s functions. </div><div class="ttdef"><b>Definition:</b> AWEMediaPlayer.h:16</div></div>
-<div class="ttc" id="class_a_w_e_1_1_media_file_html_a0ce25306ecf5a24c21dc3540d6293566"><div class="ttname"><a href="class_a_w_e_1_1_media_file.html#a0ce25306ecf5a24c21dc3540d6293566">AWE::MediaFile::~MediaFile</a></div><div class="ttdeci">virtual ~MediaFile()</div><div class="ttdoc">Deconstructor. </div><div class="ttdef"><b>Definition:</b> AWEMediaFile.cpp:21</div></div>
-<div class="ttc" id="class_a_w_e_1_1_media_item_html"><div class="ttname"><a href="class_a_w_e_1_1_media_item.html">AWE::MediaItem</a></div><div class="ttdoc">Represents a media file, folder, or service. </div><div class="ttdef"><b>Definition:</b> AWEMediaItem.h:21</div></div>
-<div class="ttc" id="class_a_w_e_1_1_media_file_html_a135ea553d8a72ec3c87b75281768ca69"><div class="ttname"><a href="class_a_w_e_1_1_media_file.html#a135ea553d8a72ec3c87b75281768ca69">AWE::MediaFile::getItemType</a></div><div class="ttdeci">virtual ItemType getItemType() const </div><div class="ttdoc">Determine the basic type (folder, file, service) </div><div class="ttdef"><b>Definition:</b> AWEMediaFile.cpp:23</div></div>
-<div class="ttc" id="class_a_w_e_1_1_media_file_html_a04870b77386642ea6568918f8d2693a2"><div class="ttname"><a href="class_a_w_e_1_1_media_file.html#a04870b77386642ea6568918f8d2693a2">AWE::MediaFile::play</a></div><div class="ttdeci">virtual int play()</div><div class="ttdoc">Play this item with the default player. </div><div class="ttdef"><b>Definition:</b> AWEMediaFile.cpp:38</div></div>
+<div class="ttc" id="class_a_w_e_1_1_media_file_html_a0ce25306ecf5a24c21dc3540d6293566"><div class="ttname"><a href="class_a_w_e_1_1_media_file.html#a0ce25306ecf5a24c21dc3540d6293566">AWE::MediaFile::~MediaFile</a></div><div class="ttdeci">virtual ~MediaFile()</div><div class="ttdoc">Deconstructor. </div><div class="ttdef"><b>Definition:</b> AWEMediaFile.cpp:18</div></div>
+<div class="ttc" id="class_a_w_e_1_1_media_item_html"><div class="ttname"><a href="class_a_w_e_1_1_media_item.html">AWE::MediaItem</a></div><div class="ttdoc">Represents a media file, folder, or service. </div><div class="ttdef"><b>Definition:</b> AWEMediaItem.h:26</div></div>
+<div class="ttc" id="class_a_w_e_1_1_media_file_html_a135ea553d8a72ec3c87b75281768ca69"><div class="ttname"><a href="class_a_w_e_1_1_media_file.html#a135ea553d8a72ec3c87b75281768ca69">AWE::MediaFile::getItemType</a></div><div class="ttdeci">virtual ItemType getItemType() const </div><div class="ttdoc">Determine the basic type (folder, file, service) </div><div class="ttdef"><b>Definition:</b> AWEMediaFile.cpp:20</div></div>
+<div class="ttc" id="class_a_w_e_1_1_media_file_html_a04870b77386642ea6568918f8d2693a2"><div class="ttname"><a href="class_a_w_e_1_1_media_file.html#a04870b77386642ea6568918f8d2693a2">AWE::MediaFile::play</a></div><div class="ttdeci">virtual int play()</div><div class="ttdoc">Play this item with the default player. </div><div class="ttdef"><b>Definition:</b> AWEMediaFile.cpp:35</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 18 2014 16:58:43 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 10 2014 22:24:00 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

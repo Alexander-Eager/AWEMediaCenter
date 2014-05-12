@@ -1,4 +1,4 @@
-.TH "Json::Value" 3 "Fri Apr 18 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.TH "Json::Value" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -11,6 +11,19 @@ Represents a \fCJSON\fP value\&.
 .PP
 .PP
 \fC#include <json\&.h>\fP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBCommentInfo\fP"
+.br
+.ti -1c
+.RI "class \fBCZString\fP"
+.br
+.ti -1c
+.RI "union \fBValueHolder\fP"
+.br
+.in -1c
 .SS "Public Types"
 
 .in +1c
@@ -45,7 +58,7 @@ Represents a \fCJSON\fP value\&.
 .RI "typedef Json::ArrayIndex \fBArrayIndex\fP"
 .br
 .ti -1c
-.RI "typedef std::map< CZString, \fBValue\fP > \fBObjectValues\fP"
+.RI "typedef std::map< \fBCZString\fP, \fBValue\fP > \fBObjectValues\fP"
 .br
 .in -1c
 .SS "Public Member Functions"
@@ -347,6 +360,29 @@ Represents a \fCJSON\fP value\&.
 .RI "static const UInt64 \fBmaxUInt64\fP = UInt64(-1)"
 .br
 .RI "\fIMaximum unsigned 64 bits int value that can be stored in a \fBJson::Value\fP\&. \fP"
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBValue\fP & \fBresolveReference\fP (const char *key, bool isStatic)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "union \fBJson::Value::ValueHolder\fP \fBvalue_\fP"
+.br
+.ti -1c
+.RI "\fBValueType\fP \fBtype_\fP: 8"
+.br
+.ti -1c
+.RI "int \fBallocated_\fP: 1"
+.br
+.ti -1c
+.RI "\fBCommentInfo\fP * \fBcomments_\fP"
+.br
 .in -1c
 .SS "Friends"
 

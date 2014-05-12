@@ -4,6 +4,7 @@
 // for internal data storage
 #include <QHash>
 #include <QList>
+#include <QFont>
 
 // for names and accessing data
 #include <QString>
@@ -21,6 +22,7 @@ namespace AWE
 	class FolderGenerator;
 	class MetadataScraper;
 	class MediaItem;
+	class MediaFile;
 	class Folder;
 	class MediaService;
 	class MediaPlayer;
@@ -28,8 +30,8 @@ namespace AWE
 	/**
 	 * \brief Holds the global settings for AWEMC.
 	 *
-	 * \todo Skins...
-	 * \todo Get a better folder adding system.
+	 * \todo Skins
+	 * \todo UI delegate (with user prompting)
 	 *
 	 * Functions for pretty much anything you want to know
 	 * about the prefernces for AWEMC are here. Every plugin
@@ -42,12 +44,9 @@ namespace AWE
 	 **/
 	class GlobalSettings
 	{
+		static Json::Value null;
+		
 		public:
-			/** \brief The set type used to hold names. **/
-			typedef QList<QString> NameSet;
-
-			static Json::Value null;
-
 			/**
 			 * \brief Create the global settings object.
 			 *
@@ -55,13 +54,25 @@ namespace AWE
 			 *				the settings for AWEMC (usually
 			 *				`settings.json` in the root folder)
 			 **/
-			GlobalSettings(const QString& settingsFile);
+			GlobalSettings(QDir settingsFile);
 
-			/** \brief Deconstructor.
+			/**
+			 * \brief Deconstructor.
 			 * 
 			 * Deletes every scraper, player and item.
 			 **/
 			~GlobalSettings();
+
+			/**
+			 * \brief Get a font by name.
+			 *
+			 * By default, AWEMC has these fonts:
+			 *	- "biggest": used in title bars
+			 *	- "big": used in subtitle bars
+			 *	- "normal": used in your everyday text
+			 *	- "button": used in buttons
+			 **/
+			QFont getFontByName(QString name);
 
 			/**
 			 * \brief Get a metadata scraper by name.
@@ -71,7 +82,7 @@ namespace AWE
 			 * \returns The desired scraper as an `MetadataScraper` object
 			 *			or `NULL` if it does not exist.
 			 **/
-			MetadataScraper* getScraperByName(const QString& name);
+			MetadataScraper* getScraperByName(QString name);
 
 			/**
 			 * \brief Get a metadata scraper's settings by name.
@@ -81,7 +92,7 @@ namespace AWE
 			 * \returns The settings of the desired scraper
 			 *			or `Json::Value::null` if it does not exist.
 			 **/
-			Json::Value& getScraperSettingsByName(const QString& name);
+			Json::Value& getScraperSettingsByName(QString name);
 
 			/** 
 			 * \brief Get a set of all metadata scrapers.
@@ -91,6 +102,17 @@ namespace AWE
 			QList<QString> getAllMetadataScraperNames();
 
 			/**
+			 * \brief Get a set of all metadata scrapers that can scrape
+			 *			for the given item.
+			 *
+			 * \param item The media item to get possible scrapers for.
+			 *
+			 * \returns A list of all possible metadata scrapers that
+			 *			can get metadata for `item`.
+			 **/
+			QList<MetadataScraper*> getAllScrapersForItem(MediaItem* item);
+
+			/**
 			 * \brief Get a media player by name.
 			 *
 			 * \param[in] name The name of the player.
@@ -98,7 +120,7 @@ namespace AWE
 			 * \returns The desired media player
 			 *			or `NULL` if it does not exist.
 			 **/
-			MediaPlayer* getPlayerByName(const QString& name);
+			MediaPlayer* getPlayerByName(QString name);
 
 			/**
 			 * \brief Get a media player's settings by name.
@@ -108,7 +130,7 @@ namespace AWE
 			 * \returns The settings of the desired media player
 			 *			or `Json::Value::null` if it does not exist.
 			 **/
-			Json::Value& getPlayerSettingsByName(const QString& name);
+			Json::Value& getPlayerSettingsByName(QString name);
 
 			/** 
 			 * \brief Get a set of all media players.
@@ -118,11 +140,22 @@ namespace AWE
 			QList<QString> getAllMediaPlayerNames();
 
 			/**
+			 * \brief Get a set of all media players that can play the given
+			 *			file.
+			 *
+			 * \param[in] file The file for which to get possible players.
+			 *
+			 * \returns A list of all possible media players that can play
+			 *			`file`.
+			 **/
+			QList<MediaPlayer*> getAllPlayersForFile(MediaFile* file);
+
+			/**
 			 * \brief Get the media type with the given name.
 			 *
 			 * \returns The default metadata settings for the given type.
 			 **/
-			Json::Value& getTypeByName(const QString& name);
+			Json::Value& getTypeByName(QString name);
 
 			/**
 			 * \brief Get a set of all media types.
@@ -145,7 +178,7 @@ namespace AWE
 			 *
 			 * \returns The desired media service.
 			 **/
-			MediaService* getMediaServiceByName(const QString& name);
+			MediaService* getMediaServiceByName(QString name);
 
 			/**
 			 * \brief Get a media item from its JSON file.
@@ -156,7 +189,7 @@ namespace AWE
 			 *
 			 * \returns The desired media item.
 			 **/
-			MediaItem* getMediaItemByJSONFile(const QDir& file);
+			MediaItem* getMediaItemByJSONFile(QDir file);
 
 			/**
 			 * \brief Add the given media item.
@@ -172,11 +205,26 @@ namespace AWE
 			 **/
 			Folder* getRootFolder();
 
+			/**
+			 * \brief Get the folder generator for the given type.
+			 *
+			 * \param[in] type The type of folder generator.
+			 *
+			 * \returns The folder generator for `type`.
+			 **/
+			FolderGenerator* getFolderGeneratorForType(QString type);
+
 		private:
 			/** \brief The global settings. **/
 			Json::Value mySettings;
 			/** \brief The global settings file. **/
-			Json::Value mySettingsFile;
+			QDir mySettingsFile;
+
+			/** \brief Maps name for a font onto the font. **/
+			QHash<QString, QFont> myFonts;
+
+			/** \brief Maps type name onto folder generator. **/
+			QHash<QString, FolderGenerator*> myMediaTypes;
 
 			/** \brief Maps names of media players onto players. **/
 			QHash<QString, MediaPlayer*> myMediaPlayers;
@@ -195,10 +243,12 @@ namespace AWE
 			QHash<QString, MediaService*> myMediaServices;
 
 			/** \brief Maps the absolute, clean path of an item onto the item. **/
-			QHash<QDir, MediaItem*> myMediaItems;
+			QHash<QString, MediaItem*> myMediaItems;
 			/** \brief The root folder. **/
 			Folder* myRootFolder;
 
+			/** \brief Obtain the fonts. **/
+			void obtainFonts();
 			/** \brief Obtain the scrapers. **/
 			void obtainScrapers();
 			/** \brief Obtain the players. **/

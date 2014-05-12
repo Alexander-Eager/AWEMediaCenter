@@ -19,7 +19,7 @@ namespace AWE
 			 *
 			 * \param file The JSON file for this service.
 			 **/
-			MediaService(const QDir& file);
+			MediaService(QDir file);
 
 			/**
 			 * \brief Open the media service.

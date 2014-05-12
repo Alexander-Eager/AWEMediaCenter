@@ -1,0 +1,178 @@
+.TH "AWE::FolderGenerator" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AWE::FolderGenerator \- 
+.PP
+Defines a folder generator for a hierarchical media type\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <AWEFolderGenerator\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFolderGenerator\fP (QDir file)"
+.br
+.RI "\fIConstruct from the given JSON file\&. \fP"
+.ti -1c
+.RI "QString \fBgetType\fP () const "
+.br
+.RI "\fIGet the surface type of the generator\&. \fP"
+.ti -1c
+.RI "\fBJson::Value\fP & \fBgetDefaultMetadata\fP ()"
+.br
+.RI "\fIGet the default metadata values\&. \fP"
+.ti -1c
+.RI "QList< \fBFolderGenerator\fP * > \fBgetSubGenerators\fP ()"
+.br
+.RI "\fIGet the generators for all contained types\&. \fP"
+.ti -1c
+.RI "bool \fBcreateFolderStructure\fP (\fBFolder\fP *root, QDir dir, QHash< QString, \fBMetadataScraper\fP * > &scrapersToUse, bool askUser, bool importFiles, bool inheritMetadata)"
+.br
+.RI "\fICreate a folder structure for holding this type tree\&. \fP"
+.ti -1c
+.RI "void \fBmakeDetailFolders\fP (QList< \fBMediaItem\fP * > itemsGenerated, \fBFolder\fP *placeInMe)"
+.br
+.RI "\fICreate the detail folders for this type\&. \fP"
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFolderGenerator\fP (\fBJson::Value\fP &data)"
+.br
+.RI "\fIConstruct from a JSON value\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "QDir \fBmyJSONFile\fP"
+.br
+.RI "\fIThe config file\&. \fP"
+.ti -1c
+.RI "\fBJson::Value\fP \fBmyMetadata\fP"
+.br
+.RI "\fIThe data from the config file\&. \fP"
+.ti -1c
+.RI "QStringList \fBmyFileFilters\fP"
+.br
+.RI "\fIThe file filters to use when searching\&. \fP"
+.ti -1c
+.RI "QList< \fBFolderGenerator\fP * > \fBmySubGenerators\fP"
+.br
+.RI "\fIList of all contained generators\&. \fP"
+.ti -1c
+.RI "bool \fBmyItemsAreFolders\fP"
+.br
+.RI "\fIDetermines if this generates folders\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines a folder generator for a hierarchical media type\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "FolderGenerator::FolderGenerator (QDirfile)"
+
+.PP
+Construct from the given JSON file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile\fP The JSON file representing this generator\&. 
+.RE
+.PP
+
+.SS "FolderGenerator::FolderGenerator (\fBJson::Value\fP &data)\fC [private]\fP"
+
+.PP
+Construct from a JSON value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP The JSON value for the type\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "bool FolderGenerator::createFolderStructure (\fBFolder\fP *root, QDirdir, QHash< QString, \fBMetadataScraper\fP * > &scrapersToUse, boolaskUser, boolimportFiles, boolinheritMetadata)"
+
+.PP
+Create a folder structure for holding this type tree\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIroot\fP The folder to place the new folder structure in\&. 
+.br
+\fIdir\fP The directory to check for media files\&. 
+.br
+\fIscrapersToUse\fP Maps type names onto metadata scrapers to use\&. 
+.br
+\fIaskUser\fP Decide if the user should be asked to help scraping\&. 
+.br
+\fIimportFiles\fP Decide if optional file imports should occur\&. 
+.br
+\fIinheritMetadata\fP \fCtrue\fP if this generator is being called by another, \fCfalse\fP otherwise\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if all metadata was successfully obtained, \fCfalse\fP otherwise\&. 
+.RE
+.PP
+
+.SS "\fBValue\fP & FolderGenerator::getDefaultMetadata ()"
+
+.PP
+Get the default metadata values\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The default metadata values\&. 
+.RE
+.PP
+
+.SS "QList< \fBFolderGenerator\fP * > FolderGenerator::getSubGenerators ()"
+
+.PP
+Get the generators for all contained types\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A list of all sub generators\&. 
+.RE
+.PP
+
+.SS "QString FolderGenerator::getType () const"
+
+.PP
+Get the surface type of the generator\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The surface type of the generator\&. 
+.RE
+.PP
+
+.SS "void FolderGenerator::makeDetailFolders (QList< \fBMediaItem\fP * >itemsGenerated, \fBFolder\fP *placeInMe)"
+
+.PP
+Create the detail folders for this type\&. A detail folder is only created if that detail has more than one value in the item list\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitemsGenerated\fP The items to make detail folders for\&. 
+.br
+\fIplaceInMe\fP The folder to put all of the type folders in\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AWE Media Center from the source code\&.

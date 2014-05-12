@@ -1,0 +1,58 @@
+.TH "AWE::AWEMC" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AWE::AWEMC \- 
+.PP
+This holds a few static instances of important classes, like \fC\fBAWE::GlobalSettings\fP\fP and \fCUI::Delegate\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <AWEMC\&.h>\fP
+.PP
+Inherits QObject\&.
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBAWE::GlobalSettings\fP * \fBsettings\fP ()"
+.br
+.RI "\fIGet the global settings for \fBAWEMC\fP\&. \fP"
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static \fBAWE::GlobalSettings\fP * \fBmySettings\fP = nullptr"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBAWE::GlobalSettings\fP"
+.br
+.RI "\fISo that \fC\fBGlobalSettings\fP\fP can set the singleton\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+This holds a few static instances of important classes, like \fC\fBAWE::GlobalSettings\fP\fP and \fCUI::Delegate\fP\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBGlobalSettings\fP * AWEMC::settings ()\fC [static]\fP"
+
+.PP
+Get the global settings for \fBAWEMC\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The global settings for \fBAWEMC\fP\&. 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AWE Media Center from the source code\&.

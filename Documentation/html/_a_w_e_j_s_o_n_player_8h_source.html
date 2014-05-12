@@ -71,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -82,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_23fdee2f6995db16c755697cdf620cf4.html">Code</a></li><li class="navelem"><a class="el" href="dir_ac048e68be85b200cfc52ffc09c9b001.html">player</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_4fd200482d2a48c4e9dfdc8aa20aa592.html">Code</a></li><li class="navelem"><a class="el" href="dir_450c4267621bc770a7fe0506f5f9c92b.html">player</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -99,36 +99,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">// global settings</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;settings/AWEGlobalSettings.h&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>AWE</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_a_w_e_1_1_j_s_o_n_player.html">   16</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_a_w_e_1_1_j_s_o_n_player.html">JSONPlayer</a> : <span class="keyword">public</span> <a class="code" href="class_a_w_e_1_1_media_player.html">MediaPlayer</a></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <a class="code" href="class_a_w_e_1_1_j_s_o_n_player.html#a7aceda6a2e246528d952d4b50c0645e0">JSONPlayer</a>(<a class="code" href="class_json_1_1_value.html">Json::Value</a>&amp; player);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="class_a_w_e_1_1_j_s_o_n_player.html#a417957c7b0826ecef28b232a2cf9d49e">play</a>(<a class="code" href="class_a_w_e_1_1_media_file.html">MediaFile</a>* file);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keyword">virtual</span> <span class="keyword">const</span> std::string&amp; <a class="code" href="class_a_w_e_1_1_j_s_o_n_player.html#a24bd164f654e3fda5587be04013bb366">getName</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            std::string myName;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            std::string myProgram;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            std::string myArguments;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    };</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="class_a_w_e_1_1_media_file_html"><div class="ttname"><a href="class_a_w_e_1_1_media_file.html">AWE::MediaFile</a></div><div class="ttdoc">Represents a media file. </div><div class="ttdef"><b>Definition:</b> AWEMediaFile.h:27</div></div>
-<div class="ttc" id="class_a_w_e_1_1_j_s_o_n_player_html_a417957c7b0826ecef28b232a2cf9d49e"><div class="ttname"><a href="class_a_w_e_1_1_j_s_o_n_player.html#a417957c7b0826ecef28b232a2cf9d49e">AWE::JSONPlayer::play</a></div><div class="ttdeci">virtual int play(MediaFile *file)</div><div class="ttdoc">Play the given file. </div><div class="ttdef"><b>Definition:</b> AWEJSONPlayer.cpp:28</div></div>
-<div class="ttc" id="class_a_w_e_1_1_j_s_o_n_player_html"><div class="ttname"><a href="class_a_w_e_1_1_j_s_o_n_player.html">AWE::JSONPlayer</a></div><div class="ttdoc">Represents an external media player designed in a JSON file. </div><div class="ttdef"><b>Definition:</b> AWEJSONPlayer.h:16</div></div>
-<div class="ttc" id="class_a_w_e_1_1_j_s_o_n_player_html_a7aceda6a2e246528d952d4b50c0645e0"><div class="ttname"><a href="class_a_w_e_1_1_j_s_o_n_player.html#a7aceda6a2e246528d952d4b50c0645e0">AWE::JSONPlayer::JSONPlayer</a></div><div class="ttdeci">JSONPlayer(Json::Value &amp;player)</div><div class="ttdoc">Construct a media player from the given JSON object. </div><div class="ttdef"><b>Definition:</b> AWEJSONPlayer.cpp:20</div></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">// data</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;QString&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;QStringList&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span>AWE</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_a_w_e_1_1_j_s_o_n_player.html">   20</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_a_w_e_1_1_j_s_o_n_player.html">JSONPlayer</a> : <span class="keyword">public</span> <a class="code" href="class_a_w_e_1_1_media_player.html">MediaPlayer</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <a class="code" href="class_a_w_e_1_1_j_s_o_n_player.html#a7aceda6a2e246528d952d4b50c0645e0">JSONPlayer</a>(<a class="code" href="class_json_1_1_value.html">Json::Value</a>&amp; player);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="class_a_w_e_1_1_j_s_o_n_player.html#a417957c7b0826ecef28b232a2cf9d49e">play</a>(<a class="code" href="class_a_w_e_1_1_media_file.html">MediaFile</a>* file);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keyword">virtual</span> QString <a class="code" href="class_a_w_e_1_1_j_s_o_n_player.html#a9d65a8aa1003452e607ecb481adfb79e">getName</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_a_w_e_1_1_j_s_o_n_player.html#adba5012e59f5d77f0e08fafeaac017fa">canPlay</a>(<a class="code" href="class_a_w_e_1_1_media_file.html">MediaFile</a>* file);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="class_a_w_e_1_1_j_s_o_n_player.html#aa99dc8aebfe7df9e8bcb6b57c7b11965">   65</a></span>&#160;            QString <a class="code" href="class_a_w_e_1_1_j_s_o_n_player.html#aa99dc8aebfe7df9e8bcb6b57c7b11965">myName</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_a_w_e_1_1_j_s_o_n_player.html#a7520c773b08630bf0f798cfc97d6bdc4">   67</a></span>&#160;            QString <a class="code" href="class_a_w_e_1_1_j_s_o_n_player.html#a7520c773b08630bf0f798cfc97d6bdc4">myProgram</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="class_a_w_e_1_1_j_s_o_n_player.html#a23ae3875dd8e74011e3a013155904798">   69</a></span>&#160;            QString <a class="code" href="class_a_w_e_1_1_j_s_o_n_player.html#a23ae3875dd8e74011e3a013155904798">myArguments</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="class_a_w_e_1_1_j_s_o_n_player.html#a4f02daee62bf7baf7a00abbf7f9153e6">   71</a></span>&#160;            QStringList <a class="code" href="class_a_w_e_1_1_j_s_o_n_player.html#a4f02daee62bf7baf7a00abbf7f9153e6">myFileTypes</a>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    };</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="class_a_w_e_1_1_media_file_html"><div class="ttname"><a href="class_a_w_e_1_1_media_file.html">AWE::MediaFile</a></div><div class="ttdoc">Represents a media file. </div><div class="ttdef"><b>Definition:</b> AWEMediaFile.h:23</div></div>
+<div class="ttc" id="class_a_w_e_1_1_j_s_o_n_player_html_a23ae3875dd8e74011e3a013155904798"><div class="ttname"><a href="class_a_w_e_1_1_j_s_o_n_player.html#a23ae3875dd8e74011e3a013155904798">AWE::JSONPlayer::myArguments</a></div><div class="ttdeci">QString myArguments</div><div class="ttdoc">The arguments to be passed. </div><div class="ttdef"><b>Definition:</b> AWEJSONPlayer.h:69</div></div>
+<div class="ttc" id="class_a_w_e_1_1_j_s_o_n_player_html_a417957c7b0826ecef28b232a2cf9d49e"><div class="ttname"><a href="class_a_w_e_1_1_j_s_o_n_player.html#a417957c7b0826ecef28b232a2cf9d49e">AWE::JSONPlayer::play</a></div><div class="ttdeci">virtual int play(MediaFile *file)</div><div class="ttdoc">Play the given file. </div><div class="ttdef"><b>Definition:</b> AWEJSONPlayer.cpp:26</div></div>
+<div class="ttc" id="class_a_w_e_1_1_j_s_o_n_player_html_aa99dc8aebfe7df9e8bcb6b57c7b11965"><div class="ttname"><a href="class_a_w_e_1_1_j_s_o_n_player.html#aa99dc8aebfe7df9e8bcb6b57c7b11965">AWE::JSONPlayer::myName</a></div><div class="ttdeci">QString myName</div><div class="ttdoc">The name of the player. </div><div class="ttdef"><b>Definition:</b> AWEJSONPlayer.h:65</div></div>
+<div class="ttc" id="class_a_w_e_1_1_j_s_o_n_player_html"><div class="ttname"><a href="class_a_w_e_1_1_j_s_o_n_player.html">AWE::JSONPlayer</a></div><div class="ttdoc">Represents an external media player designed in a JSON file. </div><div class="ttdef"><b>Definition:</b> AWEJSONPlayer.h:20</div></div>
+<div class="ttc" id="class_a_w_e_1_1_j_s_o_n_player_html_a9d65a8aa1003452e607ecb481adfb79e"><div class="ttname"><a href="class_a_w_e_1_1_j_s_o_n_player.html#a9d65a8aa1003452e607ecb481adfb79e">AWE::JSONPlayer::getName</a></div><div class="ttdeci">virtual QString getName() const </div><div class="ttdoc">Get the name of the player. </div><div class="ttdef"><b>Definition:</b> AWEJSONPlayer.cpp:53</div></div>
+<div class="ttc" id="class_a_w_e_1_1_j_s_o_n_player_html_a7aceda6a2e246528d952d4b50c0645e0"><div class="ttname"><a href="class_a_w_e_1_1_j_s_o_n_player.html#a7aceda6a2e246528d952d4b50c0645e0">AWE::JSONPlayer::JSONPlayer</a></div><div class="ttdeci">JSONPlayer(Json::Value &amp;player)</div><div class="ttdoc">Construct a media player from the given JSON object. </div><div class="ttdef"><b>Definition:</b> AWEJSONPlayer.cpp:15</div></div>
 <div class="ttc" id="class_a_w_e_1_1_media_player_html"><div class="ttname"><a href="class_a_w_e_1_1_media_player.html">AWE::MediaPlayer</a></div><div class="ttdoc">Represents an abstract media player&#39;s functions. </div><div class="ttdef"><b>Definition:</b> AWEMediaPlayer.h:16</div></div>
 <div class="ttc" id="class_json_1_1_value_html"><div class="ttname"><a href="class_json_1_1_value.html">Json::Value</a></div><div class="ttdoc">Represents a JSON value. </div><div class="ttdef"><b>Definition:</b> json.h:433</div></div>
-<div class="ttc" id="class_a_w_e_1_1_j_s_o_n_player_html_a24bd164f654e3fda5587be04013bb366"><div class="ttname"><a href="class_a_w_e_1_1_j_s_o_n_player.html#a24bd164f654e3fda5587be04013bb366">AWE::JSONPlayer::getName</a></div><div class="ttdeci">virtual const std::string &amp; getName() const </div><div class="ttdoc">Get the name of the player. </div><div class="ttdef"><b>Definition:</b> AWEJSONPlayer.cpp:39</div></div>
+<div class="ttc" id="class_a_w_e_1_1_j_s_o_n_player_html_adba5012e59f5d77f0e08fafeaac017fa"><div class="ttname"><a href="class_a_w_e_1_1_j_s_o_n_player.html#adba5012e59f5d77f0e08fafeaac017fa">AWE::JSONPlayer::canPlay</a></div><div class="ttdeci">virtual bool canPlay(MediaFile *file)</div><div class="ttdoc">Determine if the given media file can be played by this player. </div><div class="ttdef"><b>Definition:</b> AWEJSONPlayer.cpp:37</div></div>
+<div class="ttc" id="class_a_w_e_1_1_j_s_o_n_player_html_a4f02daee62bf7baf7a00abbf7f9153e6"><div class="ttname"><a href="class_a_w_e_1_1_j_s_o_n_player.html#a4f02daee62bf7baf7a00abbf7f9153e6">AWE::JSONPlayer::myFileTypes</a></div><div class="ttdeci">QStringList myFileTypes</div><div class="ttdoc">The possible file types that can be played. </div><div class="ttdef"><b>Definition:</b> AWEJSONPlayer.h:71</div></div>
+<div class="ttc" id="class_a_w_e_1_1_j_s_o_n_player_html_a7520c773b08630bf0f798cfc97d6bdc4"><div class="ttname"><a href="class_a_w_e_1_1_j_s_o_n_player.html#a7520c773b08630bf0f798cfc97d6bdc4">AWE::JSONPlayer::myProgram</a></div><div class="ttdeci">QString myProgram</div><div class="ttdoc">The program to be run. </div><div class="ttdef"><b>Definition:</b> AWEJSONPlayer.h:67</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 18 2014 16:58:43 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 10 2014 22:24:00 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

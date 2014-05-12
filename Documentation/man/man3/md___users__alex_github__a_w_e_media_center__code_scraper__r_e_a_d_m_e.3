@@ -1,4 +1,4 @@
-.TH "md___users__alex_github__a_w_e_media_center__code_scraper__r_e_a_d_m_e" 3 "Fri Apr 18 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.TH "md___users__alex_github__a_w_e_media_center__code_scraper__r_e_a_d_m_e" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -42,11 +42,11 @@ Before reading this how-to, here is some information you should know:
 .IP "\(bu" 2
 The general format of a JSON document (see http://www.json.org/ for more details)\&.
 .IP "\(bu" 2
-The kinds of metadata that AWEMC accepts (see \&.\&./type_README\&.md 'Media Types' for details)\&.
+The kinds of metadata that AWEMC accepts (see \fCMedia Types\fP for details)\&.
 .IP "\(bu" 2
-The way metadata is stored in a media file's JSON preference file (see \&.\&./items/files/README\&.md 'Media Files' for details)\&.
+The way metadata is stored in a media file's JSON preference file (see \fCMedia Items\fP for details)\&.
 .IP "\(bu" 2
-ECMAScript regular expressions (see \fCthis online documentation\fP for details)\&.
+Qt regular expressions (see \fCQRegExp\fP for more details)\&.
 .PP
 .PP
 Note that, although comments are not officially supported by the JSON file format, they are supported by AWEMC's JSON reader, \fCJsonCpp\fP\&. Standard \fC// comment\fP lines work\&.
@@ -63,7 +63,7 @@ Look for a specific section of text in that file\&.
 Take parts of that section of text and assign those values to metadata properties\&.
 .PP
 .PP
-The implentation if these so-called \fIprocedures\fP is based on regular expressions and backreferences\&. The type of regex used is \fCECMAScript\fP, while the format of the string where backreferences are placed is defined by the \fCfmt\fP parameter for the C++ Standard Library's \fCbackref replacement function\fP\&.
+The implentation if these so-called \fIprocedures\fP is based on regular expressions and backreferences\&. The type of regex used is \fCQRegExp\fP, while the format of the string where backreferences are placed is defined by the \fCfmt\fP parameter for the C++ Standard Library's \fCbackref replacement function\fP\&.
 .PP
 .SS "A template for a scraper"
 .PP
@@ -77,8 +77,18 @@ Here is a template for a scraper:
     // This scraper is available to scrape metadata for this type of media item
     "type": <the type of media files>,
 
+    // If a single file can have multiple items in it, set this to true.
+    // The procedures below will be repeated for every file name match if true,
+    // so make sure your filename regex is strict
+    "multiple items per file": <true or false>
+
     // This helps you get information to use, like the name of the media item
     "filename": <regex to get backreferences from the media file path>,
+
+    // If this type is hierarchical, the metadata should be inherited from the parent folder
+    "inherited metadata": {
+        <this type's property>: <parent type's property>
+    }
 
     // List of procedures to run using the backreferences from "filename"
     "procedures": [
@@ -87,7 +97,8 @@ Here is a template for a scraper:
             "repeat": <true or false>,
 
             // Should the user be prompted to choose which match (or matches) to use?
-            "ask user": <true or false>,
+            // Empty string means that the user should not be prompted
+            "ask user": <string to prompt user with>,
 
             // The file to look in; backrefs are replaced
             "look in file": <formatted string with backrefs>,
@@ -96,9 +107,11 @@ Here is a template for a scraper:
             "for": <formatted regex with backrefs>,
 
             // Set a bunch of properties to backreferences from "for"
-            <prop>: <value with backrefs>,
-            <prop>: <value with backrefs>,
-            // More properties...
+            "set properties": {
+                <prop>: <value with backrefs>,
+                <prop>: <value with backrefs>,
+                // More properties...
+            }
 
             // Run a list of sub-procedures using the backreferences from "for"
             "procedures": [...]
@@ -128,7 +141,7 @@ Here is a template for a scraper:
 .fi
 .PP
 .PP
-Those of you who have read the \&.\&./Code/type_README\&.md 'Media Types explanation' know that some metadata properties are actually objects that contain other metadata properties\&. In order to access a property held inside of an object, you must use the \fC\&.\fP operator, much like you would in C++\&. So to set the 'default' property of the 'icons' object, I would use:
+Those of you who have read the \fCMedia Types explanation\fP know that some metadata properties are actually objects that contain other metadata properties\&. In order to access a property held inside of an object, you must use the \fC\&.\fP operator, much like you would in C++\&. So to set the 'default' property of the 'icons' object, I would use:
 .PP
 .PP
 .nf

@@ -71,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -82,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_23fdee2f6995db16c755697cdf620cf4.html">Code</a></li><li class="navelem"><a class="el" href="dir_8900e01fa1563bfa81585f2368d93bdb.html">scraper</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_4fd200482d2a48c4e9dfdc8aa20aa592.html">Code</a></li><li class="navelem"><a class="el" href="dir_00fa7f2e6021aab9b6dbe8a74f2508d1.html">scraper</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -94,53 +94,57 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define AWE_METADATA_SCRAPER_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// for files, names, and paths</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;QString&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">// for settings</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;settings/AWEGlobalSettings.h&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">// for media files</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;items/AWEMediaFile.h&quot;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span>AWE</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_a_w_e_1_1_metadata_scraper.html">   32</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_a_w_e_1_1_metadata_scraper.html">MetadataScraper</a></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_a_w_e_1_1_metadata_scraper.html#a0a7ae0178e838b07bbd960be7c9e7dac">   38</a></span>&#160;            <span class="keyword">virtual</span> <a class="code" href="class_a_w_e_1_1_metadata_scraper.html#a0a7ae0178e838b07bbd960be7c9e7dac">~MetadataScraper</a>() { }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_a_w_e_1_1_metadata_scraper.html#a92f9039770add633140b825bf41bc30a">prepare</a>(<a class="code" href="class_a_w_e_1_1_global_settings.html">GlobalSettings</a>* settings) = 0;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_a_w_e_1_1_metadata_scraper.html#a509832b172ce67e5e9788134016481b3">scrapeDataForFile</a>(<a class="code" href="class_a_w_e_1_1_media_file.html">MediaFile</a>* file,</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                <span class="keywordtype">bool</span> askUser, <span class="keywordtype">bool</span> <span class="keyword">import</span>) = 0;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_a_w_e_1_1_metadata_scraper.html#a9a90e9974be775dff73c004ada209cb0">deactivate</a>() = 0;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_a_w_e_1_1_metadata_scraper.html#a06f9da8e43ac52378ec15fc849e42eb8">isValid</a>() = 0;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keyword">virtual</span> <span class="keyword">const</span> std::string&amp; <a class="code" href="class_a_w_e_1_1_metadata_scraper.html#a375745d101342f062a1a3eb89a63ec6b">getName</a>() = 0;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keyword">virtual</span> <span class="keyword">const</span> std::string&amp; <a class="code" href="class_a_w_e_1_1_metadata_scraper.html#a02549221a803b624300ea6994be1b1a2">getType</a>() = 0;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    };</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;Q_DECLARE_INTERFACE(<a class="code" href="class_a_w_e_1_1_metadata_scraper.html">AWE::MetadataScraper</a>, <span class="stringliteral">&quot;com.awe.metadata.scraper/0.1&quot;</span>)</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="class_a_w_e_1_1_media_file_html"><div class="ttname"><a href="class_a_w_e_1_1_media_file.html">AWE::MediaFile</a></div><div class="ttdoc">Represents a media file. </div><div class="ttdef"><b>Definition:</b> AWEMediaFile.h:27</div></div>
-<div class="ttc" id="class_a_w_e_1_1_metadata_scraper_html_a509832b172ce67e5e9788134016481b3"><div class="ttname"><a href="class_a_w_e_1_1_metadata_scraper.html#a509832b172ce67e5e9788134016481b3">AWE::MetadataScraper::scrapeDataForFile</a></div><div class="ttdeci">virtual bool scrapeDataForFile(MediaFile *file, bool askUser, bool import)=0</div><div class="ttdoc">Retrieves metadata for a media file. </div></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;items/AWEMediaItem.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;QList&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span>AWE</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_a_w_e_1_1_metadata_scraper.html">   33</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_a_w_e_1_1_metadata_scraper.html">MetadataScraper</a></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_a_w_e_1_1_metadata_scraper.html#a0a7ae0178e838b07bbd960be7c9e7dac">   39</a></span>&#160;            <span class="keyword">virtual</span> <a class="code" href="class_a_w_e_1_1_metadata_scraper.html#a0a7ae0178e838b07bbd960be7c9e7dac">~MetadataScraper</a>() { }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_a_w_e_1_1_metadata_scraper.html#a92f9039770add633140b825bf41bc30a">prepare</a>(<a class="code" href="class_a_w_e_1_1_global_settings.html">GlobalSettings</a>* settings) = 0;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_a_w_e_1_1_metadata_scraper.html#a14f10736d12ada980b4c64a906ebe9a6">scrapeDataForFile</a>(<a class="code" href="class_a_w_e_1_1_media_item.html">MediaItem</a>* file,</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                <span class="keywordtype">bool</span> askUser, <span class="keywordtype">bool</span> <span class="keyword">import</span>, <span class="keywordtype">bool</span> inheritMetadata) = 0;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="keyword">virtual</span> QList&lt;MediaItem*&gt; <a class="code" href="class_a_w_e_1_1_metadata_scraper.html#a14f10736d12ada980b4c64a906ebe9a6">scrapeDataForFile</a>(<a class="code" href="class_a_w_e_1_1_folder.html">Folder</a>* placeInMe,</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                <a class="code" href="class_a_w_e_1_1_global_settings.html">GlobalSettings</a>* globalSettings, QDir file,</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                <span class="keywordtype">bool</span> askUser, <span class="keywordtype">bool</span> <span class="keyword">import</span>, <span class="keywordtype">bool</span> inheritMetadata) = 0;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_a_w_e_1_1_metadata_scraper.html#a9a90e9974be775dff73c004ada209cb0">deactivate</a>() = 0;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="class_a_w_e_1_1_metadata_scraper.html#a06f9da8e43ac52378ec15fc849e42eb8">isValid</a>() = 0;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <span class="keyword">virtual</span> QString <a class="code" href="class_a_w_e_1_1_metadata_scraper.html#ace0871b6861e04ec3ff39cba70606d29">getName</a>() = 0;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            <span class="keyword">virtual</span> QString <a class="code" href="class_a_w_e_1_1_metadata_scraper.html#a71f1b614a3196d5d8b68e3d216896e3d">getType</a>() = 0;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    };</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;}</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="class_a_w_e_1_1_metadata_scraper_html_a92f9039770add633140b825bf41bc30a"><div class="ttname"><a href="class_a_w_e_1_1_metadata_scraper.html#a92f9039770add633140b825bf41bc30a">AWE::MetadataScraper::prepare</a></div><div class="ttdeci">virtual bool prepare(GlobalSettings *settings)=0</div><div class="ttdoc">Prepares the scraper. </div></div>
-<div class="ttc" id="class_a_w_e_1_1_metadata_scraper_html_a0a7ae0178e838b07bbd960be7c9e7dac"><div class="ttname"><a href="class_a_w_e_1_1_metadata_scraper.html#a0a7ae0178e838b07bbd960be7c9e7dac">AWE::MetadataScraper::~MetadataScraper</a></div><div class="ttdeci">virtual ~MetadataScraper()</div><div class="ttdoc">Deconstructor. </div><div class="ttdef"><b>Definition:</b> AWEMetadataScraper.h:38</div></div>
+<div class="ttc" id="class_a_w_e_1_1_metadata_scraper_html_a71f1b614a3196d5d8b68e3d216896e3d"><div class="ttname"><a href="class_a_w_e_1_1_metadata_scraper.html#a71f1b614a3196d5d8b68e3d216896e3d">AWE::MetadataScraper::getType</a></div><div class="ttdeci">virtual QString getType()=0</div><div class="ttdoc">Gets the media type for this scraper. </div></div>
+<div class="ttc" id="class_a_w_e_1_1_folder_html"><div class="ttname"><a href="class_a_w_e_1_1_folder.html">AWE::Folder</a></div><div class="ttdoc">A folder that contains MediaItems. </div><div class="ttdef"><b>Definition:</b> AWEFolder.h:18</div></div>
+<div class="ttc" id="class_a_w_e_1_1_metadata_scraper_html_a0a7ae0178e838b07bbd960be7c9e7dac"><div class="ttname"><a href="class_a_w_e_1_1_metadata_scraper.html#a0a7ae0178e838b07bbd960be7c9e7dac">AWE::MetadataScraper::~MetadataScraper</a></div><div class="ttdeci">virtual ~MetadataScraper()</div><div class="ttdoc">Deconstructor. </div><div class="ttdef"><b>Definition:</b> AWEMetadataScraper.h:39</div></div>
+<div class="ttc" id="class_a_w_e_1_1_metadata_scraper_html_ace0871b6861e04ec3ff39cba70606d29"><div class="ttname"><a href="class_a_w_e_1_1_metadata_scraper.html#ace0871b6861e04ec3ff39cba70606d29">AWE::MetadataScraper::getName</a></div><div class="ttdeci">virtual QString getName()=0</div><div class="ttdoc">Gets the name of the scraper. </div></div>
 <div class="ttc" id="class_a_w_e_1_1_metadata_scraper_html_a06f9da8e43ac52378ec15fc849e42eb8"><div class="ttname"><a href="class_a_w_e_1_1_metadata_scraper.html#a06f9da8e43ac52378ec15fc849e42eb8">AWE::MetadataScraper::isValid</a></div><div class="ttdeci">virtual bool isValid()=0</div><div class="ttdoc">Determines if this is scraper can be used. </div></div>
-<div class="ttc" id="class_a_w_e_1_1_global_settings_html"><div class="ttname"><a href="class_a_w_e_1_1_global_settings.html">AWE::GlobalSettings</a></div><div class="ttdoc">Holds the global settings for AWEMC. </div><div class="ttdef"><b>Definition:</b> AWEGlobalSettings.h:42</div></div>
-<div class="ttc" id="class_a_w_e_1_1_metadata_scraper_html_a375745d101342f062a1a3eb89a63ec6b"><div class="ttname"><a href="class_a_w_e_1_1_metadata_scraper.html#a375745d101342f062a1a3eb89a63ec6b">AWE::MetadataScraper::getName</a></div><div class="ttdeci">virtual const std::string &amp; getName()=0</div><div class="ttdoc">Gets the name of the scraper. </div></div>
-<div class="ttc" id="class_a_w_e_1_1_metadata_scraper_html_a02549221a803b624300ea6994be1b1a2"><div class="ttname"><a href="class_a_w_e_1_1_metadata_scraper.html#a02549221a803b624300ea6994be1b1a2">AWE::MetadataScraper::getType</a></div><div class="ttdeci">virtual const std::string &amp; getType()=0</div><div class="ttdoc">Gets the media type for this scraper. </div></div>
-<div class="ttc" id="class_a_w_e_1_1_metadata_scraper_html"><div class="ttname"><a href="class_a_w_e_1_1_metadata_scraper.html">AWE::MetadataScraper</a></div><div class="ttdoc">Defines the general interface for a metadata scraper. </div><div class="ttdef"><b>Definition:</b> AWEMetadataScraper.h:32</div></div>
+<div class="ttc" id="class_a_w_e_1_1_metadata_scraper_html_a14f10736d12ada980b4c64a906ebe9a6"><div class="ttname"><a href="class_a_w_e_1_1_metadata_scraper.html#a14f10736d12ada980b4c64a906ebe9a6">AWE::MetadataScraper::scrapeDataForFile</a></div><div class="ttdeci">virtual bool scrapeDataForFile(MediaItem *file, bool askUser, bool import, bool inheritMetadata)=0</div><div class="ttdoc">Retrieves metadata for a media file. </div></div>
+<div class="ttc" id="class_a_w_e_1_1_global_settings_html"><div class="ttname"><a href="class_a_w_e_1_1_global_settings.html">AWE::GlobalSettings</a></div><div class="ttdoc">Holds the global settings for AWEMC. </div><div class="ttdef"><b>Definition:</b> AWEGlobalSettings.h:45</div></div>
+<div class="ttc" id="class_a_w_e_1_1_metadata_scraper_html"><div class="ttname"><a href="class_a_w_e_1_1_metadata_scraper.html">AWE::MetadataScraper</a></div><div class="ttdoc">Defines the general interface for a metadata scraper. </div><div class="ttdef"><b>Definition:</b> AWEMetadataScraper.h:33</div></div>
+<div class="ttc" id="class_a_w_e_1_1_media_item_html"><div class="ttname"><a href="class_a_w_e_1_1_media_item.html">AWE::MediaItem</a></div><div class="ttdoc">Represents a media file, folder, or service. </div><div class="ttdef"><b>Definition:</b> AWEMediaItem.h:26</div></div>
 <div class="ttc" id="class_a_w_e_1_1_metadata_scraper_html_a9a90e9974be775dff73c004ada209cb0"><div class="ttname"><a href="class_a_w_e_1_1_metadata_scraper.html#a9a90e9974be775dff73c004ada209cb0">AWE::MetadataScraper::deactivate</a></div><div class="ttdeci">virtual void deactivate()=0</div><div class="ttdoc">Destroys any used-up dynamic memory. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 18 2014 16:58:43 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 10 2014 22:24:00 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -74,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -93,12 +93,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_json_1_1_batch_allocator-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Json::BatchAllocator&lt; AllocatedType, objectPerAllocation &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_json_1_1_batch_allocator_1_1_batch_info.html">BatchInfo</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:a031e753885fcb007c20511e15f84d1a4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a031e753885fcb007c20511e15f84d1a4"></a>
@@ -114,6 +122,37 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4909756c2d33bd0f07662e88e4f850dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aceb116aceb6bb5bbcfd05433abc04ba5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_json_1_1_batch_allocator.html#aceb116aceb6bb5bbcfd05433abc04ba5">release</a> (AllocatedType *object)</td></tr>
 <tr class="separator:aceb116aceb6bb5bbcfd05433abc04ba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:af240399628f3cf1099ede92ef1ec4274"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af240399628f3cf1099ede92ef1ec4274"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>BatchAllocator</b> (const <a class="el" href="class_json_1_1_batch_allocator.html">BatchAllocator</a> &amp;)</td></tr>
+<tr class="separator:af240399628f3cf1099ede92ef1ec4274"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2ab8896da0685b6c7eb5f7bfd5304d3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad2ab8896da0685b6c7eb5f7bfd5304d3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="class_json_1_1_batch_allocator.html">BatchAllocator</a> &amp;)</td></tr>
+<tr class="separator:ad2ab8896da0685b6c7eb5f7bfd5304d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:a41f6367bbed5bdf39d2c8dc8f6bbf29d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a41f6367bbed5bdf39d2c8dc8f6bbf29d"></a>
+static <a class="el" href="struct_json_1_1_batch_allocator_1_1_batch_info.html">BatchInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>allocateBatch</b> (unsigned int objectsPerPage)</td></tr>
+<tr class="separator:a41f6367bbed5bdf39d2c8dc8f6bbf29d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ab96f6d89d8754359cdb59587d8eed5b5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab96f6d89d8754359cdb59587d8eed5b5"></a>
+<a class="el" href="struct_json_1_1_batch_allocator_1_1_batch_info.html">BatchInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>batches_</b></td></tr>
+<tr class="separator:ab96f6d89d8754359cdb59587d8eed5b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af300cf30cc086974f34effcc893e8dea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af300cf30cc086974f34effcc893e8dea"></a>
+<a class="el" href="struct_json_1_1_batch_allocator_1_1_batch_info.html">BatchInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>currentBatch_</b></td></tr>
+<tr class="separator:af300cf30cc086974f34effcc893e8dea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7532989b88c9f124f83394f24737378a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7532989b88c9f124f83394f24737378a"></a>
+AllocatedType *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_json_1_1_batch_allocator.html#a7532989b88c9f124f83394f24737378a">freeHead_</a></td></tr>
+<tr class="memdesc:a7532989b88c9f124f83394f24737378a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Head of a single linked list within the allocated space of freeed object. <br/></td></tr>
+<tr class="separator:a7532989b88c9f124f83394f24737378a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7a906cb96f6c92cb06f519b15539a5c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa7a906cb96f6c92cb06f519b15539a5c"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>objectsPerPage_</b></td></tr>
+<tr class="separator:aa7a906cb96f6c92cb06f519b15539a5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a4909756c2d33bd0f07662e88e4f850dd"></a>
@@ -177,7 +216,7 @@ template&lt;typename AllocatedType , const unsigned int objectPerAllocation&gt; 
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 18 2014 16:58:43 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 10 2014 22:24:00 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

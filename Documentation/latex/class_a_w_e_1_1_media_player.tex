@@ -24,8 +24,10 @@ Inheritance diagram for A\-W\-E\-:\-:Media\-Player\-:\begin{figure}[H]
 \begin{DoxyCompactList}\small\item\em Deconstructor. \end{DoxyCompactList}\item 
 virtual int \hyperlink{class_a_w_e_1_1_media_player_a8a7660cdf7306adf61a7c79831ee7171}{play} (\hyperlink{class_a_w_e_1_1_media_file}{Media\-File} $\ast$file)=0
 \begin{DoxyCompactList}\small\item\em Play the given file. \end{DoxyCompactList}\item 
-virtual const std\-::string \& \hyperlink{class_a_w_e_1_1_media_player_a59d47b0590a9cba607e2189947ea0239}{get\-Name} () const =0
-\begin{DoxyCompactList}\small\item\em Get the name of the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+virtual Q\-String \hyperlink{class_a_w_e_1_1_media_player_a481bc1288b8b3bde9c5116d7ffd3c2f2}{get\-Name} () const =0
+\begin{DoxyCompactList}\small\item\em Get the name of the player. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_a_w_e_1_1_media_player_a8dd37e3307cef837b296f94e4b398138}{can\-Play} (\hyperlink{class_a_w_e_1_1_media_file}{Media\-File} $\ast$file)=0
+\begin{DoxyCompactList}\small\item\em Determine if the given media file can be played by this player. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -36,13 +38,36 @@ Represents an abstract media player's functions.
 
 
 \subsection{Member Function Documentation}
-\hypertarget{class_a_w_e_1_1_media_player_a59d47b0590a9cba607e2189947ea0239}{\index{A\-W\-E\-::\-Media\-Player@{A\-W\-E\-::\-Media\-Player}!get\-Name@{get\-Name}}
+\hypertarget{class_a_w_e_1_1_media_player_a8dd37e3307cef837b296f94e4b398138}{\index{A\-W\-E\-::\-Media\-Player@{A\-W\-E\-::\-Media\-Player}!can\-Play@{can\-Play}}
+\index{can\-Play@{can\-Play}!AWE::MediaPlayer@{A\-W\-E\-::\-Media\-Player}}
+\subsubsection[{can\-Play}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool A\-W\-E\-::\-Media\-Player\-::can\-Play (
+\begin{DoxyParamCaption}
+\item[{{\bf Media\-File} $\ast$}]{file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_a_w_e_1_1_media_player_a8dd37e3307cef837b296f94e4b398138}
+
+
+Determine if the given media file can be played by this player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & The file to determine playability for.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if this player can play {\ttfamily file}, {\ttfamily false} otherwise. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_a_w_e_1_1_j_s_o_n_player_adba5012e59f5d77f0e08fafeaac017fa}{A\-W\-E\-::\-J\-S\-O\-N\-Player}.
+
+\hypertarget{class_a_w_e_1_1_media_player_a481bc1288b8b3bde9c5116d7ffd3c2f2}{\index{A\-W\-E\-::\-Media\-Player@{A\-W\-E\-::\-Media\-Player}!get\-Name@{get\-Name}}
 \index{get\-Name@{get\-Name}!AWE::MediaPlayer@{A\-W\-E\-::\-Media\-Player}}
-\subsubsection[{get\-Name}]{\setlength{\rightskip}{0pt plus 5cm}virtual const std\-::string\& A\-W\-E\-::\-Media\-Player\-::get\-Name (
+\subsubsection[{get\-Name}]{\setlength{\rightskip}{0pt plus 5cm}virtual Q\-String A\-W\-E\-::\-Media\-Player\-::get\-Name (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_a_w_e_1_1_media_player_a59d47b0590a9cba607e2189947ea0239}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_a_w_e_1_1_media_player_a481bc1288b8b3bde9c5116d7ffd3c2f2}
 
 
 Get the name of the player. 
@@ -52,7 +77,7 @@ The name of the player.
 \end{DoxyReturn}
 
 
-Implemented in \hyperlink{class_a_w_e_1_1_j_s_o_n_player_a24bd164f654e3fda5587be04013bb366}{A\-W\-E\-::\-J\-S\-O\-N\-Player}.
+Implemented in \hyperlink{class_a_w_e_1_1_j_s_o_n_player_a9d65a8aa1003452e607ecb481adfb79e}{A\-W\-E\-::\-J\-S\-O\-N\-Player}.
 
 \hypertarget{class_a_w_e_1_1_media_player_a8a7660cdf7306adf61a7c79831ee7171}{\index{A\-W\-E\-::\-Media\-Player@{A\-W\-E\-::\-Media\-Player}!play@{play}}
 \index{play@{play}!AWE::MediaPlayer@{A\-W\-E\-::\-Media\-Player}}

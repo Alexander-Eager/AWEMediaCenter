@@ -1,0 +1,50 @@
+{
+	"folders": {
+		"players": "players/",
+		"scrapers": "scrapers/",
+		"types": "types/",
+		"skins": "skins/",
+		"root": "root/root.json",
+		"services": "services/"
+	},
+
+	"default skin": "Default",
+
+	// TODO once skins are fully implemented,
+	// get rid of this
+	"fonts": {
+		// used in title bars and such
+		"biggest": {
+			"name": "Helvetica",
+			"size": 40,
+			"weight": 75,
+			"italic": false,
+			"color": {
+				"name": "black",
+				"alpha": 255
+			}
+		},
+		// used in sub-title bars
+		"big": {
+			"name": "Helvetica",
+			"size": 30,
+			"weight": 63,
+			"italic": false,
+			"color": {
+				"name": "black",
+				"alpha": 255
+			}
+		},
+		// used in most situations
+		"normal": {
+			"name": "Helvetica",
+			"size": 20,
+			"weight": 50,
+			"italic": false,
+			"color": {
+				"name": "black",
+				"alpha": 255
+			}
+		}
+	}
+}

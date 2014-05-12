@@ -22,7 +22,7 @@ namespace AWE
 			 *
 			 * \param file The JSON file.
 			 **/
-			JSONService(const QDir& file);
+			JSONService(QDir file);
 
 			/**
 			 * \brief Open the application.

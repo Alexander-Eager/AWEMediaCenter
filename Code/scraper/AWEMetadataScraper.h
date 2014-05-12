@@ -91,6 +91,8 @@ namespace AWE
 			 * \brief Create a media item (or multiple if applicable) from a
 			 *			given file or folder.
 			 *
+			 * Also adds to the map of files.
+			 *
 			 * To construct your JSON file, you should use 
 			 * [JsonCpp](http://jsoncpp.sourceforge.net).
 			 *
@@ -105,6 +107,10 @@ namespace AWE
 			 * `inheritMetadata` determines if data that could be inherited from 
 			 * the folder should be.
 			 *
+			 * \todo boolean flags
+			 *
+			 * \param[out] placeInMe The `Folder` to put the created items in.
+			 * \param[in] globalSettings The global settings of AWEMC.
 			 * \param[in] file The file or folder to get media items for.
 			 * \param[in] askUser `true` if the user wants to be given choices,
 			 *				`false` otherwise.
@@ -117,7 +123,8 @@ namespace AWE
 			 * \returns A list of media items for the given file. The list is empty if
 			 *			the file does not match.
 			 **/
-			virtual QList<MediaItem*> scrapeDataForFile(const QDir& file,
+			virtual QList<MediaItem*> scrapeDataForFile(Folder* placeInMe,
+				GlobalSettings* globalSettings, QDir file,
 				bool askUser, bool import, bool inheritMetadata) = 0;
 
 			/**
@@ -141,17 +148,15 @@ namespace AWE
 			 *
 			 * \returns The name of the scraper.
 			 **/
-			virtual const QString& getName() = 0;
+			virtual QString getName() = 0;
 
 			/**
 			 * \brief Gets the media type for this scraper.
 			 *
 			 * \returns The media type name for the scraper.
 			 **/
-			virtual const QString& getType() = 0;
+			virtual QString getType() = 0;
 	};
 }
-
-Q_DECLARE_INTERFACE(AWE::MetadataScraper, "com.awe.metadata.scraper/0.1")
 
 #endif

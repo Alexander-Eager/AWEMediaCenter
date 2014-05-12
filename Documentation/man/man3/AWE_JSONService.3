@@ -1,4 +1,4 @@
-.TH "AWE::JSONService" 3 "Fri Apr 18 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.TH "AWE::JSONService" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -17,7 +17,7 @@ Inherits \fBAWE::MediaService\fP\&.
 
 .in +1c
 .ti -1c
-.RI "\fBJSONService\fP (const QDir &file)"
+.RI "\fBJSONService\fP (QDir file)"
 .br
 .RI "\fIConstruct an \fBMediaService\fP from its JSON file\&. \fP"
 .ti -1c
@@ -25,13 +25,21 @@ Inherits \fBAWE::MediaService\fP\&.
 .br
 .RI "\fIOpen the application\&. \fP"
 .in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "QString \fBmyCommand\fP"
+.br
+.RI "\fIThe command to run\&. \fP"
+.in -1c
 .SS "Additional Inherited Members"
 .SH "Detailed Description"
 .PP 
 An external media service (aka application) described by a JSON file\&. 
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "JSONService::JSONService (const QDir &file)"
+.SS "JSONService::JSONService (QDirfile)"
 
 .PP
 Construct an \fBMediaService\fP from its JSON file\&. 

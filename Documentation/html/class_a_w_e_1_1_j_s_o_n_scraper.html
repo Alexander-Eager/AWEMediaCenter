@@ -74,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,6 +91,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_a_w_e_1_1_j_s_o_n_scraper-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">AWE::JSONScraper Class Reference</div>  </div>
@@ -113,32 +115,106 @@ Inheritance diagram for AWE::JSONScraper:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3d115de6594a974a48bc5655dab8118c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#a3d115de6594a974a48bc5655dab8118c">JSONScraper</a> (const std::string &amp;name, const std::string &amp;type)</td></tr>
-<tr class="memdesc:a3d115de6594a974a48bc5655dab8118c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new JSON-based scraper from the given name.  <a href="#a3d115de6594a974a48bc5655dab8118c">More...</a><br/></td></tr>
-<tr class="separator:a3d115de6594a974a48bc5655dab8118c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6fe5d6f084e3b9ff5fdd1e5cd883351"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#ac6fe5d6f084e3b9ff5fdd1e5cd883351">JSONScraper</a> (QString name, QString type)</td></tr>
+<tr class="memdesc:ac6fe5d6f084e3b9ff5fdd1e5cd883351"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new JSON-based scraper from the given name.  <a href="#ac6fe5d6f084e3b9ff5fdd1e5cd883351">More...</a><br/></td></tr>
+<tr class="separator:ac6fe5d6f084e3b9ff5fdd1e5cd883351"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b12fde072ef979911fcca4191c3c2a7"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#a1b12fde072ef979911fcca4191c3c2a7">prepare</a> (<a class="el" href="class_a_w_e_1_1_global_settings.html">GlobalSettings</a> *settings)</td></tr>
 <tr class="memdesc:a1b12fde072ef979911fcca4191c3c2a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prepares the scraper by reading the scraper and type files.  <a href="#a1b12fde072ef979911fcca4191c3c2a7">More...</a><br/></td></tr>
 <tr class="separator:a1b12fde072ef979911fcca4191c3c2a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afbed287c0fcae8d797552c711854b4e9"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#afbed287c0fcae8d797552c711854b4e9">scrapeDataForFile</a> (<a class="el" href="class_a_w_e_1_1_media_file.html">MediaFile</a> *file, bool askUser, bool import)</td></tr>
-<tr class="memdesc:afbed287c0fcae8d797552c711854b4e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves metadata for a media file.  <a href="#afbed287c0fcae8d797552c711854b4e9">More...</a><br/></td></tr>
-<tr class="separator:afbed287c0fcae8d797552c711854b4e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a883ec1b6814b4f192a28f32c8f47dd39"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#a883ec1b6814b4f192a28f32c8f47dd39">scrapeDataForFile</a> (<a class="el" href="class_a_w_e_1_1_media_item.html">MediaItem</a> *file, bool askUser, bool import, bool inheritMetadata)</td></tr>
+<tr class="memdesc:a883ec1b6814b4f192a28f32c8f47dd39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves metadata for a media file.  <a href="#a883ec1b6814b4f192a28f32c8f47dd39">More...</a><br/></td></tr>
+<tr class="separator:a883ec1b6814b4f192a28f32c8f47dd39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ccab4a9c36f8420222a75de1282eb2f"><td class="memItemLeft" align="right" valign="top">virtual QList&lt; <a class="el" href="class_a_w_e_1_1_media_item.html">MediaItem</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#a1ccab4a9c36f8420222a75de1282eb2f">scrapeDataForFile</a> (<a class="el" href="class_a_w_e_1_1_folder.html">Folder</a> *placeInMe, <a class="el" href="class_a_w_e_1_1_global_settings.html">GlobalSettings</a> *globalSettings, QDir file, bool askUser, bool import, bool inheritMetadata)</td></tr>
+<tr class="memdesc:a1ccab4a9c36f8420222a75de1282eb2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a media item (or multiple if applicable) from a given file or folder.  <a href="#a1ccab4a9c36f8420222a75de1282eb2f">More...</a><br/></td></tr>
+<tr class="separator:a1ccab4a9c36f8420222a75de1282eb2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d1a05a4c7273ff1063518592d68501a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#a0d1a05a4c7273ff1063518592d68501a">deactivate</a> ()</td></tr>
 <tr class="memdesc:a0d1a05a4c7273ff1063518592d68501a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys any used-up dynamic memory.  <a href="#a0d1a05a4c7273ff1063518592d68501a">More...</a><br/></td></tr>
 <tr class="separator:a0d1a05a4c7273ff1063518592d68501a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb4ca61ee617b473198a635c6f3ac57d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#abb4ca61ee617b473198a635c6f3ac57d">isValid</a> ()</td></tr>
 <tr class="memdesc:abb4ca61ee617b473198a635c6f3ac57d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if this is scraper can be used.  <a href="#abb4ca61ee617b473198a635c6f3ac57d">More...</a><br/></td></tr>
 <tr class="separator:abb4ca61ee617b473198a635c6f3ac57d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77c2ed4ece4a88876f6381b97d6c5a93"><td class="memItemLeft" align="right" valign="top">virtual const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#a77c2ed4ece4a88876f6381b97d6c5a93">getName</a> ()</td></tr>
-<tr class="memdesc:a77c2ed4ece4a88876f6381b97d6c5a93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the name of the scraper.  <a href="#a77c2ed4ece4a88876f6381b97d6c5a93">More...</a><br/></td></tr>
-<tr class="separator:a77c2ed4ece4a88876f6381b97d6c5a93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b540056aa7ddf4e343220b0a54a0279"><td class="memItemLeft" align="right" valign="top">virtual const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#a5b540056aa7ddf4e343220b0a54a0279">getType</a> ()</td></tr>
-<tr class="memdesc:a5b540056aa7ddf4e343220b0a54a0279"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the media type for this scraper.  <a href="#a5b540056aa7ddf4e343220b0a54a0279">More...</a><br/></td></tr>
-<tr class="separator:a5b540056aa7ddf4e343220b0a54a0279"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a2613e43da4d36040f704d0481fff50"><td class="memItemLeft" align="right" valign="top">virtual QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#a9a2613e43da4d36040f704d0481fff50">getName</a> ()</td></tr>
+<tr class="memdesc:a9a2613e43da4d36040f704d0481fff50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the name of the scraper.  <a href="#a9a2613e43da4d36040f704d0481fff50">More...</a><br/></td></tr>
+<tr class="separator:a9a2613e43da4d36040f704d0481fff50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95ff503c69c697cacc121182c4aa5ea4"><td class="memItemLeft" align="right" valign="top">virtual QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#a95ff503c69c697cacc121182c4aa5ea4">getType</a> ()</td></tr>
+<tr class="memdesc:a95ff503c69c697cacc121182c4aa5ea4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the media type for this scraper.  <a href="#a95ff503c69c697cacc121182c4aa5ea4">More...</a><br/></td></tr>
+<tr class="separator:a95ff503c69c697cacc121182c4aa5ea4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_a_w_e_1_1_metadata_scraper"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_a_w_e_1_1_metadata_scraper')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_a_w_e_1_1_metadata_scraper.html">AWE::MetadataScraper</a></td></tr>
 <tr class="memitem:a0a7ae0178e838b07bbd960be7c9e7dac inherit pub_methods_class_a_w_e_1_1_metadata_scraper"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0a7ae0178e838b07bbd960be7c9e7dac"></a>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_metadata_scraper.html#a0a7ae0178e838b07bbd960be7c9e7dac">~MetadataScraper</a> ()</td></tr>
 <tr class="memdesc:a0a7ae0178e838b07bbd960be7c9e7dac inherit pub_methods_class_a_w_e_1_1_metadata_scraper"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deconstructor. <br/></td></tr>
 <tr class="separator:a0a7ae0178e838b07bbd960be7c9e7dac inherit pub_methods_class_a_w_e_1_1_metadata_scraper"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:aefc9dd0f99a2adab9b595ef3b3582c8b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#aefc9dd0f99a2adab9b595ef3b3582c8b">executeProcedure</a> (<a class="el" href="class_json_1_1_value.html">Json::Value</a> &amp;procedure, QRegularExpressionMatch backrefs, bool askUser, bool import, bool inheritMetadata)</td></tr>
+<tr class="memdesc:aefc9dd0f99a2adab9b595ef3b3582c8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute a specific procedure from a <code>"procedures"</code> array.  <a href="#aefc9dd0f99a2adab9b595ef3b3582c8b">More...</a><br/></td></tr>
+<tr class="separator:aefc9dd0f99a2adab9b595ef3b3582c8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a575f13fe24c45ea6a06d61569ed22fe7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#a575f13fe24c45ea6a06d61569ed22fe7">useMatchForProcedure</a> (<a class="el" href="class_json_1_1_value.html">Json::Value</a> &amp;procedure, QRegularExpressionMatch backrefs, bool askUser, bool import, bool inheritMetadata)</td></tr>
+<tr class="memdesc:a575f13fe24c45ea6a06d61569ed22fe7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function that sets properties and executes sub-procedures.  <a href="#a575f13fe24c45ea6a06d61569ed22fe7">More...</a><br/></td></tr>
+<tr class="separator:a575f13fe24c45ea6a06d61569ed22fe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a339670a46a5b55b1c59b3ddba5986742"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#a339670a46a5b55b1c59b3ddba5986742">importFiles</a> (<a class="el" href="class_json_1_1_value.html">Json::Value</a> &amp;props)</td></tr>
+<tr class="memdesc:a339670a46a5b55b1c59b3ddba5986742"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function that imports the files in the given <code><a class="el" href="class_json_1_1_value.html" title="Represents a JSON value. ">Json::Value</a></code>.  <a href="#a339670a46a5b55b1c59b3ddba5986742">More...</a><br/></td></tr>
+<tr class="separator:a339670a46a5b55b1c59b3ddba5986742"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb2118a214f52055259d4e214c147cf9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#afb2118a214f52055259d4e214c147cf9">replaceBackrefs</a> (QString &amp;pseudo_reg, QRegularExpressionMatch backrefs)</td></tr>
+<tr class="memdesc:afb2118a214f52055259d4e214c147cf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace the backreferences in <code>pseudo_reg</code> with the references from <code>backrefs</code>.  <a href="#afb2118a214f52055259d4e214c147cf9">More...</a><br/></td></tr>
+<tr class="separator:afb2118a214f52055259d4e214c147cf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a406666e30d724336826cdaae6ede7c8c"><td class="memItemLeft" align="right" valign="top">QString &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#a406666e30d724336826cdaae6ede7c8c">getFileContents</a> (QString file)</td></tr>
+<tr class="memdesc:a406666e30d724336826cdaae6ede7c8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the contents of a file, either from the already opened files or a new file.  <a href="#a406666e30d724336826cdaae6ede7c8c">More...</a><br/></td></tr>
+<tr class="separator:a406666e30d724336826cdaae6ede7c8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac83bcfb3d69108024c23ff49e8b8c274"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#ac83bcfb3d69108024c23ff49e8b8c274">checkValidity</a> ()</td></tr>
+<tr class="memdesc:ac83bcfb3d69108024c23ff49e8b8c274"><td class="mdescLeft">&#160;</td><td class="mdescRight">Does a test run of the procedures to decide if this scraper is valid.  <a href="#ac83bcfb3d69108024c23ff49e8b8c274">More...</a><br/></td></tr>
+<tr class="separator:ac83bcfb3d69108024c23ff49e8b8c274"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac73167b683a6dec42cd84211e337dc46"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#ac73167b683a6dec42cd84211e337dc46">checkProcedureValidity</a> (<a class="el" href="class_json_1_1_value.html">Json::Value</a> &amp;procedure, int capCount)</td></tr>
+<tr class="memdesc:ac73167b683a6dec42cd84211e337dc46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Does a test run of a procedure to decide if it is valid.  <a href="#ac73167b683a6dec42cd84211e337dc46">More...</a><br/></td></tr>
+<tr class="separator:ac73167b683a6dec42cd84211e337dc46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a5ca0c55dde4c469a4a09680257792d9d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5ca0c55dde4c469a4a09680257792d9d"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#a5ca0c55dde4c469a4a09680257792d9d">myValidity</a></td></tr>
+<tr class="memdesc:a5ca0c55dde4c469a4a09680257792d9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Can this be used effectively? <br/></td></tr>
+<tr class="separator:a5ca0c55dde4c469a4a09680257792d9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0073f1a2fbbc412756c6ae2318972d39"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0073f1a2fbbc412756c6ae2318972d39"></a>
+QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#a0073f1a2fbbc412756c6ae2318972d39">myName</a></td></tr>
+<tr class="memdesc:a0073f1a2fbbc412756c6ae2318972d39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Name of the scraper. <br/></td></tr>
+<tr class="separator:a0073f1a2fbbc412756c6ae2318972d39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53b36c31016a1c503630c41b1d5b7901"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a53b36c31016a1c503630c41b1d5b7901"></a>
+QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#a53b36c31016a1c503630c41b1d5b7901">myType</a></td></tr>
+<tr class="memdesc:a53b36c31016a1c503630c41b1d5b7901"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the scraper. <br/></td></tr>
+<tr class="separator:a53b36c31016a1c503630c41b1d5b7901"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a569b18d21b70f8777fe24605860efb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1a569b18d21b70f8777fe24605860efb"></a>
+<a class="el" href="class_json_1_1_value.html">Json::Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#a1a569b18d21b70f8777fe24605860efb">myScraper</a></td></tr>
+<tr class="memdesc:a1a569b18d21b70f8777fe24605860efb"><td class="mdescLeft">&#160;</td><td class="mdescRight">The data determining how to scrape. <br/></td></tr>
+<tr class="separator:a1a569b18d21b70f8777fe24605860efb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72e4f32c2432abd2f3e9259d1227cb5a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a72e4f32c2432abd2f3e9259d1227cb5a"></a>
+<a class="el" href="class_json_1_1_value.html">Json::Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#a72e4f32c2432abd2f3e9259d1227cb5a">myDefaultProperties</a></td></tr>
+<tr class="memdesc:a72e4f32c2432abd2f3e9259d1227cb5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The global settings. <br/></td></tr>
+<tr class="separator:a72e4f32c2432abd2f3e9259d1227cb5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9672341060610ef66334d232f1319149"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9672341060610ef66334d232f1319149"></a>
+<a class="el" href="class_a_w_e_1_1_media_item.html">MediaItem</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#a9672341060610ef66334d232f1319149">myCurrentFile</a></td></tr>
+<tr class="memdesc:a9672341060610ef66334d232f1319149"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current file. <br/></td></tr>
+<tr class="separator:a9672341060610ef66334d232f1319149"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00f08f99c83dbeadd7fdf44d6677ff47"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a00f08f99c83dbeadd7fdf44d6677ff47"></a>
+<a class="el" href="class_a_w_e_1_1_folder.html">Folder</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#a00f08f99c83dbeadd7fdf44d6677ff47">myCurrentFolder</a></td></tr>
+<tr class="memdesc:a00f08f99c83dbeadd7fdf44d6677ff47"><td class="mdescLeft">&#160;</td><td class="mdescRight">The folder contianing myCurrentFile. <br/></td></tr>
+<tr class="separator:a00f08f99c83dbeadd7fdf44d6677ff47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91f5819597613553161fe9bf22581c31"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a91f5819597613553161fe9bf22581c31"></a>
+<a class="el" href="class_a_w_e_1_1_global_settings.html">GlobalSettings</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#a91f5819597613553161fe9bf22581c31">myGlobalSettings</a></td></tr>
+<tr class="memdesc:a91f5819597613553161fe9bf22581c31"><td class="mdescLeft">&#160;</td><td class="mdescRight">The global settings of <a class="el" href="class_a_w_e_1_1_a_w_e_m_c.html" title="This holds a few static instances of important classes, like AWE::GlobalSettings and UI::Delegate...">AWEMC</a>. <br/></td></tr>
+<tr class="separator:a91f5819597613553161fe9bf22581c31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17088ef91b31db71172616f62b2d257c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a17088ef91b31db71172616f62b2d257c"></a>
+QHash&lt; QString, QString &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#a17088ef91b31db71172616f62b2d257c">myMetadataFiles</a></td></tr>
+<tr class="memdesc:a17088ef91b31db71172616f62b2d257c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps file onto file contents (for speed boost). <br/></td></tr>
+<tr class="separator:a17088ef91b31db71172616f62b2d257c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade471d4c08caf575269396b9321278ab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ade471d4c08caf575269396b9321278ab"></a>
+QHash&lt; QString, QString &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#ade471d4c08caf575269396b9321278ab">myInheritedProperties</a></td></tr>
+<tr class="memdesc:ade471d4c08caf575269396b9321278ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps <code>myCurrentFile</code> props onto <code>myCurrentFolder</code> props. <br/></td></tr>
+<tr class="separator:ade471d4c08caf575269396b9321278ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8181e179af7036bee14fa3f04651c99"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af8181e179af7036bee14fa3f04651c99"></a>
+QSet&lt; QString &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_w_e_1_1_j_s_o_n_scraper.html#af8181e179af7036bee14fa3f04651c99">myFileProperties</a></td></tr>
+<tr class="memdesc:af8181e179af7036bee14fa3f04651c99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set of file properties. <br/></td></tr>
+<tr class="separator:af8181e179af7036bee14fa3f04651c99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A metadata scraper based on JSON files. </p>
@@ -146,20 +222,20 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <p>One way of defining a scraper is through a JSON file interpreted by an instantiation of this class. To read more about the format of such a JSON file, read this document.</p>
 <p>For information on media types, read ../type/README.md "this document". </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a3d115de6594a974a48bc5655dab8118c"></a>
+<a class="anchor" id="ac6fe5d6f084e3b9ff5fdd1e5cd883351"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">JSONScraper::JSONScraper </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramtype">QString&#160;</td>
           <td class="paramname"><em>name</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramtype">QString&#160;</td>
           <td class="paramname"><em>type</em>&#160;</td>
         </tr>
         <tr>
@@ -182,6 +258,78 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ac73167b683a6dec42cd84211e337dc46"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool JSONScraper::checkProcedureValidity </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_json_1_1_value.html">Json::Value</a> &amp;&#160;</td>
+          <td class="paramname"><em>procedure</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>capCount</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Does a test run of a procedure to decide if it is valid. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>This entire function (which at the moment just returns <code>true</code>)</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">procedure</td><td>The procedure to check. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">capCount</td><td>The number of backrefs passed to the procedure.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if <code>procedure</code> is safe to use, <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ac83bcfb3d69108024c23ff49e8b8c274"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool JSONScraper::checkValidity </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Does a test run of the procedures to decide if this scraper is valid. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>This entire function (which at the moment just returns <code>true</code>)</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if this scraper is safe to use, <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a0d1a05a4c7273ff1063518592d68501a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -210,7 +358,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a class="anchor" id="a77c2ed4ece4a88876f6381b97d6c5a93"></a>
+<a class="anchor" id="aefc9dd0f99a2adab9b595ef3b3582c8b"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -218,7 +366,105 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const string &amp; JSONScraper::getName </td>
+          <td class="memname">bool JSONScraper::executeProcedure </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_json_1_1_value.html">Json::Value</a> &amp;&#160;</td>
+          <td class="paramname"><em>procedure</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QRegularExpressionMatch&#160;</td>
+          <td class="paramname"><em>backrefs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>askUser</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>import</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>inheritMetadata</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Execute a specific procedure from a <code>"procedures"</code> array. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">procedure</td><td>The procedure to execute. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">backrefs</td><td>The backreferences to use on the <code>"look in file"</code> and <code>"for"</code> tags. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">askUser</td><td><code>true</code> if the user wants semi-automatic scraping, <code>false</code> if completely automatic. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">import</td><td><code>true</code> if the user wants to import files, <code>false</code> if the user wants links. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">inheritMetadata</td><td><code>true</code> if designated metadata items should be inherited from the containing folder, <code>false</code> otherwise.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the procedure ran without issue, <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a406666e30d724336826cdaae6ede7c8c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString &amp; JSONScraper::getFileContents </td>
+          <td>(</td>
+          <td class="paramtype">QString&#160;</td>
+          <td class="paramname"><em>file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the contents of a file, either from the already opened files or a new file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">file</td><td>The file to get the contents for.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The contents of <code>file</code>. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a9a2613e43da4d36040f704d0481fff50"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString JSONScraper::getName </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -234,11 +480,11 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <p>Gets the name of the scraper. </p>
 <dl class="section return"><dt>Returns</dt><dd>The name of the scraper. </dd></dl>
 
-<p>Implements <a class="el" href="class_a_w_e_1_1_metadata_scraper.html#a375745d101342f062a1a3eb89a63ec6b">AWE::MetadataScraper</a>.</p>
+<p>Implements <a class="el" href="class_a_w_e_1_1_metadata_scraper.html#ace0871b6861e04ec3ff39cba70606d29">AWE::MetadataScraper</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a5b540056aa7ddf4e343220b0a54a0279"></a>
+<a class="anchor" id="a95ff503c69c697cacc121182c4aa5ea4"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -246,7 +492,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const string &amp; JSONScraper::getType </td>
+          <td class="memname">QString JSONScraper::getType </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -262,7 +508,40 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <p>Gets the media type for this scraper. </p>
 <dl class="section return"><dt>Returns</dt><dd>The media type name for the scraper. </dd></dl>
 
-<p>Implements <a class="el" href="class_a_w_e_1_1_metadata_scraper.html#a02549221a803b624300ea6994be1b1a2">AWE::MetadataScraper</a>.</p>
+<p>Implements <a class="el" href="class_a_w_e_1_1_metadata_scraper.html#a71f1b614a3196d5d8b68e3d216896e3d">AWE::MetadataScraper</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a339670a46a5b55b1c59b3ddba5986742"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void JSONScraper::importFiles </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_json_1_1_value.html">Json::Value</a> &amp;&#160;</td>
+          <td class="paramname"><em>props</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Helper function that imports the files in the given <code><a class="el" href="class_json_1_1_value.html" title="Represents a JSON value. ">Json::Value</a></code>. </p>
+<p>This is used for the <code>"force copy"</code> and <code>"copy"</code> tags.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">props</td><td>The properties that contain files to import. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -330,7 +609,52 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a class="anchor" id="afbed287c0fcae8d797552c711854b4e9"></a>
+<a class="anchor" id="afb2118a214f52055259d4e214c147cf9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int JSONScraper::replaceBackrefs </td>
+          <td>(</td>
+          <td class="paramtype">QString &amp;&#160;</td>
+          <td class="paramname"><em>pseudo_reg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QRegularExpressionMatch&#160;</td>
+          <td class="paramname"><em>backrefs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Replace the backreferences in <code>pseudo_reg</code> with the references from <code>backrefs</code>. </p>
+<p><code>pseudo_reg</code> should be formatted according to <a href="http://www.cplusplus.com/reference/regex/match_replace/">this function's</a> <code>fmt</code> parameter.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">pseudo_reg</td><td>The <code>QString</code> with the references to replace. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">backrefs</td><td>The backreferences to use.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The highest backref requested. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a883ec1b6814b4f192a28f32c8f47dd39"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -340,7 +664,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
         <tr>
           <td class="memname">bool JSONScraper::scrapeDataForFile </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_a_w_e_1_1_media_file.html">MediaFile</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_a_w_e_1_1_media_item.html">MediaItem</a> *&#160;</td>
           <td class="paramname"><em>file</em>, </td>
         </tr>
         <tr>
@@ -353,7 +677,13 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>import</em>&#160;</td>
+          <td class="paramname"><em>import</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>inheritMetadata</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -371,19 +701,164 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <p>Retrieves metadata for a media file. </p>
 <p>To construct your JSON file, you should use <a href="http://jsoncpp.sourceforge.net">jsoncpp</a>.</p>
 <p><code>askUser</code> tells your scraper if the user wants to be given a list of choices for certain things. You should NOT ask the user for everything if <code>askUser</code> is true; only basic things like, "Which icon do you want to use?"</p>
-<p><code>import</code> specifies if the files you get should be copied into AWEMC's folders. Do NOT copy the media file.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd><code>import</code> and <code>askUser</code></dd></dl>
+<p><code>import</code> specifies if the files you get should be copied into <a class="el" href="class_a_w_e_1_1_a_w_e_m_c.html" title="This holds a few static instances of important classes, like AWE::GlobalSettings and UI::Delegate...">AWEMC</a>'s folders. Do NOT copy the media file.</p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>boolean flags</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in,out]</td><td class="paramname">file</td><td>The media file to get metadata for. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">askUser</td><td><code>true</code> if the user wants to be given choices, <code>false</code> otherwise. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">import</td><td><code>true</code> if the user wants to import metadata files, <code>false</code> otherwise.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">import</td><td><code>true</code> if the user wants to import metadata files, <code>false</code> otherwise. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">inheritMetadata</td><td><code>true</code> if designated metadata items should be inherited from the containing folder, <code>false</code> otherwise.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> if the scraper was able to get the metadata, <code>false</code> if it was not. </dd></dl>
 
-<p>Implements <a class="el" href="class_a_w_e_1_1_metadata_scraper.html#a509832b172ce67e5e9788134016481b3">AWE::MetadataScraper</a>.</p>
+<p>Implements <a class="el" href="class_a_w_e_1_1_metadata_scraper.html#a14f10736d12ada980b4c64a906ebe9a6">AWE::MetadataScraper</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1ccab4a9c36f8420222a75de1282eb2f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QList&lt; <a class="el" href="class_a_w_e_1_1_media_item.html">MediaItem</a> * &gt; JSONScraper::scrapeDataForFile </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_a_w_e_1_1_folder.html">Folder</a> *&#160;</td>
+          <td class="paramname"><em>placeInMe</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_a_w_e_1_1_global_settings.html">GlobalSettings</a> *&#160;</td>
+          <td class="paramname"><em>globalSettings</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QDir&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>askUser</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>import</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>inheritMetadata</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create a media item (or multiple if applicable) from a given file or folder. </p>
+<p>To construct your JSON file, you should use <a href="http://jsoncpp.sourceforge.net">JsonCpp</a>.</p>
+<p><code>askUser</code> tells your scraper if the user wants to be given a list of choices for certain things. You should NOT ask the user for everything if <code>askUser</code> is true; only basic things like, "Which icon do you want to use?"</p>
+<p><code>import</code> specifies if the files you get should be copied into <a class="el" href="class_a_w_e_1_1_a_w_e_m_c.html" title="This holds a few static instances of important classes, like AWE::GlobalSettings and UI::Delegate...">AWEMC</a>'s folders. Do NOT copy the media file.</p>
+<p><code>inheritMetadata</code> determines if data that could be inherited from the folder should be.</p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>boolean flags</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">placeInMe</td><td>The <code><a class="el" href="class_a_w_e_1_1_folder.html" title="A folder that contains MediaItems. ">Folder</a></code> to put the created items in. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">file</td><td>The file or folder to get media items for. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">globalSettings</td><td>The global settings of <a class="el" href="class_a_w_e_1_1_a_w_e_m_c.html" title="This holds a few static instances of important classes, like AWE::GlobalSettings and UI::Delegate...">AWEMC</a>. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">askUser</td><td><code>true</code> if the user wants to be given choices, <code>false</code> otherwise. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">import</td><td><code>true</code> if the user wants to import metadata files, <code>false</code> otherwise. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">inheritMetadata</td><td><code>true</code> if designated metadata items should be inherited from the containing folder, <code>false</code> otherwise.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A list of media items for the given file. The list is empty if the file does not match. </dd></dl>
+
+<p>Implements <a class="el" href="class_a_w_e_1_1_metadata_scraper.html#af3708cc05181299d7c5b37afc1568b3d">AWE::MetadataScraper</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a575f13fe24c45ea6a06d61569ed22fe7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool JSONScraper::useMatchForProcedure </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_json_1_1_value.html">Json::Value</a> &amp;&#160;</td>
+          <td class="paramname"><em>procedure</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QRegularExpressionMatch&#160;</td>
+          <td class="paramname"><em>backrefs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>askUser</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>import</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>inheritMetadata</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Helper function that sets properties and executes sub-procedures. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">procedure</td><td>The procedure describing the properties and sub-procedures. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">backrefs</td><td>The backreferences to use on the properties tags. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">askUser</td><td><code>true</code> if the user wants semi-automatic scraping, <code>false</code> if completely automatic. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">import</td><td><code>true</code> if the user wants to import files, <code>false</code> if the user wants links. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">inheritMetadata</td><td><code>true</code> if designated metadata items should be inherited from the containing folder, <code>false</code> otherwise.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the procedure ran without issue, <code>false</code> otherwise. </dd></dl>
 
 </div>
 </div>
@@ -394,7 +869,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 18 2014 16:58:43 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 10 2014 22:24:00 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

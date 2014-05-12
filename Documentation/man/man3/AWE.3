@@ -1,10 +1,10 @@
-.TH "AWE" 3 "Fri Apr 18 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.TH "AWE" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 AWE \- 
 .PP
-Backend for AWEMC\&.  
+Backend for \fBAWEMC\fP\&.  
 
 .SH SYNOPSIS
 .br
@@ -51,19 +51,31 @@ Backend for AWEMC\&.
 .ti -1c
 .RI "class \fBGlobalSettings\fP"
 .br
-.RI "\fIHolds the global settings for AWEMC\&. \fP"
+.RI "\fIHolds the global settings for \fBAWEMC\fP\&. \fP"
+.ti -1c
+.RI "class \fBAWEMC\fP"
+.br
+.RI "\fIThis holds a few static instances of important classes, like \fC\fBAWE::GlobalSettings\fP\fP and \fCUI::Delegate\fP\&. \fP"
+.ti -1c
+.RI "class \fBConfigFile\fP"
+.br
+.RI "\fIHolds the information for a configuration file in an abstract way\&. \fP"
+.ti -1c
+.RI "class \fBFolderGenerator\fP"
+.br
+.RI "\fIDefines a folder generator for a hierarchical media type\&. \fP"
 .in -1c
-.SS "Typedefs"
+.SS "Enumerations"
 
 .in +1c
 .ti -1c
-.RI "typedef std::smatch \fBBackrefList\fP"
+.RI "enum \fBItemType\fP { \fBFOLDER_TYPE\fP, \fBFILE_TYPE\fP, \fBSERVICE_TYPE\fP }"
 .br
-.RI "\fIDefines a list of sub expressions\&. \fP"
+.RI "\fIThe type of item\&. \fP"
 .in -1c
 .SH "Detailed Description"
 .PP 
-Backend for AWEMC\&. 
+Backend for \fBAWEMC\fP\&. 
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for AWE Media Center from the source code\&.

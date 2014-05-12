@@ -66,7 +66,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,7 +91,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>Deactivating the scraper: the objects allocated in step 2 are now deleted.</li>
 </ol>
 <h2>How to: Create Internal Metadata Scrapers using Plugins</h2>
-<p>Essentially, you need to implement the <code>MetadataScraper</code> interface, which is designed to be used as a plugin. Read the <a href="http://qt-project.org/doc/qt-4.8/plugins-howto.html">how-to for Qt plugins</a> to learn more. You'll need to use <a href="http://jsoncpp.sourceforge.net">JsonCpp</a> to write the settings file out.</p>
+<p>Essentially, you need to implement the <code>MetadataScraper</code> interface, which is designed to be used as a plugin. Read the <a href="http://qt-project.org/doc/qt-4.8/plugins-howto.html">how-to for Qt plugins</a> to learn more. You'll need to use <a href="http://jsoncpp.sourceforge.net/&gt;">JsonCpp</a> to write the settings file out.</p>
 <p>In addition to creating the plugin, you must make a JSON settings file. The only required entries in this file are: </p>
 <pre class="fragment">"name": &lt;name of the scraper as it should appear to the user&gt;,
 "plugin": &lt;the plugin library file&gt;
@@ -100,11 +100,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>Before reading this how-to, here is some information you should know:</p>
 <ul>
 <li>The general format of a JSON document (see <a href="http://www.json.org/">http://www.json.org/</a> for more details).</li>
-<li>The kinds of metadata that AWEMC accepts (see ../type_README.md "Media Types" for details).</li>
-<li>The way metadata is stored in a media file's JSON preference file (see ../items/files/README.md "Media Files" for details).</li>
-<li>ECMAScript regular expressions (see <a href="http://www.cplusplus.com/reference/regex/ECMAScript/">this online documentation</a> for details).</li>
+<li>The kinds of metadata that AWEMC accepts (see <a href="../type/README.md&gt;">Media Types</a> for details).</li>
+<li>The way metadata is stored in a media file's JSON preference file (see <a href="../items/README.md&gt;">Media Items</a> for details).</li>
+<li>Qt regular expressions (see <a href="http://qt-project.org/doc/qt-5/qregexp.html&gt;">QRegExp</a> for more details).</li>
 </ul>
-<p>Note that, although comments are not officially supported by the JSON file format, they are supported by AWEMC's JSON reader, <a href="http://jsoncpp.sourceforge.net">JsonCpp</a>. Standard <code>// comment</code> lines work.</p>
+<p>Note that, although comments are not officially supported by the JSON file format, they are supported by AWEMC's JSON reader, <a href="http://jsoncpp.sourceforge.net/&gt;">JsonCpp</a>. Standard <code>// comment</code> lines work.</p>
 <h3>Introduction to the idea behind JSON-based scrapers</h3>
 <p>The central theory behind these so-called <em>external scrapers</em> is that all metadata scrapers do basically the same thing: retrieve data from formatted files. Sometimes these are XML files (e.g. .nfo files from XBMC) and sometimes they are web pages (e.g. <a href="http://www.themoviedb.org/">http://www.themoviedb.org/</a>). JSON-based scrapers in AWEMC make no distinction between documents hosted on the internet and locally; they are all just text files that the scraper must read to get information about the media. Thus all you have to do to get a piece of information from a file is:</p>
 <ol type="1">
@@ -112,7 +112,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>Look for a specific section of text in that file.</li>
 <li>Take parts of that section of text and assign those values to metadata properties.</li>
 </ol>
-<p>The implentation if these so-called <em>procedures</em> is based on regular expressions and backreferences. The type of regex used is <a href="http://www.cplusplus.com/reference/regex/ECMAScript/">ECMAScript</a>, while the format of the string where backreferences are placed is defined by the <code>fmt</code> parameter for the C++ Standard Library's <a href="http://www.cplusplus.com/reference/regex/match_replace/">backref replacement function</a>.</p>
+<p>The implentation if these so-called <em>procedures</em> is based on regular expressions and backreferences. The type of regex used is <a href="http://qt-project.org/doc/qt-5/qregexp.html&gt;">QRegExp</a>, while the format of the string where backreferences are placed is defined by the <code>fmt</code> parameter for the C++ Standard Library's <a href="http://www.cplusplus.com/reference/regex/match_replace/">backref replacement function</a>.</p>
 <h3>A template for a scraper</h3>
 <p>Here is a template for a scraper: </p>
 <pre class="fragment">{
@@ -122,8 +122,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     // This scraper is available to scrape metadata for this type of media item
     "type": &lt;the type of media files&gt;,
 
+    // If a single file can have multiple items in it, set this to true.
+    // The procedures below will be repeated for every file name match if true,
+    // so make sure your filename regex is strict
+    "multiple items per file": &lt;true or false&gt;
+
     // This helps you get information to use, like the name of the media item
     "filename": &lt;regex to get backreferences from the media file path&gt;,
+
+    // If this type is hierarchical, the metadata should be inherited from the parent folder
+    "inherited metadata": {
+        &lt;this type's property&gt;: &lt;parent type's property&gt;
+    }
 
     // List of procedures to run using the backreferences from "filename"
     "procedures": [
@@ -132,7 +142,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
             "repeat": &lt;true or false&gt;,
 
             // Should the user be prompted to choose which match (or matches) to use?
-            "ask user": &lt;true or false&gt;,
+            // Empty string means that the user should not be prompted
+            "ask user": &lt;string to prompt user with&gt;,
 
             // The file to look in; backrefs are replaced
             "look in file": &lt;formatted string with backrefs&gt;,
@@ -141,9 +152,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
             "for": &lt;formatted regex with backrefs&gt;,
 
             // Set a bunch of properties to backreferences from "for"
-            &lt;prop&gt;: &lt;value with backrefs&gt;,
-            &lt;prop&gt;: &lt;value with backrefs&gt;,
-            // More properties...
+            "set properties": {
+                &lt;prop&gt;: &lt;value with backrefs&gt;,
+                &lt;prop&gt;: &lt;value with backrefs&gt;,
+                // More properties...
+            }
 
             // Run a list of sub-procedures using the backreferences from "for"
             "procedures": [...]
@@ -169,7 +182,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         // More properties...
     ]
 }
-</pre><p>Those of you who have read the ../Code/type_README.md "Media Types explanation" know that some metadata properties are actually objects that contain other metadata properties. In order to access a property held inside of an object, you must use the <code>.</code> operator, much like you would in C++. So to set the "default" property of the "icons" object, I would use:</p>
+</pre><p>Those of you who have read the <a href="../type/README.md&gt;">Media Types explanation</a> know that some metadata properties are actually objects that contain other metadata properties. In order to access a property held inside of an object, you must use the <code>.</code> operator, much like you would in C++. So to set the "default" property of the "icons" object, I would use:</p>
 <pre class="fragment">"icons.default": &lt;value&gt;
 </pre><h3>Example scrapers</h3>
 <p>There are plenty of example scrapers for you to look at in the <code>scrapers/json</code> directory in AWEMC's root folder. Specifically, <code>themoviedb.json</code> and <code>thetvdb.json</code> are included with AWEMC and well commented, so if you need a place to start read up on those.</p>
@@ -178,7 +191,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 18 2014 16:58:43 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 10 2014 22:24:00 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

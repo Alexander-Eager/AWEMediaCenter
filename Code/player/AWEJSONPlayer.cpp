@@ -13,10 +13,14 @@
 using namespace AWE;
 
 JSONPlayer::JSONPlayer(Json::Value& player)
+	:	myName(player["name"].asCString()),
+		myProgram(player["program"].asCString()),
+		myArguments(player["args"].asCString())
 {
-	myName = player["name"].asCString();
-	myProgram = player["program"].asCString();
-	myArguments = player["args"].asCString();
+	for (auto str : player["filetypes"])
+	{
+		myFileTypes << str.asCString();
+	}
 }
 
 int JSONPlayer::play(MediaFile* file)
@@ -30,7 +34,23 @@ int JSONPlayer::play(MediaFile* file)
 	return prog.waitForFinished();
 }
 
-const QString& JSONPlayer::getName() const
+bool JSONPlayer::canPlay(MediaFile* file)
+{
+	if (myFileTypes.count() == 0)
+	{
+		return true;
+	}
+	QString ext = file->getMediaFile().absolutePath();
+	int lastDot = ext.lastIndexOf('.');
+	if (lastDot < 0)
+	{
+		return myFileTypes.contains("");
+	}
+	ext.replace(0, lastDot, "");
+	return myFileTypes.contains(ext);
+}
+
+QString JSONPlayer::getName() const
 {
 	return myName;
 }

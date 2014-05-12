@@ -6,7 +6,7 @@
 
 using namespace AWE;
 
-JSONService::JSONService(const QDir& file) :
+JSONService::JSONService(QDir file) :
 	MediaService(file)
 {
 	myCommand = getStringMember("command");
@@ -16,5 +16,5 @@ int JSONService::open()
 {
 	QProcess process;
 	process.start(myCommand);
-	return process.waitForFinished();
+	return process.waitForFinished(-1);
 }

@@ -74,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,6 +91,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_json_1_1_path-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Json::Path Class Reference</div>  </div>
@@ -117,6 +120,34 @@ const <a class="el" href="class_json_1_1_value.html">Value</a> &amp;&#160;</td><
 <a class="el" href="class_json_1_1_value.html">Value</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_json_1_1_path.html#a5289901fc58ad1fdca1de7fb5a0b620c">make</a> (<a class="el" href="class_json_1_1_value.html">Value</a> &amp;root) const </td></tr>
 <tr class="memdesc:a5289901fc58ad1fdca1de7fb5a0b620c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the "path" to access the specified node and returns a reference on the node. <br/></td></tr>
 <tr class="separator:a5289901fc58ad1fdca1de7fb5a0b620c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:a763349989466ac275fad176708378f95"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a763349989466ac275fad176708378f95"></a>
+typedef std::vector&lt; const <br class="typebreak"/>
+<a class="el" href="class_json_1_1_path_argument.html">PathArgument</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>InArgs</b></td></tr>
+<tr class="separator:a763349989466ac275fad176708378f95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27d96232d034d7a78286468676f9cb3e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a27d96232d034d7a78286468676f9cb3e"></a>
+typedef std::vector&lt; <a class="el" href="class_json_1_1_path_argument.html">PathArgument</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Args</b></td></tr>
+<tr class="separator:a27d96232d034d7a78286468676f9cb3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a874e5339f8059ebeef049721f8897277"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a874e5339f8059ebeef049721f8897277"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>makePath</b> (const std::string &amp;path, const InArgs &amp;in)</td></tr>
+<tr class="separator:a874e5339f8059ebeef049721f8897277"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4d2ab3a6f09b69bab3d3e9fcdf13328"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af4d2ab3a6f09b69bab3d3e9fcdf13328"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>addPathInArg</b> (const std::string &amp;path, const InArgs &amp;in, InArgs::const_iterator &amp;itInArg, PathArgument::Kind kind)</td></tr>
+<tr class="separator:af4d2ab3a6f09b69bab3d3e9fcdf13328"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3729e6d3682338b2cfad2c10d4746f53"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3729e6d3682338b2cfad2c10d4746f53"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>invalidPath</b> (const std::string &amp;path, int location)</td></tr>
+<tr class="separator:a3729e6d3682338b2cfad2c10d4746f53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:af33d0de7ee9f99d3e361bdf504dc2bc7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af33d0de7ee9f99d3e361bdf504dc2bc7"></a>
+Args&#160;</td><td class="memItemRight" valign="bottom"><b>args_</b></td></tr>
+<tr class="separator:af33d0de7ee9f99d3e361bdf504dc2bc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Experimental and untested: represents a "path" to access a node. </p>
@@ -137,7 +168,7 @@ const <a class="el" href="class_json_1_1_value.html">Value</a> &amp;&#160;</td><
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 18 2014 16:58:43 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 10 2014 22:24:00 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

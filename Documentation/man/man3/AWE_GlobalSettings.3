@@ -1,29 +1,21 @@
-.TH "AWE::GlobalSettings" 3 "Fri Apr 18 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.TH "AWE::GlobalSettings" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 AWE::GlobalSettings \- 
 .PP
-Holds the global settings for AWEMC\&.  
+Holds the global settings for \fBAWEMC\fP\&.  
 
 .SH SYNOPSIS
 .br
 .PP
 .PP
 \fC#include <AWEGlobalSettings\&.h>\fP
-.SS "Public Types"
-
-.in +1c
-.ti -1c
-.RI "typedef std::set< std::string > \fBNameSet\fP"
-.br
-.RI "\fIThe set type used to hold names\&. \fP"
-.in -1c
 .SS "Public Member Functions"
 
 .in +1c
 .ti -1c
-.RI "\fBGlobalSettings\fP (const std::string &settingsFile)"
+.RI "\fBGlobalSettings\fP (QDir settingsFile)"
 .br
 .RI "\fICreate the global settings object\&. \fP"
 .ti -1c
@@ -31,57 +23,73 @@ Holds the global settings for AWEMC\&.
 .br
 .RI "\fIDeconstructor\&. \fP"
 .ti -1c
-.RI "\fBMetadataScraper\fP * \fBgetScraperByName\fP (const std::string &name)"
+.RI "QFont \fBgetFontByName\fP (QString name)"
+.br
+.RI "\fIGet a font by name\&. \fP"
+.ti -1c
+.RI "\fBMetadataScraper\fP * \fBgetScraperByName\fP (QString name)"
 .br
 .RI "\fIGet a metadata scraper by name\&. \fP"
 .ti -1c
-.RI "\fBJson::Value\fP & \fBgetScraperSettingsByName\fP (const std::string &name)"
+.RI "\fBJson::Value\fP & \fBgetScraperSettingsByName\fP (QString name)"
 .br
 .RI "\fIGet a metadata scraper's settings by name\&. \fP"
 .ti -1c
-.RI "const \fBNameSet\fP & \fBgetAllMetadataScraperNames\fP ()"
+.RI "QList< QString > \fBgetAllMetadataScraperNames\fP ()"
 .br
 .RI "\fIGet a set of all metadata scrapers\&. \fP"
 .ti -1c
-.RI "\fBMediaPlayer\fP * \fBgetPlayerByName\fP (const std::string &name)"
+.RI "QList< \fBMetadataScraper\fP * > \fBgetAllScrapersForItem\fP (\fBMediaItem\fP *item)"
+.br
+.RI "\fIGet a set of all metadata scrapers that can scrape for the given item\&. \fP"
+.ti -1c
+.RI "\fBMediaPlayer\fP * \fBgetPlayerByName\fP (QString name)"
 .br
 .RI "\fIGet a media player by name\&. \fP"
 .ti -1c
-.RI "\fBJson::Value\fP & \fBgetPlayerSettingsByName\fP (const std::string &name)"
+.RI "\fBJson::Value\fP & \fBgetPlayerSettingsByName\fP (QString name)"
 .br
 .RI "\fIGet a media player's settings by name\&. \fP"
 .ti -1c
-.RI "const \fBNameSet\fP & \fBgetAllMediaPlayerNames\fP ()"
+.RI "QList< QString > \fBgetAllMediaPlayerNames\fP ()"
 .br
 .RI "\fIGet a set of all media players\&. \fP"
 .ti -1c
-.RI "\fBJson::Value\fP & \fBgetTypeByName\fP (const std::string &name)"
+.RI "QList< \fBMediaPlayer\fP * > \fBgetAllPlayersForFile\fP (\fBMediaFile\fP *file)"
+.br
+.RI "\fIGet a set of all media players that can play the given file\&. \fP"
+.ti -1c
+.RI "\fBJson::Value\fP & \fBgetTypeByName\fP (QString name)"
 .br
 .RI "\fIGet the media type with the given name\&. \fP"
 .ti -1c
-.RI "const \fBNameSet\fP & \fBgetAllMediaTypeNames\fP ()"
+.RI "QList< QString > \fBgetAllMediaTypeNames\fP ()"
 .br
 .RI "\fIGet a set of all media types\&. \fP"
 .ti -1c
-.RI "const \fBNameSet\fP & \fBgetAllMediaServiceNames\fP ()"
+.RI "QList< QString > \fBgetAllMediaServiceNames\fP ()"
 .br
 .RI "\fIGet the names of all of the media services\&. \fP"
 .ti -1c
-.RI "\fBMediaService\fP * \fBgetMediaServiceByName\fP (const std::string &name)"
+.RI "\fBMediaService\fP * \fBgetMediaServiceByName\fP (QString name)"
 .br
 .RI "\fIGet a media service by name\&. \fP"
 .ti -1c
-.RI "\fBMediaItem\fP * \fBgetMediaItemByJSONFile\fP (const QDir &file)"
+.RI "\fBMediaItem\fP * \fBgetMediaItemByJSONFile\fP (QDir file)"
 .br
 .RI "\fIGet a media item from its JSON file\&. \fP"
 .ti -1c
-.RI "void \fBaddFolder\fP (const std::string &path, \fBFolder\fP *folder)"
+.RI "void \fBaddItem\fP (\fBMediaItem\fP *item)"
 .br
-.RI "\fIAdd the given folder\&. \fP"
+.RI "\fIAdd the given media item\&. \fP"
 .ti -1c
 .RI "\fBFolder\fP * \fBgetRootFolder\fP ()"
 .br
 .RI "\fIGet the root folder\&. \fP"
+.ti -1c
+.RI "\fBFolderGenerator\fP * \fBgetFolderGeneratorForType\fP (QString type)"
+.br
+.RI "\fIGet the folder generator for the given type\&. \fP"
 .in -1c
 .SS "Static Public Attributes"
 
@@ -90,33 +98,117 @@ Holds the global settings for AWEMC\&.
 .RI "static \fBJson::Value\fP \fBnull\fP = Value::null"
 .br
 .in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBobtainFonts\fP ()"
+.br
+.RI "\fIObtain the fonts\&. \fP"
+.ti -1c
+.RI "void \fBobtainScrapers\fP ()"
+.br
+.RI "\fIObtain the scrapers\&. \fP"
+.ti -1c
+.RI "void \fBobtainPlayers\fP ()"
+.br
+.RI "\fIObtain the players\&. \fP"
+.ti -1c
+.RI "void \fBobtainSkins\fP ()"
+.br
+.RI "\fIObtain the skins\&. \fP"
+.ti -1c
+.RI "void \fBobtainTypes\fP ()"
+.br
+.RI "\fIObtain the types\&. \fP"
+.ti -1c
+.RI "void \fBobtainServices\fP ()"
+.br
+.RI "\fIObtain the services\&. \fP"
+.ti -1c
+.RI "void \fBobtainItems\fP ()"
+.br
+.RI "\fIObtain the items\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBJson::Value\fP \fBmySettings\fP"
+.br
+.RI "\fIThe global settings\&. \fP"
+.ti -1c
+.RI "QDir \fBmySettingsFile\fP"
+.br
+.RI "\fIThe global settings file\&. \fP"
+.ti -1c
+.RI "QHash< QString, QFont > \fBmyFonts\fP"
+.br
+.RI "\fIMaps name for a font onto the font\&. \fP"
+.ti -1c
+.RI "QHash< QString, \fBFolderGenerator\fP * > \fBmyMediaTypes\fP"
+.br
+.RI "\fIMaps type name onto folder generator\&. \fP"
+.ti -1c
+.RI "QHash< QString, \fBMediaPlayer\fP * > \fBmyMediaPlayers\fP"
+.br
+.RI "\fIMaps names of media players onto players\&. \fP"
+.ti -1c
+.RI "QHash< QString, \fBJson::Value\fP > \fBmyMediaPlayerSettings\fP"
+.br
+.RI "\fIMaps names of media players onto settings\&. \fP"
+.ti -1c
+.RI "QHash< QString, \fBMetadataScraper\fP * > \fBmyMetadataScrapers\fP"
+.br
+.RI "\fIMaps names of metadata scrapers onto scrapers\&. \fP"
+.ti -1c
+.RI "QHash< QString, \fBJson::Value\fP > \fBmyMetadataScraperSettings\fP"
+.br
+.RI "\fIMaps names of metadata scrapers onto settings\&. \fP"
+.ti -1c
+.RI "QHash< QString, \fBFolderGenerator\fP * > \fBmyFolderGenerators\fP"
+.br
+.RI "\fIMaps names of media types onto folder generators\&. \fP"
+.ti -1c
+.RI "QHash< QString, \fBMediaService\fP * > \fBmyMediaServices\fP"
+.br
+.RI "\fIMaps names of media services onto services\&. \fP"
+.ti -1c
+.RI "QHash< QString, \fBMediaItem\fP * > \fBmyMediaItems\fP"
+.br
+.RI "\fIMaps the absolute, clean path of an item onto the item\&. \fP"
+.ti -1c
+.RI "\fBFolder\fP * \fBmyRootFolder\fP"
+.br
+.RI "\fIThe root folder\&. \fP"
+.in -1c
 .SH "Detailed Description"
 .PP 
-Holds the global settings for AWEMC\&. 
+Holds the global settings for \fBAWEMC\fP\&. 
 
 
 .PP
 \fBTodo\fP
 .RS 4
-Skins\&.\&.\&. 
+Skins 
 .PP
-Get a better folder adding system\&.
+\fBUI\fP delegate (with user prompting)
 .RE
 .PP
 .PP
-Functions for pretty much anything you want to know about the prefernces for AWEMC are here\&. Every plugin extending AWEMC has its own configuration file, which is held in here via sub-configuration objects\&.
+Functions for pretty much anything you want to know about the prefernces for \fBAWEMC\fP are here\&. Every plugin extending \fBAWEMC\fP has its own configuration file, which is held in here via sub-configuration objects\&.
 .PP
 You shouldn't need to instantiate this class on your own; most objects are passed a copy of the settings object during creation or through some other means\&. 
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "GlobalSettings::GlobalSettings (const std::string &settingsFile)"
+.SS "GlobalSettings::GlobalSettings (QDirsettingsFile)"
 
 .PP
 Create the global settings object\&. 
 .PP
 \fBParameters:\fP
 .RS 4
-\fIsettingsFile\fP The file that contains the settings for AWEMC (usually \fCsettings\&.json\fP in the root folder) 
+\fIsettingsFile\fP The file that contains the settings for \fBAWEMC\fP (usually \fCsettings\&.json\fP in the root folder) 
 .RE
 .PP
 
@@ -126,20 +218,18 @@ Create the global settings object\&.
 Deconstructor\&. Deletes every scraper, player and item\&. 
 .SH "Member Function Documentation"
 .PP 
-.SS "void GlobalSettings::addFolder (const std::string &path, \fBFolder\fP *folder)"
+.SS "void GlobalSettings::addItem (\fBMediaItem\fP *item)"
 
 .PP
-Add the given folder\&. 
+Add the given media item\&. 
 .PP
 \fBParameters:\fP
 .RS 4
-\fIpath\fP The path to the config file\&. 
-.br
-\fIfolder\fP The folder\&. 
+\fIitem\fP The media item\&. 
 .RE
 .PP
 
-.SS "const \fBGlobalSettings::NameSet\fP & GlobalSettings::getAllMediaPlayerNames ()"
+.SS "QList< QString > GlobalSettings::getAllMediaPlayerNames ()"
 
 .PP
 Get a set of all media players\&. 
@@ -150,7 +240,7 @@ A set filled with every media player name\&.
 .RE
 .PP
 
-.SS "const \fBGlobalSettings::NameSet\fP & GlobalSettings::getAllMediaServiceNames ()"
+.SS "QList< QString > GlobalSettings::getAllMediaServiceNames ()"
 
 .PP
 Get the names of all of the media services\&. 
@@ -161,7 +251,7 @@ A set filled with every media service name\&.
 .RE
 .PP
 
-.SS "const \fBGlobalSettings::NameSet\fP & GlobalSettings::getAllMediaTypeNames ()"
+.SS "QList< QString > GlobalSettings::getAllMediaTypeNames ()"
 
 .PP
 Get a set of all media types\&. 
@@ -172,7 +262,7 @@ A set filled with every media type name\&.
 .RE
 .PP
 
-.SS "const \fBGlobalSettings::NameSet\fP & GlobalSettings::getAllMetadataScraperNames ()"
+.SS "QList< QString > GlobalSettings::getAllMetadataScraperNames ()"
 
 .PP
 Get a set of all metadata scrapers\&. 
@@ -183,7 +273,69 @@ A set filled with every metadata scraper name\&.
 .RE
 .PP
 
-.SS "\fBMediaItem\fP * GlobalSettings::getMediaItemByJSONFile (const QDir &file)"
+.SS "QList< \fBMediaPlayer\fP * > GlobalSettings::getAllPlayersForFile (\fBMediaFile\fP *file)"
+
+.PP
+Get a set of all media players that can play the given file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile\fP The file for which to get possible players\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A list of all possible media players that can play \fCfile\fP\&. 
+.RE
+.PP
+
+.SS "QList< \fBMetadataScraper\fP * > GlobalSettings::getAllScrapersForItem (\fBMediaItem\fP *item)"
+
+.PP
+Get a set of all metadata scrapers that can scrape for the given item\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIitem\fP The media item to get possible scrapers for\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A list of all possible metadata scrapers that can get metadata for \fCitem\fP\&. 
+.RE
+.PP
+
+.SS "\fBFolderGenerator\fP * GlobalSettings::getFolderGeneratorForType (QStringtype)"
+
+.PP
+Get the folder generator for the given type\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItype\fP The type of folder generator\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The folder generator for \fCtype\fP\&. 
+.RE
+.PP
+
+.SS "QFont GlobalSettings::getFontByName (QStringname)"
+
+.PP
+Get a font by name\&. By default, \fBAWEMC\fP has these fonts:
+.IP "\(bu" 2
+'biggest': used in title bars
+.IP "\(bu" 2
+'big': used in subtitle bars
+.IP "\(bu" 2
+'normal': used in your everyday text
+.IP "\(bu" 2
+'button': used in buttons 
+.PP
+
+.SS "\fBMediaItem\fP * GlobalSettings::getMediaItemByJSONFile (QDirfile)"
 
 .PP
 Get a media item from its JSON file\&. \fCfile\fP is a \fCQDir\fP, so relative paths and links do not duplicate\&. If \fCfile\fP is not found, it is added\&.
@@ -194,7 +346,7 @@ The desired media item\&.
 .RE
 .PP
 
-.SS "\fBMediaService\fP * GlobalSettings::getMediaServiceByName (const std::string &name)"
+.SS "\fBMediaService\fP * GlobalSettings::getMediaServiceByName (QStringname)"
 
 .PP
 Get a media service by name\&. 
@@ -210,7 +362,7 @@ The desired media service\&.
 .RE
 .PP
 
-.SS "\fBMediaPlayer\fP * GlobalSettings::getPlayerByName (const std::string &name)"
+.SS "\fBMediaPlayer\fP * GlobalSettings::getPlayerByName (QStringname)"
 
 .PP
 Get a media player by name\&. 
@@ -226,7 +378,7 @@ The desired media player or \fCNULL\fP if it does not exist\&.
 .RE
 .PP
 
-.SS "\fBValue\fP & GlobalSettings::getPlayerSettingsByName (const std::string &name)"
+.SS "\fBValue\fP & GlobalSettings::getPlayerSettingsByName (QStringname)"
 
 .PP
 Get a media player's settings by name\&. 
@@ -253,7 +405,7 @@ The root folder\&.
 .RE
 .PP
 
-.SS "\fBMetadataScraper\fP * GlobalSettings::getScraperByName (const std::string &name)"
+.SS "\fBMetadataScraper\fP * GlobalSettings::getScraperByName (QStringname)"
 
 .PP
 Get a metadata scraper by name\&. 
@@ -269,7 +421,7 @@ The desired scraper as an \fC\fBMetadataScraper\fP\fP object or \fCNULL\fP if it
 .RE
 .PP
 
-.SS "\fBValue\fP & GlobalSettings::getScraperSettingsByName (const std::string &name)"
+.SS "\fBValue\fP & GlobalSettings::getScraperSettingsByName (QStringname)"
 
 .PP
 Get a metadata scraper's settings by name\&. 
@@ -285,7 +437,7 @@ The settings of the desired scraper or \fCJson::Value::null\fP if it does not ex
 .RE
 .PP
 
-.SS "\fBValue\fP & GlobalSettings::getTypeByName (const std::string &name)"
+.SS "\fBValue\fP & GlobalSettings::getTypeByName (QStringname)"
 
 .PP
 Get the media type with the given name\&. 

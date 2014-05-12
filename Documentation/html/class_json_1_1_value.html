@@ -74,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -94,6 +94,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="class_json_1_1_value-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -106,6 +108,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p><code>#include &lt;<a class="el" href="json_8h_source.html">json.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_json_1_1_value_1_1_comment_info.html">CommentInfo</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_json_1_1_value_1_1_c_z_string.html">CZString</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="union_json_1_1_value_1_1_value_holder.html">ValueHolder</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:ac61bab5a465848b57610379cc07995c3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac61bab5a465848b57610379cc07995c3"></a>
@@ -139,7 +150,7 @@ typedef Json::LargestUInt&#160;</td><td class="memItemRight" valign="bottom"><b>
 typedef Json::ArrayIndex&#160;</td><td class="memItemRight" valign="bottom"><b>ArrayIndex</b></td></tr>
 <tr class="separator:a184a91566cccca7b819240f0d5561c7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08b6c80c3af7071d908dabf044de5388"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a08b6c80c3af7071d908dabf044de5388"></a>
-typedef std::map&lt; CZString, <a class="el" href="class_json_1_1_value.html">Value</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ObjectValues</b></td></tr>
+typedef std::map&lt; <a class="el" href="class_json_1_1_value_1_1_c_z_string.html">CZString</a>, <a class="el" href="class_json_1_1_value.html">Value</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ObjectValues</b></td></tr>
 <tr class="separator:a08b6c80c3af7071d908dabf044de5388"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -425,6 +436,27 @@ static const Int64&#160;</td><td class="memItemRight" valign="bottom"><a class="
 static const UInt64&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_json_1_1_value.html#ae1eb89c305c39516696ff305cffa01da">maxUInt64</a> = UInt64(-1)</td></tr>
 <tr class="memdesc:ae1eb89c305c39516696ff305cffa01da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum unsigned 64 bits int value that can be stored in a <a class="el" href="class_json_1_1_value.html" title="Represents a JSON value. ">Json::Value</a>. <br/></td></tr>
 <tr class="separator:ae1eb89c305c39516696ff305cffa01da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a12a3aded9e1478636ebf9a80843b4f5f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a12a3aded9e1478636ebf9a80843b4f5f"></a>
+<a class="el" href="class_json_1_1_value.html">Value</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>resolveReference</b> (const char *key, bool isStatic)</td></tr>
+<tr class="separator:a12a3aded9e1478636ebf9a80843b4f5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aef578244546212705b9f81eb84d7e151"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aef578244546212705b9f81eb84d7e151"></a>
+union <a class="el" href="union_json_1_1_value_1_1_value_holder.html">Json::Value::ValueHolder</a>&#160;</td><td class="memItemRight" valign="bottom"><b>value_</b></td></tr>
+<tr class="separator:aef578244546212705b9f81eb84d7e151"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd222c2536dc88bf330dedcd076d2356"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abd222c2536dc88bf330dedcd076d2356"></a>
+<a class="el" href="namespace_json.html#a7d654b75c16a57007925868e38212b4e">ValueType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>type_</b>: 8</td></tr>
+<tr class="separator:abd222c2536dc88bf330dedcd076d2356"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af728318d6cfa3e93dcc554d821447646"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af728318d6cfa3e93dcc554d821447646"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>allocated_</b>: 1</td></tr>
+<tr class="separator:af728318d6cfa3e93dcc554d821447646"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2016564cabc7a29208e97bd0b782a4e4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2016564cabc7a29208e97bd0b782a4e4"></a>
+<a class="el" href="struct_json_1_1_value_1_1_comment_info.html">CommentInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>comments_</b></td></tr>
+<tr class="separator:a2016564cabc7a29208e97bd0b782a4e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -734,7 +766,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>ValueIteratorBase</b
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 18 2014 16:58:43 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 10 2014 22:24:00 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

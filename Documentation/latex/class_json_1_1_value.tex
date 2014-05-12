@@ -10,6 +10,15 @@ Represents a \href{http://www.json.org}{\tt J\-S\-O\-N} value.
 
 {\ttfamily \#include $<$json.\-h$>$}
 
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_json_1_1_value_1_1_comment_info}{Comment\-Info}
+\item 
+class \hyperlink{class_json_1_1_value_1_1_c_z_string}{C\-Z\-String}
+\item 
+union \hyperlink{union_json_1_1_value_1_1_value_holder}{Value\-Holder}
+\end{DoxyCompactItemize}
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
@@ -43,7 +52,7 @@ Represents a \href{http://www.json.org}{\tt J\-S\-O\-N} value.
 \hypertarget{class_json_1_1_value_a184a91566cccca7b819240f0d5561c7d}{typedef Json\-::\-Array\-Index {\bfseries Array\-Index}}\label{class_json_1_1_value_a184a91566cccca7b819240f0d5561c7d}
 
 \item 
-\hypertarget{class_json_1_1_value_a08b6c80c3af7071d908dabf044de5388}{typedef std\-::map$<$ C\-Z\-String, \hyperlink{class_json_1_1_value}{Value} $>$ {\bfseries Object\-Values}}\label{class_json_1_1_value_a08b6c80c3af7071d908dabf044de5388}
+\hypertarget{class_json_1_1_value_a08b6c80c3af7071d908dabf044de5388}{typedef std\-::map$<$ \hyperlink{class_json_1_1_value_1_1_c_z_string}{C\-Z\-String}, \hyperlink{class_json_1_1_value}{Value} $>$ {\bfseries Object\-Values}}\label{class_json_1_1_value_a08b6c80c3af7071d908dabf044de5388}
 
 \end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
@@ -299,6 +308,27 @@ Members \hyperlink{class_json_1_1_value_a30fa08af88f2d0a038b22ba9f4e88b2a}{get\-
 \hypertarget{class_json_1_1_value_ae1eb89c305c39516696ff305cffa01da}{static const U\-Int64 \hyperlink{class_json_1_1_value_ae1eb89c305c39516696ff305cffa01da}{max\-U\-Int64} = U\-Int64(-\/1)}\label{class_json_1_1_value_ae1eb89c305c39516696ff305cffa01da}
 
 \begin{DoxyCompactList}\small\item\em Maximum unsigned 64 bits int value that can be stored in a \hyperlink{class_json_1_1_value}{Json\-::\-Value}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_json_1_1_value_a12a3aded9e1478636ebf9a80843b4f5f}{\hyperlink{class_json_1_1_value}{Value} \& {\bfseries resolve\-Reference} (const char $\ast$key, bool is\-Static)}\label{class_json_1_1_value_a12a3aded9e1478636ebf9a80843b4f5f}
+
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_json_1_1_value_aef578244546212705b9f81eb84d7e151}{union \hyperlink{union_json_1_1_value_1_1_value_holder}{Json\-::\-Value\-::\-Value\-Holder} {\bfseries value\-\_\-}}\label{class_json_1_1_value_aef578244546212705b9f81eb84d7e151}
+
+\item 
+\hypertarget{class_json_1_1_value_abd222c2536dc88bf330dedcd076d2356}{\hyperlink{namespace_json_a7d654b75c16a57007925868e38212b4e}{Value\-Type} {\bfseries type\-\_\-}\-: 8}\label{class_json_1_1_value_abd222c2536dc88bf330dedcd076d2356}
+
+\item 
+\hypertarget{class_json_1_1_value_af728318d6cfa3e93dcc554d821447646}{int {\bfseries allocated\-\_\-}\-: 1}\label{class_json_1_1_value_af728318d6cfa3e93dcc554d821447646}
+
+\item 
+\hypertarget{class_json_1_1_value_a2016564cabc7a29208e97bd0b782a4e4}{\hyperlink{struct_json_1_1_value_1_1_comment_info}{Comment\-Info} $\ast$ {\bfseries comments\-\_\-}}\label{class_json_1_1_value_a2016564cabc7a29208e97bd0b782a4e4}
+
+\end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 

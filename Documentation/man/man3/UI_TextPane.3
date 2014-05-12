@@ -1,0 +1,210 @@
+.TH "UI::TextPane" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+UI::TextPane \- 
+.PP
+This class acts as a replacement for \fCQLabel\fP when text is needed in a particular font\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <TextPane\&.h>\fP
+.PP
+Inherits \fBUI::Pane\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTextPane\fP (QWidget *parent, QString text, QFont font)"
+.br
+.RI "\fIMake with the given text and font\&. \fP"
+.ti -1c
+.RI "virtual void \fBsetAlignment\fP (int alignment)"
+.br
+.RI "\fISet the alignment for the text\&. \fP"
+.ti -1c
+.RI "virtual void \fBsetMinimumTextWidth\fP (int width)"
+.br
+.RI "\fISet the minimum width for the text box\&. \fP"
+.ti -1c
+.RI "virtual void \fBsetText\fP (QString text)"
+.br
+.RI "\fIChange the text displayed\&. \fP"
+.ti -1c
+.RI "virtual QString \fBgetText\fP ()"
+.br
+.RI "\fIGet the text displayed\&. \fP"
+.ti -1c
+.RI "virtual void \fBsetFont\fP (QFont font)"
+.br
+.RI "\fIChange the font to use\&. \fP"
+.ti -1c
+.RI "virtual QSize \fBsizeHint\fP () const "
+.br
+.RI "\fIThe size hint for this widget\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBpaintEvent\fP (QPaintEvent *event)"
+.br
+.RI "\fIPaints the text\&. \fP"
+.ti -1c
+.RI "virtual void \fBresizeEvent\fP (QResizeEvent *event)"
+.br
+.RI "\fIChanges the minimum height requirements\&. \fP"
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBadjustMinimumSize\fP ()"
+.br
+.RI "\fIHelper function to fix the minimum size\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "QString \fBmyText\fP"
+.br
+.RI "\fIThe text\&. \fP"
+.ti -1c
+.RI "QFont \fBmyFont\fP"
+.br
+.RI "\fIThe font\&. \fP"
+.ti -1c
+.RI "int \fBmyAlignment\fP"
+.br
+.RI "\fIThe alignment of text\&. \fP"
+.ti -1c
+.RI "int \fBmyMinimumWidth\fP"
+.br
+.RI "\fIThe maximum width of the text\&. \fP"
+.ti -1c
+.RI "QSize \fBmySizeHint\fP"
+.br
+.RI "\fIThe size hint for this widget\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class acts as a replacement for \fCQLabel\fP when text is needed in a particular font\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TextPane::TextPane (QWidget *parent, QStringtext, QFontfont)"
+
+.PP
+Make with the given text and font\&. If you do not know what font to use, consider \fCQFont('Helvetica', 30)\fP, which is Helvetica with point size 30\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparent\fP The parent widget\&. 
+.br
+\fItext\fP The text to display\&. 
+.br
+\fIfont\fP The font to use with that text\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "QString TextPane::getText ()\fC [virtual]\fP"
+
+.PP
+Get the text displayed\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The displayed text\&. 
+.RE
+.PP
+
+.SS "void TextPane::paintEvent (QPaintEvent *event)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Paints the text\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The (ignored) paint event\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBUI::Pane\fP\&.
+.SS "void TextPane::resizeEvent (QResizeEvent *event)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Changes the minimum height requirements\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The (ignored) resize event\&. 
+.RE
+.PP
+
+.SS "void TextPane::setAlignment (intalignment)\fC [virtual]\fP"
+
+.PP
+Set the alignment for the text\&. For more information on the available values, see \fC`Qt::Alignment`\fP\&.
+.PP
+By default, the alignment is \fCQt::AlignHCenter | Qt::AlignVCenter\fP\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalignment\fP The desired alignment\&. 
+.RE
+.PP
+
+.SS "void TextPane::setFont (QFontfont)\fC [virtual]\fP"
+
+.PP
+Change the font to use\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfont\fP The new font to use\&. 
+.RE
+.PP
+
+.SS "void TextPane::setMinimumTextWidth (intwidth)\fC [virtual]\fP"
+
+.PP
+Set the minimum width for the text box\&. Here is the general meaning of this parameter:
+.IP "\(bu" 2
+The text box must be at least this wide\&.
+.PP
+.PP
+Text will not cause the width of the widget to expand past this size\&.
+.IP "\(bu" 2
+If the widget is inside a layout wider than this, text can move past this\&.
+.PP
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwidth\fP The minimum width\&. 
+.RE
+.PP
+
+.SS "void TextPane::setText (QStringtext)\fC [virtual]\fP"
+
+.PP
+Change the text displayed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP The new text to display\&. 
+.RE
+.PP
+
+.SS "QSize TextPane::sizeHint () const\fC [virtual]\fP"
+
+.PP
+The size hint for this widget\&. For \fC\fBTextPane\fP\fPs, the size hint is a rectangle for single-line of text\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AWE Media Center from the source code\&.

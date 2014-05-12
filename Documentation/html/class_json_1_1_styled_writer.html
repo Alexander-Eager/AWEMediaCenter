@@ -74,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,6 +91,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_json_1_1_styled_writer-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Json::StyledWriter Class Reference</div>  </div>
@@ -116,6 +120,75 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a56f0fd80f60272b3f3c85690aae66e7d"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_json_1_1_styled_writer.html#a56f0fd80f60272b3f3c85690aae66e7d">write</a> (const <a class="el" href="class_json_1_1_value.html">Value</a> &amp;root)</td></tr>
 <tr class="memdesc:a56f0fd80f60272b3f3c85690aae66e7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a <a class="el" href="class_json_1_1_value.html" title="Represents a JSON value. ">Value</a> in <a href="http://www.json.org">JSON</a> format.  <a href="#a56f0fd80f60272b3f3c85690aae66e7d">More...</a><br/></td></tr>
 <tr class="separator:a56f0fd80f60272b3f3c85690aae66e7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:a0b102abcd4b7e11eb22df63921e097df"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0b102abcd4b7e11eb22df63921e097df"></a>
+typedef std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ChildValues</b></td></tr>
+<tr class="separator:a0b102abcd4b7e11eb22df63921e097df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:ac40143cf43f7c4a94d3d0b41e5245069"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac40143cf43f7c4a94d3d0b41e5245069"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>writeValue</b> (const <a class="el" href="class_json_1_1_value.html">Value</a> &amp;value)</td></tr>
+<tr class="separator:ac40143cf43f7c4a94d3d0b41e5245069"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0618c23d62965515def15ece1e677f5d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0618c23d62965515def15ece1e677f5d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>writeArrayValue</b> (const <a class="el" href="class_json_1_1_value.html">Value</a> &amp;value)</td></tr>
+<tr class="separator:a0618c23d62965515def15ece1e677f5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5dc671edf10b9976f1511da2271ab9d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa5dc671edf10b9976f1511da2271ab9d"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>isMultineArray</b> (const <a class="el" href="class_json_1_1_value.html">Value</a> &amp;value)</td></tr>
+<tr class="separator:aa5dc671edf10b9976f1511da2271ab9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba120a1ff1b84411b32039188e8fb49f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aba120a1ff1b84411b32039188e8fb49f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>pushValue</b> (const std::string &amp;value)</td></tr>
+<tr class="separator:aba120a1ff1b84411b32039188e8fb49f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a885f4bfb5701896d60eee6716d2db7e4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a885f4bfb5701896d60eee6716d2db7e4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>writeIndent</b> ()</td></tr>
+<tr class="separator:a885f4bfb5701896d60eee6716d2db7e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b3cc9da3cb455ee9b2752307ac21b58"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7b3cc9da3cb455ee9b2752307ac21b58"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>writeWithIndent</b> (const std::string &amp;value)</td></tr>
+<tr class="separator:a7b3cc9da3cb455ee9b2752307ac21b58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b65be6186a7c6638270990265e42b97"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0b65be6186a7c6638270990265e42b97"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>indent</b> ()</td></tr>
+<tr class="separator:a0b65be6186a7c6638270990265e42b97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acee1c9285519b573cfcb00b7e7f5a809"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acee1c9285519b573cfcb00b7e7f5a809"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>unindent</b> ()</td></tr>
+<tr class="separator:acee1c9285519b573cfcb00b7e7f5a809"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3452c48fabf968bf3693549331ec06e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad3452c48fabf968bf3693549331ec06e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>writeCommentBeforeValue</b> (const <a class="el" href="class_json_1_1_value.html">Value</a> &amp;root)</td></tr>
+<tr class="separator:ad3452c48fabf968bf3693549331ec06e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab12b274c62822fc51ec4617c6be95139"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab12b274c62822fc51ec4617c6be95139"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>writeCommentAfterValueOnSameLine</b> (const <a class="el" href="class_json_1_1_value.html">Value</a> &amp;root)</td></tr>
+<tr class="separator:ab12b274c62822fc51ec4617c6be95139"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37a806d010f708cb68556f2666f79bdf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a37a806d010f708cb68556f2666f79bdf"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasCommentForValue</b> (const <a class="el" href="class_json_1_1_value.html">Value</a> &amp;value)</td></tr>
+<tr class="separator:a37a806d010f708cb68556f2666f79bdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:ae5ceeb6085815461518f17a4485af571"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae5ceeb6085815461518f17a4485af571"></a>
+static std::string&#160;</td><td class="memItemRight" valign="bottom"><b>normalizeEOL</b> (const std::string &amp;text)</td></tr>
+<tr class="separator:ae5ceeb6085815461518f17a4485af571"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a1f905495f0705365af117ec541e29fdf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1f905495f0705365af117ec541e29fdf"></a>
+ChildValues&#160;</td><td class="memItemRight" valign="bottom"><b>childValues_</b></td></tr>
+<tr class="separator:a1f905495f0705365af117ec541e29fdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac092c93313e7ab202b13e075d682faea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac092c93313e7ab202b13e075d682faea"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>document_</b></td></tr>
+<tr class="separator:ac092c93313e7ab202b13e075d682faea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98a33f1d4c853a4dbf87ca17499c5830"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a98a33f1d4c853a4dbf87ca17499c5830"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>indentString_</b></td></tr>
+<tr class="separator:a98a33f1d4c853a4dbf87ca17499c5830"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c8fc62cb4f3b4a6dbed470fea2aa567"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9c8fc62cb4f3b4a6dbed470fea2aa567"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>rightMargin_</b></td></tr>
+<tr class="separator:a9c8fc62cb4f3b4a6dbed470fea2aa567"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae911f06042935286c24a9fb23dba78bd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae911f06042935286c24a9fb23dba78bd"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>indentSize_</b></td></tr>
+<tr class="separator:ae911f06042935286c24a9fb23dba78bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acaabfa48b50a8bb7fa9ce98e2ae971d9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acaabfa48b50a8bb7fa9ce98e2ae971d9"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>addChildValues_</b></td></tr>
+<tr class="separator:acaabfa48b50a8bb7fa9ce98e2ae971d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Writes a <a class="el" href="class_json_1_1_value.html" title="Represents a JSON value. ">Value</a> in <a href="http://www.json.org">JSON</a> format in a human friendly way. </p>
@@ -178,7 +251,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 18 2014 16:58:43 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 10 2014 22:24:00 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -10,6 +10,13 @@ Unserialize a \href{http://www.json.org}{\tt J\-S\-O\-N} document into a \hyperl
 
 {\ttfamily \#include $<$json.\-h$>$}
 
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_json_1_1_reader_1_1_error_info}{Error\-Info}
+\item 
+class \hyperlink{class_json_1_1_reader_1_1_token}{Token}
+\end{DoxyCompactItemize}
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
@@ -38,6 +45,158 @@ std\-::string \hyperlink{class_json_1_1_reader_afa4a59e962d23c4d1c38b433fc95eefa
 \begin{DoxyCompactList}\small\item\em Returns a user friendly string that list errors in the parsed document. \end{DoxyCompactList}\item 
 std\-::string \hyperlink{class_json_1_1_reader_a95ab50aa789132e9dee0fc1475c85acf}{get\-Formatted\-Error\-Messages} () const 
 \begin{DoxyCompactList}\small\item\em Returns a user friendly string that list errors in the parsed document. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Token\-Type} \{ \\*
+{\bfseries token\-End\-Of\-Stream} = 0, 
+{\bfseries token\-Object\-Begin}, 
+{\bfseries token\-Object\-End}, 
+{\bfseries token\-Array\-Begin}, 
+\\*
+{\bfseries token\-Array\-End}, 
+{\bfseries token\-String}, 
+{\bfseries token\-Number}, 
+{\bfseries token\-True}, 
+\\*
+{\bfseries token\-False}, 
+{\bfseries token\-Null}, 
+{\bfseries token\-Array\-Separator}, 
+{\bfseries token\-Member\-Separator}, 
+\\*
+{\bfseries token\-Comment}, 
+{\bfseries token\-Error}
+ \}
+\item 
+\hypertarget{class_json_1_1_reader_aae51e8f5bab3f067261c842a3ef858e5}{typedef std\-::deque$<$ \hyperlink{class_json_1_1_reader_1_1_error_info}{Error\-Info} $>$ {\bfseries Errors}}\label{class_json_1_1_reader_aae51e8f5bab3f067261c842a3ef858e5}
+
+\item 
+\hypertarget{class_json_1_1_reader_ad98d0ea4f3576ea83947c1b2b7b2f261}{typedef std\-::stack$<$ \hyperlink{class_json_1_1_value}{Value} $\ast$ $>$ {\bfseries Nodes}}\label{class_json_1_1_reader_ad98d0ea4f3576ea83947c1b2b7b2f261}
+
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_json_1_1_reader_a442d779d60825634625040eed83eadc5}{bool {\bfseries expect\-Token} (Token\-Type type, \hyperlink{class_json_1_1_reader_1_1_token}{Token} \&token, const char $\ast$message)}\label{class_json_1_1_reader_a442d779d60825634625040eed83eadc5}
+
+\item 
+\hypertarget{class_json_1_1_reader_a7cb0631963cc0fd4ff6ed0f570976864}{bool {\bfseries read\-Token} (\hyperlink{class_json_1_1_reader_1_1_token}{Token} \&token)}\label{class_json_1_1_reader_a7cb0631963cc0fd4ff6ed0f570976864}
+
+\item 
+\hypertarget{class_json_1_1_reader_a40d0f69d15aeb2d52ff78d794f5ab8b2}{void {\bfseries skip\-Spaces} ()}\label{class_json_1_1_reader_a40d0f69d15aeb2d52ff78d794f5ab8b2}
+
+\item 
+\hypertarget{class_json_1_1_reader_a3e5a7bc6b7b53f2ca8cb9da42f8ffb21}{bool {\bfseries match} (Location pattern, int pattern\-Length)}\label{class_json_1_1_reader_a3e5a7bc6b7b53f2ca8cb9da42f8ffb21}
+
+\item 
+\hypertarget{class_json_1_1_reader_ad2690e860a1b3332c5401fb0850ba065}{bool {\bfseries read\-Comment} ()}\label{class_json_1_1_reader_ad2690e860a1b3332c5401fb0850ba065}
+
+\item 
+\hypertarget{class_json_1_1_reader_ae0ffe796abdc3c5851589ee500e28c79}{bool {\bfseries read\-C\-Style\-Comment} ()}\label{class_json_1_1_reader_ae0ffe796abdc3c5851589ee500e28c79}
+
+\item 
+\hypertarget{class_json_1_1_reader_a6716ef6290b0f469efaf8d379c357967}{bool {\bfseries read\-Cpp\-Style\-Comment} ()}\label{class_json_1_1_reader_a6716ef6290b0f469efaf8d379c357967}
+
+\item 
+\hypertarget{class_json_1_1_reader_a6328a0b1994e05118886f9fc9c608643}{bool {\bfseries read\-String} ()}\label{class_json_1_1_reader_a6328a0b1994e05118886f9fc9c608643}
+
+\item 
+\hypertarget{class_json_1_1_reader_afb31bfda6bb27d6453057a47655e8363}{void {\bfseries read\-Number} ()}\label{class_json_1_1_reader_afb31bfda6bb27d6453057a47655e8363}
+
+\item 
+\hypertarget{class_json_1_1_reader_a47e56844b803d41ec993a83fadf4495c}{bool {\bfseries read\-Value} ()}\label{class_json_1_1_reader_a47e56844b803d41ec993a83fadf4495c}
+
+\item 
+\hypertarget{class_json_1_1_reader_a0068eb3d8e86e91f0e4806f60da66b9c}{bool {\bfseries read\-Object} (\hyperlink{class_json_1_1_reader_1_1_token}{Token} \&token)}\label{class_json_1_1_reader_a0068eb3d8e86e91f0e4806f60da66b9c}
+
+\item 
+\hypertarget{class_json_1_1_reader_afd9a30c0af205c9f327613f486fae6b8}{bool {\bfseries read\-Array} (\hyperlink{class_json_1_1_reader_1_1_token}{Token} \&token)}\label{class_json_1_1_reader_afd9a30c0af205c9f327613f486fae6b8}
+
+\item 
+\hypertarget{class_json_1_1_reader_a442d1f23edf0f4350f5eeab3ee3f7d46}{bool {\bfseries decode\-Number} (\hyperlink{class_json_1_1_reader_1_1_token}{Token} \&token)}\label{class_json_1_1_reader_a442d1f23edf0f4350f5eeab3ee3f7d46}
+
+\item 
+\hypertarget{class_json_1_1_reader_aaf736937912f5c9b8d221e57f209e3e0}{bool {\bfseries decode\-String} (\hyperlink{class_json_1_1_reader_1_1_token}{Token} \&token)}\label{class_json_1_1_reader_aaf736937912f5c9b8d221e57f209e3e0}
+
+\item 
+\hypertarget{class_json_1_1_reader_a801253570f16e91519652078fb12b8e6}{bool {\bfseries decode\-String} (\hyperlink{class_json_1_1_reader_1_1_token}{Token} \&token, std\-::string \&decoded)}\label{class_json_1_1_reader_a801253570f16e91519652078fb12b8e6}
+
+\item 
+\hypertarget{class_json_1_1_reader_a2420bbb7fd6d5d3e7e2fea894dd8f70f}{bool {\bfseries decode\-Double} (\hyperlink{class_json_1_1_reader_1_1_token}{Token} \&token)}\label{class_json_1_1_reader_a2420bbb7fd6d5d3e7e2fea894dd8f70f}
+
+\item 
+\hypertarget{class_json_1_1_reader_a8fe24db3e9953aef3d637a56447e795c}{bool {\bfseries decode\-Unicode\-Code\-Point} (\hyperlink{class_json_1_1_reader_1_1_token}{Token} \&token, Location \&current, Location end, unsigned int \&unicode)}\label{class_json_1_1_reader_a8fe24db3e9953aef3d637a56447e795c}
+
+\item 
+\hypertarget{class_json_1_1_reader_a469cb6f55971d7c41fca2752a3aa5bf7}{bool {\bfseries decode\-Unicode\-Escape\-Sequence} (\hyperlink{class_json_1_1_reader_1_1_token}{Token} \&token, Location \&current, Location end, unsigned int \&unicode)}\label{class_json_1_1_reader_a469cb6f55971d7c41fca2752a3aa5bf7}
+
+\item 
+\hypertarget{class_json_1_1_reader_a04a3a13dbc609dfdf9e3c6723e37ff21}{bool {\bfseries add\-Error} (const std\-::string \&message, \hyperlink{class_json_1_1_reader_1_1_token}{Token} \&token, Location extra=0)}\label{class_json_1_1_reader_a04a3a13dbc609dfdf9e3c6723e37ff21}
+
+\item 
+\hypertarget{class_json_1_1_reader_a8d4ed03a43082c5ace81ba5b81425eaf}{bool {\bfseries recover\-From\-Error} (Token\-Type skip\-Until\-Token)}\label{class_json_1_1_reader_a8d4ed03a43082c5ace81ba5b81425eaf}
+
+\item 
+\hypertarget{class_json_1_1_reader_af47fb7564db6ac21faebaba8cebb41ce}{bool {\bfseries add\-Error\-And\-Recover} (const std\-::string \&message, \hyperlink{class_json_1_1_reader_1_1_token}{Token} \&token, Token\-Type skip\-Until\-Token)}\label{class_json_1_1_reader_af47fb7564db6ac21faebaba8cebb41ce}
+
+\item 
+\hypertarget{class_json_1_1_reader_ad922ea5a8ab333084edbb84827861fa3}{void {\bfseries skip\-Until\-Space} ()}\label{class_json_1_1_reader_ad922ea5a8ab333084edbb84827861fa3}
+
+\item 
+\hypertarget{class_json_1_1_reader_a85597f763fb0148a17359b6dfc6f7326}{\hyperlink{class_json_1_1_value}{Value} \& {\bfseries current\-Value} ()}\label{class_json_1_1_reader_a85597f763fb0148a17359b6dfc6f7326}
+
+\item 
+\hypertarget{class_json_1_1_reader_ab61eb61333cc9ec3afe785663a53ce90}{Char {\bfseries get\-Next\-Char} ()}\label{class_json_1_1_reader_ab61eb61333cc9ec3afe785663a53ce90}
+
+\item 
+\hypertarget{class_json_1_1_reader_a20b3023dc422726e2e4ebe41b8ba0515}{void {\bfseries get\-Location\-Line\-And\-Column} (Location location, int \&line, int \&column) const }\label{class_json_1_1_reader_a20b3023dc422726e2e4ebe41b8ba0515}
+
+\item 
+\hypertarget{class_json_1_1_reader_ac5b4b5a76d3224871519b0656393b35b}{std\-::string {\bfseries get\-Location\-Line\-And\-Column} (Location location) const }\label{class_json_1_1_reader_ac5b4b5a76d3224871519b0656393b35b}
+
+\item 
+\hypertarget{class_json_1_1_reader_aaea3bd62d12ffb6117a61476c0685049}{void {\bfseries add\-Comment} (Location begin, Location end, \hyperlink{namespace_json_a4fc417c23905b2ae9e2c47d197a45351}{Comment\-Placement} placement)}\label{class_json_1_1_reader_aaea3bd62d12ffb6117a61476c0685049}
+
+\item 
+\hypertarget{class_json_1_1_reader_a22e677ef400d8223f27e631b4cd4b821}{void {\bfseries skip\-Comment\-Tokens} (\hyperlink{class_json_1_1_reader_1_1_token}{Token} \&token)}\label{class_json_1_1_reader_a22e677ef400d8223f27e631b4cd4b821}
+
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_json_1_1_reader_ada3d2c47699dad662e6d156c8c78a6ac}{Nodes {\bfseries nodes\-\_\-}}\label{class_json_1_1_reader_ada3d2c47699dad662e6d156c8c78a6ac}
+
+\item 
+\hypertarget{class_json_1_1_reader_a1bbce45dc4df753bed60c129f4b5147c}{Errors {\bfseries errors\-\_\-}}\label{class_json_1_1_reader_a1bbce45dc4df753bed60c129f4b5147c}
+
+\item 
+\hypertarget{class_json_1_1_reader_afde4a4311ae30597da5b6060a8d60542}{std\-::string {\bfseries document\-\_\-}}\label{class_json_1_1_reader_afde4a4311ae30597da5b6060a8d60542}
+
+\item 
+\hypertarget{class_json_1_1_reader_a327166839022ea91f0a8290960a8af76}{Location {\bfseries begin\-\_\-}}\label{class_json_1_1_reader_a327166839022ea91f0a8290960a8af76}
+
+\item 
+\hypertarget{class_json_1_1_reader_a714793579cbf4ee7c5a7223d2c8d77c1}{Location {\bfseries end\-\_\-}}\label{class_json_1_1_reader_a714793579cbf4ee7c5a7223d2c8d77c1}
+
+\item 
+\hypertarget{class_json_1_1_reader_a2f2feb5201a26da7aa133d2f7434479b}{Location {\bfseries current\-\_\-}}\label{class_json_1_1_reader_a2f2feb5201a26da7aa133d2f7434479b}
+
+\item 
+\hypertarget{class_json_1_1_reader_a497a114f7b760f1b794b8fff9876615a}{Location {\bfseries last\-Value\-End\-\_\-}}\label{class_json_1_1_reader_a497a114f7b760f1b794b8fff9876615a}
+
+\item 
+\hypertarget{class_json_1_1_reader_a87cc75ae5adc6a6755f0ba1c7255ff6c}{\hyperlink{class_json_1_1_value}{Value} $\ast$ {\bfseries last\-Value\-\_\-}}\label{class_json_1_1_reader_a87cc75ae5adc6a6755f0ba1c7255ff6c}
+
+\item 
+\hypertarget{class_json_1_1_reader_a240d10ca88620e06a5bd25cc633e9a8a}{std\-::string {\bfseries comments\-Before\-\_\-}}\label{class_json_1_1_reader_a240d10ca88620e06a5bd25cc633e9a8a}
+
+\item 
+\hypertarget{class_json_1_1_reader_aa9984ff8f519b5541346157b7aebf97b}{\hyperlink{class_json_1_1_features}{Features} {\bfseries features\-\_\-}}\label{class_json_1_1_reader_aa9984ff8f519b5541346157b7aebf97b}
+
+\item 
+\hypertarget{class_json_1_1_reader_a8e9ce743f6004f0596692f0a9ee4626c}{bool {\bfseries collect\-Comments\-\_\-}}\label{class_json_1_1_reader_a8e9ce743f6004f0596692f0a9ee4626c}
+
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}

@@ -1,4 +1,4 @@
-.TH "Json::FastWriter" 3 "Fri Apr 18 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.TH "Json::FastWriter" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -21,6 +21,23 @@ Inherits \fBJson::Writer\fP\&.
 .br
 .ti -1c
 .RI "virtual std::string \fBwrite\fP (const \fBValue\fP &root)"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBwriteValue\fP (const \fBValue\fP &value)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBdocument_\fP"
+.br
+.ti -1c
+.RI "bool \fByamlCompatiblityEnabled_\fP"
 .br
 .in -1c
 .SH "Detailed Description"

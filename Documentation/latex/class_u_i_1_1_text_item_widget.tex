@@ -1,0 +1,329 @@
+\hypertarget{class_u_i_1_1_text_item_widget}{\section{U\-I\-:\-:Text\-Item\-Widget Class Reference}
+\label{class_u_i_1_1_text_item_widget}\index{U\-I\-::\-Text\-Item\-Widget@{U\-I\-::\-Text\-Item\-Widget}}
+}
+
+
+Displays text in a specific font.  
+
+
+
+
+{\ttfamily \#include $<$Text\-Item\-Widget.\-h$>$}
+
+Inheritance diagram for U\-I\-:\-:Text\-Item\-Widget\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_u_i_1_1_text_item_widget}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_u_i_1_1_text_item_widget_a0065803717112ed4464026eeb8a0e711}{set\-Text} (Q\-String text)
+\begin{DoxyCompactList}\small\item\em Change the text displayed. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_u_i_1_1_text_item_widget_ad11b1e1f787bb0c99cca45a8931b3edc}{set\-Font} (Q\-Font font)
+\begin{DoxyCompactList}\small\item\em Change the font to use. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_u_i_1_1_text_item_widget_abb6aa87b77090161bb82431fdc3bc3d7}{Text\-Item\-Widget} (Q\-Widget $\ast$parent, Q\-String text, Q\-Font font, bool highlightable=false)
+\begin{DoxyCompactList}\small\item\em Make with the given text and font. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_u_i_1_1_text_item_widget_a47a251b493d1a372bbb772c99fa8d5f2}{fix\-Size\-To\-Fit\-In} (Q\-Size size)
+\begin{DoxyCompactList}\small\item\em Fix this item's size to fit in the given size. \end{DoxyCompactList}\item 
+virtual Q\-Size \hyperlink{class_u_i_1_1_text_item_widget_a4b9d1546ff00c618dbc33c5c2816ec25}{get\-Size\-To\-Fit\-In} () const 
+\begin{DoxyCompactList}\small\item\em Get the size this item has to fit in. \end{DoxyCompactList}\item 
+virtual int \hyperlink{class_u_i_1_1_text_item_widget_ac8942f90fca4db96d61c2c5ecd436f4f}{height\-For\-Width} (int w) const 
+\begin{DoxyCompactList}\small\item\em Returns the recommended height for the given width. \end{DoxyCompactList}\item 
+virtual Q\-String \hyperlink{class_u_i_1_1_text_item_widget_ab0c54430b127f59f1235585e59a05d76}{get\-Item\-Type} () const 
+\begin{DoxyCompactList}\small\item\em Get the item type, \char`\"{}\-Text Item\char`\"{}. \end{DoxyCompactList}\item 
+virtual Q\-String \hyperlink{class_u_i_1_1_text_item_widget_a704f08149116e02bcb27a17507a031f1}{get\-Text} () const 
+\begin{DoxyCompactList}\small\item\em Get the text displayed by this widget. \end{DoxyCompactList}\item 
+virtual Q\-Font \hyperlink{class_u_i_1_1_text_item_widget_a5996f149a30fe2c8468091bf53dc9f9e}{get\-Font} () const 
+\begin{DoxyCompactList}\small\item\em Get the font used by this widget. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_u_i_1_1_text_item_widget_ab5a1bd88be6f83f5008917af0697b154}{set\-Alignment} (int alignment)
+\begin{DoxyCompactList}\small\item\em Set the alignment for the text. \end{DoxyCompactList}\item 
+virtual int \hyperlink{class_u_i_1_1_text_item_widget_ae48e17ef9fdb7fd2f3974e0717a8dbcf}{get\-Alignment} () const 
+\begin{DoxyCompactList}\small\item\em Get the text alignment. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_u_i_1_1_text_item_widget_ace2772195f51fe3e564d65d851494454}{resize\-Event} (Q\-Resize\-Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em Responds to size events. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_u_i_1_1_text_item_widget_a3bfad6b2b383cdcfc93368a24f47c4a6}{paint\-Event} (Q\-Paint\-Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em Paint this widget. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_u_i_1_1_text_item_widget_a71fab6d706728ed57d9a32700f4608a9}{Q\-String \hyperlink{class_u_i_1_1_text_item_widget_a71fab6d706728ed57d9a32700f4608a9}{my\-Text}}\label{class_u_i_1_1_text_item_widget_a71fab6d706728ed57d9a32700f4608a9}
+
+\begin{DoxyCompactList}\small\item\em The text to display. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_text_item_widget_a1799f395045a4f957df301304c8b2fcd}{Q\-Font \hyperlink{class_u_i_1_1_text_item_widget_a1799f395045a4f957df301304c8b2fcd}{my\-Font}}\label{class_u_i_1_1_text_item_widget_a1799f395045a4f957df301304c8b2fcd}
+
+\begin{DoxyCompactList}\small\item\em The font to use. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_text_item_widget_a6e1a195ef5bd4d41e0ffdd32d5f09548}{int \hyperlink{class_u_i_1_1_text_item_widget_a6e1a195ef5bd4d41e0ffdd32d5f09548}{my\-Alignment}}\label{class_u_i_1_1_text_item_widget_a6e1a195ef5bd4d41e0ffdd32d5f09548}
+
+\begin{DoxyCompactList}\small\item\em The alignment of text. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_text_item_widget_a8224db11fc67efbc52d7d80df8d7e7bd}{Q\-Size \hyperlink{class_u_i_1_1_text_item_widget_a8224db11fc67efbc52d7d80df8d7e7bd}{my\-Fit\-In\-Size}}\label{class_u_i_1_1_text_item_widget_a8224db11fc67efbc52d7d80df8d7e7bd}
+
+\begin{DoxyCompactList}\small\item\em The containing size. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Displays text in a specific font. 
+
+Unlike {\ttfamily \hyperlink{class_u_i_1_1_text_pane}{Text\-Pane}}, no background is drawn, so it is safe to use in lists and in {\ttfamily \hyperlink{class_u_i_1_1_pane}{Pane}}s.
+
+In addition, this class signals mouse click events 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_u_i_1_1_text_item_widget_abb6aa87b77090161bb82431fdc3bc3d7}{\index{U\-I\-::\-Text\-Item\-Widget@{U\-I\-::\-Text\-Item\-Widget}!Text\-Item\-Widget@{Text\-Item\-Widget}}
+\index{Text\-Item\-Widget@{Text\-Item\-Widget}!UI::TextItemWidget@{U\-I\-::\-Text\-Item\-Widget}}
+\subsubsection[{Text\-Item\-Widget}]{\setlength{\rightskip}{0pt plus 5cm}Text\-Item\-Widget\-::\-Text\-Item\-Widget (
+\begin{DoxyParamCaption}
+\item[{Q\-Widget $\ast$}]{parent, }
+\item[{Q\-String}]{text, }
+\item[{Q\-Font}]{font, }
+\item[{bool}]{highlightable = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}}\label{class_u_i_1_1_text_item_widget_abb6aa87b77090161bb82431fdc3bc3d7}
+
+
+Make with the given text and font. 
+
+If you do not know what font to use, consider {\ttfamily Q\-Font(\char`\"{}\-Helvetica\char`\"{}, 15)}, which is Helvetica with point size 15.
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & The parent widget. \\
+\hline
+{\em text} & The text to display. \\
+\hline
+{\em font} & The font to use with that text. \\
+\hline
+{\em highlightable} & {\ttfamily true} if this item can be highlighted, {\ttfamily false} otherwise. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_u_i_1_1_text_item_widget_a47a251b493d1a372bbb772c99fa8d5f2}{\index{U\-I\-::\-Text\-Item\-Widget@{U\-I\-::\-Text\-Item\-Widget}!fix\-Size\-To\-Fit\-In@{fix\-Size\-To\-Fit\-In}}
+\index{fix\-Size\-To\-Fit\-In@{fix\-Size\-To\-Fit\-In}!UI::TextItemWidget@{U\-I\-::\-Text\-Item\-Widget}}
+\subsubsection[{fix\-Size\-To\-Fit\-In}]{\setlength{\rightskip}{0pt plus 5cm}bool Text\-Item\-Widget\-::fix\-Size\-To\-Fit\-In (
+\begin{DoxyParamCaption}
+\item[{Q\-Size}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_u_i_1_1_text_item_widget_a47a251b493d1a372bbb772c99fa8d5f2}
+
+
+Fix this item's size to fit in the given size. 
+
+If {\ttfamily size == Q\-Size(-\/1, -\/1)}, the item should not fix its size.
+
+This is mostly used by {\ttfamily \hyperlink{class_u_i_1_1_item_collection_widget}{Item\-Collection\-Widget}}s to make sure that the item does not get swallowed up by the spacers used to align the items.
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & The size to fit inside.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if this item can fit in {\ttfamily size}, {\ttfamily false} if it cannot. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_u_i_1_1_item_widget_ad90435198f488bac4217cf1caca622d9}{U\-I\-::\-Item\-Widget}.
+
+\hypertarget{class_u_i_1_1_text_item_widget_ae48e17ef9fdb7fd2f3974e0717a8dbcf}{\index{U\-I\-::\-Text\-Item\-Widget@{U\-I\-::\-Text\-Item\-Widget}!get\-Alignment@{get\-Alignment}}
+\index{get\-Alignment@{get\-Alignment}!UI::TextItemWidget@{U\-I\-::\-Text\-Item\-Widget}}
+\subsubsection[{get\-Alignment}]{\setlength{\rightskip}{0pt plus 5cm}int Text\-Item\-Widget\-::get\-Alignment (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_u_i_1_1_text_item_widget_ae48e17ef9fdb7fd2f3974e0717a8dbcf}
+
+
+Get the text alignment. 
+
+\begin{DoxyReturn}{Returns}
+The text alignment. 
+\end{DoxyReturn}
+\hypertarget{class_u_i_1_1_text_item_widget_a5996f149a30fe2c8468091bf53dc9f9e}{\index{U\-I\-::\-Text\-Item\-Widget@{U\-I\-::\-Text\-Item\-Widget}!get\-Font@{get\-Font}}
+\index{get\-Font@{get\-Font}!UI::TextItemWidget@{U\-I\-::\-Text\-Item\-Widget}}
+\subsubsection[{get\-Font}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Font Text\-Item\-Widget\-::get\-Font (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_u_i_1_1_text_item_widget_a5996f149a30fe2c8468091bf53dc9f9e}
+
+
+Get the font used by this widget. 
+
+\begin{DoxyReturn}{Returns}
+The font used to display text. 
+\end{DoxyReturn}
+\hypertarget{class_u_i_1_1_text_item_widget_ab0c54430b127f59f1235585e59a05d76}{\index{U\-I\-::\-Text\-Item\-Widget@{U\-I\-::\-Text\-Item\-Widget}!get\-Item\-Type@{get\-Item\-Type}}
+\index{get\-Item\-Type@{get\-Item\-Type}!UI::TextItemWidget@{U\-I\-::\-Text\-Item\-Widget}}
+\subsubsection[{get\-Item\-Type}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String Text\-Item\-Widget\-::get\-Item\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_u_i_1_1_text_item_widget_ab0c54430b127f59f1235585e59a05d76}
+
+
+Get the item type, \char`\"{}\-Text Item\char`\"{}. 
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}\-Text Item\char`\"{}. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_u_i_1_1_item_widget_a83f42fd7ce38235e3fee565e32c4abbd}{U\-I\-::\-Item\-Widget}.
+
+\hypertarget{class_u_i_1_1_text_item_widget_a4b9d1546ff00c618dbc33c5c2816ec25}{\index{U\-I\-::\-Text\-Item\-Widget@{U\-I\-::\-Text\-Item\-Widget}!get\-Size\-To\-Fit\-In@{get\-Size\-To\-Fit\-In}}
+\index{get\-Size\-To\-Fit\-In@{get\-Size\-To\-Fit\-In}!UI::TextItemWidget@{U\-I\-::\-Text\-Item\-Widget}}
+\subsubsection[{get\-Size\-To\-Fit\-In}]{\setlength{\rightskip}{0pt plus 5cm}Q\-Size Text\-Item\-Widget\-::get\-Size\-To\-Fit\-In (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_u_i_1_1_text_item_widget_a4b9d1546ff00c618dbc33c5c2816ec25}
+
+
+Get the size this item has to fit in. 
+
+This is the size set by {\ttfamily \hyperlink{class_u_i_1_1_text_item_widget_a47a251b493d1a372bbb772c99fa8d5f2}{fix\-Size\-To\-Fit\-In()}}.
+
+\begin{DoxyReturn}{Returns}
+The size this item has to fit in. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_u_i_1_1_item_widget_a7f1653d1f9cb81cb2266c4a580a12d2b}{U\-I\-::\-Item\-Widget}.
+
+\hypertarget{class_u_i_1_1_text_item_widget_a704f08149116e02bcb27a17507a031f1}{\index{U\-I\-::\-Text\-Item\-Widget@{U\-I\-::\-Text\-Item\-Widget}!get\-Text@{get\-Text}}
+\index{get\-Text@{get\-Text}!UI::TextItemWidget@{U\-I\-::\-Text\-Item\-Widget}}
+\subsubsection[{get\-Text}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String Text\-Item\-Widget\-::get\-Text (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_u_i_1_1_text_item_widget_a704f08149116e02bcb27a17507a031f1}
+
+
+Get the text displayed by this widget. 
+
+\begin{DoxyReturn}{Returns}
+The displayed text. 
+\end{DoxyReturn}
+\hypertarget{class_u_i_1_1_text_item_widget_ac8942f90fca4db96d61c2c5ecd436f4f}{\index{U\-I\-::\-Text\-Item\-Widget@{U\-I\-::\-Text\-Item\-Widget}!height\-For\-Width@{height\-For\-Width}}
+\index{height\-For\-Width@{height\-For\-Width}!UI::TextItemWidget@{U\-I\-::\-Text\-Item\-Widget}}
+\subsubsection[{height\-For\-Width}]{\setlength{\rightskip}{0pt plus 5cm}int Text\-Item\-Widget\-::height\-For\-Width (
+\begin{DoxyParamCaption}
+\item[{int}]{w}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_u_i_1_1_text_item_widget_ac8942f90fca4db96d61c2c5ecd436f4f}
+
+
+Returns the recommended height for the given width. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & The width to use.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The recommended height for a widget with width {\ttfamily w}. 
+\end{DoxyReturn}
+\hypertarget{class_u_i_1_1_text_item_widget_a3bfad6b2b383cdcfc93368a24f47c4a6}{\index{U\-I\-::\-Text\-Item\-Widget@{U\-I\-::\-Text\-Item\-Widget}!paint\-Event@{paint\-Event}}
+\index{paint\-Event@{paint\-Event}!UI::TextItemWidget@{U\-I\-::\-Text\-Item\-Widget}}
+\subsubsection[{paint\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void Text\-Item\-Widget\-::paint\-Event (
+\begin{DoxyParamCaption}
+\item[{Q\-Paint\-Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_u_i_1_1_text_item_widget_a3bfad6b2b383cdcfc93368a24f47c4a6}
+
+
+Paint this widget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & The (ignored) paint event. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_u_i_1_1_item_widget_a636f6170e71d0dded72cf7fb040cbc3e}{U\-I\-::\-Item\-Widget}.
+
+\hypertarget{class_u_i_1_1_text_item_widget_ace2772195f51fe3e564d65d851494454}{\index{U\-I\-::\-Text\-Item\-Widget@{U\-I\-::\-Text\-Item\-Widget}!resize\-Event@{resize\-Event}}
+\index{resize\-Event@{resize\-Event}!UI::TextItemWidget@{U\-I\-::\-Text\-Item\-Widget}}
+\subsubsection[{resize\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void Text\-Item\-Widget\-::resize\-Event (
+\begin{DoxyParamCaption}
+\item[{Q\-Resize\-Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_u_i_1_1_text_item_widget_ace2772195f51fe3e564d65d851494454}
+
+
+Responds to size events. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & The (ignored) size event. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_text_item_widget_ab5a1bd88be6f83f5008917af0697b154}{\index{U\-I\-::\-Text\-Item\-Widget@{U\-I\-::\-Text\-Item\-Widget}!set\-Alignment@{set\-Alignment}}
+\index{set\-Alignment@{set\-Alignment}!UI::TextItemWidget@{U\-I\-::\-Text\-Item\-Widget}}
+\subsubsection[{set\-Alignment}]{\setlength{\rightskip}{0pt plus 5cm}void Text\-Item\-Widget\-::set\-Alignment (
+\begin{DoxyParamCaption}
+\item[{int}]{alignment}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_u_i_1_1_text_item_widget_ab5a1bd88be6f83f5008917af0697b154}
+
+
+Set the alignment for the text. 
+
+For more information on the available values, see \href{http://qt-project.org/doc/qt-4.8/qt.html#AlignmentFlag-enum}{\tt `\-Qt\-::\-Alignment`}.
+
+By default, the alignment is {\ttfamily Qt\-::\-Align\-Left $\vert$ Qt\-::\-Align\-V\-Center}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em alignment} & The desired alignment. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_text_item_widget_ad11b1e1f787bb0c99cca45a8931b3edc}{\index{U\-I\-::\-Text\-Item\-Widget@{U\-I\-::\-Text\-Item\-Widget}!set\-Font@{set\-Font}}
+\index{set\-Font@{set\-Font}!UI::TextItemWidget@{U\-I\-::\-Text\-Item\-Widget}}
+\subsubsection[{set\-Font}]{\setlength{\rightskip}{0pt plus 5cm}void Text\-Item\-Widget\-::set\-Font (
+\begin{DoxyParamCaption}
+\item[{Q\-Font}]{font}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_u_i_1_1_text_item_widget_ad11b1e1f787bb0c99cca45a8931b3edc}
+
+
+Change the font to use. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em font} & The new font to use. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_text_item_widget_a0065803717112ed4464026eeb8a0e711}{\index{U\-I\-::\-Text\-Item\-Widget@{U\-I\-::\-Text\-Item\-Widget}!set\-Text@{set\-Text}}
+\index{set\-Text@{set\-Text}!UI::TextItemWidget@{U\-I\-::\-Text\-Item\-Widget}}
+\subsubsection[{set\-Text}]{\setlength{\rightskip}{0pt plus 5cm}void Text\-Item\-Widget\-::set\-Text (
+\begin{DoxyParamCaption}
+\item[{Q\-String}]{text}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_u_i_1_1_text_item_widget_a0065803717112ed4464026eeb8a0e711}
+
+
+Change the text displayed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & The new text to display. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/ui/widgets/Text\-Item\-Widget.\-h\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/ui/widgets/Text\-Item\-Widget.\-cpp\end{DoxyCompactItemize}

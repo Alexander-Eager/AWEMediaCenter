@@ -1,7 +1,7 @@
 Developer Information
 =====================
 
-AWEMC is programmed using C++ and relies on [Qt](http://www.qt-project.org/), [cURL](http://curl.haxx.se/), and (eventually) [SDL](http://libsdl.org/). [JsonCpp](http://jsoncpp.sourceforge.net) is included in the source code.
+AWEMC is programmed using C++ and relies on [Qt][], [cURL][], and (eventually) [SFML][]. [JsonCpp][] is included in the source code.
 
 There are 7 central concepts you should understand:
 
@@ -13,4 +13,17 @@ There are 7 central concepts you should understand:
  + [Folder generators](type_README.md) make a folder structure with organization based on things like Genre for a specific media type. They also use metadata scrapers to collect information about media items to be placed in the folder structure.
  + Skins describe the way the UI looks and give default images to files.
 
-Also, all classes built into AWEMC should be prefixed by "AWE".
+## Namespaces
+
+There are a few namespaces you should know about:
+
+ + `std` - Well, this one should be obvious.
+ + `Json` - This is the namespace for [JsonCpp][].
+ + `AWE` - All backend classes fall under this namespace.
+ + `UI` - All user interface classes (i.e. windows and widgets) fall under this.
+ + `TCOM` - My own little colored command line library included with the code for debugging (it will be removed later).
+
+[Qt]: <http://www.qt-project.org/>
+[cURL]: <http://curl.haxx.se/>
+[SFML]: <http://www.sfml-dev.org/>
+[JsonCpp]: <http://jsoncpp.sourceforge.net/>

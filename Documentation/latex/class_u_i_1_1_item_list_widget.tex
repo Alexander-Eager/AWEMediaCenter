@@ -1,0 +1,248 @@
+\hypertarget{class_u_i_1_1_item_list_widget}{\section{U\-I\-:\-:Item\-List\-Widget Class Reference}
+\label{class_u_i_1_1_item_list_widget}\index{U\-I\-::\-Item\-List\-Widget@{U\-I\-::\-Item\-List\-Widget}}
+}
+
+
+An item collection based off of lists.  
+
+
+
+
+{\ttfamily \#include $<$Item\-List\-Widget.\-h$>$}
+
+Inheritance diagram for U\-I\-:\-:Item\-List\-Widget\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_u_i_1_1_item_list_widget}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_u_i_1_1_item_list_widget_ab1661803ad3ffe6271d7379b6566e898}{add\-Item} (\hyperlink{class_u_i_1_1_item_widget}{Item\-Widget} $\ast$item)
+\begin{DoxyCompactList}\small\item\em Add an item to this list. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_u_i_1_1_item_list_widget_a707a74054168f10acc5da4944b31a76a}{insert\-Item} (int index, \hyperlink{class_u_i_1_1_item_widget}{Item\-Widget} $\ast$item)
+\begin{DoxyCompactList}\small\item\em Insert an item into this list. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_u_i_1_1_item_list_widget_a515cd5198e8eab9d10c06e9be42b488d}{remove\-Item} (\hyperlink{class_u_i_1_1_item_widget}{Item\-Widget} $\ast$item)
+\begin{DoxyCompactList}\small\item\em Remove an item from this list. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_u_i_1_1_item_list_widget_a3feab22ce14c3abaa79741a1ebf0b288}{remove\-Item} (int index)
+\begin{DoxyCompactList}\small\item\em Remove the item at {\ttfamily index} this list. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_u_i_1_1_item_list_widget_af440f169ac88cfc41758cc4afc0ce496}{clear} ()
+\begin{DoxyCompactList}\small\item\em Remove all items in a safe way. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_u_i_1_1_item_list_widget_ae9a917aa22830e64114f8bf366a1a930}{Item\-List\-Widget} (Q\-Widget $\ast$parent, bool direction=false, bool multiselection=false)
+\begin{DoxyCompactList}\small\item\em Make for the given parent in the given direction. \end{DoxyCompactList}\item 
+\hypertarget{class_u_i_1_1_item_list_widget_ad92adc09ff4043b80151b15b8020202d}{virtual \hyperlink{class_u_i_1_1_item_list_widget_ad92adc09ff4043b80151b15b8020202d}{$\sim$\-Item\-List\-Widget} ()}\label{class_u_i_1_1_item_list_widget_ad92adc09ff4043b80151b15b8020202d}
+
+\begin{DoxyCompactList}\small\item\em Destroy this object. \end{DoxyCompactList}\item 
+virtual Q\-String \hyperlink{class_u_i_1_1_item_list_widget_a8779995ae54f1b692017d2b78cf29472}{get\-Layout\-Type} () const 
+\begin{DoxyCompactList}\small\item\em Get the way these collections are stored, \char`\"{}\-Item List\char`\"{}. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_u_i_1_1_item_widget}{Item\-Widget} $\ast$ \hyperlink{class_u_i_1_1_item_list_widget_ac6fb3c75562d678869e26a2af6543ba1}{at} (int index)
+\begin{DoxyCompactList}\small\item\em Get the item at the given index. \end{DoxyCompactList}\item 
+virtual const \hyperlink{class_u_i_1_1_item_widget}{Item\-Widget} $\ast$ \hyperlink{class_u_i_1_1_item_list_widget_a27a72f371981f9af2194b7c38fa3a83f}{at} (int index) const 
+\begin{DoxyCompactList}\small\item\em Get the item at the given index. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_u_i_1_1_item_list_widget_a23d52e3b1d200ed888065bb93a460358}{resize\-Event} (Q\-Resize\-Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em Changes the mandatory size for the items. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_u_i_1_1_item_list_widget_a8ee7d505fadfaef00c6643149b97e04f}{Q\-Box\-Layout $\ast$ \hyperlink{class_u_i_1_1_item_list_widget_a8ee7d505fadfaef00c6643149b97e04f}{my\-Layout}}\label{class_u_i_1_1_item_list_widget_a8ee7d505fadfaef00c6643149b97e04f}
+
+\begin{DoxyCompactList}\small\item\em Layout that holds all of the items. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+An item collection based off of lists. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_u_i_1_1_item_list_widget_ae9a917aa22830e64114f8bf366a1a930}{\index{U\-I\-::\-Item\-List\-Widget@{U\-I\-::\-Item\-List\-Widget}!Item\-List\-Widget@{Item\-List\-Widget}}
+\index{Item\-List\-Widget@{Item\-List\-Widget}!UI::ItemListWidget@{U\-I\-::\-Item\-List\-Widget}}
+\subsubsection[{Item\-List\-Widget}]{\setlength{\rightskip}{0pt plus 5cm}Item\-List\-Widget\-::\-Item\-List\-Widget (
+\begin{DoxyParamCaption}
+\item[{Q\-Widget $\ast$}]{parent, }
+\item[{bool}]{direction = {\ttfamily false}, }
+\item[{bool}]{multiselection = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}}\label{class_u_i_1_1_item_list_widget_ae9a917aa22830e64114f8bf366a1a930}
+
+
+Make for the given parent in the given direction. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em parent} & The parent widget. \\
+\hline
+\mbox{\tt in}  & {\em direction} & The direction of expansion; {\ttfamily true} if left-\/right, {\ttfamily false} if up-\/down. \\
+\hline
+\mbox{\tt in}  & {\em multiselection} & {\ttfamily true} if multiple items should be selectable at once, {\ttfamily false} if only one should be at a time. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_u_i_1_1_item_list_widget_ab1661803ad3ffe6271d7379b6566e898}{\index{U\-I\-::\-Item\-List\-Widget@{U\-I\-::\-Item\-List\-Widget}!add\-Item@{add\-Item}}
+\index{add\-Item@{add\-Item}!UI::ItemListWidget@{U\-I\-::\-Item\-List\-Widget}}
+\subsubsection[{add\-Item}]{\setlength{\rightskip}{0pt plus 5cm}void Item\-List\-Widget\-::add\-Item (
+\begin{DoxyParamCaption}
+\item[{{\bf Item\-Widget} $\ast$}]{item}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_u_i_1_1_item_list_widget_ab1661803ad3ffe6271d7379b6566e898}
+
+
+Add an item to this list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em item} & The item to add. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_item_list_widget_ac6fb3c75562d678869e26a2af6543ba1}{\index{U\-I\-::\-Item\-List\-Widget@{U\-I\-::\-Item\-List\-Widget}!at@{at}}
+\index{at@{at}!UI::ItemListWidget@{U\-I\-::\-Item\-List\-Widget}}
+\subsubsection[{at}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Item\-Widget} $\ast$ Item\-List\-Widget\-::at (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_u_i_1_1_item_list_widget_ac6fb3c75562d678869e26a2af6543ba1}
+
+
+Get the item at the given index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index of the item to get.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The item at the given index. 
+\end{DoxyReturn}
+\hypertarget{class_u_i_1_1_item_list_widget_a27a72f371981f9af2194b7c38fa3a83f}{\index{U\-I\-::\-Item\-List\-Widget@{U\-I\-::\-Item\-List\-Widget}!at@{at}}
+\index{at@{at}!UI::ItemListWidget@{U\-I\-::\-Item\-List\-Widget}}
+\subsubsection[{at}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Item\-Widget} $\ast$ Item\-List\-Widget\-::at (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_u_i_1_1_item_list_widget_a27a72f371981f9af2194b7c38fa3a83f}
+
+
+Get the item at the given index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index of the item to get.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The item at the given index. 
+\end{DoxyReturn}
+\hypertarget{class_u_i_1_1_item_list_widget_af440f169ac88cfc41758cc4afc0ce496}{\index{U\-I\-::\-Item\-List\-Widget@{U\-I\-::\-Item\-List\-Widget}!clear@{clear}}
+\index{clear@{clear}!UI::ItemListWidget@{U\-I\-::\-Item\-List\-Widget}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}void Item\-List\-Widget\-::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_u_i_1_1_item_list_widget_af440f169ac88cfc41758cc4afc0ce496}
+
+
+Remove all items in a safe way. 
+
+Unlike {\ttfamily Q\-List\-Widget}'s clear function, this one uses {\ttfamily delete\-Later()} to avoid segmentation faults if this function is called as a result of an item activation. \hypertarget{class_u_i_1_1_item_list_widget_a8779995ae54f1b692017d2b78cf29472}{\index{U\-I\-::\-Item\-List\-Widget@{U\-I\-::\-Item\-List\-Widget}!get\-Layout\-Type@{get\-Layout\-Type}}
+\index{get\-Layout\-Type@{get\-Layout\-Type}!UI::ItemListWidget@{U\-I\-::\-Item\-List\-Widget}}
+\subsubsection[{get\-Layout\-Type}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String Item\-List\-Widget\-::get\-Layout\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_u_i_1_1_item_list_widget_a8779995ae54f1b692017d2b78cf29472}
+
+
+Get the way these collections are stored, \char`\"{}\-Item List\char`\"{}. 
+
+\begin{DoxyReturn}{Returns}
+\char`\"{}\-Item List\char`\"{}. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_u_i_1_1_item_collection_widget_a476764a3844b34d2598ea246b4cca347}{U\-I\-::\-Item\-Collection\-Widget}.
+
+\hypertarget{class_u_i_1_1_item_list_widget_a707a74054168f10acc5da4944b31a76a}{\index{U\-I\-::\-Item\-List\-Widget@{U\-I\-::\-Item\-List\-Widget}!insert\-Item@{insert\-Item}}
+\index{insert\-Item@{insert\-Item}!UI::ItemListWidget@{U\-I\-::\-Item\-List\-Widget}}
+\subsubsection[{insert\-Item}]{\setlength{\rightskip}{0pt plus 5cm}void Item\-List\-Widget\-::insert\-Item (
+\begin{DoxyParamCaption}
+\item[{int}]{index, }
+\item[{{\bf Item\-Widget} $\ast$}]{item}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_u_i_1_1_item_list_widget_a707a74054168f10acc5da4944b31a76a}
+
+
+Insert an item into this list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em index} & The index to place the item at. \\
+\hline
+\mbox{\tt in}  & {\em item} & The item to add. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_item_list_widget_a515cd5198e8eab9d10c06e9be42b488d}{\index{U\-I\-::\-Item\-List\-Widget@{U\-I\-::\-Item\-List\-Widget}!remove\-Item@{remove\-Item}}
+\index{remove\-Item@{remove\-Item}!UI::ItemListWidget@{U\-I\-::\-Item\-List\-Widget}}
+\subsubsection[{remove\-Item}]{\setlength{\rightskip}{0pt plus 5cm}void Item\-List\-Widget\-::remove\-Item (
+\begin{DoxyParamCaption}
+\item[{{\bf Item\-Widget} $\ast$}]{item}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_u_i_1_1_item_list_widget_a515cd5198e8eab9d10c06e9be42b488d}
+
+
+Remove an item from this list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em item} & The item to remove (and delete). \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_item_list_widget_a3feab22ce14c3abaa79741a1ebf0b288}{\index{U\-I\-::\-Item\-List\-Widget@{U\-I\-::\-Item\-List\-Widget}!remove\-Item@{remove\-Item}}
+\index{remove\-Item@{remove\-Item}!UI::ItemListWidget@{U\-I\-::\-Item\-List\-Widget}}
+\subsubsection[{remove\-Item}]{\setlength{\rightskip}{0pt plus 5cm}void Item\-List\-Widget\-::remove\-Item (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}}\label{class_u_i_1_1_item_list_widget_a3feab22ce14c3abaa79741a1ebf0b288}
+
+
+Remove the item at {\ttfamily index} this list. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em index} & The index of the item to remove (and delete). \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_u_i_1_1_item_list_widget_a23d52e3b1d200ed888065bb93a460358}{\index{U\-I\-::\-Item\-List\-Widget@{U\-I\-::\-Item\-List\-Widget}!resize\-Event@{resize\-Event}}
+\index{resize\-Event@{resize\-Event}!UI::ItemListWidget@{U\-I\-::\-Item\-List\-Widget}}
+\subsubsection[{resize\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void Item\-List\-Widget\-::resize\-Event (
+\begin{DoxyParamCaption}
+\item[{Q\-Resize\-Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_u_i_1_1_item_list_widget_a23d52e3b1d200ed888065bb93a460358}
+
+
+Changes the mandatory size for the items. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & The (ignored) size event. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_u_i_1_1_item_collection_widget_a7bae5ecd7edcfbf4378ca02fe9f14e74}{U\-I\-::\-Item\-Collection\-Widget}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/ui/widgets/collection/Item\-List\-Widget.\-h\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/ui/widgets/collection/Item\-List\-Widget.\-cpp\end{DoxyCompactItemize}

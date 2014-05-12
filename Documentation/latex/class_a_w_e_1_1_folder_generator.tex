@@ -1,0 +1,194 @@
+\hypertarget{class_a_w_e_1_1_folder_generator}{\section{A\-W\-E\-:\-:Folder\-Generator Class Reference}
+\label{class_a_w_e_1_1_folder_generator}\index{A\-W\-E\-::\-Folder\-Generator@{A\-W\-E\-::\-Folder\-Generator}}
+}
+
+
+Defines a folder generator for a hierarchical media type.  
+
+
+
+
+{\ttfamily \#include $<$A\-W\-E\-Folder\-Generator.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_a_w_e_1_1_folder_generator_a38b9a994367897fa7865327796308fa3}{Folder\-Generator} (Q\-Dir file)
+\begin{DoxyCompactList}\small\item\em Construct from the given J\-S\-O\-N file. \end{DoxyCompactList}\item 
+Q\-String \hyperlink{class_a_w_e_1_1_folder_generator_a12560bd36fb5850757d35c64ab174e28}{get\-Type} () const 
+\begin{DoxyCompactList}\small\item\em Get the surface type of the generator. \end{DoxyCompactList}\item 
+\hyperlink{class_json_1_1_value}{Json\-::\-Value} \& \hyperlink{class_a_w_e_1_1_folder_generator_abb61f607773041805087d78de264fcd1}{get\-Default\-Metadata} ()
+\begin{DoxyCompactList}\small\item\em Get the default metadata values. \end{DoxyCompactList}\item 
+Q\-List$<$ \hyperlink{class_a_w_e_1_1_folder_generator}{Folder\-Generator} $\ast$ $>$ \hyperlink{class_a_w_e_1_1_folder_generator_a2fcc259b2f405787209a29708fcef548}{get\-Sub\-Generators} ()
+\begin{DoxyCompactList}\small\item\em Get the generators for all contained types. \end{DoxyCompactList}\item 
+bool \hyperlink{class_a_w_e_1_1_folder_generator_a00572426608615b236d112f4608c115f}{create\-Folder\-Structure} (\hyperlink{class_a_w_e_1_1_folder}{Folder} $\ast$root, Q\-Dir dir, Q\-Hash$<$ Q\-String, \hyperlink{class_a_w_e_1_1_metadata_scraper}{Metadata\-Scraper} $\ast$ $>$ \&scrapers\-To\-Use, bool ask\-User, bool import\-Files, bool inherit\-Metadata)
+\begin{DoxyCompactList}\small\item\em Create a folder structure for holding this type tree. \end{DoxyCompactList}\item 
+void \hyperlink{class_a_w_e_1_1_folder_generator_a455eacdb741bb0954877a2df8235815e}{make\-Detail\-Folders} (Q\-List$<$ \hyperlink{class_a_w_e_1_1_media_item}{Media\-Item} $\ast$ $>$ items\-Generated, \hyperlink{class_a_w_e_1_1_folder}{Folder} $\ast$place\-In\-Me)
+\begin{DoxyCompactList}\small\item\em Create the detail folders for this type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_a_w_e_1_1_folder_generator_a0757c2cc2a2bb23f989159a86d87b2ae}{Folder\-Generator} (\hyperlink{class_json_1_1_value}{Json\-::\-Value} \&data)
+\begin{DoxyCompactList}\small\item\em Construct from a J\-S\-O\-N value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_a_w_e_1_1_folder_generator_ae806a0cfb1ae6b9edfec8e319fafcfd5}{Q\-Dir \hyperlink{class_a_w_e_1_1_folder_generator_ae806a0cfb1ae6b9edfec8e319fafcfd5}{my\-J\-S\-O\-N\-File}}\label{class_a_w_e_1_1_folder_generator_ae806a0cfb1ae6b9edfec8e319fafcfd5}
+
+\begin{DoxyCompactList}\small\item\em The config file. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_folder_generator_a3e073e7f3223ec418692baba94bf5872}{\hyperlink{class_json_1_1_value}{Json\-::\-Value} \hyperlink{class_a_w_e_1_1_folder_generator_a3e073e7f3223ec418692baba94bf5872}{my\-Metadata}}\label{class_a_w_e_1_1_folder_generator_a3e073e7f3223ec418692baba94bf5872}
+
+\begin{DoxyCompactList}\small\item\em The data from the config file. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_folder_generator_a5e85a244539068c674dc66116e5bf210}{Q\-String\-List \hyperlink{class_a_w_e_1_1_folder_generator_a5e85a244539068c674dc66116e5bf210}{my\-File\-Filters}}\label{class_a_w_e_1_1_folder_generator_a5e85a244539068c674dc66116e5bf210}
+
+\begin{DoxyCompactList}\small\item\em The file filters to use when searching. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_folder_generator_a460b960f16e47bd9f83b8a2879d953db}{Q\-List$<$ \hyperlink{class_a_w_e_1_1_folder_generator}{Folder\-Generator} $\ast$ $>$ \hyperlink{class_a_w_e_1_1_folder_generator_a460b960f16e47bd9f83b8a2879d953db}{my\-Sub\-Generators}}\label{class_a_w_e_1_1_folder_generator_a460b960f16e47bd9f83b8a2879d953db}
+
+\begin{DoxyCompactList}\small\item\em List of all contained generators. \end{DoxyCompactList}\item 
+\hypertarget{class_a_w_e_1_1_folder_generator_acdca8c578a81e5065bd163fa446270d1}{bool \hyperlink{class_a_w_e_1_1_folder_generator_acdca8c578a81e5065bd163fa446270d1}{my\-Items\-Are\-Folders}}\label{class_a_w_e_1_1_folder_generator_acdca8c578a81e5065bd163fa446270d1}
+
+\begin{DoxyCompactList}\small\item\em Determines if this generates folders. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Defines a folder generator for a hierarchical media type. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_a_w_e_1_1_folder_generator_a38b9a994367897fa7865327796308fa3}{\index{A\-W\-E\-::\-Folder\-Generator@{A\-W\-E\-::\-Folder\-Generator}!Folder\-Generator@{Folder\-Generator}}
+\index{Folder\-Generator@{Folder\-Generator}!AWE::FolderGenerator@{A\-W\-E\-::\-Folder\-Generator}}
+\subsubsection[{Folder\-Generator}]{\setlength{\rightskip}{0pt plus 5cm}Folder\-Generator\-::\-Folder\-Generator (
+\begin{DoxyParamCaption}
+\item[{Q\-Dir}]{file}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_folder_generator_a38b9a994367897fa7865327796308fa3}
+
+
+Construct from the given J\-S\-O\-N file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em file} & The J\-S\-O\-N file representing this generator. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_a_w_e_1_1_folder_generator_a0757c2cc2a2bb23f989159a86d87b2ae}{\index{A\-W\-E\-::\-Folder\-Generator@{A\-W\-E\-::\-Folder\-Generator}!Folder\-Generator@{Folder\-Generator}}
+\index{Folder\-Generator@{Folder\-Generator}!AWE::FolderGenerator@{A\-W\-E\-::\-Folder\-Generator}}
+\subsubsection[{Folder\-Generator}]{\setlength{\rightskip}{0pt plus 5cm}Folder\-Generator\-::\-Folder\-Generator (
+\begin{DoxyParamCaption}
+\item[{{\bf Json\-::\-Value} \&}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_a_w_e_1_1_folder_generator_a0757c2cc2a2bb23f989159a86d87b2ae}
+
+
+Construct from a J\-S\-O\-N value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The J\-S\-O\-N value for the type. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_a_w_e_1_1_folder_generator_a00572426608615b236d112f4608c115f}{\index{A\-W\-E\-::\-Folder\-Generator@{A\-W\-E\-::\-Folder\-Generator}!create\-Folder\-Structure@{create\-Folder\-Structure}}
+\index{create\-Folder\-Structure@{create\-Folder\-Structure}!AWE::FolderGenerator@{A\-W\-E\-::\-Folder\-Generator}}
+\subsubsection[{create\-Folder\-Structure}]{\setlength{\rightskip}{0pt plus 5cm}bool Folder\-Generator\-::create\-Folder\-Structure (
+\begin{DoxyParamCaption}
+\item[{{\bf Folder} $\ast$}]{root, }
+\item[{Q\-Dir}]{dir, }
+\item[{Q\-Hash$<$ Q\-String, {\bf Metadata\-Scraper} $\ast$ $>$ \&}]{scrapers\-To\-Use, }
+\item[{bool}]{ask\-User, }
+\item[{bool}]{import\-Files, }
+\item[{bool}]{inherit\-Metadata}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_folder_generator_a00572426608615b236d112f4608c115f}
+
+
+Create a folder structure for holding this type tree. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em root} & The folder to place the new folder structure in. \\
+\hline
+\mbox{\tt in}  & {\em dir} & The directory to check for media files. \\
+\hline
+\mbox{\tt in}  & {\em scrapers\-To\-Use} & Maps type names onto metadata scrapers to use. \\
+\hline
+\mbox{\tt in}  & {\em ask\-User} & Decide if the user should be asked to help scraping. \\
+\hline
+\mbox{\tt in}  & {\em import\-Files} & Decide if optional file imports should occur. \\
+\hline
+\mbox{\tt in}  & {\em inherit\-Metadata} & {\ttfamily true} if this generator is being called by another, {\ttfamily false} otherwise.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if all metadata was successfully obtained, {\ttfamily false} otherwise. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_folder_generator_abb61f607773041805087d78de264fcd1}{\index{A\-W\-E\-::\-Folder\-Generator@{A\-W\-E\-::\-Folder\-Generator}!get\-Default\-Metadata@{get\-Default\-Metadata}}
+\index{get\-Default\-Metadata@{get\-Default\-Metadata}!AWE::FolderGenerator@{A\-W\-E\-::\-Folder\-Generator}}
+\subsubsection[{get\-Default\-Metadata}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} \& Folder\-Generator\-::get\-Default\-Metadata (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_folder_generator_abb61f607773041805087d78de264fcd1}
+
+
+Get the default metadata values. 
+
+\begin{DoxyReturn}{Returns}
+The default metadata values. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_folder_generator_a2fcc259b2f405787209a29708fcef548}{\index{A\-W\-E\-::\-Folder\-Generator@{A\-W\-E\-::\-Folder\-Generator}!get\-Sub\-Generators@{get\-Sub\-Generators}}
+\index{get\-Sub\-Generators@{get\-Sub\-Generators}!AWE::FolderGenerator@{A\-W\-E\-::\-Folder\-Generator}}
+\subsubsection[{get\-Sub\-Generators}]{\setlength{\rightskip}{0pt plus 5cm}Q\-List$<$ {\bf Folder\-Generator} $\ast$ $>$ Folder\-Generator\-::get\-Sub\-Generators (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_folder_generator_a2fcc259b2f405787209a29708fcef548}
+
+
+Get the generators for all contained types. 
+
+\begin{DoxyReturn}{Returns}
+A list of all sub generators. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_folder_generator_a12560bd36fb5850757d35c64ab174e28}{\index{A\-W\-E\-::\-Folder\-Generator@{A\-W\-E\-::\-Folder\-Generator}!get\-Type@{get\-Type}}
+\index{get\-Type@{get\-Type}!AWE::FolderGenerator@{A\-W\-E\-::\-Folder\-Generator}}
+\subsubsection[{get\-Type}]{\setlength{\rightskip}{0pt plus 5cm}Q\-String Folder\-Generator\-::get\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_a_w_e_1_1_folder_generator_a12560bd36fb5850757d35c64ab174e28}
+
+
+Get the surface type of the generator. 
+
+\begin{DoxyReturn}{Returns}
+The surface type of the generator. 
+\end{DoxyReturn}
+\hypertarget{class_a_w_e_1_1_folder_generator_a455eacdb741bb0954877a2df8235815e}{\index{A\-W\-E\-::\-Folder\-Generator@{A\-W\-E\-::\-Folder\-Generator}!make\-Detail\-Folders@{make\-Detail\-Folders}}
+\index{make\-Detail\-Folders@{make\-Detail\-Folders}!AWE::FolderGenerator@{A\-W\-E\-::\-Folder\-Generator}}
+\subsubsection[{make\-Detail\-Folders}]{\setlength{\rightskip}{0pt plus 5cm}void Folder\-Generator\-::make\-Detail\-Folders (
+\begin{DoxyParamCaption}
+\item[{Q\-List$<$ {\bf Media\-Item} $\ast$ $>$}]{items\-Generated, }
+\item[{{\bf Folder} $\ast$}]{place\-In\-Me}
+\end{DoxyParamCaption}
+)}}\label{class_a_w_e_1_1_folder_generator_a455eacdb741bb0954877a2df8235815e}
+
+
+Create the detail folders for this type. 
+
+A detail folder is only created if that detail has more than one value in the item list.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em items\-Generated} & The items to make detail folders for. \\
+\hline
+\mbox{\tt out}  & {\em place\-In\-Me} & The folder to put all of the type folders in. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/type/A\-W\-E\-Folder\-Generator.\-h\item 
+/\-Users/\-Alex/github/\-A\-W\-E\-Media\-Center/\-Code/type/A\-W\-E\-Folder\-Generator.\-cpp\end{DoxyCompactItemize}

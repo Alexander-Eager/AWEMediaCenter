@@ -9,10 +9,14 @@
 
 // for reading/writing JSON files for the scraper and media file
 #include "libs/json/json.h"
-#include <QRegExp>
+#include <QRegularExpression>
+#include <QRegularExpressionMatch>
+#include <QRegularExpressionMatchIterator>
 
 // for holding data
 #include <QString>
+#include <QHash>
+#include <QSet>
 
 // for media items
 #include "items/AWEMediaItem.h"
@@ -40,7 +44,7 @@ namespace AWE
 			 * \param[in] name The name of the scraper.
 			 * \param[in] type The media type for this scraper.
 			 **/
-			JSONScraper(const QString& name, const QString& type);
+			JSONScraper(QString name, QString type);
 
 			/**
 			 * \brief Prepares the scraper by reading the scraper and type files.
@@ -109,6 +113,7 @@ namespace AWE
 			 *
 			 * \param[out] placeInMe The `Folder` to put the created items in.
 			 * \param[in] file The file or folder to get media items for.
+			 * \param[in] globalSettings The global settings of AWEMC.
 			 * \param[in] askUser `true` if the user wants to be given choices,
 			 *				`false` otherwise.
 			 * \param[in] import `true` if the user wants to import metadata files,
@@ -121,8 +126,8 @@ namespace AWE
 			 *			the file does not match.
 			 **/
 			virtual QList<MediaItem*> scrapeDataForFile(Folder* placeInMe,
-				GlobalSettings* globalSettings, const QDir& file,
-				bool askUser, bool import, bool inheritMetadata) = 0;
+				GlobalSettings* globalSettings, QDir file,
+				bool askUser, bool import, bool inheritMetadata);
 
 			/**
 			 * \brief Destroys any used-up dynamic memory.
@@ -144,14 +149,14 @@ namespace AWE
 			 *
 			 * \returns The name of the scraper.
 			 **/
-			virtual const QString& getName();
+			virtual QString getName();
 
 			/**
 			 * \brief Gets the media type for this scraper.
 			 *
 			 * \returns The media type name for the scraper.
 			 **/
-			virtual const QString& getType();
+			virtual QString getType();
 
 		private:
 			/** \brief Can this be used effectively? **/
@@ -172,8 +177,20 @@ namespace AWE
 			/** \brief The current file. **/
 			MediaItem* myCurrentFile;
 
+			/** \brief The folder contianing myCurrentFile. **/
+			Folder* myCurrentFolder;
+
+			/** \brief The global settings of AWEMC. **/
+			GlobalSettings* myGlobalSettings;
+
 			/** \brief Maps file onto file contents (for speed boost). **/
 			QHash<QString, QString> myMetadataFiles;
+
+			/** \brief Maps `myCurrentFile` props onto `myCurrentFolder` props. **/
+			QHash<QString, QString> myInheritedProperties;
+
+			/** \brief Set of file properties. **/
+			QSet<QString> myFileProperties;
 
 			/**
 			 * \brief Execute a specific procedure from a `"procedures"` array.
@@ -191,7 +208,7 @@ namespace AWE
 			 *
 			 * \returns `true` if the procedure ran without issue, `false` otherwise.
 			 **/
-			bool executeProcedure(Json::Value& procedure, QRegExp& backrefs,
+			bool executeProcedure(Json::Value& procedure, QRegularExpressionMatch backrefs,
 				bool askUser, bool import, bool inheritMetadata);
 
 			/**
@@ -210,8 +227,17 @@ namespace AWE
 			 *
 			 * \returns `true` if the procedure ran without issue, `false` otherwise.
 			 **/
-			bool useMatchForProcedure(Json::Value& procedure, QRegExp& backrefs,
+			bool useMatchForProcedure(Json::Value& procedure, QRegularExpressionMatch backrefs,
 				bool askUser, bool import, bool inheritMetadata);
+
+			/**
+			 * \brief Helper function that imports the files in the given `Json::Value`.
+			 *
+			 * This is used for the `"force copy"` and `"copy"` tags.
+			 *
+			 * \param[in] props The properties that contain files to import.
+			 **/
+			void importFiles(Json::Value& props);
 
 			/**
 			 * \brief Replace the backreferences in `pseudo_reg` with the references from
@@ -223,18 +249,20 @@ namespace AWE
 			 *
 			 * \param[out] pseudo_reg The `QString` with the references to replace.
 			 * \param[in] backrefs The backreferences to use.
+			 *
+			 * \returns The highest backref requested.
 			 **/
-			void replaceBackrefs(QString& pseudo_reg, const QRegExp& backrefs);
+			int replaceBackrefs(QString& pseudo_reg, QRegularExpressionMatch backrefs);
 
 			/**
 			 * \brief Get the contents of a file, either from the already opened files
 			 *			or a new file.
 			 *
-			 * \param file The file to get the contents for.
+			 * \param[in] file The file to get the contents for.
 			 *
 			 * \returns The contents of `file`.
 			 **/
-			QString& getFileContents(const QString& file);
+			QString& getFileContents(QString file);
 
 			/**
 			 * \brief Does a test run of the procedures to decide if this scraper is valid.
@@ -250,11 +278,12 @@ namespace AWE
 			 *
 			 * \todo This entire function (which at the moment just returns `true`)
 			 *
-			 * \param procedure The procedure to check.
+			 * \param[in] procedure The procedure to check.
+			 * \param[in] capCount The number of backrefs passed to the procedure.
 			 *
 			 * \returns `true` if `procedure` is safe to use, `false` otherwise.
 			 **/
-			bool checkProcedureValidity(Json::Value& procedure);
+			bool checkProcedureValidity(Json::Value& procedure, int capCount);
 	};
 }
 

@@ -1,0 +1,70 @@
+.TH "UI::Pane" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+UI::Pane \- 
+.PP
+A surface representing a pane of widgets\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Pane\&.h>\fP
+.PP
+Inherits QWidget\&.
+.PP
+Inherited by \fBUI::FolderPane\fP, \fBUI::ImagePane\fP, \fBUI::InfoPane\fP, and \fBUI::TextPane\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPane\fP (QWidget *parent)"
+.br
+.RI "\fIConstruct with the given parent widget\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBpaintEvent\fP (QPaintEvent *event)"
+.br
+.RI "\fIPaints this pane\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+A surface representing a pane of widgets\&. 
+
+Panes have a frame and a semi-transparent background color\&. This class is meant to be subclassed for use in \fC\fBWindowContents\fP\fP objects\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Pane::Pane (QWidget *parent)"
+
+.PP
+Construct with the given parent widget\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparent\fP The parent widget\&. 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Pane::paintEvent (QPaintEvent *event)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Paints this pane\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIevent\fP The (ignored) paint event\&. 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBUI::TextPane\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AWE Media Center from the source code\&.

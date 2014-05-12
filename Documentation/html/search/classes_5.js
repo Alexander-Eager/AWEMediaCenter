@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['path',['Path',['../class_json_1_1_path.html',1,'Json']]],
-  ['pathargument',['PathArgument',['../class_json_1_1_path_argument.html',1,'Json']]]
+  ['globalsettings',['GlobalSettings',['../class_a_w_e_1_1_global_settings.html',1,'AWE']]]
 ];

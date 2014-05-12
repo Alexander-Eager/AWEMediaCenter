@@ -1,0 +1,59 @@
+
+{
+	"metadata" : 
+	{
+		"description" : "After a lifetime of dreaming of traveling the world, 78-year-old homebody Carl flies away on an unbelievable adventure with Russell, an 8-year-old Wilderness Explorer, unexpectedly in tow. Together, the unlikely pair embarks on a thrilling odyssey full of jungle beasts and rough terrain.",
+		"details" : 
+		{
+			"Cast" : [ "Edward Asner", "Christopher Plummer", "Jordan Nagai", "Bob Peterson" ],
+			"Director(s)" : [ "Pete Docter", "Bob Peterson" ],
+			"Genre(s)" : [ "Animation", "Comedy", "Family", "Adventure" ],
+			"Writer(s)" : [ "Bob Peterson" ],
+			"Year" : "2009",
+			"_order" : [ "Year", "Genre(s)", "Director(s)", "Writer(s)", "Cast" ]
+		},
+		"fanarts" : 
+		{
+			"default" : 1,
+			"files" : 
+			[
+				"file.json.metadata.fanarts.files.0.jpg",
+				"file.json.metadata.fanarts.files.1.jpg",
+				"file.json.metadata.fanarts.files.2.jpg",
+				"file.json.metadata.fanarts.files.3.jpg",
+				"file.json.metadata.fanarts.files.4.jpg",
+				"file.json.metadata.fanarts.files.5.jpg",
+				"file.json.metadata.fanarts.files.6.jpg",
+				"file.json.metadata.fanarts.files.7.jpg",
+				"file.json.metadata.fanarts.files.8.jpg",
+				"file.json.metadata.fanarts.files.9.jpg",
+				"file.json.metadata.fanarts.files.10.jpg",
+				"file.json.metadata.fanarts.files.11.jpg",
+				"file.json.metadata.fanarts.files.12.jpg",
+				"file.json.metadata.fanarts.files.13.jpg",
+				"file.json.metadata.fanarts.files.14.jpg",
+				"file.json.metadata.fanarts.files.15.jpg",
+				"file.json.metadata.fanarts.files.16.jpg"
+			]
+		},
+		"icons" : 
+		{
+			"default" : 1,
+			"files" : 
+			[
+				"file.json.metadata.icons.files.0.jpg",
+				"file.json.metadata.icons.files.1.jpg",
+				"file.json.metadata.icons.files.2.jpg",
+				"file.json.metadata.icons.files.3.jpg",
+				"file.json.metadata.icons.files.4.jpg",
+				"file.json.metadata.icons.files.5.jpg",
+				"file.json.metadata.icons.files.6.jpg"
+			]
+		},
+		"location" : "../../Music/iTunes/iTunes Music/Movies/Up/Up.m4v",
+		"name" : "Up",
+		"type" : "Movie"
+	},
+	"player" : "Default Program",
+	"type" : "file"
+}

@@ -1,4 +1,4 @@
-.TH "AWE::JSONPlayer" 3 "Fri Apr 18 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.TH "AWE::JSONPlayer" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -25,9 +25,33 @@ Inherits \fBAWE::MediaPlayer\fP\&.
 .br
 .RI "\fIPlay the given file\&. \fP"
 .ti -1c
-.RI "virtual const std::string & \fBgetName\fP () const "
+.RI "virtual QString \fBgetName\fP () const "
 .br
 .RI "\fIGet the name of the player\&. \fP"
+.ti -1c
+.RI "virtual bool \fBcanPlay\fP (\fBMediaFile\fP *file)"
+.br
+.RI "\fIDetermine if the given media file can be played by this player\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "QString \fBmyName\fP"
+.br
+.RI "\fIThe name of the player\&. \fP"
+.ti -1c
+.RI "QString \fBmyProgram\fP"
+.br
+.RI "\fIThe program to be run\&. \fP"
+.ti -1c
+.RI "QString \fBmyArguments\fP"
+.br
+.RI "\fIThe arguments to be passed\&. \fP"
+.ti -1c
+.RI "QStringList \fBmyFileTypes\fP"
+.br
+.RI "\fIThe possible file types that can be played\&. \fP"
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -47,7 +71,25 @@ Construct a media player from the given JSON object\&.
 
 .SH "Member Function Documentation"
 .PP 
-.SS "const string & JSONPlayer::getName () const\fC [virtual]\fP"
+.SS "bool JSONPlayer::canPlay (\fBMediaFile\fP *file)\fC [virtual]\fP"
+
+.PP
+Determine if the given media file can be played by this player\&. For JSON based players, this is determined using the file extension and the \fC'filetypes'\fP tag\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile\fP The file to determine playability for\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if this player can play \fCfile\fP, \fCfalse\fP otherwise\&. 
+.RE
+.PP
+
+.PP
+Implements \fBAWE::MediaPlayer\fP\&.
+.SS "QString JSONPlayer::getName () const\fC [virtual]\fP"
 
 .PP
 Get the name of the player\&. 

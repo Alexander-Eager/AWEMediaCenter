@@ -14,7 +14,7 @@ There are three steps to all metadata scraping\-:
 
 \subsection*{How to\-: Create Internal Metadata Scrapers using Plugins}
 
-Essentially, you need to implement the {\ttfamily Metadata\-Scraper} interface, which is designed to be used as a plugin. Read the \href{http://qt-project.org/doc/qt-4.8/plugins-howto.html}{\tt how-\/to for Qt plugins} to learn more. You'll need to use \href{http://jsoncpp.sourceforge.net}{\tt Json\-Cpp} to write the settings file out.
+Essentially, you need to implement the {\ttfamily Metadata\-Scraper} interface, which is designed to be used as a plugin. Read the \href{http://qt-project.org/doc/qt-4.8/plugins-howto.html}{\tt how-\/to for Qt plugins} to learn more. You'll need to use \href{http://jsoncpp.sourceforge.net/>}{\tt Json\-Cpp} to write the settings file out.
 
 In addition to creating the plugin, you must make a J\-S\-O\-N settings file. The only required entries in this file are\-: \begin{DoxyVerb}"name": <name of the scraper as it should appear to the user>,
 "plugin": <the plugin library file>
@@ -30,12 +30,12 @@ Before reading this how-\/to, here is some information you should know\-:
 
 \begin{DoxyItemize}
 \item The general format of a J\-S\-O\-N document (see \href{http://www.json.org/}{\tt http\-://www.\-json.\-org/} for more details).
-\item The kinds of metadata that A\-W\-E\-M\-C accepts (see ../type\-\_\-\-R\-E\-A\-D\-M\-E.md \char`\"{}\-Media Types\char`\"{} for details).
-\item The way metadata is stored in a media file's J\-S\-O\-N preference file (see ../items/files/\-R\-E\-A\-D\-M\-E.md \char`\"{}\-Media Files\char`\"{} for details).
-\item E\-C\-M\-A\-Script regular expressions (see \href{http://www.cplusplus.com/reference/regex/ECMAScript/}{\tt this online documentation} for details).
+\item The kinds of metadata that A\-W\-E\-M\-C accepts (see \href{../type/README.md>}{\tt Media Types} for details).
+\item The way metadata is stored in a media file's J\-S\-O\-N preference file (see \href{../items/README.md>}{\tt Media Items} for details).
+\item Qt regular expressions (see \href{http://qt-project.org/doc/qt-5/qregexp.html>}{\tt Q\-Reg\-Exp} for more details).
 \end{DoxyItemize}
 
-Note that, although comments are not officially supported by the J\-S\-O\-N file format, they are supported by A\-W\-E\-M\-C's J\-S\-O\-N reader, \href{http://jsoncpp.sourceforge.net}{\tt Json\-Cpp}. Standard {\ttfamily // comment} lines work.
+Note that, although comments are not officially supported by the J\-S\-O\-N file format, they are supported by A\-W\-E\-M\-C's J\-S\-O\-N reader, \href{http://jsoncpp.sourceforge.net/>}{\tt Json\-Cpp}. Standard {\ttfamily // comment} lines work.
 
 \subsubsection*{Introduction to the idea behind J\-S\-O\-N-\/based scrapers}
 
@@ -48,7 +48,7 @@ The central theory behind these so-\/called {\itshape external scrapers} is that
 \item Take parts of that section of text and assign those values to metadata properties.
 \end{DoxyEnumerate}
 
-The implentation if these so-\/called {\itshape procedures} is based on regular expressions and backreferences. The type of regex used is \href{http://www.cplusplus.com/reference/regex/ECMAScript/}{\tt E\-C\-M\-A\-Script}, while the format of the string where backreferences are placed is defined by the {\ttfamily fmt} parameter for the C++ Standard Library's \href{http://www.cplusplus.com/reference/regex/match_replace/}{\tt backref replacement function}.
+The implentation if these so-\/called {\itshape procedures} is based on regular expressions and backreferences. The type of regex used is \href{http://qt-project.org/doc/qt-5/qregexp.html>}{\tt Q\-Reg\-Exp}, while the format of the string where backreferences are placed is defined by the {\ttfamily fmt} parameter for the C++ Standard Library's \href{http://www.cplusplus.com/reference/regex/match_replace/}{\tt backref replacement function}.
 
 \subsubsection*{A template for a scraper}
 
@@ -59,8 +59,18 @@ Here is a template for a scraper\-: \begin{DoxyVerb}{
     // This scraper is available to scrape metadata for this type of media item
     "type": <the type of media files>,
 
+    // If a single file can have multiple items in it, set this to true.
+    // The procedures below will be repeated for every file name match if true,
+    // so make sure your filename regex is strict
+    "multiple items per file": <true or false>
+
     // This helps you get information to use, like the name of the media item
     "filename": <regex to get backreferences from the media file path>,
+
+    // If this type is hierarchical, the metadata should be inherited from the parent folder
+    "inherited metadata": {
+        <this type's property>: <parent type's property>
+    }
 
     // List of procedures to run using the backreferences from "filename"
     "procedures": [
@@ -69,7 +79,8 @@ Here is a template for a scraper\-: \begin{DoxyVerb}{
             "repeat": <true or false>,
 
             // Should the user be prompted to choose which match (or matches) to use?
-            "ask user": <true or false>,
+            // Empty string means that the user should not be prompted
+            "ask user": <string to prompt user with>,
 
             // The file to look in; backrefs are replaced
             "look in file": <formatted string with backrefs>,
@@ -78,9 +89,11 @@ Here is a template for a scraper\-: \begin{DoxyVerb}{
             "for": <formatted regex with backrefs>,
 
             // Set a bunch of properties to backreferences from "for"
-            <prop>: <value with backrefs>,
-            <prop>: <value with backrefs>,
-            // More properties...
+            "set properties": {
+                <prop>: <value with backrefs>,
+                <prop>: <value with backrefs>,
+                // More properties...
+            }
 
             // Run a list of sub-procedures using the backreferences from "for"
             "procedures": [...]
@@ -109,7 +122,7 @@ Here is a template for a scraper\-: \begin{DoxyVerb}{
 \end{DoxyVerb}
 
 
-Those of you who have read the ../\-Code/type\-\_\-\-R\-E\-A\-D\-M\-E.md \char`\"{}\-Media Types explanation\char`\"{} know that some metadata properties are actually objects that contain other metadata properties. In order to access a property held inside of an object, you must use the {\ttfamily .} operator, much like you would in C++. So to set the \char`\"{}default\char`\"{} property of the \char`\"{}icons\char`\"{} object, I would use\-:
+Those of you who have read the \href{../type/README.md>}{\tt Media Types explanation} know that some metadata properties are actually objects that contain other metadata properties. In order to access a property held inside of an object, you must use the {\ttfamily .} operator, much like you would in C++. So to set the \char`\"{}default\char`\"{} property of the \char`\"{}icons\char`\"{} object, I would use\-:
 
 \begin{DoxyVerb}"icons.default": <value>
 \end{DoxyVerb}

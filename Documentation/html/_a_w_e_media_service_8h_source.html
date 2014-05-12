@@ -71,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -82,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_23fdee2f6995db16c755697cdf620cf4.html">Code</a></li><li class="navelem"><a class="el" href="dir_3a78ee3b8019933dd8ca42528f0b1265.html">items</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_4fd200482d2a48c4e9dfdc8aa20aa592.html">Code</a></li><li class="navelem"><a class="el" href="dir_a41cfcd00f17271e79752da1021e09a9.html">items</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -101,24 +101,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_a_w_e_1_1_media_service.html">   14</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_a_w_e_1_1_media_service.html">MediaService</a> : <span class="keyword">public</span> <a class="code" href="class_a_w_e_1_1_media_item.html">MediaItem</a></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    {</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <a class="code" href="class_a_w_e_1_1_media_service.html#ac843939cc99358391e249e5fbaa4e318">MediaService</a>(<span class="keyword">const</span> QDir&amp; file);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <a class="code" href="class_a_w_e_1_1_media_service.html#a4d19a081ed555177fe61286216c56671">MediaService</a>(QDir file);</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="class_a_w_e_1_1_media_service.html#ad13c100468482ce42880941bbeca4623">open</a>() = 0;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <span class="keyword">virtual</span> ItemType <a class="code" href="class_a_w_e_1_1_media_service.html#a680d2f9fd50b27cb7156c3a5777dee12">getItemType</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="namespace_a_w_e.html#ad175a5b8a86bf7848825c9bd94c41470">ItemType</a> <a class="code" href="class_a_w_e_1_1_media_service.html#a680d2f9fd50b27cb7156c3a5777dee12">getItemType</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    };</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="class_a_w_e_1_1_media_service_html_a4d19a081ed555177fe61286216c56671"><div class="ttname"><a href="class_a_w_e_1_1_media_service.html#a4d19a081ed555177fe61286216c56671">AWE::MediaService::MediaService</a></div><div class="ttdeci">MediaService(QDir file)</div><div class="ttdoc">Construct from thie given JSON file. </div><div class="ttdef"><b>Definition:</b> AWEMediaService.cpp:6</div></div>
 <div class="ttc" id="class_a_w_e_1_1_media_service_html"><div class="ttname"><a href="class_a_w_e_1_1_media_service.html">AWE::MediaService</a></div><div class="ttdoc">A media service, which is basically an application with its own media browser. </div><div class="ttdef"><b>Definition:</b> AWEMediaService.h:14</div></div>
+<div class="ttc" id="namespace_a_w_e_html_ad175a5b8a86bf7848825c9bd94c41470"><div class="ttname"><a href="namespace_a_w_e.html#ad175a5b8a86bf7848825c9bd94c41470">AWE::ItemType</a></div><div class="ttdeci">ItemType</div><div class="ttdoc">The type of item. </div><div class="ttdef"><b>Definition:</b> AWEMediaItem.h:19</div></div>
 <div class="ttc" id="class_a_w_e_1_1_media_service_html_a680d2f9fd50b27cb7156c3a5777dee12"><div class="ttname"><a href="class_a_w_e_1_1_media_service.html#a680d2f9fd50b27cb7156c3a5777dee12">AWE::MediaService::getItemType</a></div><div class="ttdeci">virtual ItemType getItemType() const </div><div class="ttdoc">Get the type of this item. </div><div class="ttdef"><b>Definition:</b> AWEMediaService.cpp:10</div></div>
-<div class="ttc" id="class_a_w_e_1_1_media_service_html_ac843939cc99358391e249e5fbaa4e318"><div class="ttname"><a href="class_a_w_e_1_1_media_service.html#ac843939cc99358391e249e5fbaa4e318">AWE::MediaService::MediaService</a></div><div class="ttdeci">MediaService(const QDir &amp;file)</div><div class="ttdoc">Construct from thie given JSON file. </div><div class="ttdef"><b>Definition:</b> AWEMediaService.cpp:6</div></div>
 <div class="ttc" id="class_a_w_e_1_1_media_service_html_ad13c100468482ce42880941bbeca4623"><div class="ttname"><a href="class_a_w_e_1_1_media_service.html#ad13c100468482ce42880941bbeca4623">AWE::MediaService::open</a></div><div class="ttdeci">virtual int open()=0</div><div class="ttdoc">Open the media service. </div></div>
-<div class="ttc" id="class_a_w_e_1_1_media_item_html"><div class="ttname"><a href="class_a_w_e_1_1_media_item.html">AWE::MediaItem</a></div><div class="ttdoc">Represents a media file, folder, or service. </div><div class="ttdef"><b>Definition:</b> AWEMediaItem.h:21</div></div>
+<div class="ttc" id="class_a_w_e_1_1_media_item_html"><div class="ttname"><a href="class_a_w_e_1_1_media_item.html">AWE::MediaItem</a></div><div class="ttdoc">Represents a media file, folder, or service. </div><div class="ttdef"><b>Definition:</b> AWEMediaItem.h:26</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 18 2014 16:58:43 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 10 2014 22:24:00 for AWE Media Center by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

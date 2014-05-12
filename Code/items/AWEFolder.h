@@ -19,13 +19,11 @@ namespace AWE
 	{
 		public:
 			/**
-			 * \brief Construct from the folder's settings
-			 *			and from the global settings.
+			 * \brief Construct from the folder's settings.
 			 *
 			 * \param folder The configuration file for this folder.
-			 * \param settings The global settings.
 			 **/
-			Folder(const QDir& folder, GlobalSettings* settings);
+			Folder(QDir folder);
 
 			/** \brief Deconstructor. **/
 			virtual ~Folder();

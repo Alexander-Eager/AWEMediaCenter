@@ -1,4 +1,4 @@
-.TH "Json::StyledWriter" 3 "Fri Apr 18 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
+.TH "Json::StyledWriter" 3 "Sat May 10 2014" "Version 0.1" "AWE Media Center" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -20,6 +20,79 @@ Inherits \fBJson::Writer\fP\&.
 .RI "virtual std::string \fBwrite\fP (const \fBValue\fP &root)"
 .br
 .RI "\fISerialize a \fBValue\fP in \fCJSON\fP format\&. \fP"
+.in -1c
+.SS "Private Types"
+
+.in +1c
+.ti -1c
+.RI "typedef std::vector< std::string > \fBChildValues\fP"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBwriteValue\fP (const \fBValue\fP &value)"
+.br
+.ti -1c
+.RI "void \fBwriteArrayValue\fP (const \fBValue\fP &value)"
+.br
+.ti -1c
+.RI "bool \fBisMultineArray\fP (const \fBValue\fP &value)"
+.br
+.ti -1c
+.RI "void \fBpushValue\fP (const std::string &value)"
+.br
+.ti -1c
+.RI "void \fBwriteIndent\fP ()"
+.br
+.ti -1c
+.RI "void \fBwriteWithIndent\fP (const std::string &value)"
+.br
+.ti -1c
+.RI "void \fBindent\fP ()"
+.br
+.ti -1c
+.RI "void \fBunindent\fP ()"
+.br
+.ti -1c
+.RI "void \fBwriteCommentBeforeValue\fP (const \fBValue\fP &root)"
+.br
+.ti -1c
+.RI "void \fBwriteCommentAfterValueOnSameLine\fP (const \fBValue\fP &root)"
+.br
+.ti -1c
+.RI "bool \fBhasCommentForValue\fP (const \fBValue\fP &value)"
+.br
+.in -1c
+.SS "Static Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static std::string \fBnormalizeEOL\fP (const std::string &text)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "ChildValues \fBchildValues_\fP"
+.br
+.ti -1c
+.RI "std::string \fBdocument_\fP"
+.br
+.ti -1c
+.RI "std::string \fBindentString_\fP"
+.br
+.ti -1c
+.RI "int \fBrightMargin_\fP"
+.br
+.ti -1c
+.RI "int \fBindentSize_\fP"
+.br
+.ti -1c
+.RI "bool \fBaddChildValues_\fP"
+.br
 .in -1c
 .SH "Detailed Description"
 .PP 
