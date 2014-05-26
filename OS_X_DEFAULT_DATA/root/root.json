@@ -1,4 +1,3 @@
-
 {
 	"items" : 
 	[
@@ -18,12 +17,14 @@
 		"fanarts" : 
 		{
 			"default" : 0,
-			"files" : [ "root.json.metadata.fanarts.files.0.png" ]
+			"files" : [ "root.json.fanart.0.png" ],
+			"owned" : [ true ]
 		},
 		"icons" : 
 		{
 			"default" : 0,
-			"files" : [ "root.json.metadata.icons.files.0.png" ]
+			"files" : [ "root.json.icon.0.png" ],
+			"owned" : [ true ]
 		},
 		"location" : "../root",
 		"name" : "AWE Media Center Home",

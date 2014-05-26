@@ -19,13 +19,16 @@ echo "" >> Makefile
 echo "install:" >> Makefile
 case "$OSTYPE" in
 	"darwin"*)
-		echo -e "\tmkdir ~/.awemc/ || true" >> Makefile
+		echo -e "\trm -rf ~/.awemc/ || true" >> Makefile
+		echo -e "\tmkdir ~/.awemc/" >> Makefile
 		echo -e "\tcp -r ../OS_X_DEFAULT_DATA/* ~/.awemc/" >> Makefile
+		echo -e "\trm -rf /Applications/AWEMC.app || true" >> Makefile
 		echo -e "\tcp -r bin/AWEMC.app /Applications/" >> Makefile
 		;;
 	"linux-gnu")
+		echo -e "\trm -rf ~/.awemc/ || true" >> Makefile
 		echo -e "\tmkdir ~/.awemc/" >> Makefile
-		echo -e "\tcp -r LINUX_DEFAULT_DATA/ ~/.awemc/" >> Makefile
+		echo -e "\tcp -r LINUX_DEFAULT_DATA/* ~/.awemc/" >> Makefile
 		echo -e "\tcp AWEMC /usr/bin/" >> Makefile
 		;;
 	"*")

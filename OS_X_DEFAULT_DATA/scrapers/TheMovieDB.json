@@ -1,0 +1,177 @@
+{
+	"metadata": {
+		"name": "The Movie Database",
+		"type": "Movie",
+		"location": "",
+		"description": "TMDb is an open \"wiki-style\" movie and TV database focused on building a powerful media platform for the entertainment industry. It's completely user built by people like you and used every day by movie fans and developers alike.",
+
+		"icons": {
+			"default": 0,
+			"files": ["themoviedb.json.icons.0.png"]
+		},
+
+		"fanarts": {
+			"default": 0,
+			"files": []
+		},
+
+		"details": {
+			"_order": ["Version"],
+			"Version": "0.1 (just started)"
+		}
+	},
+
+	"scraping procedure": {
+		// a movie file is just the name of the movie
+		// we don't care about the path to the file, so
+		// we exclude `/` from the file name matches.
+		// The file extension is not important to this
+		// scraper. It is important that this is the
+		// file, not some path.
+
+		// only one movie per file
+		"multiple items per file": false,
+
+		"inheritance": {
+			// icons are not inherited
+			"inherit icons": false,
+			// fanarts are not inherited
+			"inherit fanarts": false,
+			// details are not inherited
+			"inherit details": { }
+		},
+
+		// here are all of the procedures to run
+		"procedures": [
+			{
+				// we are looking through the search results on themoviedb.org
+				"look in file": "http://www.themoviedb.org/search/movie?query=$1",
+				// $1 is the movie's website, $2 is the name, $3 is the year of release
+				"for": "<a href=\"/movie/([^\"]*)\" title=\"([^\"]*)\">\\2</a> <span>\\((\\d*)\\)</span>",
+
+				"ask user with text": "$2 ($3)",				
+
+				"set name": "$2",
+
+				"set details": {
+					"Year": "$3"
+				},
+
+				// these procedures all act on the movie's page
+				"procedures": [
+					{
+						// $1 was the movie's page, so look there
+						"look in file": "http://www.themoviedb.org/movie/$1",
+						// $1 is the description
+						"for": "<meta name=\"description\" content=\"([^\"]*)\" />",
+
+						"set description": "$1"
+					},
+					{
+						// this one gets multiple icon images
+						"repeat": true,
+
+						// $1 was the movie's page, so look under its icon page
+						"look in file": "http://www.themoviedb.org/movie/$1/images?kind=poster&language=&translate=false",
+						// $1 is the file name for the full sized image, $2 is the width used online to display it
+						"for": "<a href=\"http://image.tmdb.org/t/p/original/(\\w+\\.jpg)\" target=\"_blank\"><img class=\"shadow\" src=\"http://image.tmdb.org/t/p/(w\\d+)/\\1\"",
+
+						// ask the user for multiple images based on their smaller display size
+						"ask user with image": "http://image.tmdb.org/t/p/$2/$1",
+						
+						"add icons": [
+							"http://image.tmdb.org/t/p/original/$1"
+						]
+					},
+					{
+						// this one gets multiple fanart images
+						"repeat": true,
+
+						// $1 was the movie's page, so look under its fanart page
+						"look in file": "http://www.themoviedb.org/movie/$1/images?kind=backdrop&language=&translate=false",
+						// $1 is the file name for the full sized image, $2 is the width used online to display it
+						"for": "<a href=\"http://image.tmdb.org/t/p/original/(\\w+\\.jpg)\" target=\"_blank\"><img class=\"shadow\" src=\"http://image.tmdb.org/t/p/(w\\d+)/\\1\"",
+
+						// ask the user for multiple images based on their smaller display size
+						"ask user with image": "http://image.tmdb.org/t/p/$2/$1",
+						
+						"add fanarts": [
+							"http://image.tmdb.org/t/p/original/$1"
+						]
+					},
+					{
+						// this gets the director(s) of the film
+						// we want all of them, so repeat
+						"repeat": true,
+
+						// $1 was the movie's page, so look there
+						"look in file": "http://www.themoviedb.org/movie/$1",
+						// $1 is the person's name
+						// there is a webpage linking to that person's info as well,
+						// but I don't care about that so I skip over it with
+						// "[\\w\\-]*"
+						"for": "<span itemprop=\"director\" itemscope itemtype=\"http://schema.org/Person\"><a href=\"/person/[\\w\\-]*\" itemprop=\"url\"><span itemprop=\"name\">([^<]*)</span></a></span>",
+
+						"set details": {
+							// append the director to the list of directors
+							"Director(s)": "$1"
+						}
+					},
+					{
+						// this gets the writer(s) of the film
+						// we want all of them, so repeat
+						"repeat": true,
+
+						// $1 was the movie's page, so look there
+						"look in file": "http://www.themoviedb.org/movie/$1",
+						// $1 is the person's name
+						// there is a webpage linking to that person's info as well,
+						// but I don't care about that so I skip over it with
+						// "[\\w\\-]*"
+						"for": "<span itemprop=\"author\" itemscope itemtype=\"http://schema.org/Person\"><a href=\"/person/[\\w\\-]*\" itemprop=\"url\"><span itemprop=\"name\">([^<]*)</span></a></span>",
+
+						"set details": {
+							// append the writer to the list of writers
+							"Writer(s)": "$1"
+						}
+					},
+					{
+						// this gets the main cast members of the film
+						// we want all of the top four (or less), so repeat
+						"repeat": true,
+
+						// $1 was the movie's page, so look there
+						"look in file": "http://www.themoviedb.org/movie/$1",
+						// $1 is the person's name
+						// there is a group of newlines/spaces inbetween tags
+						// so I skip over that group with "[[:space:]]*"
+						// there is a webpage linking to that person's info as well,
+						// but I don't care about that so I skip over it with
+						// "[\\w\\-]*"
+						"for": "<span itemprop=\"actor\" itemscope itemtype=\"http://schema.org/Person\">\\s*<a href=\"/person/[\\w\\-]*\" itemprop=\"url\"><span itemprop=\"name\">([^<]*)</span></a>",
+
+						"set details": {
+							// append the cast member to the list of members
+							"Cast": "$1"
+						}
+					},
+					{
+						// this gets the various genres for the film
+						// we want all of them
+						"repeat": true,
+
+						// $1 was the movie's page
+						"look in file": "http://www.themoviedb.org/movie/$1",
+						// $1 is the genre name
+						"for": "<a href=\"/genre/[\\w\\-]+\" alt=\"([^\"]+)\">",
+
+						"set details": {
+							// append the genre to the list
+							"Genre(s)": "$1"
+						}
+					}
+				] // end sub procedures
+			} // end the main procedure
+		] // end main procedures array
+	} // end all scraper config
+} // end file
