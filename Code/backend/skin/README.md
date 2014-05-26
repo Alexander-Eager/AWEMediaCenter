@@ -81,13 +81,14 @@ Colors can be configured in the following ways:
  - `"name"`: gets the color from the skin's predefined colors, as described above.
  - `["name", alpha]`: creates the color with the given name (usually [one of these][SVG colors]) and alpha.
  - `[r, g, b, a]`: creates the color with the given red, green, blue, and alpha values.
- -
+ - An object, like so:
+
  		{
  			"name": "name of the color",
  			<Alpha tag>: alpha value
  		}
 
- -
+ - An object, like so:
 
  		{
  			<Red tag>: red value,
@@ -121,7 +122,7 @@ Fonts have following properties:
 Fonts can be configured in the following ways:
 
  - `"name"`: get the font from the skin's predefined collection.
- -
+ - An object, like so:
 
  		{
  			<Family tag>: "family name, like Helvetica",
