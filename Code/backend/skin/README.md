@@ -82,7 +82,6 @@ Colors can be configured in the following ways:
  - `["name", alpha]`: creates the color with the given name (usually [one of these][SVG colors]) and alpha.
  - `[r, g, b, a]`: creates the color with the given red, green, blue, and alpha values.
  -
-
  		{
  			"name": "name of the color",
  			<Alpha tag>: alpha value
@@ -131,7 +130,7 @@ Fonts can be configured in the following ways:
  			<Italic tag>: true or false,
  			<Color tag>: <color>
  		}
- 
+
  - Invalid configurations become the `"normal"` font, which is then changed to fit the properties that were specified.
 
 If you are writing a widget class for AWEMC, the methods you will want to look at are named `Skin::makeFont()` and `Skin::getFont()`.
@@ -258,10 +257,10 @@ There are several ways to create a brush:
  - If the configuration is not an object (i.e. not surrounded by `{}`), or does not contain any of the Brush Style tags, it is assumed to be a solid color, created according the the Color rules.
  - If the above conditions are not satisfied, it follows this syntax:
 
- 	{
- 		<Brush Style>: number,
- 		// accompanying tags go here
- 	}
+	 	{
+	 		<Brush Style>: number,
+	 		// accompanying tags go here
+	 	}
 
 If you are writing a widget class for AWEMC, the methods you will want to look at are named `Skin::makeBrush()`.
 
