@@ -1,7 +1,7 @@
 Developer Information
 =====================
 
-AWEMC is programmed using C++ and relies on [Qt][], [cURL][], and (eventually) [SFML][]. [JsonCpp][] is included in the source code.
+AWEMC is programmed using C++ and relies on [Qt][], [cURL][], and (eventually) [SFML][]. [JsonDataTree][] is used as the JSON library.
 
 There are 7 central concepts you should understand:
 
@@ -18,12 +18,11 @@ There are 7 central concepts you should understand:
 There are a few namespaces you should know about:
 
  + `std` - Well, this one should be obvious.
- + `Json` - This is the namespace for [JsonCpp][].
+ + `JSON` - This is the namespace for [JsonDataTree][].
  + `AWE` - All backend classes fall under this namespace.
  + `UI` - All user interface classes (i.e. windows and widgets) fall under this.
- + `TCOM` - My own little colored command line library included with the code for debugging (it will be removed later).
 
 [Qt]: <http://www.qt-project.org/>
 [cURL]: <http://curl.haxx.se/>
 [SFML]: <http://www.sfml-dev.org/>
-[JsonCpp]: <http://jsoncpp.sourceforge.net/>
+[JsonDataTree]: <https://github.com/Alexander-Eager/JsonDataTree>
