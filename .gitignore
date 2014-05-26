@@ -27,4 +27,4 @@
 *.pro
 *Makefile
 *.pro.user
-
+moc_*
