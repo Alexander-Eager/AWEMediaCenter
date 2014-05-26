@@ -9,7 +9,7 @@
 
 // for holding data
 #include <QFont>
-#include <QColor>
+#include <QPen>
 #include <QFontMetrics>
 #include <JsonDataTree/Json.h>
 
@@ -40,9 +40,9 @@ namespace UI
 		Q_PROPERTY(QFontMetrics fontMetrics
 					READ getFontMetrics
 					STORED false)
-		Q_PROPERTY(QColor color
-					READ getColor
-					WRITE setColor)
+		Q_PROPERTY(QPen pen
+					READ getPen
+					WRITE setPen)
 
 		public:
 			/**
@@ -51,7 +51,7 @@ namespace UI
 			 * \param font The font to use.
 			 * \param color The color for the font (defaults to black).
 			 **/
-			ColoredFont(QFont font = QFont(), QColor color = QColor("black"));
+			ColoredFont(QFont font = QFont(), QPen color = QColor("black"));
 
 			/**
 			 * \brief Make a copy of `other`.
@@ -88,18 +88,18 @@ namespace UI
 			virtual void setFont(QFont font);
 
 			/**
-			 * \brief Get the color.
+			 * \brief Get the pen.
 			 *
-			 * \returns The text color.
+			 * \returns The text's pen.
 			 **/
-			virtual QColor getColor() const;
+			virtual QPen getPen() const;
 
 			/**
-			 * \brief Set the color.
+			 * \brief Set the pen.
 			 *
-			 * \param color The new text color to use.
+			 * \param pen The new pen to use.
 			 **/
-			virtual void setColor(QColor color);
+			virtual void setPen(QPen pen);
 
 			/**
 			 * \brief Get the font metrics.

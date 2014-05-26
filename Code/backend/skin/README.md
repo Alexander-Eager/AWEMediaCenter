@@ -103,7 +103,7 @@ If you are writing a widget class for AWEMC, the methods you will want to look a
 
 ## Fonts
 
-Fonts in AWEMC are always accompanied by a color.
+Fonts in AWEMC are always accompanied by a color or pen.
 
 Fonts, like colors, are specified by each skin. Some of these fonts are:
 
@@ -117,7 +117,7 @@ Fonts have following properties:
  - Size: the point size of the font. Only one tag represents size: `"size"`.
  - Weight: describes the varying levels of boldness of the font, ranging from `0` (barely there) to `100` (super thick). Only one tag represents weight: `"weight"`.
  - Italic: a boolean stating whether or not the font should be italicized. Only one tag represents italic: `"italic"`.
- - Color: the color of the text. Only one tag represents color: `"color"`.
+ - Brush: the color or brush used to fill the text. This is represented by `"brush"` and `"color"`.
 
 Fonts can be configured in the following ways:
 
@@ -129,7 +129,7 @@ Fonts can be configured in the following ways:
  			<Size tag>: point size of the font,
  			<Weight tag>: weight of the font,
  			<Italic tag>: true or false,
- 			<Color tag>: <color>
+ 			<Brush tag>: <color> or <brush>
  		}
 
  - Invalid configurations become the `"normal"` font, which is then changed to fit the properties that were specified.
@@ -139,6 +139,8 @@ If you are writing a widget class for AWEMC, the methods you will want to look a
 ## Gradients
 
 This is *very* advanced looking stuff that took me a while to figure out, but I finally did so. The best way to understand all of this is to mess around with it and see what happens.
+
+For example gradients, see [Qt's gradient documentation][gradient].
 
 ### Common Properties
 
@@ -252,6 +254,8 @@ There is only one property common to all brushes: the Brush Style, which determi
  - `24`: Textured fill. The area is textured with an image taken from the file (absolue path) specified in the `"texture"` or `"pattern"` tags.
  - Anything else: no brush (no fill).
 
+ See [Qt's brush style documentation][brush] for a better look.
+
 There are several ways to create a brush:
 
  - If the configuration does not exist or is `null`, it is assumed to be no brush (no fill).
@@ -265,4 +269,58 @@ There are several ways to create a brush:
 
 If you are writing a widget class for AWEMC, the methods you will want to look at are named `Skin::makeBrush()`.
 
+## Pens
+
+Pens describe the way lines are drawn, including text.
+
+Pens have the following properties:
+
+ - Pen Style: describes the pattern of dots, dashes, and spaces used to draw the lines. It is represented by the tags `"pen"` and `"pen style"`. There are quite a few possible Pen Styles:
+ 	- `0`: No pen at all (i.e., do not draw any lines). If this is specified, all other properties will be ignored.
+ 	- `1`: Solid line.
+ 	- `2`: Dashed line, e.g. `- - - - -`.
+ 	- `3`: Dotted line, e.g. `• • • • •`.
+ 	- `4`: Dash, then dot, then dash line, e.g. `- • - • -`.
+ 	- `5`: Dash, then dot, then dot, then dash line, e.g. `- • • - • • - • • -`.
+ 	- `6`: Custom dash pattern. You must supply this option with the Pattern property in order for this to take effect. If the Pattern property is not specified, the Pen Style will be assumed to be `1`, solid line.
+  See [Qt's pen style documentation][pen] for a better look.
+ - Cap Style: describes how the ends of a line should be drawn. It is represented by the tags `"cap"` and `"cap style"`. There are 3 possible Cap Styles:
+ 	- `0`: Square cap. A small square is added onto the end of the line.
+ 	- `16`: Flat cap. The end of the line is drawn with a flat edge.
+ 	- `32`: Round cap. The end of the line is rounded off.
+ 	- Invalid or nonexistant values are assumed to be `0`, square cap.
+  See [Qt's cap style documentation][cap] for a better look.
+ - Join Style: describes how two lines will be joined at the ends. It is represented by the tags `"join"` and `"join style"`. There are 3 possible values:
+ 	- `0`: Miter join, where the lines are drawn outward to an angle.
+ 	- `64`: Bevel join, where the lines are drawn to a flat corner.
+ 	- `128`: Round join, where the corners are rounded.
+ 	- `256`: SVG miter join, which is a miter join that follows [SVG's specifications][SVG miter].
+ 	- Invalid or nonexistant values are assumed to be `64`, bevel join.
+  See [Qt's join style documentation][join] for a better look.
+ - Width: the width of the lines to be drawn, which is just a number. It is represented by the tag `"width"`. Invalid or missing values are assumed to be `1.5`.
+ - Brush: the brush that is used to color in the lines. It is represented by the tags `"brush"` and `"color"`, and its value is any valid configuration for a brush, as described earlier in this documentation. Invalid or missing values are assumed to be the `"default"` color.
+ - Pattern: this property should only be specified when the Pen Style is `6`, custom dash pattern. This is an array of floating point numbers representing the lengths of the dashes and spaces, where values at odd positions are dashes and even positions are spaces. The pattern should always have an even number of elements, all of them being numbers. It is represented by the `"pattern"` tag.
+
+The configuration for a pen looks something like this:
+
+	{
+		<Pen style tag>: 0 to 6,
+		// pattern only impacts the pen if the Pen Style is 6
+		// the length of the list should be even
+		"pattern": [number, number, number, number, ...],
+		<Cap style tag>: 0 or 16 or 32,
+		<Join style tag>: 0 or 64 or 128 or 256,
+		"width": the width of the lines,
+		<Brush tag>: <brush>
+	}
+
+Invalid or missing values are assumed to represent a default pen with the `"default"` color, constructed according to the guidlines for Colors.
+
+[settings]: <../settings/README.md>
 [SVG colors]: <http://www.w3.org/TR/SVG/types.html#ColorKeywords>
+[gradient]: <http://qt-project.org/doc/qt-4.8/qgradient.html#details>
+[SVG miter]: <http://www.w3.org/TR/SVGMobile12/>
+[brush]: <http://qt-project.org/doc/qt-5/qt.html#BrushStyle-enum>
+[pen]: <http://qt-project.org/doc/qt-5/qt.html#PenStyle-enum>
+[cap]: <http://qt-project.org/doc/qt-5/qt.html#PenCapStyle-enum>
+[join]: <http://qt-project.org/doc/qt-5/qt.html#PenJoinStyle-enum>

@@ -313,7 +313,15 @@ ColoredFont Skin::makeFont(const JsonValue config) const
 			font.setItalic(obj.get("italic").toBoolean());
 		}
 		ans.setFont(font);
-		ans.setColor(makeColor(obj.get("color")));
+		// color or pen
+		if (obj.contains("pen"))
+		{
+			ans.setPen(makePen(obj.get("pen")));
+		}
+		else if (obj.contains("color"))
+		{
+			ans.setPen(makePen(obj.get("color")));
+		}
 		return ans;
 	}
 	return getFont("normal");
@@ -602,4 +610,117 @@ QBrush Skin::makeBrush(const JsonValue config) const
 		case 0: default: // just no brush
 			return Qt::NoBrush;
 	}
+}
+
+QPen Skin::makePen(const JsonValue config) const
+{
+	if (!config.isObject())
+	{
+		return makeColor(config);
+	}
+	const JsonObject obj = config.toObject();
+	QPen pen;
+	// pen style
+	int style = -1;
+	if (obj.get("pen").isNumber())
+	{
+		style = obj.get("pen").toInteger();
+	}
+	else if (obj.get("pen style").isNumber())
+	{
+		style = obj.get("pen style").toInteger();
+	}
+	if (style < 0 || style > 6)
+	{
+		pen.setBrush(makeBrush(config));
+		return pen;
+	}
+	pen.setStyle((Qt::PenStyle) style);
+	// cap style
+	style = 0;
+	if (obj.get("cap").isNumber())
+	{
+		style = obj.get("cap").toInteger();
+	}
+	else if (obj.get("cap style").isNumber())
+	{
+		style = obj.get("cap style").toInteger();
+	}
+	switch (style)
+	{
+		case 16: case 32:
+			pen.setCapStyle((Qt::PenCapStyle) style);
+			break;
+		case 0: default:
+			pen.setCapStyle(Qt::SquareCap);
+			break;
+	}
+	// join style
+	style = 64;
+	if (obj.get("join").isNumber())
+	{
+		style = obj.get("join").toInteger();
+	}
+	else if (obj.get("join style").isNumber())
+	{
+		style = obj.get("join style").toInteger();
+	}
+	switch (style)
+	{
+		case 0: case 128: case 256:
+			pen.setJoinStyle((Qt::PenJoinStyle) style);
+			break;
+		case 64: default:
+			pen.setJoinStyle(Qt::BevelJoin);
+			break;
+	}
+	// width
+	if (obj.get("width").isNumber())
+	{
+		pen.setWidthF(obj.get("width").toDouble());
+	}
+	else
+	{
+		pen.setWidthF(1.5);
+	}
+	// brush or color
+	if (obj.contains("color"))
+	{
+		pen.setBrush(makeBrush(obj.get("color")));
+	}
+	else if (obj.contains("brush"))
+	{
+		pen.setBrush(makeBrush(obj.get("brush")));
+	}
+	else
+	{
+		pen.setBrush(getColor("default"));
+	}
+	// pattern for the line, if necessary
+	if (pen.style() == Qt::CustomDashLine)
+	{
+		if (obj.get("pattern").isArray())
+		{
+			QVector<qreal> pattern;
+			const JsonArray arr = obj.get("pattern").toArray();
+			for (int i = 1; i < arr.count(); i += 2)
+			{
+				pattern << arr.at(i - 1).toDouble();
+				pattern << arr.at(i).toDouble();
+			}
+			if (pattern.count())
+			{
+				pen.setDashPattern(pattern);
+			}
+			else
+			{
+				pen.setStyle(Qt::SolidLine);
+			}
+		}
+		else
+		{
+			pen.setStyle(Qt::SolidLine);
+		}
+	}
+	return pen;
 }

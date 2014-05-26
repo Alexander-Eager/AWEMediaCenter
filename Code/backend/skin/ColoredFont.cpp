@@ -16,12 +16,12 @@ namespace UI
 			~ColoredFontPrivate() { }
 			ColoredFontPrivate(const ColoredFontPrivate& other)
 				:	font(other.font),
-					color(other.color),
+					pen(other.pen),
 					fontMetrics(other.fontMetrics)
 				{ }
 
 			QFont font;
-			QColor color;
+			QPen pen;
 			QFontMetrics fontMetrics;
 	};
 }
@@ -29,11 +29,11 @@ namespace UI
 using namespace UI;
 using namespace JSON;
 
-ColoredFont::ColoredFont(QFont font, QColor color)
+ColoredFont::ColoredFont(QFont font, QPen pen)
 	:	d(new ColoredFontPrivate)
 {
 	d->font = font;
-	d->color = color;
+	d->pen = pen;
 	d->fontMetrics = QFontMetrics(font);
 }
 
@@ -61,14 +61,14 @@ void ColoredFont::setFont(QFont font)
 	d->fontMetrics = QFontMetrics(font);
 }
 
-QColor ColoredFont::getColor() const
+QPen ColoredFont::getPen() const
 {
-	return d->color;
+	return d->pen;
 }
 
-void ColoredFont::setColor(QColor color)
+void ColoredFont::setPen(QPen pen)
 {
-	d->color = color;
+	d->pen = pen;
 }
 
 QFontMetrics ColoredFont::getFontMetrics() const

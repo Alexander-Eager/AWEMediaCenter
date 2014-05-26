@@ -159,7 +159,7 @@ void TextItemWidget::paintEvent(QPaintEvent* event)
 	ColoredFont cf = AWEMC::settings()->getCurrentSkin()
 		->getFont(getFont());
 	p.setFont(cf.getFont());
-	p.setPen(cf.getColor());
+	p.setPen(cf.getPen());
 	// paint the text
 	int loc = (isHighlightable()) ? 10 : 0;
 	int takeOff = (isHighlightable()) ? 21 : 1;

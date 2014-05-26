@@ -28,7 +28,7 @@ namespace UI
 
 			// values to be applied
 			QBrush brush;
-			QColor outline;
+			QPen outline;
 			QPointF cornerRadius;
 			qreal lineWidth;
 
@@ -56,26 +56,13 @@ namespace UI
 					cornerRadius.setY(15.0);
 				}
 				// outline color
-				if (obj.contains("outline color"))
+				if (obj.contains("outline"))
 				{
-					outline = s->makeColor(obj.get("outline color"));
+					outline = s->makePen(obj.get("outline"));
 				}
 				else
 				{
-					outline.setAlpha(0);
-				}
-				// outline width
-				if (obj.get("line width").isNumber())
-				{
-					lineWidth = obj.get("line width").toDouble();
-				}
-				else if (outline.alpha())
-				{
-					lineWidth = 1.0;
-				}
-				else
-				{
-					lineWidth = 0;
+					outline.setStyle(Qt::NoPen);
 				}
 
 				// update the parent's contents margins
@@ -153,16 +140,10 @@ void Pane::useDefaultConfig()
 
 void Pane::paintEvent(QPaintEvent*)
 {
-	// set up the outline settings
-	QPen outline(d->outline);
-	outline.setStyle(Qt::SolidLine);
-	outline.setJoinStyle(Qt::RoundJoin);
-	outline.setWidthF(d->lineWidth);
-	// draw it
 	QPainter painter(this);
 	painter.setRenderHints(QPainter::Antialiasing);
 	painter.setBrush(d->brush);
-	painter.setPen(outline);
+	painter.setPen(d->outline);
 	QRect drawInMe(0, 0, width() - 1, height() - 1);
 	painter.drawRoundedRect(drawInMe, d->cornerRadius.x(),
 		d->cornerRadius.y(), Qt::AbsoluteSize);

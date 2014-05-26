@@ -213,6 +213,15 @@ namespace UI
 			 **/
 			virtual QBrush makeBrush(const JSON::JsonValue config) const;
 
+			/**
+			 * \brief Make a pen from a configuration.
+			 *
+			 * \param config The configuration for the pen.
+			 *
+			 * \returns The desired pen.
+			 **/
+			virtual QPen makePen(const JSON::JsonValue config) const;
+
 		private:
 			SkinPrivate* d;
 	};
