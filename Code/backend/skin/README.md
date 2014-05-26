@@ -239,7 +239,7 @@ Brushes describe the way an area is filled.
 
 There is only one property common to all brushes: the Brush Style, which determines what kind of fill will be used. It is specified by the `"type"`, `"style"`, or `"brush style"` tag, and can take any of the following values:
 
- - `1` to `8`: Solid fill (`0`) to very sparse fill (`8`). This is accompanied by a `"color"` tag, which specifies the color. If it not there, it is assumed to be the skin's default color.
+ - `1` to `8`: Solid fill (`1`) to very sparse fill (`8`). This is accompanied by a `"color"` tag, which specifies the color. If it not there, it is assumed to be the skin's default color.
  - `9`: Horizontal lines, accompanied by a `"color"` tag.
  - `10`: Vertical lines, accompanied by a `"color"` tag.
  - `11`: Cross horizontal and vertical lines, accompanied by a `"color"` tag.
