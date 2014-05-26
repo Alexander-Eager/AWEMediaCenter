@@ -38,15 +38,19 @@ Rectangles are defined by the top left point and their size. They are represente
  - `[<point>, <size>]`: `<point>` is the top left point and `<size>` is the size of the rectangle.
  - `[x, y, w, h]`: the top left point is (x, y) and the size is (w, h).
  - 
- 		{
- 			"top left": <point>,
- 			"size": <size>
- 		}
+
+		{
+			"top left": <point>,
+			"size": <size>
+		}
+
  -
- 		{
- 			"top left": <point>,
- 			"bottom right": <point>
- 		}
+
+		{
+			"top left": <point>,
+			"bottom right": <point>
+		}
+
  - Invalid or nonexistant points are assumed to be (0, 0), and invalid sizes also (0, 0).
 
 Just like sizes and points, rectangles can also be relative to other rectangles. The top left point is scaled and translated for the rectangle, as is the size.
@@ -78,17 +82,21 @@ Colors can be configured in the following ways:
  - `["name", alpha]`: creates the color with the given name (usually [one of these][SVG colors]) and alpha.
  - `[r, g, b, a]`: creates the color with the given red, green, blue, and alpha values.
  -
+
  		{
  			"name": "name of the color",
  			<Alpha tag>: alpha value
  		}
+
  -
+
  		{
  			<Red tag>: red value,
  			<Blue tag>: blue value,
  			<Green tag>: green value,
  			<Alpha tag>: alpha value
  		}
+
  - Invalid or nonexistant colors are assumed to be the `"default"` color for the skin.
 
 If you are writing a widget class for AWEMC, the methods you will want to look at are named `Skin::makeColor()` and `Skin::getColor()`.
@@ -115,6 +123,7 @@ Fonts can be configured in the following ways:
 
  - `"name"`: get the font from the skin's predefined collection.
  -
+
  		{
  			<Family tag>: "family name, like Helvetica",
  			<Size tag>: point size of the font,
@@ -122,6 +131,7 @@ Fonts can be configured in the following ways:
  			<Italic tag>: true or false,
  			<Color tag>: <color>
  		}
+ 
  - Invalid configurations become the `"normal"` font, which is then changed to fit the properties that were specified.
 
 If you are writing a widget class for AWEMC, the methods you will want to look at are named `Skin::makeFont()` and `Skin::getFont()`.
