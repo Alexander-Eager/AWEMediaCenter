@@ -80,7 +80,6 @@ namespace UI
 			void goUpOne();
 
 		private:
-			friend class FolderPanePrivate;
 			FolderPanePrivate* d;
 	};
 }

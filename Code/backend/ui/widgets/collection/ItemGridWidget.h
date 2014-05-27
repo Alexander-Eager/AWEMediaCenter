@@ -7,12 +7,11 @@
 // superclass
 #include "ItemCollectionWidget.h"
 
-// layout stuff
-#include <QGridLayout>
-#include <QPoint>
-
 namespace UI
 {
+	// internal data class
+	class ItemGridWidgetPrivate;
+
 	/**
 	 * \brief An item collection based on a grid layout.
 	 **/
@@ -95,23 +94,7 @@ namespace UI
 			virtual void resizeEvent(QResizeEvent* event);
 
 		private:
-			/** \brief Increment the position. **/
-			void incrementPos(QPoint& pos);
-
-			/** \brief Decrement pos. **/
-			void decrementPos(QPoint& pos);
-
-			/** \brief Replace the item at pos. **/
-			void replaceItem(QWidget* item, QPoint pos);
-
-			/** \brief The grid layout. **/
-			QGridLayout* myLayout;
-
-			/** \brief The number of rows or columns (depending on the direction). **/
-			int myNum;
-			
-			/** \brief The current position. **/
-			QPoint myPos;
+			ItemGridWidgetPrivate* d;
 	};
 }
 

@@ -13,12 +13,11 @@
 // items to be held
 #include "ui/widgets/items/ItemWidget.h"
 
-// for holding those items
-#include <QLayout>
-#include <QBoxLayout>
-
 namespace UI
 {
+	// internal data class
+	class ItemCollectionWidgetPrivate;
+
 	/**
 	 * \brief An abstract, scrollable collection
 	 * 			of item widgets.
@@ -217,57 +216,8 @@ namespace UI
 			 **/
 			virtual void setContainerLayout(QLayout* layout);
 
-		protected slots:
-			/**
-			 * \brief Responds to item highlighting events.
-			 *
-			 * \param[in] item The item that was highlighted.
-			 **/
-			void respondToItemHighlighted(ItemWidget* item);
-
-			/**
-			 * \brief Responds to item unhighlighting events.
-			 *
-			 * \param[in] item The item that was unhighlighted.
-			 **/
-			void respondToItemUnhighlighted(ItemWidget* item);
-
-			/**
-			 * \brief Responds to item highlighting events.
-			 *
-			 * \param[in] newState `true` if `item` is now
-			 *						highlighted, `false` if
-			 *						unhighlighted.
-			 * \param[in] item The item that was changed.
-			 **/
-			void respondToItemHighlightingChanged(bool newState,
-				ItemWidget* item);
-
-			/**
-			 * \brief Responds to item selection events.
-			 *
-			 * \param[in] item The item that was selected.
-			 **/
-			void respondToItemSelected(ItemWidget* item);
-
 		private:
-			/** \brief Does this expand left-to-right? **/
-			bool myDirection;
-
-			/** \brief Does this allow multiselection? **/
-			bool myMultiselection;
-
-			/** \brief The widget held inside of the scroll area. **/
-			QWidget* myContainerWidget;
-
-			/** \brief The item alignment. **/
-			ItemAlignment myItemAlignment;
-
-			/** \brief A box layout to adjust spacing. **/
-			QBoxLayout* mySpacingLayout;
-
-			/** \brief The layout holding all of the items. **/
-			QLayout* myItemLayout;
+			ItemCollectionWidgetPrivate* d;
 	};
 }
 

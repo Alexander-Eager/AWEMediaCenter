@@ -91,27 +91,6 @@ namespace UI
 			void wantsToScrapeForMetadata(AWE::MediaItem* item,
 				AWE::MetadataScraperHandler* scraper, int flags);
 
-		private slots:
-			/**
-			 * \brief Respond to the user clicking the play button.
-			 **/
-			void respondToPlayButton();
-
-			/**
-			 * \brief Respond to the user clicking the service open button.
-			 **/
-			void respondToOpenButton();
-
-			/**
-			 * \brief Respond to the user clicking the folder open button.
-			 **/
-			void respondToFolderOpen();
-
-			/**
-			 * \brief Respond to the user clicking the scrape button.
-			 **/
-			void respondToScrapeButton();
-
 		private:
 			friend class InfoPanePrivate;
 			InfoPanePrivate* d;

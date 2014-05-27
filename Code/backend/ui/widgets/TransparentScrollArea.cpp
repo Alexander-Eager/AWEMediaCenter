@@ -2,21 +2,29 @@
 #include "TransparentScrollArea.h"
 
 // for changing the background color
-#include <QColor>
+#include "settings/AWEMC.h"
 #include <QPalette>
 
 using namespace UI;
+using namespace AWE;
 
 TransparentScrollArea::TransparentScrollArea(QWidget* parent)
 	:	QScrollArea(parent)
 {
-	// change the palette's background color to be
-	// completely transparent
-	QPalette p = viewport()->palette();
-	QColor transparent("white"); // actual color doesn't matter
-	transparent.setAlpha(0); // because now you won't see it anyway
-	p.setColor(QPalette::Window, transparent);
-	viewport()->setPalette(p);
-	// now get rid of the frame
+	// changes the palette's background color to be transparent
+	auto makeTransparent = [this] ()
+		{
+			QPalette p = viewport()->palette();
+			p.setColor(QPalette::Window, AWEMC::settings()
+				->getCurrentSkin()->getColor("transparent"));
+			viewport()->setPalette(p);
+		};
+
+	// get rid of the frame
 	setFrameShape(QFrame::NoFrame);
+	// make the background transparent
+	makeTransparent();
+	// make sure the background transparency will change with the the skin
+	connect(AWEMC::settings(), &GlobalSettings::skinChanged,
+			this, makeTransparent);
 }

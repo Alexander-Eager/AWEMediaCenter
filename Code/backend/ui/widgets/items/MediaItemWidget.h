@@ -20,6 +20,9 @@
 
 namespace UI
 {
+	// internal data class
+	class MediaItemWidgetPrivate;
+
 	/**
 	 * \brief A list widget class that holds
 	 *			a media item.
@@ -34,7 +37,7 @@ namespace UI
 		public:
 			/** \brief Values describing the display modes for this widget. **/
 			enum DisplayMode { NameOnly, IconOnly,
-								NameAndIconLeftToRight, NameAndIconTopToBottom };
+				NameAndIconLeftToRight, NameAndIconTopToBottom };
 
 			/**
 			 * \brief Construct for the given media item.
@@ -129,55 +132,8 @@ namespace UI
 			 **/
 			virtual void setMediaItem(AWE::MediaItem* item);
 
-		private slots:
-			/**
-			 * \brief Propogate click events for the sub-widgets
-			 *			to this widget.
-			 **/
-			void respondToClick();
-
-			/**
-			 * \brief Propogate double-click events for the sub-widgets
-			 *			to this widget.
-			 **/
-			void respondToDoubleClick();
-
-			/**
-			 * \brief Change the displayed icon when the default icon
-			 *			is changed.
-			 *
-			 * \param index The index of the new default icon.
-			 **/
-			void respondToIconChange(int index);
-
-			/**
-			 * \brief Change the displayed text when the name is changed.
-			 *
-			 * \param name The new name to display.
-			 **/
-			void respondToNameChange(QString name);
-
 		private:
-			/** \brief Helper function to switch display modes. **/
-			void enactDisplayMode();
-
-			/** \brief The media item. **/
-			AWE::MediaItem* myMediaItem;
-
-			/** \brief The display mode. **/
-			DisplayMode myDisplayMode;
-
-			/** \brief The layout for the name and icon. **/
-			QBoxLayout* myLayout;
-
-			/** \brief The name of the item. **/
-			TextItemWidget* myName;
-
-			/** \brief The icon of the item. **/
-			ImageItemWidget* myIcon;
-
-			/** \brief The size to fit in. **/
-			QSize myFitInSize;
+			MediaItemWidgetPrivate* d;
 	};
 }
 

@@ -1,6 +1,9 @@
 // header file
 #include "ItemListWidget.h"
 
+// layout to use
+#include <QBoxLayout>
+
 // the two kinds of box layout
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -8,28 +11,37 @@
 // for retrieving items
 #include <QLayoutItem>
 
+namespace UI
+{
+	class ItemListWidgetPrivate
+	{
+		public:
+			QBoxLayout* layout;
+	};
+}
+
 using namespace UI;
 
 ItemListWidget::ItemListWidget(QWidget* parent, bool direction,
 								bool multiselection)
 	:	ItemCollectionWidget(parent, direction, multiselection),
-		myLayout(nullptr)
+		d(new ItemListWidgetPrivate)
 {
 	if (expandsLeftToRight())
 	{
-		myLayout = new QHBoxLayout;
+		d->layout = new QHBoxLayout;
 	}
 	else
 	{
-		myLayout = new QVBoxLayout;
+		d->layout = new QVBoxLayout;
 	}
-	setContainerLayout(myLayout);
+	setContainerLayout(d->layout);
 }
 
 ItemListWidget::~ItemListWidget()
 {
 	clear();
-	delete myLayout;
+	delete d->layout;
 }
 
 QString ItemListWidget::getLayoutType() const
@@ -43,7 +55,7 @@ ItemWidget* ItemListWidget::at(int index)
 	{
 		return nullptr;
 	}
-	return (ItemWidget*) myLayout->itemAt(index)->widget();
+	return (ItemWidget*) d->layout->itemAt(index)->widget();
 }
 
 const ItemWidget* ItemListWidget::at(int index) const
@@ -52,13 +64,13 @@ const ItemWidget* ItemListWidget::at(int index) const
 	{
 		return nullptr;
 	}
-	return (ItemWidget*) myLayout->itemAt(index)->widget();
+	return (ItemWidget*) d->layout->itemAt(index)->widget();
 }
 
 void ItemListWidget::addItem(ItemWidget* item)
 {
 	registerItem(item);
-	myLayout->insertWidget(count(), item);
+	d->layout->insertWidget(count(), item);
 	if (expandsLeftToRight())
 	{
 		item->fixSizeToFitIn(QSize(16777215, height()));
@@ -72,12 +84,12 @@ void ItemListWidget::addItem(ItemWidget* item)
 void ItemListWidget::insertItem(int index, ItemWidget* item)
 {
 	registerItem(item);
-	myLayout->insertWidget(index, item);
+	d->layout->insertWidget(index, item);
 }
 
 void ItemListWidget::removeItem(ItemWidget* item)
 {
-	myLayout->removeWidget(item);
+	d->layout->removeWidget(item);
 	item->deleteLater();
 }
 
@@ -88,7 +100,7 @@ void ItemListWidget::removeItem(int index)
 		return;
 	}
 	ItemWidget* item = at(index);
-	myLayout->removeWidget(item);
+	d->layout->removeWidget(item);
 	item->deleteLater();
 }
 

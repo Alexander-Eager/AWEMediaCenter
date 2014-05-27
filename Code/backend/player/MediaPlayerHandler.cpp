@@ -42,6 +42,7 @@ MediaPlayerHandler::MediaPlayerHandler(QString file)
 	d->open = false;
 
 	// determine validity
+	d->valid = true;
 	if (!d->tryToLoad())
 	{
 		qWarning() << "MediaPlayerHandler: Invalid player" << getName();
@@ -49,7 +50,6 @@ MediaPlayerHandler::MediaPlayerHandler(QString file)
 	}
 	else
 	{
-		d->valid = true;
 		d->unload();
 	}
 }
@@ -62,6 +62,10 @@ MediaPlayerHandler::~MediaPlayerHandler()
 
 bool MediaPlayerHandler::canPlay(MediaFile* file) const
 {
+	if (!d->valid)
+	{
+		return false;
+	}
 	// load if necessary
 	bool shouldClose = !d->open;
 	if (shouldClose)
@@ -166,6 +170,10 @@ void MediaPlayerHandler::respondToPlaying(MediaFile* file)
 bool MediaPlayerHandlerPrivate::tryToLoad()
 {
 	// if it isn't valid, there is no point
+	if (open)
+	{
+		return true;
+	}
 	if (!p->isValid())
 	{
 		return false;
@@ -216,4 +224,5 @@ void MediaPlayerHandlerPrivate::unload()
 	delete player;
 	player = nullptr;
 	plugin.unload();
+	open = false;
 }

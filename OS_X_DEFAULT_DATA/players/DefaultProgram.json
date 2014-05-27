@@ -1,6 +1,26 @@
 {
-	"name": "Default Program",
-	"program": "open",
-	"args": " \"{1}\"",
-	"filetypes": []
+	"metadata": {
+		"name": "Default Program",
+		"location": "libs/libJsonPlayer.dylib",
+		"type": "Generic",
+		"description": "Play a file using your computer's default program.",
+		"icons": {
+			"default": 0,
+			"files": [],
+			"owned": []
+		},
+		"fanarts": {
+			"default": 0,
+			"files": [],
+			"owned": []
+		},
+		"details": {
+			"_order": []
+		}
+	},
+
+	"config": {
+		"command": "open \"{0}\"",
+		"can play": ["*"]
+	}
 }

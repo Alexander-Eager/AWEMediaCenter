@@ -42,13 +42,13 @@ MediaServiceHandler::MediaServiceHandler(QString file)
 	d->service = nullptr;
 
 	// determine validity
+	d->valid = true;
 	if (!d->tryToLoad())
 	{
 		d->valid = false;
 	}
 	else
 	{
-		d->valid = true;
 		d->unload();
 	}
 }
@@ -129,6 +129,10 @@ void MediaServiceHandler::respondToClosed()
 
 bool MediaServiceHandlerPrivate::tryToLoad()
 {
+	if (open)
+	{
+		return true;
+	}
 	// if it isn't valid, there is no point
 	if (!p->isValid())
 	{
@@ -180,4 +184,5 @@ void MediaServiceHandlerPrivate::unload()
 	delete service;
 	service = nullptr;
 	plugin.unload();
+	open = false;
 }

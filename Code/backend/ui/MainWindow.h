@@ -108,6 +108,14 @@ namespace UI
 			 **/
 			virtual void openService(AWE::MediaServiceHandler* service);
 
+		protected:
+			/**
+			 * \brief Erases the window.
+			 *
+			 * \param[in] event The (ignored) paint event.
+			 **/
+			virtual void paintEvent(QPaintEvent* event);
+
 		private:
 			MainWindowPrivate* d;
 	};

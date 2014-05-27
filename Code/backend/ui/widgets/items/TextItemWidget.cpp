@@ -149,25 +149,17 @@ void TextItemWidget::resizeEvent(QResizeEvent* event)
 
 void TextItemWidget::paintEvent(QPaintEvent* event)
 {
-	if (isHighlighted())
-	{
-		paintBackground(event);
-	}
-
+	ItemWidget::paintEvent(event);
 	// make the painter with the correct font/color
 	QPainter p(this);
 	ColoredFont cf = AWEMC::settings()->getCurrentSkin()
-		->getFont(getFont());
+		->getFont(d->font);
 	p.setFont(cf.getFont());
 	p.setPen(cf.getPen());
 	// paint the text
-	int loc = (isHighlightable()) ? 10 : 0;
-	int takeOff = (isHighlightable()) ? 21 : 1;
-	QRectF drawInMe(loc, loc, width() - takeOff, height() - takeOff);
+	int left, top, right, bottom;
+	getContentsMargins(&left, &top, &right, &bottom);
+	QRectF drawInMe(left, top, width() - left - right - 1,
+		height() - top - bottom - 1);
 	p.drawText(drawInMe, d->alignment | Qt::TextWordWrap, d->text);
-
-	if (isHighlighted())
-	{
-		paintOutline(event);
-	}
 }

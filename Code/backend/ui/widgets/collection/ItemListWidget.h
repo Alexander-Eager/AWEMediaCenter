@@ -7,11 +7,11 @@
 // superclass
 #include "ItemCollectionWidget.h"
 
-// layout to use
-#include <QBoxLayout>
-
 namespace UI
 {
+	// internal data class
+	class ItemListWidgetPrivate;
+
 	/**
 	 * \brief An item collection based off of
 	 *			lists.
@@ -121,8 +121,7 @@ namespace UI
 			virtual void resizeEvent(QResizeEvent* event);
 
 		private:
-			/** \brief Layout that holds all of the items. **/
-			QBoxLayout* myLayout;
+			ItemListWidgetPrivate* d;
 	};
 }
 

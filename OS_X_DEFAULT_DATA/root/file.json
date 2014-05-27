@@ -8,7 +8,7 @@
 			"Director(s)": [ "Pete Docter", "Bob Peterson" ],
 			"Genre(s)": [ "Animation", "Comedy", "Family", "Adventure" ],
 			"Writer(s)": [ "Bob Peterson" ],
-			"Year": "2009",
+			"Year": 2009,
 			"_order": [ "Year", "Genre(s)", "Director(s)", "Writer(s)", "Cast" ]
 		},
 		"fanarts": 

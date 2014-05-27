@@ -4,16 +4,46 @@
 // for painting
 #include <QPainter>
 
+namespace UI
+{
+	class ImageItemWidgetPrivate
+	{
+		public:
+			// parent
+			ImageItemWidget* p;
+
+			// Helper function that scales the image.
+			inline void makeImageIcon(QSize size);
+			
+			// The index of this file in the item's config file.
+			int index;
+
+			// The image (in full size).
+			QPixmap image;
+
+			// The icon (scaled down).
+			QPixmap iconImage;
+
+			// The aspect ratio mode.
+			Qt::AspectRatioMode ratioMode;
+
+			// The target icon size.
+			QSize fitInSize;
+	};
+}
+
 using namespace UI;
 
-ImageItemWidget::ImageItemWidget(QWidget* parent, int index, QDir file,
+ImageItemWidget::ImageItemWidget(QWidget* parent, int index, QString file,
 									bool highlightable, QSize size)
 	:	ItemWidget(parent, highlightable),
-		myIndex(index),
-		myImage(),
-		myRatioMode(Qt::KeepAspectRatio),
-		myFitInSize(size)
+		d(new ImageItemWidgetPrivate)
 {
+	d->p = this;
+	// make everything
+	d->index = index;
+	d->ratioMode = Qt::KeepAspectRatio;
+
 	fixSizeToFitIn(size);
 	setImage(file);
 }
@@ -21,52 +51,65 @@ ImageItemWidget::ImageItemWidget(QWidget* parent, int index, QDir file,
 ImageItemWidget::ImageItemWidget(QWidget* parent, int index, QPixmap image,
 									bool highlightable, QSize size)
 	:	ItemWidget(parent, highlightable),
-		myIndex(index),
-		myImage(),
-		myRatioMode(Qt::KeepAspectRatio),
-		myFitInSize(size)
+		d(new ImageItemWidgetPrivate)
 {
+	d->p = this;
+	// make everything
+	d->index = index;
+	d->ratioMode = Qt::KeepAspectRatio;
+
 	fixSizeToFitIn(size);
 	setImage(image);
 }
 
+ImageItemWidget::~ImageItemWidget()
+{
+	delete d;
+}
+
 bool ImageItemWidget::fixSizeToFitIn(QSize size)
 {
-	myFitInSize = size;
+	d->fitInSize = size;
 	if (size.width() < 0 || size.height() < 0)
 	{
+		d->fitInSize.setWidth(-1);
+		d->fitInSize.setHeight(-1);
 		setMinimumSize(0, 0);
-		setMaximumSize(16777215, 16777215);
+		setMaximumSize(QWIDGETSIZE_MAX, QWIDGETSIZE_MAX);
 		return true;
 	}
-	int takeOff = (isHighlightable()) ? 20 : 0;
-	makeImageIcon(QSize(size.width() - takeOff, size.height() - takeOff));
-	setMaximumSize(myIconImage.width() + takeOff, myIconImage.height() + takeOff);
-	setMinimumSize(myIconImage.width() + takeOff, myIconImage.height() + takeOff);
+	int left, top, right, bottom;
+	getContentsMargins(&left, &top, &right, &bottom);
+	d->makeImageIcon(QSize(size.width() - left - right,
+		size.height() - top - bottom));
+	setMaximumSize(d->iconImage.width() + left + right,
+		d->iconImage.height() + top + bottom);
+	setMinimumSize(d->iconImage.width() + left + right,
+		d->iconImage.height() + top + bottom);
 	return true;
 }
 
 QSize ImageItemWidget::getSizeToFitIn() const
 {
-	return myFitInSize;
+	return d->fitInSize;
 }
 
 int ImageItemWidget::heightForWidth(int w) const
 {
-	QSize size(w, 16777215);
-	QSize imageSize(myImage.size());
-	imageSize.scale(size, Qt::KeepAspectRatio);
+	QSize imageSize(d->image.size());
+	imageSize.scale(QSize(w, QWIDGETSIZE_MAX), Qt::KeepAspectRatio);
 	return imageSize.height();
 }
 
 void ImageItemWidget::setAspectRatioMode(Qt::AspectRatioMode mode)
 {
-	myRatioMode = mode;
+	d->ratioMode = mode;
+	setImage(getImage());
 }
 
 Qt::AspectRatioMode ImageItemWidget::getAspectRatioMode() const
 {
-	return myRatioMode;
+	return d->ratioMode;
 }
 
 QString ImageItemWidget::getItemType() const
@@ -76,86 +119,83 @@ QString ImageItemWidget::getItemType() const
 
 ImageItemWidget* ImageItemWidget::makeCopy() const
 {
-	return new ImageItemWidget(parentWidget(), getIndex(),
+	return new ImageItemWidget(nullptr, getIndex(),
 		getImage(), isHighlightable(), getSizeToFitIn());
 }
 
 QPixmap ImageItemWidget::getImage() const
 {
-	return myImage;
+	return d->image;
 }
 
 int ImageItemWidget::getIndex() const
 {
-	return myIndex;
+	return d->index;
 }
 
-void ImageItemWidget::setImage(QDir file)
+void ImageItemWidget::setImage(QString file)
 {
-	setImage(QPixmap(file.absolutePath()));
+	setImage(QPixmap(file));
 }
 
 void ImageItemWidget::setImage(QPixmap image)
 {
-	myImage = image;
-	int takeOff = (isHighlightable()) ? 20 : 0;
-	if (myFitInSize.width() < 0 || myFitInSize.height() < 0)
+	d->image = image;
+	int left, top, right, bottom;
+	getContentsMargins(&left, &top, &right, &bottom);
+	if (d->fitInSize.width() < 0)
 	{
-		makeImageIcon(QSize(width() - takeOff,
-							height() - takeOff));
+		d->makeImageIcon(QSize(width() - left - right,
+			height() - top - bottom));
 	}
 	else
 	{
-		makeImageIcon(QSize(myFitInSize.width() - takeOff,
-							myFitInSize.height() - takeOff));
+		d->makeImageIcon(QSize(d->fitInSize.width() - left - right,
+			d->fitInSize.height() - top - bottom));
 	}
-}
-
-void ImageItemWidget::makeImageIcon(QSize size)
-{
-	int w = myImage.width();
-	int h = myImage.height();
-	if (w == 0 || h == 0)
-	{
-		QColor c("white");
-		c.setAlpha(0);
-		myIconImage = QPixmap(0, 0);
-		myIconImage.fill(c);
-	}
-	else
-	{
-		QSize iconSize(w, h);
-		iconSize.scale(size, myRatioMode);
-		myIconImage = myImage.scaled(iconSize, myRatioMode,
-										Qt::SmoothTransformation);
-	}
-	update();
 }
 
 void ImageItemWidget::setIndex(int index)
 {
-	myIndex = index;
+	d->index = index;
 }
 
 void ImageItemWidget::paintEvent(QPaintEvent* event)
 {
-	if (isHighlighted())
-	{
-		paintBackground(event);
-		paintOutline(event);
-	}
+	ItemWidget::paintEvent(event);
 	QPainter p(this);
-	int x = width() / 2 - myIconImage.width() / 2;
-	int y = height() / 2 - myIconImage.height() / 2;
-	p.drawPixmap(x, y, myIconImage);
+	p.drawPixmap(QPointF(width() / 2.0 - d->iconImage.width() / 2.0,
+		height() / 2.0 - d->iconImage.height() / 2.0),
+		d->iconImage);
 }
 
 void ImageItemWidget::resizeEvent(QResizeEvent* event)
 {
 	ItemWidget::resizeEvent(event);
-	if (myFitInSize.width() == -1 || myFitInSize.height() == -1)
+	if (d->fitInSize.width() < 0)
 	{
-		int takeOff = (isHighlightable()) ? 20 : 0;
-		makeImageIcon(QSize(width() - takeOff, height() - takeOff));
+		int left, top, right, bottom;
+		getContentsMargins(&left, &top, &right, &bottom);
+		d->makeImageIcon(QSize(width() - left - right,
+			height() - top - bottom));
 	}
+}
+
+void ImageItemWidgetPrivate::makeImageIcon(QSize size)
+{
+	int w = image.width();
+	int h = image.height();
+	if (w == 0 || h == 0)
+	{
+		iconImage = QPixmap(0, 0);
+		iconImage.fill(QColor(0, 0, 0, 0));
+	}
+	else
+	{
+		QSize iconSize(w, h);
+		iconSize.scale(size, ratioMode);
+		iconImage = image.scaled(iconSize, ratioMode,
+			Qt::SmoothTransformation);
+	}
+	p->update();
 }

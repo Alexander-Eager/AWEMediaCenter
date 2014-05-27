@@ -1,39 +1,75 @@
 // header file
 #include "ItemGridWidget.h"
 
+// layout stuff
+#include <QGridLayout>
+#include <QPoint>
+
+namespace UI
+{
+	class ItemGridWidgetPrivate
+	{
+		public:
+			ItemGridWidget* p;
+
+			// Increment the position.
+			void incrementPos(QPoint& pos);
+
+			// Decrement pos.
+			void decrementPos(QPoint& pos);
+
+			// Replace the item at pos.
+			void replaceItem(QWidget* item, QPoint pos);
+
+			// The grid layout.
+			QGridLayout* layout;
+
+			// The number of rows or columns (depending on the direction).
+			int num;
+			
+			// The current position.
+			QPoint currPos;
+	};
+}
+
 using namespace UI;
 
 ItemGridWidget::ItemGridWidget(QWidget* parent, bool direction,
 								bool multiselection, int num)
 	:	ItemCollectionWidget(parent, direction, multiselection),
-		myLayout(new QGridLayout),
-		myNum(num),
-		myPos(0, 0)
+		d(new ItemGridWidgetPrivate)
 {
-	myLayout->setVerticalSpacing(5);
-	myLayout->setHorizontalSpacing(5);
+	// make everything
+	d->p = this;
+	d->layout = new QGridLayout;
+	d->num = num;
+	d->currPos = QPoint(0, 0);
+
+	// set up column/row spacing and stretching
+	d->layout->setVerticalSpacing(5);
+	d->layout->setHorizontalSpacing(5);
 	// adjust row/col stretches to make it an even grid
 	if (expandsLeftToRight())
 	{
-		for (int i = 0; i < myNum; ++ i)
+		for (int i = 0; i < d->num; ++ i)
 		{
-			myLayout->setRowStretch(i, 1);
+			d->layout->setRowStretch(i, 1);
 		}
 	}
 	else
 	{
-		for (int i = 0; i < myNum; ++ i)
+		for (int i = 0; i < d->num; ++ i)
 		{
-			myLayout->setColumnStretch(i, 1);
+			d->layout->setColumnStretch(i, 1);
 		}
 	}
-	setContainerLayout(myLayout);
+	setContainerLayout(d->layout);
 }
 
 ItemGridWidget::~ItemGridWidget()
 {
 	clear();
-	delete myLayout;
+	delete d->layout;
 }
 
 QString ItemGridWidget::getLayoutType() const
@@ -45,11 +81,11 @@ int ItemGridWidget::count() const
 {
 	if (!expandsLeftToRight())
 	{
-		return myNum * myPos.x() + myPos.y();
+		return d->num * d->currPos.x() + d->currPos.y();
 	}
 	else
 	{
-		return myNum * myPos.y() + myPos.x();
+		return d->num * d->currPos.y() + d->currPos.x();
 	}
 }
 
@@ -58,23 +94,23 @@ void ItemGridWidget::addItem(ItemWidget* item)
 	// tell the item its size (and change stretch factors)
 	// add the item
 	registerItem(item);
-	replaceItem(item, myPos);
+	d->replaceItem(item, d->currPos);
 	if (!expandsLeftToRight())
 	{
-		int w = (width() - myLayout->horizontalSpacing() * (myNum - 1))
-					/ myNum;
+		int w = (width() - d->layout->horizontalSpacing() * (d->num - 1))
+					/ d->num;
 		item->fixSizeToFitIn(QSize(QSize(w, 16777215)));
-		myLayout->setRowStretch(myPos.y(), 1);
+		d->layout->setRowStretch(d->currPos.y(), 1);
 	}
 	else
 	{
-		int h = (height() - myLayout->verticalSpacing() * (myNum - 1))
-					/ myNum;
+		int h = (height() - d->layout->verticalSpacing() * (d->num - 1))
+					/ d->num;
 		item->fixSizeToFitIn(QSize(16777215, h));
-		myLayout->setColumnStretch(myPos.x(), 1);
+		d->layout->setColumnStretch(d->currPos.x(), 1);
 	}
 	// increment
-	incrementPos(myPos);
+	d->incrementPos(d->currPos);
 }
 
 void ItemGridWidget::removeItem(ItemWidget* item)
@@ -85,64 +121,64 @@ void ItemGridWidget::removeItem(ItemWidget* item)
 	}
 	// get the location
 	QPoint pos(0, 0);
-	while (pos != myPos 
-			&& myLayout->itemAtPosition(pos.x(), pos.y())->widget() != item)
+	while (pos != d->currPos 
+			&& d->layout->itemAtPosition(pos.x(), pos.y())->widget() != item)
 	{
-		incrementPos(pos);
+		d->incrementPos(pos);
 	}
-	if (pos == myPos)
+	if (pos == d->currPos)
 	{
 		return;
 	}
 	// remove item
-	myLayout->removeWidget(item);
+	d->layout->removeWidget(item);
 	item->deleteLater();
-	decrementPos(myPos);
+	d->decrementPos(d->currPos);
 	// shift everything down one
-	while (pos != myPos)
+	while (pos != d->currPos)
 	{
 		// move the next item here
-		incrementPos(pos);
+		d->incrementPos(pos);
 		QPoint next = pos;
-		decrementPos(pos);
-		replaceItem(myLayout->itemAtPosition(next.x(), next.y())->widget(), pos);
+		d->decrementPos(pos);
+		d->replaceItem(d->layout->itemAtPosition(next.x(), next.y())->widget(), pos);
 		// increment
 		pos = next;
 	}
 	// get rid of the last item
-	QLayoutItem* temp = myLayout->itemAtPosition(myPos.x(), myPos.y());
-	myLayout->removeItem(temp);
+	QLayoutItem* temp = d->layout->itemAtPosition(d->currPos.x(), d->currPos.y());
+	d->layout->removeItem(temp);
 	delete temp;
 }
 
 void ItemGridWidget::clear()
 {
 	QPoint origin(0, 0);
-	while (myPos != origin)
+	while (d->currPos != origin)
 	{
-		decrementPos(myPos);
-		replaceItem(nullptr, myPos);
+		d->decrementPos(d->currPos);
+		d->replaceItem(nullptr, d->currPos);
 	}
 }
 
 void ItemGridWidget::resizeEvent(QResizeEvent* event)
 {
 	ItemCollectionWidget::resizeEvent(event);
-	for (int i = 0; i < myLayout->count(); ++ i)
+	for (int i = 0; i < d->layout->count(); ++ i)
 	{
-		if (myLayout->itemAt(i)->widget())
+		if (d->layout->itemAt(i)->widget())
 		{
-			ItemWidget* item = (ItemWidget*) myLayout->itemAt(i)->widget();
+			ItemWidget* item = (ItemWidget*) d->layout->itemAt(i)->widget();
 			if (!expandsLeftToRight())
 			{
-				int w = (width() - myLayout->horizontalSpacing() * (myNum - 1))
-							/ myNum;
+				int w = (width() - d->layout->horizontalSpacing() * (d->num - 1))
+							/ d->num;
 				item->fixSizeToFitIn(QSize(QSize(w, 16777215)));
 			}
 			else
 			{
-				int h = (height() - myLayout->verticalSpacing() * (myNum - 1))
-							/ myNum;
+				int h = (height() - d->layout->verticalSpacing() * (d->num - 1))
+							/ d->num;
 				item->fixSizeToFitIn(QSize(16777215, h));
 			}
 		}
@@ -150,12 +186,12 @@ void ItemGridWidget::resizeEvent(QResizeEvent* event)
 
 }
 
-void ItemGridWidget::incrementPos(QPoint& pos)
+void ItemGridWidgetPrivate::incrementPos(QPoint& pos)
 {
-	if (!expandsLeftToRight())
+	if (!p->expandsLeftToRight())
 	{
 		pos.setY(pos.y() + 1);
-		if (pos.y() == myNum)
+		if (pos.y() == num)
 		{
 			pos.setX(pos.x() + 1);
 			pos.setY(0);
@@ -164,7 +200,7 @@ void ItemGridWidget::incrementPos(QPoint& pos)
 	else
 	{
 		pos.setX(pos.x() + 1);
-		if (pos.x() == myNum)
+		if (pos.x() == num)
 		{
 			pos.setY(pos.y() + 1);
 			pos.setX(0);
@@ -172,15 +208,15 @@ void ItemGridWidget::incrementPos(QPoint& pos)
 	}
 }
 
-void ItemGridWidget::decrementPos(QPoint& pos)
+void ItemGridWidgetPrivate::decrementPos(QPoint& pos)
 {
-	if (!expandsLeftToRight())
+	if (!p->expandsLeftToRight())
 	{
 		pos.setY(pos.y() - 1);
 		if (pos.y() == -1)
 		{
 			pos.setX(pos.x() - 1);
-			pos.setY(myNum - 1);
+			pos.setY(num - 1);
 		}
 	}
 	else
@@ -189,22 +225,22 @@ void ItemGridWidget::decrementPos(QPoint& pos)
 		if (pos.x() == -1)
 		{
 			pos.setY(pos.y() - 1);
-			pos.setX(myNum - 1);
+			pos.setX(num - 1);
 		}
 	}
 }
 
-void ItemGridWidget::replaceItem(QWidget* item, QPoint pos)
+void ItemGridWidgetPrivate::replaceItem(QWidget* item, QPoint pos)
 {
-	QLayoutItem* temp = myLayout->itemAtPosition(pos.x(), pos.y());
+	QLayoutItem* temp = layout->itemAtPosition(pos.x(), pos.y());
 	if (temp && temp->widget())
 	{
 		QWidget* widget = temp->widget();
-		myLayout->removeWidget(widget);
+		layout->removeWidget(widget);
 		widget->deleteLater();
 	}
 	if (item)
 	{
-		myLayout->addWidget(item, pos.x(), pos.y(), Qt::AlignCenter);
+		layout->addWidget(item, pos.x(), pos.y(), Qt::AlignCenter);
 	}
 }

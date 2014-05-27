@@ -4,8 +4,9 @@
 // library macros
 #include "macros/BackendLibraryMacros.h"
 
-// superclass
+// superclasses
 #include "WindowContents.h"
+#include "ui/Configurable.h"
 
 // Q_OBJECT
 #include <QObject>
@@ -27,7 +28,7 @@ namespace UI
 	/**
 	 * \brief A window contents pane designed for browsing files.
 	 **/
-	class AWEMC_BACKEND_LIBRARY FolderBrowser : public WindowContents
+	class AWEMC_BACKEND_LIBRARY FolderBrowser : public WindowContents, public Configurable
 	{
 		Q_OBJECT
 
@@ -103,14 +104,14 @@ namespace UI
 			/**
 			 * \brief Set the title bar text.
 			 *
-			 * \param text The new title bar text.
+			 * \param[in] text The new title bar text.
 			 **/
 			virtual void setTitleBarText(QString text);
 
 			/**
 			 * \brief Set the background image.
 			 *
-			 * \param image The new background image.
+			 * \param[in] image The new background image.
 			 **/
 			virtual void setBackgroundImage(QPixmap image);
 
@@ -123,6 +124,22 @@ namespace UI
 			 **/
 			virtual void scrapeForMetadata(AWE::MetadataHolder* item,
 				AWE::MetadataScraperHandler* scraper, int flags);
+
+			/**
+			 * \brief Configure this browser to use the
+			 *			given data.
+			 *
+			 * \param data The data to use.
+			 **/
+			virtual void useConfig(JSON::JsonValue data);
+
+			/**
+			 * \brief Tell this browser to use the default
+			 *			configuration.
+			 *
+			 * This comes from the currently set skin.
+			 **/
+			virtual void useDefaultConfig();
 
 		private:
 			FolderBrowserPrivate* d;

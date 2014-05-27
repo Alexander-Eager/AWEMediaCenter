@@ -12,7 +12,7 @@
 
 // data
 #include <QPixmap>
-#include <QDir>
+#include <QString>
 
 // for size
 #include <QSize>
@@ -20,6 +20,9 @@
 
 namespace UI
 {
+	// internal data class
+	class ImageItemWidgetPrivate;
+
 	/**
 	 * \brief A `QListWidgetItem` that holds an image.
 	 **/
@@ -38,7 +41,7 @@ namespace UI
 			 *						selected, `false` if not.
 			 * \param[in] size The width and height of the image.
 			 **/
-			ImageItemWidget(QWidget* parent, int index, QDir file,
+			ImageItemWidget(QWidget* parent, int index, QString file,
 							bool highlightable = false,
 							QSize size = QSize(-1, -1));
 
@@ -55,6 +58,11 @@ namespace UI
 			ImageItemWidget(QWidget* parent, int index, QPixmap image,
 							bool highlightable = false,
 							QSize size = QSize(-1, -1));
+
+			/**
+			 * \brief Destroy this object.
+			 **/
+			virtual ~ImageItemWidget();
 
 			/**
 			 * \brief Fix this item's size to fit in the given
@@ -146,7 +154,7 @@ namespace UI
 			 *
 			 * \param[in] file The file holding the image.
 			 **/
-			virtual void setImage(QDir file);
+			virtual void setImage(QString file);
 
 			/**
 			 * \brief Sets the image held by this widget.
@@ -178,27 +186,7 @@ namespace UI
 			virtual void resizeEvent(QResizeEvent* event);
 
 		private:
-			/** 
-			 * \brief Helper function that scales the image.
-			 *
-			 * \param size The size to scale to.
-			 **/
-			void makeImageIcon(QSize size);
-			
-			/** \brief The index of this file in the item's config file. **/
-			int myIndex;
-
-			/** \brief The image object (in full size). **/
-			QPixmap myImage;
-
-			/** \brief The icon object (scaled down). **/
-			QPixmap myIconImage;
-
-			/** \brief The aspect ratio mode. **/
-			Qt::AspectRatioMode myRatioMode;
-
-			/** \brief The target icon size. **/
-			QSize myFitInSize;
+			ImageItemWidgetPrivate* d;
 	};
 }
 

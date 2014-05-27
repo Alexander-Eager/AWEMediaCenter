@@ -1,138 +1,199 @@
 // header file
 #include "ItemCollectionWidget.h"
 
+// for holding items
+#include <QLayout>
+#include <QBoxLayout>
+
+namespace UI
+{
+	class ItemCollectionWidgetPrivate
+	{
+		public:
+			// parent
+			ItemCollectionWidget* p;
+
+			// Does this expand left-to-right?
+			bool direction;
+
+			// Does this allow multiselection?
+			bool multiselection;
+
+			// The widget held inside of the scroll area.
+			QWidget* containerWidget;
+
+			// The item alignment.
+			ItemCollectionWidget::ItemAlignment itemAlignment;
+
+			// A box layout to adjust spacing.
+			QBoxLayout* spacingLayout;
+
+			// The layout holding all of the items.
+			QLayout* itemLayout;
+
+			// ensures that only one item is highlighted if multiselection
+			// is disabled
+			inline void respondToItemHighlighted(ItemWidget* item);
+	};
+}
+
 using namespace UI;
 
 ItemCollectionWidget::ItemCollectionWidget(QWidget* parent, bool direction,
 											bool multiselection)
 	:	TransparentScrollArea(parent),
-		myDirection(direction),
-		myMultiselection(multiselection),
-		myContainerWidget(new QWidget(nullptr)),
-		myItemAlignment(ItemCollectionWidget::StartAlign)
+		d(new ItemCollectionWidgetPrivate)
 {
-	myContainerWidget->setContentsMargins(0, 0, 0, 0);
-	setWidget(myContainerWidget);
+	d->p = this;
+	// make everything
+	d->direction = direction;
+	d->multiselection = multiselection;
+	d->containerWidget = new QWidget(nullptr);
+	d->itemAlignment = ItemCollectionWidget::StartAlign;
+
+	// set up the widgets and layouts
+	d->containerWidget->setContentsMargins(0, 0, 0, 0);
+	setWidget(d->containerWidget);
 	setWidgetResizable(true);
-	if (myDirection)
+	if (d->direction)
 	{
-		mySpacingLayout = new QHBoxLayout(myContainerWidget);
+		d->spacingLayout = new QHBoxLayout(d->containerWidget);
 		setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	}
 	else
 	{
-		mySpacingLayout = new QVBoxLayout(myContainerWidget);
+		d->spacingLayout = new QVBoxLayout(d->containerWidget);
 		setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	}
-	mySpacingLayout->setContentsMargins(0, 0, 0, 0);
-	mySpacingLayout->addItem(new QSpacerItem(16777215, 16777215, QSizePolicy::Ignored,
+	d->spacingLayout->setContentsMargins(0, 0, 0, 0);
+	d->spacingLayout->addItem(new QSpacerItem(16777215, 16777215, QSizePolicy::Ignored,
 														QSizePolicy::Ignored));
-	mySpacingLayout->addItem(new QSpacerItem(16777215, 16777215, QSizePolicy::Ignored,
+	d->spacingLayout->addItem(new QSpacerItem(16777215, 16777215, QSizePolicy::Ignored,
 														QSizePolicy::Ignored));
 	if (expandsLeftToRight())
 	{
-		myContainerWidget->setMinimumHeight(height());
-		myContainerWidget->setMaximumHeight(height());
+		d->containerWidget->setMinimumHeight(height());
+		d->containerWidget->setMaximumHeight(height());
 	}
 	else
 	{
-		myContainerWidget->setMinimumWidth(width());
-		myContainerWidget->setMaximumWidth(width());
+		d->containerWidget->setMinimumWidth(width());
+		d->containerWidget->setMaximumWidth(width());
 	}
 }
 
 ItemCollectionWidget::~ItemCollectionWidget()
 {
-	delete mySpacingLayout;
-	delete myContainerWidget;
+	delete d->spacingLayout;
+	delete d->containerWidget;
 }
 
 bool ItemCollectionWidget::expandsLeftToRight() const
 {
-	return myDirection;
+	return d->direction;
 }
 
 void ItemCollectionWidget::setItemAlignment(
 	ItemCollectionWidget::ItemAlignment alignment)
 {
-	myItemAlignment = alignment;
+	d->itemAlignment = alignment;
 	// add the ending spacer if necessary
 	if (alignment & StartAlign)
 	{
-		mySpacingLayout->itemAt(2)->spacerItem()
+		d->spacingLayout->itemAt(2)->spacerItem()
 						->changeSize(16777215, 16777215, QSizePolicy::Ignored,
 												QSizePolicy::Ignored);
-		mySpacingLayout->setStretch(2, 1);
+		d->spacingLayout->setStretch(2, 1);
 	}
 	// remove the ending spacer if necessary
 	else
 	{
-		mySpacingLayout->itemAt(2)->spacerItem()
+		d->spacingLayout->itemAt(2)->spacerItem()
 						->changeSize(0, 0, QSizePolicy::Fixed,
 												QSizePolicy::Fixed);
-		mySpacingLayout->setStretch(2, 0);
+		d->spacingLayout->setStretch(2, 0);
 	}
 	// add the starting spacer if necessary
 	if (alignment & EndAlign)
 	{
-		mySpacingLayout->itemAt(0)->spacerItem()
+		d->spacingLayout->itemAt(0)->spacerItem()
 						->changeSize(16777215, 16777215, QSizePolicy::Ignored,
 												QSizePolicy::Ignored);
-		mySpacingLayout->setStretch(0, 1);
+		d->spacingLayout->setStretch(0, 1);
 	}
 	// remove the starting spacer if necessary
 	else
 	{
-		mySpacingLayout->itemAt(0)->spacerItem()
+		d->spacingLayout->itemAt(0)->spacerItem()
 						->changeSize(0, 0, QSizePolicy::Fixed,
 												QSizePolicy::Fixed);
-		mySpacingLayout->setStretch(0, 0);
+		d->spacingLayout->setStretch(0, 0);
 	}
 }
 
 ItemCollectionWidget::ItemAlignment
 	ItemCollectionWidget::getItemAlignment() const
 {
-	return myItemAlignment;
+	return d->itemAlignment;
 }
 
 bool ItemCollectionWidget::acceptsMultiselection() const
 {
-	return myMultiselection;
+	return d->multiselection;
 }
 
 int ItemCollectionWidget::count() const
 {
-	return myItemLayout->count();
+	return d->itemLayout->count();
 }
 
 void ItemCollectionWidget::resizeEvent(QResizeEvent*)
 {
 	if (expandsLeftToRight())
 	{
-		myContainerWidget->setMinimumHeight(height());
-		myContainerWidget->setMaximumHeight(height());
+		d->containerWidget->setMinimumHeight(height());
+		d->containerWidget->setMaximumHeight(height());
 	}
 	else
 	{
-		myContainerWidget->setMinimumWidth(width());
-		myContainerWidget->setMaximumWidth(width());
+		d->containerWidget->setMinimumWidth(width());
+		d->containerWidget->setMaximumWidth(width());
 	}
 }
 
 void ItemCollectionWidget::registerItem(ItemWidget* item)
 {
 	// set the parent widget
-	item->setParent(myContainerWidget);
+	item->setParent(d->containerWidget);
 	// make a bunch of connections
-	connect(item, SIGNAL(highlighted(ItemWidget*)),
-			this, SLOT(respondToItemHighlighted(ItemWidget*)));
-	connect(item, SIGNAL(unhighlighted(ItemWidget*)),
-			this, SLOT(respondToItemUnhighlighted(ItemWidget*)));
-	connect(item, SIGNAL(highlightingChanged(bool, ItemWidget*)),
-			this, SLOT(respondToItemHighlightingChanged(bool, ItemWidget*)));
-	connect(item, SIGNAL(selected(ItemWidget*)),
-			this, SLOT(respondToItemSelected(ItemWidget*)));
+	connect(item, static_cast<void (ItemWidget::*)(ItemWidget*)>
+			(&ItemWidget::highlighted), this,
+			[this] (ItemWidget* item)
+			{
+				d->respondToItemHighlighted(item);
+				emit itemHighlighted(item);
+			} );
+
+	connect(item, static_cast<void (ItemWidget::*)(ItemWidget*)>
+			(&ItemWidget::unhighlighted), this,
+			[this] (ItemWidget* item)
+			{
+				emit itemUnhighlighted(item);
+			} );
+
+	connect(item, static_cast<void (ItemWidget::*)(bool, ItemWidget*)>
+			(&ItemWidget::highlightingChanged), this,
+			[this] (bool newState, ItemWidget* item)
+			{
+				emit itemHighlightingChanged(newState, item);
+			} );
+
+	connect(item, static_cast<void (ItemWidget::*)(ItemWidget*)>
+			(&ItemWidget::selected), this,
+			[this] (ItemWidget* item)
+			{
+				emit itemSelected(item);
+			} );
 }
 
 void ItemCollectionWidget::unregisterItem(ItemWidget* item)
@@ -143,22 +204,23 @@ void ItemCollectionWidget::unregisterItem(ItemWidget* item)
 
 void ItemCollectionWidget::setContainerLayout(QLayout* layout)
 {
-	myItemLayout = layout;
-	mySpacingLayout->insertLayout(1, layout);
+	d->itemLayout = layout;
+	d->spacingLayout->insertLayout(1, layout);
 	layout->setContentsMargins(0, 0, 0, 0);
 	setItemAlignment(getItemAlignment());
 }
 
-void ItemCollectionWidget::respondToItemHighlighted(ItemWidget* item)
+void ItemCollectionWidgetPrivate::respondToItemHighlighted(ItemWidget* item)
 {
-	if (!myMultiselection)
+	if (!multiselection)
 	{
-		for (int i = 0; i < myItemLayout->count(); ++ i)
+		for (int i = 0; i < itemLayout->count(); ++ i)
 		{
-			if (myItemLayout->itemAt(i)->widget())
+			if (itemLayout->itemAt(i)->widget())
 			{
-				ItemWidget* temp = (ItemWidget*) myItemLayout->itemAt(i)->widget();
-				if (temp != item && temp->isHighlighted())
+				ItemWidget* temp = qobject_cast<ItemWidget*>(itemLayout
+					->itemAt(i)->widget());
+				if (temp && temp != item && temp->isHighlighted())
 				{
 					temp->unhighlight();
 					break;
@@ -166,21 +228,5 @@ void ItemCollectionWidget::respondToItemHighlighted(ItemWidget* item)
 			}
 		}
 	}
-	emit itemHighlighted(item);
-}
-
-void ItemCollectionWidget::respondToItemUnhighlighted(ItemWidget* item)
-{
-	emit itemUnhighlighted(item);
-}
-
-void ItemCollectionWidget::respondToItemHighlightingChanged(bool newState,
-															ItemWidget* item)
-{
-	emit itemHighlightingChanged(newState, item);
-}
-
-void ItemCollectionWidget::respondToItemSelected(ItemWidget* item)
-{
-	emit itemSelected(item);
+	p->ensureWidgetVisible(item, 0, 0);
 }

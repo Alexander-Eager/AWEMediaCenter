@@ -31,22 +31,28 @@
 #include "ui/pane/TextPane.h"
 #include "ui/widgets/items/ImageItemWidget.h"
 
+// for painting the background
+#include <QBrush>
+#include <QPainter>
+
 using namespace AWE;
+using namespace JSON;
 
 namespace UI
 {
-	class FolderBrowserPrivate
+	class FolderBrowserPrivate : public QWidget
 	{
 		public:
+			FolderBrowserPrivate(QWidget* parent)
+				:	QWidget(parent)
+				{ }
+
 			// this is all data stuff
 
 			/** \brief The folder browsing history. **/
 			QStack<AWE::Folder*> browserHistory;
 
 			// this is all UI stuff
-
-			/** \brief The main widget for folder browsing. **/
-			QWidget* mainWidget;
 
 			/** \brief The stacked layout with everything on it. **/
 			QStackedLayout* mainLayout;
@@ -72,25 +78,32 @@ namespace UI
 
 			/** \brief The item info pane. **/
 			InfoPane* infoPane;
+
+			// this relates to the configuration/painting
+
+			bool usingSkin;
+			QBrush brush;
+			void configure(const JsonValue config);
+			void paintEvent(QPaintEvent* event);
 	};
 }
 
 using namespace UI;
 
 FolderBrowser::FolderBrowser()
-	:	d(new FolderBrowserPrivate)
+	:	d(new FolderBrowserPrivate(nullptr))
 {
 	// make everything
-	d->mainWidget = new QWidget(nullptr);
-	d->mainLayout = new QStackedLayout(d->mainWidget);
-	d->backgroundImage = new ImageItemWidget(d->mainWidget, -1, QPixmap());
-	d->foregroundWidget = new QWidget(d->mainWidget);
+	d->usingSkin = true;
+	d->mainLayout = new QStackedLayout(d);
+	d->backgroundImage = new ImageItemWidget(d, -1, QPixmap());
+	d->foregroundWidget = new QWidget(d);
 	d->foregroundMainLayout = new QVBoxLayout(d->foregroundWidget);
 	d->foregroundLayout = new QHBoxLayout;
-	d->titleBar = new TextPane(d->mainWidget, "", "biggest");
-	d->imagePane = new ImagePane(d->mainWidget);
-	d->folderPane = new FolderPane(d->mainWidget);
-	d->infoPane = new InfoPane(d->mainWidget);
+	d->titleBar = new TextPane(d, "", "biggest");
+	d->imagePane = new ImagePane(d);
+	d->folderPane = new FolderPane(d);
+	d->infoPane = new InfoPane(d);
 
 	/* set up all of the layout/widget organization */
 	// makes it a layer-type stack instead of only one widget at a time
@@ -109,24 +122,39 @@ FolderBrowser::FolderBrowser()
 
 	/* make all of the connections */
 	// when an item is highlighted, it should change the images and info
-	d->mainWidget->connect(d->folderPane, &FolderPane::itemHighlighted,
+	d->connect(d->folderPane, &FolderPane::itemHighlighted,
 							d->imagePane, &ImagePane::setItem);
-	d->mainWidget->connect(d->folderPane, &FolderPane::itemHighlighted,
+	d->connect(d->folderPane, &FolderPane::itemHighlighted,
 							d->infoPane, &InfoPane::setItem);
 	// opening an item
-	d->mainWidget->connect(d->folderPane, &FolderPane::itemSelected,
+	d->connect(d->folderPane, &FolderPane::itemSelected,
 							this, &FolderBrowser::openItem);
-	d->mainWidget->connect(d->infoPane, &InfoPane::wantsToOpenFolder,
+	d->connect(d->infoPane, &InfoPane::wantsToOpenFolder,
 							this, &FolderBrowser::openItem);
 	// going up one folder
-	d->mainWidget->connect(d->folderPane, &FolderPane::goUpOne,
+	d->connect(d->folderPane, &FolderPane::goUpOne,
 							this, &FolderBrowser::moveUpOneFolder);
 	// changing the background image
-	d->mainWidget->connect(d->imagePane, &ImagePane::fanartChanged,
+	d->connect(d->imagePane, &ImagePane::fanartChanged,
 							this, &FolderBrowser::setBackgroundImage);
 	// scrape for metadata
-	d->mainWidget->connect(d->infoPane, &InfoPane::wantsToScrapeForMetadata,
+	d->connect(d->infoPane, &InfoPane::wantsToScrapeForMetadata,
 							this, &FolderBrowser::scrapeForMetadata);
+
+	// updating the background configuration
+	auto updateBackgroundBrush = [this] ()
+		{
+			if (d->usingSkin)
+			{
+				d->configure(AWEMC::settings()->getCurrentSkin()
+					->getWidgetConfig("Folder Browser"));
+			}
+		};
+
+	connect(AWEMC::settings(), &GlobalSettings::skinChanged,
+			this, updateBackgroundBrush);
+
+	updateBackgroundBrush();
 }
 
 FolderBrowser::~FolderBrowser()
@@ -139,7 +167,6 @@ FolderBrowser::~FolderBrowser()
 	delete d->foregroundMainLayout;
 	delete d->foregroundWidget;
 	delete d->mainLayout;
-	delete d->mainWidget;
 	delete d;
 }
 
@@ -151,13 +178,13 @@ QString FolderBrowser::getType()
 void FolderBrowser::setParent(MainWindow* parent)
 {
 	// disconnect old open item connections
-	if (d->mainWidget->nativeParentWidget())
+	if (d->nativeParentWidget())
 	{
 		d->infoPane->disconnect(d->infoPane, 0,
-								d->mainWidget->nativeParentWidget(), 0);
+								d->nativeParentWidget(), 0);
 	}
 	// set the widget's parent
-	d->mainWidget->setParent(parent);
+	d->setParent(parent);
 	// make new open item connections
 	d->infoPane->connect(d->infoPane, &InfoPane::wantsToOpenFile,
 						parent, &MainWindow::openFile);
@@ -167,7 +194,7 @@ void FolderBrowser::setParent(MainWindow* parent)
 
 QWidget* FolderBrowser::getWidget()
 {
-	return d->mainWidget;
+	return d;
 }
 
 void FolderBrowser::open()
@@ -197,7 +224,7 @@ void FolderBrowser::openItem(MediaItem* item)
 	else
 	{
 		// pass it on to the main window
-		MainWindow* window = (MainWindow*) d->mainWidget->nativeParentWidget();
+		MainWindow* window = (MainWindow*) d->nativeParentWidget();
 		if (item->isFile())
 		{
 			MediaFile* file = (MediaFile*) item;
@@ -257,4 +284,36 @@ void FolderBrowser::scrapeForMetadata(MetadataHolder* item,
 		return;
 	}
 	scraper->deactivate();
+}
+
+void FolderBrowser::useConfig(JsonValue config)
+{
+	d->usingSkin = false;
+	d->configure(config);
+}
+
+void FolderBrowser::useDefaultConfig()
+{
+	d->usingSkin = true;
+	d->configure(AWEMC::settings()->getCurrentSkin()
+		->getWidgetConfig("Foldser Browser"));
+}
+
+void FolderBrowserPrivate::paintEvent(QPaintEvent*)
+{
+	if (backgroundImage->getImage().isNull())
+	{
+		QPainter p(this);
+		p.setBrush(brush);
+		p.setPen(Qt::NoPen);
+		p.drawRect(rect());
+	}
+}
+
+void FolderBrowserPrivate::configure(const JsonValue config)
+{
+	const JsonObject obj = config.toObject();
+	brush = AWEMC::settings()->getCurrentSkin()
+		->makeBrush(obj.get("background"));
+	update();
 }

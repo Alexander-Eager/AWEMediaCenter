@@ -457,6 +457,10 @@ QRadialGradient Skin::makeRadialGradient(const JsonValue config) const
 	{
 		ans.setFocalPoint(makePoint(obj.get("focal point")));
 	}
+	else
+	{
+		ans.setFocalPoint(ans.center());
+	}
 	// focal radius
 	if (obj.get("focal radius").isNumber())
 	{

@@ -5,63 +5,131 @@
 #include "settings/AWEMC.h"
 
 using namespace AWE;
+
+namespace UI
+{
+	class MediaItemWidgetPrivate
+	{
+		public:
+			// parent
+			MediaItemWidget* p;
+
+			// Helper function to switch display modes.
+			inline void enactDisplayMode();
+
+			// The media item.
+			MediaItem* mediaItem;
+
+			// The display mode.
+			MediaItemWidget::DisplayMode displayMode;
+
+			// The layout for the name and icon.
+			QBoxLayout* layout;
+
+			// The name of the item.
+			TextItemWidget* name;
+
+			// The icon of the item.
+			ImageItemWidget* icon;
+
+			// The size to fit in.
+			QSize fitInSize;
+	};
+}
+
 using namespace UI;
 
 MediaItemWidget::MediaItemWidget(QWidget* parent, MediaItem* item,
 									bool highlightable)
 	:	ItemWidget(parent, highlightable),
-		myMediaItem(item),
-		myDisplayMode(NameOnly),
-		myLayout(new QBoxLayout(QBoxLayout::TopToBottom, this)),
-		myName(new TextItemWidget(this, "", "normal")),
-		myIcon(new ImageItemWidget(this, -1, QDir(""))),
-		myFitInSize(-1, -1)
+		d(new MediaItemWidgetPrivate)
 {
+	d->p = this;
+	// make everything
+	d->mediaItem = item;
+	d->displayMode = NameOnly;
+	d->layout = new QBoxLayout(QBoxLayout::TopToBottom, this);
+	d->name = new TextItemWidget(this, "", "normal");
+	d->icon = new ImageItemWidget(this, -1, "");
+	fixSizeToFitIn(QSize(-1, -1));
+
 	// get the icon and name
 	setMediaItem(item);
 	// set up the layout
-	setContentsMargins(10, 10, 10, 10);
-	myLayout->setContentsMargins(0, 0, 0, 0);
-	myLayout->addWidget(myName);
-	myLayout->addWidget(myIcon);
+	d->layout->setContentsMargins(0, 0, 0, 0);
+	d->layout->addWidget(d->name);
+	d->layout->addWidget(d->icon);
 	// make connections for propogating click events
-	connect(myName, &ItemWidget::clicked,
-			this, &MediaItemWidget::respondToClick);
-	connect(myName, &ItemWidget::doubleClicked,
-			this, &MediaItemWidget::respondToDoubleClick);
-	connect(myIcon, &ItemWidget::clicked,
-			this, &MediaItemWidget::respondToClick);
-	connect(myIcon, &ItemWidget::doubleClicked,
-			this, &MediaItemWidget::respondToDoubleClick);
+	auto respondToClick = [this] ()
+		{
+			// indicate that this was clicked
+			emit clicked();
+			// highlight this item
+			setHighlighting(!isHighlighted());
+		};
+
+	auto respondToDoubleClick = [this] ()
+		{
+			// indicate that this was double-clicked
+			emit doubleClicked();
+			// indicate that this item was selected
+			if (isHighlightable())
+			{
+				emit selected();
+				emit selected(this);
+			}
+		};
+
+	connect(d->name, &ItemWidget::clicked,
+			this, respondToClick);
+	connect(d->name, &ItemWidget::doubleClicked,
+			this, respondToDoubleClick);
+	connect(d->icon, &ItemWidget::clicked,
+			this, respondToClick);
+	connect(d->icon, &ItemWidget::doubleClicked,
+			this, respondToDoubleClick);
+
 	setDisplayMode(getDisplayMode());
 }
 
 bool MediaItemWidget::fixSizeToFitIn(QSize size)
 {
-	myFitInSize = size;
+	d->fitInSize = size;
+	if (size.width() < 0 || size.height() < 0)
+	{
+		d->fitInSize.setWidth(-1);
+		d->fitInSize.setHeight(-1);
+		d->icon->fixSizeToFitIn(d->fitInSize);
+		d->name->fixSizeToFitIn(d->fitInSize);
+		setMinimumSize(0, 0);
+		setMaximumSize(QWIDGETSIZE_MAX, QWIDGETSIZE_MAX);
+		return true;
+	}
 	bool ans;
+	int left, top, right, bottom;
+	getContentsMargins(&left, &top, &right, &bottom);
 	int minw, minh;
-	switch (myDisplayMode)
+	switch (d->displayMode)
 	{
 		case IconOnly:
 			// set to the icon's size if it is valid
-			if (!myIcon->getImage().isNull())
+			if (!d->icon->getImage().isNull())
 			{
-				ans = myIcon->fixSizeToFitIn(QSize(size.width() - 20,
-													size.height() - 20));
-				minw = myIcon->minimumWidth() + 20;
-				minh = myIcon->minimumHeight() + 20;
+				ans = d->icon->fixSizeToFitIn(QSize(
+					size.width() - left - right,
+					size.height() - top - bottom));
+				minw = d->icon->minimumWidth() + left + right;
+				minh = d->icon->minimumHeight() + top + bottom;
 				break;
 			}
 			// set it to the text instead
 		case NameOnly:
 			// set to the text's size
-			ans = myName->fixSizeToFitIn(QSize(size.width() - 20,
-												size.height() - 20));
-			minw = (myName->minimumWidth()) ? 
-					myName->minimumWidth() : myName->maximumWidth();
-			minw += 20;
-			minh = myName->minimumHeight() + 20;
+			ans = d->name->fixSizeToFitIn(QSize(
+				size.width() - left - right,
+				size.height() - top - bottom));
+			minw = d->name->minimumWidth() + left + right;
+			minh = d->name->minimumHeight() + top + bottom;
 			break;
 		case NameAndIconLeftToRight:
 			ans = false;
@@ -76,29 +144,22 @@ bool MediaItemWidget::fixSizeToFitIn(QSize size)
 			minh = 0;
 			break;
 	}
-	if (minw > 16777215)
+	if (minw > QWIDGETSIZE_MAX)
 	{
-		minw = 16777215;
+		minw = QWIDGETSIZE_MAX;
 	}
-	if (minh > 16777215)
+	if (minh > QWIDGETSIZE_MAX)
 	{
-		minh = 16777215;
+		minh = QWIDGETSIZE_MAX;
 	}
 	setMinimumSize(minw, minh);
-	if (size.width() == -1 || size.height() == -1)
-	{
-		setMaximumSize(16777215, 16777215);
-	}
-	else
-	{
-		setMaximumSize(size.width(), size.height());
-	}
+	setMaximumSize(d->fitInSize);
 	return ans;
 }
 
 QSize MediaItemWidget::getSizeToFitIn() const
 {
-	return myFitInSize;
+	return d->fitInSize;
 }
 
 QString MediaItemWidget::getItemType() const
@@ -108,7 +169,7 @@ QString MediaItemWidget::getItemType() const
 
 MediaItemWidget* MediaItemWidget::makeCopy() const
 {
-	MediaItemWidget* ans = new MediaItemWidget(parentWidget(),
+	MediaItemWidget* ans = new MediaItemWidget(nullptr,
 		getMediaItem(), isHighlightable());
 	ans->setDisplayMode(getDisplayMode());
 	return ans;
@@ -116,123 +177,103 @@ MediaItemWidget* MediaItemWidget::makeCopy() const
 
 void MediaItemWidget::setDisplayMode(DisplayMode mode)
 {
-	myDisplayMode = mode;
-	switch (myDisplayMode)
+	d->displayMode = mode;
+	switch (d->displayMode)
 	{
 		case NameAndIconLeftToRight:
 		case NameOnly:
-			myName->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+			d->name->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
 			break;
 		case IconOnly:
-			myName->setAlignment(Qt::AlignCenter);
+			d->name->setAlignment(Qt::AlignCenter);
 			break;
 		case NameAndIconTopToBottom:
-			myName->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
+			d->name->setAlignment(Qt::AlignHCenter | Qt::AlignTop);
 	}
-	fixSizeToFitIn(myFitInSize);
-	enactDisplayMode();
+	fixSizeToFitIn(d->fitInSize);
+	d->enactDisplayMode();
 }
 
 MediaItemWidget::DisplayMode MediaItemWidget::getDisplayMode() const
 {
-	return myDisplayMode;
+	return d->displayMode;
 }
 
 MediaItem* MediaItemWidget::getMediaItem() const
 {
-	return myMediaItem;
+	return d->mediaItem;
 }
 
 void MediaItemWidget::setMediaItem(MediaItem* item)
 {
 	// disconnect old media item connections
-	if (myMediaItem)
+	if (d->mediaItem)
 	{
-		disconnect(myMediaItem, 0, this, 0);
+		disconnect(d->mediaItem, 0, this, 0);
 	}
-	myMediaItem = item;
+	d->mediaItem = item;
 	// make connections for changing the icon image and name
-	connect(myMediaItem, &MediaItem::defaultIconChanged,
-			this, &MediaItemWidget::respondToIconChange);
-	connect(myMediaItem, &MediaItem::nameChanged,
-			this, &MediaItemWidget::respondToNameChange);
+	auto respondToIconChange = [this] (int index)
+		{
+			d->icon->setImage(d->mediaItem->getDefaultIcon());
+			d->icon->setIndex(index);
+		};
+	auto respondToNameChange = [this] (QString name)
+		{
+			d->name->setText(name);
+		};
+	connect(d->mediaItem, &MediaItem::defaultIconChanged,
+			this, respondToIconChange);
+
+	connect(d->mediaItem, &MediaItem::nameChanged,
+			this, respondToNameChange);
+
 	// set the name
 	respondToNameChange(item->getName());
 	// set the icon
 	respondToIconChange(item->getDefaultIconIndex());
 }
 
-void MediaItemWidget::respondToClick()
+void MediaItemWidgetPrivate::enactDisplayMode()
 {
-	// indicate that this was clicked
-	emit clicked();
-	// highlight this item
-	setHighlighting(!isHighlighted());
-}
-
-void MediaItemWidget::respondToDoubleClick()
-{
-	// indicate that this was double-clicked
-	emit doubleClicked();
-	// indicate that this item was selected
-	if (isHighlightable())
+	switch (displayMode)
 	{
-		emit selected();
-		emit selected(this);
-	}
-}
-
-void MediaItemWidget::respondToIconChange(int index)
-{
-	myIcon->setImage(myMediaItem->getDefaultIcon());
-	myIcon->setIndex(index);
-}
-
-void MediaItemWidget::respondToNameChange(QString name)
-{
-	myName->setText(name);
-}
-
-void MediaItemWidget::enactDisplayMode()
-{
-	switch (myDisplayMode)
-	{
-		case IconOnly:
-			if (!myIcon->getImage().isNull())
+		case MediaItemWidget::IconOnly:
+			if (!icon->getImage().isNull())
 			{
-				myLayout->removeWidget(myName);
-				myLayout->addWidget(myIcon);
-				myName->hide();
-				myIcon->show();
+				layout->removeWidget(name);
+				layout->addWidget(icon);
+				name->hide();
+				icon->show();
 				break;
 			}
 			// null icon means go with name only
-		case NameOnly:
-			myLayout->removeWidget(myIcon);
-			myLayout->addWidget(myName);
-			myIcon->hide();
-			myName->show();
+		case MediaItemWidget::NameOnly:
+			layout->removeWidget(icon);
+			layout->addWidget(name);
+			icon->hide();
+			name->show();
 			break;
-		case NameAndIconLeftToRight:
-			myLayout->setDirection(QBoxLayout::RightToLeft);
-			myLayout->removeWidget(myName);
-			myLayout->removeWidget(myIcon);
-			myLayout->addWidget(myIcon, 1);
-			myLayout->addWidget(myName, 5);
-			myIcon->show();
-			myName->show();
+		case MediaItemWidget::NameAndIconLeftToRight:
+			layout->setDirection(QBoxLayout::RightToLeft);
+			layout->removeWidget(name);
+			layout->removeWidget(icon);
+			layout->addWidget(icon, 1);
+			layout->addWidget(name, 5);
+			icon->show();
+			name->show();
 			break;
-		case NameAndIconTopToBottom:
-			myLayout->setDirection(QBoxLayout::BottomToTop);
-			myLayout->removeWidget(myName);
-			myLayout->removeWidget(myIcon);
-			myLayout->addWidget(myIcon, 5);
-			myLayout->addWidget(myName, 1);
-			myIcon->show();
-			myName->show();
+		case MediaItemWidget::NameAndIconTopToBottom:
+			layout->setDirection(QBoxLayout::BottomToTop);
+			layout->removeWidget(name);
+			layout->removeWidget(icon);
+			layout->addWidget(icon, 5);
+			layout->addWidget(name, 1);
+			icon->show();
+			name->show();
 			break;
 		default:
 			break;
 	}
-	update();
+	p->update();
 }

@@ -4,8 +4,9 @@
 // library macros
 #include "macros/BackendLibraryMacros.h"
 
-// superclass
+// superclasses
 #include <QWidget>
+#include "ui/Configurable.h"
 
 // Q_OBJECT
 #include <QObject>
@@ -21,6 +22,9 @@
 
 namespace UI
 {
+	// internal data class
+	class ItemWidgetPrivate;
+
 	/**
 	 * \brief Defines an abstract item widget
 	 *			for lists.
@@ -37,7 +41,8 @@ namespace UI
 	 *	- `paintEvent()`: to paint the widget.
 	 *	- The minimum size of the widget (so that it shows up).
 	 **/
-	class AWEMC_BACKEND_LIBRARY ItemWidget : public QWidget
+	class AWEMC_BACKEND_LIBRARY ItemWidget : public QWidget,
+		public Configurable
 	{
 		Q_OBJECT
 
@@ -95,6 +100,20 @@ namespace UI
 			 *					highlightable, `false` if not.
 			 **/
 			virtual void setHighlightable(bool newState);
+
+			/**
+			 * \brief Configure this object to use the
+			 *			given data.
+			 *
+			 * \param data The data to use.
+			 **/
+			virtual void useConfig(JSON::JsonValue data);
+
+			/**
+			 * \brief Tell this object to use the default
+			 *			configuration.
+			 **/
+			virtual void useDefaultConfig();
 
 			/**
 			 * \brief Fix this item's size to fit in the given
@@ -255,32 +274,6 @@ namespace UI
 			virtual void mouseDoubleClickEvent(QMouseEvent* event);
 
 			/**
-			 * \brief Paint the background for this item.
-			 *
-			 * Generally, the background is only painted
-			 * if the item is highlighted, but it depends
-			 * on the subclass.
-			 *
-			 * The background is a blue gradient.
-			 *
-			 * \param event The (unused) paint event.
-			 **/
-			virtual void paintBackground(QPaintEvent* event);
-
-			/**
-			 * \brief Paint the outline for this item.
-			 *
-			 * Generally, the outline is only painted
-			 * if the item is highlighted, but it depends
-			 * on the subclass.
-			 *
-			 * The outline is a solid black color.
-			 *
-			 * \param event The (unused) paint event.
-			 **/
-			virtual void paintOutline(QPaintEvent* event);
-
-			/**
 			 * \brief Paints the background and outline.
 			 *
 			 * \param event The paint event.
@@ -288,11 +281,7 @@ namespace UI
 			virtual void paintEvent(QPaintEvent* event);
 
 		private:
-			/** \brief The highlighting state. **/
-			bool myHighlighting;
-
-			/** \brief Can this be highlighted? **/
-			bool myCanBeHighlighted;
+			ItemWidgetPrivate* d;
 	};
 }
 

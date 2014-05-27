@@ -286,7 +286,7 @@ void GlobalSettingsPrivate::obtainPlayers()
 	QStringList files = folder.entryList({"*.json"}, QDir::Files);
 	for (auto f : files)
 	{
-		MediaPlayerHandler* player = new MediaPlayerHandler(f);
+		MediaPlayerHandler* player = new MediaPlayerHandler(folder.absoluteFilePath(f));
 		players[player->getName()] = player;
 	}
 }

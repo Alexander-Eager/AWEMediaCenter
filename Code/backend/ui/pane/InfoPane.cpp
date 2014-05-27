@@ -194,13 +194,33 @@ InfoPane::InfoPane(QWidget* parent)
 
 	/* connections */
 	connect(d->playButton, &QPushButton::clicked,
-			this, &InfoPane::respondToPlayButton);
+			this,	[this] ()
+					{
+						emit wantsToOpenFile((MediaFile*) d->mediaItem,
+							AWEMC::settings()->getPlayerHandler(
+								d->playerSelections->currentText()));
+					} );
+
 	connect(d->serviceButton, &QPushButton::clicked,
-			this, &InfoPane::respondToOpenButton);
+			this,	[this] ()
+					{
+						emit wantsToOpenService((MediaServiceHandler*)
+							d->mediaItem);
+					} );
+
 	connect(d->folderButton, &QPushButton::clicked,
-			this, &InfoPane::respondToFolderOpen);
+			this,	[this] ()
+					{
+						emit wantsToOpenFolder((Folder*) d->mediaItem);
+					} );
+
 	connect(d->scrapeButton, &QPushButton::clicked,
-			this, &InfoPane::respondToScrapeButton);
+			this,	[this] ()
+					{
+						emit wantsToScrapeForMetadata(d->mediaItem,
+							AWEMC::settings()->getScraperHandler(
+							d->scraperSelections->currentText()), 0);
+					} );
 }
 
 InfoPane::~InfoPane()
@@ -280,32 +300,6 @@ void InfoPane::setItem(MediaItem* item)
 	}
 	d->makeDetailUIElements();
 	d->makeDropdownMenus();
-}
-
-void InfoPane::respondToPlayButton()
-{
-	emit wantsToOpenFile((MediaFile*) d->mediaItem,
-		AWEMC::settings()->getPlayerHandler(d->playerSelections->currentText()));
-}
-
-void InfoPane::respondToOpenButton()
-{
-	emit wantsToOpenService((MediaServiceHandler*) d->mediaItem);
-}
-
-void InfoPane::respondToFolderOpen()
-{
-	emit wantsToOpenFolder((Folder*) d->mediaItem);
-}
-
-void InfoPane::respondToScrapeButton()
-{
-	if (d->scraperSelections->count() != 0)
-	{
-		emit wantsToScrapeForMetadata(d->mediaItem,
-			AWEMC::settings()->getScraperHandler(d->scraperSelections->currentText()),
-			0);
-	}
 }
 
 void InfoPanePrivate::makeDetailUIElements()

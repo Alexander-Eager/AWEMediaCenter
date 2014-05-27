@@ -1,103 +1,96 @@
 {
-	// This is the default skin.
-	// If you want to make your own,
-	// you should include all of these
-	// values. Just copy and paste, and
-	// then edit as necessary.
-	// All paths are relative to the
-	// location of this file
-	"name": "Default",
-
-	"fonts": {
-		// used in title bars and such
-		"biggest": {
-			"name": "Helvetica",
-			"size": 40,
-			"weight": 75,
-			"italic": false,
-			"color": {
-				"name": "black",
-				"alpha": 255
+	"widget settings": {
+		"Item Widget": {
+			"background": {
+				"type": 16,
+				"coordinate mode": 2,
+				"center": 0.5,
+				"center radius": 0.25,
+				"focal point": 0.5,
+				"colors": [
+					[0, ["lightcyan", 100]],
+					[1, ["cyan", 100]]
+				],
+				"spread": 1
+			},
+			"corner radius": 10.0
+		},
+		"Folder Browser": {
+			"background": {
+				"type": 16,
+				"coordinate mode": 2,
+				"center": 0.5,
+				"center radius": 1,
+				"focal point": 0.5,
+				"colors": [
+					[0, ["gray"]],
+					[0.5, ["darkgray"]],
+					[1, ["lightgray"]]
+				],
+				"spread": 1
 			}
 		},
-		// used in sub-title bars
-		"big": {
-			"name": "Helvetica",
-			"size": 30,
-			"weight": 63,
-			"italic": false,
-			"color": {
-				"name": "black",
-				"alpha": 255
-			}
-		},
-		// used in most situations
-		"normal": {
-			"name": "Helvetica",
-			"size": 20,
-			"weight": 50,
-			"italic": false,
-			"color": {
-				"name": "black",
-				"alpha": 255
-			}
+		"Pane": {
+			"background": {
+				"type": 17,
+				"coordinate mode": 2,
+				"angle": 225,
+				"center": [0, 1],
+				"colors": [
+					[0, [0, 0, 0, 100]],
+					[1, [255, 255, 255, 200]]
+				],
+				"spread": 1
+			},
+			"corner radius": 15.0
 		}
 	},
-	
-	"widget settings": {
-		// this defines the item's look
-		// when it is highlighted
-		"ItemWidget": {
-			// how curved are the corners?
-			"corner radius": 10,
-			// the lighter color
-			"background color 1": {
-				"name": "lightskyblue",
-				"alpha": 100
-			},
-			// the darker color
-			"background color 2": {
-				"name": "blue",
-				"alpha": 100
-			},
-			// the outline color
-			"outline color": {
-				"name": "blue",
-				"alpha": 255
-			}
+	"metadata": {
+		"type": "Skin",
+		"description": "Default skin for AWEMC.",
+		"details": {
+			"_order": []
 		},
-		// this all pertains to the background
-		// of panes
-		"Pane": {
-			// how curved are the corners?
-			"corner radius": 15,
-			// the lighter color
-			"background color 1": {
-				"name": "darkgray",
-				"alpha": 200
-			},
-			// the darker color
-			"background color 2": {
-				"name": "gray",
-				"alpha": 200
-			},
-			// the outline color
-			"outline color": {
-				"name": "white",
-				"alpha": 0
-			}
+		"location": "default.json",
+		"name": "Default",
+		"icons": {
+			"files": [],
+			"owned": [],
+			"default": 0
 		},
-		// this is just for the background image
-		"FolderBrowser": {
-			// 0 -> stretch to fill background
-			// 1 -> keep the aspect ratio, without
-			//		cropping (i.e., empty bars added)
-			// 2 -> expand image to fill background
-			"background image aspect ratio mode": 2,
-			// this image file is used if there is
-			// no background image
-			"default background image": 
-				"root/root.json.metadata.fanarts.files.0.png"
+		"fanarts": {
+			"files": [],
+			"owned": [],
+			"default": 0
+		}
+	},
+	"colors": {
+		"default": [0, 0, 0, 255],
+		"transparent": [100, 0, 0, 0],
+		"default gradient 0": ["darkgray", 200],
+		"default gradient 1": ["gray", 200]
+	},
+	"fonts": {
+		"normal": {
+			"weight": 50,
+			"color": "default",
+			"family": "Helvetica",
+			"size": 20,
+			"italic": false
+		},
+		"big": {
+			"weight": 63,
+			"color": "default",
+			"family": "Helvetica",
+			"size": 30,
+			"italic": true
+		},
+		"biggest": {
+			"weight": 75,
+			"color": "default",
+			"family": "Helvetica",
+			"size": 40,
+			"italic": false
 		}
 	}
 }
