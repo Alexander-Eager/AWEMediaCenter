@@ -7,30 +7,28 @@
 // the class this creates
 #include "MediaPlayer.h"
 
-namespace AWE
-{
+namespace AWE {
 	/**
 	 * \brief A factory class that creates media players.
 	 *
 	 * This must be implemented for every plugin that
 	 * provides media players.
-	 **/
-	class AWEMC_BACKEND_LIBRARY MediaPlayerFactory
-	{
+     */
+    class AWEMC_BACKEND_LIBRARY MediaPlayerFactory {
 		public:
 			virtual ~MediaPlayerFactory() { }
 
 			/**
 			 * \brief Create a media player with the
-			 *			given settings.
+             *		  given settings.
 			 *
 			 * \param config The configuration file for
-			 *					the player.
+             *				 the player.
 			 *
 			 * \returns A new instance of the desired player,
 			 *			or `nullptr` if the player could not
 			 *			be created.
-			 **/
+             */
 			virtual MediaPlayer* create(ConfigFile* config) = 0;
 	};
 }

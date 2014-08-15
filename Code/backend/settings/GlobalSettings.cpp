@@ -4,6 +4,9 @@
 // for the singleton
 #include "AWEMC.h"
 
+// debug
+#include <QDebug>
+
 using namespace JSON;
 using namespace UI;
 
@@ -72,11 +75,7 @@ GlobalSettings::~GlobalSettings()
 {
 	// delete all of the media items
 	MediaItem::deleteAllItems();
-	// delete services
-	for (auto i : d->services)
-	{
-		delete i;
-	}
+	// services deleted with other items
 	// delete scrapers
 	for (auto i : d->scrapers)
 	{
@@ -229,14 +228,15 @@ void GlobalSettingsPrivate::obtainSkins()
 	{
 		QString file = folder.absoluteFilePath(f);
 		Skin* skin = new Skin(file);
-		if (/*skin->isValid()*/ 1)
+        if (true)
 		{
 			skins[skin->getName()] = skin;
 		}
 		else
 		{
+            qDebug() << file << "not valid.";
 			delete skin;
-		}
+        }
 	}
 	// switch to the default skin
 	currentSkin = nullptr;
@@ -306,7 +306,8 @@ void GlobalSettingsPrivate::obtainScrapers()
 	QStringList files = folder.entryList({"*.json"}, QDir::Files);
 	for (auto f : files)
 	{
-		MetadataScraperHandler* scraper = new MetadataScraperHandler(f);
+		MetadataScraperHandler* scraper 
+			= new MetadataScraperHandler(folder.absoluteFilePath(f));
 		scrapers[scraper->getName()] = scraper;
 	}
 }
@@ -326,7 +327,8 @@ void GlobalSettingsPrivate::obtainServices()
 	QStringList files = folder.entryList({"*.json"}, QDir::Files);
 	for (auto f : files)
 	{
-		MediaServiceHandler* service = new MediaServiceHandler(f);
+		MediaServiceHandler* service 
+			= new MediaServiceHandler(folder.absoluteFilePath(f));
 		services[service->getName()] = service;
 	}
 }

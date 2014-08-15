@@ -11,8 +11,7 @@
 #include "settings/ConfigFile.h"
 #include <QString>
 
-namespace AWE
-{
+namespace AWE {
 	/**
 	 * \brief Interface describing a factory that
 	 *			creates metadata scrapers.
@@ -30,23 +29,22 @@ namespace AWE
 	 * This is how AWEMC's JSON scrapers work: a plugin
 	 * for JSON scrapers is provided, and the `create()`
 	 * function returns the desired scraper.
-	 **/
-	class AWEMC_BACKEND_LIBRARY MetadataScraperFactory
-	{
+     */
+    class AWEMC_BACKEND_LIBRARY MetadataScraperFactory {
 		public:
 			virtual ~MetadataScraperFactory() { }
 			
 			/**
 			 * \brief Create a metadata scraper with the
-			 *			given settings.
+             *		  given settings.
 			 *
 			 * \param config The configuration file for
-			 *					the scraper.
+             *				 the scraper.
 			 *
 			 * \returns A new instance of the desired scraper,
 			 *			or `nullptr` if the scraper could not
 			 *			be created.
-			 **/
+             */
 			virtual MetadataScraper* create(ConfigFile* config) = 0;
 	};
 }

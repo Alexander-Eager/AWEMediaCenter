@@ -1,664 +1,502 @@
-// class header
-#include "AWEJSONScraper.h"
+// header file
+#include "JsonScraper.h"
 
-// for reading and writing
+// settings
+#include "settings/AWEMC.h"
+
+// for reading files
 #include "libs/generic_file_reader/file_reader.h"
-#include <iostream>
-#include <fstream>
 
-// for item creation
-#include "items/AWEMediaFile.h"
-#include "items/AWEFolder.h"
-#include <QChar>
+// for regular expressions
+#include <QRegularExpression>
+#include <QRegularExpressionMatch>
+#include <QRegularExpressionMatchIterator>
+
+// other important classes
+#include <QVector>
 
 // debug
-#include "debug_macros/debug.h"
+#include <QDebug>
 
+using namespace JSON;
 using namespace AWE;
-using namespace Json;
-using namespace std;
 
-JSONScraper::JSONScraper(QString name,
-		QString type) :
-	myValidity(false),
-	myName(name),
-	myType(type),
-	myCurrentFile(0)
-	{ }
+using Match = QRegularExpressionMatch;
+using Regex = QRegularExpression;
+using Matches = QVector<QRegularExpressionMatch>;
 
-bool JSONScraper::prepare(GlobalSettings* settings)
+class JsonScraperPrivate
 {
-	myGlobalSettings = settings;
-	// get the scraper and default props
-	myScraper = settings->getScraperSettingsByName(myName);
-	myDefaultProperties = settings->getTypeByName(myType);
-	// get the inherited metadata props
-	for (auto prop : myScraper["inherited metadata"].getMemberNames())
+	public:
+		// name of the scraper
+		QString name;
+
+		// type that this scrapes for
+		QString type;
+
+		// scraper validity
+		bool valid;
+
+		// The file name regex
+		Regex fileName;
+
+		// can there be multiple items per file?
+		bool multipleItemsPerFile;
+
+		// root procedure settings
+		JsonArray rootProcedures;
+
+		// the current item being edited
+		MetadataHolder* currItem;
+
+		// the current flags
+		JsonScraper::ScraperSettings currConfig;
+
+		// check the scraper's validity
+		inline void checkValidity();
+		inline int getHighestBackref(const QString& refString);
+
+		// replace item's metadata with default metadata
+		inline void makeDefault();
+
+		// Execute a procedure
+		inline bool executeProcedure(const JsonValue& proc, const Match& refs);
+
+		// gets the matches for a given procedure
+		inline Matches getMatches(const JsonValue& proc, const Match& refs);
+
+		// replace backreferences
+		inline void replaceBackrefs(QString& str, const Match& refs);
+
+		// set values for a match
+		inline void getProperties(const JsonValue& proc, const Match& refs);
+
+		// for file contents and speed
+		QHash<QString, QString> previouslyReadFiles;
+		inline QString getFileContents(const QString& file);
+};
+
+JsonScraper::JsonScraper(ConfigFile* file)
+	:	d(new JsonScraperPrivate)
+{
+	d->currItem = nullptr;
+	if (!file || !file->isValid())
 	{
-		myInheritedProperties[prop.data()] 
-			= myScraper["inherited metadata"][prop.data()].asCString();
+		qWarning() << "JsonScraper: Configuration file badly formatted";
+		d->valid = false;
+		return;
 	}
-	// get the file props
-	for (auto prop : myScraper["force copy"])
+	d->valid = true;
+
+	// get the name and type
+	d->name = file->getMember({"metadata", "name"}).toString();
+	d->type = file->getMember({"metadata", "type"}).toString();
+
+	// get the file name regex
+	if (!file->getMember({"metadata", "file name"}).isString())
 	{
-		myFileProperties << prop.asCString();
+		qWarning() << "JsonScraper: Missing file name regex for"
+			<< d->name;
+		d->valid = false;
+		return;
 	}
-	for (auto prop : myScraper["copy"])
+	d->fileName = file->getMember({"metadata", "file name"}).toString();
+
+	// get the root procedures array
+	if (!file->getMember({"scraping procedure", "procedures"}).isArray())
 	{
-		myFileProperties << prop.asCString();
+		qWarning() << "JsonScraper: Missing root procedures array for"
+			<< d->name;
 	}
-	// check validity
-	myValidity = checkValidity();
-	return myValidity;
+	d->rootProcedures = file->getMember({"scraping procedure",
+		"procedures"}).toArray();
+
+	// item multiplicity
+	d->multipleItemsPerFile = file->getMember({"scraping procedure",
+		"repeat"}).toBoolean();
+
+	// check the validity of the procedures
+	d->checkValidity();
 }
 
-bool JSONScraper::scrapeDataForFile(MediaItem* file,
-	bool askUser, bool import, bool inheritMetadata)
+JsonScraper::~JsonScraper()
 {
-	// get the containing folder
-	if (file->getItemType() == FOLDER_TYPE)
-	{
-		QDir folder = file->getConfigFile().absolutePath();
-		folder.cdUp();
-		folder.cdUp();
-		folder = folder.absoluteFilePath("config.json");
-		myCurrentFolder = (Folder*) myGlobalSettings->getMediaItemByJSONFile(folder);
-	}
-	else
-	{
-		QDir folder = file->getConfigFile().absolutePath();
-		folder.cdUp();
-		folder = folder.absoluteFilePath("config.json");
-		myCurrentFolder = (Folder*) myGlobalSettings->getMediaItemByJSONFile(folder);
-	}
-	// check validity
-	if (!isValid())
-	{
-		DEBUG_ERR("ERROR: Scraper \"" << getName().toStdString() << "\" not valid")
-		return false;
-	}
-
-	// reset to defaults
-	QString locationValue = file->getStringMember("metadata.location");
-	file->getMember("metadata") = myDefaultProperties;
-	file->getMember("metadata.location") = locationValue.toStdString();
-
-	// get the filename regex
-	myCurrentFile = file;
-	QString temp = myCurrentFile->getStringMember("metadata.location");
-	QRegularExpression fileNameRegex(myScraper["filename"].asCString());
-
-	// get the matches for the filename
-	QList<QRegularExpressionMatch> matches;
-	if (myScraper["multiple items per file"].asBool())
-	{
-		auto matchIter = fileNameRegex.globalMatch(temp);
-		while (matchIter.hasNext())
-		{
-			matches << matchIter.next();
-		}
-	}
-	else
-	{
-		QRegularExpressionMatch m = fileNameRegex.match(temp);
-		if (m.isValid())
-		{
-			matches << m;
-		}
-	}
-
-	// check for matching error
-	if (matches.count() == 0)
-	{
-		DEBUG_ERR("File \"" << temp.toStdString() << "\" does not match")
-		return false;
-	}
-
-	// get the match that we care about
-	QRegularExpressionMatch matchWeCareAbout = matches[0];
-	if (matches.count() > 1)
-	{
-		// TODO prompt user
-	}
-
-	// run through the procedures, noting issues
-	bool procsSucceeded = true;
-	for (uint i = 0; i < myScraper["procedures"].size(); ++ i)
-	{
-		procsSucceeded = procsSucceeded 
-			&& executeProcedure(myScraper["procedures"][i], matchWeCareAbout,
-				askUser, import, inheritMetadata);
-	}
-
-	// import files
-	importFiles(myScraper["force copy"]);
-	if (import)
-	{
-		importFiles(myScraper["copy"]);
-	}
-
-	// write out the config file
-	ofstream out(file->getConfigFile().absolutePath().toStdString());
-	out << myCurrentFile->getData();
-
-	// reset the file variable
-	myCurrentFile = nullptr;
-	myCurrentFolder = nullptr;
-
-	// return the success/failure
-	return procsSucceeded;
+	delete d;
 }
 
-QList<MediaItem*> JSONScraper::scrapeDataForFile(Folder* placeInMe,
-	GlobalSettings* globalSettings, QDir file,
-	bool askUser, bool import, bool inheritMetadata)
+bool JsonScraper::addMetadata(MetadataHolder* item,
+	JsonScraper::ScraperSettings config)
 {
-	myCurrentFolder = placeInMe;
-
-	// check validity
-	if (!isValid())
+	currItem = item;
+	d->makeDefault();
+	Match fileNameMatch = fileName.match(item->getLocation());
+	if (!fileNameMatch.isValid())
 	{
-		DEBUG_ERR("ERROR: Scraper \"" << getName().toStdString() << "\" not valid")
-		return QList<MediaItem*>();
+		qWarning() << "JsonScraper: File name does not match for" << item->getName();
+		currItem = nullptr;
+		return false;
 	}
-
-	// get the filename regex
-	QString temp = file.absolutePath();
-	QRegularExpression fileNameRegex(myScraper["filename"].asCString());
-
-	// get the matches for the filename
-	QList<QRegularExpressionMatch> matches;
-	if (myScraper["multiple items per file"].asBool())
+	bool ans = true;
+	const JsonArray procArray = rootProcedures;
+	for (const auto& proc : procArray)
 	{
-		auto matchIter = fileNameRegex.globalMatch(temp);
-		while (matchIter.hasNext())
-		{
-			matches << matchIter.next();
-		}
+		ans &&= d->executeProcedure(proc, fileNameMatch);
 	}
-	else
-	{
-		QRegularExpressionMatch m = fileNameRegex.match(temp);
-		if (m.isValid())
-		{
-			matches << m;
-		}
-	}
-
-	// ans list
-	QList<MediaItem*> ans;
-
-	// check for matching error
-	if (matches.count() == 0)
-	{
-		DEBUG_ERR("File \"" << temp.toStdString() << "\" does not match")
-		return ans;
-	}
-
-	for (int i = 0; i < matches.count(); ++ i)
-	{
-		// get the folder to put the JSON file in
-		QDir folderPath = placeInMe->getConfigFile();
-		folderPath.cdUp();
-
-		// make the folder if necessary
-		if (myScraper["type"] == "folder")
-		{
-			folderPath.mkdir(matches[i].captured(0));
-		}
-
-		// get the JSON file name
-		QDir jsonFile = folderPath;
-		jsonFile = QDir(jsonFile.absolutePath() + "/" + matches[i].captured(0));
-
-		// make the item
-		if (myScraper["type"] == "file")
-		{
-			jsonFile = QDir(jsonFile.absolutePath() + ".json");
-			myCurrentFile = new MediaFile(jsonFile);
-		}
-		else if (myScraper["type"] == "folder")
-		{
-			jsonFile = QDir(jsonFile.absolutePath() + "/config.json");
-			myCurrentFile = new Folder(jsonFile);
-		}
-
-		// make sure it knows its media file location
-		myCurrentFile->getMember("metadata") = myDefaultProperties;
-		myCurrentFile->getMember("metadata.location")
-			= folderPath.relativeFilePath(file.absolutePath()).toStdString();
-
-		// run through the procedures, noting issues
-		bool procsSucceeded = true;
-		for (uint j = 0; j < myScraper["procedures"].size(); ++ j)
-		{
-			procsSucceeded = procsSucceeded 
-				&& executeProcedure(myScraper["procedures"][j], matches[i],
-					askUser, import, inheritMetadata);
-		}
-
-		// import files
-		importFiles(myScraper["force copy"]);
-		if (import)
-		{
-			importFiles(myScraper["copy"]);
-		}
-
-		// add the item to the list
-		ans.append(myCurrentFile);
-
-		// add the item to the folder
-		placeInMe->addItem(myCurrentFile);
-
-		// add the item to the global settings
-		globalSettings->addItem(myCurrentFile);
-
-		// write out the config file
-		ofstream out(jsonFile.absolutePath().toStdString());
-		out << myCurrentFile->getData();
-	}
-
-	// reset the file variable
-	myCurrentFile = nullptr;
-	myCurrentFolder = nullptr;
-
-	// return the list
 	return ans;
 }
 
-bool JSONScraper::executeProcedure(Value& procedure, QRegularExpressionMatch backrefs,
-	bool askUser, bool import, bool inheritMetadata)
+// TODO makeMediaItems
+
+bool JsonScraperPrivate::executeProcedure(const JsonValue& proc, const Match& refs)
 {
-	// get the file to look in and what to look for
-	QString lookInFile = procedure["look in file"].asCString();
-	QString lookFor = procedure["for"].asCString();
-
-	// replace backrefs
-	replaceBackrefs(lookInFile, backrefs);
-	replaceBackrefs(lookFor, backrefs);
-
-	// get the contents of the file
-	QString fileContents = getFileContents(lookInFile);
-
-	// get the regex
-	QRegularExpression forRegex(lookFor);
-
-	// get the matches
-	QList<QRegularExpressionMatch> matches;
-	if (procedure["repeat"].asBool()
-		|| procedure["ask user"].asString() != "")
+	Matches newRefs = getMatches(proc, refs);
+	bool ans = true;
+	for (auto currRefs : newRefs)
 	{
-		// repetitive or user-prompting, so get all of them
-		auto matchIter = forRegex.globalMatch(fileContents);
-		while (matchIter.hasNext())
+		getProperties(proc, currRefs);
+		const JsonArray newProcs = proc["procedures"].toArray();
+		for (auto newProc : newProcs)
 		{
-			matches << matchIter.next();
+			ans &&= executeProcedure(newProc, currRefs);
 		}
+	}
+}
+
+void JsonScraperPrivate::checkValidity()
+{
+	// TODO
+}
+
+int JsonScraperPrivate::getHighestBackref(const QString& refString)
+{
+	// TODO
+	return (int) (((uint) (-1)) >> 1);
+}
+
+void JsonScraperPrivate::makeDefault()
+{
+	// TODO
+}
+
+Matches JsonScraperPrivate::getMatches(const JsonValue& proc,
+	const Match& refs)
+{
+	// get all of the repeat/ask user members
+	const JsonObject obj = proc.toObject();
+	bool multi = proc["repeat"].toBoolean();
+	bool shouldAsk = currConfig & JsonScraper::AskUser;
+	QString textPromptFormat = proc["ask user with text"].toString();
+	QString imagePromptFormat = proc["ask user with image"].toString();
+
+	// get the file's contents
+	QString fileToRead = proc["look in file"].toString();
+	replaceBackrefs(fileToRead, refs);
+	QString textToLookIn = getFileContents(fileToRead);
+
+	// get the "for" regex
+	QString textToLookFor = proc["for"].toString();
+	replaceBackrefs(textToLookFor, refs);
+	Regex regex(textToLookFor);
+
+	// get the answer
+	Matches ans;
+	if (shouldAsk && !textPromptFormat.isEmpty()
+		&& !imagePromptFormat.isEmpty())
+	{
+		// ask user with both text and images
+		// TODO
+	}
+	if (shouldAsk && !textPromptFormat.isEmpty())
+	{
+		// ask user with just text
+		// TODO
+	}
+	if (shouldAsk && !imagePromptFormat.isEmpty())
+	{
+		// ask user with just images
+		// TODO
+	}
+	if (multi)
+	{
+		// just get all of the matches
+		QRegularExpressionMatchIterator iter = regex.globalMatch(textToLookIn);
+		while (iter.hasNext())
+		{
+			ans << iter.next();
+		}
+		return ans;
 	}
 	else
 	{
-		// not repetitive and user is not prompted, so get first
-		QRegularExpressionMatch m = forRegex.match(fileContents);
-		if (m.capturedRef().count() != 0)
-		{
-			matches << m;
-		}
-	}
-
-	// no matches is an error
-	if (matches.count() == 0)
-	{
-		DEBUG_ERR("ERROR: No matches for \"" << lookFor.toStdString() << "\" in "
-						<< lookInFile.toStdString())
-		DEBUG_ERR(fileContents.toStdString())
-		return false;
-	}
-
-	// TODO user prompting
-	if (!procedure["repeat"].asBool())
-	{
-		QList<QRegularExpressionMatch> newMatches;
-		newMatches << matches[0];
-		newMatches.swap(matches);
-	}
-
-	// run for every match
-	bool procsSucceeded = true;
-	for (auto i : matches)
-	{
-		procsSucceeded = procsSucceeded
-			&& useMatchForProcedure(procedure, i,
-				askUser, import, inheritMetadata);
-	}
-
-	// TODO import
-
-	// return success/failure
-	return procsSucceeded;
-}
-
-bool JSONScraper::useMatchForProcedure(Value& procedure, QRegularExpressionMatch backrefs,
-	bool askUser, bool import, bool inheritMetadata)
-{
-	bool procsSucceeded = true;
-
-	// apply to the properties in this procedure
-	Value::Members mems = procedure["set properties"].getMemberNames();
-	for (auto prop : mems)
-	{
-		// if we are not inheriting or, if we are, it isn't supposed to be
-		// anyway
-		if (!inheritMetadata || !myInheritedProperties.contains(prop.data()))
-		{
-			DEBUG_OUT("Setting property \"" << prop << "\"")
-			// determine what type it is
-			Value valueToSet;
-			if (procedure["set properties"][prop].isString()) // string implies backrefs
-			{
-				// replace backrefs in the value
-				QString temp = procedure["set properties"][prop].asCString();
-				replaceBackrefs(temp, backrefs);
-				valueToSet = temp.toStdString();
-				DEBUG_OUT("To " << temp.toStdString())
-			}
-			else
-			{
-				valueToSet = procedure["set properties"][prop];
-				DEBUG_OUT("To " << valueToSet)
-			}
-
-			// parse the property name to delve down objects
-			Value* toSet = &(myCurrentFile->getMember(
-									"metadata." + QString(prop.c_str())));
-
-			// set the object in the appropriate way
-			if (toSet->isArray())
-			{
-				// append to the array
-				toSet->append(valueToSet);
-			}
-			else if (toSet->isInt() && valueToSet.isString())
-			{
-				// make sure to set to int interpretation
-				toSet->operator= (QString(valueToSet.asCString()).toInt());
-			}
-			else if (toSet->isBool() && valueToSet.isString())
-			{
-				// make sure to set to bool cast of int interpretation
-				toSet->operator= ((bool) QString(valueToSet.asCString()).toInt());
-			}
-			else // something else
-			{
-				// replace the current value
-				toSet->operator= (valueToSet);
-			}
-		}
-		else // inherit from the containing folder
-		{
-			// if it is a file property and this is a folder
-			if (myFileProperties.contains(prop.data())
-				&& myCurrentFile->getItemType() == FOLDER_TYPE)
-			{
-				myCurrentFile->getMember(QString("metadata.") + prop.data())
-					= "../" + myCurrentFolder->getMember("metadata." 
-										+ myInheritedProperties[prop.data()]).asString();
-			}
-			else
-			{
-				myCurrentFile->getMember(QString("metadata.") + prop.data())
-					= myCurrentFolder->getMember("metadata." 
-										+ myInheritedProperties[prop.data()]);
-			}
-		}
-	}
-
-	// apply to the sub procedures
-	for (uint j = 0; j < procedure["procedures"].size(); ++ j)
-	{
-		procsSucceeded = procsSucceeded 
-			&& executeProcedure(procedure["procedures"][j],
-				backrefs, askUser, import, inheritMetadata);
-	}
-
-	return procsSucceeded;
-}
-
-void JSONScraper::importFiles(Value& props)
-{
-	for (auto str : props)
-	{
-		// get the base of the file name
-		QString prop = str.asCString();
-		QString fileName = myCurrentFile->getConfigFile().dirName()
-							+ ".metadata." + prop;
-		// get the member to set
-		Json::Value& temp = myCurrentFile->getMember("metadata." + prop);
-		// if it is an array
-		if (temp.isArray())
-		{
-			for (uint j = 0; j < temp.size(); ++ j)
-			{
-				// get the file extension
-				QString extension = temp[j].asCString();
-				extension.replace(0, extension.lastIndexOf("."), "");
-				// the file name is item_json_file.array_prop_path.#.extension
-				// located in the folder with the JSON file
-				QDir pathToNewFile(myCurrentFile->getConfigFile().absolutePath());
-				pathToNewFile.cdUp();
-				pathToNewFile = pathToNewFile.absoluteFilePath(fileName + "."
-									+ QString::number(j) + extension);
-				QFile writeToMe(pathToNewFile.absolutePath());
-				if (writeToMe.open(QFile::WriteOnly))
-				{
-					// copy the file
-					copyFile(temp[j].asCString(), writeToMe);
-					// change the property value
-					DEBUG_OUT(temp[j].asCString() << " -> " 
-						<< pathToNewFile.dirName().toStdString())
-					temp[j] = pathToNewFile.dirName().toStdString();
-				}
-				writeToMe.close();
-			}
-		}
-		// just a single file string
-		else if (temp.isString())
-		{
-			// get the file extension
-			QString extension = temp.asCString();
-			extension.replace(0, extension.lastIndexOf("."), "");
-			// the file name is item_json_file.array_prop_path.#.extension
-			// located in the folder with the JSON file
-			QDir pathToNewFile(myCurrentFile->getConfigFile().absolutePath());
-			pathToNewFile.cdUp();
-			pathToNewFile = pathToNewFile.absoluteFilePath(fileName + "." + extension);
-			QFile writeToMe(pathToNewFile.absolutePath());
-			if (writeToMe.open(QFile::WriteOnly))
-			{
-				// copy the file
-				copyFile(temp.asCString(), writeToMe);
-				// change the property value
-				DEBUG_OUT(temp.asCString() << " -> " 
-					<< pathToNewFile.dirName().toStdString())
-				temp = pathToNewFile.dirName().toStdString();
-			}
-		}
+		// just get the first match
+		Match m = regex.match(textToLookIn);
+		ans << m;
+		return ans;
 	}
 }
 
-void JSONScraper::deactivate()
+inline void replaceBackrefs(QString& str, const Match& refs)
 {
-	myScraper = Value::null;
-	myDefaultProperties = Value::null;
-	myGlobalSettings = nullptr;
-}
-
-int JSONScraper::replaceBackrefs(QString& pseudo_reg, 
-		QRegularExpressionMatch backrefs)
-{
-	int max = -1;
-	int i = pseudo_reg.indexOf("$");
-	while (i >= 0 && i < pseudo_reg.count() - 1)
+	int i = 0;
+	while (i < str.count() - 1)
 	{
-		if (pseudo_reg[i + 1] == '$') // "$$"
+		if (str[i] == '$')
 		{
-			// actually just want a $
-			pseudo_reg.replace(i, 2, "$");
+			char c = str[i + 1];
+			switch (c)
+			{
+				case '0': case '1': case '2': case '3':
+				case '4': case '5': case '6': case '7':
+				case '8': case '9': // numbered backrefs
+					str.replace(i, 2, refs.captured(c - '0'));
+					i += 2;
+					break;
+				case '$':
+					str.replace(i, 2, "$");
+					i += 2;
+					break;
+				default:
+					// this makes no sense, so leave it alone
+					// this should never even happen with correct
+					// validity checking
+					qWarning() << "JsonScraper: Found invalid reference string"
+						<< "while scraping";
+					++ i;
+					break;
+			}
+		}
+		else
+		{
 			++ i;
 		}
-		else // backref, "$#""
+	}
+}
+
+inline void getProperties(const JsonValue& proc, const Match& refs)
+{
+	// name
+	if (proc["set name"].isString())
+	{
+		QString newName = proc["set name"].toString();
+		replaceBackrefs(newName, refs);
+		currItem->setName(newName);
+	}
+	// description
+	if (proc["set description"].isString())
+	{
+		QString newDescription = proc["set description"].toString();
+		replaceBackrefs(newDescription, refs);
+		currItem->setDescription(newDescription);
+	}
+	// details
+	/*	Details are added according to these rules:
+		- Strings have their backrefs replaced
+		- If the value to be edited is a string, the string
+			representation is used.
+		- If the value to be edited is a boolean, these rules
+			are used:
+			- Strings like "yes", "no", "true", "false" are converted.
+			- Numbers are converted to integers and then booleans.
+			- Booleans are... well, you know.
+			- Anything else is invalid, and no value is set.
+		- If the value to be edited is a number, these rules
+			are used:
+			- Strings in numeric format are converted.
+			- Numbers are... well, you know.
+			- Booleans become 0 (false) or 1 (true)
+			- Anything else is invlaid, and no value is set.
+		- If the value to be edited is an array, the new value is appended.
+		- If the value to be edited is an object or null, the value is replaced.
+	*/
+	if (proc["set details"].isObject())
+	{
+		const JsonObject obj = proc["set details"].toObject();
+		for (auto detail : obj)
 		{
-			int c = pseudo_reg[i + 1].toLatin1() - '0';
-			// change the max backref (for validity check)
-			if (c > max)
+			JsonValue detailValue = *detail;
+			JsonValue::Type newType = detailValue.getType();
+			if (newType == JsonValue::String)
 			{
-				max = c;
+				QString temp = detailValue.toString();
+				replaceBackrefs(temp, refs);
+				detailValue = temp;
 			}
-			pseudo_reg.replace(i, 2, backrefs.captured(c));
-			i += backrefs.captured(c).count();
+			JsonValue::Type shouldType = currItem
+				->getDetailValue(detail.key()).getType();
+			switch (shouldType)
+			{
+				case JsonValue::String:
+					switch (newType)
+					{
+						case JsonValue::String:
+							currItem->addDetail(detail.key(), detailValue);
+							break;
+						case JsonValue::Number:
+							currItem->addDetail(detail.key(), 
+								QString::number(detailValue.toDouble()));
+							break;
+						case JsonValue::Boolean:
+							if (detailValue.toBoolean())
+							{
+								currItem->addDetail(detail.key(),
+									"Yes");
+							}
+							else
+							{
+								currItem->addDetail(detail.key(),
+									"No");
+							}
+							break;
+						case JsonValue::Array: case JsonValue::Object:
+						case JsonValue::Null: default:
+							// TODO multiple add with arrays?
+							qWarning() << "JsonScraper: Found invalid detail value"
+								<< "while scraping";
+							break;
+					}
+					break;
+				case JsonValue::Number:
+					switch (newType)
+					{
+						case JsonValue::String:
+							bool stringToNumberOk;
+							double detailValueAsNumber = detailValue
+								.toString().toDouble(&stringToNumberOk);
+							if (stringToNumberOk)
+							{
+								currItem->addDetail(detail.key(), detailValueAsNumber);
+							}
+							else
+							{
+								qWarning() << "JsonScraper: Invalid string-to-number"
+									<< "while scraping";
+							}
+							break;
+						case JsonValue::Number:
+							currItem->addDetail(detail.key(), detailValue);
+							break;
+						case JsonValue::Boolean:
+							if (detailValue.toBoolean())
+							{
+								currItem->addDetail(detail.key(), 1);
+							}
+							else
+							{
+								currItem->addDetail(detail.key(), 0);
+							}
+							break;
+						case JsonValue::Array: case JsonValue::Object:
+						case JsonValue::Null: default:
+							qWarning() << "JsonScraper: Invalid detail value"
+								<< "while scraping";
+							break;
+					}
+					break;
+				case JsonValue::Boolean:
+					switch (newType)
+					{
+						case JsonValue::String:
+							QString boolString = detailValue.toString();
+							if (!QString::compare(boolString, "yes",
+								Qt::CaseInsensitive) || !QString::compare(
+								boolString, "true", Qt::CaseInsensitive))
+							{
+								currItem->addDetail(detail.key(), true);
+							}
+							else if (!QString::compare(boolString, "no",
+								Qt::CaseInsensitive) || !QString::compare(
+								boolString, "false", Qt::CaseInsensitive))
+							{
+								currItem->addDetail(detail.key(), false);
+							}
+							else
+							{
+								qWarning() << "JsonScraper: Invalid string-to-bool"
+									<< "conversion.";
+							}
+							break;
+						case JsonValue::Number:
+							currItem->addDetail(detail.key(), (bool)
+								detailValue.toInteger());
+							break;
+						case JsonValue::Boolean:
+							currItem->addDetail(detail.key(), detailValue);
+							break;
+						case JsonValue::Array: case JsonValue::Object:
+						case JsonValue::Null: default:
+							qWarning() << "JsonScraper: Invalid detail value"
+								<< "while scraping";
+							break;
+					}
+					break;
+				case JsonValue::Array: case JsonValue::Object:
+				case JsonValue::Null: default:
+					currItem->addDetail(detail.key(), detailValue);
+					break;
+			}
 		}
-		i = pseudo_reg.indexOf("$", i);
 	}
-	return max;
-}
-
-QString& JSONScraper::getFileContents(QString file)
-{
-	if (!myMetadataFiles.contains(file))
+	// icons
+	if (proc["add icons"].isArray())
 	{
-		QTextStream stream(&myMetadataFiles[file]);
-		copyFile(file, stream);
-	}
-	return myMetadataFiles[file];
-}
-
-bool JSONScraper::isValid()
-{
-	return myValidity;
-}
-
-bool JSONScraper::checkValidity()
-{
-	// if true, we assume its good
-	if (myValidity)
-	{
-		return true;
-	}
-
-	// doesn't have the necessary tags
-	if (!myScraper.isMember("filename") || !myScraper["filename"].isString()
-		|| !myScraper.isMember("multiple items per file")
-			|| !myScraper["multiple items per file"].isBool()
-		|| !myScraper.isMember("inherited metadata")
-			|| !myScraper["inherited metadata"].isObject()
-		|| !myScraper.isMember("procedures") || !myScraper["procedures"].isArray()
-		|| !myScraper.isMember("force copy") || !myScraper["force copy"].isArray()
-		|| !myScraper.isMember("copy") || !myScraper["copy"].isArray())
-	{
-		DEBUG_ERR("Missing tags")
-		return false;
-	}
-
-	// check regex validity
-	QRegularExpression regex(myScraper["filename"].asCString());
-	if (!regex.isValid())
-	{
-		DEBUG_ERR("Regex \"" << regex.pattern().toStdString() << "\" Invalid")
-		return false;
-	}
-
-	// check each procedure
-	for (uint i = 0; i < myScraper["procedures"].size(); ++ i)
-	{
-		if (!checkProcedureValidity(myScraper["procedures"][i], regex.captureCount()))
+		const JsonArray arr = proc["add icons"].toArray();
+		for (auto i : arr)
 		{
-			// bad procedure
-			return false;
+			if (!i.isString())
+			{
+				qWarning() << "JsonScraper: Non-string icon while scraping";
+			}
+			else
+			{
+				QString iconToAdd = i.toString();
+				replaceBackrefs(iconToAdd, refs);
+				if (currConfig & JsonScraper::ImportIcons)
+				{
+					currItem->importIcon(iconToAdd);
+				}
+				else
+				{
+					currItem->addIcon(iconToAdd);
+				}
+			}
 		}
 	}
-
-	// all is well
-	return true;
+	// fanarts
+	if (proc["add fanarts"].isArray())
+	{
+		const JsonArray arr = proc["add fanarts"].toArray();
+		for (auto i : arr)
+		{
+			if (!i.isString())
+			{
+				qWarning() << "JsonScraper: Non-string fanart while scraping";
+			}
+			else
+			{
+				QString fanartToAdd = i.toString();
+				replaceBackrefs(fanartToAdd, refs);
+				if (currConfig & JsonScraper::ImportFanarts)
+				{
+					currItem->importFanart(fanartToAdd);
+				}
+				else
+				{
+					currItem->addFanart(fanartToAdd);
+				}
+			}
+		}
+	}
 }
 
-bool JSONScraper::checkProcedureValidity(Value& procedure, int capCount)
+QString JsonScraperPrivate::getFileContents(const QString& file)
 {
-	// doesn't have the necessary tags
-	if (!procedure.isMember("repeat") || !procedure["repeat"].isBool()
-		|| !procedure.isMember("ask user") || !procedure["ask user"].isString()
-		|| !procedure.isMember("look in file") || !procedure["look in file"].isString()
-		|| !procedure.isMember("for") || !procedure["for"].isString()
-		|| !procedure.isMember("set properties")
-			|| !procedure["set properties"].isObject()
-		|| !procedure.isMember("procedures") || !procedure["procedures"].isArray())
+	if (previouslyReadFiles.contains(file))
 	{
-		DEBUG_ERR("Missing tags")
-		return false;
+		return previouslyReadFiles[files];
 	}
-
-	/* check regex validity */
-	QString pattern = procedure["look in file"].asCString();
-	// check backref replace for "look in file"
-	if (replaceBackrefs(pattern, QRegularExpressionMatch()) > capCount)
-	{
-		DEBUG_ERR("Backref pattern \"" << pattern.toStdString() << "\" Invalid")
-		return false;
-	}
-	// check backref replace for "for"
-	pattern = procedure["for"].asCString();
-	if (replaceBackrefs(pattern, QRegularExpressionMatch()) > capCount)
-	{
-		DEBUG_ERR("Backref pattern \"" << pattern.toStdString() << "\" Invalid")
-		return false;
-	}
-	// check regex for "for"
-	QRegularExpression regex(pattern);
-	if (!regex.isValid())
-	{
-		DEBUG_ERR("Regex \"" << regex.pattern().toStdString() << "\" Invalid")
-		return false;
-	}
-	// check backref replace for "ask user"
-	pattern = procedure["ask user"].asCString();
-	if (replaceBackrefs(pattern, QRegularExpressionMatch()) > regex.captureCount())
-	{
-		DEBUG_ERR("Backref pattern \"" << pattern.toStdString() << "\" Invalid")
-	}
-	// check backref replace for each property set
-	for (auto str : procedure["set properties"].getMemberNames())
-	{
-		if (!procedure["set properties"][str].isString())
-		{
-			continue;
-		}
-		pattern = procedure["set properties"][str].asCString();
-		if (replaceBackrefs(pattern, QRegularExpressionMatch()) > regex.captureCount())
-		{
-			DEBUG_ERR("Setting \"" << str << "\"")
-			DEBUG_ERR("Backref pattern \"" << pattern.toStdString() << "\" Invalid")
-			return false;
-		}
-	}
-
-	/* check each sub procedure */
-	for (uint i = 0; i < procedure["procedures"].size(); ++ i)
-	{
-		if (!checkProcedureValidity(procedure["procedures"][i], regex.captureCount()))
-		{
-			// bad procedure
-			return false;
-		}
-	}
-
-	// all is well
-	return true;
-}
-
-QString JSONScraper::getName()
-{
-	return myName;
-}
-
-QString JSONScraper::getType()
-{
-	return myType;
+	QString contents;
+	QTextStream stream(&contents);
+	copyFile(file, stream);
+	previouslyReadFiles[file] = contents;
+	return contents;
 }

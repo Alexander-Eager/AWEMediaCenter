@@ -4,26 +4,27 @@
 // library macros
 #include "macros/BackendLibraryMacros.h"
 
+// configuration file
+#include "settings/ConfigFile.h"
+
 // the class that this makes
 #include "MediaService.h"
 
-namespace AWE
-{
+namespace AWE {
 	/**
 	 * \brief Interface for making media services.
 	 *
 	 * This is the main interface that must be
 	 * implemented in every service plugin, to
 	 * create the desired service(s).
-	 **/
-	class AWEMC_BACKEND_LIBRARY MediaServiceFactory
-	{
+     */
+    class AWEMC_BACKEND_LIBRARY MediaServiceFactory {
 		public:
 			virtual ~MediaServiceFactory() { }
 
 			/**
 			 * \brief Create a media service with the
-			 *			given settings.
+             *		  given settings.
 			 *
 			 * \param config The configuration file for
 			 *					the service.
@@ -31,7 +32,7 @@ namespace AWE
 			 * \returns A new instance of the desired service,
 			 *			or `nullptr` if the service could not
 			 *			be created.
-			 **/
+             */
 			virtual MediaService* create(ConfigFile* config) = 0;
 	};
 }

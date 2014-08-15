@@ -35,9 +35,9 @@ class JsonPlayerPrivate;
  *		}
  *
  * `<plugin location>` is one of these:
- *	- On OS X, it is `"libs/libjsonplayer.dylib"`.
- *	- On Linux, it is `"libs/libjsonplayer.so"`.
- *	- On Windows, it is `"libs/jsonplayer.dll"`.
+ *	- On OS X, it is `"libs/libJsonPlayer.dylib"`.
+ *	- On Linux, it is `"libs/libJsonPlayer.so"`.
+ *	- On Windows, it is `"libs/JsonPlayer.dll"`.
  *	- On other platforms, it depends on the file names for
  *		dynamic libraries. Look it up online. It will always
  *		be `"libs/<library name>"`.

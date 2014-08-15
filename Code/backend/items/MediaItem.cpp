@@ -9,6 +9,14 @@
 // for getting services
 #include "settings/AWEMC.h"
 
+// for holding data
+#include <QString>
+#include <QPixmap>
+#include <QList>
+
+// for holding settings data
+#include "settings/ConfigFile.h"
+
 namespace AWE
 {
 	// internal data class that is, at the moment, used

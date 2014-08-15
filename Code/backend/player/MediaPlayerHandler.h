@@ -7,8 +7,7 @@
 // for data
 #include <QString>
 
-namespace AWE
-{
+namespace AWE {
 	// forward declarations
 	class MediaFile;
 	// internal data class
@@ -21,9 +20,8 @@ namespace AWE
 	 * unlike `MetadataScraperHandler`. Calling `play()`
 	 * will load the plugin, and the plugin will be closed
 	 * once the player stops running.
-	 **/
-	class AWEMC_BACKEND_LIBRARY MediaPlayerHandler : public MetadataHolder
-	{
+     */
+    class AWEMC_BACKEND_LIBRARY MediaPlayerHandler : public MetadataHolder {
 		Q_OBJECT
 		
 		public:
@@ -31,23 +29,23 @@ namespace AWE
 			 * \brief Construct from the given config file.
 			 *
 			 * \param file The config file for the player.
-			 **/
+             */
 			MediaPlayerHandler(QString file);
 
 			/**
 			 * \brief Destroy this object.
-			 **/
+             */
 			virtual ~MediaPlayerHandler();
 
 			/**
 			 * \brief Determine if the given media file
-			 *			can be played by this player.
+             *		  can be played by this player.
 			 *
 			 * \param file The file to determine playability for.
 			 *
 			 * \returns `true` if this player can play `file`,
 			 *			`false` otherwise.
-			 **/
+             */
 			virtual bool canPlay(MediaFile* file) const;
 
 			/**
@@ -55,12 +53,12 @@ namespace AWE
 			 *
 			 * \returns `true` if the player is being used,
 			 *			`false` otherwise.
-			 **/
+             */
 			virtual bool isPlaying() const;
 
 			/**
 			 * \brief Determines if the player is playing
-			 *			a particular file.
+             *		  a particular file.
 			 *
 			 * If this returns `true` for any file,
 			 * `isPlaying()` will also return `true`.
@@ -69,7 +67,7 @@ namespace AWE
 			 *
 			 * \returns `true` if the player is being used
 			 *			to play `file`, `false` otherwise.
-			 **/
+             */
 			virtual bool isPlaying(MediaFile* file) const;
 
 			/**
@@ -77,7 +75,7 @@ namespace AWE
 			 *
 			 * \returns `true` if this player is valid, `false`
 			 *			otherwise.
-			 **/
+             */
 			virtual bool isValid() const;
 
 		public slots:
@@ -96,7 +94,7 @@ namespace AWE
 			 *
 			 * \returns `true` if `file` played successfully,
 			 *			`false` otherwise.
-			 **/
+             */
 			virtual bool play(MediaFile* file);
 
 			/**
@@ -104,7 +102,7 @@ namespace AWE
 			 *
 			 * \returns `true` if the player is now closed,
 			 *			`false` otherwise.
-			 **/
+             */
 			virtual bool close();
 
 			/**
@@ -120,7 +118,7 @@ namespace AWE
 			 * \returns `true` if the player is playing `file`
 			 *			and it was closed successfully,
 			 *			`false` otherwise.
-			 **/
+             */
 			virtual bool close(MediaFile* file);
 
 		signals:
@@ -137,7 +135,7 @@ namespace AWE
 			 *
 			 * Basically, this indicates that `isPlaying()` has
 			 * changed from `true` to `false`.
-			 **/
+             */
 			void closed();
 
 			/**
@@ -147,7 +145,7 @@ namespace AWE
 			 * successfully, and whenever the file stops playing.
 			 *
 			 * \param file The file that was closed.
-			 **/
+             */
 			void closed(MediaFile* file);
 
 			/**
@@ -160,7 +158,7 @@ namespace AWE
 			 * items, this will only be sent for the first item
 			 * that starts playing. In other words, this indicates
 			 * that `isPlaying()` has changed from `false` to `true`.
-			 **/
+             */
 			void startedPlaying();
 
 			/**
@@ -170,33 +168,8 @@ namespace AWE
 			 * successfully, and whenever the file starts playing.
 			 *
 			 * \param file The file that has started playing.
-			 **/
+             */
 			void startedPlaying(MediaFile* file);
-
-		private slots:
-			/**
-			 * \brief Respond to the player closing.
-			 **/
-			void respondToClosed();
-
-			/**
-			 * \brief Respond to a file closing.
-			 *
-			 * \param file The file that was closed.
-			 **/
-			void respondToClosed(MediaFile* file);
-
-			/**
-			 * \brief Respond to the player starting.
-			 **/
-			void respondToPlaying();
-
-			/**
-			 * \brief Respond to a file playing.
-			 *
-			 * \param file The file that began playing.
-			 **/
-			void respondToPlaying(MediaFile* file);
 
 		private:
 			friend class MediaPlayerHandlerPrivate;

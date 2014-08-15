@@ -29,3 +29,6 @@
 *.pro.user
 moc_*
 .qmake*
+
+# Test data that will eventually be included
+OS_X_DEFAULT_DATA

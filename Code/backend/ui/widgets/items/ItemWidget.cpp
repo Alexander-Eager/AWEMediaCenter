@@ -199,7 +199,7 @@ void ItemWidgetPrivate::configure(const JsonValue config)
 	// corner curvature
 	if (obj.contains("corner radius"))
 	{
-		cornerRadius = s->makePoint(obj.get("corner radius"));
+		cornerRadius = s->makePoint(obj["corner radius"]);
 	}
 	else
 	{
@@ -209,7 +209,7 @@ void ItemWidgetPrivate::configure(const JsonValue config)
 	// outline color
 	if (obj.contains("outline"))
 	{
-		outline = s->makePen(obj.get("outline"));
+		outline = s->makePen(obj["outline"]);
 	}
 	else
 	{
@@ -224,7 +224,7 @@ void ItemWidgetPrivate::configure(const JsonValue config)
 	// background brush
 	if (obj.contains("background"))
 	{
-		brush = s->makeBrush(obj.get("background"));
+		brush = s->makeBrush(obj["background"]);
 	}
 	else
 	{

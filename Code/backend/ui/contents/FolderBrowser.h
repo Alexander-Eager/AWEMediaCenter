@@ -123,7 +123,8 @@ namespace UI
 			 * \param[in] flags The scraping configuration.
 			 **/
 			virtual void scrapeForMetadata(AWE::MetadataHolder* item,
-				AWE::MetadataScraperHandler* scraper, int flags);
+                AWE::MetadataScraperHandler* scraper,
+                AWE::MetadataScraper::ScraperSettings flags);
 
 			/**
 			 * \brief Configure this browser to use the

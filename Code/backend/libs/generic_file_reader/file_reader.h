@@ -1,6 +1,9 @@
 #ifndef FILE_READER_H
 #define FILE_READER_H
 
+// library macros
+#include "macros/BackendLibraryMacros.h"
+
 // for storing output
 #include <QString>
 #include <QTextStream>
@@ -18,8 +21,8 @@
  * \param[out] out The `QTextStream` to write to.
  *
  * \return `true` if the file was read, `false` otherwise.
- **/
-bool copyFile(QString file, QTextStream& out);
+ */
+AWEMC_BACKEND_LIBRARY auto copyFile(QString file, QTextStream& out) -> bool;
 
 /**
  * \brief Copy the contents of a file into an IO device.
@@ -33,7 +36,7 @@ bool copyFile(QString file, QTextStream& out);
  * \param[out] out The `QIODevice` to write to.
  *
  * \return `true` if the file was read, `false` otherwise.
- **/
-bool copyFile(QString file, QIODevice& out);
+ */
+AWEMC_BACKEND_LIBRARY auto copyFile(QString file, QIODevice& out) -> bool;
 
 #endif

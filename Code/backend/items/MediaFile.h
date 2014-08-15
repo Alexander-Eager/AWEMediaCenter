@@ -1,17 +1,13 @@
 #ifndef MEDIA_FILE_H
 #define MEDIA_FILE_H
 
-// for holding data
-#include <QString>
+// library macros and forward declarations
+#include "macros/BackendLibraryMacros.h"
 
-// the superclass
+// superclass
 #include "MediaItem.h"
 
-// for playback
-#include "player/MediaPlayerHandler.h"
-
-namespace AWE
-{
+namespace AWE {
 	// internal data
 	class MediaFilePrivate;
 
@@ -19,55 +15,57 @@ namespace AWE
 	 * \brief Represents a media file.
 	 *
 	 * Holds the default player and all relevant metadata.
-	 **/
-	class MediaFile : public MediaItem
-	{
+     */
+    class AWEMC_BACKEND_LIBRARY MediaFile : public MediaItem {
 		public:
 			/**
 			 * \brief Construct using the JSON file.
 			 *
 			 * \param file The path to the file.
-			 **/
+             */
 			MediaFile(QString file);
 
 			/**
 			 * \brief Construct from the given config file.
 			 *
 			 * \param file The config file.
-			 **/
+             */
 			MediaFile(ConfigFile* file);
 
-			/** \brief Deconstructor. **/
+            /**
+             * \brief Deconstructor.
+             */
 			virtual ~MediaFile();
 
 			/**
 			 * \brief Get the absolute path to the media file.
 			 *
 			 * \returns The absolute path to of the media file.
-			 **/
-			virtual QString getMediaFile() const;
+             */
+            auto getMediaFile() const -> QString;
 
 			/**
 			 * \brief Get the default media player for this item.
 			 *
 			 * \returns The default media player for this item.
-			 **/
-			virtual MediaPlayerHandler* getDefaultPlayer();
-
-			/**
-			 * \brief Play this item with the default player.
-			 *
-			 * \returns `true` if playback was successful,
-			 *			`false` if it was not.
-			 **/
-			virtual bool play();
+             */
+            auto getDefaultPlayer() -> MediaPlayerHandler*;
 
 			/**
 			 * \brief Determine the basic type (folder, file, service)
 			 *
 			 * \returns The basic type of this item.
-			 **/
-			virtual ItemType getItemType() const;
+             */
+            virtual auto getItemType() const -> ItemType;
+
+        public slots:
+            /**
+             * \brief Play this item with the default player.
+             *
+             * \returns `true` if playback was successful,
+             *			`false` if it was not.
+             */
+            bool play();
 
 		private:
 			MediaFilePrivate* d;

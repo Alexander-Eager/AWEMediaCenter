@@ -141,6 +141,13 @@ void ConfigFile::setData(JsonValue data)
 	emit dataChanged();
 }
 
+bool ConfigFile::hasMember(JsonPath path) const
+{
+	bool ok;
+	d->data.follow(path, &ok);
+	return ok;
+}
+
 JsonValue ConfigFile::getMember(JsonPath path) const
 {
 	return d->data.follow(path);
@@ -193,7 +200,7 @@ bool ConfigFile::appendValueToMember(JsonPath path, QString key, JsonValue value
 		}
 		if (toEdit->isObject())
 		{
-			toEdit->toObject().get(key) = value;
+			toEdit->toObject()[key] = value;
 			markAsEdited();
 			emit dataChanged();
 			return true;
@@ -225,8 +232,10 @@ bool ConfigFile::removeMember(JsonPath path)
 		}
 		else if (toEdit->isArray() && key.isArrayIndex())
 		{
-			if (toEdit->toArray().remove(key.toArrayIndex()))
+			int ind = key.toArrayIndex();
+			if (ind >= 0 && ind < toEdit->toArray().count())
 			{
+				toEdit->toArray().removeAt(ind);
 				markAsEdited();
 				emit dataChanged();
 				return true;

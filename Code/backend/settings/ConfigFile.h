@@ -12,14 +12,13 @@
 #include <QDir>
 #include <QString>
 
-namespace AWE
-{
+namespace AWE {
 	// internal data
 	class ConfigFilePrivate;
 
 	/**
 	 * \brief Holds the information for a configuration
-	 *			file in an abstract way.
+     *		  file in an abstract way.
 	 *
 	 * The configuration files used by AWEMC are all
 	 * JSON files.
@@ -29,34 +28,33 @@ namespace AWE
 	 *
 	 * This class provides no copy constructor and should be used
 	 * only in pointer form.
-	 **/
-	class AWEMC_BACKEND_LIBRARY ConfigFile : public QObject
-	{
+     */
+    class AWEMC_BACKEND_LIBRARY ConfigFile : public QObject {
 		Q_OBJECT
 
 		Q_PROPERTY(QString configFileName
-			READ getConfigFileName
-			CONSTANT
-			FINAL)
+                   READ getConfigFileName
+                   CONSTANT
+                   FINAL)
 		Q_PROPERTY(QDir pathToConfigFile
-			READ getPathToConfigFile
-			CONSTANT
-			FINAL)
+                   READ getPathToConfigFile
+                   CONSTANT
+                   FINAL)
 		Q_PROPERTY(JSON::JsonValue data
-			READ getData
-			WRITE setData
-			NOTIFY dataChanged)
+                   READ getData
+                   WRITE setData
+                   NOTIFY dataChanged)
 		Q_PROPERTY(bool edited
-			READ hasBeenEdited)
+                   READ hasBeenEdited)
 		Q_PROPERTY(bool valid
-			READ isValid
-			CONSTANT
-			FINAL)
+                   READ isValid
+                   CONSTANT
+                   FINAL)
 
 		public:
 			/**
 			 * \brief Create a wrapper for JSON data not in
-			 *			a file.
+             *		  a file.
 			 *
 			 * This should be followed up by a call to `setData()`
 			 * so that the object can be useful.
@@ -64,27 +62,27 @@ namespace AWE
 			 * No matter what function calls are made after the
 			 * creation of this object, `isValid()` and
 			 * `hasBeenEdited()` will always return `false`.
-			 **/
+             */
 			ConfigFile();
 
 			/**
 			 * \brief Open the given config file.
 			 *
 			 * \param[in] file The file to open. If
-			 *			the file does not exist,
-			 *			the config data will be
-			 *			initialized to an empty map.
-			 **/
+             *			  the file does not exist,
+             *			  the config data will be
+             *			  initialized to an empty map.
+             */
 			ConfigFile(QString file);
 
 			/**
-			 * \brief Depathoys this object.
-			 **/
+             * \brief Destroys this object.
+             */
 			virtual ~ConfigFile();
 
 			/**
 			 * \brief Check to see if the config file is
-			 *			valid.
+             *		  valid.
 			 *
 			 * This returns `false` if and only if the file
 			 * exists but is not properly formatted. If the
@@ -93,62 +91,86 @@ namespace AWE
 			 *
 			 * \returns `true` if the config file is valid,
 			 *			`false` otherwise.
-			 **/
+             */
 			virtual bool isValid() const;
 
 			/**
 			 * \brief Get this file's name, without
-			 *			the path.
+             *		  the path.
 			 *
 			 * \returns The config file name.
-			 **/
+             */
 			virtual QString getConfigFileName() const;
 
 			/**
 			 * \brief Get the path to this config file,
-			 *			excluding the file name.
+             *		  excluding the file name.
 			 *
 			 * \returns The path to the config file.
-			 **/
+             */
 			virtual QDir getPathToConfigFile() const;
 
 			/**
 			 * \brief Determine if this config file has
-			 *			been altered since it was read.
+             *		  been altered since it was read.
 			 *
 			 * \returns `true` if this config file has
 			 *			been altered since it was read,
 			 *			`false` otherwise.
-			 **/
+             */
 			virtual bool hasBeenEdited() const;
 
 			/**
 			 * \brief Mark this config file as edited,
-			 * 			so that the data is written to
-			 *			file upon deletion.
-			 **/
+             * 		  so that the data is written to
+             *		  file upon deletion.
+             */
 			virtual void markAsEdited();
 
 			/**
 			 * \brief Write the data to file.
-			 **/
+             */
 			virtual void writeToFile();
 
 			/**
 			 * \brief Get the data held in this config
-			 *			file.
+             *		  file.
 			 *
 			 * \returns The data held in this config file.
-			 **/
+             */
 			virtual JSON::JsonValue getData() const;
 
 			/**
 			 * \brief Set the data held in this config
-			 *			file.
+             *		  file.
 			 *
 			 * \param[in] data The new data to hold.
-			 **/
+             */
 			virtual void setData(JSON::JsonValue data);
+
+			/**
+			 * \brief Determine if a data member exists.
+			 *
+			 * `path` is a list of values to follow to reach
+			 * the desired data member. So if I have:
+			 * 
+			 *	 	{
+			 *	 		"a": {
+			 *	 			"b": [
+			 *	 				"Hello World"
+			 *	  			]			
+			 *	 		}
+			 *	 	}
+			 *
+			 * The list to use to get to `"Hello World"` is
+			 * `{ "a", "b", 0 }`.
+			 *
+			 * \param[in] path The path to the data member to look for.
+			 *
+			 * \returns `true` if the data member exists,
+			 *			`false` otherwise.
+             */
+			virtual bool hasMember(JSON::JsonPath path) const;
 
 			/**
 			 * \brief Get a data member.
@@ -171,7 +193,7 @@ namespace AWE
 			 *
 			 * \returns The desired data member, or a null `Json::Value` if
 			 *			the member does not exist.
-			 **/
+             */
 			virtual JSON::JsonValue getMember(JSON::JsonPath path) const;
 
 			/**
@@ -184,7 +206,7 @@ namespace AWE
 			 *
 			 * \returns `true` if the data member exists,
 			 *			`false` if an error occurred.
-			 **/
+             */
 			virtual bool setMember(JSON::JsonPath path, JSON::JsonValue value);
 
 			/**
@@ -200,7 +222,7 @@ namespace AWE
 			 *
 			 * \returns `true` if the data member exists and is an array,
 			 *			`false` if an error occurred.
-			 **/
+             */
 			virtual bool appendValueToMember(JSON::JsonPath path,
 												JSON::JsonValue value);
 
@@ -218,7 +240,7 @@ namespace AWE
 			 *
 			 * \returns `true` if the data member exists and is an object,
 			 *			`false` if an error occurred.
-			 **/
+             */
 			virtual bool appendValueToMember(JSON::JsonPath path, QString key,
 												JSON::JsonValue value);
 
@@ -232,7 +254,7 @@ namespace AWE
 			 *
 			 * \returns `true` if the path is valid,
 			 *			`false` otherwise.
-			 **/
+             */
 			virtual bool removeMember(JSON::JsonPath path);
 
 			/**
@@ -250,20 +272,20 @@ namespace AWE
 			 *
 			 * \returns `true` if the path is valid,
 			 *			`false` otherwise.
-			 **/
+             */
 			virtual bool addMember(JSON::JsonPath path, JSON::JsonValue value);
 
 		signals:
 			/**
 			 * \brief Sent when any data member is changed.
-			 **/
+             */
 			void dataChanged();
 
 		private:
 			// implicitly deleted copy constructor
 			ConfigFile(const ConfigFile&) { }
 
-			/** \brief Internal data *d-pointer*. **/
+            /** \brief Internal data *d-pointer*. */
 			ConfigFilePrivate* d;
 	};
 }

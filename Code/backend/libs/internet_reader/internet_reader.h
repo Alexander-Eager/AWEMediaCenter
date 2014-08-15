@@ -1,6 +1,9 @@
 #ifndef INTERNET_READER_H
 #define INTERNET_READER_H
 
+// backend library macros
+#include "macros/BackendLibraryMacros.h"
+
 #include <QString>
 #include <QTextStream>
 #include <QIODevice>
@@ -13,8 +16,9 @@
  * \returns `true` if `pageToRead` is a valid URL and
  *					`out` had no errors,
  *			`false` if an error occured.
- **/
-bool readURLIntoStream(QString pageToRead, QTextStream& out);
+ */
+AWEMC_BACKEND_LIBRARY auto readURLIntoStream(QString pageToRead,
+                                             QTextStream& out) -> bool;
 
 /** \brief Read the given web file.
  *
@@ -24,7 +28,8 @@ bool readURLIntoStream(QString pageToRead, QTextStream& out);
  * \returns `true` if `pageToRead` is a valid URL and
  *					`out` had no errors,
  *			`false` if an error occured.
- **/
-bool readURLIntoIODevice(QString pageToRead, QIODevice& out);
+ */
+AWEMC_BACKEND_LIBRARY auto readURLIntoIODevice(QString pageToRead,
+                                               QIODevice& out) -> bool;
 
 #endif

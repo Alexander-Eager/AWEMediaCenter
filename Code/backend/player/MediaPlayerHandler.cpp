@@ -113,15 +113,36 @@ bool MediaPlayerHandler::play(MediaFile* file)
 			return false;
 		}
 		// connect close/open signals to respective slots
-		connect(d->player, SIGNAL(closed()),
-				this, SLOT(respondToClosed()));
-		connect(d->player, SIGNAL(closed(MediaFile*)),
-				this, SLOT(respondToClosed(MediaFile*)));
-		connect(d->player, SIGNAL(startedPlaying()),
-				this, SLOT(respondToPlaying()));
-		connect(d->player, SIGNAL(startedPlaying(MediaFile*)),
-				this, SLOT(respondToPlaying(MediaFile*)));
+		connect(d->player, static_cast<void (MediaPlayer::*)()>
+							(&MediaPlayer::closed),
+				this,	[this] ()
+						{
+							d->unload();
+							emit closed();
+						}, Qt::QueuedConnection); // queued since it deletes
+
+		connect(d->player, static_cast<void (MediaPlayer::*)(MediaFile*)>
+							(&MediaPlayer::closed),
+				this,	[this] (MediaFile* file)
+						{
+							emit closed(file);
+						} );
+
+		connect(d->player, static_cast<void (MediaPlayer::*)()>
+							(&MediaPlayer::startedPlaying),
+				this,	[this] ()
+						{
+							emit startedPlaying();
+						});
+
+		connect(d->player, static_cast<void (MediaPlayer::*)(MediaFile*)>
+							(&MediaPlayer::startedPlaying),
+				this,	[this] (MediaFile* file)
+						{
+							emit startedPlaying(file);
+						} );
 	}
+	d->open = true;
 
 	return d->player->play(file);
 }
@@ -146,34 +167,13 @@ bool MediaPlayerHandler::close(MediaFile* file)
 	return d->player->close(file);
 }
 
-void MediaPlayerHandler::respondToClosed()
-{
-	d->unload();
-	emit closed();
-}
-
-void MediaPlayerHandler::respondToClosed(MediaFile* file)
-{
-	emit closed(file);
-}
-
-void MediaPlayerHandler::respondToPlaying()
-{
-	emit startedPlaying();
-}
-
-void MediaPlayerHandler::respondToPlaying(MediaFile* file)
-{
-	emit startedPlaying(file);
-}
-
 bool MediaPlayerHandlerPrivate::tryToLoad()
 {
-	// if it isn't valid, there is no point
 	if (open)
 	{
 		return true;
 	}
+	// if it isn't valid, there is no point
 	if (!p->isValid())
 	{
 		return false;

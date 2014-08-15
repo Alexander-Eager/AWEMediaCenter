@@ -27,9 +27,9 @@ namespace UI
 			void gradientCommon(const JsonObject obj, QGradient& grad) const
 			{
 				// coordinate mode
-				if (obj.get("coordinate mode").isNumber())
+				if (obj["coordinate mode"].isNumber())
 				{
-					int mode = obj.get("coordinate mode").toInteger();
+					int mode = obj["coordinate mode"].toInteger();
 					switch (mode)
 					{
 						case 0:
@@ -48,9 +48,9 @@ namespace UI
 					grad.setCoordinateMode(QGradient::ObjectBoundingMode);
 				}
 				// spread
-				if (obj.get("spread").isNumber())
+				if (obj["spread"].isNumber())
 				{
-					int mode = obj.get("spread").toInteger();
+					int mode = obj["spread"].toInteger();
 					switch (mode)
 					{
 						case 2:
@@ -69,7 +69,7 @@ namespace UI
 					grad.setSpread(QGradient::PadSpread);
 				}
 				// colors
-				if (obj.get("colors").isArray())
+				if (obj["colors"].isArray())
 				{
 					const JsonArray arr = obj["colors"].toArray();
 					for (auto s : arr)
@@ -83,8 +83,8 @@ namespace UI
 						{
 							continue;
 						}
-						grad.setColorAt(stop.at(0).toDouble(),
-							p->makeColor(stop.at(1)));
+						grad.setColorAt(stop.value(0).toDouble(),
+							p->makeColor(stop.value(1)));
 					}
 				}
 				else
@@ -104,7 +104,7 @@ Skin::Skin(QString file)
 {
 	d->p = this;
 
-	// get the colors
+    // get the colors
 	JsonObject colors = getConfigFile()->getMember({"colors"}).toObject();
 	QList<QString> keys = colors.keys();
 	for (auto color : keys)
@@ -141,6 +141,7 @@ ColoredFont Skin::getFont(QString font) const
 	{
 		return d->fonts[font];
 	}
+    qDebug() << "Font" << font << "does not exist.";
 	return d->fonts["normal"];
 }
 
@@ -150,6 +151,7 @@ QColor Skin::getColor(QString color) const
 	{
 		return d->colors[color];
 	}
+    qDebug() << "Color" << color << "does not exist.";
 	return d->colors["default"];
 }
 
@@ -176,25 +178,25 @@ QColor Skin::makeColor(const JsonValue config) const
 		{
 			return getColor("default");
 		}
-		else if (arr.at(0).isString())
+		else if (arr.value(0).isString())
 		{
 			// named color
-			QColor ans = arr.at(0).toString();
-			if (arr.at(1).isNumber())
+			QColor ans = arr.value(0).toString();
+			if (arr.value(1).isNumber())
 			{
-				ans.setAlpha(arr.at(1).toInteger());
+				ans.setAlpha(arr.value(1).toInteger());
 			}
 			return ans;
 		}
-		else if (arr.at(0).isNumber() && arr.at(1).isNumber()
-			&& arr.at(2).isNumber())
+		else if (arr.value(0).isNumber() && arr.value(1).isNumber()
+			&& arr.value(2).isNumber())
 		{
 			// rgb(a) color
-			QColor ans(arr.at(0).toInteger(),
-				arr.at(1).toInteger(), arr.at(2).toInteger());
-			if (arr.at(3).isNumber())
+			QColor ans(arr.value(0).toInteger(),
+				arr.value(1).toInteger(), arr.value(2).toInteger());
+			if (arr.value(3).isNumber())
 			{
-				ans.setAlpha(arr.at(3).toInteger());
+				ans.setAlpha(arr.value(3).toInteger());
 			}
 			return ans;
 		}
@@ -202,17 +204,17 @@ QColor Skin::makeColor(const JsonValue config) const
 	else if (config.isObject())
 	{
 		const JsonObject obj = config.toObject();
-		if (obj.get("name").isString())
+		if (obj["name"].isString())
 		{
 			// named color
-			QColor ans = obj.get("name").toString();
-			if (obj.get("a").isNumber())
+			QColor ans = obj["name"].toString();
+			if (obj["a"].isNumber())
 			{
-				ans.setAlpha(obj.get("a").toInteger());
+				ans.setAlpha(obj["a"].toInteger());
 			}
-			else if (obj.get("alpha").isNumber())
+			else if (obj["alpha"].isNumber())
 			{
-				ans.setAlpha(obj.get("alpha").toInteger());
+				ans.setAlpha(obj["alpha"].toInteger());
 			}
 			return ans;
 		}
@@ -221,13 +223,13 @@ QColor Skin::makeColor(const JsonValue config) const
 			// potentially rgb(a) color
 			QColor ans;
 			// r
-			if (obj.get("r").isNumber())
+			if (obj["r"].isNumber())
 			{
-				ans.setRed(obj.get("r").toInteger());
+				ans.setRed(obj["r"].toInteger());
 			}
-			else if (obj.get("red").isNumber())
+			else if (obj["red"].isNumber())
 			{
-				ans.setRed(obj.get("red").toInteger());
+				ans.setRed(obj["red"].toInteger());
 			}
 			else
 			{
@@ -235,13 +237,13 @@ QColor Skin::makeColor(const JsonValue config) const
 				return getColor("default");
 			}
 			// g
-			if (obj.get("g").isNumber())
+			if (obj["g"].isNumber())
 			{
-				ans.setGreen(obj.get("g").toInteger());
+				ans.setGreen(obj["g"].toInteger());
 			}
-			else if (obj.get("green").isNumber())
+			else if (obj["green"].isNumber())
 			{
-				ans.setGreen(obj.get("green").toInteger());
+				ans.setGreen(obj["green"].toInteger());
 			}
 			else
 			{
@@ -249,13 +251,13 @@ QColor Skin::makeColor(const JsonValue config) const
 				return getColor("default");
 			}
 			// b
-			if (obj.get("b").isNumber())
+			if (obj["b"].isNumber())
 			{
-				ans.setBlue(obj.get("b").toInteger());
+				ans.setBlue(obj["b"].toInteger());
 			}
-			else if (obj.get("blue").isNumber())
+			else if (obj["blue"].isNumber())
 			{
-				ans.setBlue(obj.get("blue").toInteger());
+				ans.setBlue(obj["blue"].toInteger());
 			}
 			else
 			{
@@ -263,13 +265,13 @@ QColor Skin::makeColor(const JsonValue config) const
 				return getColor("default");
 			}
 			// a (not required)
-			if (obj.get("a").isNumber())
+			if (obj["a"].isNumber())
 			{
-				ans.setAlpha(obj.get("a").toInteger());
+				ans.setAlpha(obj["a"].toInteger());
 			}
-			else if (obj.get("alpha").isNumber())
+			else if (obj["alpha"].isNumber())
 			{
-				ans.setAlpha(obj.get("alpha").toInteger());
+				ans.setAlpha(obj["alpha"].toInteger());
 			}
 			return ans;
 		}
@@ -289,38 +291,38 @@ ColoredFont Skin::makeFont(const JsonValue config) const
 		ColoredFont ans = getFont("normal");
 		QFont font = ans.getFont();
 		// name
-		if (obj.get("name").isString())
+		if (obj["name"].isString())
 		{
-			font.setFamily(obj.get("name").toString());
+			font.setFamily(obj["name"].toString());
 		}
-		else if (obj.get("family").isString())
+		else if (obj["family"].isString())
 		{
-			font.setFamily(obj.get("family").toString());
+			font.setFamily(obj["family"].toString());
 		}
 		// size
-		if (obj.get("size").isNumber())
+		if (obj["size"].isNumber())
 		{
-			font.setPointSizeF(obj.get("size").toDouble());
+			font.setPointSizeF(obj["size"].toDouble());
 		}
 		// weight
-		if (obj.get("weight").isNumber())
+		if (obj["weight"].isNumber())
 		{
-			font.setWeight(obj.get("weight").toInteger());
+			font.setWeight(obj["weight"].toInteger());
 		}
 		// italic
-		if (obj.get("italic").isBoolean())
+		if (obj["italic"].isBoolean())
 		{
-			font.setItalic(obj.get("italic").toBoolean());
+			font.setItalic(obj["italic"].toBoolean());
 		}
 		ans.setFont(font);
 		// color or pen
 		if (obj.contains("pen"))
 		{
-			ans.setPen(makePen(obj.get("pen")));
+			ans.setPen(makePen(obj["pen"]));
 		}
 		else if (obj.contains("color"))
 		{
-			ans.setPen(makePen(obj.get("color")));
+			ans.setPen(makePen(obj["color"]));
 		}
 		return ans;
 	}
@@ -336,10 +338,10 @@ QPointF Skin::makePoint(const JsonValue config) const
 	else if (config.isArray())
 	{
 		const JsonArray arr = config.toArray();
-		if (arr.at(0).isNumber() && arr.at(1).isNumber())
+		if (arr.value(0).isNumber() && arr.value(1).isNumber())
 		{
-			return QPointF(arr.at(0).toDouble(),
-				arr.at(1).toDouble());
+			return QPointF(arr.value(0).toDouble(),
+				arr.value(1).toDouble());
 		}
 	}
 	return QPointF(0, 0);
@@ -374,7 +376,7 @@ QRectF Skin::makeRect(const JsonValue config) const
 		// top left
 		if (obj.contains("top left"))
 		{
-			ans.setTopLeft(makePoint(obj.get("top left")));
+			ans.setTopLeft(makePoint(obj["top left"]));
 		}
 		else
 		{
@@ -384,11 +386,11 @@ QRectF Skin::makeRect(const JsonValue config) const
 		// size or bottom right
 		if (obj.contains("size"))
 		{
-			ans.setSize(makeSize(obj.get("size")));
+			ans.setSize(makeSize(obj["size"]));
 		}
 		else if (obj.contains("bottom right"))
 		{
-			ans.setBottomRight(makePoint(obj.get("bottom right")));
+			ans.setBottomRight(makePoint(obj["bottom right"]));
 		}
 		else
 		{
@@ -402,16 +404,16 @@ QRectF Skin::makeRect(const JsonValue config) const
 		// [x, y, w, h]
 		if (arr.count() >= 4)
 		{
-			ans.setLeft(arr.at(0).toDouble());
-			ans.setTop(arr.at(1).toDouble());
-			ans.setWidth(arr.at(2).toDouble());
-			ans.setHeight(arr.at(3).toDouble());
+			ans.setLeft(arr.value(0).toDouble());
+			ans.setTop(arr.value(1).toDouble());
+			ans.setWidth(arr.value(2).toDouble());
+			ans.setHeight(arr.value(3).toDouble());
 		}
 		// [<point>, <size>]
 		else
 		{
-			ans.setTopLeft(makePoint(arr.at(0)));
-			ans.setSize(makeSize(arr.at(1)));
+			ans.setTopLeft(makePoint(arr.value(0)));
+			ans.setSize(makeSize(arr.value(1)));
 		}
 	}
 	return ans;
@@ -438,33 +440,33 @@ QRadialGradient Skin::makeRadialGradient(const JsonValue config) const
 	// stuff common to all gradients
 	d->gradientCommon(obj, ans);
 	// central point
-	ans.setCenter(makePoint(obj.get("center")));
+	ans.setCenter(makePoint(obj["center"]));
 	// central radius
-	if (obj.get("radius").isNumber())
+	if (obj["radius"].isNumber())
 	{
-		ans.setRadius(obj.get("radius").toDouble());
+		ans.setRadius(obj["radius"].toDouble());
 	}
-	else if (obj.get("center radius").isNumber())
+	else if (obj["center radius"].isNumber())
 	{
-		ans.setRadius(obj.get("center radius").toDouble());
+		ans.setRadius(obj["center radius"].toDouble());
 	}
 	// focal point
 	if (obj.contains("focus"))
 	{
-		ans.setFocalPoint(makePoint(obj.get("focus")));
+		ans.setFocalPoint(makePoint(obj["focus"]));
 	}
 	else if (obj.contains("focal point"))
 	{
-		ans.setFocalPoint(makePoint(obj.get("focal point")));
+		ans.setFocalPoint(makePoint(obj["focal point"]));
 	}
 	else
 	{
 		ans.setFocalPoint(ans.center());
 	}
 	// focal radius
-	if (obj.get("focal radius").isNumber())
+	if (obj["focal radius"].isNumber())
 	{
-		ans.setFocalRadius(obj.get("focal radius").toDouble());
+		ans.setFocalRadius(obj["focal radius"].toDouble());
 	}
 	return ans;
 }
@@ -482,15 +484,15 @@ QLinearGradient Skin::makeLinearGradient(const JsonValue config) const
 	// starting point
 	if (obj.contains("start"))
 	{
-		ans.setStart(makePoint(obj.get("start")));
+		ans.setStart(makePoint(obj["start"]));
 	}
 	else if (obj.contains("starting point"))
 	{
-		ans.setStart(makePoint(obj.get("starting point")));
+		ans.setStart(makePoint(obj["starting point"]));
 	}
 	else if (obj.contains("first stop"))
 	{
-		ans.setStart(makePoint(obj.get("first stop")));
+		ans.setStart(makePoint(obj["first stop"]));
 	}
 	else
 	{
@@ -499,23 +501,23 @@ QLinearGradient Skin::makeLinearGradient(const JsonValue config) const
 	// ending point
 	if (obj.contains("end"))
 	{
-		ans.setFinalStop(makePoint(obj.get("end")));
+		ans.setFinalStop(makePoint(obj["end"]));
 	}
 	else if (obj.contains("finish"))
 	{
-		ans.setFinalStop(makePoint(obj.get("finish")));
+		ans.setFinalStop(makePoint(obj["finish"]));
 	}
 	else if (obj.contains("final stop"))
 	{
-		ans.setFinalStop(makePoint(obj.get("final stop")));
+		ans.setFinalStop(makePoint(obj["final stop"]));
 	}
 	else if (obj.contains("ending point"))
 	{
-		ans.setFinalStop(makePoint(obj.get("ending point")));
+		ans.setFinalStop(makePoint(obj["ending point"]));
 	}
 	else if (obj.contains("finishing point"))
 	{
-		ans.setFinalStop(makePoint(obj.get("finishing point")));
+		ans.setFinalStop(makePoint(obj["finishing point"]));
 	}
 	else if (ans.coordinateMode() == QGradient::LogicalMode)
 	{
@@ -537,7 +539,7 @@ QConicalGradient Skin::makeConicalGradient(const JsonValue config) const
 	// get the center point
 	if (obj.contains("center"))
 	{
-		ans.setCenter(makePoint(obj.get("center")));
+		ans.setCenter(makePoint(obj["center"]));
 	}
 	else if (ans.coordinateMode() == QGradient::LogicalMode)
 	{
@@ -548,9 +550,9 @@ QConicalGradient Skin::makeConicalGradient(const JsonValue config) const
 		ans.setCenter(0.5, 0.5);
 	}
 	// get the angle
-	if (obj.get("angle").isNumber())
+	if (obj["angle"].isNumber())
 	{
-		ans.setAngle(obj.get("angle").toDouble());
+		ans.setAngle(obj["angle"].toDouble());
 	}
 	else
 	{
@@ -573,17 +575,17 @@ QBrush Skin::makeBrush(const JsonValue config) const
 	}
 	const JsonObject obj = config.toObject();
 	int style = 0;
-	if (obj.get("type").isNumber())
+	if (obj["type"].isNumber())
 	{
-		style = obj.get("type").toInteger();
+		style = obj["type"].toInteger();
 	}
-	else if (obj.get("style").isNumber())
+	else if (obj["style"].isNumber())
 	{
-		style = obj.get("style").toInteger();
+		style = obj["style"].toInteger();
 	}
-	else if (obj.get("brush style").isNumber())
+	else if (obj["brush style"].isNumber())
 	{
-		style = obj.get("brush style").toInteger();
+		style = obj["brush style"].toInteger();
 	}
 	else
 	{
@@ -594,7 +596,7 @@ QBrush Skin::makeBrush(const JsonValue config) const
 		case 1: case 2: case 3: case 4: case 5: case 6:
 		case 7: case 8: case 9: case 10: case 11: case 12:
 		case 13: case 14: // these are all colored patterns
-			return QBrush(makeColor(obj.get("color")),
+			return QBrush(makeColor(obj["color"]),
 				(Qt::BrushStyle) style);
 		case 15: // linear gradient
 			return makeLinearGradient(config);
@@ -603,13 +605,13 @@ QBrush Skin::makeBrush(const JsonValue config) const
 		case 16: // radial gradient
 			return makeRadialGradient(config);
 		case 24: // texture pattern
-			if (obj.get("texture").isString())
+			if (obj["texture"].isString())
 			{
-				return QPixmap(obj.get("texture").toString());
+				return QPixmap(obj["texture"].toString());
 			}
-			else if (obj.get("pattern").isString())
+			else if (obj["pattern"].isString())
 			{
-				return QPixmap(obj.get("pattern").toString());
+				return QPixmap(obj["pattern"].toString());
 			}
 		case 0: default: // just no brush
 			return Qt::NoBrush;
@@ -626,13 +628,13 @@ QPen Skin::makePen(const JsonValue config) const
 	QPen pen;
 	// pen style
 	int style = -1;
-	if (obj.get("pen").isNumber())
+	if (obj["pen"].isNumber())
 	{
-		style = obj.get("pen").toInteger();
+		style = obj["pen"].toInteger();
 	}
-	else if (obj.get("pen style").isNumber())
+	else if (obj["pen style"].isNumber())
 	{
-		style = obj.get("pen style").toInteger();
+		style = obj["pen style"].toInteger();
 	}
 	if (style < 0 || style > 6)
 	{
@@ -642,13 +644,13 @@ QPen Skin::makePen(const JsonValue config) const
 	pen.setStyle((Qt::PenStyle) style);
 	// cap style
 	style = 0;
-	if (obj.get("cap").isNumber())
+	if (obj["cap"].isNumber())
 	{
-		style = obj.get("cap").toInteger();
+		style = obj["cap"].toInteger();
 	}
-	else if (obj.get("cap style").isNumber())
+	else if (obj["cap style"].isNumber())
 	{
-		style = obj.get("cap style").toInteger();
+		style = obj["cap style"].toInteger();
 	}
 	switch (style)
 	{
@@ -661,13 +663,13 @@ QPen Skin::makePen(const JsonValue config) const
 	}
 	// join style
 	style = 64;
-	if (obj.get("join").isNumber())
+	if (obj["join"].isNumber())
 	{
-		style = obj.get("join").toInteger();
+		style = obj["join"].toInteger();
 	}
-	else if (obj.get("join style").isNumber())
+	else if (obj["join style"].isNumber())
 	{
-		style = obj.get("join style").toInteger();
+		style = obj["join style"].toInteger();
 	}
 	switch (style)
 	{
@@ -679,9 +681,9 @@ QPen Skin::makePen(const JsonValue config) const
 			break;
 	}
 	// width
-	if (obj.get("width").isNumber())
+	if (obj["width"].isNumber())
 	{
-		pen.setWidthF(obj.get("width").toDouble());
+		pen.setWidthF(obj["width"].toDouble());
 	}
 	else
 	{
@@ -690,11 +692,11 @@ QPen Skin::makePen(const JsonValue config) const
 	// brush or color
 	if (obj.contains("color"))
 	{
-		pen.setBrush(makeBrush(obj.get("color")));
+		pen.setBrush(makeBrush(obj["color"]));
 	}
 	else if (obj.contains("brush"))
 	{
-		pen.setBrush(makeBrush(obj.get("brush")));
+		pen.setBrush(makeBrush(obj["brush"]));
 	}
 	else
 	{
@@ -703,10 +705,10 @@ QPen Skin::makePen(const JsonValue config) const
 	// pattern for the line, if necessary
 	if (pen.style() == Qt::CustomDashLine)
 	{
-		if (obj.get("pattern").isArray())
+		if (obj["pattern"].isArray())
 		{
 			QVector<qreal> pattern;
-			const JsonArray arr = obj.get("pattern").toArray();
+			const JsonArray arr = obj["pattern"].toArray();
 			for (int i = 1; i < arr.count(); i += 2)
 			{
 				pattern << arr.at(i - 1).toDouble();

@@ -7,6 +7,9 @@
 // for painting
 #include <QPainter>
 
+// debug
+#include <QDebug>
+
 using namespace JSON;
 using namespace AWE;
 
@@ -102,7 +105,7 @@ void PanePrivate::configure(const JsonValue data)
 	// corner curvature
 	if (obj.contains("corner radius"))
 	{
-		cornerRadius = s->makePoint(obj.get("corner radius"));
+		cornerRadius = s->makePoint(obj["corner radius"]);
 	}
 	else
 	{
@@ -112,7 +115,7 @@ void PanePrivate::configure(const JsonValue data)
 	// outline color
 	if (obj.contains("outline"))
 	{
-		outline = s->makePen(obj.get("outline"));
+		outline = s->makePen(obj["outline"]);
 	}
 	else
 	{
@@ -127,7 +130,7 @@ void PanePrivate::configure(const JsonValue data)
 	// background brush
 	if (obj.contains("background"))
 	{
-		brush = s->makeBrush(obj.get("background"));
+		brush = s->makeBrush(obj["background"]);
 	}
 	else
 	{

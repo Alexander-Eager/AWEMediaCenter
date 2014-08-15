@@ -20,9 +20,8 @@
 
 /**
  * \brief Backend for AWEMC.
- **/
-namespace AWE
-{
+ */
+namespace AWE {
 	// internal data class
 	class GlobalSettingsPrivate;
 
@@ -39,9 +38,8 @@ namespace AWE
 	 *
 	 * You shouldn't instantiate this class. You should get the
 	 * main instance of this class from the `AWEMC` class.
-	 **/
-	class AWEMC_BACKEND_LIBRARY GlobalSettings : public ConfigFile
-	{
+     */
+    class AWEMC_BACKEND_LIBRARY GlobalSettings : public ConfigFile {
 		Q_OBJECT
 
 		public:
@@ -49,21 +47,21 @@ namespace AWE
 			 * \brief Create the global settings object.
 			 *
 			 * \param[in] settingsFile The file that contains
-			 *				the settings for AWEMC (usually
-			 *				`settings.json` in the root folder)
-			 **/
+             *			  the settings for AWEMC (usually
+             *			  `settings.json` in the root folder)
+             */
 			GlobalSettings(QString settingsFile);
 
 			/**
 			 * \brief Destroy this object.
-			 **/
+             */
 			virtual ~GlobalSettings();
 
 			/**
 			 * \brief Get a list of all skin names.
 			 *
 			 * \returns A list of all skin names.
-			 **/
+             */
 			virtual QList<QString> getSkinNames();
 
 			/**
@@ -73,7 +71,7 @@ namespace AWE
 			 *
 			 * \returns `true` if the desired skin exists and was
 			 *			switched to, `false` otherwise.
-			 **/
+             */
 			virtual bool switchToSkin(QString name);
 
 			/**
@@ -82,14 +80,14 @@ namespace AWE
 			 * Use this to get widget configurations and fonts.
 			 *
 			 * \returns The current skin.
-			 **/
+             */
 			virtual UI::Skin* getCurrentSkin();
 
 			/** 
 			 * \brief Get a set of all metadata scraper names.
 			 *
 			 * \returns A set filled with every metadata scraper name.
-			 **/
+             */
 			virtual QList<QString> getScraperNames();
 
 			/**
@@ -99,25 +97,26 @@ namespace AWE
 			 *
 			 * \returns The desired scraper as an `MetadataScraper` object
 			 *			or `nullptr` if it does not exist.
-			 **/
+             */
 			virtual MetadataScraperHandler* getScraperHandler(QString name);
 
 			/**
 			 * \brief Get a set of all metadata scrapers that can scrape
-			 *			for the given item.
+             *		  for the given item.
 			 *
 			 * \param item The media item to get possible scrapers for.
 			 *
 			 * \returns A list of all possible metadata scrapers that
 			 *			can get metadata for `item`.
-			 **/
-			virtual QList<MetadataScraperHandler*> getScrapersForItem(MetadataHolder* item);
+             */
+            virtual QList<MetadataScraperHandler*> getScrapersForItem(
+                    MetadataHolder* item);
 
 			/** 
 			 * \brief Get a set of all media player names.
 			 *
 			 * \returns A set filled with every media player name.
-			 **/
+             */
 			virtual QList<QString> getPlayerNames();
 
 			/**
@@ -127,7 +126,7 @@ namespace AWE
 			 *
 			 * \returns The desired media player
 			 *			or `nullptr` if it does not exist.
-			 **/
+             */
 			virtual MediaPlayerHandler* getPlayerHandler(QString name);
 
 			/**
@@ -138,28 +137,28 @@ namespace AWE
 			 *
 			 * \returns A list of all possible media players that can play
 			 *			`file`.
-			 **/
+             */
 			virtual QList<MediaPlayerHandler*> getPlayersForFile(MediaFile* file);
 
 			/**
 			 * \brief Get a set of all media types.
 			 *
 			 * \returns A set filled with every media type name.
-			 **/
+             */
 			virtual QList<QString> getTypeNames();
 
 			/**
 			 * \brief Get the metadata for the given type.
 			 *
 			 * \returns The default metadata settings for the given type.
-			 **/
+             */
 			virtual JSON::JsonValue getTypeMetadata(QString name);
 
 			/**
 			 * \brief Get the names of all of the media services.
 			 *
 			 * \returns A set filled with every media service name.
-			 **/
+             */
 			virtual QList<QString> getServiceNames();
 
 			/**
@@ -168,21 +167,21 @@ namespace AWE
 			 * \param name The name of the media service.
 			 *
 			 * \returns The desired media service.
-			 **/
+             */
 			virtual MediaServiceHandler* getServiceHandler(QString name);
 
 			/**
 			 * \brief Get the root folder.
 			 *
 			 * \returns The root folder.
-			 **/
+             */
 			virtual Folder* getRootFolder();
 
 		signals:
 			/**
 			 * \brief Sent when the current skin has been changed,
-			 *			so that all relevant widgets can change.
-			 **/
+             *		  so that all relevant widgets can change.
+             */
 			void skinChanged();
 
 		private:

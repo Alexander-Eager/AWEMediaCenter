@@ -4,11 +4,11 @@
 // for settings
 #include "settings/AWEMC.h"
 
-// for data
+// for holding data
 #include <QList>
+#include <QString>
 
-namespace AWE
-{
+namespace AWE {
 	class FolderPrivate
 	{
 		public:
@@ -44,7 +44,7 @@ Folder::Folder(QString file)
 		else
 		{
 			// not a valid item, so remove it
-			arr.remove(i);
+			arr.removeAt(i);
 			getConfigFile()->removeMember({"items", i});
 		}
 	}
@@ -75,7 +75,7 @@ Folder::Folder(ConfigFile* file)
 		else
 		{
 			// not a valid item, so remove it
-			arr.remove(i);
+			arr.removeAt(i);
 			getConfigFile()->removeMember({"items", i});
 		}
 	}
@@ -86,7 +86,7 @@ Folder::~Folder()
 	delete d;
 }
 
-Folder::ItemType Folder::getItemType() const
+MediaItem::ItemType Folder::getItemType() const
 {
 	return FOLDER;
 }

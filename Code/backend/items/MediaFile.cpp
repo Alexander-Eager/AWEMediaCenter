@@ -4,6 +4,13 @@
 // for global settings
 #include "settings/AWEMC.h"
 
+// for holding data
+#include <QString>
+
+// other classes
+#include <QString>
+#include "settings/ConfigFile.h"
+
 namespace AWE
 {
 	class MediaFilePrivate

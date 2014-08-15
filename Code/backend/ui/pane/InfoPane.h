@@ -89,7 +89,8 @@ namespace UI
 			 * \param[in] flags The settings to use while scraping.
 			 **/
 			void wantsToScrapeForMetadata(AWE::MediaItem* item,
-				AWE::MetadataScraperHandler* scraper, int flags);
+                AWE::MetadataScraperHandler* scraper,
+                AWE::MetadataScraper::ScraperSettings flags);
 
 		private:
 			friend class InfoPanePrivate;

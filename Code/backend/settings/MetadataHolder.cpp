@@ -194,10 +194,10 @@ void MetadataHolderPrivate::make(ConfigFile* f)
 	// get the icons
 	JsonObject icons = file->getMember({"metadata", "icons"}).toObject();
 	// get the default index
-	defaultIconIndex = icons.get("default").toInteger();
+	defaultIconIndex = icons["default"].toInteger();
 	// add all of the icons
-	JsonArray files = icons.get("files").toArray();
-	JsonArray owned = icons.get("owned").toArray();
+	JsonArray files = icons["files"].toArray();
+	JsonArray owned = icons["owned"].toArray();
 	int index = 0;
 	while (index < files.count())
 	{
@@ -230,8 +230,8 @@ void MetadataHolderPrivate::make(ConfigFile* f)
 			}
 		}
 		// if we got to this point, there was a problem, so remove it
-		files.remove(index);
-		owned.remove(index);
+		files.removeAt(index);
+		owned.removeAt(index);
 		file->removeMember({"metadata", "icons", "files", index});
 		file->removeMember({"metadata", "icons", "owned", index});
 		shouldWarnAboutFile = true;
@@ -249,10 +249,10 @@ void MetadataHolderPrivate::make(ConfigFile* f)
 	// get the fanarts
 	JsonObject fanarts = file->getMember({"metadata", "fanarts"}).toObject();
 	// get the default index
-	defaultFanartIndex = fanarts.get("default").toInteger();
+	defaultFanartIndex = fanarts.value("default").toInteger();
 	// add all of the fanarts
-	files = fanarts.get("files").toArray();
-	owned = fanarts.get("owned").toArray();
+	files = fanarts.value("files").toArray();
+	owned = fanarts.value("owned").toArray();
 	index = 0;
 	while (index < files.count())
 	{
@@ -278,8 +278,8 @@ void MetadataHolderPrivate::make(ConfigFile* f)
 			}
 		}
 		// if we got to this point, there was a problem, so remove it
-		files.remove(index);
-		owned.remove(index);
+		files.removeAt(index);
+		owned.removeAt(index);
 		file->removeMember({"metadata", "fanarts", "files", index});
 		file->removeMember({"metadata", "fanarts", "owned", index});
 		shouldWarnAboutFile = true;
@@ -296,7 +296,7 @@ void MetadataHolderPrivate::make(ConfigFile* f)
 
 	// get the details
 	JsonObject details = file->getMember({"metadata", "details"}).toObject();
-	JsonArray order = details.get("_order").toArray();
+	JsonArray order = details.value("_order").toArray();
 	index = 0;
 	while (index < order.count())
 	{
@@ -306,14 +306,14 @@ void MetadataHolderPrivate::make(ConfigFile* f)
 			detailNames << name;
 			if (details.contains(name))
 			{
-				detailValues.get(name) = details.get(name);
+				detailValues[name] = details.value(name);
 				++ index;
 				continue;
 			}
 		}
 		// need to remove name
 		shouldWarnAboutFile = true;
-		order.remove(index);
+		order.removeAt(index);
 		file->removeMember({"metadata", "details", "_order", index});
 	}
 
@@ -456,7 +456,7 @@ JsonValue MetadataHolder::getDetailValue(int i) const
 	{
 		return JsonValue();
 	}
-	return d->detailValues.get(d->detailNames[i]);
+	return d->detailValues[d->detailNames[i]];
 }
 
 QString MetadataHolder::getDetailValueAsString(int i) const
@@ -475,7 +475,7 @@ JsonValue MetadataHolder::getDetailValue(QString detail) const
 	{
 		return JsonValue();
 	}
-	return d->detailValues.get(detail);
+	return d->detailValues[detail];
 }
 
 QString MetadataHolder::getDetailValueAsString(QString detail) const
@@ -825,7 +825,7 @@ void MetadataHolder::addDetail(QString name, JsonValue value)
 {
 	if (hasDetail(name))
 	{
-		d->detailValues.get(name) = value;
+		d->detailValues[name] = value;
 		if (d->file->getMember({"metadata", "details", name}).isArray())
 		{
 			d->file->appendValueToMember({"metadata", "details", name}, value);
@@ -841,7 +841,7 @@ void MetadataHolder::addDetail(QString name, JsonValue value)
 	{
 		d->detailNames << name;
 		d->file->appendValueToMember({"metadata", "details", "_order"}, name);
-		d->detailValues.get(name) = value;
+		d->detailValues[name] = value;
 		d->file->appendValueToMember({"metadata", "details"}, name, value);
 		emit detailAdded(name);
 	}

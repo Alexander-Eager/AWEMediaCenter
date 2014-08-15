@@ -11,8 +11,7 @@
 #include "items/MediaFile.h"
 #include <QString>
 
-namespace AWE
-{
+namespace AWE {
 	// forward declarations
 	class MediaFile;
 	
@@ -20,33 +19,32 @@ namespace AWE
 	 * \brief Represents an abstract media player's functions.
 	 *
 	 * \todo Make plugin interface.
-	 **/
-	class AWEMC_BACKEND_LIBRARY MediaPlayer : public QObject
-	{
+     */
+    class AWEMC_BACKEND_LIBRARY MediaPlayer : public QObject {
 		Q_OBJECT
 
 		public:
 			/**
 			 * \brief Deconstructor.
-			 **/
+             */
 			virtual ~MediaPlayer() { }
 
 			/**
 			 * \brief Get the name of the player.
 			 *
 			 * \returns The name of the player.
-			 **/
+             */
 			virtual QString getName() const = 0;
 
 			/**
 			 * \brief Determine if the given media file
-			 *			can be played by this player.
+             *        can be played by this player.
 			 *
 			 * \param file The file to determine playability for.
 			 *
 			 * \returns `true` if this player can play `file`,
 			 *			`false` otherwise.
-			 **/
+             */
 			virtual bool canPlay(MediaFile* file) const = 0;
 
 			/**
@@ -54,12 +52,12 @@ namespace AWE
 			 *
 			 * \returns `true` if the player is being used,
 			 *			`false` otherwise.
-			 **/
+             */
 			virtual bool isPlaying() const = 0;
 
 			/**
 			 * \brief Determines if the player is playing
-			 *			a particular file.
+             *		  a particular file.
 			 *
 			 * If this returns `true` for any file,
 			 * `isPlaying()` must also return `true`.
@@ -68,7 +66,7 @@ namespace AWE
 			 *
 			 * \returns `true` if the player is being used
 			 *			to play `file`, `false` otherwise.
-			 **/
+             */
 			virtual bool isPlaying(MediaFile* file) const = 0;
 
 			/**
@@ -76,7 +74,7 @@ namespace AWE
 			 *
 			 * \returns `true` if this player is valid, `false`
 			 *			otherwise.
-			 **/
+             */
 			virtual bool isValid() const = 0;
 
 		public slots:
@@ -95,7 +93,7 @@ namespace AWE
 			 *
 			 * \returns `true` if `file` played successfully,
 			 *			`false` otherwise.
-			 **/
+             */
 			virtual bool play(MediaFile* file) = 0;
 
 			/**
@@ -103,7 +101,7 @@ namespace AWE
 			 *
 			 * \returns `true` if the player is now closed,
 			 *			`false` otherwise.
-			 **/
+             */
 			virtual bool close() = 0;
 
 			/**
@@ -119,7 +117,7 @@ namespace AWE
 			 * \returns `true` if the player is playing `file`
 			 *			and it was closed successfully,
 			 *			`false` otherwise.
-			 **/
+             */
 			virtual bool close(MediaFile* file) = 0;
 
 		signals:
@@ -136,7 +134,7 @@ namespace AWE
 			 *
 			 * Basically, this indicates that `isPlaying()` has
 			 * changed from `true` to `false`.
-			 **/
+             */
 			void closed();
 
 			/**
@@ -146,7 +144,7 @@ namespace AWE
 			 * successfully, and whenever the file stops playing.
 			 *
 			 * \param file The file that was closed.
-			 **/
+             */
 			void closed(MediaFile* file);
 
 			/**
@@ -159,7 +157,7 @@ namespace AWE
 			 * items, this should only be sent for the first item
 			 * that starts playing. In other words, this indicates
 			 * that `isPlaying()` has changed from `false` to `true`.
-			 **/
+             */
 			void startedPlaying();
 
 			/**
@@ -169,7 +167,7 @@ namespace AWE
 			 * successfully, and whenever the file starts playing.
 			 *
 			 * \param file The file that has started playing.
-			 **/
+             */
 			void startedPlaying(MediaFile* file);
 	};
 }

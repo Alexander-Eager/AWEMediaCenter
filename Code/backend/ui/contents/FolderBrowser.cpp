@@ -264,7 +264,7 @@ void FolderBrowser::setBackgroundImage(QPixmap image)
 }
 
 void FolderBrowser::scrapeForMetadata(MetadataHolder* item,
-	MetadataScraperHandler* scraper, int flags)
+    MetadataScraperHandler* scraper, MetadataScraper::ScraperSettings flags)
 {
 	// scrape
 	if (scraper->prepare())
@@ -314,6 +314,6 @@ void FolderBrowserPrivate::configure(const JsonValue config)
 {
 	const JsonObject obj = config.toObject();
 	brush = AWEMC::settings()->getCurrentSkin()
-		->makeBrush(obj.get("background"));
+		->makeBrush(obj["background"]);
 	update();
 }

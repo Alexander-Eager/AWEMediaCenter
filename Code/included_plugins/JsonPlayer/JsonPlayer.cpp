@@ -18,7 +18,7 @@ class JsonPlayerPrivate
 {
 	public:
 		// the application
-		QProcess app;
+		QProcess* app;
 
 		// the currently open file
 		MediaFile* currentFile;
@@ -43,6 +43,7 @@ JsonPlayer::JsonPlayer(ConfigFile* file)
 	:	d(new JsonPlayerPrivate)
 {
 	d->currentFile = nullptr;
+	d->app = new QProcess;
 	d->valid = true;
 	if (!file || !file->getMember({"config", "command"}).isString()
 		|| !file->getMember({"config", "can play"}).isArray())
@@ -59,7 +60,7 @@ JsonPlayer::JsonPlayer(ConfigFile* file)
 	d->command = file->getMember({"config", "command"}).toString();
 
 	// get the playable files
-	const JsonArray arr = file->getMember({"config", "can play"}).toArray();
+	const JsonArray arr = file->getMember({"config", "can play"}).constToArray();
 	for (auto str : arr)
 	{
 		if (str.isString())
@@ -78,23 +79,25 @@ JsonPlayer::JsonPlayer(ConfigFile* file)
 	d->showConsole = file->getMember({"config", "show console"}).toBoolean();
 
 	// make connections for starting/closing
-	connect(&d->app, &QProcess::started,
+	connect(d->app, &QProcess::started,
 			this,	[this] ()
 					{
 						emit startedPlaying();
 						emit startedPlaying(d->currentFile);
 					} );
-	/*connect(&d->app, &QProcess::finished,
+	connect(d->app, static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>
+						(&QProcess::finished),
 			this,	[this] (int, QProcess::ExitStatus)
 					{
-						emit closed();
 						emit closed(d->currentFile);
 						d->currentFile = nullptr;
-					} );*/
+						emit closed();
+					} );
 }
 
 JsonPlayer::~JsonPlayer()
 {
+	delete d->app;
 	delete d;
 }
 
@@ -125,7 +128,7 @@ bool JsonPlayer::canPlay(MediaFile* file) const
 
 bool JsonPlayer::isPlaying() const
 {
-	return d->app.state();
+	return d->currentFile;
 }
 
 bool JsonPlayer::isPlaying(MediaFile* file) const
@@ -156,8 +159,8 @@ bool JsonPlayer::play(MediaFile* file)
 	QString comm = d->command;
 	QString f = file->getMediaFile();
 	comm.replace("{0}", f);
-	d->app.start(comm);
-	if (!d->app.waitForStarted())
+	d->app->start(comm);
+	if (!d->app->waitForStarted())
 	{
 		return false;
 	}
@@ -171,8 +174,8 @@ bool JsonPlayer::close()
 	{
 		return true;
 	}
-	d->app.terminate();
-	if (!d->app.waitForFinished())
+	d->app->terminate();
+	if (!d->app->waitForFinished())
 	{
 		return false;
 	}

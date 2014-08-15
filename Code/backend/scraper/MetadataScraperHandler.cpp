@@ -80,7 +80,7 @@ bool MetadataScraperHandler::prepare()
 	return true;
 }
 
-bool MetadataScraperHandler::addMetadata(MetadataHolder* item, int flags)
+bool MetadataScraperHandler::addMetadata(MetadataHolder* item, MetadataScraper::ScraperSettings flags)
 {
 	if (!isValid())
 	{
@@ -88,7 +88,7 @@ bool MetadataScraperHandler::addMetadata(MetadataHolder* item, int flags)
 	}
 	return d->scraper->addMetadata(item, flags);
 }
-
+#if 0
 QList<MediaItem*> MetadataScraperHandler::makeMediaItems(Folder* placeInMe,
 	QString file, int flags)
 {
@@ -98,7 +98,7 @@ QList<MediaItem*> MetadataScraperHandler::makeMediaItems(Folder* placeInMe,
 	}
 	return d->scraper->makeMediaItems(placeInMe, file, flags);
 }
-
+#endif
 void MetadataScraperHandler::deactivate()
 {
 	if (!isValid())

@@ -1,11 +1,13 @@
 #ifndef MEDIA_SERVICE_HANDLER_H
 #define MEDIA_SERVICE_HANDLER_H
 
+// library macros and forward declarations
+#include "macros/BackendLibraryMacros.h"
+
 // superclass
 #include "MediaItem.h"
 
-namespace AWE
-{
+namespace AWE {
 	// internal data class
 	class MediaServiceHandlerPrivate;
 
@@ -14,9 +16,8 @@ namespace AWE
 	 *
 	 * This loads and unloads the plugin to
 	 * save memory space.
-	 **/
-	class MediaServiceHandler : public MediaItem
-	{
+     */
+    class AWEMC_BACKEND_LIBRARY MediaServiceHandler : public MediaItem {
 		Q_OBJECT
 		
 		public:
@@ -24,14 +25,14 @@ namespace AWE
 			 * \brief Construct from the given JSON file.
 			 *
 			 * \param file The JSON file for this service.
-			 **/
+             */
 			MediaServiceHandler(QString file);
 
 			/**
 			 * \brief Construct from the given JSON file.
 			 *
 			 * \param file The JSON file for this service.
-			 **/
+             */
 			MediaServiceHandler(ConfigFile* file);
 
 			virtual ~MediaServiceHandler();
@@ -41,15 +42,15 @@ namespace AWE
 			 *
 			 * \returns `true` if the service is valid,
 			 *			`false` otherwise.
-			 **/
-			virtual bool isValid() const;
+             */
+            auto isValid() const -> bool;
 
 			/**
 			 * \brief Get the type of this item.
 			 *
 			 * \returns SERVICE
-			 **/
-			virtual ItemType getItemType() const;
+             */
+            auto getItemType() const -> ItemType;
 
 		public slots:
 			/**
@@ -57,38 +58,27 @@ namespace AWE
 			 *
 			 * \returns `true` if the launch was successful,
 			 *			`false` otherwise.
-			 **/
-			virtual bool open();
+             */
+            bool open();
 
 			/**
 			 * \brief Close the media service.
 			 *
 			 * \returns `true` if the application closed
 			 *			without error, `false` otherwise.
-			 **/
-			virtual bool close();
+             */
+            bool close();
 
 		signals:
 			/**
 			 * \brief Sent when the service is opened.
-			 **/
-			void opened();
+             */
+            void opened();
 
 			/**
 			 * \brief Sent when the service is closed.
-			 **/
-			void closed();
-
-		private slots:
-			/**
-			 * \brief Respond to the service opening.
-			 **/
-			void respondToOpened();
-			
-			/**
-			 * \brief Respond to the service closing.
-			 **/
-			void respondToClosed();
+             */
+            void closed();
 
 		private:
 			friend class MediaServiceHandlerPrivate;

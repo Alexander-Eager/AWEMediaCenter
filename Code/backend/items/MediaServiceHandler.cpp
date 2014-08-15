@@ -63,6 +63,7 @@ MediaServiceHandler::MediaServiceHandler(ConfigFile* file)
 	d->service = nullptr;
 
 	// determine validity
+	d->valid = true;
 	if (!d->tryToLoad())
 	{
 		qWarning() << "MediaServiceHandler: Invalid service" << getName();
@@ -70,7 +71,6 @@ MediaServiceHandler::MediaServiceHandler(ConfigFile* file)
 	}
 	else
 	{
-		d->valid = true;
 		d->unload();
 	}
 }
@@ -98,6 +98,19 @@ bool MediaServiceHandler::open()
 		return false;
 	}
 
+	connect(d->service, &MediaService::opened,
+			this,	[this] ()
+					{
+						emit opened();
+					});
+
+	connect(d->service, &MediaService::closed,
+			this,	[this] ()
+					{
+						d->unload();
+						emit closed();
+					}, Qt::QueuedConnection); // queued since it deletes
+
 	return d->service->open();
 }
 
@@ -114,17 +127,6 @@ bool MediaServiceHandler::close()
 MediaItem::ItemType MediaServiceHandler::getItemType() const
 {
 	return SERVICE;
-}
-
-void MediaServiceHandler::respondToOpened()
-{
-	emit opened();
-}
-
-void MediaServiceHandler::respondToClosed()
-{
-	d->unload();
-	emit closed();
 }
 
 bool MediaServiceHandlerPrivate::tryToLoad()
